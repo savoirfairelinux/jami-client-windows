@@ -2,6 +2,7 @@
  * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -98,62 +99,42 @@ fileDebug(QFile& debugFile)
 }
 
 void
-exitApp(RunGuard& guard)
+exitApp()
 {
     GlobalSystemTray::instance().hide();
-    guard.release();
+#ifdef Q_OS_WIN
+    FreeConsole();
+#endif
 }
 
-int
-main(int argc, char* argv[])
+char**
+parseInputArgument(int &argc, char* argv[])
 {
-    setlocale(LC_ALL, "en_US.utf8");
-
+    // forcefully append --disable-web-security argument
     char ARG_DISABLE_WEB_SECURITY[] = "--disable-web-security";
-    int newArgc = argc + 1 + 1;
-    char** newArgv = new char*[newArgc];
-    for (int i = 0; i < argc; i++) {
+    int oldArgc = argc;
+    argc = argc + 1 + 1;
+    char** newArgv = new char* [argc];
+    for (int i = 0; i < oldArgc; i++) {
         newArgv[i] = argv[i];
     }
-    newArgv[argc] = ARG_DISABLE_WEB_SECURITY;
-    newArgv[argc + 1] = nullptr;
+    newArgv[oldArgc] = ARG_DISABLE_WEB_SECURITY;
+    newArgv[oldArgc + 1] = nullptr;
+    return newArgv;
+}
 
-#if defined(Q_OS_WIN) && (PROCESS_DPI_AWARE)
-    SetProcessDPIAware();
-#endif // Q_OS_WIN
+QString
+getDebugFilePath()
+{
+    QDir logPath(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation));
+    // since logPath will be .../Ring, we use cdUp to remove it.
+    logPath.cdUp();
+    return QString(logPath.absolutePath() + "/jami/jami.log");
+}
 
-#ifdef Q_OS_LINUX
-    if (!getenv("QT_QPA_PLATFORMTHEME"))
-        setenv("QT_QPA_PLATFORMTHEME", "gtk3", true);
-#endif
-
-    QApplication a(newArgc, newArgv);
-
-    QCoreApplication::setApplicationName("Ring");
-    QCoreApplication::setOrganizationDomain("jami.net");
-
-    QCryptographicHash appData(QCryptographicHash::Sha256);
-    appData.addData(QApplication::applicationName().toUtf8());
-    appData.addData(QApplication::organizationDomain().toUtf8());
-    RunGuard guard(appData.result());
-    if (!guard.tryToRun()) {
-        return 0;
-    }
-
-    for (auto string : QCoreApplication::arguments()) {
-        if (string == "-d" || string == "--debug") {
-            consoleDebug();
-        }
-    }
-
-    Utils::removeOldVersions();
-
-    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, false);
-    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-
-    auto startMinimized = false;
-    QString uri = "";
-
+void
+loadTranslations(const QApplication& a)
+{
     auto appDir = qApp->applicationDirPath() + "/";
     const auto locale_name = QLocale::system().name();
     const auto locale_lang = locale_name.split('_')[0];
@@ -184,30 +165,11 @@ main(int argc, char* argv[])
     }
     if (mainTranslator_name.load(appDir + "share/ring/translations/ring_client_windows_" + locale_name))
         a.installTranslator(&mainTranslator_name);
+}
 
-    QFont font;
-    font.setFamily("Segoe UI");
-    a.setFont(font);
-
-#ifndef DEBUG_STYLESHEET
-#ifdef Q_OS_LINUX
-    QFile file(":/stylesheet.linux.css");
-#else
-    QFile file(":/stylesheet.css");
-#endif
-    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        a.setStyleSheet(file.readAll());
-        file.close();
-    }
-#endif
-
-#if defined _MSC_VER && !COMPILE_ONLY
-    gnutls_global_init();
-#endif
-
-    GlobalInstances::setPixmapManipulator(std::make_unique<PixbufManipulator>());
-
-    SplashScreen* splash = new SplashScreen();
+void
+initLrc(const QApplication& a, SplashScreen* splash)
+{
     std::atomic_bool isMigrating(false);
     LRCInstance::init(
         [&splash, &a, &isMigrating] {
@@ -232,17 +194,18 @@ main(int argc, char* argv[])
     splash->hide();
     LRCInstance::subscribeToDebugReceived();
     LRCInstance::getAPI().holdConferences = false;
+}
 
-    QDir logPath(QStandardPaths::writableLocation(
-        QStandardPaths::AppLocalDataLocation));
-    // since logPath will be .../Ring, we use cdUp to remove it.
-    logPath.cdUp();
-    QFile debugFile(logPath.absolutePath() + "/jami/jami.log");
+void
+processInputArgument(QFile& debugFile, bool& startMinimized)
+{
+    QString uri = "";
 
     for (auto string : QCoreApplication::arguments()) {
         if (string.startsWith("jami:")) {
             uri = string;
-        } else {
+        }
+        else {
             if (string == "-m" || string == "--minimized") {
                 startMinimized = true;
             }
@@ -262,7 +225,27 @@ main(int argc, char* argv[])
             }
         }
     }
+}
 
+void
+setApplicationStyleSheet(QApplication& a)
+{
+#ifndef DEBUG_STYLESHEET
+#ifdef Q_OS_LINUX
+    QFile file(":/stylesheet.linux.css");
+#else
+    QFile file(":/stylesheet.css");
+#endif
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        a.setStyleSheet(file.readAll());
+        file.close();
+    }
+#endif
+}
+
+bool
+startAccountMigration()
+{
     auto accountList = LRCInstance::accountModel().getAccountList();
 
     for (const std::string& i : accountList) {
@@ -272,30 +255,120 @@ main(int argc, char* argv[])
             int status = dialog->exec();
 
             //migration failed
-            if (!status) {
-#ifdef Q_OS_WIN
-                FreeConsole();
+            return status == 0 ? false : true;
+        }
+    }
+}
+
+void
+setApplicationFont(QApplication& a)
+{
+    QFont font;
+    font.setFamily("Segoe UI");
+    a.setFont(font);
+    QFontDatabase::addApplicationFont(":/images/FontAwesome.otf");
+}
+
+bool
+applicationSetup(QApplication& a, QFile& debugFile)
+{
+#ifdef Q_OS_LINUX
+    if (!getenv("QT_QPA_PLATFORMTHEME"))
+        setenv("QT_QPA_PLATFORMTHEME", "gtk3", true);
 #endif
-                exitApp(guard);
-                return status;
-            }
+
+    // start debug console
+    for (auto string : QCoreApplication::arguments()) {
+        if (string == "-d" || string == "--debug") {
+            consoleDebug();
         }
     }
 
+    // remove old version files
+    Utils::removeOldVersions();
+
+    // load translations
+    loadTranslations(a);
+
+    // set font
+    setApplicationFont(a);
+
+    // set style sheet
+    setApplicationStyleSheet(a);
+
+#if defined _MSC_VER && !COMPILE_ONLY
+    gnutls_global_init();
+#endif
+
+    // init pixmap manipulator
+    GlobalInstances::setPixmapManipulator(std::make_unique<PixbufManipulator>());
+
+    // init lrc and its possible migration ui
+    SplashScreen* splash = new SplashScreen();
+    initLrc(a, splash);
+    // init mainwindow and finish splash when mainwindow shows up
     splash->finish(&MainWindow::instance());
     splash->deleteLater();
 
-    QFontDatabase::addApplicationFont(":/images/FontAwesome.otf");
+    // process input argument
+    bool startMinimized{ false };
+    processInputArgument(debugFile, startMinimized);
 
+    // start possible account migration
+    if (!startAccountMigration())
+        return false;
+
+    // create jami.net settings in Registry if it is not presented
     QSettings settings("jami.net", "Jami");
+
+    // set mainwindow show size
     if (not startMinimized) {
         MainWindow::instance().showWindow();
-    } else {
+    }
+    else {
         MainWindow::instance().showMinimized();
         MainWindow::instance().hide();
     }
+}
 
-    QObject::connect(&a, &QApplication::aboutToQuit, [&guard] { exitApp(guard); });
+void
+applicationInitialization()
+{
+    // some attributes are needed to be set before the creation of the sapplication
+    QApplication::setApplicationName("Ring");
+    QApplication::setOrganizationDomain("jami.net");
+    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
+    QApplication::setAttribute(Qt::AA_UseOpenGLES, true);
+    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+}
+
+int
+main(int argc, char* argv[])
+{
+    setlocale(LC_ALL, "en_US.utf8");
+
+    applicationInitialization();
+
+    // runguard to make sure that only one instance runs at a time
+    QCryptographicHash appData(QCryptographicHash::Sha256);
+    appData.addData(QApplication::applicationName().toUtf8());
+    appData.addData(QApplication::organizationDomain().toUtf8());
+    RunGuard guard(appData.result());
+    if (!guard.tryToRun()) {
+        // no need to exitApp since app is not set up
+        guard.release();
+        return 0;
+    }
+
+    auto newArgv = parseInputArgument(argc, argv);
+    QFile debugFile(getDebugFilePath());
+
+    QApplication a(argc, newArgv);
+    if (!applicationSetup(a, debugFile)) {
+        guard.release();
+        exitApp();
+        return 0;
+    }
 
     // for deployment and register types
     qmlRegisterType<QmlClipboardAdapter>("MyQClipboard", 1, 0, "QClipboard");
@@ -304,11 +377,9 @@ main(int argc, char* argv[])
     engine.load(QUrl(QStringLiteral("qrc:/src/KeyBoardShortcutTable.qml")));
     engine.load(QUrl(QStringLiteral("qrc:/src/UserProfileCard.qml")));
 
-    auto ret = a.exec();
+    QObject::connect(&a, &QApplication::aboutToQuit, [&guard] { guard.release(); exitApp(); });
 
-#ifdef Q_OS_WIN
-    FreeConsole();
-#endif
+    auto ret = a.exec();
 
     return ret;
 }
