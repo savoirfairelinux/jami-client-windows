@@ -1533,12 +1533,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../videooverlay.ui" line="419"/>
         <source>Call on Hold</source>
-        <translation>تماس در انتظار</translation>
+        <translation>تماس نگه‌داشته</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="89"/>
         <source>Hold / Unhold</source>
-        <translation>در انتظار / از‌سر گیری</translation>
+        <translation>نگه‌داشتن / رها کردن</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="124"/>
