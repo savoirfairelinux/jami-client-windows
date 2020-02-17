@@ -18,52 +18,40 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#include "mainapplication.h"
-#include "runguard.h"
-#include "qmlclipboardadapter.h"
+#pragma once
 
-#include <QCryptographicHash>
-#include <QQmlEngine>
-#include <QQmlApplicationEngine>
+#include "splashscreen.h"
 
-int
-main(int argc, char* argv[])
+#include <QApplication>
+#include <QFile>
+
+class MainApplication :public QApplication
 {
-    setlocale(LC_ALL, "en_US.utf8");
+    Q_OBJECT
 
-    MainApplication::applicationInitialization();
+public:
+    explicit MainApplication(int &argc, char** argv);
 
-    // runguard to make sure that only one instance runs at a time
-    QCryptographicHash appData(QCryptographicHash::Sha256);
-    appData.addData(QApplication::applicationName().toUtf8());
-    appData.addData(QApplication::organizationDomain().toUtf8());
-    RunGuard guard(appData.result());
-    if (!guard.tryToRun()) {
-        // no need to exitApp since app is not set up
-        guard.release();
-        return 0;
-    }
+    bool applicationSetup();
+    void exitApp();
 
-    char ARG_DISABLE_WEB_SECURITY[] = "--disable-web-security";
-    auto newArgv = MainApplication::parseInputArgument(argc, argv, ARG_DISABLE_WEB_SECURITY);
+    static void applicationInitialization();
+    static QString getDebugFilePath();
+    static char** parseInputArgument(int& argc, char* argv[], char* argToParse);
 
-    MainApplication a(argc, newArgv);
-    if (!a.applicationSetup()) {
-        guard.release();
-        a.exitApp();
-        return 0;
-    }
+protected:
+    void consoleDebug();
+    void vsConsoleDebug();
+    void fileDebug(QFile* debugFile);
 
-    // for deployment and register types
-    qmlRegisterType<QmlClipboardAdapter>("MyQClipboard", 1, 0, "QClipboard");
+private:
+    void loadTranslations();
+    void initLrc();
+    void processInputArgument(bool& startMinimized);
+    void setApplicationStyleSheet();
+    bool startAccountMigration();
+    void setApplicationFont();
 
-    QQmlApplicationEngine engine;
-    engine.load(QUrl(QStringLiteral("qrc:/src/KeyBoardShortcutTable.qml")));
-    engine.load(QUrl(QStringLiteral("qrc:/src/UserProfileCard.qml")));
-
-    // exec the application
-    auto ret = a.exec();
-
-    guard.release();
-    return ret;
-}
+    std::unique_ptr<SplashScreen> splash_;
+    std::unique_ptr<QFile> debugFile_;
+};
