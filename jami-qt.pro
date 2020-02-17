@@ -17,7 +17,7 @@ win32-msvc {
     QMAKE_LFLAGS+= /ignore:4006,4049,4078,4098 /FORCE:MULTIPLE /INCREMENTAL:NO /Debug /LTCG /NODEFAULTLIB:LIBCMT
 
     # preprocessor defines
-    DEFINES += UNICODE PROCESS_DPI_AWARE=1 QT_NO_DEBUG NDEBUG
+    DEFINES += UNICODE QT_NO_DEBUG NDEBUG
 
     # dependencies
     LRC=../lrc
@@ -171,7 +171,8 @@ HEADERS += ./src/aboutdialog.h \
         ./src/networkmanager.h \
         ./src/connectivitymonitor.h \
         ./src/userprofile.h \
-        ./src/qmlclipboardadapter.h
+        ./src/qmlclipboardadapter.h \
+        ./src/mainapplication.h
 SOURCES += ./src/aboutdialog.cpp \
         ./src/banneditemwidget.cpp \
         ./src/conversationsfilterwidget.cpp \
@@ -238,7 +239,8 @@ SOURCES += ./src/aboutdialog.cpp \
         ./src/recordwidget.cpp \
         ./src/networkmanager.cpp \
         ./src/connectivitymonitor.cpp \
-        ./src/userprofile.cpp
+        ./src/userprofile.cpp \
+        ./src/mainapplication.cpp
 FORMS += ./src/aboutdialog.ui \
         ./src/advancedsipsettingwidget.ui \
         ./src/callwidget.ui \
