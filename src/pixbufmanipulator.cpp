@@ -102,25 +102,21 @@ PixbufManipulator::decorationRole(const lrc::api::conversation::Info & conversat
         if (accountInfo.profileInfo.type == lrc::api::profile::Type::SIP &&
             contactInfo.profileInfo.type == lrc::api::profile::Type::TEMPORARY) {
             photo = Utils::fallbackAvatar(IMAGE_SIZE, QString(), QString());
-        } else if (contactInfo.profileInfo.type == lrc::api::profile::Type::TEMPORARY && contactInfo.profileInfo.uri.empty()) {
+        } else if (contactInfo.profileInfo.type == lrc::api::profile::Type::TEMPORARY && contactInfo.profileInfo.uri.isEmpty()) {
             photo = Utils::fallbackAvatar(IMAGE_SIZE, QString(), QString());
-        } else if (!contactPhoto.empty()) {
-            QByteArray byteArray(contactPhoto.c_str(), contactPhoto.length());
+        } else if (!contactPhoto.isEmpty()) {
+            QByteArray byteArray = contactPhoto.toLocal8Bit();
             photo = personPhoto(byteArray, nullptr).value<QImage>();
             if (photo.isNull()) {
-                auto avatarName = contactInfo.profileInfo.uri == bestName ?
-                                  QString() :
-                                  QString::fromStdString(bestName);
+                auto avatarName = contactInfo.profileInfo.uri == bestName ? QString() : bestName;
                 photo = Utils::fallbackAvatar(IMAGE_SIZE,
-                                              QString::fromStdString("ring:" + contactInfo.profileInfo.uri),
+                                              "ring:" + contactInfo.profileInfo.uri,
                                               avatarName);
             }
         } else {
-            auto avatarName = contactInfo.profileInfo.uri == bestName ?
-                              QString() :
-                              QString::fromStdString(bestName);
+            auto avatarName = contactInfo.profileInfo.uri == bestName ? QString() : bestName;
             photo = Utils::fallbackAvatar(IMAGE_SIZE,
-                                          QString::fromStdString("ring:" + contactInfo.profileInfo.uri),
+                                          "ring:" + contactInfo.profileInfo.uri,
                                           avatarName);
         }
     }

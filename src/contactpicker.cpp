@@ -66,20 +66,20 @@ ContactPicker::accept()
                 smartListModel_->toggleSection(sectionName);
                 return;
             }
-            auto convUid = index.data(SmartListModel::Role::UID).value<QString>().toStdString();
-            auto accId = index.data(SmartListModel::Role::AccountId).value<QString>().toStdString();
+            auto convUid = index.data(SmartListModel::Role::UID).value<QString>();
+            auto accId = index.data(SmartListModel::Role::AccountId).value<QString>();
             auto callId = LRCInstance::getCallIdForConversationUid(convUid, accId);
-            if (!callId.empty()) {
+            if (!callId.isEmpty()) {
                 emit callWillJoinConference(callId);
             } else {
-                auto contactUri = index.data(SmartListModel::Role::URI).value<QString>().toStdString();
+                auto contactUri = index.data(SmartListModel::Role::URI).value<QString>();
                 emit contactWillJoinConference(contactUri);
             }
         }
             break;
         case SmartListModel::Type::TRANSFER:
         {
-            auto contactUri = index.data(SmartListModel::Role::URI).value<QString>().toStdString();
+            auto contactUri = index.data(SmartListModel::Role::URI).value<QString>();
             emit contactWillDoTransfer(contactUri);
         }
             break;
@@ -95,7 +95,7 @@ void
 ContactPicker::on_ringContactLineEdit_textChanged(const QString &arg1)
 {
     if (listModeltype_ == SmartListModel::Type::CONFERENCE) {
-        smartListModel_->setConferenceableFilter(arg1.toStdString());
+        smartListModel_->setConferenceableFilter(arg1);
     }
     selectableProxyModel_->setFilterRegExp(QRegExp(arg1, Qt::CaseInsensitive, QRegExp::FixedString));
 }

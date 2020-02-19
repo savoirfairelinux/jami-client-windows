@@ -22,7 +22,7 @@
 #include <QTimer>
 #include <QtConcurrent/QtConcurrent>
 
-AccountMigrationDialog::AccountMigrationDialog(QWidget *parent, const std::string& accountId) :
+AccountMigrationDialog::AccountMigrationDialog(QWidget *parent, const QString& accountId) :
     QDialog(parent),
     ui(new Ui::AccountMigrationDialog),
     accountId_(accountId)
@@ -32,10 +32,10 @@ AccountMigrationDialog::AccountMigrationDialog(QWidget *parent, const std::strin
 
     auto& avatarInfo = LRCInstance::accountModel().getAccountInfo(accountId_);
 
-    auto managerUsername = QString::fromStdString(avatarInfo.confProperties.managerUsername);
-    auto managerUri = QString::fromStdString(avatarInfo.confProperties.managerUri);
-    auto username = QString::fromStdString(avatarInfo.confProperties.username);
-    auto alias = QString::fromStdString(LRCInstance::accountModel().getAccountInfo(accountId_).profileInfo.alias);
+    auto managerUsername = avatarInfo.confProperties.managerUsername;
+    auto managerUri = avatarInfo.confProperties.managerUri;
+    auto username = avatarInfo.confProperties.username;
+    auto alias = LRCInstance::accountModel().getAccountInfo(accountId_).profileInfo.alias;
 
     // manager uri
     if (!managerUri.isEmpty()) {
@@ -51,7 +51,7 @@ AccountMigrationDialog::AccountMigrationDialog(QWidget *parent, const std::strin
     if (!username.isEmpty()) {
         ui->usernameInputLabel->setText(username);
     } else {
-        if (avatarInfo.confProperties.managerUsername.empty()) {
+        if (avatarInfo.confProperties.managerUsername.isEmpty()) {
             ui->usernameLabel->hide();
             ui->usernameInputLabel->hide();
             ui->gridLayout->removeWidget(ui->usernameInputLabel);
@@ -85,7 +85,7 @@ AccountMigrationDialog::AccountMigrationDialog(QWidget *parent, const std::strin
             } else {
                 ui->migrationPushButton->setDisabled(false);
             }
-            password_ = text.toStdString();
+            password_ = text;
         });
 
     ui->migrationPushButton->setDisabled(true);
@@ -104,7 +104,7 @@ AccountMigrationDialog::~AccountMigrationDialog()
 void
 AccountMigrationDialog::slotPasswordEditingFinished()
 {
-    password_ = ui->passwordInputLineEdit->text().toStdString();
+    password_ = ui->passwordInputLineEdit->text();
 }
 
 void
@@ -121,7 +121,7 @@ AccountMigrationDialog::slotMigrationButtonClicked()
     migrationSpinnerMovie_->start();
 
     connect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::migrationEnded,
-        [this](const std::string& accountId, bool ok) {
+        [this](const QString& accountId, bool ok) {
             if (accountId_ != accountId) {
                 return;
             }

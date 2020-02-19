@@ -39,9 +39,9 @@ public:
     ~NameRegistrationDialog();
 
 private slots:
-    void slotNameRegistrationResult(const std::string& accountId,
-        RegisterNameStatus status,
-        const std::string& registerdName);
+    void slotNameRegistrationResult(const QString& accountId,
+                                    RegisterNameStatus status,
+                                    const QString& registerdName);
     void slotStartNameRegistration();
 
 private:

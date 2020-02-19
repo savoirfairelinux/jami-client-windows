@@ -69,7 +69,7 @@ private slots:
     void on_ringContactLineEdit_returnPressed();
     void settingsButtonClicked();
     void showChatView(const QModelIndex& nodeIdx);
-    void showChatView(const std::string & accountId, const lrc::api::conversation::Info & convInfo);
+    void showChatView(const QString& accountId, const lrc::api::conversation::Info & convInfo);
     void setConversationProfileData(const lrc::api::conversation::Info & convInfo);
     void setupChatView(const lrc::api::conversation::Info& convInfo);
     void slotAcceptInviteClicked(const QModelIndex& index);
@@ -77,10 +77,10 @@ private slots:
     void slotIgnoreInviteClicked(const QModelIndex& index);
     void slotCustomContextMenuRequested(const QPoint & pos);
     void slotAccountChanged(int index);
-    void slotShowCallView(const std::string & accountId, const lrc::api::conversation::Info & convInfo);
-    void slotShowIncomingCallView(const std::string & accountId, const lrc::api::conversation::Info & convInfo);
-    void slotShowChatView(const std::string & accountId, const lrc::api::conversation::Info & convInfo);
-    void slotNewTrustRequest(const std::string& accountId, const std::string& contactUri);
+    void slotShowCallView(const QString & accountId, const lrc::api::conversation::Info & convInfo);
+    void slotShowIncomingCallView(const QString & accountId, const lrc::api::conversation::Info & convInfo);
+    void slotShowChatView(const QString & accountId, const lrc::api::conversation::Info & convInfo);
+    void slotNewTrustRequest(const QString& accountId, const QString& contactUri);
     void slotToggleFullScreenClicked();
     void update();
     void ShowContextMenu(const QPoint& pos);
@@ -104,8 +104,8 @@ private slots:
     void slotVideoDeviceListChanged();
 
 private:
-    void callTerminating(const std::string& callid);
-    void onNewInteraction(const std::string& accountId, const std::string& convUid,
+    void callTerminating(const QString& callid);
+    void onNewInteraction(const QString& accountId, const QString& convUid,
                            uint64_t interactionId, const lrc::api::interaction::Info& interaction);
     void conversationsButtonClicked();
     void invitationsButtonClicked();
@@ -116,20 +116,20 @@ private:
     bool selectConversation(const lrc::api::conversation::Info& item);
     void deselectConversation();
     bool connectConversationModel();
-    void updateConversationView(const std::string& convUid);
+    void updateConversationView(const QString& convUid);
     void showConversationView();
-    bool selectSmartlistItem(const std::string& convUid);
-    QImage imageForConv(const std::string & convUid);
+    bool selectSmartlistItem(const QString& convUid);
+    QImage imageForConv(const QString & convUid);
     void processContactLineEdit();
     void hideMiniSpinner();
-    void updateConversationForNewContact(const std::string& convUid);
+    void updateConversationForNewContact(const QString& convUid);
     void updateSmartList();
-    void setSelectedAccount(const std::string & accountId);
+    void setSelectedAccount(const QString & accountId);
     void setConversationFilter(const QString& filter);
     void setConversationFilter(lrc::api::profile::Type filter);
     void updateConversationsFilterWidget();
     void updateComboBox();
-    void connectAccount(const std::string& accId);
+    void connectAccount(const QString& accId);
     void setCallPanelVisibility(bool visible);
     void updateChatviewFrame();
     void registerShortCuts();
@@ -142,7 +142,7 @@ private:
 
     constexpr static int qrSize_ = 200;
 
-    std::string lastConvUid_ {};
+    QString lastConvUid_ {};
     lrc::api::profile::Type currentTypeFilter_{};
     std::unique_ptr<SmartListModel> smartListModel_;
 
