@@ -156,11 +156,11 @@ VideoView::dropEvent(QDropEvent* event)
     // take only the first file
     QString urlString = event->mimeData()->urls().at(0).toString();
     auto conversation = LRCInstance::getCurrentConversation();
-    if (conversation.uid.empty()) return;
+    if (conversation.uid.isEmpty()) return;
     auto callIdList = LRCInstance::getActiveCalls();
     for (auto callId : callIdList) {
         if (callId == conversation.callId) {
-            LRCInstance::avModel().setInputFile(urlString.toStdString());
+            LRCInstance::avModel().setInputFile(urlString);
             break;
         }
     }
@@ -193,7 +193,7 @@ VideoView::showContextMenu(const QPoint& position)
     for (auto d : devices) {
         try {
             auto settings = LRCInstance::avModel().getDeviceSettings(d);
-            QString deviceName = QString::fromStdString(settings.name).toUtf8();
+            QString deviceName =settings.name;
             auto deviceAction = new QAction(deviceName, this);
             menu.addAction(deviceAction);
             deviceAction->setCheckable(true);
@@ -202,8 +202,8 @@ VideoView::showContextMenu(const QPoint& position)
             }
             connect(deviceAction, &QAction::triggered,
                 [this, deviceName]() {
-                    auto deviceId = LRCInstance::avModel().getDeviceIdFromName(deviceName.toStdString());
-                    if (deviceId.empty()) {
+                    auto deviceId = LRCInstance::avModel().getDeviceIdFromName(deviceName);
+                    if (deviceId.isEmpty()) {
                         qWarning() << "Couldn't find device: " << deviceName;
                         return;
                     }
@@ -265,7 +265,7 @@ VideoView::showContextMenu(const QPoint& position)
                 return;
             fileNames = fileDialog.selectedFiles();
             auto resource = QUrl::fromLocalFile(fileNames.at(0)).toString();
-            LRCInstance::avModel().setInputFile(resource.toStdString());
+            LRCInstance::avModel().setInputFile(resource);
             resetPreview();
         });
 
@@ -286,15 +286,15 @@ VideoView::showContextMenu(const QPoint& position)
 }
 
 void
-VideoView::updateCall(const std::string& convUid,
-                      const std::string& accountId,
+VideoView::updateCall(const QString& convUid,
+                      const QString& accountId,
                       bool forceCallOnly)
 {
-    accountId_ = accountId.empty() ? accountId_ : accountId;
-    convUid_ = convUid.empty() ? convUid_ : convUid;
+    accountId_ = accountId.isEmpty() ? accountId_ : accountId;
+    convUid_ = convUid.isEmpty() ? convUid_ : convUid;
 
     auto convInfo = LRCInstance::getConversationFromConvUid(convUid_, accountId_);
-    if (convInfo.uid.empty()) {
+    if (convInfo.uid.isEmpty()) {
         return;
     }
 
@@ -407,7 +407,7 @@ VideoView::shouldShowPreview(bool force)
 {
     bool shouldShowPreview{ false };
     auto convInfo = LRCInstance::getConversationFromConvUid(convUid_, accountId_);
-    if (convInfo.uid.empty()) {
+    if (convInfo.uid.isEmpty()) {
         return shouldShowPreview;
     }
     auto call = LRCInstance::getCallInfoForConversation(convInfo, force);
@@ -439,17 +439,17 @@ VideoView::resetPreview()
         height = previewImage->height();
     } else {
         auto device = LRCInstance::avModel().getCurrentVideoCaptureDevice();
-        if (device.empty()) {
+        if (device.isEmpty()) {
             device = LRCInstance::avModel().getDefaultDevice();
         }
-        if (device.empty()) {
+        if (device.isEmpty()) {
             previewWidget_->setVisible(false);
             return;
         }
         try {
             auto settings = LRCInstance::avModel().getDeviceSettings(device);
-            width = QString::fromStdString(settings.size).split("x")[0].toInt();
-            height = QString::fromStdString(settings.size).split("x")[1].toInt();
+            width = settings.size.split("x")[0].toInt();
+            height = settings.size.split("x")[1].toInt();
         } catch (...) {}
     }
     auto newSize = previewWidget_->getScaledSize(width, height);
@@ -472,7 +472,7 @@ void
 VideoView::keyReleaseEvent(QKeyEvent* event)
 {
     auto convInfo = LRCInstance::getCurrentConversation();
-    if (convInfo.uid.empty()
+    if (convInfo.uid.isEmpty()
         || LRCInstance::getCurrentAccountInfo().profileInfo.type != lrc::api::profile::Type::SIP)
         return;
 
@@ -482,11 +482,10 @@ VideoView::keyReleaseEvent(QKeyEvent* event)
         LRCInstance::getCurrentCallModel()->playDTMF(convInfo.callId, "*");
     } else if (keyPressed_ >= 65 && keyPressed_ <= 68) {
         //enum Qt::Key_A = 65, QT::Key_D = 68
-        // string::string(size_type count, charT ch)
-        LRCInstance::getCurrentCallModel()->playDTMF(convInfo.callId, std::string(1, char(keyPressed_)));
+        LRCInstance::getCurrentCallModel()->playDTMF(convInfo.callId, QString(char(keyPressed_)));
     } else if (keyPressed_ >= 48 && keyPressed_ <= 57) {
         //enum Qt::Key_0 = 48, QT::Key_9 = 57
-        LRCInstance::getCurrentCallModel()->playDTMF(convInfo.callId, std::to_string(keyPressed_ - 48));
+        LRCInstance::getCurrentCallModel()->playDTMF(convInfo.callId, QString::number(keyPressed_ - 48));
     }
     keyPressed_ = -1;
     QWidget::keyReleaseEvent(event);

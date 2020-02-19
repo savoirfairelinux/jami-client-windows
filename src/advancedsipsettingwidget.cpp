@@ -173,10 +173,10 @@ void AdvancedSIPSettingsWidget::updateAdvancedSIPSettings()
     ui->enableSDESToggle->setEnabled(config.SRTP.enable);
     ui->fallbackRTPToggle->setEnabled(config.SRTP.enable);
 
-    ui->btnSIPCACert->setText(QFileInfo(QString::fromStdString(config.TLS.certificateListFile)).fileName());
-    ui->btnSIPUserCert->setText(QFileInfo(QString::fromStdString(config.TLS.certificateFile)).fileName());
-    ui->btnSIPPrivateKey->setText(QFileInfo(QString::fromStdString(config.TLS.privateKeyFile)).fileName());
-    ui->lineEditSIPCertPassword->setText(QString::fromStdString(config.TLS.password));
+    ui->btnSIPCACert->setText(QFileInfo(config.TLS.certificateListFile).fileName());
+    ui->btnSIPUserCert->setText(QFileInfo(config.TLS.certificateFile).fileName());
+    ui->btnSIPPrivateKey->setText(QFileInfo(config.TLS.privateKeyFile).fileName());
+    ui->lineEditSIPCertPassword->setText(config.TLS.password);
 
     ui->encryptMediaStreamsToggle->setChecked(config.SRTP.enable);
     ui->enableSDESToggle->setChecked(config.SRTP.keyExchange == lrc::api::account::KeyExchangeProtocol::SDES);
@@ -190,7 +190,7 @@ void AdvancedSIPSettingsWidget::updateAdvancedSIPSettings()
     ui->tlsProtocolComboBox->setCurrentIndex(static_cast<int>(method));
     connect(ui->tlsProtocolComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AdvancedSIPSettingsWidget::tlsProtocolComboBoxIndexChanged);
 
-    ui->outgoingTLSServerNameLineEdit->setText(QString::fromStdString(config.TLS.serverName));
+    ui->outgoingTLSServerNameLineEdit->setText(config.TLS.serverName);
 
     ui->negotiationTimeoutSpinBox->setValue(config.TLS.negotiationTimeoutSec);
     connect(ui->negotiationTimeoutSpinBox, &QSpinBox::editingFinished, this, &AdvancedSIPSettingsWidget::negotiationTimeoutSpinBoxValueChanged);
@@ -198,17 +198,17 @@ void AdvancedSIPSettingsWidget::updateAdvancedSIPSettings()
     // Connectivity
     ui->checkBoxUPnPSIP->setChecked(config.upnpEnabled);
     ui->checkBoxTurnEnableSIP->setChecked(config.TURN.enable);
-    ui->lineEditTurnAddressSIP->setText(QString::fromStdString(config.TURN.server));
-    ui->lineEditTurnUsernameSIP->setText(QString::fromStdString(config.TURN.username));
-    ui->lineEditTurnPsswdSIP->setText(QString::fromStdString(config.TURN.password));
-    ui->lineEditTurnRealmSIP->setText(QString::fromStdString(config.TURN.realm));
+    ui->lineEditTurnAddressSIP->setText(config.TURN.server);
+    ui->lineEditTurnUsernameSIP->setText(config.TURN.username);
+    ui->lineEditTurnPsswdSIP->setText(config.TURN.password);
+    ui->lineEditTurnRealmSIP->setText(config.TURN.realm);
     ui->lineEditTurnAddressSIP->setEnabled(config.TURN.enable);
     ui->lineEditTurnUsernameSIP->setEnabled(config.TURN.enable);
     ui->lineEditTurnPsswdSIP->setEnabled(config.TURN.enable);
     ui->lineEditTurnRealmSIP->setEnabled(config.TURN.enable);
 
     ui->checkBoxSTUNEnableSIP->setChecked(config.STUN.enable);
-    ui->lineEditSTUNAddressSIP->setText(QString::fromStdString(config.STUN.server));
+    ui->lineEditSTUNAddressSIP->setText(config.STUN.server);
     ui->lineEditSTUNAddressSIP->setEnabled(config.STUN.enable);
 
     ui->registrationExpireTimeoutSpinBox->setValue(config.Registration.expire);
@@ -218,7 +218,7 @@ void AdvancedSIPSettingsWidget::updateAdvancedSIPSettings()
 
     // published address
     ui->checkBoxCustomAddressPort->setChecked(config.publishedSameAsLocal);
-    ui->lineEditSIPCustomAddress->setText(QString::fromStdString(config.publishedAddress));
+    ui->lineEditSIPCustomAddress->setText(config.publishedAddress);
     ui->customPortSIPSpinBox->setValue(config.publishedPort);
 
     connect(ui->customPortSIPSpinBox, &QSpinBox::editingFinished, this, &AdvancedSIPSettingsWidget::customPortSIPSpinBoxValueChanged);
@@ -233,7 +233,7 @@ void AdvancedSIPSettingsWidget::updateAdvancedSIPSettings()
     connect(ui->videoListWidgetSIP, &QListWidget::itemChanged, this, &AdvancedSIPSettingsWidget::videoCodecsStateChange);
 
     ui->btnRingtoneSIP->setEnabled(config.Ringtone.ringtoneEnabled);
-    ui->btnRingtoneSIP->setText(QFileInfo(QString::fromStdString(config.Ringtone.ringtonePath)).fileName());
+    ui->btnRingtoneSIP->setText(QFileInfo(config.Ringtone.ringtonePath).fileName());
     ui->lineEditSTUNAddressSIP->setEnabled(config.STUN.enable);
 
     // SDP session negotiation ports
@@ -248,7 +248,7 @@ void AdvancedSIPSettingsWidget::updateAdvancedSIPSettings()
     connect(ui->videoRTPMaxPortSpinBox, &QSpinBox::editingFinished, this, &AdvancedSIPSettingsWidget::videoRTPMaxPortSpinBoxEditFinished);
 
     // voicemail
-    ui->lineEditVoiceMailDialCode->setText(QString::fromStdString(config.mailbox));
+    ui->lineEditVoiceMailDialCode->setText(config.mailbox);
 }
 
 // call settings
@@ -268,13 +268,13 @@ void AdvancedSIPSettingsWidget::setEnableRingtone(bool state)
 void AdvancedSIPSettingsWidget::openFileCustomRingtone()
 {
     QString fileUrl;
-    auto oldPath = QString::fromStdString(LRCInstance::getCurrAccConfig().Ringtone.ringtonePath);
+    auto oldPath = LRCInstance::getCurrAccConfig().Ringtone.ringtonePath;
     auto openPath = oldPath.isEmpty() ? QDir::currentPath() + QString("/ringtones/") : QFileInfo(oldPath).absolutePath();
     fileUrl = QFileDialog::getOpenFileName(this, tr("Select a new ringtone"), openPath, tr("Audio Files") + " (*.wav *.ogg *.opus *.mp3 *.aiff *.wma)");
 
     if (!fileUrl.isEmpty()) {
         auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-        confProps.Ringtone.ringtonePath = fileUrl.toStdString();
+        confProps.Ringtone.ringtonePath = fileUrl;
         LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
         ui->btnRingtoneSIP->setText(QFileInfo(fileUrl).fileName());
 
@@ -308,21 +308,21 @@ void AdvancedSIPSettingsWidget::setUseSTUN(bool state)
 void AdvancedSIPSettingsWidget::setTURNAddress()
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.TURN.server = ui->lineEditTurnAddressSIP->text().toStdString();
+    confProps.TURN.server = ui->lineEditTurnAddressSIP->text();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
 void AdvancedSIPSettingsWidget::setTURNUsername()
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.TURN.username = ui->lineEditTurnUsernameSIP->text().toStdString();
+    confProps.TURN.username = ui->lineEditTurnUsernameSIP->text();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
 void AdvancedSIPSettingsWidget::setTURNPassword()
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.TURN.password = ui->lineEditTurnPsswdSIP->text().toStdString();
+    confProps.TURN.password = ui->lineEditTurnPsswdSIP->text();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
@@ -330,14 +330,14 @@ void
 AdvancedSIPSettingsWidget::setTURNRealm()
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.TURN.realm = ui->lineEditTurnRealmSIP->text().toStdString();
+    confProps.TURN.realm = ui->lineEditTurnRealmSIP->text();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
 void AdvancedSIPSettingsWidget::setSTUNAddress()
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.STUN.server = ui->lineEditSTUNAddressSIP->text().toStdString();
+    confProps.STUN.server = ui->lineEditSTUNAddressSIP->text();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
@@ -352,7 +352,7 @@ void AdvancedSIPSettingsWidget::updateAudioCodecs()
         QListWidgetItem* audioItem = new QListWidgetItem(ui->audioListWidgetSIP);
         audioItem->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
         audioItem->setCheckState(it->enabled ? Qt::Checked : Qt::Unchecked);
-        audioItem->setData(Qt::DisplayRole, QString::fromStdString(it->name) + " " + QString::fromStdString(it->samplerate) + " Hz");
+        audioItem->setData(Qt::DisplayRole, it->name + " " + it->samplerate + " Hz");
 
         ui->audioListWidgetSIP->addItem(audioItem);
     }
@@ -370,7 +370,7 @@ void AdvancedSIPSettingsWidget::updateVideoCodecs()
         QListWidgetItem* videoItem = new QListWidgetItem(ui->videoListWidgetSIP);
         videoItem->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
         videoItem->setCheckState(it->enabled ? Qt::Checked : Qt::Unchecked);
-        videoItem->setData(Qt::DisplayRole, QString::fromStdString(it->name) + "\n");
+        videoItem->setData(Qt::DisplayRole, it->name + "\n");
         ui->audioListWidgetSIP->addItem(videoItem);
     }
 }
@@ -401,7 +401,7 @@ void AdvancedSIPSettingsWidget::decreaseAudioCodecPriority()
     auto audioCodecList = LRCInstance::getCurrentAccountInfo().codecModel->getAudioCodecs();
     auto it = audioCodecList.begin();
 
-    advance(it, selectedRow);
+    std::advance(it, selectedRow);
     LRCInstance::getCurrentAccountInfo().codecModel->decreasePriority(it->id, false);
 
     // swap current item down
@@ -414,7 +414,7 @@ void AdvancedSIPSettingsWidget::increaseAudioCodecPriority()
     auto audioCodecList = LRCInstance::getCurrentAccountInfo().codecModel->getAudioCodecs();
     auto it = audioCodecList.begin();
 
-    advance(it, selectedRow);
+    std::advance(it, selectedRow);
     LRCInstance::getCurrentAccountInfo().codecModel->increasePriority(it->id, false);
     updateAudioCodecs();
 
@@ -428,7 +428,7 @@ void AdvancedSIPSettingsWidget::decreaseVideoCodecPriority()
     auto videoCodecList = LRCInstance::getCurrentAccountInfo().codecModel->getVideoCodecs();
     auto it = videoCodecList.begin();
 
-    advance(it, selectedRow);
+    std::advance(it, selectedRow);
     LRCInstance::getCurrentAccountInfo().codecModel->decreasePriority(it->id, true);
 
     // swap current item down
@@ -441,7 +441,7 @@ void AdvancedSIPSettingsWidget::increaseVideoCodecPriority()
     auto videoCodecList = LRCInstance::getCurrentAccountInfo().codecModel->getVideoCodecs();
     auto it = videoCodecList.begin();
 
-    advance(it, selectedRow);
+    std::advance(it, selectedRow);
     LRCInstance::getCurrentAccountInfo().codecModel->increasePriority(it->id, true);
 
     // swap current item up
@@ -515,7 +515,7 @@ void
 AdvancedSIPSettingsWidget::outgoingTLSServerNameLineEditTextChanged()
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.TLS.serverName = ui->outgoingTLSServerNameLineEdit->text().toStdString();
+    confProps.TLS.serverName = ui->outgoingTLSServerNameLineEdit->text();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
@@ -583,19 +583,19 @@ void
 AdvancedSIPSettingsWidget::lineEditSIPCertPasswordLineEditTextChanged()
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.TLS.password = ui->lineEditSIPCertPassword->text().toStdString();
+    confProps.TLS.password = ui->lineEditSIPCertPassword->text();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
-std::string
-AdvancedSIPSettingsWidget::openButtonFilePath(const std::string& accConfigFilePath,
+QString
+AdvancedSIPSettingsWidget::openButtonFilePath(const QString& accConfigFilePath,
                                               const char* windowTitle,
                                               const char* fileTypeDesp,
                                               const QString& fileTypeFilter,
                                               QPushButton* button)
 {
     QString fileUrl;
-    auto oldPath = QString::fromStdString(accConfigFilePath);
+    auto oldPath = accConfigFilePath;
     auto openPath = oldPath.isEmpty() ? QDir::currentPath() : QFileInfo(oldPath).absolutePath();
     fileUrl = QFileDialog::getOpenFileName(this, tr(windowTitle), openPath, tr(fileTypeDesp) + fileTypeFilter);
     if (!fileUrl.isEmpty()) {
@@ -603,7 +603,7 @@ AdvancedSIPSettingsWidget::openButtonFilePath(const std::string& accConfigFilePa
     } else {
         button->setText("");
     }
-    return fileUrl.toStdString();
+    return fileUrl;
 }
 
 void
@@ -634,7 +634,7 @@ void
 AdvancedSIPSettingsWidget::lineEditSIPCustomAddressLineEditTextChanged()
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.publishedAddress = ui->lineEditSIPCustomAddress->text().toStdString();
+    confProps.publishedAddress = ui->lineEditSIPCustomAddress->text();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
@@ -698,7 +698,7 @@ void
 AdvancedSIPSettingsWidget::lineEditVoiceMailDialCodeEditFinished()
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.mailbox = ui->lineEditVoiceMailDialCode->text().toStdString();
+    confProps.mailbox = ui->lineEditVoiceMailDialCode->text();
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
