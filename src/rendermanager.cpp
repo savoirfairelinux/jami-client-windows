@@ -24,7 +24,7 @@
 using namespace lrc::api;
 
 FrameWrapper::FrameWrapper(AVModel& avModel,
-                           const std::string& id)
+                           const QString& id)
     : avModel_(avModel)
     , id_(id)
     , isRendering_(false)
@@ -89,14 +89,14 @@ FrameWrapper::isRendering()
 }
 
 void
-FrameWrapper::slotRenderingStarted(const std::string& id)
+FrameWrapper::slotRenderingStarted(const QString& id)
 {
     if (id != id_) {
         return;
     }
 
     if (!startRendering()) {
-        qWarning() << "Couldn't start rendering for id: " << id_.c_str();
+        qWarning() << "Couldn't start rendering for id: " << id_;
         return;
     }
 
@@ -106,7 +106,7 @@ FrameWrapper::slotRenderingStarted(const std::string& id)
 }
 
 void
-FrameWrapper::slotFrameUpdated(const std::string& id)
+FrameWrapper::slotFrameUpdated(const QString& id)
 {
     if (id != id_) {
         return;
@@ -149,7 +149,7 @@ FrameWrapper::slotFrameUpdated(const std::string& id)
 }
 
 void
-FrameWrapper::slotRenderingStopped(const std::string& id)
+FrameWrapper::slotRenderingStopped(const QString& id)
 {
     if (id != id_) {
         return;
@@ -182,19 +182,19 @@ RenderManager::RenderManager(AVModel& avModel)
 
     QObject::connect(previewFrameWrapper_.get(),
         &FrameWrapper::renderingStarted,
-        [this](const std::string& id) {
+        [this](const QString& id) {
             Q_UNUSED(id);
             emit previewRenderingStarted();
         });
     QObject::connect(previewFrameWrapper_.get(),
         &FrameWrapper::frameUpdated,
-        [this](const std::string& id) {
+        [this](const QString& id) {
             Q_UNUSED(id);
             emit previewFrameUpdated();
         });
     QObject::connect(previewFrameWrapper_.get(),
         &FrameWrapper::renderingStopped,
-        [this](const std::string& id) {
+        [this](const QString& id) {
             Q_UNUSED(id);
             emit previewRenderingStopped();
         });
@@ -256,7 +256,7 @@ void RenderManager::startPreviewing(bool force, bool async)
 }
 
 QImage*
-RenderManager::getFrame(const std::string& id)
+RenderManager::getFrame(const QString& id)
 {
     auto dfwIt = distantFrameWrapperMap_.find(id);
     if (dfwIt != distantFrameWrapperMap_.end()) {
@@ -266,13 +266,13 @@ RenderManager::getFrame(const std::string& id)
 }
 
 void
-RenderManager::addDistantRenderer(const std::string& id)
+RenderManager::addDistantRenderer(const QString& id)
 {
     // check if a FrameWrapper with this id exists
     auto dfwIt = distantFrameWrapperMap_.find(id);
     if ( dfwIt != distantFrameWrapperMap_.end()) {
         if (!dfwIt->second->startRendering()) {
-            qWarning() << "Couldn't start rendering for id: " << id.c_str();
+            qWarning() << "Couldn't start rendering for id: " << id;
         }
     } else {
         auto dfw = std::make_unique<FrameWrapper>(avModel_, id);
@@ -280,17 +280,17 @@ RenderManager::addDistantRenderer(const std::string& id)
         // connect this to the FrameWrapper
         distantConnectionMap_[id].started = QObject::connect(
             dfw.get(), &FrameWrapper::renderingStarted,
-            [this](const std::string& id) {
+            [this](const QString& id) {
                 emit distantRenderingStarted(id);
             });
         distantConnectionMap_[id].updated = QObject::connect(
             dfw.get(), &FrameWrapper::frameUpdated,
-            [this](const std::string& id) {
+            [this](const QString& id) {
                 emit distantFrameUpdated(id);
             });
         distantConnectionMap_[id].stopped = QObject::connect(
             dfw.get(), &FrameWrapper::renderingStopped,
-            [this](const std::string& id) {
+            [this](const QString& id) {
                 emit distantRenderingStopped(id);
             });
 
@@ -303,7 +303,7 @@ RenderManager::addDistantRenderer(const std::string& id)
 }
 
 void
-RenderManager::removeDistantRenderer(const std::string& id)
+RenderManager::removeDistantRenderer(const QString& id)
 {
     auto dfwIt = distantFrameWrapperMap_.find(id);
     if (dfwIt != distantFrameWrapperMap_.end()) {

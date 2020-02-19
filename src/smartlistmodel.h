@@ -62,10 +62,10 @@ public:
         Draft
     };
 
-    explicit SmartListModel(const std::string& accId,
+    explicit SmartListModel(const QString& accId,
                             QObject *parent = 0,
                             SmartListModel::Type listModelType = Type::CONVERSATION,
-                            const std::string& convUid = {});
+                            const QString& convUid = {});
 
     // QAbstractItemModel
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
@@ -75,23 +75,23 @@ public:
     QModelIndex parent(const QModelIndex &child) const;
     Qt::ItemFlags flags(const QModelIndex &index) const;
 
-    void setAccount(const std::string& accId);
-    void setConferenceableFilter(const std::string& filter = {});
+    void setAccount(const QString& accId);
+    void setConferenceableFilter(const QString& filter = {});
     void toggleSection(const QString& section);
 
     // hack for context menu highlight retention
     bool isContextMenuOpen{ false };
 
 private:
-    std::string accountId_;
+    QString accountId_;
 
     QVariant getConversationItemData(const ConversationInfo& item,
                                      const AccountInfo& accountInfo,
                                      int role) const;
     // list sectioning
-    std::string convUid_;
+    QString convUid_;
     Type listModelType_;
     QMap<QString, bool> sectionState_;
-    std::map<ConferenceableItem, ConferenceableValue> conferenceables_;
+    QMap<ConferenceableItem, ConferenceableValue> conferenceables_;
 
 };

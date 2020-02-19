@@ -43,7 +43,7 @@ RecordOverlay::RecordOverlay(RecordWidget* recordWidget) :
 
     connect(&LRCInstance::avModel(), &lrc::api::AVModel::audioMeter,
         ui->levelMeter,
-        [this](const std::string& /*id*/, float level) {
+        [this](const QString& /*id*/, float level) {
             ui->levelMeter->setLevel(level);
         });
 

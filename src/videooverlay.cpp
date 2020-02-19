@@ -82,8 +82,7 @@ VideoOverlay::updateCall(const conversation::Info& convInfo)
         return;
     }
 
-    auto bestName = QString::fromStdString(
-        Utils::bestNameForConversation(convInfo, *convModel));
+    auto bestName = Utils::bestNameForConversation(convInfo, *convModel);
     currentBestCalleeDisplayName_ = bestName;
     ui->nameLabel->setText(bestName);
 
@@ -109,21 +108,21 @@ VideoOverlay::updateCall(const conversation::Info& convInfo)
     ui->sipInputPanelButton->setVisible(isSIP);
 
     // only show the hold/pause button for non-conference calls
-    ui->holdButton->setVisible(convInfo.confId.empty());
+    ui->holdButton->setVisible(convInfo.confId.isEmpty());
 }
 
 void
 VideoOverlay::setTime()
 {
     auto callId = LRCInstance::getCallIdForConversationUid(convUid_, accountId_);
-    if (callId.empty() || !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
+    if (callId.isEmpty() || !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
         return;
     }
     auto callInfo = LRCInstance::getCurrentCallModel()->getCall(callId);
     if (callInfo.status == lrc::api::call::Status::IN_PROGRESS ||
         callInfo.status == lrc::api::call::Status::PAUSED) {
         auto timeString = LRCInstance::getCurrentCallModel()->getFormattedCallDuration(callId);
-        ui->timerLabel->setText(QString::fromStdString(timeString));
+        ui->timerLabel->setText(timeString);
     }
 }
 
@@ -131,7 +130,7 @@ bool
 VideoOverlay::shouldFadeOut()
 {
     auto callId = LRCInstance::getCallIdForConversationUid(convUid_, accountId_);
-    if (callId.empty() || !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
+    if (callId.isEmpty() || !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
         return false;
     }
     auto callInfo = LRCInstance::getCurrentCallModel()->getCall(callId);
@@ -162,12 +161,12 @@ void
 VideoOverlay::on_hangupButton_clicked()
 {
     auto convInfo = LRCInstance::getCurrentConversation();
-    if (!convInfo.uid.empty()) {
+    if (!convInfo.uid.isEmpty()) {
         auto callModel = LRCInstance::getCurrentCallModel();
         if (callModel->hasCall(convInfo.callId)) {
             // Store the last remaining participant of the conference
             // so we can switch the smartlist index after termination.
-            if (!convInfo.confId.empty()) {
+            if (!convInfo.confId.isEmpty()) {
                 auto callList = LRCInstance::getAPI().getConferenceSubcalls(convInfo.confId);
                 if (callList.size() == 2) {
                     for (const auto& cId : callList) {
@@ -195,7 +194,7 @@ VideoOverlay::on_holdButton_toggled(bool checked)
     // why is 'checked' unused?
     Q_UNUSED(checked);
     auto callId = LRCInstance::getCallIdForConversationUid(convUid_, accountId_);
-    if (callId.empty() || !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
+    if (callId.isEmpty() || !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
         return;
     }
     auto callModel = LRCInstance::getCurrentCallModel();
@@ -212,7 +211,7 @@ VideoOverlay::on_noMicButton_toggled(bool checked)
 {
     Q_UNUSED(checked);
     auto callId = LRCInstance::getCallIdForConversationUid(convUid_, accountId_);
-    if (callId.empty() || !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
+    if (callId.isEmpty() || !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
         return;
     }
     auto callModel = LRCInstance::getCurrentCallModel();
@@ -226,7 +225,7 @@ VideoOverlay::on_noVideoButton_toggled(bool checked)
 {
     Q_UNUSED(checked);
     auto callId = LRCInstance::getCallIdForConversationUid(convUid_, accountId_);
-    if (callId.empty() || !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
+    if (callId.isEmpty() || !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
         return;
     }
     auto callModel = LRCInstance::getCurrentCallModel();
@@ -240,7 +239,7 @@ void
 VideoOverlay::on_recButton_clicked()
 {
     auto callId = LRCInstance::getCallIdForConversationUid(convUid_, accountId_);
-    if (callId.empty() || !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
+    if (callId.isEmpty() || !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
         return;
     }
     auto callModel = LRCInstance::getCurrentCallModel();
@@ -253,7 +252,7 @@ void
 VideoOverlay::on_addToConferenceButton_toggled(bool checked)
 {
     auto callId = LRCInstance::getCallIdForConversationUid(convUid_, accountId_);
-    if ( callId.empty() ||
+    if ( callId.isEmpty() ||
          !LRCInstance::getCurrentCallModel()->hasCall(callId) ||
          !checked) {
         return;
@@ -266,7 +265,7 @@ void
 VideoOverlay::on_transferCallButton_toggled(bool checked)
 {
     auto callId = LRCInstance::getCallIdForConversationUid(convUid_, accountId_);
-    if (callId.empty() ||
+    if (callId.isEmpty() ||
         !LRCInstance::getCurrentCallModel()->hasCall(callId) ||
         !checked) {
         return;
@@ -276,7 +275,7 @@ VideoOverlay::on_transferCallButton_toggled(bool checked)
 }
 
 void
-VideoOverlay::slotWillDoTransfer(const std::string& contactUri)
+VideoOverlay::slotWillDoTransfer(const QString& contactUri)
 {
     auto callModel = LRCInstance::getCurrentCallModel();
 
@@ -284,12 +283,12 @@ VideoOverlay::slotWillDoTransfer(const std::string& contactUri)
     ui->transferCallButton->resetToOriginal();
 
     auto conversation = LRCInstance::getCurrentConversation();
-    if (conversation.uid.empty()) {
+    if (conversation.uid.isEmpty()) {
         return;
     }
-    auto callId = conversation.confId.empty() ? conversation.callId : conversation.confId;
+    auto callId = conversation.confId.isEmpty() ? conversation.callId : conversation.confId;
 
-    std::string destCallId;
+    QString destCallId;
 
     try {
         //check if the call exist - (check non-finished calls)
@@ -312,7 +311,7 @@ VideoOverlay::slotWillDoTransfer(const std::string& contactUri)
 }
 
 void
-VideoOverlay::slotContactWillJoinConference(const std::string& contactUri)
+VideoOverlay::slotContactWillJoinConference(const QString& contactUri)
 {
     auto callModel = LRCInstance::getCurrentCallModel();
 
@@ -328,7 +327,7 @@ VideoOverlay::slotContactWillJoinConference(const std::string& contactUri)
 }
 
 void
-VideoOverlay::slotCallWillJoinConference(const std::string& callId)
+VideoOverlay::slotCallWillJoinConference(const QString& callId)
 {
     auto callModel = LRCInstance::getCurrentCallModel();
 
@@ -336,10 +335,10 @@ VideoOverlay::slotCallWillJoinConference(const std::string& callId)
     ui->addToConferenceButton->resetToOriginal();
 
     auto conversation = LRCInstance::getCurrentConversation();
-    if (conversation.uid.empty()) {
+    if (conversation.uid.isEmpty()) {
         return;
     }
-    auto thisCallId = conversation.confId.empty() ? conversation.callId : conversation.confId;
+    auto thisCallId = conversation.confId.isEmpty() ? conversation.callId : conversation.confId;
 
     callModel->joinCalls(thisCallId, callId);
 }
@@ -348,7 +347,7 @@ void
 VideoOverlay::on_sipInputPanelButton_toggled(bool checked)
 {
     auto callId = LRCInstance::getCallIdForConversationUid(convUid_, accountId_);
-    if (callId.empty() ||
+    if (callId.isEmpty() ||
         !LRCInstance::getCurrentCallModel()->hasCall(callId) ||
         !checked) {
         return;
@@ -396,7 +395,7 @@ void
 VideoOverlay::slotSIPInputPanelClicked(const int& id)
 {
     auto callId = LRCInstance::getCallIdForConversationUid(convUid_, accountId_);
-    if ( callId.empty() ||
+    if ( callId.isEmpty() ||
          !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
         return;
     }
@@ -413,9 +412,9 @@ VideoOverlay::slotSIPInputPanelClicked(const int& id)
         // id from 12 to 15 are A,B,C,D
         if (id >= 12) {
             //ASCII Key_A = 65
-            LRCInstance::getCurrentCallModel()->playDTMF(callId, std::string(1, char(id - 12 + 65)));
+            LRCInstance::getCurrentCallModel()->playDTMF(callId, QString(char(id - 12 + 65)));
         } else {
-            LRCInstance::getCurrentCallModel()->playDTMF(callId, std::to_string(id));
+            LRCInstance::getCurrentCallModel()->playDTMF(callId, QString::number(id));
         }
         break;
     }

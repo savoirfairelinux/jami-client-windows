@@ -70,9 +70,9 @@ public:
     void setCurrentCalleeDisplayName(const QString& CalleeDisplayName);
 
 signals:
-    void contactWillJoinConference(const std::string& contactUri);
-    void callWillJoinConference(const std::string& callId);
-    void contactWillDoTransfer(const std::string& contactUri);
+    void contactWillJoinConference(const QString& contactUri);
+    void callWillJoinConference(const QString& callId);
+    void contactWillDoTransfer(const QString& contactUri);
 
 protected slots:
     void accept();

@@ -113,26 +113,26 @@ AdvancedSettingsWidget::updateAdvancedSettings()
     ui->checkBoxCustomRingtone->setChecked(config.Ringtone.ringtoneEnabled);
 
     // Name Server
-    ui->lineEditNameServer->setText(QString::fromStdString(config.RingNS.uri));
+    ui->lineEditNameServer->setText(config.RingNS.uri);
 
     //OpenDHT Config
     ui->checkBoxEnableProxy->setChecked(config.proxyEnabled);
-    ui->lineEditProxy->setText(QString::fromStdString(config.proxyServer));
-    ui->lineEditBootstrap->setText(QString::fromStdString(config.hostname));
+    ui->lineEditProxy->setText(config.proxyServer);
+    ui->lineEditBootstrap->setText(config.hostname);
 
     // Security
-    ui->btnCACert->setText(QFileInfo(QString::fromStdString(LRCInstance::getCurrAccConfig().TLS.certificateListFile)).fileName());
-    ui->btnUserCert->setText(QFileInfo(QString::fromStdString(LRCInstance::getCurrAccConfig().TLS.certificateFile)).fileName());
-    ui->btnPrivateKey->setText(QFileInfo(QString::fromStdString(LRCInstance::getCurrAccConfig().TLS.privateKeyFile)).fileName());
+    ui->btnCACert->setText(QFileInfo(LRCInstance::getCurrAccConfig().TLS.certificateListFile).fileName());
+    ui->btnUserCert->setText(QFileInfo(LRCInstance::getCurrAccConfig().TLS.certificateFile).fileName());
+    ui->btnPrivateKey->setText(QFileInfo(LRCInstance::getCurrAccConfig().TLS.privateKeyFile).fileName());
 
     // Connectivity
     ui->checkBoxUPnP->setChecked(config.upnpEnabled);
     ui->checkBoxTurnEnable->setChecked(config.TURN.enable);
-    ui->lineEditTurnAddress->setText(QString::fromStdString(config.TURN.server));
-    ui->lineEditTurnUsername->setText(QString::fromStdString(config.TURN.username));
-    ui->lineEditTurnPassword->setText(QString::fromStdString(config.TURN.password));
+    ui->lineEditTurnAddress->setText(config.TURN.server);
+    ui->lineEditTurnUsername->setText(config.TURN.username);
+    ui->lineEditTurnPassword->setText(config.TURN.password);
     ui->checkBoxSTUNEnable->setChecked(config.STUN.enable);
-    ui->lineEditSTUNAddress->setText(QString::fromStdString(config.STUN.server));
+    ui->lineEditSTUNAddress->setText(config.STUN.server);
 
     // codecs
     ui->videoCheckBox->setChecked(config.Video.videoEnabled);
@@ -144,7 +144,7 @@ AdvancedSettingsWidget::updateAdvancedSettings()
     connect(ui->videoListWidget, &QListWidget::itemChanged, this, &AdvancedSettingsWidget::videoCodecsStateChange);
 
     ui->btnRingtone->setEnabled(LRCInstance::getCurrAccConfig().Ringtone.ringtoneEnabled);
-    ui->btnRingtone->setText(QFileInfo(QString::fromStdString(LRCInstance::getCurrAccConfig().Ringtone.ringtonePath)).fileName());
+    ui->btnRingtone->setText(QFileInfo(LRCInstance::getCurrAccConfig().Ringtone.ringtonePath).fileName());
     ui->lineEditProxy->setEnabled(LRCInstance::getCurrAccConfig().proxyEnabled);
     ui->lineEditSTUNAddress->setEnabled(LRCInstance::getCurrAccConfig().STUN.enable);
 }
@@ -176,12 +176,12 @@ void
 AdvancedSettingsWidget::openFileCustomRingtone()
 {
     QString fileUrl;
-    auto oldPath = QString::fromStdString(LRCInstance::getCurrAccConfig().Ringtone.ringtonePath);
+    auto oldPath = LRCInstance::getCurrAccConfig().Ringtone.ringtonePath;
     auto openPath = oldPath.isEmpty() ? QDir::currentPath() + QString("/ringtones/") : QFileInfo(oldPath).absolutePath();
     fileUrl = QFileDialog::getOpenFileName(this, QString("Select a new ringtone"), openPath, tr("Audio Files") + " (*.wav *.ogg *.opus *.mp3 *.aiff *.wma)");
     if (!fileUrl.isEmpty()) {
         auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-        confProps.Ringtone.ringtonePath = fileUrl.toStdString();
+        confProps.Ringtone.ringtonePath = fileUrl;
         LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
         ui->btnRingtone->setText(QFileInfo(fileUrl).fileName());
     } else if (oldPath.isEmpty()) {
@@ -195,7 +195,7 @@ AdvancedSettingsWidget::setNameServer()
 {
     auto text = ui->lineEditNameServer->text();
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.RingNS.uri = text.toStdString();
+    confProps.RingNS.uri = text;
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
@@ -214,7 +214,7 @@ AdvancedSettingsWidget::setProxyAddress()
 {
     auto text = ui->lineEditProxy->text();
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.proxyServer = text.toStdString();
+    confProps.proxyServer = text;
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 void
@@ -222,7 +222,7 @@ AdvancedSettingsWidget::setBootstrapAddress()
 {
     auto text = ui->lineEditBootstrap->text();
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.hostname = text.toStdString();
+    confProps.hostname = text;
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
@@ -258,7 +258,7 @@ AdvancedSettingsWidget::setTURNAddress()
 {
     auto text = ui->lineEditTurnAddress->text();
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.TURN.server = text.toStdString();
+    confProps.TURN.server = text;
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 void
@@ -266,7 +266,7 @@ AdvancedSettingsWidget::setTURNUsername()
 {
     auto text = ui->lineEditTurnUsername->text();
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.TURN.username = text.toStdString();
+    confProps.TURN.username = text;
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 void
@@ -274,7 +274,7 @@ AdvancedSettingsWidget::setTURNPassword()
 {
     auto text = ui->lineEditTurnPassword->text();
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.TURN.password = text.toStdString();
+    confProps.TURN.password = text;
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 void
@@ -282,7 +282,7 @@ AdvancedSettingsWidget::setSTUNAddress()
 {
     auto text = ui->lineEditSTUNAddress->text();
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.STUN.server = text.toStdString();
+    confProps.STUN.server = text;
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
@@ -291,13 +291,13 @@ AdvancedSettingsWidget::openFileCACert()
 {
     QString fileUrl;
     fileUrl = QFileDialog::getOpenFileName(this, QString("Select a CA certificate"), QDir::homePath()
-        + QString("/.local/share/ring/") + QString::fromStdString(LRCInstance::getCurrentAccountInfo().id));
+        + QString("/.local/share/ring/") + LRCInstance::getCurrentAccountInfo().id);
     if (!fileUrl.isEmpty()) {
         auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-        confProps.TLS.certificateListFile = fileUrl.toStdString();
+        confProps.TLS.certificateListFile = fileUrl;
         LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
     }
-    ui->btnCACert->setText(QFileInfo(QString::fromStdString(LRCInstance::getCurrAccConfig().TLS.certificateListFile)).fileName());
+    ui->btnCACert->setText(QFileInfo(LRCInstance::getCurrAccConfig().TLS.certificateListFile).fileName());
 }
 
 void
@@ -305,13 +305,13 @@ AdvancedSettingsWidget::openFileUserCert()
 {
     QString fileUrl;
     fileUrl = QFileDialog::getOpenFileName(this, QString("Select a user certificate"), QDir::homePath()
-        + QString("/.local/share/ring/") + QString::fromStdString(LRCInstance::getCurrentAccountInfo().id));
+        + QString("/.local/share/ring/") + LRCInstance::getCurrentAccountInfo().id);
     if (!fileUrl.isEmpty()) {
         auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-        confProps.TLS.certificateFile = fileUrl.toStdString();
+        confProps.TLS.certificateFile = fileUrl;
         LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
     }
-    ui->btnUserCert->setText(QFileInfo(QString::fromStdString(LRCInstance::getCurrAccConfig().TLS.certificateFile)).fileName());
+    ui->btnUserCert->setText(QFileInfo(LRCInstance::getCurrAccConfig().TLS.certificateFile).fileName());
 }
 
 void
@@ -319,13 +319,13 @@ AdvancedSettingsWidget::openFilePrivateKey()
 {
     QString fileUrl;
     fileUrl = QFileDialog::getOpenFileName(this, QString("Select a private key"), QDir::homePath()
-        + QString("/.local/share/ring/") + QString::fromStdString(LRCInstance::getCurrentAccountInfo().id));
+        + QString("/.local/share/ring/") + LRCInstance::getCurrentAccountInfo().id);
     if (!fileUrl.isEmpty()) {
         auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-        confProps.TLS.privateKeyFile = fileUrl.toStdString();
+        confProps.TLS.privateKeyFile = fileUrl;
         LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
     }
-    ui->btnPrivateKey->setText(QFileInfo(QString::fromStdString(LRCInstance::getCurrAccConfig().TLS.privateKeyFile)).fileName());
+    ui->btnPrivateKey->setText(QFileInfo(LRCInstance::getCurrAccConfig().TLS.privateKeyFile).fileName());
 }
 
 void
@@ -339,7 +339,7 @@ AdvancedSettingsWidget::updateAudioCodecs()
         QListWidgetItem* audioItem = new QListWidgetItem(ui->audioListWidget);
         audioItem->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
         audioItem->setCheckState(it->enabled ? Qt::Checked : Qt::Unchecked);
-        audioItem->setData(Qt::DisplayRole, QString::fromStdString(it->name) + " " + QString::fromStdString(it->samplerate) + " Hz");
+        audioItem->setData(Qt::DisplayRole, it->name + " " + it->samplerate + " Hz");
 
         ui->audioListWidget->addItem(audioItem);
     }
@@ -356,7 +356,7 @@ AdvancedSettingsWidget::updateVideoCodecs()
         QListWidgetItem* videoItem = new QListWidgetItem(ui->videoListWidget);
         videoItem->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
         videoItem->setCheckState(it->enabled ? Qt::Checked : Qt::Unchecked);
-        videoItem->setData(Qt::DisplayRole, QString::fromStdString(it->name));
+        videoItem->setData(Qt::DisplayRole, it->name);
         ui->audioListWidget->addItem(videoItem);
     }
 }
@@ -390,7 +390,7 @@ AdvancedSettingsWidget::decreaseAudioCodecPriority()
     auto audioCodecList = LRCInstance::getCurrentAccountInfo().codecModel->getAudioCodecs();
     auto it = audioCodecList.begin();
 
-    advance(it, selectedRow);
+    std::advance(it, selectedRow);
     LRCInstance::getCurrentAccountInfo().codecModel->decreasePriority(it->id, false);
 
     // swap current item down
@@ -404,7 +404,7 @@ AdvancedSettingsWidget::increaseAudioCodecPriority()
     auto audioCodecList = LRCInstance::getCurrentAccountInfo().codecModel->getAudioCodecs();
     auto it = audioCodecList.begin();
 
-    advance(it, selectedRow);
+    std::advance(it, selectedRow);
     LRCInstance::getCurrentAccountInfo().codecModel->increasePriority(it->id, false);
 
     // swap current item up
@@ -418,7 +418,7 @@ AdvancedSettingsWidget::decreaseVideoCodecPriority()
     auto videoCodecList = LRCInstance::getCurrentAccountInfo().codecModel->getVideoCodecs();
     auto it = videoCodecList.begin();
 
-    advance(it, selectedRow);
+    std::advance(it, selectedRow);
     LRCInstance::getCurrentAccountInfo().codecModel->decreasePriority(it->id, true);
 
     // swap current item down
@@ -432,7 +432,7 @@ AdvancedSettingsWidget::increaseVideoCodecPriority()
     auto videoCodecList = LRCInstance::getCurrentAccountInfo().codecModel->getVideoCodecs();
     auto it = videoCodecList.begin();
 
-    advance(it, selectedRow);
+    std::advance(it, selectedRow);
     LRCInstance::getCurrentAccountInfo().codecModel->increasePriority(it->id, true);
 
     // swap current item up

@@ -41,7 +41,7 @@ private:
 
 private slots:
     void setGeneratingPage();
-    void setExportPage(const std::string& accountId,
+    void setExportPage(const QString& accountId,
                        lrc::api::account::ExportOnRingStatus status,
-                       const std::string& pin);
+                       const QString& pin);
 };

@@ -38,7 +38,7 @@ RecordWidget::RecordWidget(QWidget *parent) :
 
 RecordWidget::~RecordWidget()
 {
-    LRCInstance::avModel().stopLocalRecorder(recordedFilePath_.toStdString());
+    LRCInstance::avModel().stopLocalRecorder(recordedFilePath_);
     Utils::forceDeleteAsync(recordedFilePath_);
     if (!isAudio_) {
         LRCInstance::avModel().stopPreview();
@@ -51,7 +51,7 @@ RecordWidget::startRecording()
     bool isSuccessful = false;
     if(!isAudio_ && !LRCInstance::renderer()->isPreviewing()){return isSuccessful;}
     try {
-        recordedFilePath_ = QString::fromStdString(LRCInstance::avModel().startLocalRecorder(isAudio_));
+        recordedFilePath_ = LRCInstance::avModel().startLocalRecorder(isAudio_);
         isSuccessful = true;
     } catch (...) {
         qDebug() << "The start of record fails";
@@ -64,7 +64,7 @@ RecordWidget::finishRecording()
 {
     bool isSuccessful = false;
     try {
-        LRCInstance::avModel().stopLocalRecorder(recordedFilePath_.toStdString());
+        LRCInstance::avModel().stopLocalRecorder(recordedFilePath_);
         if (!isAudio_) {
             previewWidget_->toPaintingBackground(false);
             previewWidget_->toDrawLastFrame(true);
@@ -85,9 +85,9 @@ RecordWidget::recordAgain()
             Utils::oneShotConnect(&LRCInstance::avModel(), &lrc::api::AVModel::recordPlaybackStopped,
                 [this] {
                     Utils::forceDeleteAsync(recordedFilePath_);
-                   recordedFilePath_ = QString::fromStdString(LRCInstance::avModel().startLocalRecorder(isAudio_));
+                   recordedFilePath_ = LRCInstance::avModel().startLocalRecorder(isAudio_);
                 });
-            LRCInstance::avModel().stopLocalRecorder(recordedFilePath_.toStdString());
+            LRCInstance::avModel().stopLocalRecorder(recordedFilePath_);
         });
 }
 
@@ -108,7 +108,7 @@ RecordWidget::sendRecording()
     QString fileName = fi.fileName();
     try {
         auto convUid = LRCInstance::getCurrentConvUid();
-        LRCInstance::getCurrentConversationModel()->sendFile(convUid, recordedFilePath_.toStdString(), fileName.toStdString());
+        LRCInstance::getCurrentConversationModel()->sendFile(convUid, recordedFilePath_, fileName);
         // reset file path, make sure that the file that is needed to sent will not be deleted
         recordedFilePath_.clear();
         isSuccessful = true;

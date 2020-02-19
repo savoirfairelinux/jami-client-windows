@@ -55,7 +55,7 @@ CurrentAccountComboBox::CurrentAccountComboBox(QWidget* parent)
     // account added to combobox
     connect(&LRCInstance::accountModel(),
             &lrc::api::NewAccountModel::accountAdded,
-            [this](const std::string& accountId) {
+            [this](const QString& accountId) {
                 auto accountList = LRCInstance::accountModel().getAccountList();
                 auto it = std::find(accountList.begin(), accountList.end(), accountId);
                 if (it != accountList.end()) {
@@ -81,8 +81,8 @@ CurrentAccountComboBox::CurrentAccountComboBox(QWidget* parent)
                 auto confProps = LRCInstance::accountModel().getAccountConfig(currentAccountId);
 
                 auto possibleConv = LRCInstance::getConversationFromPeerUri(confProps.mailbox);
-                if (possibleConv.uid.empty()) {
-                    if (confProps.mailbox.empty()) {
+                if (possibleConv.uid.isEmpty()) {
+                    if (confProps.mailbox.isEmpty()) {
                         QMessageBox::information(0, "Voicemail", "Voicemail dial code is empty");
                     }
                     // construct new contact
@@ -90,7 +90,7 @@ CurrentAccountComboBox::CurrentAccountComboBox(QWidget* parent)
                     lrc::api::contact::Info contactInfo{ {{confProps.mailbox}, {} , {"Voicemail"}, type }, {} };
 
                     Utils::oneShotConnect(this, &CurrentAccountComboBox::placeAudioOnlyCall,
-                        [this, conversationModel] (const std::string& convUid) {
+                        [this, conversationModel] (const QString& convUid) {
                             conversationModel->placeAudioOnlyCall(convUid);
                         });
                     accInfo.contactModel->addContact(contactInfo);
@@ -165,14 +165,14 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
         avatarSize_ - 10); // [screen awareness]
 
     // write primary and secondary account identifiers to combobox label
-    QString primaryAccountID = QString::fromStdString(Utils::bestNameForAccount(accInfo));
+    QString primaryAccountID = Utils::bestNameForAccount(accInfo);
     painter.setFont(fontPrimary);
     painter.setPen(RingTheme::lightBlack_);
     primaryAccountID = fontMetricPrimary.elidedText(primaryAccountID, Qt::ElideRight,
         comboBoxRect.width() - elidConst - (popupPresent ? 0 : 2 * gearSize_ + 2 * voicemailSize_));
     painter.drawText(comboBoxRect, Qt::AlignLeft, primaryAccountID);
 
-    QString secondaryAccountID = QString::fromStdString(Utils::secondBestNameForAccount(accInfo));
+    QString secondaryAccountID = Utils::secondBestNameForAccount(accInfo);
     secondaryAccountID = fontMetricSecondary.elidedText(secondaryAccountID, Qt::ElideRight,
                                                         comboBoxRect.width() - elidConst - 2 - (popupPresent ? 0 : 2 * gearSize_ + 2 * voicemailSize_)); // [screen awareness]
 
@@ -221,7 +221,7 @@ void
 CurrentAccountComboBox::connectVoiceMail()
 {
     connect(LRCInstance::getCurrentCallModel(), &lrc::api::NewCallModel::voiceMailNotify,
-        [this](const std::string& accountId, int newCount, int oldCount, int urgentCount) {
+        [this](const QString& accountId, int newCount, int oldCount, int urgentCount) {
             Q_UNUSED(urgentCount);
             voicemailMap_[accountId] = std::make_pair(newCount, oldCount);
             if (LRCInstance::accountModel().getAccountList()[currentIndex()] == accountId) {

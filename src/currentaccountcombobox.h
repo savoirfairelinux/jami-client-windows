@@ -42,14 +42,14 @@ public:
     void accountListUpdate();
     void setCurrentIndex(int index);
     void updateComboBoxDisplay();
-    void canPlaceAudioOnlyCall(const std::string& convUid) { emit placeAudioOnlyCall(convUid); }
+    void canPlaceAudioOnlyCall(const QString& convUid) { emit placeAudioOnlyCall(convUid); }
     void activateComboBox() { showPopup(); }
     void deactivateComboBox() { hidePopup(); }
 
 signals:
     void settingsButtonClicked();
     void newAccountClicked();
-    void placeAudioOnlyCall(const std::string& convUid);
+    void placeAudioOnlyCall(const QString& convUid);
 
 protected:
     void paintEvent(QPaintEvent* e);
@@ -85,5 +85,5 @@ private:
     const int voicemailBorder_ = 4;
     const int voicemailSize_ = 24;
 
-    std::map<std::string,std::pair<int,int>> voicemailMap_;
+    std::map<QString, std::pair<int,int>> voicemailMap_;
 };

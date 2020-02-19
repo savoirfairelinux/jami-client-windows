@@ -438,12 +438,12 @@ MessageWebView::printHistory(lrc::api::ConversationModel& conversationModel,
 }
 
 void
-MessageWebView::setSenderImage(const std::string& sender,
-                               const std::string& senderImage)
+MessageWebView::setSenderImage(const QString& sender,
+                               const QString& senderImage)
 {
     QJsonObject setSenderImageObject = QJsonObject();
-    setSenderImageObject.insert("sender_contact_method", QJsonValue(QString(sender.c_str())));
-    setSenderImageObject.insert("sender_image", QJsonValue(QString(senderImage.c_str())));
+    setSenderImageObject.insert("sender_contact_method", QJsonValue(sender));
+    setSenderImageObject.insert("sender_image", QJsonValue(senderImage));
 
     auto setSenderImageObjectString = QString(QJsonDocument(setSenderImageObject).toJson(QJsonDocument::Compact));
     QString s = QString::fromLatin1("setSenderImage(%1);")
@@ -452,11 +452,11 @@ MessageWebView::setSenderImage(const std::string& sender,
 }
 
 void
-MessageWebView::setInvitation(bool show, const std::string& contactUri, const std::string& contactId)
+MessageWebView::setInvitation(bool show, const QString& contactUri, const QString& contactId)
 {
     QString s = show ? QString::fromLatin1("showInvitation(\"%1\", \"%2\")")
-        .arg(QString(contactUri.c_str()))
-        .arg(QString(contactId.c_str())) : QString::fromLatin1("showInvitation()");
+        .arg(contactUri)
+        .arg(contactId) : QString::fromLatin1("showInvitation()");
 
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
@@ -578,25 +578,25 @@ Q_INVOKABLE int
 PrivateBridging::acceptFile(const QString& arg)
 {
     try {
-        auto interactionUid = std::stoull(arg.toStdString());
+        auto interactionUid = arg.toLongLong();
 
         lrc::api::datatransfer::Info info = {};
         auto convUid = LRCInstance::getCurrentConvUid();
         LRCInstance::getCurrentConversationModel()->getTransferInfo(interactionUid, info);
 
         // get full path
-        std::string filename = LRCInstance::dataTransferModel().downloadDirectory.c_str();
-        if (!filename.empty() && filename.back() != '/')
+        QString filename = LRCInstance::dataTransferModel().downloadDirectory;
+        if (!filename.isEmpty() && filename.right(1) != '/')
             filename += "/";
         auto wantedFilename = filename + info.displayName;
         auto duplicate = 0;
-        while (std::ifstream(wantedFilename).good()) {
+        while (QFile(wantedFilename).exists()) {
             ++duplicate;
-            auto extensionIdx = info.displayName.find_last_of(".");
-            if (extensionIdx == std::string::npos)
-                wantedFilename = filename + info.displayName + " (" + std::to_string(duplicate) + ")";
+            auto splittedList = info.displayName.split(".");
+            if (splittedList.size() == 1)
+                wantedFilename = filename + info.displayName + " (" + QString::number(duplicate) + ")";
             else
-                wantedFilename = filename + info.displayName.substr(0, extensionIdx) + " (" + std::to_string(duplicate) + ")" + info.displayName.substr(extensionIdx);
+                wantedFilename = filename + splittedList[0] + " (" + QString::number(duplicate) + ")" + "." +splittedList[1];
         }
         LRCInstance::getCurrentConversationModel()->acceptTransfer(convUid, interactionUid, wantedFilename);
     } catch (...) {
@@ -609,7 +609,7 @@ Q_INVOKABLE int
 PrivateBridging::refuseFile(const QString& arg)
 {
     try {
-        auto interactionUid = std::stoull(arg.toStdString());
+        auto interactionUid = arg.toLongLong();
         auto convUid = LRCInstance::getCurrentConvUid();
         LRCInstance::getCurrentConversationModel()->cancelTransfer(convUid, interactionUid);
     } catch (...) {
@@ -623,7 +623,7 @@ PrivateBridging::sendMessage(const QString& arg)
 {
     try {
         auto convUid = LRCInstance::getCurrentConvUid();
-        LRCInstance::getCurrentConversationModel()->sendMessage(convUid, arg.toStdString());
+        LRCInstance::getCurrentConversationModel()->sendMessage(convUid, arg);
     } catch (...) {
         qDebug() << "JS bridging - exception during sendMessage:" << arg;
         return -1;
@@ -654,7 +654,7 @@ PrivateBridging::sendImage(const QString& arg)
 
        try {
             auto convUid = LRCInstance::getCurrentConvUid();
-            LRCInstance::getCurrentConversationModel()->sendFile(convUid, path.toStdString(), fileName.toStdString());
+            LRCInstance::getCurrentConversationModel()->sendFile(convUid, path, fileName);
         } catch (...) {
             qDebug().noquote() << "JS bridging - exception during sendFile - base64 img" << "\n";
             return -1;
@@ -666,7 +666,7 @@ PrivateBridging::sendImage(const QString& arg)
         QString fileName = fi.fileName();
         try {
             auto convUid = LRCInstance::getCurrentConvUid();
-            LRCInstance::getCurrentConversationModel()->sendFile(convUid, arg.toStdString(), fileName.toStdString());
+            LRCInstance::getCurrentConversationModel()->sendFile(convUid, arg, fileName);
         } catch (...) {
             qDebug().noquote() << "JS bridging - exception during sendFile - image from path" << "\n";
             return -1;
@@ -683,7 +683,7 @@ PrivateBridging::sendFile(const QString& path)
     QString fileName = fi.fileName();
     try {
         auto convUid = LRCInstance::getCurrentConvUid();
-        LRCInstance::getCurrentConversationModel()->sendFile(convUid, path.toStdString(), fileName.toStdString());
+        LRCInstance::getCurrentConversationModel()->sendFile(convUid, path, fileName);
     } catch (...) {
         qDebug() << "JS bridging - exception during sendFile";
     }

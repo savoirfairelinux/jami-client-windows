@@ -72,17 +72,17 @@ private slots:
     void on_transferCallButton_toggled(bool checked);
     void on_addToConferenceButton_toggled(bool checked);
     void on_sipInputPanelButton_toggled(bool checked);
-    void slotWillDoTransfer(const std::string& contactUri);
-    void slotContactWillJoinConference(const std::string& contactUri);
-    void slotCallWillJoinConference(const std::string& callId);
+    void slotWillDoTransfer(const QString& contactUri);
+    void slotContactWillJoinConference(const QString& contactUri);
+    void slotCallWillJoinConference(const QString& callId);
     void slotSIPInputPanelClicked(const int& id);
 
 private:
     Ui::VideoOverlay* ui;
 
     // for current conf/call info
-    std::string accountId_;
-    std::string convUid_;
+    QString accountId_;
+    QString convUid_;
 
     QTimer* oneSecondTimer_;
     QString currentBestCalleeDisplayName_ { "" };
