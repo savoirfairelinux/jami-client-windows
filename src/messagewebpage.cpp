@@ -30,8 +30,7 @@ MessageWebPage::~MessageWebPage()
 bool
 MessageWebPage::acceptNavigationRequest(const QUrl & url, QWebEnginePage::NavigationType type, bool isMainFrame)
 {
-    qDebug() << "acceptNavigationRequest(" << url << "," << type << "," << isMainFrame << ")";
-
+    Q_UNUSED(isMainFrame)
     if (type == QWebEnginePage::NavigationTypeLinkClicked) {
         QDesktopServices::openUrl(url);
         return false;

@@ -200,7 +200,7 @@ MainWindow::MainWindow(QWidget* parent)
 #endif
 
     connect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountRemoved,
-        [this](const std::string& accountId) {
+        [this](const QString& accountId) {
             Q_UNUSED(accountId);
             emit LRCInstance::instance().accountListChanged();
         });
@@ -345,7 +345,6 @@ void MainWindow::readSettingsFromRegistry()
     LRCInstance::dataTransferModel().downloadDirectory = settings.value(SettingsKey::downloadPath,
                                                                               QStandardPaths::writableLocation(QStandardPaths::DownloadLocation))
                                                                       .toString()
-                                                                      .toStdString()
         + "/";
 
     if (not settings.contains(SettingsKey::enableNotifications)) {
