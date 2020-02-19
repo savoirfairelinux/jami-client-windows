@@ -37,7 +37,7 @@ public:
     ~AdvancedSIPSettingsWidget();
 
     void updateAdvancedSIPSettings();
-    std::string openButtonFilePath(const std::string& accConfigFilePath,
+    QString openButtonFilePath(const QString& accConfigFilePath,
                                    const char* windowTitle,
                                    const char* fileTypeDesp,
                                    const QString& fileTypeFilter,

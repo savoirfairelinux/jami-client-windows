@@ -26,9 +26,9 @@ UserProfile::UserProfile(lrc::api::conversation::Info convInfo, QWidget* parent)
     setSource(QUrl(QStringLiteral("qrc:/src/UserProfileCard.qml")));
 
     auto contact = LRCInstance::getCurrentAccountInfo().contactModel->getContact(convInfo.participants.at(0));
-    QString name = QString::fromStdString(contact.profileInfo.alias);
-    QString registeredName = QString::fromStdString(contact.registeredName);
-    QString uri = QString::fromStdString(contact.profileInfo.uri);
+    QString name = contact.profileInfo.alias;
+    QString registeredName = contact.registeredName;
+    QString uri = contact.profileInfo.uri;
 
     // force updating source, since image provide will only be requested once with the same source
     QString userImageSource = "image://userProfileImage/user_";

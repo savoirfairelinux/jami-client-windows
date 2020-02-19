@@ -59,15 +59,15 @@ NameRegistrationDialog::~NameRegistrationDialog()
 void
 NameRegistrationDialog::slotStartNameRegistration()
 {
-    auto password = ui->passwordEdit->text().toStdString();
-    LRCInstance::accountModel().registerName(LRCInstance::getCurrAccId(),
-        password, nameToRegister_.toStdString());
+    auto password = ui->passwordEdit->text();
+    LRCInstance::accountModel().registerName(LRCInstance::getCurrAccId(), password, nameToRegister_);
     startSpinner();
 }
 
 void
-NameRegistrationDialog::slotNameRegistrationResult(const std::string& accountId,
-    lrc::api::account::RegisterNameStatus status, const std::string& registerdName)
+NameRegistrationDialog::slotNameRegistrationResult(const QString& accountId,
+                                                   lrc::api::account::RegisterNameStatus status,
+                                                   const QString& registerdName)
 {
     Q_UNUSED(accountId);
     Q_UNUSED(registerdName);

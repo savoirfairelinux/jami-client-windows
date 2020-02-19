@@ -57,9 +57,9 @@ void
 LinkDeviceDialog::setGeneratingPage()
 {
     if (ui->passwordEdit->text().isEmpty() && LRCInstance::getCurrAccConfig().archiveHasPassword) {
-        setExportPage(std::string(),
+        setExportPage(QString(),
                       lrc::api::account::ExportOnRingStatus::WRONG_PASSWORD,
-                      std::string());
+                      QString());
         return;
     }
 
@@ -75,17 +75,17 @@ LinkDeviceDialog::setGeneratingPage()
     timeout_->setSingleShot(true);
     connect(timeout_, &QTimer::timeout, this,
         [this]() {
-            setExportPage(std::string(),
+            setExportPage(QString(),
                           lrc::api::account::ExportOnRingStatus::NETWORK_ERROR,
-                          std::string());
+                          QString());
         });
     timeout_->start();
 
-    LRCInstance::accountModel().exportOnRing(LRCInstance::getCurrAccId(), ui->passwordEdit->text().toStdString());
+    LRCInstance::accountModel().exportOnRing(LRCInstance::getCurrAccId(), ui->passwordEdit->text());
 }
 
 void
-LinkDeviceDialog::setExportPage(const std::string& accountId, lrc::api::account::ExportOnRingStatus status, const std::string& pin)
+LinkDeviceDialog::setExportPage(const QString& accountId, lrc::api::account::ExportOnRingStatus status, const QString& pin)
 {
     Q_UNUSED(accountId);
     timeout_->stop();
@@ -100,7 +100,7 @@ LinkDeviceDialog::setExportPage(const std::string& accountId, lrc::api::account:
 
     case lrc::api::account::ExportOnRingStatus::SUCCESS:
         ui->infoLabel->setStyleSheet("color: #2b5084;border: 1px solid lightgray;background-color: whitesmoke;padding: 8px;border-radius: 15px;");
-        ui->exportedPIN->setText(QString::fromStdString(pin));
+        ui->exportedPIN->setText(pin);
         break;
 
     case lrc::api::account::ExportOnRingStatus::NETWORK_ERROR:
