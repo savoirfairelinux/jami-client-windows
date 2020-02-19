@@ -29,8 +29,8 @@ DeleteAccountDialog::DeleteAccountDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     if (LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::RING){
-        ui->labelBestId->setText(QString::fromStdString(Utils::bestNameForAccount(LRCInstance::getCurrentAccountInfo())));
-        ui->labelAccountHash->setText(QString::fromStdString(LRCInstance::getCurrentAccountInfo().profileInfo.uri));
+        ui->labelBestId->setText(Utils::bestNameForAccount(LRCInstance::getCurrentAccountInfo()));
+        ui->labelAccountHash->setText(LRCInstance::getCurrentAccountInfo().profileInfo.uri);
     } else {
         ui->labelWarning->hide();
     }

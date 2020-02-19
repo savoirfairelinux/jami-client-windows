@@ -44,8 +44,8 @@ public:
     explicit VideoView(QWidget* parent = 0);
     ~VideoView();
 
-    void updateCall(const std::string& convUid = {},
-                    const std::string& accountId = {},
+    void updateCall(const QString& convUid = {},
+                    const QString& accountId = {},
                     bool forceCallOnly = false);
     void simulateShowChatview(bool checked);
     void resetPreview();
@@ -71,8 +71,8 @@ private:
     Ui::VideoView* ui;
 
     // for current conf/call info
-    std::string accountId_;
-    std::string convUid_;
+    QString accountId_;
+    QString convUid_;
 
     // vignette
     VignetteWidget* vignette_;
@@ -100,5 +100,5 @@ private:
 signals:
     void setChatVisibility(bool visible);
     void toggleFullScreenClicked();
-    void terminating(const std::string& id);
+    void terminating(const QString& id);
 };

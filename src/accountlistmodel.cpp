@@ -60,9 +60,9 @@ QVariant AccountListModel::data(const QModelIndex &index, int role) const
     switch (role) {
     case Role::Alias:
     case Qt::DisplayRole:
-        return QVariant(QString::fromStdString(Utils::bestNameForAccount(accountInfo)));
+        return QVariant(Utils::bestNameForAccount(accountInfo));
     case Role::Username:
-        return QVariant(QString::fromStdString(Utils::secondBestNameForAccount(accountInfo)));
+        return QVariant(Utils::secondBestNameForAccount(accountInfo));
     case Role::Type:
         return QVariant(Utils::toUnderlyingValue<lrc::api::profile::Type>(accountInfo.profileInfo.type));
     case Role::Status:
@@ -71,7 +71,7 @@ QVariant AccountListModel::data(const QModelIndex &index, int role) const
     case Qt::DecorationRole:
         return Utils::accountPhoto(accountInfo);
     case Role::ID:
-        return QVariant(QString::fromStdString(accountInfo.id));
+        return QVariant(accountInfo.id);
     }
     return QVariant();
 }

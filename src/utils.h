@@ -82,24 +82,24 @@ void checkForUpdates(bool withUI, QWidget* parent = nullptr);
 void applyUpdates(bool updateToBeta, QWidget* parent = nullptr);
 
 // names
-std::string bestIdForConversation(const lrc::api::conversation::Info& conv, const lrc::api::ConversationModel& model);
-std::string bestIdForAccount(const lrc::api::account::Info & account);
-std::string bestNameForAccount(const lrc::api::account::Info & account);
-std::string bestIdForContact(const lrc::api::contact::Info & contact);
-std::string bestNameForContact(const lrc::api::contact::Info & contact);
-std::string bestNameForConversation(const lrc::api::conversation::Info & conv, const lrc::api::ConversationModel & model);
-std::string secondBestNameForAccount(const lrc::api::account::Info& account); // returns empty string if only infoHash is available
+QString bestIdForConversation(const lrc::api::conversation::Info& conv, const lrc::api::ConversationModel& model);
+QString bestIdForAccount(const lrc::api::account::Info & account);
+QString bestNameForAccount(const lrc::api::account::Info & account);
+QString bestIdForContact(const lrc::api::contact::Info & contact);
+QString bestNameForContact(const lrc::api::contact::Info & contact);
+QString bestNameForConversation(const lrc::api::conversation::Info & conv, const lrc::api::ConversationModel & model);
+QString secondBestNameForAccount(const lrc::api::account::Info& account); // returns empty string if only infoHash is available
 lrc::api::profile::Type profileType(const lrc::api::conversation::Info & conv, const lrc::api::ConversationModel & model);
 
 // interactions
 std::string formatTimeString(const std::time_t& timestamp);
 bool isInteractionGenerated(const lrc::api::interaction::Type& interaction);
-bool isContactValid(const std::string& contactUid, const lrc::api::ConversationModel& model);
+bool isContactValid(const QString& contactUid, const lrc::api::ConversationModel& model);
 bool getReplyMessageBox(QWidget* widget, const QString& title, const QString& text);
 
 // image
 QImage getCirclePhoto(const QImage original, int sizePhoto);
-QImage conversationPhoto(const std::string& convUid, const lrc::api::account::Info& accountInfo);
+QImage conversationPhoto(const QString& convUid, const lrc::api::account::Info& accountInfo);
 QColor getAvatarColor(const QString& canonicalUri);
 QImage fallbackAvatar(const QSize size, const QString& canonicalUriStr, const QString& letterStr = QString());
 QImage fallbackAvatar(const QSize size, const std::string& alias, const std::string& uri);
@@ -226,16 +226,5 @@ constexpr inline typename std::enable_if<   std::is_enum<E>::value && std::is_in
 toEnum(T value) noexcept
 {
     return static_cast<E>(value);
-}
-
-template<typename T>
-ptrdiff_t
-indexInVector(const std::vector<T>& vec, const T& item)
-{
-    auto it = std::find(vec.begin(), vec.end(), item);
-    if (it == vec.end()) {
-        return -1;
-    }
-    return std::distance(vec.begin(), it);
 }
 }

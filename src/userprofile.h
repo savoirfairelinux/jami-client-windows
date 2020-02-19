@@ -58,7 +58,7 @@ public:
             int height = 200;
             scaleSize = QSize(width, height);
             auto contact = LRCInstance::getCurrentAccountInfo().contactModel->getContact(convInfo_.participants.at(0));
-            image = Utils::setupQRCode(QString::fromStdString(contact.profileInfo.uri), 0);
+            image = Utils::setupQRCode(contact.profileInfo.uri, 0);
         } else {
             return Utils::conversationPhoto(convInfo_.uid, LRCInstance::getCurrentAccountInfo());
         }

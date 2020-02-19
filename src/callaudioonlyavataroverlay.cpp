@@ -47,11 +47,11 @@ CallAudioOnlyAvatarOverlay::writeAvatarOverlay(const lrc::api::conversation::Inf
     ui->avatarLabel->setPixmap(QPixmap::fromImage(Utils::conversationPhoto(convInfo.uid, LRCInstance::getCurrentAccountInfo())));
 
     if (contact.profileInfo.type == lrc::api::profile::Type::SIP) {
-        ui->nameLabel->setText(QString::fromStdString(contact.profileInfo.uri));
+        ui->nameLabel->setText(contact.profileInfo.uri);
     } else {
-        std::string name = contact.profileInfo.alias;
-        std::string id = contact.registeredName;
-        ui->nameLabel->setText(QString::fromStdString(name + "\n" + id));
+        QString name = contact.profileInfo.alias;
+        QString id = contact.registeredName;
+        ui->nameLabel->setText(name + "\n" + id);
     }
 }
 

@@ -34,14 +34,14 @@ class AccountMigrationDialog : public QDialog
 
 public:
 
-    explicit AccountMigrationDialog(QWidget *parent = 0, const std::string& accountId = {});
+    explicit AccountMigrationDialog(QWidget *parent = 0, const QString& accountId = {});
     ~AccountMigrationDialog();
 
 private:
     Ui::AccountMigrationDialog *ui;
 
-    std::string accountId_;
-    std::string password_;
+    QString accountId_;
+    QString password_;
     QMovie* migrationSpinnerMovie_;
 
 private slots:

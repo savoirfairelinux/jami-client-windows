@@ -97,11 +97,11 @@ public:
     static bool isConnected() {
         return instance().lrc_->isConnected();
     };
-    static std::vector<std::string> getActiveCalls() {
+    static VectorString getActiveCalls() {
         return instance().lrc_->activeCalls();
     };
     static const account::Info&
-    getAccountInfo(const std::string& accountId) {
+    getAccountInfo(const QString& accountId) {
         return accountModel().getAccountInfo(accountId);
     };
     static const account::Info&
@@ -123,17 +123,17 @@ public:
         }
         return result;
     };
-    static std::string
-    getCallIdForConversationUid(const std::string& convUid, const std::string& accountId)
+    static QString
+    getCallIdForConversationUid(const QString& convUid, const QString& accountId)
     {
         auto convInfo = LRCInstance::getConversationFromConvUid(convUid, accountId);
-        if (convInfo.uid.empty()) {
+        if (convInfo.uid.isEmpty()) {
             return {};
         }
-        return convInfo.confId.empty() ? convInfo.callId : convInfo.confId;
+        return convInfo.confId.isEmpty() ? convInfo.callId : convInfo.confId;
     }
     static const call::Info*
-    getCallInfo(const std::string& callId, const std::string& accountId) {
+    getCallInfo(const QString& callId, const QString& accountId) {
         try {
             auto& accInfo = LRCInstance::accountModel().getAccountInfo(accountId);
             if (!accInfo.callModel->hasCall(callId)) {
@@ -152,7 +152,7 @@ public:
             auto& accInfo = LRCInstance::accountModel().getAccountInfo(accountId);
             auto callId = forceCallOnly ?
                 convInfo.callId :
-                (convInfo.confId.empty() ? convInfo.callId : convInfo.confId);
+                (convInfo.confId.isEmpty() ? convInfo.callId : convInfo.confId);
             if (!accInfo.callModel->hasCall(callId)) {
                 return nullptr;
             }
@@ -162,7 +162,7 @@ public:
         }
     }
     static const conversation::Info&
-    getConversation(const std::string& accountId,
+    getConversation(const QString& accountId,
                     getConvPredicate pred = {},
                     bool filtered=false) {
         using namespace lrc::api;
@@ -192,28 +192,28 @@ public:
         return invalid;
     }
     static const conversation::Info&
-    getConversationFromCallId(const std::string& callId,
-                              const std::string& accountId = {},
+    getConversationFromCallId(const QString& callId,
+                              const QString& accountId = {},
                               bool filtered = false) {
-        return getConversation(!accountId.empty() ? accountId : getCurrAccId(),
+        return getConversation(!accountId.isEmpty() ? accountId : getCurrAccId(),
             [&](const conversation::Info& conv) -> bool {
                 return callId == conv.callId;
             }, filtered);
     }
     static const conversation::Info&
-    getConversationFromConvUid(const std::string& convUid,
-                               const std::string& accountId = {},
+    getConversationFromConvUid(const QString& convUid,
+                               const QString& accountId = {},
                                bool filtered = false) {
-        return getConversation(!accountId.empty() ? accountId : getCurrAccId(),
+        return getConversation(!accountId.isEmpty() ? accountId : getCurrAccId(),
             [&](const conversation::Info& conv) -> bool {
                 return convUid == conv.uid;
             }, filtered);
     }
     static const conversation::Info&
-    getConversationFromPeerUri(const std::string& peerUri,
-                               const std::string& accountId = {},
+    getConversationFromPeerUri(const QString& peerUri,
+                               const QString& accountId = {},
                                bool filtered = false) {
-        return getConversation(!accountId.empty() ? accountId : getCurrAccId(),
+        return getConversation(!accountId.isEmpty() ? accountId : getCurrAccId(),
             [&](const conversation::Info& conv) -> bool {
                 return peerUri == conv.participants[0];
             }, filtered);
@@ -233,25 +233,25 @@ public:
         return getCurrentAccountInfo().callModel.get();
     };
 
-    static const std::string& getCurrAccId() {
+    static const QString& getCurrAccId() {
         auto accountList = accountModel().getAccountList();
-        if (instance().selectedAccountId_.empty() && accountList.size()) {
+        if (instance().selectedAccountId_.isEmpty() && accountList.size()) {
             instance().selectedAccountId_ = accountList.at(0);
         }
         return instance().selectedAccountId_;
     };
 
-    static void setSelectedAccountId(const std::string& accountId = {}) {
+    static void setSelectedAccountId(const QString& accountId = {}) {
         instance().selectedAccountId_ = accountId;
         QSettings settings("jami.net", "Jami");
-        settings.setValue(SettingsKey::selectedAccount, QString::fromStdString(accountId));
+        settings.setValue(SettingsKey::selectedAccount, accountId);
     };
 
-    static const std::string& getCurrentConvUid() {
+    static const QString& getCurrentConvUid() {
         return instance().selectedConvUid_;
     };
 
-    static void setSelectedConvId(const std::string& convUid = {}) {
+    static void setSelectedConvId(const QString& convUid = {}) {
         instance().selectedConvUid_ = convUid;
     };
 
@@ -284,15 +284,15 @@ public:
         QBuffer bu(&ba);
         bu.open(QIODevice::WriteOnly);
         avatarPixmap.save(&bu, "PNG");
-        auto str = ba.toBase64().toStdString();
+        auto str = QString::fromLocal8Bit(ba.toBase64());
         accountModel().setAvatar(getCurrAccId(), str);
     };
 
-    static void setCurrAccAvatar(const std::string& avatar) {
+    static void setCurrAccAvatar(const QString& avatar) {
         accountModel().setAvatar(getCurrAccId(), avatar);
     };
 
-    static void setCurrAccDisplayName(const std::string& displayName) {
+    static void setCurrAccDisplayName(const QString& displayName) {
         auto accountId = LRCInstance::getCurrAccId();
         accountModel().setAlias(accountId, displayName);
         // force save to .yml
@@ -357,18 +357,18 @@ public:
         instance().contentDrafts_[draftKey] = content;
     }
 
-    static void pushLastConferencee(const std::string& confId,
-                                     const std::string& callId)
+    static void pushLastConferencee(const QString& confId,
+                                     const QString& callId)
     {
         instance().lastConferencees_[confId] = callId;
     }
 
-    static std::string popLastConferencee(const std::string& confId)
+    static QString popLastConferencee(const QString& confId)
     {
-        std::string callId = {};
+        QString callId = {};
         auto iter = instance().lastConferencees_.find(confId);
         if (iter != instance().lastConferencees_.end()) {
-            callId = iter->second;
+            callId = iter.value();
             instance().lastConferencees_.erase(iter);
         }
         return callId;
@@ -389,8 +389,8 @@ private:
     std::unique_ptr<RenderManager> renderer_;
     std::unique_ptr<NetWorkManager> netWorkManager_;
     AccountListModel accountListModel_;
-    std::string selectedAccountId_;
-    std::string selectedConvUid_;
+    QString selectedAccountId_;
+    QString selectedConvUid_;
     MapStringString contentDrafts_;
-    std::map<std::string, std::string> lastConferencees_;
+    MapStringString lastConferencees_;
 };

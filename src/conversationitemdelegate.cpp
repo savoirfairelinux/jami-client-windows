@@ -80,9 +80,9 @@ ConversationItemDelegate::paint(QPainter* painter
         } else if (rowHighlight != highlightMap_.end() && (*rowHighlight).second) {
             painter->fillRect(option.rect, RingTheme::smartlistHighlight_);
         }
-        auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>().toStdString();
+        auto convUid = index.data(static_cast<int>(SmartListModel::Role::UID)).value<QString>();
         auto conversation = LRCInstance::getConversationFromConvUid(convUid);
-        if (conversation.uid.empty()) return;
+        if (conversation.uid.isEmpty()) return;
         if (LRCInstance::getCurrentCallModel()->hasCall(conversation.callId)) {
             auto color = QColor(RingTheme::blue_.lighter(180));
             color.setAlpha(128);

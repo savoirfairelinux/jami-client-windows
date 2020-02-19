@@ -80,8 +80,8 @@ MainApplication::vsConsoleDebug()
     QObject::connect(
         &LRCInstance::behaviorController(),
         &lrc::api::BehaviorController::debugMessageReceived,
-        [](const std::string& message) {
-            OutputDebugStringA((message + "\n").c_str());
+        [](const QString& message) {
+            OutputDebugStringA((message + "\n").toStdString().c_str());
         });
 #endif
 }
@@ -92,9 +92,9 @@ MainApplication::fileDebug(QFile* debugFile)
     QObject::connect(
         &LRCInstance::behaviorController(),
         &lrc::api::BehaviorController::debugMessageReceived,
-        [debugFile](const std::string& message) {
+        [debugFile](const QString& message) {
             if (debugFile->open(QIODevice::WriteOnly | QIODevice::Append)) {
-                auto msg = (message + "\n").c_str();
+                auto msg = (message + "\n").toStdString().c_str();
                 debugFile->write(msg, qstrlen(msg));
                 debugFile->close();
             }
@@ -253,7 +253,7 @@ MainApplication::startAccountMigration()
 {
     auto accountList = LRCInstance::accountModel().getAccountList();
 
-    for (const std::string& i : accountList) {
+    for (const QString& i : accountList) {
         auto accountStatus = LRCInstance::accountModel().getAccountInfo(i).status;
         if (accountStatus == lrc::api::account::Status::ERROR_NEED_MIGRATION) {
             std::unique_ptr<AccountMigrationDialog> dialog = std::make_unique<AccountMigrationDialog>(nullptr, i);

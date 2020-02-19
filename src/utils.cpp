@@ -444,53 +444,53 @@ Utils::applyUpdates(bool updateToBeta, QWidget* parent)
 
 // new lrc helpers
 
-inline std::string
-removeEndlines(const std::string& str)
+inline QString
+removeEndlines(const QString& str)
 {
-    std::string trimmed(str);
-    trimmed.erase(std::remove(trimmed.begin(), trimmed.end(), '\n'), trimmed.end());
-    trimmed.erase(std::remove(trimmed.begin(), trimmed.end(), '\r'), trimmed.end());
+    QString trimmed(str);
+    trimmed.remove(QChar('\n'));
+    trimmed.remove(QChar('\r'));
     return trimmed;
 }
 
-std::string
+QString
 Utils::bestIdForConversation(const lrc::api::conversation::Info& conv, const lrc::api::ConversationModel& model)
 {
     auto contact = model.owner.contactModel->getContact(conv.participants[0]);
-    if (!contact.registeredName.empty()) {
+    if (!contact.registeredName.isEmpty()) {
         return removeEndlines(contact.registeredName);
     }
     return removeEndlines(contact.profileInfo.uri);
 }
 
-std::string
+QString
 Utils::bestIdForAccount(const lrc::api::account::Info& account)
 {
-    if (!account.registeredName.empty()) {
+    if (!account.registeredName.isEmpty()) {
         return removeEndlines(account.registeredName);
     }
     return removeEndlines(account.profileInfo.uri);
 }
 
-std::string
+QString
 Utils::bestNameForAccount(const lrc::api::account::Info& account)
 {
-    if (account.profileInfo.alias.empty()) {
+    if (account.profileInfo.alias.isEmpty()) {
         return bestIdForAccount(account);
     }
     return account.profileInfo.alias;
 }
 
-std::string
+QString
 Utils::bestIdForContact(const lrc::api::contact::Info& contact)
 {
-    if (!contact.registeredName.empty()) {
+    if (!contact.registeredName.isEmpty()) {
         return removeEndlines(contact.registeredName);
     }
     return removeEndlines(contact.profileInfo.uri);
 }
 
-std::string
+QString
 Utils::bestNameForContact(const lrc::api::contact::Info& contact)
 {
     auto alias = removeEndlines(contact.profileInfo.alias);
@@ -500,7 +500,7 @@ Utils::bestNameForContact(const lrc::api::contact::Info& contact)
     return alias;
 }
 
-std::string
+QString
 Utils::bestNameForConversation(const lrc::api::conversation::Info& conv, const lrc::api::ConversationModel& model)
 {
     try {
@@ -515,7 +515,7 @@ Utils::bestNameForConversation(const lrc::api::conversation::Info& conv, const l
 }
 
 // returns empty string if only infoHash is available, second best identifier otherwise
-std::string
+QString
 Utils::secondBestNameForAccount(const lrc::api::account::Info& account)
 {
     auto alias = removeEndlines(account.profileInfo.alias);
@@ -578,14 +578,14 @@ Utils::isInteractionGenerated(const lrc::api::interaction::Type& type)
 }
 
 bool
-Utils::isContactValid(const std::string& contactUid, const lrc::api::ConversationModel& model)
+Utils::isContactValid(const QString& contactUid, const lrc::api::ConversationModel& model)
 {
     auto contact = model.owner.contactModel->getContact(contactUid);
     return  (contact.profileInfo.type == lrc::api::profile::Type::PENDING ||
             contact.profileInfo.type == lrc::api::profile::Type::TEMPORARY ||
             contact.profileInfo.type == lrc::api::profile::Type::RING ||
             contact.profileInfo.type == lrc::api::profile::Type::SIP) &&
-            !contact.profileInfo.uri.empty();
+            !contact.profileInfo.uri.isEmpty();
 }
 
 bool Utils::getReplyMessageBox(QWidget* widget, const QString& title, const QString& text)
@@ -596,10 +596,10 @@ bool Utils::getReplyMessageBox(QWidget* widget, const QString& title, const QStr
 }
 
 QImage
-Utils::conversationPhoto(const std::string & convUid, const lrc::api::account::Info& accountInfo)
+Utils::conversationPhoto(const QString& convUid, const lrc::api::account::Info& accountInfo)
 {
     auto convInfo = LRCInstance::getConversationFromConvUid(convUid, accountInfo.id, false);
-    if (!convInfo.uid.empty()) {
+    if (!convInfo.uid.isEmpty()) {
         return GlobalInstances::pixmapManipulator()
             .decorationRole(convInfo, accountInfo)
             .value<QImage>();
@@ -826,16 +826,16 @@ QImage
 Utils::accountPhoto(const lrc::api::account::Info& accountInfo, const QSize& size)
 {
     QImage photo;
-    if (!accountInfo.profileInfo.avatar.empty()) {
-        QByteArray ba = QByteArray::fromStdString(accountInfo.profileInfo.avatar);
+    if (!accountInfo.profileInfo.avatar.isEmpty()) {
+        QByteArray ba = accountInfo.profileInfo.avatar.toLocal8Bit();
         photo = GlobalInstances::pixmapManipulator().personPhoto(ba, nullptr).value<QImage>();
     } else {
         auto bestId = bestIdForAccount(accountInfo);
         auto bestName = bestNameForAccount(accountInfo);
-        QString letterStr = bestId == bestName ? QString() : QString::fromStdString(bestName);
+        QString letterStr = bestId == bestName ? QString() : bestName;
         QString prefix = accountInfo.profileInfo.type == lrc::api::profile::Type::RING ? "ring:" : "sip:";
         photo = fallbackAvatar(size,
-            prefix + QString::fromStdString(accountInfo.profileInfo.uri),
+            prefix + accountInfo.profileInfo.uri,
             letterStr);
     }
     return scaleAndFrame(photo, size);

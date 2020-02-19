@@ -362,7 +362,7 @@ NewWizardWidget::on_exportBtn_clicked()
         QDir::homePath() + "/Desktop", QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
 
     if (!dir.isEmpty()) {
-        LRCInstance::accountModel().exportToFile(LRCInstance::getCurrAccId(), (dir + "/export.gz").toStdString());
+        LRCInstance::accountModel().exportToFile(LRCInstance::getCurrAccId(), dir + "/export.gz");
     }
     emit NavigationRequested(ScreenEnum::CallScreen);
     emit LRCInstance::instance().accountListChanged();
@@ -395,10 +395,10 @@ NewWizardWidget::timeoutNameLookupTimer()
 }
 
 void
-NewWizardWidget::slotRegisteredNameFound(const std::string& accountId,
+NewWizardWidget::slotRegisteredNameFound(const QString& accountId,
                                          LookupStatus status,
-                                         const std::string& address,
-                                         const std::string& name)
+                                         const QString& address,
+                                         const QString& name)
 {
     Q_UNUSED(accountId);
     Q_UNUSED(address);
@@ -407,7 +407,7 @@ NewWizardWidget::slotRegisteredNameFound(const std::string& accountId,
     if (name.length() < 3) {
         registrationStateOk_ = false;
         updateNameRegistrationUi(NameRegistrationUIState::INVALID);
-    } else if (registeredName_.toStdString() == name) {
+    } else if (registeredName_ == name) {
         switch (status) {
         case LookupStatus::NOT_FOUND:
         case LookupStatus::ERROR:
@@ -547,28 +547,28 @@ NewWizardWidget::createAccount()
     bool isCreating = wizardMode_ == WizardMode::CREATE;
     if (isConnectingToManager) {
         Utils::oneShotConnect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountAdded,
-            [this](const std::string& accountId) {
+            [this](const QString& accountId) {
                 if (!LRCInstance::accountModel().getAccountList().size())
                     return;
                 //set default ringtone
                 auto confProps = LRCInstance::accountModel().getAccountConfig(accountId);
-                confProps.Ringtone.ringtonePath = Utils::GetRingtonePath().toStdString();
+                confProps.Ringtone.ringtonePath = Utils::GetRingtonePath();
                 LRCInstance::accountModel().setAccountConfig(accountId, confProps);
                 emit NavigationRequested(ScreenEnum::CallScreen);
                 emit LRCInstance::instance().accountListChanged();
         });
     } else {
         Utils::oneShotConnect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountAdded,
-            [this, isRing, isCreating](const std::string& accountId) {
+            [this, isRing, isCreating](const QString& accountId) {
                 //set default ringtone
                 auto confProps = LRCInstance::accountModel().getAccountConfig(accountId);
-                confProps.Ringtone.ringtonePath = Utils::GetRingtonePath().toStdString();
+                confProps.Ringtone.ringtonePath = Utils::GetRingtonePath();
                 if (!isRing) {
                     // set SIP details
-                    confProps.hostname = inputPara_["hostname"].toStdString();
-                    confProps.username = inputPara_["username"].toStdString();
-                    confProps.password = inputPara_["password"].toStdString();
-                    confProps.proxyServer = inputPara_["proxy"].toStdString();
+                    confProps.hostname = inputPara_["hostname"];
+                    confProps.username = inputPara_["username"];
+                    confProps.password = inputPara_["password"];
+                    confProps.proxyServer = inputPara_["proxy"];
                 }
                 LRCInstance::accountModel().setAccountConfig(accountId, confProps);
                 if (isRing) {
@@ -578,7 +578,7 @@ NewWizardWidget::createAccount()
                     }
                     auto showBackup = isCreating && !settings.value(SettingsKey::neverShowMeAgain).toBool();
 
-                    if (!confProps.username.empty()) {
+                    if (!confProps.username.isEmpty()) {
                         Utils::oneShotConnect(&LRCInstance::accountModel(),
                             &lrc::api::NewAccountModel::nameRegistrationEnded,
                             [this, showBackup] {
@@ -595,7 +595,7 @@ NewWizardWidget::createAccount()
                         LRCInstance::accountModel().registerName(
                             LRCInstance::getCurrAccId(),
                             "",
-                            registeredName_.toStdString()
+                            registeredName_
                         );
                     } else {
                         if (showBackup) {
@@ -613,13 +613,13 @@ NewWizardWidget::createAccount()
         });
     }
     Utils::oneShotConnect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountRemoved,
-        [this](const std::string& accountId) {
+        [this](const QString& accountId) {
             Q_UNUSED(accountId);
             qWarning() << Q_FUNC_INFO << ": " << "accountRemoved";
             reportFailure();
         });
     Utils::oneShotConnect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::invalidAccountDetected,
-        [this](const std::string& accountId) {
+        [this](const QString& accountId) {
             Q_UNUSED(accountId);
             qWarning() << Q_FUNC_INFO << ": " << "invalidAccountDetected";
             reportFailure();
@@ -628,26 +628,26 @@ NewWizardWidget::createAccount()
         [this, isRing, isConnectingToManager] {
             if (isConnectingToManager) {
                 LRCInstance::accountModel().connectToAccountManager(
-                    inputPara_["username"].toStdString(),
-                    inputPara_["password"].toStdString(),
-                    inputPara_["manager"].toStdString()
+                    inputPara_["username"],
+                    inputPara_["password"],
+                    inputPara_["manager"]
                 );
             } else if (isRing) {
                 LRCInstance::accountModel().createNewAccount(
                     lrc::api::profile::Type::RING,
-                    inputPara_["alias"].toStdString(),
-                    inputPara_["archivePath"].toStdString(),
-                    inputPara_["password"].toStdString(),
-                    inputPara_["archivePin"].toStdString()
+                    inputPara_["alias"],
+                    inputPara_["archivePath"],
+                    inputPara_["password"],
+                    inputPara_["archivePin"]
                 );
             } else {
                 LRCInstance::accountModel().createNewAccount(
                     lrc::api::profile::Type::SIP,
-                    inputPara_["alias"].toStdString(),
-                    inputPara_["archivePath"].toStdString(),
+                    inputPara_["alias"],
+                    inputPara_["archivePath"],
                     "",
                     "",
-                    inputPara_["username"].toStdString()
+                    inputPara_["username"]
                 );
                 QThread::sleep(2);
                 emit NavigationRequested(ScreenEnum::CallScreen);

@@ -30,7 +30,7 @@ public:
     explicit DistantWidget(QWidget* parent = 0);
     ~DistantWidget();
 
-    void setRendererId(const std::string& id);
+    void setRendererId(const QString& id);
 
 protected:
     void paintEvent(QPaintEvent* e);
@@ -38,6 +38,5 @@ protected:
     void paintBackground(QPainter* painter) override;
 
 private:
-    std::string id_;
-
+    QString id_;
 };

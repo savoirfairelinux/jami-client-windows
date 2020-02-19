@@ -71,7 +71,7 @@ private:
     void resizeEvent(QResizeEvent* event);
     bool sipPasswordHidden_ {false};
     void passwordClicked();
-    void afterNameLookup(lrc::api::account::LookupStatus status, const std::string& regName);
+    void afterNameLookup(lrc::api::account::LookupStatus status, const QString& regName);
     bool validateRegNameForm(const QString& regName);
     void setRegNameUi(RegName stat);
     void removeDeviceSlot(int index);
@@ -81,7 +81,7 @@ private:
     void populateGeneralSettings();
     void populateAVSettings();
     void populateVideoSettings();
-    void setFormatListForDevice(const std::string& device);
+    void setFormatListForDevice(const QString& device);
     void startPreviewing(bool force = false);
     void stopPreviewing();
     void startAudioMeter(bool async = true);
@@ -96,7 +96,7 @@ private:
     SettingsMenu selectedMenu_ = SettingsMenu::General;
     lrc::api::profile::Type pastAccount_ = lrc::api::profile::Type::INVALID;
     bool advancedSettingsDropped_ = false;
-    QList<QPair<std::string, float>> formatIndexList_;
+    QList<QPair<QString, float>> formatIndexList_;
     AdvancedSIPSettingsWidget* advancedSIPSettingsWidget_;
     QScrollArea* scrollSIPArea_;
     bool advancedSIPSettingsDropped_ = false;
@@ -117,8 +117,8 @@ private slots:
     void leaveSettingsSlot();
     void verifyRegisteredNameSlot();
     void beforeNameLookup();
-    void receiveRegNameSlot(const std::string& accountID, lrc::api::account::LookupStatus status,
-        const std::string& address, const std::string& name);
+    void receiveRegNameSlot(const QString& accountID, lrc::api::account::LookupStatus status,
+                            const QString& address, const QString& name);
     void slotRegisterName();
     void setAccEnableSlot(int state);
     void delAccountSlot();
@@ -145,6 +145,6 @@ private slots:
     void slotFormatBoxCurrentIndexChanged(int index);
     void slotSetHardwareAccel(bool state);
     void slotVideoDeviceListChanged();
-    void slotAudioMeter(const std::string& id, float level);
+    void slotAudioMeter(const QString& id, float level);
 
 };

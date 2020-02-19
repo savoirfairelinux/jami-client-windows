@@ -100,7 +100,7 @@ PasswordDialog::exportAccount()
 {
     bool success = LRCInstance::accountModel().exportToFile(LRCInstance::getCurrAccId(),
                                                               path_,
-                                                              ui->currentPasswordEdit->text().toStdString());
+                                                              ui->currentPasswordEdit->text());
     ui->spinnerLabel->hide();
     spinnerMovie_->stop();
     if(success) {
@@ -132,7 +132,7 @@ void
 PasswordDialog::savePassword()
 {
     bool success = LRCInstance::accountModel().changeAccountPassword(LRCInstance::getCurrAccId(),
-                   ui->currentPasswordEdit->text().toStdString(), ui->passwordEdit->text().toStdString());
+                   ui->currentPasswordEdit->text(), ui->passwordEdit->text());
 
     ui->spinnerLabel->hide();
     spinnerMovie_->stop();
