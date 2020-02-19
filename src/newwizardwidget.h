@@ -76,10 +76,10 @@ private slots:
 
 private slots:
     void on_usernameEdit_textChanged(const QString& arg1);
-    void slotRegisteredNameFound(const std::string& accountId,
+    void slotRegisteredNameFound(const QString& accountId,
                                  LookupStatus status,
-                                 const std::string& address,
-                                 const std::string& name);
+                                 const QString& address,
+                                 const QString& name);
     void handle_nameRegistrationEnded(NameDirectory::RegisterNameStatus status, const QString& name);
     void timeoutNameLookupTimer();
     void on_signUpCheckbox_toggled(bool checked);
@@ -101,7 +101,7 @@ private:
     bool registrationStateOk_;
     QMetaObject::Connection registeredNameFoundConnection_;
     QString fileToImport_;
-    std::map<std::string, QString> inputPara_;
+    std::map<QString, QString> inputPara_;
 
     CollapsiblePasswordWidget* collapsiblePasswordWidget_;
 
