@@ -89,11 +89,11 @@ public:
     void printHistory(lrc::api::ConversationModel& conversationModel,
                       const std::map<uint64_t,
                       lrc::api::interaction::Info> interactions);
-    void setSenderImage(const std::string& sender,
-                        const std::string& senderImage);
+    void setSenderImage(const QString& sender,
+                        const QString& senderImage);
     void setInvitation(bool show,
-                       const std::string& contactUri = "",
-                       const std::string& contactId = "");
+                       const QString& contactUri = "",
+                       const QString& contactId = "");
     void setMessagesVisibility(bool visible);
     void setMessagesContent(const QString& text);
     void copySelectedText(QClipboard* clipboard);

@@ -25,11 +25,11 @@ DistantWidget::DistantWidget(QWidget* parent)
     : VideoWidgetBase(Qt::black, parent)
 {
     connect(LRCInstance::renderer(), &RenderManager::distantFrameUpdated,
-        [this](const std::string& id) {
+        [this](const QString& id) {
             if (id_ == id) repaint();
         });
     connect(LRCInstance::renderer(), &RenderManager::distantRenderingStopped,
-        [this](const std::string& id) {
+        [this](const QString& id) {
             if (id_ == id) repaint();
         });
 }
@@ -68,7 +68,7 @@ DistantWidget::paintBackground(QPainter* painter)
 }
 
 void
-DistantWidget::setRendererId(const std::string& id)
+DistantWidget::setRendererId(const QString& id)
 {
     id_ = id;
     update();

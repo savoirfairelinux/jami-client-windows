@@ -45,7 +45,7 @@ class FrameWrapper final : public QObject
     Q_OBJECT;
 public:
     FrameWrapper(AVModel& avModel,
-                 const std::string& id = video::PREVIEW_RENDERER_ID);
+                 const QString& id = video::PREVIEW_RENDERER_ID);
     ~FrameWrapper();
 
     /**
@@ -76,38 +76,38 @@ signals:
      * Emitted once in slotRenderingStarted.
      * @param id of the renderer
      */
-    void renderingStarted(const std::string& id);
+    void renderingStarted(const QString& id);
     /**
      * Emitted each time a frame is ready to be displayed.
      * @param id of the renderer
      */
-    void frameUpdated(const std::string& id);
+    void frameUpdated(const QString& id);
     /**
      * Emitted once in slotRenderingStopped.
      * @param id of the renderer
      */
-    void renderingStopped(const std::string& id);
+    void renderingStopped(const QString& id);
 
 private slots:
     /**
      * Used to listen to AVModel::rendererStarted.
      * @param id of the renderer
      */
-    void slotRenderingStarted(const std::string& id = video::PREVIEW_RENDERER_ID);
+    void slotRenderingStarted(const QString& id = video::PREVIEW_RENDERER_ID);
     /**
      * Used to listen to AVModel::frameUpdated.
      * @param id of the renderer
      */
-    void slotFrameUpdated(const std::string& id = video::PREVIEW_RENDERER_ID);
+    void slotFrameUpdated(const QString& id = video::PREVIEW_RENDERER_ID);
     /**
      * Used to listen to AVModel::renderingStopped.
      * @param id of the renderer
      */
-    void slotRenderingStopped(const std::string& id = video::PREVIEW_RENDERER_ID);
+    void slotRenderingStopped(const QString& id = video::PREVIEW_RENDERER_ID);
 
 private:
     /* the id of the renderer */
-    std::string id_;
+    QString id_;
 
     /* a pointer to the lrc renderer object */
     video::Renderer* renderer_;
@@ -175,19 +175,19 @@ public:
      * as a QImage.
      * @return the rendered preview image
      */
-    QImage* getFrame(const std::string& id);
+    QImage* getFrame(const QString& id);
     /**
      * Add and connect a distant renderer for a given id
      * to a FrameWrapper object
      * @param id
      */
-    void addDistantRenderer(const std::string& id);
+    void addDistantRenderer(const QString& id);
     /**
      * Disconnect and remove a FrameWrapper object connected to a
      * distant renderer for a given id
      * @param id
      */
-    void removeDistantRenderer(const std::string& id);
+    void removeDistantRenderer(const QString& id);
 
 signals:
     /* Emitted when the size of the video capture device list changes. */
@@ -203,13 +203,13 @@ signals:
     void previewRenderingStopped();
 
     /* Emitted when a distant renderer is started for a given id. */
-    void distantRenderingStarted(const std::string& id);
+    void distantRenderingStarted(const QString& id);
 
     /* Emitted when a distant renderer has a new frame ready for a given id. */
-    void distantFrameUpdated(const std::string& id);
+    void distantFrameUpdated(const QString& id);
 
     /* Emitted when a distant renderer is stopped for a given id. */
-    void distantRenderingStopped(const std::string& id);
+    void distantRenderingStopped(const QString& id);
 
 private slots:
     /**
@@ -228,8 +228,8 @@ private:
     std::unique_ptr<FrameWrapper> previewFrameWrapper_;
 
     /* distant for each call/conf/conversation */
-    std::map<std::string, std::unique_ptr<FrameWrapper>> distantFrameWrapperMap_;
-    std::map<std::string, RenderConnections> distantConnectionMap_;
+    std::map<QString, std::unique_ptr<FrameWrapper>> distantFrameWrapperMap_;
+    std::map<QString, RenderConnections> distantConnectionMap_;
 
     /* convenience ref to avmodel */
     AVModel& avModel_;
