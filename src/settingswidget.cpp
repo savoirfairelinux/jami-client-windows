@@ -143,20 +143,20 @@ SettingsWidget::SettingsWidget(QWidget* parent)
 
     connect(ui->displaySIPNameLineEdit, &QLineEdit::editingFinished,
         [this] {
-            LRCInstance::setCurrAccDisplayName(ui->displaySIPNameLineEdit->text().toStdString());
+            LRCInstance::setCurrAccDisplayName(ui->displaySIPNameLineEdit->text());
         });
 
     connect(ui->passSIPlineEdit, &QLineEdit::editingFinished,
         [this] {
             confProps_ = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-            confProps_.password = ui->passSIPlineEdit->text().toStdString();
+            confProps_.password = ui->passSIPlineEdit->text();
             LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps_);
         });
 
     connect(ui->ProxySIP, &QLineEdit::editingFinished,
         [this] {
             confProps_ = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-            confProps_.proxyServer = ui->ProxySIP->text().toStdString();
+            confProps_.proxyServer = ui->ProxySIP->text();
             LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps_);
         });
 
@@ -211,20 +211,20 @@ SettingsWidget::SettingsWidget(QWidget* parent)
 
     connect(ui->displayNameLineEdit, &QLineEdit::editingFinished,
         [this] {
-            LRCInstance::setCurrAccDisplayName(ui->displayNameLineEdit->text().toStdString());
+            LRCInstance::setCurrAccDisplayName(ui->displayNameLineEdit->text());
         });
 
     connect(ui->usernameSIP, &QLineEdit::editingFinished,
         [this] {
             confProps_ = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-            confProps_.username = ui->usernameSIP->text().toStdString();
+            confProps_.username = ui->usernameSIP->text();
             LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps_);
         });
 
     connect(ui->hostnameSIP, &QLineEdit::editingFinished,
         [this] {
             confProps_ = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-            confProps_.hostname = ui->hostnameSIP->text().toStdString();
+            confProps_.hostname = ui->hostnameSIP->text();
             LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps_);
         });
 
@@ -283,7 +283,7 @@ SettingsWidget::slotAccountListChanged()
         disconnectAccountConnections();
     }
     auto device = LRCInstance::avModel().getDefaultDevice();
-    if (LRCInstance::avModel().getCurrentVideoCaptureDevice().empty()) {
+    if (LRCInstance::avModel().getCurrentVideoCaptureDevice().isEmpty()) {
         LRCInstance::avModel().setCurrentVideoCaptureDevice(device);
     }
 }
@@ -409,21 +409,21 @@ SettingsWidget::updateAccountInfoDisplayed()
     auto& accInfo = LRCInstance::getCurrentAccountInfo();
     auto accConfig = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
 
-    bool showLocalAccountConfig = accConfig.managerUri.empty();
+    bool showLocalAccountConfig = accConfig.managerUri.isEmpty();
     ui->passwdPushButton->setVisible(showLocalAccountConfig);
     ui->btnExportAccount->setVisible(showLocalAccountConfig);
     ui->linkDevPushButton->setVisible(showLocalAccountConfig);
 
-    ui->usernameSIP->setText(QString::fromStdString(accConfig.username));
-    ui->hostnameSIP->setText(QString::fromStdString(accConfig.hostname));
-    ui->passSIPlineEdit->setText(QString::fromStdString(accConfig.password));
-    ui->ProxySIP->setText(QString::fromStdString(accConfig.proxyServer));
+    ui->usernameSIP->setText(accConfig.username);
+    ui->hostnameSIP->setText(accConfig.hostname);
+    ui->passSIPlineEdit->setText(accConfig.password);
+    ui->ProxySIP->setText(accConfig.proxyServer);
 
-    ui->currentRegisteredID->setText(QString::fromStdString(accInfo.registeredName));
-    ui->currentRingID->setText(QString::fromStdString(accInfo.profileInfo.uri));
+    ui->currentRegisteredID->setText(accInfo.registeredName);
+    ui->currentRingID->setText(accInfo.profileInfo.uri);
 
     // if no registered name is found for account
-    if (accInfo.registeredName.empty()) {
+    if (accInfo.registeredName.isEmpty()) {
         ui->btnRegisterName->show();
         ui->btnRegisterName->setVisible(false);
         ui->currentRegisteredID->setStyleSheet("font-weight: normal; background-color: rgb(240, 240, 240);border: 2px;");
@@ -446,8 +446,8 @@ SettingsWidget::updateAccountInfoDisplayed()
     ui->accountEnableCheckBox->setChecked(accInfo.enabled);
     ui->accountSIPEnableCheckBox->setChecked(accInfo.enabled);
 
-    ui->displayNameLineEdit->setText(QString::fromStdString(accInfo.profileInfo.alias));
-    ui->displaySIPNameLineEdit->setText(QString::fromStdString(accInfo.profileInfo.alias));
+    ui->displayNameLineEdit->setText(accInfo.profileInfo.alias);
+    ui->displaySIPNameLineEdit->setText(accInfo.profileInfo.alias);
 
     updateAndShowDevicesSlot();
 
@@ -460,7 +460,7 @@ void
 SettingsWidget::setAvatar(PhotoboothWidget* avatarWidget)
 {
     auto& accountInfo = LRCInstance::getCurrentAccountInfo();
-    auto defaultAvatar = accountInfo.profileInfo.avatar.empty();
+    auto defaultAvatar = accountInfo.profileInfo.avatar.isEmpty();
     auto avatar = Utils::accountPhoto(accountInfo, {avatarSize_, avatarSize_});
     avatarWidget->setAvatarPixmap(QPixmap::fromImage(avatar), defaultAvatar);
 }
@@ -540,7 +540,7 @@ SettingsWidget::resizeEvent(QResizeEvent* event)
 void
 SettingsWidget::verifyRegisteredNameSlot()
 {
-    if (!LRCInstance::getCurrentAccountInfo().registeredName.empty()) {
+    if (!LRCInstance::getCurrentAccountInfo().registeredName.isEmpty()) {
         setRegNameUi(RegName::BLANK);
 
     } else {
@@ -576,8 +576,8 @@ SettingsWidget::validateRegNameForm(const QString& regName)
 }
 
 void
-SettingsWidget::receiveRegNameSlot(const std::string& accountID,
-    lrc::api::account::LookupStatus status, const std::string& address, const std::string& name)
+SettingsWidget::receiveRegNameSlot(const QString& accountID,
+    lrc::api::account::LookupStatus status, const QString& address, const QString& name)
 {
     Q_UNUSED(accountID);
     Q_UNUSED(address);
@@ -591,9 +591,9 @@ SettingsWidget::beforeNameLookup()
 }
 
 void
-SettingsWidget::afterNameLookup(lrc::api::account::LookupStatus status, const std::string& regName)
+SettingsWidget::afterNameLookup(lrc::api::account::LookupStatus status, const QString& regName)
 {
-    if (registeredName_.toStdString() == regName && regName.length() > 2) {
+    if (registeredName_ == regName && regName.length() > 2) {
         if (status == lrc::api::account::LookupStatus::NOT_FOUND) {
             setRegNameUi(RegName::FREE);
 
@@ -727,7 +727,7 @@ SettingsWidget::removeDeviceSlot(int index)
 
     if (ok) {
 delete_:
-        LRCInstance::getCurrentAccountInfo().deviceModel->revokeDevice(it->id, password.toStdString());
+        LRCInstance::getCurrentAccountInfo().deviceModel->revokeDevice(it->id, password);
     }
 }
 
@@ -754,18 +754,18 @@ SettingsWidget::exportAccountSlot()
 
     if (!fileUri.isEmpty()) {
         // remove prefix from QUri encoded data
-        std::string filePrefix { "file:///" };
-        auto filePathStd = fileUri.toEncoded().toStdString();
-        filePathStd = filePathStd.substr(filePathStd.find(filePrefix) + static_cast<int>(filePrefix.size()));
+        QString filePrefix { "file:///" };
+        auto filePath = QString::fromLocal8Bit(fileUri.toEncoded());
+        filePath = filePath.remove(filePrefix);
 
         if (LRCInstance::getCurrAccConfig().archiveHasPassword) {
             PasswordDialog dialog (this, PasswordEnteringPurpose::ExportAccount);
-            dialog.setExportPath(filePathStd);
+            dialog.setExportPath(filePath);
             int doneCode = dialog.exec();
             if (doneCode == PasswordDialog::SuccessCode)
                 QMessageBox::information(0, tr("Success"), tr("Export Successful"));
         } else {
-            bool success = LRCInstance::accountModel().exportToFile(LRCInstance::getCurrAccId(), filePathStd);
+            bool success = LRCInstance::accountModel().exportToFile(LRCInstance::getCurrAccId(), filePath);
             if (success) {
                 QMessageBox::information(0, tr("Success"), tr("Export Successful"));
             } else {
@@ -781,7 +781,7 @@ SettingsWidget::updateAndShowDevicesSlot()
 {
     ui->settingsListWidget->clear();
 
-    if (LRCInstance::getCurrAccConfig().managerUri.empty()) {
+    if (LRCInstance::getCurrAccConfig().managerUri.isEmpty()) {
         ui->linkDevPushButton->show();
     }
 
@@ -791,10 +791,10 @@ SettingsWidget::updateAndShowDevicesSlot()
     for (auto it = deviceList.begin(); it != deviceList.end(); ++it, ++i) {
         auto item = new QListWidgetItem(ui->settingsListWidget);
         ui->settingsListWidget->addItem(item);
-        auto row = new DeviceItemWidget(QString::fromStdString(it->name),
-            QString::fromStdString(it->id),
-            it->isCurrent,
-            this);
+        auto row = new DeviceItemWidget(it->name,
+                                        it->id,
+                                        it->isCurrent,
+                                        this);
         item->setSizeHint(QSize(ui->settingsListWidget->width(),
             row->minimumSizeHint().height()));
         ui->settingsListWidget->setItemWidget(item, row);
@@ -828,8 +828,8 @@ SettingsWidget::updateAndShowBannedContactsSlot()
     int i = 0;
     for (auto it = bannedContactList.begin(); it != bannedContactList.end(); ++it, ++i) {
         auto contactInfo = LRCInstance::getCurrentAccountInfo().contactModel->getContact(*it);
-        auto contactName = QString::fromStdString(contactInfo.registeredName);
-        auto contactId = QString::fromStdString(contactInfo.profileInfo.uri);
+        auto contactName = contactInfo.registeredName;
+        auto contactId = contactInfo.profileInfo.uri;
         auto item = new QListWidgetItem(ui->bannedListWidget);
         ui->bannedListWidget->addItem(item);
         auto row = new BannedItemWidget(contactName,
@@ -901,7 +901,7 @@ SettingsWidget::populateGeneralSettings()
     QSettings settings("jami.net", "Jami");
 
     // settings
-    QString downloadPath = QDir::toNativeSeparators(QString::fromStdString(LRCInstance::dataTransferModel().downloadDirectory));
+    QString downloadPath = QDir::toNativeSeparators(LRCInstance::dataTransferModel().downloadDirectory);
     int pos = downloadPath.lastIndexOf(QChar('\\'));
     if (pos == downloadPath.length() - 1) {
         downloadPath.truncate(pos);
@@ -924,14 +924,13 @@ SettingsWidget::populateGeneralSettings()
     ui->recordQualityValueLabel->setText(recordQualityStr);
     ui->recordQualitySlider->setValue(recordQuality);
 
-    if (LRCInstance::avModel().getRecordPath().empty()) {
+    if (LRCInstance::avModel().getRecordPath().isEmpty()) {
         QString recordPath = QDir::toNativeSeparators(
             QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
-        LRCInstance::avModel().setRecordPath(recordPath.toStdString());
+        LRCInstance::avModel().setRecordPath(recordPath);
     }
 
-    Utils::setElidedText(ui->recordPathButton,
-        QString::fromStdString(LRCInstance::avModel().getRecordPath()));
+    Utils::setElidedText(ui->recordPathButton, LRCInstance::avModel().getRecordPath());
 
     // updates
 #ifdef Q_OS_WIN
@@ -980,7 +979,7 @@ SettingsWidget::openDownloadFolderSlot()
     if (!dir.isEmpty()) {
         Utils::setElidedText(ui->downloadButton, dir);
         settings.setValue(SettingsKey::downloadPath, dir);
-        LRCInstance::dataTransferModel().downloadDirectory = dir.toStdString() + "/";
+        LRCInstance::dataTransferModel().downloadDirectory = dir + "/";
     }
 }
 
@@ -990,15 +989,13 @@ SettingsWidget::openRecordFolderSlot()
     QString dir = QFileDialog::getExistingDirectory(
         this,
         tr("Select A Folder For Your Recordings"),
-        QString::fromStdString(LRCInstance::avModel().getRecordPath()),
+        LRCInstance::avModel().getRecordPath(),
         QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks
     );
 
     if (!dir.isEmpty()) {
-        LRCInstance::avModel().setRecordPath(dir.toStdString());
-        Utils::setElidedText(ui->recordPathButton,
-            QString::fromStdString(LRCInstance::avModel().getRecordPath())
-        );
+        LRCInstance::avModel().setRecordPath(dir);
+        Utils::setElidedText(ui->recordPathButton, LRCInstance::avModel().getRecordPath());
     }
 }
 
@@ -1039,9 +1036,9 @@ SettingsWidget::populateAVSettings()
     ui->inputComboBox->clear();
     auto inputDevices = LRCInstance::avModel().getAudioInputDevices();
     auto inputDevice = LRCInstance::avModel().getInputDevice();
-    auto inputIndex = Utils::indexInVector(inputDevices, inputDevice);
+    auto inputIndex = inputDevices.lastIndexOf(inputDevice);
     for (auto id : inputDevices) {
-        ui->inputComboBox->addItem(QString::fromStdString(id).toUtf8());
+        ui->inputComboBox->addItem(id.toUtf8());
     }
     ui->inputComboBox->setCurrentIndex(inputIndex != -1 ? inputIndex : 0);
     connect(ui->inputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
@@ -1056,9 +1053,9 @@ SettingsWidget::populateAVSettings()
     ui->outputComboBox->clear();
     auto outputDevices = LRCInstance::avModel().getAudioOutputDevices();
     auto outputDevice = LRCInstance::avModel().getOutputDevice();
-    auto outputIndex = Utils::indexInVector(outputDevices, outputDevice);
+    auto outputIndex = outputDevices.lastIndexOf(outputDevice);
     for (auto od : outputDevices) {
-        ui->outputComboBox->addItem(QString::fromStdString(od).toUtf8());
+        ui->outputComboBox->addItem(od.toUtf8());
     }
     ui->outputComboBox->setCurrentIndex(outputIndex != -1 ? outputIndex : 0);
     connect(ui->outputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
@@ -1075,8 +1072,7 @@ void
 SettingsWidget::slotAudioOutputIndexChanged(int index)
 {
     stopAudioMeter(false);
-    auto selectedOutputDeviceName = ui->outputComboBox->itemData(index, Qt::DisplayRole)
-        .toString().toStdString();
+    auto selectedOutputDeviceName = ui->outputComboBox->itemData(index, Qt::DisplayRole).toString();
     LRCInstance::avModel().setOutputDevice(selectedOutputDeviceName);
     startAudioMeter(false);
 }
@@ -1085,8 +1081,7 @@ void
 SettingsWidget::slotAudioInputIndexChanged(int index)
 {
     stopAudioMeter(false);
-    auto selectedInputDeviceName = ui->inputComboBox->itemData(index, Qt::DisplayRole)
-        .toString().toStdString();
+    auto selectedInputDeviceName = ui->inputComboBox->itemData(index, Qt::DisplayRole).toString();
     LRCInstance::avModel().setInputDevice(selectedInputDeviceName);
     startAudioMeter(false);
 }
@@ -1094,14 +1089,12 @@ SettingsWidget::slotAudioInputIndexChanged(int index)
 void
 SettingsWidget::slotDeviceBoxCurrentIndexChanged(int index)
 {
-    std::string deviceName = ui->deviceBox->itemData(index, Qt::DisplayRole)
-        .toString()
-        .toStdString();
+    QString deviceName = ui->deviceBox->itemData(index, Qt::DisplayRole).toString();
     auto devices = LRCInstance::avModel().getDevices();
     try {
         auto deviceId = LRCInstance::avModel().getDeviceIdFromName(deviceName);
-        if (deviceId.empty()) {
-            qWarning() << "Couldn't find device: " << deviceName.c_str();
+        if (deviceId.isEmpty()) {
+            qWarning() << "Couldn't find device: " << deviceName;
             return;
         }
         LRCInstance::avModel().setCurrentVideoCaptureDevice(deviceId);
@@ -1142,7 +1135,7 @@ SettingsWidget::stopPreviewing()
 }
 
 void
-SettingsWidget::setFormatListForDevice(const std::string& device)
+SettingsWidget::setFormatListForDevice(const QString& device)
 {
     auto deviceCapabilities = LRCInstance::avModel().getDeviceCapabilities(device);
     if (deviceCapabilities.size() == 0) {
@@ -1151,8 +1144,8 @@ SettingsWidget::setFormatListForDevice(const std::string& device)
     try {
         auto currentSettings = LRCInstance::avModel().getDeviceSettings(device);
         auto currentChannel = currentSettings.channel;
-        currentChannel = currentChannel.empty() ? "default" : currentChannel;
-        auto channelCaps = deviceCapabilities.at(currentChannel);
+        currentChannel = currentChannel.isEmpty() ? "default" : currentChannel;
+        auto channelCaps = deviceCapabilities[currentChannel];
 
         ui->formatBox->blockSignals(true);
         ui->formatBox->clear();
@@ -1160,9 +1153,9 @@ SettingsWidget::setFormatListForDevice(const std::string& device)
 
         for (auto[resolution, frameRateList] : channelCaps) {
             for (auto rate : frameRateList) {
-                formatIndexList_.append(QPair<std::string, float>(resolution, rate));
+                formatIndexList_.append(QPair<QString, float>(resolution, rate));
                 auto sizeRateString = QString("%1 [%2 fps]")
-                    .arg(QString::fromStdString(resolution))
+                    .arg(resolution)
                     .arg(round(rate));
                 ui->formatBox->addItem(sizeRateString.toUtf8());
                 if (resolution == currentSettings.size && rate == currentSettings.rate) {
@@ -1190,7 +1183,7 @@ SettingsWidget::slotVideoDeviceListChanged()
 }
 
 void
-SettingsWidget::slotAudioMeter(const std::string& id, float level)
+SettingsWidget::slotAudioMeter(const QString& id, float level)
 {
     if (id == "audiolayer_id") {
         ui->audioInputMeter->setLevel(level);
@@ -1275,11 +1268,11 @@ SettingsWidget::populateVideoSettings()
         ui->formatBox->setCurrentIndex(0);
     } else {
         auto currentCaptureDevice = LRCInstance::avModel().getCurrentVideoCaptureDevice();
-        auto deviceIndex = Utils::indexInVector(devices, currentCaptureDevice);
+        auto deviceIndex = devices.lastIndexOf(currentCaptureDevice);
         for (auto d : devices) {
             try {
                 auto settings = LRCInstance::avModel().getDeviceSettings(d);
-                ui->deviceBox->addItem(QString::fromStdString(settings.name).toUtf8());
+                ui->deviceBox->addItem(settings.name.toUtf8());
             } catch (...) {}
         }
         ui->deviceBox->setCurrentIndex(deviceIndex);
