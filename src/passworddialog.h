@@ -38,7 +38,7 @@ public:
 
     static const int SuccessCode = 200;
 
-    void setExportPath(const std::string& path) { path_ = path; }
+    void setExportPath(const QString& path) { path_ = path; }
 
 private slots:
     void validatePassword();
@@ -48,7 +48,7 @@ private:
     Ui::PasswordDialog* ui;
 
     PasswordEnteringPurpose purpose_ { PasswordEnteringPurpose::ChangePassword };
-    std::string path_;
+    QString path_;
     QMovie* spinnerMovie_;
 
     void savePassword();
