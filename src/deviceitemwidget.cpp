@@ -84,7 +84,7 @@ DeviceItemWidget::toggleEditable()
         ui->btnEditDevice->setIcon(QIcon(":/images/icons/round-edit-24px.svg"));
         ui->btnEditDevice->setToolTip(QObject::tr("Edit Device Name"));
         auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-        confProps.deviceName = ui->editDeviceName->text().toStdString();
+        confProps.deviceName = ui->editDeviceName->text();
         LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
     }
     editable_ = !editable_;
