@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a8ad1d5_78886079",
+        "filename": "src/mainapplication.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-02-20T20:34:15Z",
+      "side": 1,
+      "message": "this can be removed, I see it causes graphical glitches when resizing",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 57
+      },
+      "revId": "16c99a0a8e054e2a91611e19a2ead80183fe54e7",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
