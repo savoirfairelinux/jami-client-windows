@@ -579,26 +579,8 @@ PrivateBridging::acceptFile(const QString& arg)
 {
     try {
         auto interactionUid = arg.toLongLong();
-
-        lrc::api::datatransfer::Info info = {};
         auto convUid = LRCInstance::getCurrentConvUid();
-        LRCInstance::getCurrentConversationModel()->getTransferInfo(interactionUid, info);
-
-        // get full path
-        QString filename = LRCInstance::dataTransferModel().downloadDirectory;
-        if (!filename.isEmpty() && filename.right(1) != '/')
-            filename += "/";
-        auto wantedFilename = filename + info.displayName;
-        auto duplicate = 0;
-        while (QFile(wantedFilename).exists()) {
-            ++duplicate;
-            auto splittedList = info.displayName.split(".");
-            if (splittedList.size() == 1)
-                wantedFilename = filename + info.displayName + " (" + QString::number(duplicate) + ")";
-            else
-                wantedFilename = filename + splittedList[0] + " (" + QString::number(duplicate) + ")" + "." +splittedList[1];
-        }
-        LRCInstance::getCurrentConversationModel()->acceptTransfer(convUid, interactionUid, wantedFilename);
+       LRCInstance::getCurrentConversationModel()->acceptTransfer(convUid, interactionUid);
     } catch (...) {
         qDebug() << "JS bridging - exception during acceptFile: " << arg;
     }
