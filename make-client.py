@@ -26,10 +26,8 @@ def execute_cmd(cmd, with_shell=False, env_vars={}):
                             env=env_vars)
     else:
         p = subprocess.Popen(cmd, shell=with_shell)
-    _, perr = p.communicate()
-    if perr:
-        return 1
-    return 0
+    _, _ = p.communicate()
+    return p.returncode
 
 def getLatestVSVersion():
     args = [
@@ -78,14 +76,6 @@ def getVSEnv(arch='x64', platform='', version=''):
     out = stdout.decode('utf-8', errors='ignore').split("\r\n")[5:-1]
     return dict(s.split('=', 1) for s in out)
 
-
-def getCMakeGenerator(vs_version):
-    if vs_version == '15':
-        return '\"Visual Studio 15 2017 Win64\"'
-    else:
-        return '\"Visual Studio ' + vs_version + ' 2019\"'
-
-
 def getVSEnvCmd(arch='x64', platform='', version=''):
     vcEnvInit = [findVSLatestDir() + r'\VC\Auxiliary\Build\"vcvarsall.bat']
     if platform != '':
@@ -103,7 +93,6 @@ def build_project(msbuild, msbuild_args, proj, env_vars):
     args.append(proj)
     cmd = [msbuild]
     cmd.extend(args)
-
     if (execute_cmd(cmd, True, env_vars)):
         print("Build failed when building ", proj)
         sys.exit(1)
@@ -124,8 +113,12 @@ def deps(arch, toolset):
     qrencode_path = 'qrencode-win32'
     if (os.path.isdir(qrencode_path)):
         os.system('rmdir qrencode-win32 /s /q')
-    execute_cmd("git clone https://github.com/BlueDragon747/qrencode-win32.git", True)
-    execute_cmd("cd qrencode-win32 && git checkout d6495a2aa74d058d54ae0f1b9e9e545698de66ce && " + apply_cmd + ' ..\\qrencode-win32.patch', True)
+    if (execute_cmd("git clone https://github.com/BlueDragon747/qrencode-win32.git", True)):
+        print("Git clone failed when cloning from https://github.com/BlueDragon747/qrencode-win32.git")
+        sys.exit(1)
+    if(execute_cmd("cd qrencode-win32 && git checkout d6495a2aa74d058d54ae0f1b9e9e545698de66ce && " + apply_cmd + ' ..\\qrencode-win32.patch', True)):
+        print("Qrencode-win32 set up error")
+        sys.exit(1)
 
     print('Building qrcodelib')
     build(arch, '', '', 'Release-Lib', '\\qrencode-win32\\qrencode-win32\\vc8\\qrcodelib\\qrcodelib.vcxproj', '', False)
@@ -135,11 +128,15 @@ def build(arch, toolset, sdk_version, config_str, project_path_under_current_pat
 
     if (config_str == 'Release'):
         print('Generating project using qmake ' + config_str + '|' + arch)
-        execute_cmd("C:\\Qt\\" + qtver + "\\msvc2017_64\\bin\\qmake.exe " + "-tp vc jami-qt.pro -o jami-qt.vcxproj")
+        if(execute_cmd("C:\\Qt\\" + qtver + "\\msvc2017_64\\bin\\qmake.exe " + "-tp vc jami-qt.pro -o jami-qt.vcxproj")):
+            print("Qmake vcxproj file generate error")
+            sys.exit(1)
         configuration_type = 'Application'
     elif (config_str == 'Beta'):
         print('Generating project using qmake ' + config_str + '|' + arch)
-        execute_cmd("C:\\Qt\\" + qtver + "\\msvc2017_64\\bin\\qmake.exe " + "-tp vc jami-qt.pro -o jami-qt.vcxproj CONFIG+=Beta")
+        if(execute_cmd("C:\\Qt\\" + qtver + "\\msvc2017_64\\bin\\qmake.exe " + "-tp vc jami-qt.pro -o jami-qt.vcxproj CONFIG+=Beta")):
+            print("Beat: Qmake vcxproj file generate error")
+            sys.exit(1)
         config_str = 'Release'
         configuration_type = 'Application'
     elif (config_str == 'ReleaseCompile'):
