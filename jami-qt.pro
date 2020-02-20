@@ -47,6 +47,14 @@ win32-msvc {
     RCC_DIR = obj/.rcc
     UI_DIR = obj/.ui
 
+    # ReleaseCompile config
+    contains(CONFIG, ReleaseCompile) {
+        CONFIG(ReleaseCompile) {
+            message(ReleaseCompile config enabled)
+            Release: DEFINES += COMPILE_ONLY
+        }
+    }
+    
     # beta config
     contains(CONFIG, Beta) {
         CONFIG(Beta) {
