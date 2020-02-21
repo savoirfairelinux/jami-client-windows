@@ -1277,14 +1277,16 @@ SettingsWidget::populateVideoSettings()
         }
         ui->deviceBox->setCurrentIndex(deviceIndex);
         setFormatListForDevice(LRCInstance::avModel().getCurrentVideoCaptureDevice());
+        try
+        {
+            bool isSIP = LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::SIP;
+            auto photoBooth = isSIP ? ui->currentSIPAccountAvatar : ui->currentAccountAvatar;
 
-        bool isSIP = LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::SIP;
-        auto photoBooth = isSIP ? ui->currentSIPAccountAvatar : ui->currentAccountAvatar;
-
-        if ( (photoBooth->isVisible() && LRCInstance::renderer()->isPreviewing()) ||
-             selectedMenu_ == SettingsMenu::Media) {
-            startPreviewing(false);
-        }
+            if ((photoBooth->isVisible() && LRCInstance::renderer()->isPreviewing()) ||
+                selectedMenu_ == SettingsMenu::Media) {
+                startPreviewing(false);
+            }
+        } catch (...) {}
     }
 
     connect(ui->deviceBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
