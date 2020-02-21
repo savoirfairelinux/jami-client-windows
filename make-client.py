@@ -138,9 +138,15 @@ def build(arch, toolset, sdk_version, config_str, project_path_under_current_pat
         print('Generating project using qmake ' + config_str + '|' + arch)
         execute_cmd("C:\\Qt\\" + qtver + "\\msvc2017_64\\bin\\qmake.exe " + "-tp vc jami-qt.pro -o jami-qt.vcxproj CONFIG+=Beta")
         config_str = 'Release'
+    elif (config_str == 'ReleaseCompile'):
+        print('Generating project using qmake ' + config_str + '|' + arch)
+        if(execute_cmd("C:\\Qt\\" + qtver + "\\msvc2017_64\\bin\\qmake.exe " + "-tp vc jami-qt.pro -o jami-qt.vcxproj CONFIG+=ReleaseCompile")):
+            print("ReleaseCompile: Qmake vcxproj file generate error")
+            sys.exit(1)
+        config_str = 'Release'
 
-    # Note: If project is configured to Beta, the configuration name is still release,
-    # but will be outputted into x64/Beta folder
+    # Note: If project is configured to Beta or ReleaseCompile, the configuration name is still release,
+    # but will be outputted into x64/Beta folder (for Beta Only)
 
     print('Building projects in ' + config_str + '|' + arch)
     vs_env_vars = {}
@@ -191,6 +197,9 @@ def parse_args():
         '-bt', '--beta', action='store_true',
         help='Build Qt Client in Beta Config')
     ap.add_argument(
+        '-c', '--releasecompile', action='store_true',
+        help='Build Qt Client in ReleaseCompile Config')
+    ap.add_argument(
         '-s', '--sdk', default=win_sdk_default, type=str,
         help='Use specified windows sdk version')
     ap.add_argument(
@@ -224,6 +233,9 @@ def main():
 
     if parsed_args.beta:
         build(parsed_args.arch, parsed_args.toolset, parsed_args.sdk, 'Beta', '\\jami-qt.vcxproj', parsed_args.qtver)
+
+    if parsed_args.releasecompile:
+        build(parsed_args.arch, parsed_args.toolset, parsed_args.sdk, 'ReleaseCompile', '\\jami-qt.vcxproj', parsed_args.qtver)
 
 if __name__ == '__main__':
     main()

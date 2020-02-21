@@ -20,9 +20,9 @@ win32-msvc {
     DEFINES += UNICODE PROCESS_DPI_AWARE=1 QT_NO_DEBUG NDEBUG
 
     # dependencies
-    LRC=../lrc
-    DRING=../daemon
-    QRENCODE=../client-windows/qrencode-win32/qrencode-win32
+    LRC= ../lrc
+    DRING= ../daemon
+    QRENCODE= qrencode-win32/qrencode-win32
 
     # client deps
     INCLUDEPATH += $${QRENCODE}
@@ -46,6 +46,15 @@ win32-msvc {
     MOC_DIR = obj/.moc
     RCC_DIR = obj/.rcc
     UI_DIR = obj/.ui
+
+    # ReleaseCompile config
+    contains(CONFIG, ReleaseCompile) {
+        CONFIG(ReleaseCompile) {
+            message(ReleaseCompile config enabled)
+            Release: DEFINES += COMPILE_ONLY
+            LIBS = $${QRENCODE}/vc8/qrcodelib/x64/Release-Lib/qrcodelib.lib
+        }
+    }
 
     # beta config
     contains(CONFIG, Beta) {
