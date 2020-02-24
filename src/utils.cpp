@@ -751,6 +751,18 @@ Utils::setupQRCode(QString ringID, int margin)
     return result;
 }
 
+float
+Utils::getCurrentScalingRatio()
+{
+    return CURRENT_SCALING_RATIO;
+}
+
+void
+Utils::setCurrentScalingRatio(float ratio)
+{
+    CURRENT_SCALING_RATIO = ratio;
+}
+
 QString
 Utils::formattedTime(int duration)
 {

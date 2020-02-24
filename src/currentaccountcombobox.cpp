@@ -24,7 +24,6 @@
 #include "utils.h"
 #include "ringthemeutils.h"
 #include "lrcinstance.h"
-#include "mainwindow.h"
 
 #include <QPixmap>
 #include <QMessageBox>
@@ -133,7 +132,7 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
     QFont fontPrimary = QFont(QStringLiteral("Segoe UI Emoji"));
     QFont fontSecondary = painter.font();
     fontPrimary.setWeight(QFont::ExtraLight);
-    auto scalingRatio = MainWindow::instance().getCurrentScalingRatio();
+    auto scalingRatio = Utils::getCurrentScalingRatio();
     fontPrimary.setPointSize(scalingRatio > 1.0 ? 10 : 11);
     fontSecondary.setPointSize(scalingRatio > 1.0 ? 9 : 10);
 

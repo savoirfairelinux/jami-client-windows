@@ -27,7 +27,6 @@
 #include "ringthemeutils.h"
 #include "utils.h"
 #include "lrcinstance.h"
-#include "mainwindow.h"
 
 #include <ciso646>
 
@@ -64,7 +63,7 @@ ContactPickerItemDelegate::paint(QPainter* painter
         painter->fillRect(option.rect, RingTheme::lightGrey_);
         QFont font(painter->font());
         QPen pen(painter->pen());
-        auto scalingRatio = MainWindow::instance().getCurrentScalingRatio();
+        auto scalingRatio = Utils::getCurrentScalingRatio();
         if (scalingRatio > 1.0) {
             font.setPointSize(fontSize_ - 2);
         } else {
@@ -156,7 +155,7 @@ ContactPickerItemDelegate::paintRingContactItem(QPainter* painter,
     QFont font(painter->font());
     QPen pen(painter->pen());
 
-    auto scalingRatio = MainWindow::instance().getCurrentScalingRatio();
+    auto scalingRatio = Utils::getCurrentScalingRatio();
     if (scalingRatio > 1.0) {
         font.setPointSize(fontSize_ - 2);
     } else {
@@ -217,7 +216,7 @@ ContactPickerItemDelegate::paintSIPContactItem(QPainter* painter,
     QPen pen(painter->pen());
     painter->setPen(pen);
 
-    auto scalingRatio = MainWindow::instance().getCurrentScalingRatio();
+    auto scalingRatio = Utils::getCurrentScalingRatio();
     if (scalingRatio > 1.0) {
         font.setPointSize(fontSize_ - 2);
     } else {
