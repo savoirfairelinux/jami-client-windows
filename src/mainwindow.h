@@ -51,7 +51,6 @@ public:
         return *instance;
     }
     bool init();
-    void show();
     void showWindow();
     void darken();
     void lighten();
