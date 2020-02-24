@@ -175,6 +175,8 @@ CallWidget::CallWidget(QWidget* parent) :
             ui->btnInvites->setChecked(false);
         });
 
+    connect(this, &CallWidget::photoRescaling, ui->currentAccountComboBox, &CurrentAccountComboBox::slotPhotoRescalingInModel);
+
     connect(ui->messageView, &MessageWebView::conversationRemoved,
         [this] {
             backToWelcomePage();
@@ -296,6 +298,7 @@ CallWidget::updateCustomUI()
     } else {
         ui->messageView->setZoomFactor(1.0);
     }
+    emit photoRescaling();
 }
 
 void
