@@ -242,7 +242,7 @@ CallWidget::CallWidget(QWidget* parent) :
     // hide the call stack
     setCallPanelVisibility(false);
 
-    ui->containerWidget->setVisible(false);
+    setVisible(false);
     ui->sipCallerBestIdLabel->setVisible(false);
 }
 
@@ -255,7 +255,7 @@ CallWidget::~CallWidget()
 void
 CallWidget::navigated(bool to)
 {
-    ui->containerWidget->setVisible(to);
+    setVisible(to);
     if (to) {
         updateSmartList();
         connectConversationModel();
