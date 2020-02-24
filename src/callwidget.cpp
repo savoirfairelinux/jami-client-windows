@@ -290,13 +290,12 @@ CallWidget::navigated(bool to)
 void
 CallWidget::updateCustomUI()
 {
-    auto scalingRatio = MainWindow::instance().getCurrentScalingRatio();
+    auto scalingRatio = Utils::getCurrentScalingRatio();
     if (scalingRatio > 1.0) {
         ui->messageView->setZoomFactor(1.15);
     } else {
         ui->messageView->setZoomFactor(1.0);
     }
-
 }
 
 void
