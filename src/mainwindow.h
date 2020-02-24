@@ -52,7 +52,6 @@ public:
     }
     bool init();
     void show();
-    float getCurrentScalingRatio();
     void showWindow();
     void darken();
     void lighten();
@@ -88,7 +87,6 @@ private:
     ScreenEnum lastScr_;
     int lastAccountCount_;
     Qt::WindowFlags flags_;
-    float currentScalingRatio_;
     Qt::WindowState currentWindowState_{ Qt::WindowState::WindowNoState };
 
     void readSettingsFromRegistry();
