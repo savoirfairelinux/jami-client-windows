@@ -400,7 +400,7 @@ void MainWindow::show()
 
 void MainWindow::slotScreenChanged(QScreen* screen)
 {
-    currentScalingRatio_ = screen->logicalDotsPerInchX() / 96;
+    Utils::setCurrentScalingRatio(screen->logicalDotsPerInchX() / 96);
     qobject_cast<NavWidget*>(ui->navStack->currentWidget())->updateCustomUI();
     adjustSize();
     updateGeometry();
@@ -410,11 +410,6 @@ void MainWindow::resizeEvent(QResizeEvent* event)
 {
     Q_UNUSED(event);
     qobject_cast<NavWidget*>(ui->navStack->currentWidget())->updateCustomUI();
-}
-
-float MainWindow::getCurrentScalingRatio()
-{
-    return currentScalingRatio_;
 }
 
 void MainWindow::keyReleaseEvent(QKeyEvent* ke)
