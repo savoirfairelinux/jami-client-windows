@@ -751,6 +751,15 @@ Utils::setupQRCode(QString ringID, int margin)
     return result;
 }
 
+QSize
+Utils::getRelativeImageSize()
+{
+    if (CURRENT_SCALING_RATIO > 1.0)
+        return QSize(DEFAULT_IMAGE_SIZE.width() * CURRENT_SCALING_RATIO, DEFAULT_IMAGE_SIZE.height() * CURRENT_SCALING_RATIO);
+    else
+        return DEFAULT_IMAGE_SIZE;
+}
+
 float
 Utils::getCurrentScalingRatio()
 {

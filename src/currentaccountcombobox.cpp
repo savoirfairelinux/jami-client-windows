@@ -373,3 +373,10 @@ CurrentAccountComboBox::updateComboBoxDisplay()
         setCurrentIndex(currAccIndex);
     importLabelPhoto(currAccIndex);
 }
+
+void
+CurrentAccountComboBox::slotPhotoRescalingInModel()
+{
+    emit accountListModel_->dataChanged(accountListModel_->createNewIndex(0, 0),
+                                        accountListModel_->createNewIndex(0, accountListModel_->rowCount() - 1 - 1));
+}

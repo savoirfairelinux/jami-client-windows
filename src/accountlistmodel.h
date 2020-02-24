@@ -48,4 +48,5 @@ public:
     QModelIndex index(int row, int column = 0, const QModelIndex &parent = QModelIndex()) const;
     QModelIndex parent(const QModelIndex &child) const;
     Qt::ItemFlags flags(const QModelIndex &index) const;
+    QModelIndex createNewIndex(int row, int column) { return createIndex(row, column); }
 };
