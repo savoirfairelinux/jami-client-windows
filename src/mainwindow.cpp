@@ -275,6 +275,11 @@ void MainWindow::showWindow()
         activateWindow();
     }
     raise();
+#if defined(Q_OS_WIN)
+    disconnect(screenChangedConnection_);
+    screenChangedConnection_ = connect(windowHandle(), &QWindow::screenChanged,
+                                       this, &MainWindow::slotScreenChanged);
+#endif
 }
 
 void
@@ -386,16 +391,6 @@ void MainWindow::setWindowSize(ScreenEnum scr, bool firstUse)
         update();
         show();
     }
-}
-
-void MainWindow::show()
-{
-    QMainWindow::show();
-#if defined(Q_OS_WIN)
-    disconnect(screenChangedConnection_);
-    screenChangedConnection_ = connect(windowHandle(), &QWindow::screenChanged,
-                                       this, &MainWindow::slotScreenChanged);
-#endif
 }
 
 void MainWindow::slotScreenChanged(QScreen* screen)

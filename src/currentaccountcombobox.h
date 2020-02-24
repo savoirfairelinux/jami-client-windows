@@ -51,6 +51,9 @@ signals:
     void newAccountClicked();
     void placeAudioOnlyCall(const QString& convUid);
 
+public slots:
+    void slotPhotoRescalingInModel();
+
 protected:
     void paintEvent(QPaintEvent* e);
     void resizeEvent(QResizeEvent *event);
