@@ -26,7 +26,6 @@
 #include "accountlistmodel.h"
 #include "ringthemeutils.h"
 #include "lrcinstance.h"
-#include "mainwindow.h"
 
 #undef REGISTERED
 
@@ -71,7 +70,7 @@ AccountItemDelegate::paint(QPainter* painter,
     QFont fontPrimary = painter->font();
     QFont fontSecondary = painter->font();
     fontPrimary.setWeight(QFont::ExtraLight);
-    auto scalingRatio = MainWindow::instance().getCurrentScalingRatio();
+    auto scalingRatio = Utils::getCurrentScalingRatio();
     if (scalingRatio > 1.0) {
         fontPrimary.setPointSize(fontSize_ - 1);
         fontSecondary.setPointSize(fontSize_ - 2);
