@@ -48,6 +48,7 @@
 #include "api/contact.h"
 
 static const QSize IMAGE_SIZE{ 128, 128 };
+static float CURRENT_SCALING_RATIO{ 1.0 };
 
 #ifdef BETA
 static constexpr bool isBeta = true;
@@ -75,6 +76,8 @@ void showSystemNotification(QWidget* widget, const QString& sender, const QStrin
 QSize getRealSize(QScreen* screen);
 void forceDeleteAsync(const QString& path);
 QString getChangeLog();
+float getCurrentScalingRatio();
+void setCurrentScalingRatio(float ratio);
 
 // updates
 void cleanUpdateFiles();

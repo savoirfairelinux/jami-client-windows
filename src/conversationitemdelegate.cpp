@@ -29,7 +29,6 @@
 #include "ringthemeutils.h"
 #include "utils.h"
 #include "lrcinstance.h"
-#include "mainwindow.h"
 
 #include <ciso646>
 
@@ -186,7 +185,7 @@ ConversationItemDelegate::paintConversationItem(QPainter* painter,
 
     int infoTextWidthModifier = 0;
     int infoText2HeightModifier = 0;
-    auto scalingRatio = MainWindow::instance().getCurrentScalingRatio();
+    auto scalingRatio = Utils::getCurrentScalingRatio();
     if (scalingRatio > 1.0) {
         font.setPointSize(fontSize_ - 2);
         infoTextWidthModifier = 12;
@@ -361,7 +360,7 @@ ConversationItemDelegate::paintInvitationItem(QPainter* painter,
     auto leftMargin = dx_ + sizeImage_ + dx_;
     auto rightMargin = dx_;
 
-    auto scalingRatio = MainWindow::instance().getCurrentScalingRatio();
+    auto scalingRatio = Utils::getCurrentScalingRatio();
     font.setPointSize(scalingRatio > 1.0 ? fontSize_ - 2 : fontSize_);
 
     if (option.state & QStyle::State_MouseOver) {
