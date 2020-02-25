@@ -3,6 +3,8 @@ import QtQuick.Controls 2.2
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.3
+import net.jami.AccountModelAdapter 1.0
+import net.jami.ConversationModelAdapter 1.0
 
 Rectangle {
     id: rectangle
@@ -12,8 +14,14 @@ Rectangle {
 
     implicitWidth: minWidth
     implicitHeight: minHeight
-    color: "white"
+    color: "pink"
     radius: 30
+
+    ConversationModelAdapter {
+        id : conversationModelAdapter
+    }
+
+    Loader { id: pageLoader }
 
     Rectangle {
         width: 500
@@ -30,8 +38,12 @@ Rectangle {
             font.family: "Arial"
             font.pointSize: 12
             font.bold: true
-            text: "Shortcuts"
+            text: AccountModelAdapter.getAccountListSize()
             color: "black"
+            MouseArea {
+                anchors.fill: parent
+                onClicked: pageLoader.source = "UserProfileCard.qml"
+            }
         }
         TextMetrics {
             id:     t_metrics_title
