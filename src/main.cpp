@@ -51,10 +51,20 @@ main(int argc, char* argv[])
 
     // for deployment and register types
     qmlRegisterType<QmlClipboardAdapter>("MyQClipboard", 1, 0, "QClipboard");
+    qmlRegisterSingletonType<AccountModelAdapter>(
+        "net.jami.AccountModelAdapter", 1, 0, "AccountModelAdapter",
+        [](QQmlEngine *engine, QJSEngine *scriptEngine) -> QObject* {
+            Q_UNUSED(engine);
+            Q_UNUSED(scriptEngine);
+            AccountModelAdapter *example = new AccountModelAdapter();
+            return example;
+        });
+    qmlRegisterType<ConversationModelAdapter>(
+        "net.jami.ConversationModelAdapter", 1, 0, "ConversationModelAdapter");
 
     QQmlApplicationEngine engine;
-    engine.load(QUrl(QStringLiteral("qrc:/src/KeyBoardShortcutTable.qml")));
-    engine.load(QUrl(QStringLiteral("qrc:/src/UserProfileCard.qml")));
+    //engine.load(QUrl(QStringLiteral("qrc:/src/KeyBoardShortcutTable.qml")));
+    //engine.load(QUrl(QStringLiteral("qrc:/src/UserProfileCard.qml")));
 
     // exec the application
     auto ret = a.exec();

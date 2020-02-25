@@ -25,7 +25,7 @@
 #include "accountmigrationdialog.h"
 #include "globalinstances.h"
 #include "networkmanager.h"
-#include "lrcinstance.h"
+#include "lrcinterface.h"
 #include "pixbufmanipulator.h"
 #include "utils.h"
 #include "splashscreen.h"
