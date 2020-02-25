@@ -52,6 +52,9 @@
 #include <QBuffer>
 #include <QtConcurrent/QtConcurrent>
 
+#include <QQmlEngine>
+#include <QJsEngine>
+
 #include <memory>
 
 using namespace lrc::api;
