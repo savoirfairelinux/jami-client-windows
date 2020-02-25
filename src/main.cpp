@@ -57,6 +57,15 @@ main(int argc, char* argv[])
 
     // for deployment and register types
     qmlRegisterType<QmlClipboardAdapter>("MyQClipboard", 1, 0, "QClipboard");
+    
+    qmlRegisterSingletonType<LrcGeneralAdapter>(
+        "net.jami.LrcGeneralAdapter", 1, 0, "LrcGeneralAdapter",
+        [](QQmlEngine* engine, QJSEngine* scriptEngine) -> QObject* {
+            Q_UNUSED(engine);
+            Q_UNUSED(scriptEngine);
+            LrcGeneralAdapter* lrcGeneralAdapter = new LrcGeneralAdapter();
+            return lrcGeneralAdapter;
+        });
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/src/KeyBoardShortcutTable.qml")));
