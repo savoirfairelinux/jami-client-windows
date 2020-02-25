@@ -51,6 +51,7 @@ main(int argc, char* argv[])
 
     // for deployment and register types
     qmlRegisterType<QmlClipboardAdapter>("MyQClipboard", 1, 0, "QClipboard");
+    qmlRegisterType<AccountModelAdapter>("net.jami.AccountModelAdapter", 1, 0, "AccountModelAdapter");
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/src/KeyBoardShortcutTable.qml")));

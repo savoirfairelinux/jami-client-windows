@@ -3,6 +3,7 @@ import QtQuick.Controls 2.2
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.3
+import net.jami.AccountModelAdapter 1.0
 
 Rectangle {
     id: rectangle
@@ -14,6 +15,12 @@ Rectangle {
     implicitHeight: minHeight
     color: "white"
     radius: 30
+
+    AccountModelAdapter {
+        id : accountModelAdapter
+    }
+
+    property string timeValue: accountModelAdapter.time
 
     Rectangle {
         width: 500
@@ -30,7 +37,7 @@ Rectangle {
             font.family: "Arial"
             font.pointSize: 12
             font.bold: true
-            text: "Shortcuts"
+            text: accountModelAdapter.getTime()
             color: "black"
         }
         TextMetrics {
