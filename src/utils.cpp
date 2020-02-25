@@ -629,7 +629,7 @@ Utils::fallbackAvatar(const QSize size, const QString& canonicalUriStr, const QS
 
     // We draw a circle with this color
     QPainter painter(&avatar);
-    painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
+    painter.setRenderHints(QPainter::TextAntialiasing | QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
     painter.setPen(Qt::transparent);
     painter.setBrush(avColor.lighter(110));
     painter.drawEllipse(avatar.rect());
@@ -751,6 +751,15 @@ Utils::setupQRCode(QString ringID, int margin)
     return result;
 }
 
+QSize
+Utils::getRelativeImageSize()
+{
+    if (CURRENT_SCALING_RATIO > 1.0)
+        return QSize(DEFAULT_IMAGE_SIZE.width() * CURRENT_SCALING_RATIO, DEFAULT_IMAGE_SIZE.height() * CURRENT_SCALING_RATIO);
+    else
+        return DEFAULT_IMAGE_SIZE;
+}
+
 float
 Utils::getCurrentScalingRatio()
 {
@@ -831,6 +840,7 @@ Utils::scaleAndFrame(const QImage photo, const QSize& size)
 QImage
 Utils::accountPhoto(const lrc::api::account::Info& accountInfo, const QSize& size)
 {
+    QSize sizeone(512, 512);
     QImage photo;
     if (!accountInfo.profileInfo.avatar.isEmpty()) {
         QByteArray ba = accountInfo.profileInfo.avatar.toLocal8Bit();
@@ -840,11 +850,11 @@ Utils::accountPhoto(const lrc::api::account::Info& accountInfo, const QSize& siz
         auto bestName = bestNameForAccount(accountInfo);
         QString letterStr = bestId == bestName ? QString() : bestName;
         QString prefix = accountInfo.profileInfo.type == lrc::api::profile::Type::RING ? "ring:" : "sip:";
-        photo = fallbackAvatar(size,
+        photo = fallbackAvatar(sizeone,
             prefix + accountInfo.profileInfo.uri,
             letterStr);
     }
-    return scaleAndFrame(photo, size);
+    return scaleAndFrame(photo, sizeone);
 }
 
 void
