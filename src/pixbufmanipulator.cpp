@@ -101,25 +101,25 @@ PixbufManipulator::decorationRole(const lrc::api::conversation::Info & conversat
         auto bestId = Utils::bestIdForContact(contactInfo);
         if (accountInfo.profileInfo.type == lrc::api::profile::Type::SIP &&
             contactInfo.profileInfo.type == lrc::api::profile::Type::TEMPORARY) {
-            photo = Utils::fallbackAvatar(IMAGE_SIZE, QString(), QString());
+            photo = Utils::fallbackAvatar(Utils::getRelativeImageSize(), QString(), QString());
         } else if (contactInfo.profileInfo.type == lrc::api::profile::Type::TEMPORARY && contactInfo.profileInfo.uri.isEmpty()) {
-            photo = Utils::fallbackAvatar(IMAGE_SIZE, QString(), QString());
+            photo = Utils::fallbackAvatar(Utils::getRelativeImageSize(), QString(), QString());
         } else if (!contactPhoto.isEmpty()) {
             QByteArray byteArray = contactPhoto.toLocal8Bit();
             photo = personPhoto(byteArray, nullptr).value<QImage>();
             if (photo.isNull()) {
                 auto avatarName = contactInfo.profileInfo.uri == bestName ? QString() : bestName;
-                photo = Utils::fallbackAvatar(IMAGE_SIZE,
+                photo = Utils::fallbackAvatar(Utils::getRelativeImageSize(),
                                               "ring:" + contactInfo.profileInfo.uri,
                                               avatarName);
             }
         } else {
             auto avatarName = contactInfo.profileInfo.uri == bestName ? QString() : bestName;
-            photo = Utils::fallbackAvatar(IMAGE_SIZE,
+            photo = Utils::fallbackAvatar(Utils::getRelativeImageSize(),
                                           "ring:" + contactInfo.profileInfo.uri,
                                           avatarName);
         }
     }
     catch (...) {}
-    return QVariant::fromValue(Utils::scaleAndFrame(photo, IMAGE_SIZE));
+    return QVariant::fromValue(photo);
 }

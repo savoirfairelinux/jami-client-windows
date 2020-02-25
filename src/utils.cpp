@@ -629,7 +629,7 @@ Utils::fallbackAvatar(const QSize size, const QString& canonicalUriStr, const QS
 
     // We draw a circle with this color
     QPainter painter(&avatar);
-    painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
+    painter.setRenderHints(QPainter::TextAntialiasing | QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
     painter.setPen(Qt::transparent);
     painter.setBrush(avColor.lighter(110));
     painter.drawEllipse(avatar.rect());
@@ -669,7 +669,14 @@ Utils::fallbackAvatar(const QSize size, const QString& canonicalUriStr, const QS
         overlayRect.setHeight(overlayRect.height() - margin);
         painter.drawPixmap(overlayRect, QPixmap(":/images/default_avatar_overlay.svg"));
     }
-
+    //QMessageBox mb("Application Name",
+    //"Hardware failure.\n\nDisk error detected\nDo you want to stop?",
+    //QMessageBox::NoIcon,
+    //QMessageBox::Yes | QMessageBox::Default,
+    //QMessageBox::NoButton,
+    //QMessageBox::NoButton);
+    //mb.setIconPixmap(QPixmap::fromImage(avatar));
+    //mb.exec();
     return avatar;
 }
 
@@ -751,6 +758,16 @@ Utils::setupQRCode(QString ringID, int margin)
     return result;
 }
 
+QSize
+Utils::getRelativeImageSize()
+{
+    return QSize(1920, 1920);
+    if (CURRENT_SCALING_RATIO > 1.0)
+        return QSize(DEFAULT_IMAGE_SIZE.width() * CURRENT_SCALING_RATIO, DEFAULT_IMAGE_SIZE.height() * CURRENT_SCALING_RATIO);
+    else
+        return DEFAULT_IMAGE_SIZE;
+}
+
 float
 Utils::getCurrentScalingRatio()
 {
@@ -823,12 +840,6 @@ QPixmap Utils::generateTintedPixmap(const QPixmap& pix, QColor color)
 }
 
 QImage
-Utils::scaleAndFrame(const QImage photo, const QSize& size)
-{
-    return photo.scaled(size, Qt::KeepAspectRatio, Qt::SmoothTransformation);
-}
-
-QImage
 Utils::accountPhoto(const lrc::api::account::Info& accountInfo, const QSize& size)
 {
     QImage photo;
@@ -844,7 +855,7 @@ Utils::accountPhoto(const lrc::api::account::Info& accountInfo, const QSize& siz
             prefix + accountInfo.profileInfo.uri,
             letterStr);
     }
-    return scaleAndFrame(photo, size);
+    return photo;
 }
 
 void

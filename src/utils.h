@@ -47,7 +47,7 @@
 #include "api/contactmodel.h"
 #include "api/contact.h"
 
-static const QSize IMAGE_SIZE{ 128, 128 };
+static const QSize DEFAULT_IMAGE_SIZE{ 128, 128 };
 static float CURRENT_SCALING_RATIO{ 1.0 };
 
 #ifdef BETA
@@ -101,6 +101,7 @@ bool isContactValid(const QString& contactUid, const lrc::api::ConversationModel
 bool getReplyMessageBox(QWidget* widget, const QString& title, const QString& text);
 
 // image
+QSize getRelativeImageSize();
 QImage getCirclePhoto(const QImage original, int sizePhoto);
 QImage conversationPhoto(const QString& convUid, const lrc::api::account::Info& accountInfo);
 QColor getAvatarColor(const QString& canonicalUri);
@@ -110,8 +111,7 @@ QByteArray QImageToByteArray(QImage image);
 QByteArray QByteArrayFromFile(const QString& filename);
 QPixmap generateTintedPixmap(const QString& filename, QColor color);
 QPixmap generateTintedPixmap(const QPixmap& pix, QColor color);
-QImage scaleAndFrame(const QImage photo, const QSize& size = IMAGE_SIZE);
-QImage accountPhoto(const lrc::api::account::Info& accountInfo, const QSize& size = IMAGE_SIZE);
+QImage accountPhoto(const lrc::api::account::Info& accountInfo, const QSize& size = getRelativeImageSize());
 QImage cropImage(const QImage& img);
 QPixmap pixmapFromSvg(const QString& svg_resource, const QSize& size);
 QImage setupQRCode(QString ringID, int margin);

@@ -122,7 +122,7 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
 
     QPoint avatarTopLeft(16, 8);
     QPainter painter(this);
-    painter.setRenderHints((QPainter::Antialiasing | QPainter::TextAntialiasing), true);
+    //painter.setRenderHints((QPainter::Antialiasing | QPainter::TextAntialiasing), true);
 
     QStyleOption opt;
     opt.init(this);
@@ -139,7 +139,15 @@ CurrentAccountComboBox::paintEvent(QPaintEvent* e)
     QFontMetrics fontMetricPrimary(fontPrimary);
     QFontMetrics fontMetricSecondary(fontSecondary);
 
-    painter.drawPixmap(avatarTopLeft, currentAccountAvatarImage_);
+    //QMessageBox mb("Application Name",
+    //    "Hardware failure.\n\nDisk error detected\nDo you want to stop?",
+    //    QMessageBox::NoIcon,
+    //    QMessageBox::Yes | QMessageBox::Default,
+    //    QMessageBox::NoButton,
+    //    QMessageBox::NoButton);
+    //mb.setIconPixmap(QPixmap::fromImage(currentAccountAvatarImage_));
+    //mb.exec();
+    painter.drawImage(avatarTopLeft, currentAccountAvatarImage_);
 
     auto& accInfo = LRCInstance::getCurrentAccountInfo();
 
@@ -246,11 +254,30 @@ CurrentAccountComboBox::connectVoiceMail()
 void
 CurrentAccountComboBox::importLabelPhoto(int index)
 {
+    QMessageBox mb("Application Name",
+    "Hardware failure.\n\nDisk error detected\nDo you want to stop?",
+    QMessageBox::NoIcon,
+    QMessageBox::Yes | QMessageBox::Default,
+    QMessageBox::NoButton,
+    QMessageBox::NoButton);
+    mb.setIconPixmap(QPixmap::fromImage(accountListModel_->data(
+        accountListModel_->index(index, 0),
+        AccountListModel::Role::Picture)
+        .value<QImage>()));
+    mb.exec();
     currentAccountAvatarImage_ = accountListModel_->data(
             accountListModel_->index(index, 0),
             AccountListModel::Role::Picture)
-        .value<QPixmap>()
-        .scaledToHeight(avatarSize_ - 4, Qt::SmoothTransformation);
+        .value<QImage>()
+        .scaled(avatarSize_ - 4, avatarSize_ - 4, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
+    QMessageBox mb2("Application Name",
+        "Hardware failure.\n\nDisk error detected\nDo you want to stop?",
+        QMessageBox::NoIcon,
+        QMessageBox::Yes | QMessageBox::Default,
+        QMessageBox::NoButton,
+        QMessageBox::NoButton);
+    mb2.setIconPixmap(QPixmap::fromImage(currentAccountAvatarImage_));
+    mb2.exec();
 }
 
 void

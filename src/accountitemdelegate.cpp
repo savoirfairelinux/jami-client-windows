@@ -40,7 +40,7 @@ AccountItemDelegate::paint(QPainter* painter,
     const QModelIndex& index) const
 {
     QStyleOptionViewItem opt(option);
-    painter->setRenderHint(QPainter::Antialiasing);
+    //painter->setRenderHint(QPainter::Antialiasing);
 
     // Not having focus removes dotted lines around the item
     if (opt.state & QStyle::State_HasFocus) {
@@ -104,7 +104,7 @@ AccountItemDelegate::paint(QPainter* painter,
     );
     drawDecoration(painter, opt, rectAvatar,
         QPixmap::fromImage(index.data(AccountListModel::Role::Picture).value<QImage>())
-        .scaled(avatarSize_, avatarSize_, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+        .scaled(avatarSize_, avatarSize_, Qt::KeepAspectRatio));
 
     auto status = index.data(static_cast<int>(AccountListModel::Role::Status)).value<int>();
     auto isPresent = Utils::toEnum<lrc::api::account::Status>(status) == lrc::api::account::Status::REGISTERED;

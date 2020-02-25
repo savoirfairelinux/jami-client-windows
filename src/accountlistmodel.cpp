@@ -68,8 +68,17 @@ QVariant AccountListModel::data(const QModelIndex &index, int role) const
     case Role::Status:
         return QVariant(Utils::toUnderlyingValue<lrc::api::account::Status>(accountInfo.status));
     case Role::Picture:
-    case Qt::DecorationRole:
+    case Qt::DecorationRole: {
+        //QMessageBox mb("Application Name",
+        //    "Hardware failure.\n\nDisk error detected\nDo you want to stop?",
+        //    QMessageBox::NoIcon,
+        //    QMessageBox::Yes | QMessageBox::Default,
+        //    QMessageBox::NoButton,
+        //    QMessageBox::NoButton);
+        //mb.setIconPixmap(QPixmap::fromImage(Utils::accountPhoto(accountInfo)));
+        //mb.exec();
         return Utils::accountPhoto(accountInfo);
+    }
     case Role::ID:
         return QVariant(accountInfo.id);
     }

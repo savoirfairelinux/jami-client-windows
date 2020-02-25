@@ -102,7 +102,7 @@ ConversationItemDelegate::paint(QPainter* painter
         // Avatar drawing
         drawDecoration(painter, opt, rectAvatar,
             QPixmap::fromImage(index.data(Qt::DecorationRole).value<QImage>())
-            .scaled(sizeImage_, sizeImage_, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+            .scaled(sizeImage_, sizeImage_, Qt::KeepAspectRatio));
     }
 
     QFont font(painter->font());

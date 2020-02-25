@@ -69,7 +69,7 @@ private:
     AccountItemDelegate* accountItemDelegate_;
     std::unique_ptr<AccountListModel> accountListModel_;
 
-    QPixmap currentAccountAvatarImage_;
+    QImage currentAccountAvatarImage_;
     int cellHeight_ = 60; // [screen awareness]
     int avatarSize_ = 48; // [screen awareness]
     const int elidConst = 35; // [screen awareness]
