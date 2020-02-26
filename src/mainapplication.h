@@ -20,12 +20,14 @@
 
 #pragma once
 
-#include "splashscreen.h"
+//#include "splashscreen.h"
 
-#include <QApplication>
 #include <QFile>
+#include <QGuiApplication>
+#include <QQmlEngine>
+#include <QQmlApplicationEngine>
 
-class MainApplication :public QApplication
+class MainApplication :public QGuiApplication
 {
     Q_OBJECT
 
@@ -48,10 +50,11 @@ private:
     void loadTranslations();
     void initLrc();
     void processInputArgument(bool& startMinimized);
-    void setApplicationStyleSheet();
     bool startAccountMigration();
     void setApplicationFont();
+    void qmlInitialization();
 
-    std::unique_ptr<SplashScreen> splash_;
+    //std::unique_ptr<SplashScreen> splash_;
     std::unique_ptr<QFile> debugFile_;
+    std::unique_ptr<QQmlApplicationEngine> engine_;
 };
