@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c08ba11_97ceb65b",
+        "filename": "src/rendermanager.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2020-02-26T18:58:51Z",
+      "side": 1,
+      "message": "no goto",
+      "range": {
+        "startLine": 154,
+        "startChar": 12,
+        "endLine": 154,
+        "endChar": 35
+      },
+      "revId": "cdf26c6eff79cc870cbdd8611959f1ca63755a97",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2f6f55f_4139f8d1",
+        "filename": "src/rendermanager.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2020-02-26T18:58:51Z",
+      "side": 1,
+      "message": "no indentation here",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 22
+      },
+      "revId": "cdf26c6eff79cc870cbdd8611959f1ca63755a97",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
