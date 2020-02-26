@@ -20,12 +20,15 @@
 
 #include "mainapplication.h"
 
-#include "mainwindow.h"
-#include "accountmigrationdialog.h"
+#include "globalsystemtray.h"
+//#include "accountmigrationdialog.h"
 #include "globalinstances.h"
-#include "lrcinstance.h"
+#include "lrcinterface.h"
 #include "pixbufmanipulator.h"
 #include "utils.h"
+#include "qmlclipboardadapter.h"
+
+#include <QFontDatabase>
 
 #include <locale.h>
 
@@ -38,20 +41,21 @@
 #endif
 
 MainApplication::MainApplication(int &argc, char** argv) :
-    QApplication(argc, argv)
+    QGuiApplication(argc, argv),
+    engine_(std::make_unique<QQmlApplicationEngine>())
 {
-    QObject::connect(this, &QApplication::aboutToQuit, [this] { exitApp(); });
+    QObject::connect(this, &QGuiApplication::aboutToQuit, [this] { exitApp(); });
 }
 
 void
 MainApplication::applicationInitialization()
 {
     // some attributes are needed to be set before the creation of the sapplication
-    QApplication::setApplicationName("Ring");
-    QApplication::setOrganizationDomain("jami.net");
-    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
-    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-    QApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor);
+    QGuiApplication::setApplicationName("Ring");
+    QGuiApplication::setOrganizationDomain("jami.net");
+    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
+    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+    QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor);
 }
 
 void
@@ -174,17 +178,17 @@ void
 MainApplication::initLrc()
 {
     // init mainwindow and finish splash when mainwindow shows up
-    splash_ = std::make_unique<SplashScreen>();
+    //splash_ = std::make_unique<SplashScreen>();
     std::atomic_bool isMigrating(false);
     LRCInstance::init(
         [this, &isMigrating] {
-            splash_->setupUI(
-                QPixmap(":/images/logo-jami-standard-coul.png"),
-                QString("Jami - ") + QObject::tr("Migration needed"),
-                QObject::tr("Migration in progress... This may take a while."),
-                QColor(232, 232, 232)
-            );
-            splash_->show();
+            //splash_->setupUI(
+            //    QPixmap(":/images/logo-jami-standard-coul.png"),
+            //    QString("Jami - ") + QObject::tr("Migration needed"),
+            //    QObject::tr("Migration in progress... This may take a while."),
+            //    QColor(232, 232, 232)
+            //);
+            //splash_->show();
             isMigrating = true;
             while (isMigrating) {
                 this->processEvents();
@@ -196,7 +200,7 @@ MainApplication::initLrc()
             }
             isMigrating = false;
         });
-    splash_->hide();
+    //splash_->hide();
     LRCInstance::subscribeToDebugReceived();
     LRCInstance::getAPI().holdConferences = false;
 }
@@ -233,37 +237,21 @@ MainApplication::processInputArgument(bool& startMinimized)
     }
 }
 
-void
-MainApplication::setApplicationStyleSheet()
-{
-#ifndef DEBUG_STYLESHEET
-#ifdef Q_OS_LINUX
-    QFile file(":/stylesheet.linux.css");
-#else
-    QFile file(":/stylesheet.css");
-#endif
-    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        setStyleSheet(file.readAll());
-        file.close();
-    }
-#endif
-}
-
 bool
 MainApplication::startAccountMigration()
 {
-    auto accountList = LRCInstance::accountModel().getAccountList();
+    //auto accountList = LRCInstance::accountModel().getAccountList();
 
-    for (const QString& i : accountList) {
-        auto accountStatus = LRCInstance::accountModel().getAccountInfo(i).status;
-        if (accountStatus == lrc::api::account::Status::ERROR_NEED_MIGRATION) {
-            std::unique_ptr<AccountMigrationDialog> dialog = std::make_unique<AccountMigrationDialog>(nullptr, i);
-            int status = dialog->exec();
+    //for (const QString& i : accountList) {
+    //    auto accountStatus = LRCInstance::accountModel().getAccountInfo(i).status;
+    //    if (accountStatus == lrc::api::account::Status::ERROR_NEED_MIGRATION) {
+    //        std::unique_ptr<AccountMigrationDialog> dialog = std::make_unique<AccountMigrationDialog>(nullptr, i);
+    //        int status = dialog->exec();
 
-            //migration failed
-            return status == 0 ? false : true;
-        }
-    }
+    //        //migration failed
+    //        return status == 0 ? false : true;
+    //    }
+    //}
     return true;
 }
 
@@ -274,6 +262,29 @@ MainApplication::setApplicationFont()
     font.setFamily("Segoe UI");
     setFont(font);
     QFontDatabase::addApplicationFont(":/images/FontAwesome.otf");
+}
+
+void
+MainApplication::qmlInitialization()
+{
+    // for deployment and register types
+    qmlRegisterType<QmlClipboardAdapter>("MyQClipboard", 1, 0, "QClipboard");
+    qmlRegisterSingletonType<AccountModelAdapter>(
+        "net.jami.AccountModelAdapter", 1, 0, "AccountModelAdapter",
+        [](QQmlEngine* engine, QJSEngine* scriptEngine) -> QObject* {
+            Q_UNUSED(engine);
+            Q_UNUSED(scriptEngine);
+            AccountModelAdapter* example = new AccountModelAdapter();
+            return example;
+        });
+    qmlRegisterType<ConversationModelAdapter>(
+        "net.jami.ConversationModelAdapter", 1, 0, "ConversationModelAdapter");
+
+    QQmlApplicationEngine engine;
+
+    engine_->load(QUrl(QStringLiteral("qrc:/src/MainApplicationWindow.qml")));
+    engine_->load(QUrl(QStringLiteral("qrc:/src/KeyBoardShortcutTable.qml")));
+    engine_->load(QUrl(QStringLiteral("qrc:/src/UserProfileCard.qml")));
 }
 
 bool
@@ -300,9 +311,6 @@ MainApplication::applicationSetup()
     // set font
     setApplicationFont();
 
-    // set style sheet
-    setApplicationStyleSheet();
-
 #if defined _MSC_VER && !COMPILE_ONLY
     gnutls_global_init();
 #endif
@@ -312,9 +320,6 @@ MainApplication::applicationSetup()
 
     // init lrc and its possible migration ui
     initLrc();
-    // init mainwindow and finish splash when mainwindow shows up
-    // release its source after
-    splash_->finish(&MainWindow::instance());
 
     // process input argument
     bool startMinimized{ false };
@@ -327,14 +332,8 @@ MainApplication::applicationSetup()
     // create jami.net settings in Registry if it is not presented
     QSettings settings("jami.net", "Jami");
 
-    // set mainwindow show size
-    if (not startMinimized) {
-        MainWindow::instance().showWindow();
-    }
-    else {
-        MainWindow::instance().showMinimized();
-        MainWindow::instance().hide();
-    }
+    // Initialize qml components
+    qmlInitialization();
 
     return true;
 }
