@@ -20,11 +20,8 @@
 
 #include "mainapplication.h"
 #include "runguard.h"
-#include "qmlclipboardadapter.h"
 
 #include <QCryptographicHash>
-#include <QQmlEngine>
-#include <QQmlApplicationEngine>
 
 int
 main(int argc, char* argv[])
@@ -41,8 +38,8 @@ main(int argc, char* argv[])
     // runguard to make sure that only one instance runs at a time
     // Note: needs to be after the creation of the application
     QCryptographicHash appData(QCryptographicHash::Sha256);
-    appData.addData(QApplication::applicationName().toUtf8());
-    appData.addData(QApplication::organizationDomain().toUtf8());
+    appData.addData(QGuiApplication::applicationName().toUtf8());
+    appData.addData(QGuiApplication::organizationDomain().toUtf8());
     RunGuard guard(appData.result());
     if (!guard.tryToRun()) {
         // no need to exitApp since app is not set up
@@ -54,23 +51,6 @@ main(int argc, char* argv[])
         a.exitApp();
         return 0;
     }
-
-    // for deployment and register types
-    qmlRegisterType<QmlClipboardAdapter>("MyQClipboard", 1, 0, "QClipboard");
-    qmlRegisterSingletonType<AccountModelAdapter>(
-        "net.jami.AccountModelAdapter", 1, 0, "AccountModelAdapter",
-        [](QQmlEngine *engine, QJSEngine *scriptEngine) -> QObject* {
-            Q_UNUSED(engine);
-            Q_UNUSED(scriptEngine);
-            AccountModelAdapter *example = new AccountModelAdapter();
-            return example;
-        });
-    qmlRegisterType<ConversationModelAdapter>(
-        "net.jami.ConversationModelAdapter", 1, 0, "ConversationModelAdapter");
-
-    QQmlApplicationEngine engine;
-    //engine.load(QUrl(QStringLiteral("qrc:/src/KeyBoardShortcutTable.qml")));
-    //engine.load(QUrl(QStringLiteral("qrc:/src/UserProfileCard.qml")));
 
     // exec the application
     auto ret = a.exec();
