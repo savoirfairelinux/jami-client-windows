@@ -73,7 +73,7 @@ private:
 
     QNetworkAccessManager manager_;
     QNetworkReply* reply_;
-    UpdateDownloadDialog progressBar_;
+    //UpdateDownloadDialog progressBar_;
     std::unique_ptr<QFile> file_;
 
 };
