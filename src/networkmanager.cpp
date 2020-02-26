@@ -78,13 +78,13 @@ NetWorkManager::getRequestFile(const QUrl& fileUrl,
     connect(reply_, SIGNAL(sslErrors(const QList<QSslError>&)), this, SLOT(slotSslErrors(QList<QSslError>)));
 #endif
 
-    if (withUI) {
-        connect(&progressBar_, &UpdateDownloadDialog::isCanceled,
-            [this] {
-                cancelRequest();
-            });
-        progressBar_.exec();
-    }
+    //if (withUI) {
+    //    connect(&progressBar_, &UpdateDownloadDialog::isCanceled,
+    //        [this] {
+    //            cancelRequest();
+    //        });
+    //    progressBar_.exec();
+    //}
 }
 
 void
@@ -103,18 +103,18 @@ NetWorkManager::refresh(bool requestInFile)
 void
 NetWorkManager::slotDownloadProgress(qint64 bytesReceived, qint64 bytesTotal)
 {
-    // If the number of bytes to be downloaded is not known, bytesTotal will be -1.
-    if (bytesTotal < 0) {
-        qDebug() << "Download File Size is Unknown";
-        progressBar_.setMaximum(0);
-        progressBar_.setValue(0);
-        progressBar_.update(QString("0, File Size is Unknown"));
-        return;
-    }
-    progressBar_.setMaximum(bytesTotal);
-    progressBar_.setValue(bytesReceived);
+    //// If the number of bytes to be downloaded is not known, bytesTotal will be -1.
+    //if (bytesTotal < 0) {
+    //    qDebug() << "Download File Size is Unknown";
+    //    progressBar_.setMaximum(0);
+    //    progressBar_.setValue(0);
+    //    progressBar_.update(QString("0, File Size is Unknown"));
+    //    return;
+    //}
+    //progressBar_.setMaximum(bytesTotal);
+    //progressBar_.setValue(bytesReceived);
 
-    progressBar_.update(Utils::humanFileSize(bytesReceived) + " / " + Utils::humanFileSize(bytesTotal));
+    //progressBar_.update(Utils::humanFileSize(bytesReceived) + " / " + Utils::humanFileSize(bytesTotal));
 }
 
 void
@@ -181,10 +181,10 @@ NetWorkManager::getRequestReply(const QUrl & fileUrl,
 void
 NetWorkManager::resetProgressBar()
 {
-    progressBar_.setMaximum(0);
-    progressBar_.setValue(0);
-    progressBar_.update("0");
-    progressBar_.done(0);
+    //progressBar_.setMaximum(0);
+    //progressBar_.setValue(0);
+    //progressBar_.update("0");
+    //progressBar_.done(0);
 }
 
 void
