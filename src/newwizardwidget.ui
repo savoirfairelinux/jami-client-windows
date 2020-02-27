@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>768</width>
-    <height>873</height>
+    <width>469</width>
+    <height>634</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>16777215</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -58,21 +70,21 @@
         <item>
          <widget class="QWidget" name="verticalWidget" native="true">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
           <property name="minimumSize">
            <size>
-            <width>512</width>
-            <height>638</height>
+            <width>0</width>
+            <height>0</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>512</width>
-            <height>638</height>
+            <width>16777215</width>
+            <height>16777215</height>
            </size>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -99,7 +111,7 @@
              <item>
               <widget class="QStackedWidget" name="stackedWidget">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
@@ -108,7 +120,7 @@
                 <string notr="true"/>
                </property>
                <property name="currentIndex">
-                <number>6</number>
+                <number>2</number>
                </property>
                <widget class="QWidget" name="welcomePage">
                 <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -1196,10 +1208,7 @@ instead of using your ID.</string>
                        </property>
                        <item>
                         <widget class="QWidget" name="SIPgridWidget" native="true">
-                         <layout class="QVBoxLayout" name="verticalLayout_100">
-                          <property name="spacing">
-                           <number>3</number>
-                          </property>
+                         <layout class="QVBoxLayout" name="verticalLayout_7">
                           <property name="leftMargin">
                            <number>0</number>
                           </property>
@@ -1227,8 +1236,8 @@ instead of using your ID.</string>
                               </property>
                               <property name="minimumSize">
                                <size>
-                                <width>261</width>
-                                <height>261</height>
+                                <width>240</width>
+                                <height>240</height>
                                </size>
                               </property>
                               <property name="styleSheet">
@@ -1239,20 +1248,106 @@ instead of using your ID.</string>
                            </layout>
                           </item>
                           <item>
-                           <spacer name="verticalSpacer_16">
+                           <spacer name="verticalSpacer_13">
                             <property name="orientation">
                              <enum>Qt::Vertical</enum>
                             </property>
                             <property name="sizeType">
-                             <enum>QSizePolicy::Fixed</enum>
+                             <enum>QSizePolicy::Minimum</enum>
                             </property>
                             <property name="sizeHint" stdset="0">
                              <size>
                               <width>20</width>
-                              <height>6</height>
+                              <height>3</height>
                              </size>
                             </property>
                            </spacer>
+                          </item>
+                          <item>
+                           <widget class="QWidget" name="SIPfullNameWidget" native="true">
+                            <property name="minimumSize">
+                             <size>
+                              <width>0</width>
+                              <height>30</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>16777215</width>
+                              <height>16777215</height>
+                             </size>
+                            </property>
+                            <layout class="QHBoxLayout" name="horizontalLayout_13">
+                             <property name="spacing">
+                              <number>0</number>
+                             </property>
+                             <property name="leftMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="topMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="rightMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>0</number>
+                             </property>
+                             <item>
+                              <spacer name="horizontalSpacer_17">
+                               <property name="orientation">
+                                <enum>Qt::Horizontal</enum>
+                               </property>
+                               <property name="sizeHint" stdset="0">
+                                <size>
+                                 <width>40</width>
+                                 <height>20</height>
+                                </size>
+                               </property>
+                              </spacer>
+                             </item>
+                             <item>
+                              <widget class="QLineEdit" name="SIPfullNameEdit">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>261</width>
+                                 <height>30</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>200</width>
+                                 <height>16777215</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <pointsize>10</pointsize>
+                                </font>
+                               </property>
+                               <property name="toolTip">
+                                <string/>
+                               </property>
+                               <property name="placeholderText">
+                                <string>Profile name</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <spacer name="horizontalSpacer_18">
+                               <property name="orientation">
+                                <enum>Qt::Horizontal</enum>
+                               </property>
+                               <property name="sizeHint" stdset="0">
+                                <size>
+                                 <width>40</width>
+                                 <height>20</height>
+                                </size>
+                               </property>
+                              </spacer>
+                             </item>
+                            </layout>
+                           </widget>
                           </item>
                          </layout>
                         </widget>
@@ -1282,534 +1377,265 @@ instead of using your ID.</string>
                      <number>0</number>
                     </property>
                     <item>
-                     <widget class="QWidget" name="SIPfullNameWidget" native="true">
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>30</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_13">
-                       <property name="spacing">
-                        <number>0</number>
-                       </property>
-                       <property name="leftMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="topMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="rightMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="bottomMargin">
-                        <number>0</number>
-                       </property>
-                       <item>
-                        <spacer name="horizontalSpacer_17">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
-                        <widget class="QLineEdit" name="SIPfullNameEdit">
-                         <property name="minimumSize">
-                          <size>
-                           <width>261</width>
-                           <height>30</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>200</width>
-                           <height>16777215</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <pointsize>10</pointsize>
-                          </font>
-                         </property>
-                         <property name="toolTip">
-                          <string/>
-                         </property>
-                         <property name="placeholderText">
-                          <string>Profile name</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <spacer name="horizontalSpacer_18">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                    <item>
-                     <spacer name="verticalSpacer_17">
+                     <spacer name="verticalSpacer_14">
                       <property name="orientation">
                        <enum>Qt::Vertical</enum>
                       </property>
                       <property name="sizeType">
-                       <enum>QSizePolicy::Fixed</enum>
+                       <enum>QSizePolicy::MinimumExpanding</enum>
                       </property>
                       <property name="sizeHint" stdset="0">
                        <size>
                         <width>20</width>
-                        <height>5</height>
+                        <height>12</height>
                        </size>
                       </property>
                      </spacer>
                     </item>
                     <item>
-                     <widget class="QLabel" name="SIPaccountSectionLabel">
-                      <property name="font">
-                       <font>
-                        <pointsize>13</pointsize>
-                       </font>
+                     <layout class="QGridLayout" name="gridLayout_2">
+                      <property name="sizeConstraint">
+                       <enum>QLayout::SetDefaultConstraint</enum>
                       </property>
-                      <property name="styleSheet">
-                       <string notr="true">color: rgb(63, 63, 63)</string>
+                      <property name="topMargin">
+                       <number>0</number>
                       </property>
-                      <property name="text">
-                       <string>SIP Account</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QWidget" name="SIPaccountSectionInnerWidget" native="true">
-                      <property name="styleSheet">
-                       <string notr="true"/>
-                      </property>
-                      <layout class="QVBoxLayout" name="verticalLayout_13">
-                       <property name="topMargin">
-                        <number>0</number>
-                       </property>
-                       <item>
-                        <layout class="QGridLayout" name="gridLayout_8">
-                         <property name="topMargin">
-                          <number>0</number>
-                         </property>
-                         <property name="spacing">
-                          <number>7</number>
-                         </property>
-                         <item row="0" column="0">
-                          <widget class="QWidget" name="SIPverticalWidget1" native="true">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Fixed" vsizetype="MinimumExpanding">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <layout class="QVBoxLayout" name="verticalLayout_14">
-                            <property name="spacing">
-                             <number>2</number>
-                            </property>
-                            <property name="leftMargin">
-                             <number>0</number>
-                            </property>
-                            <property name="topMargin">
-                             <number>0</number>
-                            </property>
-                            <property name="rightMargin">
-                             <number>0</number>
-                            </property>
-                            <property name="bottomMargin">
-                             <number>0</number>
-                            </property>
-                            <item>
-                             <widget class="QWidget" name="SIPsignUpWidget" native="true">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="minimumSize">
-                               <size>
-                                <width>0</width>
-                                <height>10</height>
-                               </size>
-                              </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>16777215</width>
-                                <height>16777215</height>
-                               </size>
-                              </property>
-                              <layout class="QHBoxLayout" name="horizontalLayout_15">
-                               <property name="spacing">
-                                <number>0</number>
-                               </property>
-                               <property name="leftMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="topMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="rightMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="bottomMargin">
-                                <number>0</number>
-                               </property>
-                               <item>
-                                <spacer name="horizontalSpacer_21">
-                                 <property name="orientation">
-                                  <enum>Qt::Horizontal</enum>
-                                 </property>
-                                 <property name="sizeType">
-                                  <enum>QSizePolicy::Expanding</enum>
-                                 </property>
-                                 <property name="sizeHint" stdset="0">
-                                  <size>
-                                   <width>40</width>
-                                   <height>5</height>
-                                  </size>
-                                 </property>
-                                </spacer>
-                               </item>
-                              </layout>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QWidget" name="SIPusernameWidget" native="true">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="minimumSize">
-                               <size>
-                                <width>0</width>
-                                <height>25</height>
-                               </size>
-                              </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>16777215</width>
-                                <height>16777215</height>
-                               </size>
-                              </property>
-                              <layout class="QHBoxLayout" name="SIPusernameLayout">
-                               <property name="spacing">
-                                <number>0</number>
-                               </property>
-                               <property name="leftMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="topMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="rightMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="bottomMargin">
-                                <number>0</number>
-                               </property>
-                               <item>
-                                <widget class="QLineEdit" name="SIPservernameEdit">
-                                 <property name="minimumSize">
-                                  <size>
-                                   <width>261</width>
-                                   <height>30</height>
-                                  </size>
-                                 </property>
-                                 <property name="maximumSize">
-                                  <size>
-                                   <width>200</width>
-                                   <height>16777215</height>
-                                  </size>
-                                 </property>
-                                 <property name="font">
-                                  <font>
-                                   <pointsize>10</pointsize>
-                                  </font>
-                                 </property>
-                                 <property name="toolTip">
-                                  <string>SIP Server edit</string>
-                                 </property>
-                                 <property name="accessibleName">
-                                  <string/>
-                                 </property>
-                                 <property name="placeholderText">
-                                  <string>Server</string>
-                                 </property>
-                                 <property name="clearButtonEnabled">
-                                  <bool>true</bool>
-                                 </property>
-                                </widget>
-                               </item>
-                              </layout>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QWidget" name="SIPproxyWidget" native="true">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="minimumSize">
-                               <size>
-                                <width>0</width>
-                                <height>25</height>
-                               </size>
-                              </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>16777215</width>
-                                <height>16777215</height>
-                               </size>
-                              </property>
-                              <layout class="QHBoxLayout" name="SIPproxyLayout">
-                               <property name="spacing">
-                                <number>0</number>
-                               </property>
-                               <property name="leftMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="topMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="rightMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="bottomMargin">
-                                <number>0</number>
-                               </property>
-                               <item>
-                                <widget class="QLineEdit" name="SIPproxyEdit">
-                                 <property name="minimumSize">
-                                  <size>
-                                   <width>261</width>
-                                   <height>30</height>
-                                  </size>
-                                 </property>
-                                 <property name="maximumSize">
-                                  <size>
-                                   <width>200</width>
-                                   <height>16777215</height>
-                                  </size>
-                                 </property>
-                                 <property name="font">
-                                  <font>
-                                   <pointsize>10</pointsize>
-                                  </font>
-                                 </property>
-                                 <property name="toolTip">
-                                  <string>SIP proxy input</string>
-                                 </property>
-                                 <property name="accessibleName">
-                                  <string/>
-                                 </property>
-                                 <property name="accessibleDescription">
-                                  <string>SIP proxy text entry</string>
-                                 </property>
-                                 <property name="echoMode">
-                                  <enum>QLineEdit::Normal</enum>
-                                 </property>
-                                 <property name="placeholderText">
-                                  <string>Proxy</string>
-                                 </property>
-                                 <property name="clearButtonEnabled">
-                                  <bool>false</bool>
-                                 </property>
-                                </widget>
-                               </item>
-                              </layout>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QWidget" name="SIPpassWidget" native="true">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="minimumSize">
-                               <size>
-                                <width>0</width>
-                                <height>25</height>
-                               </size>
-                              </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>16777215</width>
-                                <height>16777215</height>
-                               </size>
-                              </property>
-                              <layout class="QHBoxLayout" name="SIPpassLayout">
-                               <property name="spacing">
-                                <number>0</number>
-                               </property>
-                               <property name="leftMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="topMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="rightMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="bottomMargin">
-                                <number>0</number>
-                               </property>
-                               <item>
-                                <widget class="QLineEdit" name="SIPusernameEdit">
-                                 <property name="minimumSize">
-                                  <size>
-                                   <width>261</width>
-                                   <height>30</height>
-                                  </size>
-                                 </property>
-                                 <property name="maximumSize">
-                                  <size>
-                                   <width>200</width>
-                                   <height>16777215</height>
-                                  </size>
-                                 </property>
-                                 <property name="font">
-                                  <font>
-                                   <pointsize>10</pointsize>
-                                  </font>
-                                 </property>
-                                 <property name="toolTip">
-                                  <string>SIP username input</string>
-                                 </property>
-                                 <property name="accessibleName">
-                                  <string/>
-                                 </property>
-                                 <property name="accessibleDescription">
-                                  <string>SIP Password text entry</string>
-                                 </property>
-                                 <property name="echoMode">
-                                  <enum>QLineEdit::Normal</enum>
-                                 </property>
-                                 <property name="placeholderText">
-                                  <string>Username</string>
-                                 </property>
-                                 <property name="clearButtonEnabled">
-                                  <bool>false</bool>
-                                 </property>
-                                </widget>
-                               </item>
-                              </layout>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QWidget" name="SIPconfPassWidget" native="true">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="minimumSize">
-                               <size>
-                                <width>0</width>
-                                <height>25</height>
-                               </size>
-                              </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>16777215</width>
-                                <height>16777215</height>
-                               </size>
-                              </property>
-                              <layout class="QHBoxLayout" name="SIPconfirmPassLabel">
-                               <property name="spacing">
-                                <number>0</number>
-                               </property>
-                               <property name="leftMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="topMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="rightMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="bottomMargin">
-                                <number>0</number>
-                               </property>
-                               <item>
-                                <widget class="QLineEdit" name="SIPpasswordEdit">
-                                 <property name="minimumSize">
-                                  <size>
-                                   <width>261</width>
-                                   <height>30</height>
-                                  </size>
-                                 </property>
-                                 <property name="maximumSize">
-                                  <size>
-                                   <width>200</width>
-                                   <height>16777215</height>
-                                  </size>
-                                 </property>
-                                 <property name="font">
-                                  <font>
-                                   <pointsize>10</pointsize>
-                                  </font>
-                                 </property>
-                                 <property name="toolTip">
-                                  <string>SIP Password text input</string>
-                                 </property>
-                                 <property name="accessibleName">
-                                  <string/>
-                                 </property>
-                                 <property name="accessibleDescription">
-                                  <string>SIP Password text input</string>
-                                 </property>
-                                 <property name="echoMode">
-                                  <enum>QLineEdit::PasswordEchoOnEdit</enum>
-                                 </property>
-                                 <property name="placeholderText">
-                                  <string>Password</string>
-                                 </property>
-                                 <property name="clearButtonEnabled">
-                                  <bool>false</bool>
-                                 </property>
-                                </widget>
-                               </item>
-                              </layout>
-                             </widget>
-                            </item>
-                           </layout>
-                          </widget>
-                         </item>
-                        </layout>
-                       </item>
-                      </layout>
-                     </widget>
+                      <item row="0" column="2">
+                       <spacer name="horizontalSpacer_4">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item row="0" column="0">
+                       <spacer name="horizontalSpacer_8">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item row="5" column="1">
+                       <spacer name="verticalSpacer_2">
+                        <property name="orientation">
+                         <enum>Qt::Vertical</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>20</width>
+                          <height>40</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item row="0" column="1">
+                       <widget class="QLabel" name="SIPaccountSectionLabel">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>16777215</width>
+                          <height>16777215</height>
+                         </size>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>13</pointsize>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">color: rgb(63, 63, 63)</string>
+                        </property>
+                        <property name="text">
+                         <string>SIP Account</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="2" column="1">
+                       <layout class="QHBoxLayout" name="horizontalLayout_15">
+                        <item>
+                         <widget class="QLineEdit" name="SIPproxyEdit">
+                          <property name="minimumSize">
+                           <size>
+                            <width>261</width>
+                            <height>30</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>200</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
+                          <property name="toolTip">
+                           <string>SIP proxy input</string>
+                          </property>
+                          <property name="accessibleName">
+                           <string/>
+                          </property>
+                          <property name="accessibleDescription">
+                           <string>SIP proxy text entry</string>
+                          </property>
+                          <property name="echoMode">
+                           <enum>QLineEdit::Normal</enum>
+                          </property>
+                          <property name="placeholderText">
+                           <string>Proxy</string>
+                          </property>
+                          <property name="clearButtonEnabled">
+                           <bool>false</bool>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                      <item row="4" column="1">
+                       <layout class="QHBoxLayout" name="horizontalLayout_20">
+                        <item>
+                         <widget class="QLineEdit" name="SIPpasswordEdit">
+                          <property name="minimumSize">
+                           <size>
+                            <width>261</width>
+                            <height>30</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>200</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
+                          <property name="toolTip">
+                           <string>SIP Password text input</string>
+                          </property>
+                          <property name="accessibleName">
+                           <string/>
+                          </property>
+                          <property name="accessibleDescription">
+                           <string>SIP Password text input</string>
+                          </property>
+                          <property name="echoMode">
+                           <enum>QLineEdit::PasswordEchoOnEdit</enum>
+                          </property>
+                          <property name="placeholderText">
+                           <string>Password</string>
+                          </property>
+                          <property name="clearButtonEnabled">
+                           <bool>false</bool>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                      <item row="1" column="1">
+                       <layout class="QHBoxLayout" name="horizontalLayout_14">
+                        <item>
+                         <widget class="QLineEdit" name="SIPservernameEdit">
+                          <property name="minimumSize">
+                           <size>
+                            <width>261</width>
+                            <height>30</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>200</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
+                          <property name="toolTip">
+                           <string>SIP Server edit</string>
+                          </property>
+                          <property name="accessibleName">
+                           <string/>
+                          </property>
+                          <property name="placeholderText">
+                           <string>Server</string>
+                          </property>
+                          <property name="clearButtonEnabled">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                      <item row="3" column="1">
+                       <layout class="QHBoxLayout" name="horizontalLayout_17">
+                        <item>
+                         <widget class="QLineEdit" name="SIPusernameEdit">
+                          <property name="minimumSize">
+                           <size>
+                            <width>261</width>
+                            <height>30</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>200</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
+                          <property name="toolTip">
+                           <string>SIP username input</string>
+                          </property>
+                          <property name="accessibleName">
+                           <string/>
+                          </property>
+                          <property name="accessibleDescription">
+                           <string>SIP Password text entry</string>
+                          </property>
+                          <property name="echoMode">
+                           <enum>QLineEdit::Normal</enum>
+                          </property>
+                          <property name="placeholderText">
+                           <string>Username</string>
+                          </property>
+                          <property name="clearButtonEnabled">
+                           <bool>false</bool>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                     </layout>
                     </item>
                    </layout>
                   </widget>
@@ -1837,6 +1663,9 @@ instead of using your ID.</string>
                   <spacer name="verticalSpacer_18">
                    <property name="orientation">
                     <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Preferred</enum>
                    </property>
                    <property name="sizeHint" stdset="0">
                     <size>
@@ -2031,6 +1860,9 @@ instead of using your ID.</string>
                    <property name="orientation">
                     <enum>Qt::Vertical</enum>
                    </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Preferred</enum>
+                   </property>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>20</width>
@@ -2062,6 +1894,9 @@ instead of using your ID.</string>
                   <spacer name="verticalSpacer_181">
                    <property name="orientation">
                     <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Preferred</enum>
                    </property>
                    <property name="sizeHint" stdset="0">
                     <size>
@@ -2253,6 +2088,9 @@ instead of using your ID.</string>
                    <property name="orientation">
                     <enum>Qt::Vertical</enum>
                    </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Preferred</enum>
+                   </property>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>20</width>
@@ -2284,6 +2122,9 @@ instead of using your ID.</string>
                   <spacer name="verticalSpacer_21">
                    <property name="orientation">
                     <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Preferred</enum>
                    </property>
                    <property name="sizeHint" stdset="0">
                     <size>
@@ -2485,6 +2326,9 @@ instead of using your ID.</string>
                    <property name="orientation">
                     <enum>Qt::Vertical</enum>
                    </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Preferred</enum>
+                   </property>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>20</width>
@@ -2516,6 +2360,9 @@ instead of using your ID.</string>
                   <spacer name="verticalSpacer_22">
                    <property name="orientation">
                     <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::MinimumExpanding</enum>
                    </property>
                    <property name="sizeHint" stdset="0">
                     <size>
@@ -2648,6 +2495,9 @@ instead of using your ID.</string>
                    <property name="orientation">
                     <enum>Qt::Vertical</enum>
                    </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::MinimumExpanding</enum>
+                   </property>
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>20</width>
@@ -2664,6 +2514,9 @@ instead of using your ID.</string>
                   <spacer name="verticalSpacer_3">
                    <property name="orientation">
                     <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Preferred</enum>
                    </property>
                    <property name="sizeHint" stdset="0">
                     <size>
@@ -2687,6 +2540,9 @@ instead of using your ID.</string>
                   <spacer name="verticalSpacer_11">
                    <property name="orientation">
                     <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Preferred</enum>
                    </property>
                    <property name="sizeHint" stdset="0">
                     <size>
@@ -2717,7 +2573,7 @@ instead of using your ID.</string>
                     <enum>Qt::Vertical</enum>
                    </property>
                    <property name="sizeType">
-                    <enum>QSizePolicy::Minimum</enum>
+                    <enum>QSizePolicy::Preferred</enum>
                    </property>
                    <property name="sizeHint" stdset="0">
                     <size>
@@ -2737,6 +2593,9 @@ instead of using your ID.</string>
             <spacer name="verticalSpacer_4">
              <property name="orientation">
               <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Preferred</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>

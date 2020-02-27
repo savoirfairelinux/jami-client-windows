@@ -290,12 +290,18 @@ CallWidget::navigated(bool to)
 void
 CallWidget::updateCustomUI()
 {
-    auto scalingRatio = Utils::getCurrentScalingRatio();
-    if (scalingRatio > 1.0) {
-        ui->messageView->setZoomFactor(1.15);
-    } else {
-        ui->messageView->setZoomFactor(1.0);
-    }
+    //auto scalingRatio = Utils::getCurrentScalingRatio();
+    //if (scalingRatio > 1.0) {
+    //    ui->messageView->setZoomFactor(1.15);
+    //} else {
+    //    ui->messageView->setZoomFactor(1.0);
+    //}
+}
+
+void
+CallWidget::hideStack()
+{
+    ui->stackedWidget->hide();
 }
 
 void
