@@ -275,8 +275,11 @@ Utils::setStackWidget(QStackedWidget* stack, QWidget* widget)
 
 void Utils::showSystemNotification(QWidget* widget, const QString& message, long delay)
 {
-    GlobalSystemTray::instance().showMessage(message, "", QIcon(":images/jami.png"));
-    QApplication::alert(widget, delay);
+    QSettings settings("jami.net", "Jami");
+    if (settings.value(SettingsKey::enableNotifications).toBool()) {
+        GlobalSystemTray::instance().showMessage(message, "", QIcon(":images/jami.png"));
+        QApplication::alert(widget, delay);
+    }
 }
 
 void Utils::showSystemNotification(QWidget* widget,
@@ -284,8 +287,11 @@ void Utils::showSystemNotification(QWidget* widget,
                                    const QString & message,
                                    long delay)
 {
-    GlobalSystemTray::instance().showMessage(sender, message, QIcon(":images/jami.png"));
-    QApplication::alert(widget, delay);
+    QSettings settings("jami.net", "Jami");
+    if (settings.value(SettingsKey::enableNotifications).toBool()) {
+        GlobalSystemTray::instance().showMessage(sender, message, QIcon(":images/jami.png"));
+        QApplication::alert(widget, delay);
+    }
 }
 
 QSize
