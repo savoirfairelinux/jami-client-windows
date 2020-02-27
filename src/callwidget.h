@@ -62,6 +62,9 @@ public:
     // NavWidget
     virtual void navigated(bool to);
     virtual void updateCustomUI();
+
+    void hideStack();
+
 public slots:
     virtual void slotAccountListChanged();
 
