@@ -51,7 +51,6 @@ public:
         return *instance;
     }
     bool init();
-    void show();
     void showWindow();
     void darken();
     void lighten();
@@ -90,6 +89,8 @@ private:
     Qt::WindowState currentWindowState_{ Qt::WindowState::WindowNoState };
 
     void readSettingsFromRegistry();
+
+    bool isScreenChanged_{ false };
 
     QAction* settingsAction_;
     QAction* exitAction_;
