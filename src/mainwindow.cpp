@@ -275,6 +275,11 @@ void MainWindow::showWindow()
         activateWindow();
     }
     raise();
+#if defined(Q_OS_WIN)
+    disconnect(screenChangedConnection_);
+    screenChangedConnection_ = connect(windowHandle(), &QWindow::screenChanged,
+        this, &MainWindow::slotScreenChanged);
+#endif
 }
 
 void
@@ -358,58 +363,72 @@ void MainWindow::readSettingsFromRegistry()
 
 void MainWindow::setWindowSize(ScreenEnum scr, bool firstUse)
 {
-    auto accountList = LRCInstance::accountModel().getAccountList();
-    if (scr == ScreenEnum::WizardScreen && !accountList.size()) {
-        hide();
-        setFixedSize(wizardDialogWidth, wizardDialogHeight);
-    } else {
-        setMinimumSize(mainWindowMinWidth, mainWindowMinHeight);
-        setMaximumSize(QtMaxDimension, QtMaxDimension);
-    }
+    //auto accountList = LRCInstance::accountModel().getAccountList();
+    //if (scr == ScreenEnum::WizardScreen && !accountList.size()) {
+    //    hide();
+    //    setFixedSize(wizardDialogWidth, wizardDialogHeight);
+    //} else {
+    //    setMinimumSize(mainWindowMinWidth, mainWindowMinHeight);
+    //    setMaximumSize(QtMaxDimension, QtMaxDimension);
+    //}
 
-    if (firstUse || !accountList.size()) {
-        auto screenNumber = qApp->desktop()->screenNumber();
-        if (scr == ScreenEnum::WizardScreen) {
-            setGeometry(
-                QStyle::alignedRect(
-                    Qt::LeftToRight,
-                    Qt::AlignCenter,
-                    size(),
-                    qApp->desktop()->screenGeometry(screenNumber)));
-            setWindowFlags(Qt::Dialog);
-            setWindowFlags(windowFlags() & (~Qt::WindowContextHelpButtonHint));
-            adjustSize();
-        } else {
-            setWindowFlags(flags_);
-        }
-        updateGeometry();
-        update();
-        show();
-    }
+    //if (firstUse || !accountList.size()) {
+    //    auto screenNumber = qApp->desktop()->screenNumber();
+    //    if (scr == ScreenEnum::WizardScreen) {
+    //        setGeometry(
+    //            QStyle::alignedRect(
+    //                Qt::LeftToRight,
+    //                Qt::AlignCenter,
+    //                size(),
+    //                qApp->desktop()->screenGeometry(screenNumber)));
+    //        setWindowFlags(Qt::Dialog);
+    //        setWindowFlags(windowFlags() & (~Qt::WindowContextHelpButtonHint));
+    //        adjustSize();
+    //    } else {
+    //        setWindowFlags(flags_);
+    //    }
+    //    updateGeometry();
+    //    update();
+    //    show();
+    //}
 }
 
-void MainWindow::show()
-{
-    QMainWindow::show();
-#if defined(Q_OS_WIN)
-    disconnect(screenChangedConnection_);
-    screenChangedConnection_ = connect(windowHandle(), &QWindow::screenChanged,
-                                       this, &MainWindow::slotScreenChanged);
-#endif
-}
-
+#pragma optimize( "", off )
 void MainWindow::slotScreenChanged(QScreen* screen)
 {
     Utils::setCurrentScalingRatio(screen->logicalDotsPerInchX() / 96);
-    qobject_cast<NavWidget*>(ui->navStack->currentWidget())->updateCustomUI();
-    adjustSize();
-    updateGeometry();
+    //qobject_cast<NavWidget*>(ui->navStack->currentWidget())->updateCustomUI();
+    //Utils::whileBlocking<MainWindow>(this)->blockSignals(true);
+    //showNormal();
+    //Utils::whileBlocking<MainWindow>(this)->blockSignals(false);
+    if (Utils::getCurrentScalingRatio() > 1.0) {
+        //isScreenChanged_ = true;
+        //ui->callwidget->hideStack();
+        //adjustSize();
+        //updateGeometry();
+    }
 }
+#pragma optimize( "", on )
 
 void MainWindow::resizeEvent(QResizeEvent* event)
 {
-    Q_UNUSED(event);
-    qobject_cast<NavWidget*>(ui->navStack->currentWidget())->updateCustomUI();
+    qDebug() << size();
+    qDebug() << "event: " << event->size();
+    //if(event->size() == sizeHint())
+
+    //qobject_cast<NavWidget*>(ui->navStack->currentWidget())->updateCustomUI();
+    //if (Utils::getCurrentScalingRatio() > 1.0) {
+    //    Utils::whileBlocking<MainWindow>(this)->blockSignals(true);
+    //    adjustSize();
+    //    Utils::whileBlocking<MainWindow>(this)->blockSignals(false);
+    //}
+    //if (Utils::getCurrentScalingRatio() > 1.0) {
+    //    adjustSize();
+    //}
+    //resize(sizeHint());
+    if (isScreenChanged_) {
+        //resize(sizeHint());
+    }
 }
 
 void MainWindow::keyReleaseEvent(QKeyEvent* ke)
