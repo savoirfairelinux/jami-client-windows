@@ -49,6 +49,8 @@ MainWindow::MainWindow(QWidget* parent)
 
     setWindowTitle(isBeta ? "Jami (Beta)" : "Jami");
 
+    installEventFilter(this);
+
     for (int i = 0; i < ui->navStack->count(); ++i) {
         if (auto navWidget = dynamic_cast<NavWidget*>(ui->navStack->widget(i))) {
             connect(navWidget, &NavWidget::NavigationRequested,
@@ -275,6 +277,11 @@ void MainWindow::showWindow()
         activateWindow();
     }
     raise();
+#if defined(Q_OS_WIN)
+    disconnect(screenChangedConnection_);
+    screenChangedConnection_ = connect(windowHandle(), &QWindow::screenChanged,
+        this, &MainWindow::slotScreenChanged);
+#endif
 }
 
 void
@@ -360,14 +367,6 @@ void MainWindow::readSettingsFromRegistry()
 void MainWindow::setWindowSize(ScreenEnum scr, bool firstUse)
 {
     auto accountList = LRCInstance::accountModel().getAccountList();
-    if (scr == ScreenEnum::WizardScreen && !accountList.size()) {
-        hide();
-        setFixedSize(wizardDialogWidth, wizardDialogHeight);
-    } else {
-        setMinimumSize(mainWindowMinWidth, mainWindowMinHeight);
-        setMaximumSize(QtMaxDimension, QtMaxDimension);
-    }
-
     if (firstUse || !accountList.size()) {
         auto screenNumber = qApp->desktop()->screenNumber();
         if (scr == ScreenEnum::WizardScreen) {
@@ -389,28 +388,34 @@ void MainWindow::setWindowSize(ScreenEnum scr, bool firstUse)
     }
 }
 
-void MainWindow::show()
-{
-    QMainWindow::show();
-#if defined(Q_OS_WIN)
-    disconnect(screenChangedConnection_);
-    screenChangedConnection_ = connect(windowHandle(), &QWindow::screenChanged,
-                                       this, &MainWindow::slotScreenChanged);
-#endif
-}
-
 void MainWindow::slotScreenChanged(QScreen* screen)
 {
     Utils::setCurrentScalingRatio(screen->logicalDotsPerInchX() / 96);
     qobject_cast<NavWidget*>(ui->navStack->currentWidget())->updateCustomUI();
-    adjustSize();
-    updateGeometry();
+    if (Utils::getCurrentScalingRatio() > 1.0) {
+        isScreenChanged_ = true;
+    }
 }
 
 void MainWindow::resizeEvent(QResizeEvent* event)
 {
-    Q_UNUSED(event);
+    Q_UNUSED(event)
     qobject_cast<NavWidget*>(ui->navStack->currentWidget())->updateCustomUI();
+}
+
+bool MainWindow::eventFilter(QObject* watched, QEvent* event)
+{
+    Q_UNUSED(watched)
+    if (event->type() == QEvent::NonClientAreaMouseButtonRelease) {
+        if (isScreenChanged_) {
+            if (!ui->callwidget->isVisible())
+                resize(minimumSize());
+            else
+                adjustSize();
+            isScreenChanged_ = false;
+        }
+    }
+    return false;
 }
 
 void MainWindow::keyReleaseEvent(QKeyEvent* ke)
