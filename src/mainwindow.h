@@ -31,12 +31,6 @@
 static constexpr char IDM_ABOUTBOX = 0x0010;
 static constexpr char IDM_SHORTCUTSBOX = 0x0011;
 
-static constexpr uint32_t QtMaxDimension = 16777215;
-static constexpr uint32_t mainWindowMinWidth = 1088;
-static constexpr uint32_t mainWindowMinHeight = 638;
-static constexpr uint32_t wizardDialogWidth = 512;
-static constexpr uint32_t wizardDialogHeight = 638;
-
 namespace Ui {
 class MainWindow;
 }
@@ -51,7 +45,6 @@ public:
         return *instance;
     }
     bool init();
-    void show();
     void showWindow();
     void darken();
     void lighten();
@@ -59,6 +52,7 @@ public:
 protected:
     bool nativeEvent(const QByteArray& eventType, void* message, long* result) override;
     void closeEvent(QCloseEvent* event) override;
+    bool eventFilter(QObject* watched, QEvent* event);
     void resizeEvent(QResizeEvent *event) override;
     void keyReleaseEvent(QKeyEvent* ke) override;
     void changeEvent(QEvent* e) override;
@@ -90,6 +84,8 @@ private:
     Qt::WindowState currentWindowState_{ Qt::WindowState::WindowNoState };
 
     void readSettingsFromRegistry();
+
+    bool isScreenChanged_{ false };
 
     QAction* settingsAction_;
     QAction* exitAction_;
