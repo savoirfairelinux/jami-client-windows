@@ -26,6 +26,7 @@ constexpr static char enableNotifications[] = "enableNotifications";
 constexpr static char geometry[] = "geometry";
 constexpr static char selectedAccount[] = "selectedAccount";
 constexpr static char mainSplitterState[] = "mainSplitterState";
+constexpr static char smartListToWebviewSplitterState[] = "smartListToWebviewSplitterState";
 constexpr static char windowState[] = "windowState";
 constexpr static char autoUpdate[] = "autoUpdate";
 constexpr static char neverShowMeAgain[] = "neverShowMeAgain";
