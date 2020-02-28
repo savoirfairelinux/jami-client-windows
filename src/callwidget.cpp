@@ -103,6 +103,8 @@ CallWidget::CallWidget(QWidget* parent) :
     if (settings.contains(SettingsKey::mainSplitterState)) {
         auto splitterStates = settings.value(SettingsKey::mainSplitterState).toByteArray();
         ui->mainActivitySplitter->restoreState(splitterStates);
+        splitterStates = settings.value(SettingsKey::smartListToWebviewSplitterState).toByteArray();
+        ui->splitter->restoreState(splitterStates);
     }
 
     ui->mainActivitySplitter->setCollapsible(0, false);
@@ -137,6 +139,14 @@ CallWidget::CallWidget(QWidget* parent) :
             Q_UNUSED(pos);
             QSettings settings("jami.net", "Jami");
             settings.setValue(SettingsKey::mainSplitterState, ui->mainActivitySplitter->saveState());
+        });
+
+    connect(ui->splitter, &QSplitter::splitterMoved,
+        [this](int pos, int index) {
+            Q_UNUSED(index);
+            Q_UNUSED(pos);
+            QSettings settings("jami.net", "Jami");
+            settings.setValue(SettingsKey::smartListToWebviewSplitterState, ui->splitter->saveState());
         });
 
     connect(ui->btnConversations, &QPushButton::clicked,
@@ -243,6 +253,9 @@ CallWidget::CallWidget(QWidget* parent) :
 
     setVisible(false);
     ui->sipCallerBestIdLabel->setVisible(false);
+
+    // set collapsible
+    ui->splitter->setCollapsible(ui->splitter->indexOf(ui->stackedWidget), false);
 }
 
 CallWidget::~CallWidget()
@@ -290,12 +303,6 @@ CallWidget::navigated(bool to)
 void
 CallWidget::updateCustomUI()
 {
-    auto scalingRatio = Utils::getCurrentScalingRatio();
-    if (scalingRatio > 1.0) {
-        ui->messageView->setZoomFactor(1.15);
-    } else {
-        ui->messageView->setZoomFactor(1.0);
-    }
 }
 
 void
