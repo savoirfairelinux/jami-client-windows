@@ -1,8 +1,18 @@
 <RCC>
     <qresource prefix="/">
-        <file>src/KeyBoardShortcutTable.qml</file>
-        <file>src/KeyBoardShortcutKey.qml</file>
-        <file>src/UserProfileCard.qml</file>
+        <file>src/mainview-components/KeyBoardShortcutTable.qml</file>
+        <file>src/mainview-components/KeyBoardShortcutKey.qml</file>
+        <file>src/mainview-components/UserProfileCard.qml</file>
         <file>src/MainApplicationWindow.qml</file>
+        <file>src/MainView.qml</file>
+        <file>src/qmlcomponentutils/CustomBorder.qml</file>
+        <file>src/qmlconstant/ColorConstant.qml</file>
+        <file>src/mainview-components/AboutPopUp.qml</file>
+        <file>src/mainview-components/SidePanel.qml</file>
+        <file>src/mainview-components/WelcomePage.qml</file>
+        <file>src/mainview-components/CallStack.qml</file>
+        <file>src/mainview-components/MessageWebView.qml</file>
+        <file>src/mainview-components/MessageWebViewHeader.qml</file>
+        <file>src/qmlcomponentutils/HoverableButton.qml</file>
     </qresource>
 </RCC>
