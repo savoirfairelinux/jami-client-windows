@@ -1,8 +1,21 @@
 <RCC>
     <qresource prefix="/">
-        <file>src/KeyBoardShortcutTable.qml</file>
-        <file>src/KeyBoardShortcutKey.qml</file>
-        <file>src/UserProfileCard.qml</file>
+        <file>src/mainview/components/KeyBoardShortcutTable.qml</file>
+        <file>src/mainview/components/KeyBoardShortcutKey.qml</file>
+        <file>src/mainview/components/UserProfileCard.qml</file>
         <file>src/MainApplicationWindow.qml</file>
+        <file>src/mainview/MainView.qml</file>
+        <file>src/commoncomponents/CustomBorder.qml</file>
+        <file>src/constant/JamiTheme.qml</file>
+        <file>src/mainview/components/AboutPopUp.qml</file>
+        <file>src/mainview/components/SidePanel.qml</file>
+        <file>src/mainview/components/WelcomePage.qml</file>
+        <file>src/mainview/components/CallStack.qml</file>
+        <file>src/mainview/components/MessageWebView.qml</file>
+        <file>src/mainview/components/MessageWebViewHeader.qml</file>
+        <file>src/commoncomponents/HoverableButton.qml</file>
+        <file>src/mainview/components/AccountComboBox.qml</file>
+        <file>src/mainview/components/ConversationSmartListView.qml</file>
+        <file>src/commoncomponents/JamiFileDialog.qml</file>
     </qresource>
 </RCC>
