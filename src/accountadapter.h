@@ -21,6 +21,7 @@
 #include "qmladapterbase.h"
 
 #include <QObject>
+#include <QSettings>
 #include <QString>
 
 class AccountAdapter : public QmlAdapterBase
@@ -35,6 +36,26 @@ public:
      * Change to account corresponding to combox box index.
      */
     Q_INVOKABLE void accountChanged(int index);
+    /*
+     * Create normal Jami account, SIP account and JAMS accounts.
+     */
+    Q_INVOKABLE void createJamiAccount(const QVariantMap &settings, bool isCreating);
+    Q_INVOKABLE void createSIPAccount(const QVariantMap &settings);
+    Q_INVOKABLE void createJAMSAccount(const QVariantMap &settings);
+    /*
+     * Export account to given filepath.
+     */
+    Q_INVOKABLE bool exportToFile(const QString accountId,
+                                  const QString path,
+                                  const QString password = {});
+    Q_INVOKABLE bool savePassword(const QString accountId,
+                                  const QString oldPassword,
+                                  const QString newPassword);
+
+    Q_INVOKABLE bool hasPassword();
+    Q_INVOKABLE void setArchiveHasPassword(bool isHavePassword);
+    Q_INVOKABLE void settingsNeverShowAgain(bool checked);
+    Q_INVOKABLE void passwordSetStatusMessageBox(bool success, QString title, QString infoToDisplay);
 
 signals:
 
@@ -44,6 +65,12 @@ signals:
     void accountSignalsReconnect(const QString &accountId);
     void accountStatusChanged();
     void updateConversationForAddedContact();
+    /*
+     * send report failure to QML to make it show the right UI state .
+     */
+    void reportFailure();
+    void accountAdded(bool showBackUp);
+    void showMainViewWindow();
 
 private:
     void initQmlObject() override final;
@@ -55,6 +82,10 @@ private:
      * Make account signal connections.
      */
     void connectAccount(const QString &accountId);
+    /*
+     * Implement what to do when creat accout fails.
+     */
+    void connectFailure();
 
     QMetaObject::Connection accountStatusChangedConnection_;
     QMetaObject::Connection contactAddedConnection_;
