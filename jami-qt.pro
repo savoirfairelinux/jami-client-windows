@@ -2,7 +2,7 @@ win32-msvc {
     TARGET = Jami
     TEMPLATE = vcapp
 
-    QT += core winextras qml quickcontrols2 quick quickwidgets widgets xml multimedia multimediawidgets network webenginewidgets svg sql
+    QT += core winextras qml quickcontrols2 quick quickwidgets widgets xml multimedia multimediawidgets network webenginewidgets webengine svg sql
 
     CONFIG += suppress_vcproj_warnings c++17 qtquickcompiler
 
@@ -178,9 +178,11 @@ HEADERS += ./src/aboutdialog.h \
         ./src/networkmanager.h \
         ./src/connectivitymonitor.h \
         ./src/userprofile.h \
-        ./src/qmlclipboardadapter.h \
         ./src/mainapplication.h \
-        ./src/lrcinterface.h
+        ./src/qrimageprovider.h \
+        ./src/lrcinterface.h \
+        ./src/messagewebviewqmlobjectholder.h \
+        ./src/accountcomboboxqmlobjectholder.h
 SOURCES += ./src/aboutdialog.cpp \
         ./src/banneditemwidget.cpp \
         ./src/conversationsfilterwidget.cpp \
@@ -248,7 +250,9 @@ SOURCES += ./src/aboutdialog.cpp \
         ./src/connectivitymonitor.cpp \
         ./src/userprofile.cpp \
         ./src/mainapplication.cpp \
-        ./src/lrcinterface.cpp
+        ./src/lrcinterface.cpp \
+        ./src/messagewebviewqmlobjectholder.cpp \
+        ./src/accountcomboboxqmlobjectholder.cpp
 FORMS += ./src/aboutdialog.ui \
         ./src/advancedsipsettingwidget.ui \
         ./src/callwidget.ui \
