@@ -12,7 +12,9 @@ ApplicationWindow {
     property int minHeight: 500
     property int textPointSize: 8
 
-    Universal.theme: Universal.Light
+    Universal.theme: Universal.Dark
+
+    color: "green"
 
     visible: true
     width: 600
