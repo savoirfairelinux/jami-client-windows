@@ -1,8 +1,9 @@
 /***************************************************************************
- * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2020 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  * Author: Isa Nanic <isa.nanic@savoirfairelinux.com                       *
+ * Author: Mingrui Zhang   <mingrui.zhang@savoirfairelinux.com>            *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -20,6 +21,7 @@
 #pragma once
 
 #include "ringthemeutils.h"
+#include "version.h"
 
 #include <string>
 
@@ -33,6 +35,10 @@
 #include <QtGlobal>
 #include <QCryptographicHash>
 #include <QListWidget>
+#include <QClipBoard>
+#include <QGuiApplication>
+#include <QDir>
+#include <QStandardPaths>
 
 #ifdef Q_OS_WIN
 #include <windows.h>
@@ -76,6 +82,7 @@ void showSystemNotification(QWidget* widget, const QString& sender, const QStrin
 QSize getRealSize(QScreen* screen);
 void forceDeleteAsync(const QString& path);
 QString getChangeLog();
+QString getProjectCredits();
 float getCurrentScalingRatio();
 void setCurrentScalingRatio(float ratio);
 
@@ -147,6 +154,50 @@ enum class DevicePlugStatus
     Unchanged
 };
 
+class OneShotDisconnectConnection : public QObject
+{
+    Q_OBJECT
+
+public:
+    explicit OneShotDisconnectConnection(const QObject* sender,
+                                         const char* signal,
+                                         QMetaObject::Connection* connection,
+                                         QObject* parent = nullptr)
+        : QObject(parent) {
+        connection_ = connection;
+        disconnectConnection_ = new QMetaObject::Connection;
+        *disconnectConnection_ = QObject::connect(sender, signal, this, SLOT(slotOneShotDisconnectConnection()));
+    }
+    ~OneShotDisconnectConnection() {
+        if (!connection_) {
+            delete connection_;
+        }
+        if (!disconnectConnection_) {
+            delete disconnectConnection_;
+        }
+        if (!this) {
+            delete this;
+        }
+    }
+
+public slots:
+    void slotOneShotDisconnectConnection() {
+        if (connection_) {
+            QObject::disconnect(*connection_);
+            delete connection_;
+        }
+        if (disconnectConnection_) {
+            QObject::disconnect(*disconnectConnection_);
+            delete disconnectConnection_;
+        }
+        delete this;
+    }
+
+private:
+    QMetaObject::Connection* connection_;
+    QMetaObject::Connection* disconnectConnection_;
+};
+
 template <typename Func1, typename Func2>
 void
 oneShotConnect(const typename QtPrivate::FunctionPointer<Func1>::Object* sender, Func1 signal, Func2 slot)
@@ -186,6 +237,15 @@ oneShotConnect( const typename QtPrivate::FunctionPointer<Func1>::Object* sender
                 delete disconnectConnection;
             }
         });
+}
+
+void
+oneShotConnect(const QObject* sender, const char* signal, const QObject* receiver, const char* slot)
+{
+    QMetaObject::Connection* const connection = new QMetaObject::Connection;
+    *connection = QObject::connect(sender, signal, receiver, slot);
+    OneShotDisconnectConnection* disconnectConnection = new OneShotDisconnectConnection(sender, signal, connection);
+    Q_UNUSED(disconnectConnection)
 }
 
 template<class T>
@@ -230,4 +290,53 @@ toEnum(T value) noexcept
 {
     return static_cast<E>(value);
 }
+
+class UtilsAdapter : public QObject
+{
+    Q_OBJECT
+public:
+    explicit UtilsAdapter(QObject* parent = nullptr) : QObject(parent) {
+        clipboard_ = QGuiApplication::clipboard();
+    }
+
+    Q_INVOKABLE const QString getChangeLog() {
+        return Utils::getChangeLog();
+    }
+
+    Q_INVOKABLE const QString getProjectCredits() {
+        return Utils::getProjectCredits();
+    }
+
+    Q_INVOKABLE const QString getVersionStr() {
+        return QString(VERSION_STRING);
+    }
+
+    Q_INVOKABLE void setText(QString text) {
+        clipboard_->setText(text, QClipboard::Clipboard);
+    }
+
+    Q_INVOKABLE const QString qStringFromFile(const QString& filename) {
+        return Utils::QByteArrayFromFile(filename);
+    }
+
+    Q_INVOKABLE const QString getStyleSheet(const QString& name, const QString& source) {
+        auto simplifiedCSS = source.simplified().replace("'", "\"");
+        QString s = QString::fromLatin1("(function() {"\
+            "    var node = document.createElement('style');"\
+            "    node.id = '%1';"\
+            "    node.innerHTML = '%2';"\
+            "    document.head.appendChild(node);"\
+            "})()").arg(name).arg(simplifiedCSS);
+        return s;
+    }
+
+    Q_INVOKABLE const QString getCachePath() {
+        QDir dataDir(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation));
+        dataDir.cdUp();
+        return dataDir.absolutePath() + "/jami";
+    }
+
+private:
+    QClipboard* clipboard_;
+};
 }

@@ -1,7 +1,8 @@
 /**************************************************************************
-* Copyright (C) 2017-2019 by Savoir-faire Linux                           *
+* Copyright (C) 2017-2020 by Savoir-faire Linux                           *
 * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
 * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
+* Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
 *                                                                         *
 * This program is free software; you can redistribute it and/or modify    *
 * it under the terms of the GNU General Public License as published by    *
@@ -27,7 +28,7 @@
 
 using namespace lrc::api;
 
-class SmartListModel : public QAbstractItemModel
+class SmartListModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
@@ -71,13 +72,14 @@ public:
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     int columnCount(const QModelIndex &parent) const override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+    QHash<int, QByteArray> roleNames() const override;
     QModelIndex index(int row, int column = 0, const QModelIndex &parent = QModelIndex()) const;
     QModelIndex parent(const QModelIndex &child) const;
     Qt::ItemFlags flags(const QModelIndex &index) const;
 
-    void setAccount(const QString& accId);
-    void setConferenceableFilter(const QString& filter = {});
-    void toggleSection(const QString& section);
+    Q_INVOKABLE void setAccount(const QString& accId);
+    Q_INVOKABLE void setConferenceableFilter(const QString& filter = {});
+    Q_INVOKABLE void toggleSection(const QString& section);
 
     // hack for context menu highlight retention
     bool isContextMenuOpen{ false };
