@@ -26,9 +26,13 @@
 #include "lrcinterface.h"
 #include "pixbufmanipulator.h"
 #include "utils.h"
-#include "qmlclipboardadapter.h"
+#include "accountimageprovider.h"
+#include "accountlistmodel.h"
+#include "version.h"
 
 #include <QFontDatabase>
+#include <QQmlContext>
+#include <QtWebEngine>
 
 #include <locale.h>
 
@@ -56,6 +60,9 @@ MainApplication::applicationInitialization()
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
     QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor);
+
+    // initialize QtWebEngine
+    QtWebEngine::initialize();
 }
 
 void
@@ -268,7 +275,10 @@ void
 MainApplication::qmlInitialization()
 {
     // for deployment and register types
-    qmlRegisterType<QmlClipboardAdapter>("MyQClipboard", 1, 0, "QClipboard");
+    qmlRegisterType<Utils::UtilsAdapter>("Qt.tools.utils", 1, 0, "UtilsAdapter");
+    qmlRegisterType<AccountListModel>("Qt.model.account", 1, 0, "AccountListModel");
+    qmlRegisterType<ConversationModelAdapter>("net.jami.ConversationModelAdapter", 1, 0, "ConversationModelAdapter");
+    qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/src/constant/JamiTheme.qml")), "Qt.constant.jamitheme", 1, 0, "JamiTheme");
     qmlRegisterSingletonType<AccountModelAdapter>(
         "net.jami.AccountModelAdapter", 1, 0, "AccountModelAdapter",
         [](QQmlEngine* engine, QJSEngine* scriptEngine) -> QObject* {
@@ -277,14 +287,11 @@ MainApplication::qmlInitialization()
             AccountModelAdapter* example = new AccountModelAdapter();
             return example;
         });
-    qmlRegisterType<ConversationModelAdapter>(
-        "net.jami.ConversationModelAdapter", 1, 0, "ConversationModelAdapter");
 
-    QQmlApplicationEngine engine;
+    // add image provider
+    engine_->addImageProvider(QLatin1String("accountImage"), new AccountImageProvider());
 
     engine_->load(QUrl(QStringLiteral("qrc:/src/MainApplicationWindow.qml")));
-    engine_->load(QUrl(QStringLiteral("qrc:/src/KeyBoardShortcutTable.qml")));
-    engine_->load(QUrl(QStringLiteral("qrc:/src/UserProfileCard.qml")));
 }
 
 bool

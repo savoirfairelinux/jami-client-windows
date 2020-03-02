@@ -179,8 +179,8 @@ HEADERS += ./src/aboutdialog.h \
         ./src/networkmanager.h \
         ./src/connectivitymonitor.h \
         ./src/userprofile.h \
-        ./src/qmlclipboardadapter.h \
         ./src/mainapplication.h \
+        ./src/accountimageprovider.h \
         ./src/lrcinterface.h
 SOURCES += ./src/aboutdialog.cpp \
         ./src/banneditemwidget.cpp \
