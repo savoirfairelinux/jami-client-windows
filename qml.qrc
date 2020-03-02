@@ -5,6 +5,7 @@
         <file>src/mainview/components/UserProfileCard.qml</file>
         <file>src/MainApplicationWindow.qml</file>
         <file>src/mainview/MainView.qml</file>
+        <file>src/WizardView.qml</file>
         <file>src/commoncomponents/CustomBorder.qml</file>
         <file>src/constant/JamiTheme.qml</file>
         <file>src/mainview/components/AboutPopUp.qml</file>
