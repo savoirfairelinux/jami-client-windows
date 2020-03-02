@@ -27,8 +27,11 @@
 #include "pixbufmanipulator.h"
 #include "utils.h"
 #include "qmlclipboardadapter.h"
+#include "accountimageprovider.h"
+#include "accountlistmodel.h"
 
 #include <QFontDatabase>
+#include <QQmlContext>
 
 #include <locale.h>
 
@@ -269,6 +272,10 @@ MainApplication::qmlInitialization()
 {
     // for deployment and register types
     qmlRegisterType<QmlClipboardAdapter>("MyQClipboard", 1, 0, "QClipboard");
+    qmlRegisterType<AccountListModel>("Qt.model.account", 1, 0, "AccountListModel");
+
+    // add image provider
+    engine_->addImageProvider(QLatin1String("accountImage"), new AccountImageProvider());
 
     engine_->load(QUrl(QStringLiteral("qrc:/src/MainApplicationWindow.qml")));
     engine_->load(QUrl(QStringLiteral("qrc:/src/KeyBoardShortcutTable.qml")));
