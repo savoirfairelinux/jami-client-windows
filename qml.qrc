@@ -21,5 +21,18 @@
         <file>src/mainview/components/OutgoingCallPage.qml</file>
         <file>src/mainview/components/AudioCallPage.qml</file>
         <file>src/mainview/components/CallOverlay.qml</file>
+
+
+        <file>src/wizardview/WizardView.qml</file>
+        <file>src/wizardview/components/WelcomePageLayout.qml</file>
+        <file>src/wizardview/components/CreateAccountPage.qml</file>
+        <file>src/wizardview/components/CreateSIPAccountPage.qml</file>
+        <file>src/wizardview/components/ImportFromBackupPage.qml</file>
+        <file>src/wizardview/components/BackupKeyPage.qml</file>
+        <file>src/wizardview/components/ImportFromDevicePage.qml</file>
+        <file>src/wizardview/components/ConnectToAccountManagerPage.qml</file>
+        <file>src/wizardview/components/SpinnerPage.qml</file>
+
+
     </qresource>
 </RCC>
