@@ -1,6 +1,7 @@
 /***************************************************************************
-* Copyright (C) 2019-2019 by Savoir-faire Linux                                 *
+* Copyright (C) 2019-2020 by Savoir-faire Linux                            *
 * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>           *
+* Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>               *
 *                                                                          *
 * This program is free software; you can redistribute it and/or modify     *
 * it under the terms of the GNU General Public License as published by     *
@@ -25,7 +26,7 @@
 #include "api/conversation.h"
 #include "api/contact.h"
 
-class AccountListModel : public QAbstractItemModel
+class AccountListModel : public QAbstractListModel
 {
     Q_OBJECT
 
@@ -45,6 +46,8 @@ public:
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     int columnCount(const QModelIndex &parent) const override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+    // override role name as access point in qml
+    QHash<int, QByteArray> roleNames() const override;
     QModelIndex index(int row, int column = 0, const QModelIndex &parent = QModelIndex()) const;
     QModelIndex parent(const QModelIndex &child) const;
     Qt::ItemFlags flags(const QModelIndex &index) const;
