@@ -361,6 +361,9 @@ public:
         dataDir.cdUp();
         return dataDir.absolutePath() + "/jami";
     }
+    Q_INVOKABLE bool createStartupLink(const QString& appName) {
+        return Utils::CreateStartupLink(appName.toStdWString());
+    }
 
     Q_INVOKABLE const QString getContactImageString(const QString &accountId, const QString &uid)
     {
