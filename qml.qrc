@@ -14,5 +14,6 @@
         <file>src/mainview/components/MessageWebView.qml</file>
         <file>src/mainview/components/MessageWebViewHeader.qml</file>
         <file>src/commoncomponents/HoverableButton.qml</file>
+        <file>src/wizardview/WizardView.qml</file>
     </qresource>
 </RCC>
