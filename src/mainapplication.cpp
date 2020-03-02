@@ -37,6 +37,8 @@
 #include "tintedbuttonimageprovider.h"
 #include "utils.h"
 #include "version.h"
+#include "newwizardviewqmlobjectholder.h"
+#include "namedirectory.h"
 
 #include <QFontDatabase>
 #include <QQmlContext>
@@ -283,6 +285,7 @@ MainApplication::qmlInitialization()
     QML_REGISTERTYPE(PreviewRenderer, 1, 0);
     QML_REGISTERTYPE(VideoCallPreviewRenderer, 1, 0);
     QML_REGISTERTYPE(DistantRenderer, 1, 0);
+    QML_REGISTERTYPE(NewWizardViewQmlObjectHolder, 1, 0);
 
     /*
      * Adapter - qmlRegisterSingletonType
@@ -298,6 +301,18 @@ MainApplication::qmlInitialization()
     QML_REGISTERSINGLETONTYPE(LrcGeneralAdapter, 1, 0);
     QML_REGISTERSINGLETONTYPE(AccountAdapter, 1, 0);
     QML_REGISTERSINGLETONTYPE(MessagesAdapter, 1, 0);
+    QML_REGISTERSINGLETONTYPE_WITH_INSTANCE(NameDirectory, 1, 0);
+    QML_REGISTERSINGLETONTYPE_WITH_INSTANCE(LRCInstance, 1, 0);
+
+    /*
+     * Register object holder type
+     */
+    QML_REGISTER_LRC_CLASSES(AVModel, 1, 0);
+    QML_REGISTER_LRC_CLASSES(ContactModel, 1, 0);
+    QML_REGISTER_LRC_CLASSES(BehaviorController, 1, 0);
+    QML_REGISTER_LRC_CLASSES(NewAccountModel, 1, 0);
+    QML_REGISTER_LRC_CLASSES(NewCallModel, 1, 0);
+    QML_REGISTER_LRC_CLASSES(PeerDiscoveryModel, 1, 0);
 
     /*
      * Namespaces - qmlRegisterUncreatableMetaObject
