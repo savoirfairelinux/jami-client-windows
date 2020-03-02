@@ -35,6 +35,7 @@
 #include "callcenterqmlobjectholder.h"
 #include "calloverlayqmlobjectholder.h"
 #include "conversationsmartlistviewqmlobjectholder.h"
+#include "newwizardviewqmlobjectholder.h"
 
 #include <QFontDatabase>
 #include <QQmlContext>
@@ -292,6 +293,8 @@ MainApplication::qmlInitialization()
     qmlRegisterType<CallCenterQmlObjectHolder>("net.jami.CallCenterQmlObjectHolder", 1, 0, "CallCenterQmlObjectHolder");
     qmlRegisterType<CallOverlayQmlObjectHolder>("net.jami.CallOverlayQmlObjectHolder", 1, 0, "CallOverlayQmlObjectHolder");
     qmlRegisterType<ConversationSmartListViewQmlObjectHolder>("net.jami.ConversationSmartListViewQmlObjectHolder", 1, 0, "ConversationSmartListViewQmlObjectHolder");
+
+    qmlRegisterType<NewWizardViewQmlObjectHolder>("net.jami.NewWizardViewQmlObjectHolder", 1, 0, "NewWizardViewQmlObjectHolder");
 
     // qmlRegisterSingletonType
     qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/src/constant/JamiTheme.qml")), "net.jami.constant.jamitheme", 1, 0, "JamiTheme");
