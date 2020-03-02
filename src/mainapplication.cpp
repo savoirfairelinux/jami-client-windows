@@ -26,9 +26,16 @@
 #include "lrcinterface.h"
 #include "pixbufmanipulator.h"
 #include "utils.h"
-#include "qmlclipboardadapter.h"
+#include "qrimageprovider.h"
+#include "accountlistmodel.h"
+#include "version.h"
+#include "smartlistmodel.h"
+#include "messagewebviewqmlobjectholder.h"
+#include "accountcomboboxqmlobjectholder.h"
 
 #include <QFontDatabase>
+#include <QQmlContext>
+#include <QtWebEngine>
 
 #include <locale.h>
 
@@ -57,6 +64,9 @@ MainApplication::applicationInitialization()
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor);
+
+    // initialize QtWebEngine
+    QtWebEngine::initialize();
 #endif
 }
 
@@ -270,7 +280,15 @@ void
 MainApplication::qmlInitialization()
 {
     // for deployment and register types
-    qmlRegisterType<QmlClipboardAdapter>("MyQClipboard", 1, 0, "QClipboard");
+    qmlRegisterType<Utils::UtilsAdapter>("net.jami.tools.utils", 1, 0, "UtilsAdapter");
+    qmlRegisterType<AccountListModel>("net.jami.model.account", 1, 0, "AccountListModel");
+
+    // register object holder type
+    qmlRegisterType<MessageWebViewQmlObjectHolder>("net.jami.MessageWebViewQmlObjectHolder", 1, 0, "MessageWebViewQmlObjectHolder");
+    qmlRegisterType<AccountComboBoxQmlObjectHolder>("net.jami.AccountComboBoxQmlObjectHolder", 1, 0, "AccountComboBoxQmlObjectHolder");
+
+    // qmlRegisterSingletonType
+    qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/src/constant/JamiTheme.qml")), "net.jami.constant.jamitheme", 1, 0, "JamiTheme");
 
     qmlRegisterSingletonType<LrcGeneralAdapter>(
         "net.jami.LrcGeneralAdapter", 1, 0, "LrcGeneralAdapter",
@@ -281,11 +299,19 @@ MainApplication::qmlInitialization()
             return lrcGeneralAdapter;
         });
 
-    QQmlApplicationEngine engine;
+    qmlRegisterSingletonType<SmartListModel>(
+        "net.jami.model.smartlist", 1, 0, "ConversationSmartListModel",
+        [](QQmlEngine* engine, QJSEngine* scriptEngine) -> QObject* {
+            Q_UNUSED(engine);
+            Q_UNUSED(scriptEngine);
+            SmartListModel* conversationSmartListModel = new SmartListModel(LRCInstance::getCurrAccId());
+            return conversationSmartListModel;
+        });
+
+    // add image provider
+    engine_->addImageProvider(QLatin1String("qrImage"), new QrImageProvider());
 
     engine_->load(QUrl(QStringLiteral("qrc:/src/MainApplicationWindow.qml")));
-    engine_->load(QUrl(QStringLiteral("qrc:/src/KeyBoardShortcutTable.qml")));
-    engine_->load(QUrl(QStringLiteral("qrc:/src/UserProfileCard.qml")));
 }
 
 bool
