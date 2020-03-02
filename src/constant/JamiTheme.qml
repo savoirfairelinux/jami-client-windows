@@ -71,9 +71,32 @@ Item {
     property int splitViewHandlePreferedWidth: 4
     property int textFontSize: 9
 
+
     /*
      * Place holder text.
      */
     property string contactSearchBarPlaceHolderConversationText: qsTr("Find a new or existing contact")
     property string contactSearchBarPlaceHolderInivitionText: qsTr("Search your received invitations")
+
+    // Jami theme colors
+    function rgb256(r, g, b) {
+        return Qt.rgba(r / 256, g / 256, b / 256, 1)
+    }
+
+    property color blue_: "#109ede"
+    property color lightBlue_: "#c1ebf0"
+    property color lightGrey_: rgb256(242, 242, 242)
+    property color imGrey_: "#dedee0"
+    property color imBlue_: "#cfebf5"
+    property color lightBlack_: rgb256(63, 63, 63)
+    property color grey_: rgb256(160, 160, 160)
+    property color red_: rgb256(251, 72, 71)
+    property color lightRed_: rgb256(252, 91, 90)
+    property color darkRed_: rgb256(219, 55, 54)
+    property color notificationRed_: rgb256(255, 59, 48)
+    property color urgentOrange_: rgb256(255, 165, 0)
+    property color green_: rgb256(127, 255, 0)
+    property color presenceGreen_: rgb256(76, 217, 100)
+    property color smartlistSelection_: rgb256(240, 240, 240)
+    property color smartlistHighlight_: rgb256(245, 245, 245)
 }

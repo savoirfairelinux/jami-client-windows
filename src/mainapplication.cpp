@@ -30,6 +30,7 @@
 #include "globalinstances.h"
 #include "globalsystemtray.h"
 #include "messagesadapter.h"
+#include "namedirectory.h"
 #include "pixbufmanipulator.h"
 #include "previewrenderer.h"
 #include "qrimageprovider.h"
@@ -308,6 +309,8 @@ MainApplication::qmlInitialization()
     QML_REGISTERSINGLETONTYPE(AvAdapter, 1, 0);
     QML_REGISTERSINGLETONTYPE(ContactAdapter, 1, 0);
     QML_REGISTERSINGLETONTYPE(UtilsAdapter, 1, 0);
+    QML_REGISTERSINGLETONTYPE_WITH_INSTANCE(NameDirectory, 1, 0);
+    QML_REGISTERSINGLETONTYPE_WITH_INSTANCE(LRCInstance, 1, 0);
 
     /*
      * Namespaces - qmlRegisterUncreatableMetaObject.
