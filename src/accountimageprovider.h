@@ -1,6 +1,5 @@
 /***************************************************************************
 * Copyright (C) 2019-2020 by Savoir-faire Linux                            *
-* Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>           *
 * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>               *
 *                                                                          *
 * This program is free software; you can redistribute it and/or modify     *
@@ -16,38 +15,47 @@
 * You should have received a copy of the GNU General Public License        *
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.    *
 ***************************************************************************/
+
 #pragma once
 
-// Qt include
-#include <QAbstractItemModel>
+#include "accountlistmodel.h"
+#include "lrcinstance.h"
 
-// LRC
-#include "api/account.h"
-#include "api/conversation.h"
-#include "api/contact.h"
+#include <QQuickImageProvider>
+#include <QObject>
+#include <QString>
+#include <QPair>
+#include <QImage>
 
-class AccountListModel : public QAbstractListModel
+class AccountImageProvider : public QObject, public QQuickImageProvider
 {
-    Q_OBJECT
 
 public:
-    enum Role {
-        Alias = Qt::UserRole + 1,
-        Username,
-        Picture,
-        Type,
-        Status,
-        ID
-    };
+    AccountImageProvider() : QQuickImageProvider(QQuickImageProvider::Image, QQmlImageProviderBase::ForceAsynchronousImageLoading){}
 
-    explicit AccountListModel(QObject *parent = 0);
+    QPair<int, int> getIndexFromID(const QString& id) {
+        // should be string like account_0_0 (index 0, index 1)
+        auto list = id.split('_', QString::SkipEmptyParts);
+        if (list.contains("account")) {
+            return QPair<int, int>(list[1].toInt(), list[2].toInt());
+        }
+        qDebug().noquote() << "accountImage provider id format incorrect";
+        return QPair<int, int>(0, 0);
+    }
 
-    // QAbstractItemModel
-    int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-    int columnCount(const QModelIndex &parent) const override;
-    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
-    QHash<int, QByteArray> roleNames() const override;
-    QModelIndex index(int row, int column = 0, const QModelIndex &parent = QModelIndex()) const;
-    QModelIndex parent(const QModelIndex &child) const;
-    Qt::ItemFlags flags(const QModelIndex &index) const;
+    QImage requestImage(const QString& id, QSize* size, const QSize& requestedSize) override
+    {
+        Q_UNUSED(size);
+        Q_UNUSED(requestedSize);
+
+        auto indexPair = getIndexFromID(id);
+
+        auto accountList = LRCInstance::accountModel().getAccountList();
+        if (accountList.size() <= indexPair.first) {
+            return QImage();
+        }
+
+        auto& accountInfo = LRCInstance::accountModel().getAccountInfo(accountList.at(indexPair.first));
+        return Utils::accountPhoto(accountInfo);
+    }
 };
