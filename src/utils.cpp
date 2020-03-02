@@ -992,6 +992,12 @@ UtilsAdapter::getCurrAccList()
     return LRCInstance::accountModel().getAccountList();
 }
 
+int
+UtilsAdapter::getAccountListSize()
+{
+    return getCurrAccList().size();
+}
+
 void
 UtilsAdapter::setCurrentCall(const QString &accountId, const QString &convUid)
 {
