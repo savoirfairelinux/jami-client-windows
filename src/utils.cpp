@@ -34,7 +34,6 @@
 #include "lrcinstance.h"
 #include "networkmanager.h"
 #include "updateconfirmdialog.h"
-#include "version.h"
 
 #include <globalinstances.h>
 #include <qrencode.h>
@@ -52,6 +51,7 @@
 #include <QScreen>
 #include <QtConcurrent/QtConcurrent>
 #include <QSvgRenderer>
+#include <QTranslator>
 
 bool
 Utils::CreateStartupLink(const std::wstring& wstrAppName)
@@ -338,10 +338,45 @@ Utils::getChangeLog()
         return {};
     }
     QTextStream in(&changeLogFile);
+    in.setCodec("UTF-8");
     while (!in.atEnd()) {
         logs += in.readLine();
     }
     return logs;
+}
+
+QString
+Utils::getProjectCredits()
+{
+    QString credits;
+    QFile projectCreditsFile(":/projectcredits.html");
+    if (!projectCreditsFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug().noquote() << " Project Credits failed to load";
+        return {};
+    }
+    QTextStream in(&projectCreditsFile);
+    in.setCodec("UTF-8");
+    while (!in.atEnd()) {
+        QString currentLine = in.readLine();
+        if (credits.isEmpty()) {
+            credits += "<h3 align=\"center\" style=\" margin-top:0px; " +
+                       QString("margin-bottom:0px; margin-left:0px; margin-right:0px; ") +
+                       "-qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">" +
+                       UtilsAdapter::tr("Created by:") + "</span></h3>";
+        }
+        else if(currentLine.contains("Marianne Forget")) {
+            credits += "<h3 align=\"center\" style=\" margin-top:0px; margin-bottom:0px; " +
+                       QString("margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">") +
+                       "<span style=\" font-weight:600;\">" +
+                       UtilsAdapter::tr("Artwork by:") + "</span></h3>";
+        }
+        credits += currentLine;
+    }
+    credits += "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; " +
+               QString("margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">") +
+               UtilsAdapter::tr("Based on the SFLPhone project") + "</p>";
+
+    return credits;
 }
 
 void

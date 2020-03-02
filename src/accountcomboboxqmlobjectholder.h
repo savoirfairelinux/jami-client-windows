@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2019 by Savoir-faire Linux                                *
+ * Copyright (C) 2020 by Savoir-faire Linux                                *
  * Author: Mingrui Zhang   <mingrui.zhang@savoirfairelinux.com>            *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -16,26 +16,32 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-//https://ruedigergad.com/2011/08/06/qml-and-clipboard-interaction/
-
 #pragma once
 
-#include <QApplication>
-#include <QClipboard>
+#include "lrcinstance.h"
+
 #include <QObject>
+#include <QString>
 
-class QmlClipboardAdapter : public QObject
-{
+ // to ease the logic with the power of c++
+class AccountComboBoxQmlObjectHolder : public QObject {
     Q_OBJECT
-public:
-    explicit QmlClipboardAdapter(QObject* parent = nullptr) : QObject(parent) {
-        clipboard_ = QApplication::clipboard();
-    }
 
-    Q_INVOKABLE void setText(QString text) {
-        clipboard_->setText(text, QClipboard::Clipboard);
-    }
+public:
+    explicit AccountComboBoxQmlObjectHolder(QObject* parent = 0);
+    ~AccountComboBoxQmlObjectHolder();
+
+    // Must call Q_INVOKABLE so that this function can be used in QML, qml to c++
+    Q_INVOKABLE void setAccountComboBoxQmlObject(QObject* obj);
+    Q_INVOKABLE void accountChanged(int index);
+
+    void setSelectedAccount(const QString& accountId, int index);
+    void backToWelcomePage(int index);
+    void deselectConversation();
 
 private:
-    QClipboard* clipboard_;
+    // Object pointer
+    QObject* accountComboBoxQmlObject_;
+
+    lrc::api::profile::Type currentTypeFilter_ {};
 };
