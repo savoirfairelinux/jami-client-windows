@@ -2,7 +2,7 @@ import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.3
-import MyQClipboard 1.0
+import Qt.tools.utils 1.0
 
 /*
  * Every QML object can be assigned an id and an objectName that other objects can use to refer to the object.
@@ -49,8 +49,8 @@ ColumnLayout {
             }
         }
 
-        QClipboard{
-            id: clipboard
+        UtilsAdapter{
+            id: utilsAdapter
         }
 
         ColumnLayout {
@@ -233,7 +233,7 @@ ColumnLayout {
                                                     anchors.fill: parent;
                                                     hoverEnabled: true;
                                                     onPressed: { registeredNameContextMenuBackRect.color = "#c0c0c0"; }
-                                                    onReleased: { registeredNameContextMenuBackRect.color = "#e0e0e0"; clipboard.setText(registeredName.selectedText); reset();}
+                                                    onReleased: { registeredNameContextMenuBackRect.color = "#e0e0e0"; utilsAdapter.setText(registeredName.selectedText); reset();}
                                                     onEntered: { registeredNameContextMenuBackRect.color = "#c7c7c7"; }
                                                     onExited: { registeredNameContextMenuBackRect.color = Qt.binding(function() { return registeredNameItem.down ? "#e0e0e0" :"#fdfdfd" }); }
                                                     function reset(){
@@ -332,7 +332,7 @@ ColumnLayout {
                                                     anchors.fill: parent;
                                                     hoverEnabled: true;
                                                     onPressed: { idBackRect.color = "#c0c0c0"; }
-                                                    onReleased: { idBackRect.color = "#e0e0e0"; clipboard.setText(idText.selectedText); reset();}
+                                                    onReleased: { idBackRect.color = "#e0e0e0"; utilsAdapter.setText(idText.selectedText); reset();}
                                                     onEntered: { idBackRect.color = "#c7c7c7"; }
                                                     onExited: { idBackRect.color = Qt.binding(function() { return idItem.down ? "#e0e0e0" :"#fdfdfd" }); }
                                                     function reset(){
