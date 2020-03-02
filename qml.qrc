@@ -1,5 +1,15 @@
 <RCC>
     <qresource prefix="/">
+        <file>src/wizardview/WizardView.qml</file>
+        <file>src/wizardview/components/WelcomePageLayout.qml</file>
+        <file>src/wizardview/components/CreateAccountPage.qml</file>
+        <file>src/wizardview/components/CreateSIPAccountPage.qml</file>
+        <file>src/wizardview/components/ImportFromBackupPage.qml</file>
+        <file>src/wizardview/components/BackupKeyPage.qml</file>
+        <file>src/wizardview/components/ImportFromDevicePage.qml</file>
+        <file>src/wizardview/components/ConnectToAccountManagerPage.qml</file>
+        <file>src/wizardview/components/SpinnerPage.qml</file>
+        <file>src/wizardview/components/CollapsiblePasswordWidget.qml</file>
         <file>src/MainApplicationWindow.qml</file>
         <file>src/mainview/MainView.qml</file>
         <file>src/commoncomponents/CustomBorder.qml</file>
@@ -23,5 +33,7 @@
         <file>src/mainview/js/incomingcallpagecreation.js</file>
         <file>src/mainview/components/ContactSearchBar.qml</file>
         <file>src/mainview/components/VideoCallPage.qml</file>
+        <file>src/wizardview/js/wizardviewjshelpers.js</file>
+        <file>src/commoncomponents/PasswordDialog.qml</file>
     </qresource>
 </RCC>
