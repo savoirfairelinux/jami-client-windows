@@ -47,3 +47,15 @@ LrcGeneralAdapter::setCurrentCall(const QString &accountId, const QString &convU
     auto &accInfo = LRCInstance::getAccountInfo(accountId);
     accInfo.callModel->setCurrentCall(convInfo.callId);
 }
+
+int
+LrcGeneralAdapter::getAccountListSize()
+{
+    return LRCInstance::accountModel().getAccountList().size();
+}
+
+Q_INVOKABLE NewAccountModel*
+LrcGeneralAdapter::AccountModel()
+{
+    return &(LRCInstance::accountModel());
+}

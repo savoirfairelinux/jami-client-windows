@@ -37,6 +37,8 @@
 #include "tintedbuttonimageprovider.h"
 #include "utils.h"
 #include "version.h"
+#include "newwizardviewqmlobjectholder.h"
+#include "namedirectory.h"
 
 #include <QFontDatabase>
 #include <QQmlContext>
@@ -303,6 +305,8 @@ MainApplication::qmlInitialization()
 
     qmlRegisterType<DistantRenderer>("net.jami.DistantRenderer", 1, 0, "DistantRenderer");
 
+    qmlRegisterType<NewWizardViewQmlObjectHolder>("net.jami.NewWizardViewQmlObjectHolder", 1, 0, "NewWizardViewQmlObjectHolder");
+
     // qmlRegisterSingletonType
     qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/src/constant/JamiTheme.qml")),
                              "net.jami.constant.jamitheme",
@@ -326,6 +330,59 @@ MainApplication::qmlInitialization()
                                                         = new LrcGeneralAdapter();
                                                     return lrcGeneralAdapter;
                                                 });
+    qmlRegisterSingletonType<NameDirectory>("net.jami.lrc.namedirectory",
+                                            1,
+                                            0,
+                                            "NameDirectory",
+                                            [](QQmlEngine *engine,
+                                               QJSEngine *scriptEngine) -> QObject * {
+                                                Q_UNUSED(engine);
+                                                Q_UNUSED(scriptEngine);
+                                                return &(NameDirectory::instance());
+                                            });
+
+    qmlRegisterSingletonType<LRCInstance>("net.jami.lrc.lrcinstance",
+                                          1,
+                                          0,
+                                          "LRCInstance",
+                                          [](QQmlEngine *engine,
+                                             QJSEngine *scriptEngine) -> QObject * {
+                                              Q_UNUSED(engine);
+                                              Q_UNUSED(scriptEngine);
+                                              return &(LRCInstance::instance());
+                                          });
+
+    // register uncreatable types
+    qmlRegisterUncreatableType<AVModel>("net.jami.lrc",
+                                        1,
+                                        0,
+                                        "AVModel",
+                                        QString("AVModel is not creatable in QML"));
+    qmlRegisterUncreatableType<ContactModel>("net.jami.lrc",
+                                             1,
+                                             0,
+                                             "ContactModel",
+                                             QString("ContactModel is not creatable in QML"));
+    qmlRegisterUncreatableType<BehaviorController>("net.jami.lrc",
+                                                   1,
+                                                   0,
+                                                   "BehaviorController",
+                                                   QString("BehaviorController is not creatable in QML"));
+    qmlRegisterUncreatableType<NewAccountModel>("net.jami.lrc",
+                                                1,
+                                                0,
+                                                "NewAccountModel",
+                                                QString("NewAccountModel is not creatable in QML"));
+    qmlRegisterUncreatableType<NewCallModel>("net.jami.lrc",
+                                             1,
+                                             0,
+                                             "NewCallModel",
+                                             QString("NewCallModel is not creatable in QML"));
+    qmlRegisterUncreatableType<PeerDiscoveryModel>("net.jami.lrc",
+                                                   1,
+                                                   0,
+                                                   "PeerDiscoveryModel",
+                                                   QString("PeerDiscoveryModel is not creatable in QML"));
 
     // add image provider
     engine_->addImageProvider(QLatin1String("qrImage"), new QrImageProvider());
