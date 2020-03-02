@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2020 by Savoir-faire Linux
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>
- * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com
+ * Author: Anthony Lï¿½onard <anthony.leonard@savoirfairelinux.com
  * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>
  * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>
@@ -23,8 +23,8 @@
 
 #include "accountadapter.h"
 
-#include "lrcinstance.h"
-#include "utils.h"
+#undef REGISTERED
+#include "../daemon/src/dring/account_const.h"
 
 AccountAdapter::AccountAdapter(QObject *parent)
     : QmlAdapterBase(parent)
@@ -44,6 +44,189 @@ AccountAdapter::accountChanged(int index)
     auto accountList = LRCInstance::accountModel().getAccountList();
     if (accountList.size() > index)
         setSelectedAccount(accountList.at(index), index);
+}
+
+void
+AccountAdapter::connectFailure()
+{
+    Utils::oneShotConnect(&LRCInstance::accountModel(),
+                          &lrc::api::NewAccountModel::accountRemoved,
+                          [this](const QString &accountId) {
+                              Q_UNUSED(accountId);
+
+                              emit reportFailure();
+                          });
+    Utils::oneShotConnect(&LRCInstance::accountModel(),
+                          &lrc::api::NewAccountModel::invalidAccountDetected,
+                          [this](const QString &accountId) {
+                              Q_UNUSED(accountId);
+
+                              emit reportFailure();
+                          });
+}
+
+void
+AccountAdapter::createJamiAccount(const QVariantMap &settings, bool isCreating)
+{
+    Utils::oneShotConnect(
+        &LRCInstance::accountModel(),
+        &lrc::api::NewAccountModel::accountAdded,
+        [this, settings, isCreating](const QString &accountId) {
+            QSettings qSettings("jami.net", "Jami");
+            if (not qSettings.contains(SettingsKey::neverShowMeAgain)) {
+                qSettings.setValue(SettingsKey::neverShowMeAgain, false);
+            }
+            auto showBackup = isCreating && !settings.value(SettingsKey::neverShowMeAgain).toBool();
+
+            qDebug() << "The showbackup in C++ is: " + showBackup;
+
+            if (!settings["registeredName"].toString().isEmpty()) {
+                Utils::oneShotConnect(&LRCInstance::accountModel(),
+                                      &lrc::api::NewAccountModel::nameRegistrationEnded,
+                                      [this, showBackup] { emit accountAdded(showBackup); });
+                LRCInstance::accountModel().registerName(LRCInstance::getCurrAccId(),
+                                                         "",
+                                                         settings["registeredName"].toString());
+            } else {
+                emit accountAdded(showBackup);
+            }
+            //TODO: set up avatar pixmap from photobooth
+            //LRCInstance::setCurrAccAvatar(ui->setAvatarWidget->getAvatarPixmap());
+        });
+
+    connectFailure();
+
+    QtConcurrent::run([this, settings] {
+        QMap<QString, QString> additionalAccountConfig;
+        additionalAccountConfig.insert(DRing::Account::ConfProperties::Ringtone::PATH,
+                                       Utils::GetRingtonePath());
+
+        LRCInstance::accountModel().createNewAccount(lrc::api::profile::Type::RING,
+                                                     settings["alias"].toString(),
+                                                     settings["archivePath"].toString(),
+                                                     settings["password"].toString(),
+                                                     settings["archivePin"].toString(),
+                                                     "",
+                                                     additionalAccountConfig);
+    });
+}
+
+void
+AccountAdapter::createSIPAccount(const QVariantMap &settings)
+{
+    Utils::oneShotConnect(&LRCInstance::accountModel(),
+                          &lrc::api::NewAccountModel::accountAdded,
+                          [this, settings](const QString &accountId) {
+                              auto confProps = LRCInstance::accountModel().getAccountConfig(
+                                  accountId);
+                              // set SIP details
+                              confProps.hostname = settings["hostname"].toString();
+                              confProps.username = settings["username"].toString();
+                              confProps.password = settings["password"].toString();
+                              confProps.proxyServer = settings["proxy"].toString();
+                              LRCInstance::accountModel().setAccountConfig(accountId, confProps);
+
+                              // TODO: set up photobooth avatar to SIP avatar
+                              //LRCInstance::setCurrAccAvatar(ui->setSIPAvatarWidget->getAvatarPixmap());
+                          });
+
+    connectFailure();
+
+    QtConcurrent::run([this, settings] {
+        QMap<QString, QString> additionalAccountConfig;
+        additionalAccountConfig.insert(DRing::Account::ConfProperties::Ringtone::PATH,
+                                       Utils::GetRingtonePath());
+
+        LRCInstance::accountModel().createNewAccount(lrc::api::profile::Type::SIP,
+                                                     settings["alias"].toString(),
+                                                     settings["archivePath"].toString(),
+                                                     "",
+                                                     "",
+                                                     settings["username"].toString(),
+                                                     additionalAccountConfig);
+        QThread::sleep(2);
+        emit showMainViewWindow();
+        emit LRCInstance::instance().accountListChanged();
+    });
+}
+
+void
+AccountAdapter::createJAMSAccount(const QVariantMap &settings)
+{
+    Utils::oneShotConnect(&LRCInstance::accountModel(),
+                          &lrc::api::NewAccountModel::accountAdded,
+                          [this](const QString &accountId) {
+                              Q_UNUSED(accountId)
+                              if (!LRCInstance::accountModel().getAccountList().size())
+                                  return;
+                              emit showMainViewWindow();
+                              emit LRCInstance::instance().accountListChanged();
+                          });
+
+    connectFailure();
+
+    QtConcurrent::run([this, settings] {
+        QMap<QString, QString> additionalAccountConfig;
+        additionalAccountConfig.insert(DRing::Account::ConfProperties::Ringtone::PATH,
+                                       Utils::GetRingtonePath());
+
+        LRCInstance::accountModel().connectToAccountManager(settings["username"].toString(),
+                                                            settings["password"].toString(),
+                                                            settings["manager"].toString(),
+                                                            additionalAccountConfig);
+    });
+}
+
+bool
+AccountAdapter::savePassword(const QString accountId,
+                             const QString oldPassword,
+                             const QString newPassword)
+{
+    return LRCInstance::accountModel().changeAccountPassword(accountId, oldPassword, newPassword);
+}
+
+bool
+AccountAdapter::hasPassword()
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    return confProps.archiveHasPassword;
+}
+
+bool
+AccountAdapter::savePassword(QString accountId, QString oldPassword, QString newPassword)
+{
+    return LRCInstance::accountModel().changeAccountPassword(accountId, oldPassword, newPassword);
+}
+
+void
+AccountAdapter::setArchiveHasPassword(bool isHavePassword)
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    confProps.archiveHasPassword = isHavePassword;
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+NewAccountModel *
+AccountAdapter::accoundModel()
+{
+    return &(LRCInstance::accountModel());
+}
+
+void
+AccountAdapter::settingsNeverShowAgain(bool checked)
+{
+    QSettings settings("jami.net", "Jami");
+    settings.setValue(SettingsKey::neverShowMeAgain, checked);
+}
+
+void
+AccountAdapter::passwordSetStatusMessageBox(bool success, QString title, QString infoToDisplay)
+{
+    if (success) {
+        QMessageBox::information(0, title, infoToDisplay);
+    } else {
+        QMessageBox::critical(0, title, infoToDisplay);
+    }
 }
 
 void
