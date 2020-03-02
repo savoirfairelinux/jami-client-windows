@@ -34,7 +34,6 @@
 #include "lrcinstance.h"
 #include "networkmanager.h"
 #include "updateconfirmdialog.h"
-#include "version.h"
 
 #include <globalinstances.h>
 #include <qrencode.h>

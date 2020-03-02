@@ -1,8 +1,9 @@
 /***************************************************************************
- * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2020 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  * Author: Isa Nanic <isa.nanic@savoirfairelinux.com                       *
+ * Author: Mingrui Zhang   <mingrui.zhang@savoirfairelinux.com>            *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -20,6 +21,7 @@
 #pragma once
 
 #include "ringthemeutils.h"
+#include "version.h"
 
 #include <string>
 
@@ -33,6 +35,8 @@
 #include <QtGlobal>
 #include <QCryptographicHash>
 #include <QListWidget>
+#include <QClipBoard>
+#include <QGuiApplication>
 
 #ifdef Q_OS_WIN
 #include <windows.h>
@@ -230,4 +234,28 @@ toEnum(T value) noexcept
 {
     return static_cast<E>(value);
 }
+
+class QmlUtilsAdapter : public QObject
+{
+    Q_OBJECT
+public:
+    explicit QmlUtilsAdapter(QObject* parent = nullptr) : QObject(parent) {
+        clipboard_ = QGuiApplication::clipboard();
+    }
+
+    Q_INVOKABLE const QString getChangeLog() {
+        return Utils::getChangeLog();
+    }
+
+    Q_INVOKABLE const QString getVersionStr() {
+        return QString(VERSION_STRING);
+    }
+
+    Q_INVOKABLE void setText(QString text) {
+        clipboard_->setText(text, QClipboard::Clipboard);
+    }
+
+private:
+    QClipboard* clipboard_;
+};
 }
