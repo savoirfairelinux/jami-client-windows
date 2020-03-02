@@ -24,7 +24,12 @@
 
 LrcGeneralAdapter::LrcGeneralAdapter(QObject *parent)
     : QObject(parent)
-{}
+{
+    QObject::connect(this,
+                     &LrcGeneralAdapter::accountListChanged,
+                     &(LRCInstance::instance()),
+                     &LRCInstance::accountListChanged);
+};
 
 LrcGeneralAdapter::~LrcGeneralAdapter() {}
 
@@ -47,7 +52,6 @@ LrcGeneralAdapter::setCurrentCall(const QString &accountId, const QString &convU
     auto &accInfo = LRCInstance::getAccountInfo(accountId);
     accInfo.callModel->setCurrentCall(convInfo.callId);
 }
-
 Q_INVOKABLE void
 LrcGeneralAdapter::startPreviewing(bool force)
 {
@@ -60,4 +64,10 @@ LrcGeneralAdapter::stopPreviewing()
     if (!LRCInstance::hasVideoCall()) {
         LRCInstance::renderer()->stopPreviewing();
     }
+}
+
+int
+LrcGeneralAdapter::getAccountListSize()
+{
+    return LRCInstance::accountModel().getAccountList().size();
 }
