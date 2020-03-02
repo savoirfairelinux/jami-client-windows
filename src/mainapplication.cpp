@@ -35,6 +35,7 @@
 #include "accountcomboboxqmlobjectholder.h"
 #include "callcenterqmlobjectholder.h"
 #include "calloverlayqmlobjectholder.h"
+#include "newwizardviewqmlobjectholder.h"
 
 #include <QFontDatabase>
 #include <QQmlContext>
@@ -290,8 +291,8 @@ MainApplication::qmlInitialization()
     // register object holder type
     qmlRegisterType<MessageWebViewQmlObjectHolder>("net.jami.MessageWebViewQmlObjectHolder", 1, 0, "MessageWebViewQmlObjectHolder");
     qmlRegisterType<AccountComboBoxQmlObjectHolder>("net.jami.AccountComboBoxQmlObjectHolder", 1, 0, "AccountComboBoxQmlObjectHolder");
-    qmlRegisterType<CallCenterQmlObjectHolder>("net.jami.CallCenterQmlObjectHolder", 1, 0, "CallCenterQmlObjectHolder");
-    qmlRegisterType<CallOverlayQmlObjectHolder>("net.jami.CallOverlayQmlObjectHolder", 1, 0, "CallOverlayQmlObjectHolder");
+==== BASE ====
+==== BASE ====
 
     // qmlRegisterSingletonType
     qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/src/constant/JamiTheme.qml")), "net.jami.constant.jamitheme", 1, 0, "JamiTheme");
