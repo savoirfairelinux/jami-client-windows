@@ -336,6 +336,10 @@ public:
         return dataDir.absolutePath() + "/jami";
     }
 
+    Q_INVOKABLE bool CreateStartupLink(const QString& appName) {
+        return Utils::CreateStartupLink(appName.toStdWString());
+    }
+
 private:
     QClipboard* clipboard_;
 };
