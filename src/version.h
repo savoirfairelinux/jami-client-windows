@@ -1,5 +1,7 @@
 #pragma once
 
+#include <QObject>
+
 #define BUILD_YEAR_CH0 (__DATE__[ 7])
 #define BUILD_YEAR_CH1 (__DATE__[ 8])
 #define BUILD_YEAR_CH2 (__DATE__[ 9])
