@@ -1,0 +1,70 @@
+/***************************************************************************
+* Copyright (C) 2019-2020 by Savoir-faire Linux                            *
+* Author: Yang Wang <yang.wang@savoirfairelinux.com>                       *
+*                                                                          *
+* This program is free software; you can redistribute it and/or modify     *
+* it under the terms of the GNU General Public License as published by     *
+* the Free Software Foundation; either version 3 of the License, or        *
+* (at your option) any later version.                                      *
+*                                                                          *
+* This program is distributed in the hope that it will be useful,          *
+* but WITHOUT ANY WARRANTY; without even the implied warranty of           *
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            *
+* GNU General Public License for more details.                             *
+*                                                                          *
+* You should have received a copy of the GNU General Public License        *
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.    *
+***************************************************************************/
+
+#pragma once
+
+#include <QObject>
+#include <QLabel>
+#include <QTimer>
+
+#include <map>
+
+#include "lrcinstance.h"
+
+#include "namedirectory.h"
+
+using namespace lrc::api::account;
+
+class NewWizardViewQmlObjectHolder : public QObject
+{
+    Q_OBJECT
+
+    Q_PROPERTY(WizardMode wizardMode, MEMBER wizardMode_, NOTIFY wizardModeChanged)
+public:
+    using AccountInfo = Info;
+
+    enum WizardMode { CREATE, IMPORT, MIGRATE, CREATESIP, CONNECTMANAGER };
+    enum NameRegistrationUIState { BLANK, INVALID, TAKEN, FREE, SEARCHING };
+
+    Q_ENUM(WizardMode)
+    Q_ENUM(NameRegistrationUIState)
+
+public:
+    // functions to call in QML
+    Q_INVOKABLE void setNewWizardViewQmlObject(QObject* obj);
+
+public:
+    explicit NewWizardViewQmlObjectHolder(QObject *parent = nullptr);
+
+signals:
+    // property change notification signal
+    void wizardModeChanged();
+
+    // object holder signals
+    void updateNameRegistrationUi(NameRegistrationUIState state);
+    void reportFailure();
+
+private:
+    QObject* newWizardViewQmlObject;
+
+    WizardMode wizardMode_;
+    AccountInfo* account_;
+    QString registeredName_;
+    QString fileToImport_;
+    std::map<QString, QString> inputPara_;
+};
