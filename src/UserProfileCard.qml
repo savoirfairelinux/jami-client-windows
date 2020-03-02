@@ -2,7 +2,7 @@ import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.3
-import MyQClipboard 1.0
+import Qt.tools.clipboard 1.0
 
 /*
  * Every QML object can be assigned an id and an objectName that other objects can use to refer to the object.
