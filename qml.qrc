@@ -4,5 +4,6 @@
         <file>src/KeyBoardShortcutKey.qml</file>
         <file>src/UserProfileCard.qml</file>
         <file>src/MainApplicationWindow.qml</file>
+        <file>src/WizardView.qml</file>
     </qresource>
 </RCC>
