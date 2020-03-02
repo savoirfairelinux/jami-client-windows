@@ -7,5 +7,6 @@
         <file>src/MainView.qml</file>
         <file>src/CustomBorder.qml</file>
         <file>src/ColorConstant.qml</file>
+        <file>src/WizardView.qml</file>
     </qresource>
 </RCC>
