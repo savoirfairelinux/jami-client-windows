@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2019 by Savoir-faire Linux                                *
+ * Copyright (C) 2020 by Savoir-faire Linux                                *
  * Author: Mingrui Zhang   <mingrui.zhang@savoirfairelinux.com>            *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -16,26 +16,36 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-//https://ruedigergad.com/2011/08/06/qml-and-clipboard-interaction/
-
 #pragma once
 
-#include <QApplication>
-#include <QClipboard>
+#include "lrcinstance.h"
+
 #include <QObject>
+#include <QString>
 
-class QmlClipboardAdapter : public QObject
-{
+// to ease the logic with the power of c++
+class MessageWebViewQmlObjectHolder : public QObject {
     Q_OBJECT
-public:
-    explicit QmlClipboardAdapter(QObject* parent = nullptr) : QObject(parent) {
-        clipboard_ = QApplication::clipboard();
-    }
 
-    Q_INVOKABLE void setText(QString text) {
-        clipboard_->setText(text, QClipboard::Clipboard);
-    }
+public:
+    explicit MessageWebViewQmlObjectHolder(QObject* parent = 0);
+    ~MessageWebViewQmlObjectHolder();
+
+    // Must call Q_INVOKABLE so that this function can be used in QML
+    Q_INVOKABLE void setMessageWebViewQmlObject(QObject* obj);
+    Q_INVOKABLE void setupChatView(const QString& uid);
+
+public slots:
+    void slotSendMessageContentSaved(const QString& content);
+    void slotMessagesCleared();
+    void slotMessagesLoaded();
 
 private:
-    QClipboard* clipboard_;
+    void setConversationProfileData(const lrc::api::conversation::Info& convInfo);
+    QString getSenderImageObjectString(const QString& sender, const QString& senderImage);
+
+    // Object pointer
+    QObject* messageWebViewQmlObject_;
+    QString LastConvUid_;
+    QString currentConvUid_;
 };
