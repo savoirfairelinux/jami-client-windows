@@ -1,7 +1,8 @@
 /***************************************************************************
- * Copyright (C) 2017-2019 by Savoir-faire Linux                           *
+ * Copyright (C) 2017-2020 by Savoir-faire Linux                           *
  * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -32,7 +33,7 @@ SmartListModel::SmartListModel(const QString& accId,
                                QObject *parent,
                                SmartListModel::Type listModelType,
                                const QString& convUid)
-    : QAbstractItemModel(parent)
+    : QAbstractListModel(parent)
     , accountId_(accId)
     , listModelType_(listModelType)
     , convUid_(convUid)
@@ -138,6 +139,28 @@ QVariant SmartListModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
+QHash<int, QByteArray> SmartListModel::roleNames() const
+{
+    QHash<int, QByteArray> roles;
+    roles[DisplayName] = "DisplayName";
+    roles[DisplayID] = "DisplayID";
+    roles[Picture] = "Picture";
+    roles[Presence] = "Presence";
+    roles[URI] = "URI";
+    roles[UnreadMessagesCount] = "UnreadMessagesCount";
+    roles[LastInteractionDate] = "LastInteractionDate";
+    roles[LastInteraction] = "LastInteraction";
+    roles[ContactType] = "ContactType";
+    roles[UID] = "UID";
+    roles[ContextMenuOpen] = "ContextMenuOpen";
+    roles[InCall] = "InCall";
+    roles[CallStateStr] = "CallStateStr";
+    roles[SectionName] = "SectionName";
+    roles[AccountId] = "AccountId";
+    roles[Draft] = "Draft";
+    return roles;
+}
+
 void
 SmartListModel::setConferenceableFilter(const QString& filter)
 {
@@ -172,11 +195,11 @@ SmartListModel::getConversationItemData(const conversation::Info& item,
     }
     auto& contactModel = accountInfo.contactModel;
     switch (role) {
-    case Role::Picture:
-    case Qt::DecorationRole:
-        return GlobalInstances::pixmapManipulator().decorationRole(item, accountInfo);
+    case Role::Picture: {
+        auto contactImage = GlobalInstances::pixmapManipulator().decorationRole(item, accountInfo).value<QImage>();
+        return QString::fromLatin1(Utils::QImageToByteArray(contactImage).toBase64().data());
+    }
     case Role::DisplayName:
-    case Qt::DisplayRole:
     {
         auto& contact = contactModel->getContact(item.participants[0]);
         return QVariant(Utils::bestNameForContact(contact));
