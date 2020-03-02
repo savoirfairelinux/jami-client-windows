@@ -37,6 +37,7 @@
 #include "tintedbuttonimageprovider.h"
 #include "utils.h"
 #include "version.h"
+#include "newwizardviewqmlobjectholder.h"
 
 #include <QFontDatabase>
 #include <QQmlContext>
@@ -302,6 +303,8 @@ MainApplication::qmlInitialization()
     qmlRegisterType<PreviewRenderer>("net.jami.PreviewRenderer", 1, 0, "PreviewRenderer");
 
     qmlRegisterType<DistantRenderer>("net.jami.DistantRenderer", 1, 0, "DistantRenderer");
+
+    qmlRegisterType<NewWizardViewQmlObjectHolder>("net.jami.NewWizardViewQmlObjectHolder", 1, 0, "NewWizardViewQmlObjectHolder");
 
     // qmlRegisterSingletonType
     qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/src/constant/JamiTheme.qml")),
