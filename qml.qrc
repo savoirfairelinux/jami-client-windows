@@ -4,5 +4,8 @@
         <file>src/KeyBoardShortcutKey.qml</file>
         <file>src/UserProfileCard.qml</file>
         <file>src/MainApplicationWindow.qml</file>
+        <file>src/MainView.qml</file>
+        <file>src/CustomBorder.qml</file>
+        <file>src/ColorConstant.qml</file>
     </qresource>
 </RCC>

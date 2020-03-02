@@ -14,8 +14,27 @@ ApplicationWindow {
 
     Universal.theme: Universal.Light
 
+    title: "Jami"
     visible: true
     width: 600
     minimumWidth: minWidth
     minimumHeight: minHeight
+
+    Loader { id: mainViewLoader }
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: mainViewLoader.source = "MainView.qml"
+    }
+
+    overlay.modal: ColorOverlay {
+        source: mainApplicationWindow.contentItem
+        color: "transparent"
+        // color animation
+        ColorAnimation on color { to: Qt.rgba(0, 0, 0, 0.33); duration: 500 }
+    }
+
+    /*onScreenChanged: {
+        mainApplicationWindow.displayScreenChanged()
+    }*/
 }
