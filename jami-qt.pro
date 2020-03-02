@@ -180,7 +180,8 @@ HEADERS += ./src/aboutdialog.h \
         ./src/connectivitymonitor.h \
         ./src/userprofile.h \
         ./src/qmlclipboardadapter.h \
-        ./src/mainapplication.h
+        ./src/mainapplication.h \
+        ./src/accountimageprovider.h
 SOURCES += ./src/aboutdialog.cpp \
         ./src/banneditemwidget.cpp \
         ./src/conversationsfilterwidget.cpp \
