@@ -26,7 +26,8 @@ ApplicationWindow {
 
     MouseArea {
         anchors.fill: parent
-        onClicked: mainViewLoader.source = "mainview/MainView.qml"
+        //onClicked: mainViewLoader.source = "mainview/MainView.qml"
+        onClicked: mainViewLoader.source = "wizardview/WizardView.qml"
     }
 
     overlay.modal: ColorOverlay {
