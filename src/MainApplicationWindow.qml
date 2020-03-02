@@ -20,11 +20,14 @@ ApplicationWindow {
     minimumWidth: minWidth
     minimumHeight: minHeight
 
-    Loader { id: mainViewLoader }
+    Loader {
+        id: mainViewLoader
+    }
 
     MouseArea {
         anchors.fill: parent
-        onClicked: mainViewLoader.source = "mainview/MainView.qml"
+        //onClicked: mainViewLoader.source = "mainview/MainView.qml"
+        onClicked: mainViewLoader.source = "wizardview/WizardView.qml"
     }
 
     overlay.modal: ColorOverlay {
@@ -32,6 +35,9 @@ ApplicationWindow {
         color: "transparent"
 
         // color animation
-        ColorAnimation on color { to: Qt.rgba(0, 0, 0, 0.33); duration: 500 }
+        ColorAnimation on color {
+            to: Qt.rgba(0, 0, 0, 0.33)
+            duration: 500
+        }
     }
 }
