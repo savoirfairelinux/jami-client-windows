@@ -38,4 +38,8 @@ public:
     Q_INVOKABLE void setCurrentCall(const QString &accountId, const QString &convUid);
     Q_INVOKABLE void startPreviewing(bool force);
     Q_INVOKABLE void stopPreviewing();
+    Q_INVOKABLE int getAccountListSize();
+
+signals:
+    void accountListChanged();
 };
