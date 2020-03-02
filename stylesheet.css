@@ -154,12 +154,15 @@ RingContactLineEdit:focus{
     height: 30px;
 }
 
-QScrollBar:vertical, QScrollBar:horizontal{
-    background:white; width:0px;
+QScrollBar:vertical {
+    border: none;
+    background: white;
+    width: 0px;
 }
 
-QScrollBar::handle:vertical, QScrollBar::handle:horizontal{
-    background: rgb(255, 255, 255);
+QScrollBar::handle:vertical {
+    background: white;
+    max-width: 0px;
 }
 
 SmartListView {
@@ -285,15 +288,6 @@ QPushButton#btnvideo{
     background-color: #109ede;
     border-radius: 15px;
     border:solid 1px;
-}
-
-QScrollBar:vertical{
-    background: rgb(242, 242, 242);
-    width:10px;
-}
-
-QScrollBar::handle:vertical{
-    background: rgb(77, 77, 77);
 }
 
 QWidget#messagingPage, QWidget#contactRequestPage,
