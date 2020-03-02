@@ -1,5 +1,17 @@
 <RCC>
     <qresource prefix="/">
+        <file>src/commoncomponents/PasswordDialog.qml</file>
+        <file>src/commoncomponents/InfoLineEdit.qml</file>
+        <file>src/wizardview/WizardView.qml</file>
+        <file>src/wizardview/components/WelcomePageLayout.qml</file>
+        <file>src/wizardview/components/CreateAccountPage.qml</file>
+        <file>src/wizardview/components/CreateSIPAccountPage.qml</file>
+        <file>src/wizardview/components/ImportFromBackupPage.qml</file>
+        <file>src/wizardview/components/BackupKeyPage.qml</file>
+        <file>src/wizardview/components/ImportFromDevicePage.qml</file>
+        <file>src/wizardview/components/ConnectToAccountManagerPage.qml</file>
+        <file>src/wizardview/components/SpinnerPage.qml</file>
+        <file>src/wizardview/components/CollapsiblePasswordWidget.qml</file>
         <file>src/MainApplicationWindow.qml</file>
         <file>src/mainview/MainView.qml</file>
         <file>src/commoncomponents/CustomBorder.qml</file>
@@ -46,5 +58,7 @@
         <file>src/mainview/components/ContactPicker.qml</file>
         <file>src/mainview/js/contactpickercreation.js</file>
         <file>src/mainview/components/ContactPickerItemDelegate.qml</file>
+        <file>src/commoncomponents/LookupStatusLabel.qml</file>
+        <file>src/wizardview/components/HoverableGradientButton.qml</file>
     </qresource>
 </RCC>
