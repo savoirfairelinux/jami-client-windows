@@ -29,6 +29,8 @@
 #include "globalsystemtray.h"
 #include "lrcinterface.h"
 #include "messagesadapter.h"
+#include "namedirectory.h"
+#include "passworddialogqmlobjectholder.h"
 #include "pixbufmanipulator.h"
 #include "previewrenderer.h"
 #include "qrimageprovider.h"
@@ -277,6 +279,7 @@ MainApplication::qmlInitialization()
     QML_REGISTERTYPE(PreviewRenderer, 1, 0);
     QML_REGISTERTYPE(VideoCallPreviewRenderer, 1, 0);
     QML_REGISTERTYPE(DistantRenderer, 1, 0);
+    QML_REGISTERTYPE(PasswordDialogQMLObjectHolder, 1, 0);
 
     /*
      * Adapter - qmlRegisterSingletonType
@@ -290,6 +293,7 @@ MainApplication::qmlInitialization()
     QML_REGISTERSINGLETONTYPE(AccountAdapter, 1, 0);
     QML_REGISTERSINGLETONTYPE(MessagesAdapter, 1, 0);
     QML_REGISTERSINGLETONTYPE(ConversationsAdapter, 1, 0);
+    QML_REGISTERSINGLETONTYPE_WITH_INSTANCE(NameDirectory, 1, 0);
 
     /*
      * Namespaces - qmlRegisterUncreatableMetaObject

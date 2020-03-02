@@ -131,7 +131,8 @@ HEADERS += ./src/smartlistmodel.h \
         ./src/conversationsadapter.h \
         ./src/distantrenderer.h \
         ./src/previewrenderer.h \
-        ./src/qmladapterbase.h
+        ./src/qmladapterbase.h \
+        ./src/passworddialogqmlobjectholder.h
 SOURCES += ./src/bannedlistmodel.cpp \
         ./src/accountlistmodel.cpp \
         ./src/runguard.cpp \
@@ -151,6 +152,7 @@ SOURCES += ./src/bannedlistmodel.cpp \
         ./src/conversationsadapter.cpp \
         ./src/distantrenderer.cpp \
         ./src/previewrenderer.cpp \
-        ./src/qmladapterbase.cpp
+        ./src/qmladapterbase.cpp \
+        ./src/passworddialogqmlobjectholder.cpp
 RESOURCES += ./ressources.qrc \
              ./qml.qrc
