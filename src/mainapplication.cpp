@@ -35,6 +35,7 @@
 #include "accountcomboboxqmlobjectholder.h"
 #include "callcenterqmlobjectholder.h"
 #include "calloverlayqmlobjectholder.h"
+#include "newwizardviewqmlobjectholder.h"
 
 #include <QFontDatabase>
 #include <QQmlContext>
