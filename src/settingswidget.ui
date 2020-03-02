@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1146</width>
-    <height>883</height>
+    <width>884</width>
+    <height>590</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -50,14 +50,14 @@
       <item row="0" column="0">
        <widget class="QWidget" name="leftSettingsWidget" native="true">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
         <property name="minimumSize">
          <size>
-          <width>380</width>
+          <width>0</width>
           <height>0</height>
          </size>
         </property>
@@ -328,7 +328,7 @@
       <item row="0" column="1">
        <widget class="QWidget" name="rightSettingsWidget" native="true">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -358,14 +358,14 @@
          <item>
           <widget class="QStackedWidget" name="stackedWidget">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
            <property name="minimumSize">
             <size>
-             <width>500</width>
+             <width>0</width>
              <height>590</height>
             </size>
            </property>
@@ -376,11 +376,11 @@
             </size>
            </property>
            <property name="currentIndex">
-            <number>3</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="generalSettings">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1328,7 +1328,7 @@
            </widget>
            <widget class="QWidget" name="currentAccountSettingsScrollWidget">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1392,7 +1392,7 @@
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
-                   <width>48</width>
+                   <width>30</width>
                    <height>0</height>
                   </size>
                  </property>
@@ -1462,9 +1462,9 @@
                 <property name="geometry">
                  <rect>
                   <x>0</x>
-                  <y>0</y>
-                  <width>706</width>
-                  <height>1398</height>
+                  <y>-360</y>
+                  <width>687</width>
+                  <height>1387</height>
                  </rect>
                 </property>
                 <property name="styleSheet">
@@ -1504,7 +1504,7 @@
                      </property>
                      <property name="sizeHint" stdset="0">
                       <size>
-                       <width>48</width>
+                       <width>30</width>
                        <height>0</height>
                       </size>
                      </property>
@@ -2645,7 +2645,7 @@
            </widget>
            <widget class="QWidget" name="currentSIPAccountSettingsScrollWidget">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -2787,7 +2787,7 @@
                   <x>0</x>
                   <y>0</y>
                   <width>683</width>
-                  <height>874</height>
+                  <height>864</height>
                  </rect>
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayoutsip_12" stretch="0">
@@ -3476,7 +3476,7 @@
            </widget>
            <widget class="QWidget" name="avSettings">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -3762,16 +3762,16 @@
                                <height>5</height>
                               </size>
                              </property>
-                             <property name="maximum" stdset="0">
+                             <property name="maximum">
                               <number>100</number>
                              </property>
-                             <property name="value" stdset="0">
+                             <property name="value">
                               <number>-1</number>
                              </property>
-                             <property name="textVisible" stdset="0">
+                             <property name="textVisible">
                               <bool>false</bool>
                              </property>
-                             <property name="format" stdset="0">
+                             <property name="format">
                               <string>%p%</string>
                              </property>
                             </widget>
