@@ -131,6 +131,7 @@ HEADERS += ./src/smartlistmodel.h \
         ./src/calloverlayqmlobjectholder.h \
         ./src/conversationsmartlistviewqmlobjectholder.h \
         ./src/contactsearchbarqmlobjectholder.h
+        ./src/newwizardviewqmlobjectholder.h
 SOURCES += ./src/bannedlistmodel.cpp \
         ./src/accountlistmodel.cpp \
         ./src/runguard.cpp \
@@ -150,5 +151,6 @@ SOURCES += ./src/bannedlistmodel.cpp \
         ./src/calloverlayqmlobjectholder.cpp \
         ./src/conversationsmartlistviewqmlobjectholder.cpp \
         ./src/contactsearchbarqmlobjectholder.cpp
+        ./src/newwizardviewqmlobjectholder.cpp
 RESOURCES += ./ressources.qrc \
              ./qml.qrc
