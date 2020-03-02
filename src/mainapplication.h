@@ -21,6 +21,7 @@
 #pragma once
 
 //#include "splashscreen.h"
+#include "accountlistmodel.h"
 
 #include <QFile>
 #include <QGuiApplication>
@@ -57,4 +58,5 @@ private:
     //std::unique_ptr<SplashScreen> splash_;
     std::unique_ptr<QFile> debugFile_;
     std::unique_ptr<QQmlApplicationEngine> engine_;
+    std::unique_ptr<AccountListModel> accountListModel_;
 };

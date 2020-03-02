@@ -27,8 +27,10 @@
 #include "pixbufmanipulator.h"
 #include "utils.h"
 #include "qmlclipboardadapter.h"
+#include "accountimageprovider.h"
 
 #include <QFontDatabase>
+#include <QQmlContext>
 
 #include <locale.h>
 
@@ -270,6 +272,14 @@ MainApplication::qmlInitialization()
     // for deployment and register types
     qmlRegisterType<QmlClipboardAdapter>("MyQClipboard", 1, 0, "QClipboard");
 
+    // child contexts inherit the context properties of their parent
+    // if a child context sets a context property that already exists in its parent,
+    // the new context property overrides that of the parent
+    QQmlContext* ctxt = engine_->rootContext();
+    ctxt->setContextProperty("accountListModel", accountListModel_.get());
+
+    engine_->addImageProvider(QLatin1String("accountImage"), new AccountImageProvider(accountListModel_.get()));
+
     engine_->load(QUrl(QStringLiteral("qrc:/src/MainApplicationWindow.qml")));
     engine_->load(QUrl(QStringLiteral("qrc:/src/KeyBoardShortcutTable.qml")));
     engine_->load(QUrl(QStringLiteral("qrc:/src/UserProfileCard.qml")));
@@ -316,6 +326,9 @@ MainApplication::applicationSetup()
     // start possible account migration
     if (!startAccountMigration())
         return false;
+
+    // initialize accountListModel
+    accountListModel_ = std::make_unique<AccountListModel>();
 
     // create jami.net settings in Registry if it is not presented
     QSettings settings("jami.net", "Jami");
