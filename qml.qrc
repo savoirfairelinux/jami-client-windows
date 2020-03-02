@@ -25,5 +25,15 @@
         <file>src/mainview/components/CallOverlayButtonGroup.qml</file>
         <file>src/mainview/components/CallCenter.qml</file>
         <file>src/mainview/components/js/callWindowCreation.js</file>
+
+        <file>src/wizardview/WizardView.qml</file>
+        <file>src/wizardview/components/WelcomePageLayout.qml</file>
+        <file>src/wizardview/components/CreateAccountPage.qml</file>
+        <file>src/wizardview/components/CreateSIPAccountPage.qml</file>
+        <file>src/wizardview/components/ImportFromBackupPage.qml</file>
+        <file>src/wizardview/components/BackupKeyPage.qml</file>
+        <file>src/wizardview/components/ImportFromDevicePage.qml</file>
+        <file>src/wizardview/components/ConnectToAccountManagerPage.qml</file>
+        <file>src/wizardview/components/SpinnerPage.qml</file>
     </qresource>
 </RCC>
