@@ -35,6 +35,7 @@
 #include <QListWidget>
 #include <QMessageBox>
 #include <QQmlEngine>
+#include <QSettings>
 #include <QStackedWidget>
 #include <QStandardPaths>
 #include <QString>
@@ -76,6 +77,16 @@ namespace Utils {
                                     Q_UNUSED(se); \
                                     T *obj = new T(); \
                                     return obj; \
+                                });
+#define QML_REGISTERSINGLETONTYPE_WITH_INSTANCE(T, MAJ, MIN) \
+    qmlRegisterSingletonType<T>("net.jami." #T, \
+                                MAJ, \
+                                MIN, \
+                                #T, \
+                                [](QQmlEngine *e, QJSEngine *se) -> QObject * { \
+                                    Q_UNUSED(e); \
+                                    Q_UNUSED(se); \
+                                    return &(T::instance()); \
                                 });
 
 #define QML_REGISTERSINGLETONTYPE_URL(URL, T, MAJ, MIN) \
@@ -410,6 +421,16 @@ public:
         dataDir.cdUp();
         return dataDir.absolutePath() + "/jami";
     }
+    Q_INVOKABLE bool
+    createStartupLink()
+    {
+        return Utils::CreateStartupLink(L"Jami");
+    }
+    Q_INVOKABLE QString
+    GetRingtonePath()
+    {
+        return Utils::GetRingtonePath();
+    }
 
     Q_INVOKABLE const QString
     getContactImageString(const QString &accountId, const QString &uid)
@@ -426,6 +447,25 @@ public:
     Q_INVOKABLE int getTotalPendingRequest();
     Q_INVOKABLE const QString getBestName(const QString &accountId, const QString &uid);
     Q_INVOKABLE const QString getBestId(const QString &accountId, const QString &uid);
+
+    Q_INVOKABLE QString
+    stringSimplifier(QString input)
+    {
+        return input.simplified();
+    }
+
+    Q_INVOKABLE QString
+    toNativeSeparators(QString inputDir)
+    {
+        return QDir::toNativeSeparators(inputDir);
+    }
+
+    Q_INVOKABLE QString
+    toFileInfoName(QString inputFileName)
+    {
+        QFileInfo fi(inputFileName);
+        return fi.fileName();
+    }
 
 private:
     QClipboard *clipboard_;
