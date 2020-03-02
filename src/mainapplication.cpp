@@ -37,6 +37,7 @@
 #include "tintedbuttonimageprovider.h"
 #include "utils.h"
 #include "version.h"
+#include "newwizardviewqmlobjectholder.h"
 
 #include <QFontDatabase>
 #include <QQmlContext>
@@ -267,6 +268,13 @@ MainApplication::setApplicationFont()
 void
 MainApplication::qmlInitialization()
 {
+    // lrc registration
+    qmlRegisterSingletonInstance<NameDirectory>("net.jami.lrc.namedirectory",
+                                                1,
+                                                0,
+                                                "NameDirectory",
+                                                &(NameDirectory::instance()));
+
     // for deployment and register types
     qmlRegisterType<Utils::UtilsAdapter>("net.jami.tools.utils", 1, 0, "UtilsAdapter");
     qmlRegisterType<AccountListModel>("net.jami.model.account", 1, 0, "AccountListModel");
@@ -307,6 +315,8 @@ MainApplication::qmlInitialization()
                                               "VideoCallPreviewRenderer");
 
     qmlRegisterType<DistantRenderer>("net.jami.DistantRenderer", 1, 0, "DistantRenderer");
+
+    qmlRegisterType<NewWizardViewQmlObjectHolder>("net.jami.NewWizardViewQmlObjectHolder", 1, 0, "NewWizardViewQmlObjectHolder");
 
     // qmlRegisterSingletonType
     qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/src/constant/JamiTheme.qml")),
