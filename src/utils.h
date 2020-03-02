@@ -77,6 +77,16 @@ namespace Utils {
                                     T *obj = new T(); \
                                     return obj; \
                                 });
+#define QML_REGISTERSINGLETONTYPE_WITH_INSTANCE(T, MAJ, MIN) \
+    qmlRegisterSingletonType<T>("net.jami.lrc." #T, \
+                                MAJ, \
+                                MIN, \
+                                #T, \
+                                [](QQmlEngine *e, QJSEngine *se) -> QObject * { \
+                                    Q_UNUSED(e); \
+                                    Q_UNUSED(se); \
+                                    return &(T::instance()); \
+                                });
 
 #define QML_REGISTERSINGLETONTYPE_URL(URL, T, MAJ, MIN) \
     qmlRegisterSingletonType(QUrl(URL), "net.jami." #T, MAJ, MIN, #T);
@@ -85,6 +95,13 @@ namespace Utils {
 
 #define QML_REGISTERNAMESPACE(T, NAME, MAJ, MIN) \
     qmlRegisterUncreatableMetaObject(T, "lrc.api.namespaces", MAJ, MIN, NAME, "")
+
+#define QML_REGISTER_LRC_CLASSES(T, MAJ, MIN) \
+    qmlRegisterUncreatableType<T>("lrc.api.classes." #T, \
+                                  MAJ, \
+                                  MIN, \
+                                  #T, \
+                                  QString(#T " is not creatable in QML"));
 
 // System
 bool CreateStartupLink(const std::wstring &wstrAppName);
@@ -410,6 +427,14 @@ public:
         dataDir.cdUp();
         return dataDir.absolutePath() + "/jami";
     }
+    Q_INVOKABLE bool createStartupLink() {
+        return Utils::CreateStartupLink(L"Jami");
+    }
+    Q_INVOKABLE QString
+    GetRingtonePath()
+    {
+        return Utils::GetRingtonePath();
+    }
 
     Q_INVOKABLE const QString
     getContactImageString(const QString &accountId, const QString &uid)
@@ -422,6 +447,25 @@ public:
     Q_INVOKABLE int getTotalPendingRequest();
     Q_INVOKABLE const QString getBestName(const QString &accountId, const QString &uid);
     Q_INVOKABLE const QString getBestId(const QString &accountId, const QString &uid);
+
+    Q_INVOKABLE QString
+    stringSimplifier(QString input)
+    {
+        return input.simplified();
+    }
+
+    Q_INVOKABLE QString
+    toNativeSeparators(QString inputDir)
+    {
+        return QDir::toNativeSeparators(inputDir);
+    }
+
+    Q_INVOKABLE QString
+    toFileInfoName(QString inputFileName)
+    {
+        QFileInfo fi(inputFileName);
+        return fi.fileName();
+    }
 
 private:
     QClipboard *clipboard_;
