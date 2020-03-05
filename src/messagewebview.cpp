@@ -129,6 +129,7 @@ MessageWebView::MessageWebView(QWidget *parent)
                 fullScreenWebWidget_.reset();
             }
         });
+
 }
 
 MessageWebView::~MessageWebView()
@@ -505,6 +506,15 @@ MessageWebView::setSendMessageContent(const QString& content)
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
+void
+MessageWebView::contactIsComposing(const QString& uid, const QString& contactUri, bool isComposing)
+{
+    if (LRCInstance::getCurrentConvUid() == uid) {
+        QString s = QString::fromLatin1("showTypingIndicator(`%1`, %2);").arg(contactUri).arg(isComposing);
+        page()->runJavaScript(s, QWebEngineScript::MainWorld);
+    }
+}
+
 // JS bridging incoming
 Q_INVOKABLE int
 PrivateBridging::log(const QString& arg)
@@ -784,7 +794,13 @@ PrivateBridging::saveSendMessageContent(const QString& arg)
         qDebug() << "JS bridging - exception during saveSendMessageContent!";
     }
     return 0;
+}
 
+Q_INVOKABLE int
+PrivateBridging::onComposing(bool isComposing)
+{
+    LRCInstance::getCurrentConversationModel()->setIsComposing(LRCInstance::getCurrentConvUid(), isComposing);
+    return 0;
 }
 
 FullScreenWebWidget::FullScreenWebWidget(QWebEngineView *oldView, QWidget *parent)
