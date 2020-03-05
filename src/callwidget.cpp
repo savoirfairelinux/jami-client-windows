@@ -743,8 +743,11 @@ CallWidget::slotShowChatView(const QString& accountId,
     Q_UNUSED(accountId);
     Q_UNUSED(convInfo);
 
+    disconnect(contactComposingConnection_);
     setCallPanelVisibility(false);
     showConversationView();
+    contactComposingConnection_ = connect(LRCInstance::getCurrentConversationModel(), &ConversationModel::composingStatusChanged,
+                                          ui->messageView, &MessageWebView::contactIsComposing);
 }
 
 void

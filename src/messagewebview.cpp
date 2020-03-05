@@ -505,6 +505,21 @@ MessageWebView::setSendMessageContent(const QString& content)
     page()->runJavaScript(s, QWebEngineScript::MainWorld);
 }
 
+void
+MessageWebView::userIsComposing(bool isComposing)
+{
+    LRCInstance::getCurrentConversationModel()->setIsComposing(LRCInstance::getCurrentConvUid(), isComposing);
+}
+
+void
+MessageWebView::contactIsComposing(const QString& uid, const QString& contactUri, bool isComposing)
+{
+    Q_UNUSED(uid)
+
+    QString s = QString::fromLatin1("showTypingIndicator(`%1`, `%2`);").arg(contactUri).arg(isComposing);
+    page()->runJavaScript(s, QWebEngineScript::MainWorld);
+}
+
 // JS bridging incoming
 Q_INVOKABLE int
 PrivateBridging::log(const QString& arg)
@@ -784,7 +799,20 @@ PrivateBridging::saveSendMessageContent(const QString& arg)
         qDebug() << "JS bridging - exception during saveSendMessageContent!";
     }
     return 0;
+}
 
+Q_INVOKABLE int
+PrivateBridging::onComposing(bool isComposing)
+{
+    try {
+        if (auto messageView = qobject_cast<MessageWebView*>(this->parent())) {
+            emit messageView->userIsComposing(isComposing);
+        }
+    }
+    catch (...) {
+        qDebug() << "JS bridging - exception during saveSendMessageContent!";
+    }
+    return 0;
 }
 
 FullScreenWebWidget::FullScreenWebWidget(QWebEngineView *oldView, QWidget *parent)

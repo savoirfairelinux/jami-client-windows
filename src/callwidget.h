@@ -165,5 +165,6 @@ private:
     QMetaObject::Connection contactAddedConnection_;
     QMetaObject::Connection callStatusChangedConnection_;
     QMetaObject::Connection addedToConferenceConnection_;
+    QMetaObject::Connection contactComposingConnection_;
 
 };

@@ -63,6 +63,7 @@ public:
     Q_INVOKABLE int openAudioRecorder(int spikePosX,int spikePosY);
     Q_INVOKABLE int openVideoRecorder(int spikePosX,int spikePosY);
     Q_INVOKABLE int saveSendMessageContent(const QString& arg);
+    Q_INVOKABLE int onComposing(bool isComposing);
 };
 
 class MessageWebView : public QWebEngineView
@@ -109,6 +110,8 @@ public:
     void displayNavbar(bool display);
     void requestSendMessageContent();
     void setSendMessageContent(const QString& content);
+    void userIsComposing(bool isComposing);
+    void contactIsComposing(const QString& uid, const QString& contactUri, bool isComposing);
 
 protected:
 
