@@ -20,6 +20,7 @@ Button {
     property alias source: hoverableButtonImage.source
 
     font.pointSize: fontPointSize
+    font.kerning: true
 
     hoverEnabled: true
 
