@@ -35,6 +35,7 @@
 #include "pixbufmanipulator.h"
 #include "previewrenderer.h"
 #include "qrimageprovider.h"
+#include "settingsadaptor.h"
 #include "tintedbuttonimageprovider.h"
 #include "utils.h"
 #include "version.h"
@@ -314,6 +315,7 @@ MainApplication::qmlInitialization()
     QML_REGISTERSINGLETONTYPE(ContactAdapter, 1, 0);
     QML_REGISTERSINGLETONTYPE(LrcGeneralAdaptor, 1, 0);
     QML_REGISTERSINGLETONTYPE(UtilsAdapter, 1, 0);
+    QML_REGISTERSINGLETONTYPE(SettingsAdaptor, 1, 0);
     QML_REGISTERSINGLETONTYPE_WITH_INSTANCE(NameDirectory, 1, 0);
     QML_REGISTERSINGLETONTYPE_WITH_INSTANCE(LRCInstance, 1, 0);
 
@@ -328,6 +330,10 @@ MainApplication::qmlInitialization()
     QML_REGISTERUNCREATABLE(ConversationModel, 1, 0);
     QML_REGISTERUNCREATABLE(NewCallModel, 1, 0);
 
+    using lrc::api::video::Settings;
+    QML_REGISTERUNCREATABLE(Settings, 1, 0);
+
+    QML_REGISTERUNCREATABLE(RenderManager, 1, 0);
     /*
      * Namespaces - qmlRegisterUncreatableMetaObject.
      */
