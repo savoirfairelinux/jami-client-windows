@@ -39,6 +39,7 @@ TextField{
 
     Layout.fillWidth: layoutFillwidth
 
+    readOnly: false
     selectByMouse: true
     font.pointSize: 10
     font.kerning: true
@@ -47,9 +48,9 @@ TextField{
 
     background: Rectangle {
         anchors.fill: parent
-        radius: height / 2
-        border.color: borderColor
-        border.width: 2
-        color: backgroundColor
+        radius: readOnly? 0 : height / 2
+        border.color: readOnly? "transparent" : borderColor
+        border.width:readOnly? 0 : 2
+        color: readOnly? "transparent" : backgroundColor
     }
 }
