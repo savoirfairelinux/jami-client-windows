@@ -56,12 +56,18 @@ public:
      * conf property
      */
     Q_INVOKABLE bool hasPassword();
-    Q_INVOKABLE bool savePassword(QString accountId, QString oldPassword, QString newPassword);
     Q_INVOKABLE void setArchiveHasPassword(bool isHavePassword);
+    /*
+     * lrc instances functions wrappers
+     */
+    Q_INVOKABLE bool savePassword(QString accountId, QString oldPassword, QString newPassword);
+    Q_INVOKABLE void startAudioMeter(bool async);
+    Q_INVOKABLE void stopAudioMeter(bool async);
     /*
      * lrc model instances getter
      */
     Q_INVOKABLE NewAccountModel *accoundModel();
+    Q_INVOKABLE AVModel *avModel();
 
 signals:
 
