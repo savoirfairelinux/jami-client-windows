@@ -458,6 +458,11 @@ public:
     {
         return Utils::GetRingtonePath();
     }
+    Q_INVOKABLE bool
+    checkStartupLink()
+    {
+        return Utils::CheckStartupLink(L"Jami");
+    }
 
     Q_INVOKABLE const QString
     getContactImageString(const QString &accountId, const QString &uid)
@@ -483,6 +488,9 @@ public:
     Q_INVOKABLE void stopPreviewing();
     Q_INVOKABLE bool hasVideoCall();
     Q_INVOKABLE const QString getCallId(const QString &accountId, const QString &convUid);
+    Q_INVOKABLE QString getStringUTF8(QString string);
+    Q_INVOKABLE bool validateRegNameForm(const QString &regName);
+    Q_INVOKABLE QString getRecordQualityString(int value);
     Q_INVOKABLE QString
     stringSimplifier(QString input)
     {
