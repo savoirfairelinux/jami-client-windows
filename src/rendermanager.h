@@ -277,3 +277,4 @@ private:
      */
     AVModel &avModel_;
 };
+Q_DECLARE_METATYPE(RenderManager *)
