@@ -33,6 +33,8 @@ import "components"
 Window {
     id: mainViewWindow
 
+    signal mainViewWindowNeedToShowSettingsViewWindow
+
     property int minWidth: sidePanelViewStackPreferedWidth
     property int minHeight: aboutPopUpDialog.contentHeight
 
@@ -169,6 +171,10 @@ Window {
 
     SidePanel {
         id: mainViewWindowSidePanel
+
+        onSettingBtnClicked_AccountComboBox:{
+            mainViewWindowNeedToShowSettingsViewWindow()
+        }
 
         onConversationSmartListNeedToAccessMessageWebView: {
 
