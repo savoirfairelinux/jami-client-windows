@@ -294,6 +294,11 @@ MainApplication::qmlInitialization()
 
     qmlRegisterType<NewWizardViewQmlObjectHolder>("net.jami.NewWizardViewQmlObjectHolder", 1, 0, "NewWizardViewQmlObjectHolder");
 
+    qmlRegisterType<NewWizardViewQmlObjectHolder>("net.jami.SettingsViewQmlObjectHolder",
+                                                  1,
+                                                  0,
+                                                  "SettingsViewQmlObjectHolder");
+
     // qmlRegisterSingletonType
     qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/src/constant/JamiTheme.qml")),
                              "net.jami.constant.jamitheme",
