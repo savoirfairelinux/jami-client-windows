@@ -22,7 +22,7 @@ import net.jami.Models 1.0
 
 
 /*
- * HoverableButton contains the following configurable properties:
+ * HoverableButton containes functionalites:
  * 1. Color changes on different button state
  * 2. Radius control (rounded)
  * 3. Text content or image content
@@ -37,21 +37,34 @@ Button {
 
     property string backgroundColor: JamiTheme.releaseColor
     property string onPressColor: JamiTheme.pressColor
-    property string onReleaseColor: JamiTheme.releaseColor
+    property string onReleaseColor: backgroundColor
     property string onEnterColor: JamiTheme.hoverColor
-    property string onExitColor: JamiTheme.releaseColor
+    property string onExitColor: backgroundColor
+    property string onDisabledBackgroundColor: backgroundColor
+    property string textColor: "black"
 
     property alias radius: hoverableButtonBackground.radius
     property alias source: hoverableButtonImage.source
 
     font.pointSize: fontPointSize
+    font.kerning:  true
 
     hoverEnabled: true
+
+    contentItem: Text {
+            text: hoverableButton.text
+            font: hoverableButton.font
+            opacity: enabled ? 1.0 : 0.3
+            color: textColor
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            elide: Text.ElideRight
+        }
 
     background: Rectangle {
         id: hoverableButtonBackground
 
-        color: backgroundColor
+        color: hoverableButton.enabled ? backgroundColor:onDisabledBackgroundColor
 
         Image {
             id: hoverableButtonImage
@@ -67,6 +80,7 @@ Button {
         }
 
         MouseArea {
+            enabled: hoverableButton.enabled
             anchors.fill: parent
 
             hoverEnabled: true

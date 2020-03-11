@@ -106,6 +106,13 @@ namespace Utils {
                                   #T, \
                                   "Don't try to add to a qml definition of " #T);
 
+#define QML_REGISTERUNCREATABLE_IN_NAMESPACE(T, NAMESPACE, MAJ, MIN) \
+    qmlRegisterUncreatableType<NAMESPACE::T>("net.jami.Models", \
+                                             MAJ, \
+                                             MIN, \
+                                             #T, \
+                                             "Don't try to add to a qml definition of " #T);
+
 /*
  * System.
  */
@@ -346,7 +353,11 @@ public:
         , previous(blocked->blockSignals(true))
     {}
     ~Blocker() { blocked->blockSignals(previous); }
-    T *operator->() { return blocked; }
+    T *
+    operator->()
+    {
+        return blocked;
+    }
 };
 
 template<class T>
@@ -395,6 +406,9 @@ public:
         clipboard_ = QGuiApplication::clipboard();
     }
     ~UtilsAdapter() {}
+
+    ///Singleton
+    static UtilsAdapter &instance();
 
     Q_INVOKABLE const QString
     getChangeLog()
@@ -458,6 +472,11 @@ public:
     {
         return Utils::GetRingtonePath();
     }
+    Q_INVOKABLE bool
+    checkStartupLink()
+    {
+        return Utils::CheckStartupLink(L"Jami");
+    }
 
     Q_INVOKABLE const QString
     getContactImageString(const QString &accountId, const QString &uid)
@@ -483,6 +502,10 @@ public:
     Q_INVOKABLE void stopPreviewing();
     Q_INVOKABLE bool hasVideoCall();
     Q_INVOKABLE const QString getCallId(const QString &accountId, const QString &convUid);
+    Q_INVOKABLE QString getStringUTF8(QString string);
+    Q_INVOKABLE bool validateRegNameForm(const QString &regName);
+    Q_INVOKABLE QString getRecordQualityString(int value);
+    Q_INVOKABLE QString getCurrentPath();
     Q_INVOKABLE QString
     stringSimplifier(QString input)
     {
@@ -500,6 +523,13 @@ public:
     {
         QFileInfo fi(inputFileName);
         return fi.fileName();
+    }
+
+    Q_INVOKABLE QString
+    toFileAbsolutepath(QString inputFileName)
+    {
+        QFileInfo fi(inputFileName);
+        return fi.absolutePath();
     }
 
     Q_INVOKABLE QString
