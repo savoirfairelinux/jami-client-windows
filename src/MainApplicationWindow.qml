@@ -6,7 +6,9 @@ import QtQuick.Controls.Universal 2.12
 import QtGraphicalEffects 1.14
 import net.jami.Models 1.0
 
+import "mainview"
 import "wizardview"
+import "settingsview"
 import "js/mainapplicationcomponentcreation.js" as MainApplicationComponentCreation
 
 ApplicationWindow {
@@ -17,20 +19,54 @@ ApplicationWindow {
     visible: false
 
 
-    /*Loader {
+    Loader {
         id: mainViewLoader
 
         Component.onCompleted: {
-            if(LrcGeneralAdaptor.getCurrAccList().size === 0) {
-                mainViewLoader.source = "wizardview/WizardView.qml"
-            } else {
-                mainViewLoader.source = "mainview/MainView.qml"
+//            if(LrcGeneralAdaptor.getCurrAccList().size === 0) {
+//                mainViewLoader.source = "wizardview/WizardView.qml"
+//            } else {
+//                mainViewLoader.source = "mainview/MainView.qml"
+//            }
+            mainViewLoader.sourceComponent = mainViewComponent
+        }
+    }
+//    Component.onCompleted: {
+//        MainApplicationComponentCreation.createWizardViewWindowObjects()
+//        MainApplicationComponentCreation.showWizardViewWindow()
+//    }
+
+    Component{
+        id: mainViewComponent
+        MainView{
+            id: mainView
+
+            onMainViewWindowNeedToShowSettingsViewWindow:{
+                mainViewLoader.sourceComponent = settingsViewComponent
             }
         }
-    }*/
-    Component.onCompleted: {
-        MainApplicationComponentCreation.createWizardViewWindowObjects()
-        MainApplicationComponentCreation.showWizardViewWindow()
+    }
+
+    Component{
+        id: wizardViewComponent
+        WizardView{
+            id: wizardView
+
+            onWizardViewWindowNeedToShowMainViewWindow:{
+                mainViewLoader.sourceComponent = mainViewComponent
+            }
+        }
+    }
+
+    Component{
+        id: settingsViewComponent
+        SettingsView{
+            id: settingsView
+
+            onSettingsViewWindowNeedToShowMainViewWindow:{
+                mainViewLoader.sourceComponent = mainViewComponent
+            }
+        }
     }
 
     overlay.modal: ColorOverlay {

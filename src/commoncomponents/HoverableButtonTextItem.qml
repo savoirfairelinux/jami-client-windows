@@ -22,7 +22,7 @@ import net.jami.Models 1.0
 
 
 /*
- * HoverableButton contains the following configurable properties:
+ * HoverableButton containes functionalites:
  * 1. Color changes on different button state
  * 2. Radius control (rounded)
  * 3. Text content or image content
@@ -40,39 +40,31 @@ Button {
     property string onReleaseColor: backgroundColor
     property string onEnterColor: JamiTheme.hoverColor
     property string onExitColor: backgroundColor
+    property string onDisabledBackgroundColor: backgroundColor
+    property string textColor: "black"
 
     property alias radius: hoverableButtonBackground.radius
     property alias source: hoverableButtonImage.source
-
-    property bool isHovering: false
-
-    radius: height / 2
-
-    function enterBtn(){
-        btnMouseArea.entered()
-    }
-
-    function exitBtn(){
-        btnMouseArea.exited()
-    }
-
-    function pressBtn(){
-        btnMouseArea.pressed()
-    }
-
-    function releaseBtn(){
-        btnMouseArea.released()
-    }
 
     font.pointSize: fontPointSize
     font.kerning:  true
 
     hoverEnabled: true
 
+    contentItem: Text {
+            text: hoverableButton.text
+            font: hoverableButton.font
+            opacity: enabled ? 1.0 : 0.3
+            color: textColor
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            elide: Text.ElideRight
+        }
+
     background: Rectangle {
         id: hoverableButtonBackground
 
-        color: backgroundColor
+        color: hoverableButton.enabled ? backgroundColor:onDisabledBackgroundColor
 
         Image {
             id: hoverableButtonImage
@@ -88,8 +80,7 @@ Button {
         }
 
         MouseArea {
-            id: btnMouseArea
-
+            enabled: hoverableButton.enabled
             anchors.fill: parent
 
             hoverEnabled: true
@@ -103,11 +94,9 @@ Button {
             }
             onEntered: {
                 hoverableButtonBackground.color = onEnterColor
-                isHovering = true
             }
             onExited: {
                 hoverableButtonBackground.color = onExitColor
-                isHovering = false
             }
         }
     }
