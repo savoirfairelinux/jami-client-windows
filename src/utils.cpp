@@ -368,6 +368,13 @@ Utils::forceDeleteAsync(const QString &path)
     });
 }
 
+UtilsAdapter &
+UtilsAdapter::instance()
+{
+    static auto instance = new UtilsAdapter;
+    return *instance;
+}
+
 QString
 Utils::getChangeLog()
 {
@@ -1006,13 +1013,13 @@ UtilsAdapter::setCurrentCall(const QString &accountId, const QString &convUid)
     accInfo.callModel->setCurrentCall(convInfo.callId);
 }
 
-Q_INVOKABLE void
+void
 UtilsAdapter::startPreviewing(bool force)
 {
     LRCInstance::renderer()->startPreviewing(force);
 }
 
-Q_INVOKABLE void
+void
 UtilsAdapter::stopPreviewing()
 {
     if (!LRCInstance::hasVideoCall()) {
@@ -1020,7 +1027,7 @@ UtilsAdapter::stopPreviewing()
     }
 }
 
-Q_INVOKABLE bool
+bool
 UtilsAdapter::hasVideoCall()
 {
     return LRCInstance::hasVideoCall();
@@ -1040,4 +1047,30 @@ UtilsAdapter::getCallId(const QString &accountId, const QString &convUid)
     }
 
     return call->id;
+}
+
+// returns true if name is valid registered name
+bool
+UtilsAdapter::validateRegNameForm(const QString &regName)
+{
+    QRegularExpression regExp(" ");
+
+    if (regName.size() > 2 && !regName.contains(regExp)) {
+        return true;
+
+    } else {
+        return false;
+    }
+}
+
+QString
+UtilsAdapter::getStringUTF8(QString string)
+{
+    return string.toUtf8();
+}
+
+QString
+UtilsAdapter::getRecordQualityString(int value)
+{
+    return value ? QString::number(static_cast<float>(value) / 100, 'f', 1) + " Mbps" : "Default";
 }

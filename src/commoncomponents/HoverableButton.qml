@@ -37,12 +37,32 @@ Button {
 
     property string backgroundColor: JamiTheme.releaseColor
     property string onPressColor: JamiTheme.pressColor
-    property string onReleaseColor: JamiTheme.releaseColor
+    property string onReleaseColor: backgroundColor
     property string onEnterColor: JamiTheme.hoverColor
-    property string onExitColor: JamiTheme.releaseColor
+    property string onExitColor: backgroundColor
 
     property alias radius: hoverableButtonBackground.radius
     property alias source: hoverableButtonImage.source
+
+    property bool isHovering: false
+
+    radius: height / 2
+
+    function enterBtn(){
+        btnMouseArea.entered()
+    }
+
+    function exitBtn(){
+        btnMouseArea.exited()
+    }
+
+    function pressBtn(){
+        btnMouseArea.pressed()
+    }
+
+    function releaseBtn(){
+        btnMouseArea.released()
+    }
 
     font.pointSize: fontPointSize
     font.kerning:  true
@@ -68,6 +88,8 @@ Button {
         }
 
         MouseArea {
+            id: btnMouseArea
+
             anchors.fill: parent
 
             hoverEnabled: true
@@ -81,9 +103,11 @@ Button {
             }
             onEntered: {
                 hoverableButtonBackground.color = onEnterColor
+                isHovering = true
             }
             onExited: {
                 hoverableButtonBackground.color = onExitColor
+                isHovering = false
             }
         }
     }
