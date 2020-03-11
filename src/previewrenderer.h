@@ -45,7 +45,7 @@ class VideoCallPreviewRenderer : public PreviewRenderer
     Q_OBJECT
 public:
     explicit VideoCallPreviewRenderer(QQuickItem *parent = 0);
-    ~VideoCallPreviewRenderer();
+    virtual ~VideoCallPreviewRenderer();
 
     Q_INVOKABLE qreal getPreviewImageScalingFactor();
 
@@ -61,7 +61,7 @@ class PhotoboothPreviewRender : public PreviewRenderer
     Q_OBJECT
 public:
     explicit PhotoboothPreviewRender(QQuickItem *parent = 0);
-    ~PhotoboothPreviewRender();
+    virtual ~PhotoboothPreviewRender();
 
     QImage takePhoto();
     Q_INVOKABLE QString takeCroppedPhotoToBase64(int size);
