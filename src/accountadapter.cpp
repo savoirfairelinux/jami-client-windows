@@ -201,6 +201,56 @@ AccountAdapter::savePassword(const QString accountId,
     return LRCInstance::accountModel().changeAccountPassword(accountId, oldPassword, newPassword);
 }
 
+void
+AccountAdapter::startAudioMeter(bool async)
+{
+    LRCInstance::startAudioMeter(async);
+}
+
+void
+AccountAdapter::stopAudioMeter(bool async)
+{
+    LRCInstance::stopAudioMeter(async);
+}
+
+void
+AccountAdapter::startPreviewing(bool force)
+{
+    LRCInstance::renderer()->startPreviewing(force);
+}
+
+void
+AccountAdapter::stopPreviewing()
+{
+    if (!LRCInstance::hasVideoCall()) {
+        LRCInstance::renderer()->stopPreviewing();
+    }
+}
+
+bool
+AccountAdapter::hasVideoCall()
+{
+    return LRCInstance::hasVideoCall();
+}
+
+bool
+AccountAdapter::isPreviewing()
+{
+    return LRCInstance::renderer()->isPreviewing();
+}
+
+RenderManager *
+AccountAdapter::getRenderManager()
+{
+    return LRCInstance::renderer();
+}
+
+void
+AccountAdapter::setCurrAccDisplayName(QString text)
+{
+    LRCInstance::setCurrAccDisplayName(text);
+}
+
 bool
 AccountAdapter::hasPassword()
 {
@@ -220,6 +270,18 @@ NewAccountModel *
 AccountAdapter::accoundModel()
 {
     return &(LRCInstance::accountModel());
+}
+
+AVModel *
+AccountAdapter::avModel()
+{
+    return &(LRCInstance::avModel());
+}
+
+DataTransferModel *
+AccountAdapter::dataTransferModel()
+{
+    return &(LRCInstance::dataTransferModel());
 }
 
 void
