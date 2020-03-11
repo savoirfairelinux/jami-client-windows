@@ -130,7 +130,9 @@ HEADERS += ./src/smartlistmodel.h \
         ./src/callcenterqmlobjectholder.h \
         ./src/calloverlayqmlobjectholder.h \
         ./src/conversationsmartlistviewqmlobjectholder.h \
-        ./src/newwizardviewqmlobjectholder.h
+        ./src/newwizardviewqmlobjectholder.h \
+        src/passworddialogqmlobjectholder.h \
+        src/settingsviewqmlobjectholder.h
 SOURCES += ./src/bannedlistmodel.cpp \
         ./src/accountlistmodel.cpp \
         ./src/runguard.cpp \
@@ -149,6 +151,8 @@ SOURCES += ./src/bannedlistmodel.cpp \
         ./src/callcenterqmlobjectholder.cpp \
         ./src/calloverlayqmlobjectholder.cpp \
         ./src/conversationsmartlistviewqmlobjectholder.cpp \
-        ./src/newwizardviewqmlobjectholder.cpp
+        ./src/newwizardviewqmlobjectholder.cpp \
+        src/passworddialogqmlobjectholder.cpp \
+        src/settingsviewqmlobjectholder.cpp
 RESOURCES += ./ressources.qrc \
              ./qml.qrc

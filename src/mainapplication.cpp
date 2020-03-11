@@ -35,6 +35,8 @@
 #include "utils.h"
 #include "version.h"
 #include "newwizardviewqmlobjectholder.h"
+#include "settingsviewqmlobjectholder.h"
+#include "passworddialogqmlobjectholder.h"
 
 #include <QFontDatabase>
 #include <QQmlContext>
@@ -293,6 +295,16 @@ MainApplication::qmlInitialization()
         "ConversationSmartListViewQmlObjectHolder");
 
     qmlRegisterType<NewWizardViewQmlObjectHolder>("net.jami.NewWizardViewQmlObjectHolder", 1, 0, "NewWizardViewQmlObjectHolder");
+
+    qmlRegisterType<SettingsViewQmlObjectHolder>("net.jami.SettingsViewQmlObjectHolder",
+                                                  1,
+                                                  0,
+                                                  "SettingsViewQmlObjectHolder");
+
+    qmlRegisterType<PasswordDialogQMLObjectHolder>("net.jami.SettingsViewQmlObjectHolder",
+                                                 1,
+                                                 0,
+                                                 "PasswordDialogQMLObjectHolder");
 
     // qmlRegisterSingletonType
     qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/src/constant/JamiTheme.qml")),
