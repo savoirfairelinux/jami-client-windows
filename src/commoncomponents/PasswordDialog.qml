@@ -25,11 +25,10 @@ import net.jami.Models 1.0
 /*
  * PasswordDialog for changing password and exporting account
  */
-
-
-
 Dialog {
     id: passwordDialog
+
+    visible: false
 
     enum PasswordEnteringPurpose {
         ChangePassword,
@@ -93,7 +92,7 @@ Dialog {
     }
 
     implicitWidth: 440
-    implicitHeight: 240
+    implicitHeight: 270
 
     ColumnLayout {
         anchors.fill: parent
