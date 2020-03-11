@@ -44,6 +44,24 @@ Button {
     property alias radius: hoverableButtonBackground.radius
     property alias source: hoverableButtonImage.source
 
+    property bool isHovering: false
+
+    function enterBtn(){
+        btnMouseArea.entered()
+    }
+
+    function exitBtn(){
+        btnMouseArea.exited()
+    }
+
+    function pressBtn(){
+        btnMouseArea.pressed()
+    }
+
+    function releaseBtn(){
+        btnMouseArea.released()
+    }
+
     font.pointSize: fontPointSize
     font.kerning:  true
 
@@ -68,6 +86,8 @@ Button {
         }
 
         MouseArea {
+            id: btnMouseArea
+
             anchors.fill: parent
 
             hoverEnabled: true
@@ -81,9 +101,11 @@ Button {
             }
             onEntered: {
                 hoverableButtonBackground.color = onEnterColor
+                isHovering = true
             }
             onExited: {
                 hoverableButtonBackground.color = onExitColor
+                isHovering = false
             }
         }
     }
