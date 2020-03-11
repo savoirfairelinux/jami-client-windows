@@ -18,6 +18,7 @@ Button {
     property alias source: hoverableButtonImage.source
 
     font.pointSize: fontPointSize
+    font.kerning: true
 
     hoverEnabled: true
 
@@ -44,13 +45,19 @@ Button {
 
             hoverEnabled: true
 
-            onPressed: { aboutButtonBackground.color = onPressColor; }
+            onPressed: {
+                aboutButtonBackground.color = onPressColor
+            }
             onReleased: {
                 aboutButtonBackground.color = onReleaseColor
                 hoverableButton.clicked()
             }
-            onEntered: { aboutButtonBackground.color = onEnterColor; }
-            onExited: { aboutButtonBackground.color = onExitColor; }
+            onEntered: {
+                aboutButtonBackground.color = onEnterColor
+            }
+            onExited: {
+                aboutButtonBackground.color = onExitColor
+            }
         }
     }
 }
