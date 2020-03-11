@@ -20,14 +20,16 @@ ColumnLayout{
 
     function startBooth(force = false){
         hasAvatar = false
-        UtilsAdapter.startPreviewing(force)
+        AccountAdapter.startPreviewing(force)
         takePhotoState = true
     }
 
     function stopBooth(){
-        if(!UtilsAdapter.hasVideoCall()) {
-            UtilsAdapter.stopPreviewing()
-        }
+        try{
+            if(!AccountAdapter.hasVideoCall()) {
+                AccountAdapter.stopPreviewing()
+            }
+        } catch(erro){console.log("Exception: " +  erro.message)}
 
         takePhotoState = false
     }
