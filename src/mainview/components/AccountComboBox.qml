@@ -30,6 +30,7 @@ ComboBox {
     signal needToBackToWelcomePage(int index)
     signal needToUpdateSmartList(string accountId)
     signal newAccountButtonClicked
+    signal settingBtnClicked
 
     currentIndex: 0
 
@@ -171,31 +172,22 @@ ComboBox {
                                         accountComboBox.currentIndex, 0), 258)
     }
 
-    Button {
+    HoverableButton {
         id: settingsButton
 
         anchors.right: accountComboBox.right
         anchors.rightMargin: 10
         anchors.verticalCenter: accountComboBox.verticalCenter
 
+        buttonImageHeight: height - 8
+        buttonImageWidth: width - 8
+        source:"qrc:/images/icons/round-settings-24px.svg"
+        radius: height / 2
         width: 25
         height: 25
 
-        background: Rectangle {
-            id: settingButtonRect
-
-            radius: 30
-
-            Image {
-                id: settingsButtonImage
-
-                anchors.centerIn: settingButtonRect
-                width: settingsButton.width - 8
-                height: settingsButton.height - 8
-                fillMode: Image.PreserveAspectFit
-                mipmap: true
-                source: "qrc:/images/icons/round-settings-24px.svg"
-            }
+        onClicked:{
+            settingBtnClicked()
         }
     }
 
@@ -217,14 +209,16 @@ ComboBox {
         propagateComposedEvents: true
 
         onPressed: {
-            if (isMouseOnSettingsButton(mouse))
-                settingButtonRect.color = JamiTheme.pressColor
+            if (isMouseOnSettingsButton(mouse)){
+                settingsButton.backgroundColor = JamiTheme.pressColor
+                settingsButton.clicked()
+            }
             else
                 rootItemBackground.color = JamiTheme.pressColor
         }
         onReleased: {
             if (isMouseOnSettingsButton(mouse)) {
-                settingButtonRect.color = JamiTheme.releaseColor
+                settingsButton.backgroundColor = JamiTheme.releaseColor
             } else {
                 rootItemBackground.color = JamiTheme.releaseColor
                 if (comboBoxPopup.opened) {
@@ -247,10 +241,10 @@ ComboBox {
              * Manually making settings button hover.
              */
             if (isMouseOnSettingsButton(mouse)) {
-                settingButtonRect.color = JamiTheme.hoverColor
+                settingsButton.backgroundColor = JamiTheme.hoverColor
                 rootItemBackground.color = "white"
             } else {
-                settingButtonRect.color = "white"
+                settingsButton.backgroundColor = "white"
                 rootItemBackground.color = JamiTheme.hoverColor
             }
         }
