@@ -1041,3 +1041,17 @@ UtilsAdapter::getCallId(const QString &accountId, const QString &convUid)
 
     return call->id;
 }
+
+// returns true if name is valid registered name
+bool
+UtilsAdapter::validateRegNameForm(const QString &regName)
+{
+    QRegularExpression regExp(" ");
+
+    if (regName.size() > 2 && !regName.contains(regExp)) {
+        return true;
+
+    } else {
+        return false;
+    }
+}

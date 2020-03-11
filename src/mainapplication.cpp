@@ -326,6 +326,8 @@ MainApplication::qmlInitialization()
     QML_REGISTERUNCREATABLE(ConversationModel, 1, 0);
     QML_REGISTERUNCREATABLE(NewCallModel, 1, 0);
 
+    using lrc::api::video::Settings;
+    QML_REGISTERUNCREATABLE(Settings, 1, 0);
     /*
      * Namespaces - qmlRegisterUncreatableMetaObject.
      */
