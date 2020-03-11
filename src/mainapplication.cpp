@@ -35,6 +35,7 @@
 #include "pixbufmanipulator.h"
 #include "previewrenderer.h"
 #include "qrimageprovider.h"
+#include "settingsadaptor.h"
 #include "tintedbuttonimageprovider.h"
 #include "utils.h"
 #include "version.h"
@@ -314,6 +315,7 @@ MainApplication::qmlInitialization()
     QML_REGISTERSINGLETONTYPE(ContactAdapter, 1, 0);
     QML_REGISTERSINGLETONTYPE(LrcGeneralAdaptor, 1, 0);
     QML_REGISTERSINGLETONTYPE(UtilsAdapter, 1, 0);
+    QML_REGISTERSINGLETONTYPE(SettingsAdaptor, 1, 0);
     QML_REGISTERSINGLETONTYPE_WITH_INSTANCE(NameDirectory, 1, 0);
     QML_REGISTERSINGLETONTYPE_WITH_INSTANCE(LRCInstance, 1, 0);
 
@@ -325,9 +327,23 @@ MainApplication::qmlInitialization()
     QML_REGISTERUNCREATABLE(BehaviorController, 1, 0);
     QML_REGISTERUNCREATABLE(DataTransferModel, 1, 0);
     QML_REGISTERUNCREATABLE(AVModel, 1, 0);
+    QML_REGISTERUNCREATABLE(ContactModel, 1, 0);
     QML_REGISTERUNCREATABLE(ConversationModel, 1, 0);
     QML_REGISTERUNCREATABLE(NewCallModel, 1, 0);
+    QML_REGISTERUNCREATABLE(NewDeviceModel, 1, 0);
+    QML_REGISTERUNCREATABLE(NewCodecModel, 1, 0);
+    QML_REGISTERUNCREATABLE(PeerDiscoveryModel, 1, 0);
 
+    using VideoSettings = lrc::api::video::Settings;
+    using ProfileInfo = profile::Info;
+    using AccountInfo = account::Info;
+    using ConfProp = account::ConfProperties_t;
+    QML_REGISTERUNCREATABLE(VideoSettings, 1, 0);
+    QML_REGISTERUNCREATABLE(ProfileInfo, 1, 0);
+    QML_REGISTERUNCREATABLE(AccountInfo, 1, 0);
+    QML_REGISTERUNCREATABLE(ConfProp, 1, 0);
+
+    QML_REGISTERUNCREATABLE(RenderManager, 1, 0);
     /*
      * Namespaces - qmlRegisterUncreatableMetaObject.
      */
