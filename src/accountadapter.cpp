@@ -201,6 +201,30 @@ AccountAdapter::savePassword(const QString accountId,
     return LRCInstance::accountModel().changeAccountPassword(accountId, oldPassword, newPassword);
 }
 
+void
+AccountAdapter::startAudioMeter(bool async)
+{
+    LRCInstance::startAudioMeter(async);
+}
+
+void
+AccountAdapter::stopAudioMeter(bool async)
+{
+    LRCInstance::stopAudioMeter(async);
+}
+
+bool
+AccountAdapter::isPreviewing()
+{
+    return LRCInstance::renderer()->isPreviewing();
+}
+
+RenderManager *
+AccountAdapter::getRenderManager()
+{
+    return LRCInstance::renderer();
+}
+
 bool
 AccountAdapter::hasPassword()
 {
@@ -220,6 +244,12 @@ NewAccountModel *
 AccountAdapter::accoundModel()
 {
     return &(LRCInstance::accountModel());
+}
+
+AVModel *
+AccountAdapter::avModel()
+{
+    return &(LRCInstance::avModel());
 }
 
 void
