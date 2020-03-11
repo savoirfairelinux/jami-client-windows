@@ -22,10 +22,13 @@
 
 #include "accountadapter.h"
 #include "accountlistmodel.h"
+#include "audiocodeclistmodel.h"
 #include "avadapter.h"
+#include "bannedlistmodel.h"
 #include "calladapter.h"
 #include "contactadapter.h"
 #include "conversationsadapter.h"
+#include "deviceitemlistmodel.h"
 #include "distantrenderer.h"
 #include "globalinstances.h"
 #include "globalsystemtray.h"
@@ -34,9 +37,11 @@
 #include "pixbufmanipulator.h"
 #include "previewrenderer.h"
 #include "qrimageprovider.h"
+#include "settingsadaptor.h"
 #include "tintedbuttonimageprovider.h"
 #include "utils.h"
 #include "version.h"
+#include "videocodeclistmodel.h"
 
 #include <QFontDatabase>
 #include <QQmlContext>
@@ -287,6 +292,10 @@ MainApplication::qmlInitialization()
      * Register accountListModel type.
      */
     QML_REGISTERTYPE(AccountListModel, 1, 0);
+    QML_REGISTERTYPE(DeviceItemListModel, 1, 0);
+    QML_REGISTERTYPE(BannedListModel, 1, 0);
+    QML_REGISTERTYPE(VideoCodecListModel, 1, 0);
+    QML_REGISTERTYPE(AudioCodecListModel, 1, 0);
 
     /*
      * Register QQuickItem type.
@@ -306,12 +315,13 @@ MainApplication::qmlInitialization()
                                   1,
                                   0);
     QML_REGISTERSINGLETONTYPE(CallAdapter, 1, 0);
-    QML_REGISTERSINGLETONTYPE(AccountAdapter, 1, 0);
+    QML_REGISTERSINGLETONTYPE_WITH_INSTANCE(AccountAdapter, 1, 0);
     QML_REGISTERSINGLETONTYPE(MessagesAdapter, 1, 0);
     QML_REGISTERSINGLETONTYPE(ConversationsAdapter, 1, 0);
     QML_REGISTERSINGLETONTYPE(AvAdapter, 1, 0);
     QML_REGISTERSINGLETONTYPE(ContactAdapter, 1, 0);
-    QML_REGISTERSINGLETONTYPE(UtilsAdapter, 1, 0);
+    QML_REGISTERSINGLETONTYPE_WITH_INSTANCE(UtilsAdapter, 1, 0);
+    QML_REGISTERSINGLETONTYPE_WITH_INSTANCE(SettingsAdaptor, 1, 0);
     QML_REGISTERSINGLETONTYPE_WITH_INSTANCE(NameDirectory, 1, 0);
     QML_REGISTERSINGLETONTYPE_WITH_INSTANCE(LRCInstance, 1, 0);
 
@@ -319,12 +329,22 @@ MainApplication::qmlInitialization()
      * Lrc models - qmlRegisterUncreatableType & Q_DECLARE_METATYPE.
      * This to make lrc models recognizable in qml.
      */
-    QML_REGISTERUNCREATABLE(NewAccountModel, 1, 0);
-    QML_REGISTERUNCREATABLE(BehaviorController, 1, 0);
-    QML_REGISTERUNCREATABLE(DataTransferModel, 1, 0);
-    QML_REGISTERUNCREATABLE(AVModel, 1, 0);
-    QML_REGISTERUNCREATABLE(ConversationModel, 1, 0);
-    QML_REGISTERUNCREATABLE(NewCallModel, 1, 0);
+    QML_REGISTERUNCREATABLE_IN_NAMESPACE(NewAccountModel, lrc::api, 1, 0);
+    QML_REGISTERUNCREATABLE_IN_NAMESPACE(BehaviorController, lrc::api, 1, 0);
+    QML_REGISTERUNCREATABLE_IN_NAMESPACE(DataTransferModel, lrc::api, 1, 0);
+    QML_REGISTERUNCREATABLE_IN_NAMESPACE(AVModel, lrc::api, 1, 0);
+    QML_REGISTERUNCREATABLE_IN_NAMESPACE(ContactModel, lrc::api, 1, 0);
+    QML_REGISTERUNCREATABLE_IN_NAMESPACE(ConversationModel, lrc::api, 1, 0);
+    QML_REGISTERUNCREATABLE_IN_NAMESPACE(NewCallModel, lrc::api, 1, 0);
+    QML_REGISTERUNCREATABLE_IN_NAMESPACE(NewDeviceModel, lrc::api, 1, 0);
+    QML_REGISTERUNCREATABLE_IN_NAMESPACE(NewCodecModel, lrc::api, 1, 0);
+    QML_REGISTERUNCREATABLE_IN_NAMESPACE(PeerDiscoveryModel, lrc::api, 1, 0);
+
+    /*
+     * Client models - qmlRegisterUncreatableType & Q_DECLARE_METATYPE.
+     * This to make client models recognizable in qml.
+     */
+    QML_REGISTERUNCREATABLE(RenderManager, 1, 0);
 
     /*
      * Namespaces - qmlRegisterUncreatableMetaObject.
