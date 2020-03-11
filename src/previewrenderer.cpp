@@ -41,6 +41,8 @@ PreviewRenderer::~PreviewRenderer()
 {
     disconnect(previewFrameUpdatedConnection_);
     disconnect(previewRenderingStopped_);
+
+    LRCInstance::renderer()->stopPreviewing();
 }
 
 void
