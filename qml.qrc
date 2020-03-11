@@ -16,7 +16,6 @@
         <file>src/commoncomponents/HoverableButton.qml</file>
         <file>src/mainview/components/AccountComboBox.qml</file>
         <file>src/mainview/components/ConversationSmartListView.qml</file>
-
         <file>src/wizardview/WizardView.qml</file>
         <file>src/wizardview/components/WelcomePageLayout.qml</file>
         <file>src/wizardview/components/CreateAccountPage.qml</file>
@@ -26,5 +25,7 @@
         <file>src/wizardview/components/ImportFromDevicePage.qml</file>
         <file>src/wizardview/components/ConnectToAccountManagerPage.qml</file>
         <file>src/wizardview/components/SpinnerPage.qml</file>
+        <file>src/settingsview/SettingsView.qml</file>
+        <file>src/settingsview/components/IconButton.qml</file>
     </qresource>
 </RCC>
