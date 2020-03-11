@@ -25,11 +25,10 @@ import net.jami.Models 1.0
 /*
  * PasswordDialog for changing password and exporting account
  */
-
-
-
 Dialog {
     id: passwordDialog
+
+    visible: false
 
     enum PasswordEnteringPurpose {
         ChangePassword,
@@ -41,10 +40,19 @@ Dialog {
     property string path: ""
     property int purpose: PasswordDialog.ChangePassword
 
-    onPurposeChanged: {
-        if (purpose === PasswordDialog.ExportAccount) {
-            passwordDialog.title = qsTr("Enter the password of this account")
+    title: {
+        switch(purpose){
+        case PasswordDialog.ExportAccount:
+            return qsTr("Enter the password of this account")
+        case PasswordDialog.ChangePassword:
+            return qsTr("Changing passowrd")
         }
+    }
+
+    function openDialog(purposeIn, exportPathIn = ""){
+        purpose = purposeIn
+        path = exportPathIn
+        passwordDialog.open()
     }
 
     function haveDone(code, currentPurpose) {
@@ -53,7 +61,7 @@ Dialog {
     }
 
     function validatePassword() {
-        var acceptablePassword = confirmPasswordEdit.text
+        var acceptablePassword =  (passwordEdit.text === confirmPasswordEdit.text)
         btnChangePasswordConfirm.enabled = acceptablePassword
 
         if (acceptablePassword) {
@@ -67,11 +75,15 @@ Dialog {
     }
 
     function exportAccountQML() {
-        var success = AccountAdapter.accoundModel().exportToFile(UtilsAdapter.getCurrAccId(),path,currentPasswordEdit.text)
+        var success = false
+        if(path.length > 0){
+            success = AccountAdapter.accoundModel().exportToFile(UtilsAdapter.getCurrAccId(),path,currentPasswordEdit.text)
+        }
 
+        spinnerMovie.playing = false
         spinnerLabel.visible = false
         if (success) {
-            haveDone(successCode, purpose)
+            haveDone(successCode, passwordDialog.purpose)
         } else {
             currentPasswordEdit.clear()
             btnChangePasswordConfirm.enabled = false
@@ -79,12 +91,14 @@ Dialog {
         }
     }
     function savePasswordQML() {
-        var success = AccountAdapter.savePassword(UtilsAdapter.getCurrAccId(),currentPasswordEdit.text, passwordEdit.text)
+        var success = false
+        success = AccountAdapter.savePassword(UtilsAdapter.getCurrAccId(),currentPasswordEdit.text, passwordEdit.text)
 
+        spinnerMovie.playing = false
         spinnerLabel.visible = false
         if (success) {
             AccountAdapter.setArchiveHasPassword(currentPasswordEdit.text.length !== 0)
-            haveDone(successCode, purpose)
+            haveDone(successCode, passwordDialog.purpose)
         } else {
             currentPasswordEdit.clear()
             btnChangePasswordConfirm.enabled = false
@@ -93,7 +107,11 @@ Dialog {
     }
 
     implicitWidth: 440
-    implicitHeight: 240
+    implicitHeight: 270
+
+    anchors.centerIn: parent.Center
+    x: (parent.width - width) / 2
+    y: (parent.height - height) / 2
 
     ColumnLayout {
         anchors.fill: parent
@@ -230,24 +248,18 @@ Dialog {
 
             visible: false
 
+            Layout.fillWidth: true
+
             Layout.minimumHeight: 20
             Layout.preferredHeight: 20
             Layout.maximumHeight: 20
 
-            Layout.fillWidth: true
-
             background: Rectangle {
                 anchors.fill: parent
                 AnimatedImage {
-                    Layout.alignment: Qt.AlignCenter
+                    id: spinnerMovie
 
-                    Layout.minimumHeight: 20
-                    Layout.preferredHeight: 20
-                    Layout.maximumHeight: 20
-
-                    Layout.minimumWidth: 20
-                    Layout.preferredWidth: 20
-                    Layout.maximumWidth: 20
+                    anchors.fill: parent
 
                     source: "qrc:/images/ajax-loader.gif"
 
@@ -286,9 +298,10 @@ Dialog {
 
                 onClicked: {
                     spinnerLabel.visible = true
+                    spinnerMovie.playing = true
                     if (purpose === PasswordDialog.ChangePassword) {
                         savePasswordQML()
-                    } else {
+                    } else if(purpose === PasswordDialog.ExportAccount) {
                         exportAccountQML()
                     }
                 }
@@ -299,7 +312,7 @@ Dialog {
                 Layout.fillHeight: true
             }
 
-            HoverableButton {
+            HoverableButtonTextItem {
                 id: btnChangePasswordCancel
 
                 Layout.maximumWidth: 130
@@ -309,6 +322,14 @@ Dialog {
                 Layout.minimumHeight: 30
                 Layout.preferredHeight: 30
                 Layout.maximumHeight: 30
+
+                backgroundColor: "red"
+                onEnterColor: Qt.rgba(150 / 256, 0, 0, 0.7)
+                onDisabledBackgroundColor: Qt.rgba(
+                                               255 / 256,
+                                               0, 0, 0.8)
+                onPressColor: backgroundColor
+                textColor: "white"
 
                 text: qsTr("Cancel")
                 font.pointSize: 10
