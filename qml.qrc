@@ -1,5 +1,15 @@
 <RCC>
     <qresource prefix="/">
+        <file>src/settingsview/SettingsView.qml</file>
+        <file>src/settingsview/components/IconButton.qml</file>
+        <file>src/settingsview/components/LeftPanelView.qml</file>
+        <file>src/settingsview/components/AvSettingPage.qml</file>
+        <file>src/settingsview/components/GeneralSettingsPage.qml</file>
+        <file>src/settingsview/components/CurrentAccountSettingsScrollPage.qml</file>
+        <file>src/settingsview/components/CurrentSIPAccountSettingScrollPage.qml</file>
+        <file>src/settingsview/components/ToggleSwitch.qml</file>
+        <file>src/settingsview/components/AdvancedSettingsView.qml</file>
+        <file>src/settingsview/components/AdvancedSIPSettingsView.qml</file>
         <file>src/commoncomponents/PasswordDialog.qml</file>
         <file>src/commoncomponents/InfoLineEdit.qml</file>
         <file>src/commoncomponents/PhotoboothView.qml</file>
