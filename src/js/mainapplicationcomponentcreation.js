@@ -1,8 +1,50 @@
+var settingsViewWindowComponent
+var settingsViewWindowObject
+
 var wizardViewWindowComponent
 var wizardViewWindowObject
 
 var mainViewWindowComponent
 var mainViewWindowObject
+
+/*################################################################################
+# SettingsViewWindow
+################################################################################*/
+
+function createSettingsViewWindowObjects() {
+    settingsViewWindowComponent = Qt.createComponent(
+                "../settingsview/SettingsView.qml")
+    if (settingsViewWindowComponent.status === Component.Ready)
+        createSettingsViewWindowFinishCreation()
+    else
+        settingsViewWindowComponent.statusChanged.connect(createSettingsViewWindowFinishCreation)
+}
+
+function createSettingsViewWindowFinishCreation() {
+    if (settingsViewWindowComponent.status === Component.Ready) {
+        settingsViewWindowObject = settingsViewWindowComponent.createObject()
+        if (settingsViewWindowObject === null) {
+            // Error Handling
+            console.log("Error creating object for settings view")
+        }
+
+        settingsViewWindowObject.settingsViewWindowNeedToShowMainViewWindow.connect(createMainViewWindowObjects)
+        settingsViewWindowObject.settingsViewWindowNeedToShowMainViewWindow.connect(closeSettingsViewWindow)
+    } else if (settingsViewWindowComponent.status === Component.Error) {
+        // Error Handling
+        console.log("Error loading component:",
+                    settingsViewWindowComponent.errorString())
+    }
+}
+
+function showSettingsViewWindow() {
+    settingsViewWindowObject.show()
+}
+
+function closeSettingsViewWindow() {
+    settingsViewWindowObject.close()
+    settingsViewWindowObject.destroy()
+}
 
 /*################################################################################
 # WizardViewWindow
@@ -64,6 +106,8 @@ function createMainViewWindowFinishCreation() {
             console.log("Error creating object for wizard view")
         }
 
+        mainViewWindowObject.mainViewWindowNeedToShowSettingsViewWindow.connect(createSettingsViewWindowObjects)
+        mainViewWindowObject.mainViewWindowNeedToShowSettingsViewWindow.connect(closeMainViewWindow)
         //wizardViewWindowObject.showMainViewWindow.connect()
     } else if (mainViewWindowComponent.status === Component.Error) {
         // Error Handling
