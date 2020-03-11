@@ -36,6 +36,7 @@ Rectangle {
     signal accountSignalsReconnect(string accountId)
     signal needToUpdateConversationForAddedContact
     signal needToAddNewAccount
+    signal settingBtnClicked_AccountComboBox
 
 
     /*
@@ -142,6 +143,10 @@ Rectangle {
             function onAccountStatusChanged() {
                 accountComboBox.updateAccountListModel()
             }
+        }
+
+        onSettingBtnClicked:{
+            settingBtnClicked_AccountComboBox()
         }
 
         onAccountChanged: {
