@@ -133,7 +133,8 @@ HEADERS += ./src/smartlistmodel.h \
         ./src/qmladapterbase.h \
         ./src/avadapter.h \
         ./src/contactadapter.h \
-        ./src/lrcgeneraladaptor.h
+        ./src/lrcgeneraladaptor.h \
+        ./src/settingsadaptor.h
 SOURCES += ./src/bannedlistmodel.cpp \
         ./src/accountlistmodel.cpp \
         ./src/runguard.cpp \
@@ -155,6 +156,7 @@ SOURCES += ./src/bannedlistmodel.cpp \
         ./src/qmladapterbase.cpp \
         ./src/avadapter.cpp \
         ./src/contactadapter.cpp \
-        ./src/lrcgeneraladaptor.cpp
+        ./src/lrcgeneraladaptor.cpp \
+        ./src/settingsadaptor.cpp
 RESOURCES += ./ressources.qrc \
              ./qml.qrc
