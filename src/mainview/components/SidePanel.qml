@@ -35,7 +35,7 @@ Rectangle {
     signal conversationSmartListViewNeedToShowWelcomePage
     signal accountSignalsReconnect(string accountId)
     signal needToUpdateConversationForAddedContact
-
+    signal settingBtnClicked_AccountComboBox
 
     /*
      * Hack -> force redraw.
@@ -117,6 +117,10 @@ Rectangle {
             function onAccountStatusChanged() {
                 accountComboBox.updateAccountListModel()
             }
+        }
+
+        onSettingBtnClicked:{
+            settingBtnClicked_AccountComboBox()
         }
 
         onAccountChanged: {
