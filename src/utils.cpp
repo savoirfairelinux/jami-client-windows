@@ -1041,3 +1041,29 @@ UtilsAdapter::getCallId(const QString &accountId, const QString &convUid)
 
     return call->id;
 }
+
+// returns true if name is valid registered name
+bool
+UtilsAdapter::validateRegNameForm(const QString &regName)
+{
+    QRegularExpression regExp(" ");
+
+    if (regName.size() > 2 && !regName.contains(regExp)) {
+        return true;
+
+    } else {
+        return false;
+    }
+}
+
+QString
+UtilsAdapter::getStringUTF8(QString string)
+{
+    return string.toUtf8();
+}
+
+QString
+UtilsAdapter::getRecordQualityString(int value)
+{
+    return value ? QString::number(static_cast<float>(value) / 100, 'f', 1) + " Mbps" : "Default";
+}

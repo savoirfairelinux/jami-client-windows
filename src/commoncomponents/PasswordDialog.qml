@@ -23,7 +23,7 @@ import QtQuick.Controls.Styles 1.4
 import net.jami.UtilsAdapter 1.0
 import net.jami.LrcGeneralAdaptor 1.0
 import net.jami.AccountAdapter 1.0
-import net.jami.NewAccountModel 1.0
+import net.jami.Uncreatables 1.0
 
 /*
  * PasswordDialog for changing password and exporting account
