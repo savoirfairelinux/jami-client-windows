@@ -277,3 +277,6 @@ private:
      */
     AVModel &avModel_;
 };
+#if QT_VERSION >= QT_VERSION_CHECK(5, 8, 0)
+Q_DECLARE_METATYPE(RenderManager *)
+#endif
