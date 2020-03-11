@@ -24,5 +24,6 @@
         <file>src/wizardview/components/ImportFromDevicePage.qml</file>
         <file>src/wizardview/components/ConnectToAccountManagerPage.qml</file>
         <file>src/wizardview/components/SpinnerPage.qml</file>
+        <file>src/settingsview/SettingsView.qml</file>
     </qresource>
 </RCC>
