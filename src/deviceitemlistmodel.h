@@ -1,7 +1,6 @@
 /*
  * Copyright (C) 2019-2020 by Savoir-faire Linux
- * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>
- * Author: Yang Wang <yang.wang@savoirfairelinux.com>
+ * Author: Yang Wang   <yang.wang@savoirfairelinux.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,19 +18,25 @@
 
 #pragma once
 
-#include <QAbstractListModel>
+#include <QAbstractItemModel>
 
-class BannedListModel : public QAbstractListModel
+#include "api/account.h"
+#include "api/contact.h"
+#include "api/conversation.h"
+#include "api/newdevicemodel.h"
+
+#include "lrcinstance.h"
+
+class DeviceItemListModel : public QAbstractListModel
 {
     Q_OBJECT
-    BannedListModel(const BannedListModel &cpy);
 
 public:
-    enum Role { ContactName = Qt::UserRole + 1, ContactID, ContactPicture };
+    enum Role { DeviceName = Qt::UserRole + 1, DeviceID, IsCurrent };
     Q_ENUM(Role)
 
-    explicit BannedListModel(QObject *parent = nullptr);
-    ~BannedListModel();
+    explicit DeviceItemListModel(QObject *parent = 0);
+    ~DeviceItemListModel();
 
     /*
      * QAbstractListModel override.
