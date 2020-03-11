@@ -32,6 +32,13 @@ AccountAdapter::AccountAdapter(QObject *parent)
 
 AccountAdapter::~AccountAdapter() {}
 
+AccountAdapter &
+AccountAdapter::instance()
+{
+    static auto instance = new AccountAdapter;
+    return *instance;
+}
+
 void
 AccountAdapter::initQmlObject()
 {
@@ -205,12 +212,80 @@ AccountAdapter::createJAMSAccount(const QVariantMap &settings)
     });
 }
 
+void
+AccountAdapter::deleteCurrentAccount()
+{
+    LRCInstance::accountModel().removeAccount(LRCInstance::getCurrAccId());
+}
+
 bool
 AccountAdapter::savePassword(const QString accountId,
                              const QString oldPassword,
                              const QString newPassword)
 {
     return LRCInstance::accountModel().changeAccountPassword(accountId, oldPassword, newPassword);
+}
+
+void
+AccountAdapter::startAudioMeter(bool async)
+{
+    LRCInstance::startAudioMeter(async);
+}
+
+void
+AccountAdapter::stopAudioMeter(bool async)
+{
+    LRCInstance::stopAudioMeter(async);
+}
+
+void
+AccountAdapter::startPreviewing(bool force)
+{
+    LRCInstance::renderer()->startPreviewing(force);
+}
+
+void
+AccountAdapter::stopPreviewing()
+{
+    if (!LRCInstance::hasVideoCall() && LRCInstance::renderer()->isPreviewing()) {
+        LRCInstance::renderer()->stopPreviewing();
+    }
+}
+
+bool
+AccountAdapter::hasVideoCall()
+{
+    return LRCInstance::hasVideoCall();
+}
+
+bool
+AccountAdapter::isPreviewing()
+{
+    return LRCInstance::renderer()->isPreviewing();
+}
+
+RenderManager *
+AccountAdapter::getRenderManager()
+{
+    return LRCInstance::renderer();
+}
+
+void
+AccountAdapter::setCurrAccDisplayName(QString text)
+{
+    LRCInstance::setCurrAccDisplayName(text);
+}
+
+void
+AccountAdapter::setSelectedAccountId(QString accountId)
+{
+    LRCInstance::setSelectedAccountId(accountId);
+}
+
+void
+AccountAdapter::setSelectedConvId(QString accountId)
+{
+    LRCInstance::setSelectedConvId(accountId);
 }
 
 bool
@@ -228,10 +303,22 @@ AccountAdapter::setArchiveHasPassword(bool isHavePassword)
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
-NewAccountModel *
+lrc::api::NewAccountModel *
 AccountAdapter::accoundModel()
 {
     return &(LRCInstance::accountModel());
+}
+
+lrc::api::AVModel *
+AccountAdapter::avModel()
+{
+    return &(LRCInstance::avModel());
+}
+
+lrc::api::DataTransferModel *
+AccountAdapter::dataTransferModel()
+{
+    return &(LRCInstance::dataTransferModel());
 }
 
 void
