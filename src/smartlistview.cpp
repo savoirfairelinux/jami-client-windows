@@ -21,7 +21,6 @@
 
 #include "smartlistview.h"
 
-#include "invitebuttonswidget.h"
 #include "smartlistmodel.h"
 #include "utils.h"
 
@@ -49,38 +48,6 @@ SmartListView::SmartListView(QWidget *parent) :
             auto type = Utils::toEnum<lrc::api::profile::Type>(
                 index.data(static_cast<int>(SmartListModel::Role::ContactType)).value<int>()
                 );
-            if (type == lrc::api::profile::Type::PENDING) {
-                auto widget = indexWidget(index);
-                if (!widget) {
-                    InviteButtonsWidget* buttons = new InviteButtonsWidget();
-                    setIndexWidget(index, buttons);
-
-                    QObject::connect(buttons, &InviteButtonsWidget::btnAcceptInviteClicked, this,
-                        [this, index]() {
-                            hoveredRow_ = QModelIndex();
-                            emit btnAcceptInviteClicked(index);
-                        });
-                    QObject::connect(buttons, &InviteButtonsWidget::btnIgnoreInviteClicked, this,
-                        [this, index]() {
-                            hoveredRow_ = QModelIndex();
-                            emit btnIgnoreInviteClicked(index);
-                        });
-                    QObject::connect(buttons, &InviteButtonsWidget::btnBlockInviteClicked, this,
-                        [this, index]() {
-                            hoveredRow_ = QModelIndex();
-                            emit btnBlockInviteClicked(index);
-                        });
-                }
-                else {
-                    widget->show();
-                }
-
-                if (hoveredRow_.isValid() && indexWidget(hoveredRow_)) {
-                    indexWidget(hoveredRow_)->hide();
-                }
-
-                hoveredRow_ = index;
-            }
         });
 }
 
