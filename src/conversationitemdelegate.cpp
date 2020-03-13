@@ -363,14 +363,6 @@ ConversationItemDelegate::paintInvitationItem(QPainter* painter,
     auto scalingRatio = Utils::getCurrentScalingRatio();
     font.setPointSize(scalingRatio > 1.0 ? fontSize_ - 2 : fontSize_);
 
-    if (option.state & QStyle::State_MouseOver) {
-        if (scalingRatio > 1.0) {
-            rightMargin = infoTextWidth_ + 12 - dx_ * 2;
-        } else {
-            rightMargin = infoTextWidth_ - dx_ * 2;
-        }
-    }
-
     auto topMargin = 4;
     auto bottomMargin = 8;
 
