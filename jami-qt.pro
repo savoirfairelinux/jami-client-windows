@@ -120,7 +120,6 @@ HEADERS += ./src/aboutdialog.h \
         ./src/accountitemdelegate.h \
         ./src/bannedlistmodel.h \
         ./src/currentaccountcombobox.h \
-        ./src/invitebuttonswidget.h \
         ./src/nameregistrationdialog.h \
         ./src/ringcontactlineedit.h \
         ./src/smartlistselectorbuttonnotifier.h \
@@ -192,7 +191,6 @@ SOURCES += ./src/aboutdialog.cpp \
         ./src/accountitemdelegate.cpp \
         ./src/bannedlistmodel.cpp \
         ./src/currentaccountcombobox.cpp \
-        ./src/invitebuttonswidget.cpp \
         ./src/nameregistrationdialog.cpp \
         ./src/ringcontactlineedit.cpp \
         ./src/splashscreen.cpp \
@@ -258,7 +256,6 @@ FORMS += ./src/aboutdialog.ui \
         ./src/ringbutton.ui \
         ./src/updatedownloaddialog.ui \
         ./src/contactpicker.ui \
-        ./src/invitebuttonswidget.ui \
         ./src/nameregistrationdialog.ui \
         ./src/settingswidget.ui \
         ./src/videooverlay.ui \
