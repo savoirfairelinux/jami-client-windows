@@ -20,7 +20,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="481"/>
         <source>Credits</source>
-        <translation type="unfinished"/>
+        <translation>Crédits</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
@@ -474,7 +474,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="373"/>
         <source>Block contact</source>
-        <translation type="unfinished"/>
+        <translation>Bloquer le contact</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="384"/>
@@ -585,7 +585,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../invitebuttonswidget.ui" line="179"/>
         <source>Block</source>
-        <translation type="unfinished"/>
+        <translation>Bloquer</translation>
     </message>
 </context>
 <context>
@@ -1583,7 +1583,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../videoview.cpp" line="281"/>
         <source>Share file</source>
-        <translation type="unfinished"/>
+        <translation>Partager le fichier</translation>
     </message>
 </context>
 </TS>
