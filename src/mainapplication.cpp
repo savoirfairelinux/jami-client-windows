@@ -144,32 +144,32 @@ MainApplication::loadTranslations()
     const auto locale_name = QLocale::system().name();
     const auto locale_lang = locale_name.split('_')[0];
 
-    QTranslator qtTranslator_lang;
-    QTranslator qtTranslator_name;
+    QTranslator* qtTranslator_lang =  new QTranslator(this);
+    QTranslator* qtTranslator_name = new QTranslator(this);
     if (locale_name != locale_lang) {
-        if (qtTranslator_lang.load("qt_" + locale_lang, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
-            installTranslator(&qtTranslator_lang);
+        if (qtTranslator_lang->load("qt_" + locale_lang, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+            installTranslator(qtTranslator_lang);
     }
-    qtTranslator_name.load("qt_" + locale_name, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-    installTranslator(&qtTranslator_name);
+    qtTranslator_name->load("qt_" + locale_name, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    installTranslator(qtTranslator_name);
 
-    QTranslator lrcTranslator_lang;
-    QTranslator lrcTranslator_name;
+    QTranslator* lrcTranslator_lang = new QTranslator(this);
+    QTranslator* lrcTranslator_name = new QTranslator(this);
     if (locale_name != locale_lang) {
-        if (lrcTranslator_lang.load(appDir + "share/libringclient/translations/lrc_" + locale_lang))
-            installTranslator(&lrcTranslator_lang);
+        if (lrcTranslator_lang->load(appDir + "share/libringclient/translations/lrc_" + locale_lang))
+            installTranslator(lrcTranslator_lang);
     }
-    if (lrcTranslator_name.load(appDir + "share/libringclient/translations/lrc_" + locale_name))
-        installTranslator(&lrcTranslator_name);
+    if (lrcTranslator_name->load(appDir + "share/libringclient/translations/lrc_" + locale_name))
+        installTranslator(lrcTranslator_name);
 
-    QTranslator mainTranslator_lang;
-    QTranslator mainTranslator_name;
+    QTranslator* mainTranslator_lang = new QTranslator(this);
+    QTranslator* mainTranslator_name = new QTranslator(this);
     if (locale_name != locale_lang) {
-        if (mainTranslator_lang.load(appDir + "share/ring/translations/ring_client_windows_" + locale_lang))
-            installTranslator(&mainTranslator_lang);
+        if (mainTranslator_lang->load(appDir + "share/ring/translations/ring_client_windows_" + locale_lang))
+            installTranslator(mainTranslator_lang);
     }
-    if (mainTranslator_name.load(appDir + "share/ring/translations/ring_client_windows_" + locale_name))
-        installTranslator(&mainTranslator_name);
+    if (mainTranslator_name->load(appDir + "share/ring/translations/ring_client_windows_" + locale_name))
+        installTranslator(mainTranslator_name);
 }
 
 void
