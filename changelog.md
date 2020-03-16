@@ -1,3 +1,17 @@
+# 2020-03-16
+
+## Bug Fixes
+
++ Fixed the bug that the system notification cannot be disabled
++ Changed the way of calculating video device fps
++ More reliable high dpi adaption
++ Prevent crash when video device events happen with no account
+
+## New Features
+
++ Add type indicator
++ Movable splitter in main view
+
 # 2019-12-13
 
 ## Bug Fixes
