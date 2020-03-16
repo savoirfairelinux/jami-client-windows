@@ -201,7 +201,6 @@ MainApplication::initLrc()
     splash_->hide();
     LRCInstance::subscribeToDebugReceived();
     LRCInstance::getAPI().holdConferences = false;
-    LRCInstance::avModel().setHardwareAcceleration(false);
 }
 
 void
