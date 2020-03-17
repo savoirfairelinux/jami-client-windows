@@ -33,21 +33,22 @@ main(int argc, char* argv[])
 
     MainApplication::applicationInitialization();
 
+    char ARG_DISABLE_WEB_SECURITY[] = "--disable-web-security";
+    auto newArgv = MainApplication::parseInputArgument(argc, argv, ARG_DISABLE_WEB_SECURITY);
+
+    MainApplication a(argc, newArgv);
+
     // runguard to make sure that only one instance runs at a time
+    // Note: needs to be after the creation of the application
     QCryptographicHash appData(QCryptographicHash::Sha256);
     appData.addData(QApplication::applicationName().toUtf8());
     appData.addData(QApplication::organizationDomain().toUtf8());
     RunGuard guard(appData.result());
     if (!guard.tryToRun()) {
         // no need to exitApp since app is not set up
-        guard.release();
         return 0;
     }
 
-    char ARG_DISABLE_WEB_SECURITY[] = "--disable-web-security";
-    auto newArgv = MainApplication::parseInputArgument(argc, argv, ARG_DISABLE_WEB_SECURITY);
-
-    MainApplication a(argc, newArgv);
     if (!a.applicationSetup()) {
         guard.release();
         a.exitApp();
