@@ -1,0 +1,7 @@
+Verified+1: Jenkins CI <jenkins@ring-packaging.cx>
+Code-Review+2: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>
+Submitted-by: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>
+Submitted-at: Tue, 17 Mar 2020 09:39:53 -0400
+Reviewed-on: https://review.jami.net/c/ring-client-windows/+/13869
+Project: ring-client-windows
+Branch: refs/heads/master
