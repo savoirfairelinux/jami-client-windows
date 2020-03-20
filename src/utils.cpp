@@ -273,10 +273,14 @@ Utils::setStackWidget(QStackedWidget* stack, QWidget* widget)
     }
 }
 
-void Utils::showSystemNotification(QWidget* widget, const QString& message, long delay)
+void Utils::showSystemNotification(QWidget* widget,
+                                   const QString& message,
+                                   long delay,
+                                   const QString& triggeredAccountId)
 {
     QSettings settings("jami.net", "Jami");
     if (settings.value(SettingsKey::enableNotifications).toBool()) {
+        GlobalSystemTray::instance().setTriggeredAccountId(triggeredAccountId);
         GlobalSystemTray::instance().showMessage(message, "", QIcon(":images/jami.png"));
         QApplication::alert(widget, delay);
     }
@@ -285,10 +289,12 @@ void Utils::showSystemNotification(QWidget* widget, const QString& message, long
 void Utils::showSystemNotification(QWidget* widget,
                                    const QString & sender,
                                    const QString & message,
-                                   long delay)
+                                   long delay,
+                                   const QString& triggeredAccountId)
 {
     QSettings settings("jami.net", "Jami");
     if (settings.value(SettingsKey::enableNotifications).toBool()) {
+        GlobalSystemTray::instance().setTriggeredAccountId(triggeredAccountId);
         GlobalSystemTray::instance().showMessage(sender, message, QIcon(":images/jami.png"));
         QApplication::alert(widget, delay);
     }

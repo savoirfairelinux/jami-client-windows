@@ -22,3 +22,26 @@ GlobalSystemTray::GlobalSystemTray()
 {
 }
 
+void 
+GlobalSystemTray::setTriggeredAccountId(const QString& accountId)
+{
+    triggeredAccountId_ = accountId;
+}
+
+const QString&
+GlobalSystemTray::getTriggeredAccountId()
+{
+    return triggeredAccountId_;
+}
+
+void
+GlobalSystemTray::setPossibleOnGoingConversationInfo(const lrc::api::conversation::Info& convInfo)
+{
+    triggeredOnGoingConvInfo_ = convInfo;
+}
+
+const lrc::api::conversation::Info&
+GlobalSystemTray::getPossibleOnGoingConversationInfo()
+{
+    return triggeredOnGoingConvInfo_;
+}

@@ -278,6 +278,18 @@ CallWidget::navigated(bool to)
                 if (index != -1) {
                     slotAccountChanged(index);
                 }
+            } else if (!GlobalSystemTray::instance().getTriggeredAccountId().isEmpty()) {
+                slotAccountChanged(accountList.indexOf(GlobalSystemTray::instance().getTriggeredAccountId()));
+                // one shot connect
+                Utils::oneShotConnect(this, &CallWidget::slotAccountChangedFinished,
+                    [this] {
+                        if (!GlobalSystemTray::instance().getPossibleOnGoingConversationInfo().callId.isEmpty()) {
+                            slotShowIncomingCallView(GlobalSystemTray::instance().getTriggeredAccountId(), GlobalSystemTray::instance().getPossibleOnGoingConversationInfo());
+                            lrc::api::conversation::Info convInfo;
+                            GlobalSystemTray::instance().setPossibleOnGoingConversationInfo(convInfo);
+                        }
+                        GlobalSystemTray::instance().setTriggeredAccountId("");
+                    });
             }
         } catch (...) {}
         ui->currentAccountComboBox->updateComboBoxDisplay();
@@ -330,7 +342,7 @@ CallWidget::onNewInteraction(const QString& accountId, const QString& convUid,
         if (!interaction.authorUri.isEmpty() &&
             (!QApplication::focusWidget() || LRCInstance::getCurrAccId() != accountId)) {
             auto bestName = Utils::bestNameForConversation(conversation, *convModel);
-            Utils::showSystemNotification(this, bestName,interaction.body);
+            Utils::showSystemNotification(this, bestName,interaction.body, 5000, accountId);
         }
         updateConversationsFilterWidget();
         if (convUid != LRCInstance::getCurrentConvUid()) {
@@ -668,12 +680,24 @@ void
 CallWidget::slotShowIncomingCallView(const QString& accountId,
                                      const conversation::Info& convInfo)
 {
-    Q_UNUSED(accountId);
     qDebug() << "slotShowIncomingCallView";
 
     auto callModel = LRCInstance::getCurrentCallModel();
 
     if (!callModel->hasCall(convInfo.callId)) {
+        auto convModel = LRCInstance::getAccountInfo(accountId).conversationModel.get();
+        auto formattedName = Utils::bestNameForConversation(convInfo, *convModel);
+        if (GlobalSystemTray::instance().getTriggeredAccountId() != accountId) {
+            GlobalSystemTray::instance().setPossibleOnGoingConversationInfo(convInfo);
+            Utils::showSystemNotification(
+                this,
+                QString(tr("Call incoming from %1 to %2"))
+                .arg(formattedName)
+                .arg(Utils::bestNameForAccount(LRCInstance::getAccountInfo(accountId))),
+                5000,
+                accountId
+            );
+        }
         return;
     }
 
@@ -696,7 +720,7 @@ CallWidget::slotShowIncomingCallView(const QString& accountId,
             setCallPanelVisibility(true);
         }
     } else {
-        if (!QApplication::focusWidget()) {
+        if (!QApplication::focusWidget() && GlobalSystemTray::instance().getTriggeredAccountId().isEmpty()) {
             auto formattedName = Utils::bestNameForConversation(convInfo, *convModel);
             Utils::showSystemNotification(this, QString(tr("Call incoming from %1")).arg(formattedName));
         }
@@ -763,7 +787,7 @@ CallWidget::slotNewTrustRequest(const QString& accountId, const QString& contact
             try {
                 auto contactInfo = contactModel->getContact(contactUri);
                 auto bestName = Utils::bestNameForContact(contactInfo);
-                Utils::showSystemNotification(this, bestName, QObject::tr("Contact request"));
+                Utils::showSystemNotification(this, bestName, QObject::tr("Contact request"), 5000, accountId);
             } catch (...) {
                 qDebug() << "Can't get contact: ", contactUri;
                 return;
@@ -837,6 +861,7 @@ CallWidget::setSelectedAccount(const QString& accountId)
     updateConversationsFilterWidget();
     connectConversationModel();
     connectAccount(accountId);
+    emit slotAccountChangedFinished();
 }
 
 void CallWidget::setConversationFilter(lrc::api::profile::Type filter)

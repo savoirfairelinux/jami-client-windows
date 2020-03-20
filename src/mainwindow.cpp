@@ -298,6 +298,7 @@ MainWindow::lighten()
 
 void MainWindow::notificationClicked()
 {
+    // Note: this slot will only be triggered by the last notification
     if (auto currentWidget = dynamic_cast<NavWidget*>(ui->navStack->currentWidget())) {
         emit currentWidget->NavigationRequested(ScreenEnum::CallScreen);
         setWindowState(Qt::WindowActive);
