@@ -67,7 +67,7 @@ VideoOverlay::updateCall(const conversation::Info& convInfo)
     QObject::disconnect(oneSecondTimer_);
     QObject::connect(oneSecondTimer_, &QTimer::timeout,
                      this, &VideoOverlay::setTime);
-    oneSecondTimer_->start(1000);
+    oneSecondTimer_->start(20);
     resetToFadeIn(true);
 
     // close chat panel
