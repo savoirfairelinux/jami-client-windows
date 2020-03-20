@@ -22,3 +22,14 @@ GlobalSystemTray::GlobalSystemTray()
 {
 }
 
+void 
+GlobalSystemTray::setTriggeredAccountId(const QString& accountId)
+{
+    triggeredAccountId_ = accountId;
+}
+
+const QString&
+GlobalSystemTray::getTriggeredAccountId()
+{
+    return triggeredAccountId_;
+}

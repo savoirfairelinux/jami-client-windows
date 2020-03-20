@@ -278,6 +278,8 @@ CallWidget::navigated(bool to)
                 if (index != -1) {
                     slotAccountChanged(index);
                 }
+            } else if (!GlobalSystemTray::instance().getTriggeredAccountId().isEmpty()) {
+                slotAccountChanged(accountList.indexOf(GlobalSystemTray::instance().getTriggeredAccountId()));
             }
         } catch (...) {}
         ui->currentAccountComboBox->updateComboBoxDisplay();
@@ -330,7 +332,7 @@ CallWidget::onNewInteraction(const QString& accountId, const QString& convUid,
         if (!interaction.authorUri.isEmpty() &&
             (!QApplication::focusWidget() || LRCInstance::getCurrAccId() != accountId)) {
             auto bestName = Utils::bestNameForConversation(conversation, *convModel);
-            Utils::showSystemNotification(this, bestName,interaction.body);
+            Utils::showSystemNotification(this, bestName,interaction.body, 5000, accountId);
         }
         updateConversationsFilterWidget();
         if (convUid != LRCInstance::getCurrentConvUid()) {
@@ -668,12 +670,21 @@ void
 CallWidget::slotShowIncomingCallView(const QString& accountId,
                                      const conversation::Info& convInfo)
 {
-    Q_UNUSED(accountId);
     qDebug() << "slotShowIncomingCallView";
 
     auto callModel = LRCInstance::getCurrentCallModel();
 
     if (!callModel->hasCall(convInfo.callId)) {
+        auto convModel = LRCInstance::getAccountInfo(accountId).conversationModel.get();
+        auto formattedName = Utils::bestNameForConversation(convInfo, *convModel);
+        Utils::showSystemNotification(
+            this,
+            QString(tr("Call incoming from %1 to %2"))
+            .arg(formattedName)
+            .arg(Utils::bestNameForAccount(LRCInstance::getAccountInfo(accountId))),
+            5000,
+            accountId
+        );
         return;
     }
 
@@ -763,7 +774,7 @@ CallWidget::slotNewTrustRequest(const QString& accountId, const QString& contact
             try {
                 auto contactInfo = contactModel->getContact(contactUri);
                 auto bestName = Utils::bestNameForContact(contactInfo);
-                Utils::showSystemNotification(this, bestName, QObject::tr("Contact request"));
+                Utils::showSystemNotification(this, bestName, QObject::tr("Contact request"), 5000, accountId);
             } catch (...) {
                 qDebug() << "Can't get contact: ", contactUri;
                 return;

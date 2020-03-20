@@ -32,6 +32,14 @@ public:
         return *instance_;
     }
 
+    // remember the last triggering account for the notification
+    // safe since user cannot activate previous notifications
+    void setTriggeredAccountId(const QString& accountId);
+
+    const QString& getTriggeredAccountId();
+
 private:
     GlobalSystemTray();
+
+    QString triggeredAccountId_;
 };
