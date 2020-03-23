@@ -132,7 +132,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="515"/>
         <source>Enable Video</source>
-        <translation>動画を有効化</translation>
+        <translation>ビデオを有効化</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="539"/>
@@ -205,7 +205,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="398"/>
         <source>Enable Proxy</source>
-        <translation>プロクシを有効</translation>
+        <translation>プロキシを有効にする</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="454"/>
@@ -285,7 +285,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1090"/>
         <source>Enable Video</source>
-        <translation>動画を有効化</translation>
+        <translation>ビデオを有効化</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1267"/>
@@ -321,7 +321,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../banneditemwidget.ui" line="80"/>
         <source>name</source>
-        <translation type="unfinished"/>
+        <translation>名前</translation>
     </message>
     <message>
         <location filename="../banneditemwidget.ui" line="104"/>
@@ -357,7 +357,10 @@ Jami is a secured and distributed communication software.</source>
  This is your ID.
 Copy and share it with your friends!
                                       </source>
-        <translation type="unfinished"/>
+        <translation>
+これがあなたのIDです。
+コピーして友達とシェアしましょう！
+</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="806"/>
@@ -414,7 +417,7 @@ Copy and share it with your friends!
         <location filename="../callwidget.ui" line="377"/>
         <location filename="../callwidget.cpp" line="552"/>
         <source>Find a new or existing contact</source>
-        <translation type="unfinished"/>
+        <translation>新規・既存の連絡先を検索</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1444"/>
@@ -444,7 +447,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="1280"/>
         <source>Cancel outgoing call</source>
-        <translation type="unfinished"/>
+        <translation>発信をキャンセル</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1305"/>
@@ -454,12 +457,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="332"/>
         <source>Start video call</source>
-        <translation type="unfinished"/>
+        <translation>ビデオ通話を開始</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="343"/>
         <source>Start audio call</source>
-        <translation type="unfinished"/>
+        <translation>音声通話を開始</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="354"/>
@@ -469,12 +472,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="361"/>
         <source>Remove contact</source>
-        <translation type="unfinished"/>
+        <translation>連絡先を削除</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="373"/>
         <source>Block contact</source>
-        <translation type="unfinished"/>
+        <translation>ブロックした連絡先</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="384"/>
@@ -534,7 +537,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../deleteaccountdialog.ui" line="235"/>
         <source>Permanently delete account</source>
-        <translation type="unfinished"/>
+        <translation>アカウントを完全に削除</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="241"/>
@@ -593,7 +596,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>ダイアログ</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="62"/>
@@ -667,7 +670,7 @@ Please try again later.</source>
     <message>
         <location filename="../mainwindow.cpp" line="94"/>
         <source>Exit</source>
-        <translation type="unfinished"/>
+        <translation>終了</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="111"/>
@@ -677,7 +680,7 @@ Please try again later.</source>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Jami</source>
-        <translation type="unfinished"/>
+        <translation>Jami</translation>
     </message>
 </context>
 <context>
@@ -894,7 +897,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1148"/>
         <source>Register public username</source>
-        <translation type="unfinished"/>
+        <translation>公開ユーザー名を登録</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1367"/>
@@ -946,7 +949,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1979"/>
         <source>Server</source>
-        <translation type="unfinished"/>
+        <translation>サーバー</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2045"/>
@@ -1231,22 +1234,22 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="610"/>
         <source>Enable desktop notifications</source>
-        <translation>通知を有効</translation>
+        <translation>デスクトップ通知を有効化</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="653"/>
         <source>Keep minimized on close</source>
-        <translation type="unfinished"/>
+        <translation>ウィンドウを閉じたら最小化して待機する</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="678"/>
         <source>Download folder</source>
-        <translation>ダウンロードフォルター</translation>
+        <translation>ダウンロードフォルダー</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="811"/>
         <source>Save in</source>
-        <translation>保存</translation>
+        <translation>保存先</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="904"/>
@@ -1256,7 +1259,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="943"/>
         <source>Updates</source>
-        <translation type="unfinished"/>
+        <translation>アップデート</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1008"/>
@@ -1281,7 +1284,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1084"/>
         <source>Check for updates now</source>
-        <translation>アップデートの確認</translation>
+        <translation>今すぐアップデートを確認</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3027"/>
@@ -1292,7 +1295,7 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="1418"/>
         <location filename="../settingswidget.ui" line="2729"/>
         <source>Enable</source>
-        <translation type="unfinished"/>
+        <translation>有効化</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="607"/>
@@ -1307,7 +1310,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="764"/>
         <source>Call Recordings</source>
-        <translation type="unfinished"/>
+        <translation>通話の録音</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1005"/>
@@ -1370,7 +1373,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1973"/>
         <source>Linked Devices</source>
-        <translation type="unfinished"/>
+        <translation>リンクされたデバイス</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2078"/>
@@ -1456,7 +1459,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3720"/>
         <source>Device</source>
-        <translation>端末</translation>
+        <translation>デバイス</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3766"/>
