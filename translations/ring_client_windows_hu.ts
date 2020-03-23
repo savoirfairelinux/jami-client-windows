@@ -211,7 +211,7 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="454"/>
         <source>Bootstrap</source>
-        <translation>Betöltés</translation>
+        <translation>Bootstrap</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="530"/>
@@ -335,12 +335,12 @@ A Jami egy biztonságos és osztott csevegőprogram.</translation>
     <message>
         <location filename="../callwidget.ui" line="184"/>
         <source>Show conversations</source>
-        <translation>Társalgások megjelenítése</translation>
+        <translation>Beszélgetések megjelenítése</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="187"/>
         <source>Conversations</source>
-        <translation>Társalgások</translation>
+        <translation>Beszélgetések</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="368"/>
@@ -467,7 +467,7 @@ Másolja és ossza meg a barátaival!</translation>
     <message>
         <location filename="../callwidget.cpp" line="354"/>
         <source>Clear conversation</source>
-        <translation>Társalgás törlése</translation>
+        <translation>Beszélgetés törlése</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="361"/>
@@ -782,7 +782,7 @@ Próbálja meg újra később.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="251"/>
         <source>Create a Jami account</source>
-        <translation>Jami fiók létrehozása</translation>
+        <translation>Jami-fiók létrehozása</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="282"/>
@@ -1067,7 +1067,7 @@ Ismerősei képesek lesznek felhívni a felhasználónevét az azonosító haszn
     <message>
         <location filename="../newwizardwidget.cpp" line="419"/>
         <source>Migrating your Jami account...</source>
-        <translation>Jami fiók áttelepítése…</translation>
+        <translation>Jami-fiók áttelepítése…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="412"/>
@@ -1077,7 +1077,7 @@ Ismerősei képesek lesznek felhívni a felhasználónevét az azonosító haszn
     <message>
         <location filename="../newwizardwidget.cpp" line="404"/>
         <source>Generating your Jami account...</source>
-        <translation>Jami fiók létrehozása…</translation>
+        <translation>Jami-fiók létrehozása…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="422"/>
