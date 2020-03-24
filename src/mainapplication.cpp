@@ -27,6 +27,7 @@
 #include "pixbufmanipulator.h"
 #include "utils.h"
 #include "qrimageprovider.h"
+#include "tintedbuttonimageprovider.h"
 #include "accountlistmodel.h"
 #include "version.h"
 #include "smartlistmodel.h"
@@ -320,6 +321,7 @@ MainApplication::qmlInitialization()
 
     // add image provider
     engine_->addImageProvider(QLatin1String("qrImage"), new QrImageProvider());
+    engine_->addImageProvider(QLatin1String("tintedPixmap"), new TintedButtonImageProvider());
 
     engine_->load(QUrl(QStringLiteral("qrc:/src/MainApplicationWindow.qml")));
 }
