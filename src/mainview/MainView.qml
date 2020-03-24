@@ -5,6 +5,7 @@ import QtQuick.Layouts 1.14
 import QtQuick.Controls.Universal 2.12
 import QtGraphicalEffects 1.14
 import net.jami.constant.jamitheme 1.0
+import net.jami.callcenter 1.0
 import net.jami.model.account 1.0
 import net.jami.tools.utils 1.0
 import net.jami.MessageWebViewQmlObjectHolder 1.0
@@ -203,5 +204,9 @@ Window {
         y: Math.round((mainViewWindow.height - height) / 2)
         width: Math.max(mainViewWindow.width / 2, aboutPopUpPreferedWidth)
         height: aboutPopUpDialog.contentHeight
+    }
+
+    Component.onCompleted: {
+        CallCenter.init()
     }
 }
