@@ -182,7 +182,11 @@ HEADERS += ./src/aboutdialog.h \
         ./src/qrimageprovider.h \
         ./src/lrcinterface.h \
         ./src/messagewebviewqmlobjectholder.h \
-        ./src/accountcomboboxqmlobjectholder.h
+        ./src/accountcomboboxqmlobjectholder.h \
+        ./src/tintedbuttonimageprovider.h \
+        ./src/callcenterqmlobjectholder.h \
+        ./src/calloverlayqmlobjectholder.h \
+        ./src/conversationsmartlistviewqmlobjectholder.h
 SOURCES += ./src/aboutdialog.cpp \
         ./src/banneditemwidget.cpp \
         ./src/conversationsfilterwidget.cpp \
@@ -252,7 +256,10 @@ SOURCES += ./src/aboutdialog.cpp \
         ./src/mainapplication.cpp \
         ./src/lrcinterface.cpp \
         ./src/messagewebviewqmlobjectholder.cpp \
-        ./src/accountcomboboxqmlobjectholder.cpp
+        ./src/accountcomboboxqmlobjectholder.cpp \
+        ./src/callcenterqmlobjectholder.cpp \
+        ./src/calloverlayqmlobjectholder.cpp \
+        ./src/conversationsmartlistviewqmlobjectholder.cpp
 FORMS += ./src/aboutdialog.ui \
         ./src/advancedsipsettingwidget.ui \
         ./src/callwidget.ui \

@@ -57,6 +57,7 @@ public:
         UID,
         ContextMenuOpen,
         InCall,
+        IsIncomingCallInProgress,
         CallStateStr,
         SectionName,
         AccountId,

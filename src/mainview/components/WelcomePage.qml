@@ -115,6 +115,7 @@ Rectangle {
 
                     TextMetrics {
                         id:     textMetricsjamiRegisteredNameText
+
                         font:   jamiRegisteredNameText.font
                         text:   accountListModel.data(accountListModel.index(currentAccountIndex,0), 258)
                         elideWidth: welcomeRectComponentsGroup.width
