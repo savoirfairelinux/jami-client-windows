@@ -264,7 +264,7 @@ SettingsWidget::SettingsWidget(QWidget* parent)
     // shortcuts
     registerShortcuts();
 
-    ui->containerWidget->setVisible(false);
+    ui->settingsWidgetScrollArea->setVisible(false);
 
 #ifdef Q_OS_LINUX
     ui->updateLabel->setVisible(false);
@@ -291,7 +291,7 @@ SettingsWidget::slotAccountListChanged()
 void
 SettingsWidget::navigated(bool to)
 {
-    ui->containerWidget->setVisible(to);
+    ui->settingsWidgetScrollArea->setVisible(to);
     if (to) {
         setSelected(SettingsMenu::Account);
         updateAccountInfoDisplayed();
