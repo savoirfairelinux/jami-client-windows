@@ -3,19 +3,20 @@ import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import net.jami.constant.jamitheme 1.0
-import net.jami.model.smartlist 1.0
 import net.jami.AccountComboBoxQmlObjectHolder 1.0
+import net.jami.ConversationSmartListViewQmlObjectHolder 1.0
 
 import "../../commoncomponents"
 
 Rectangle {
     id: sidePanelRect
 
-    signal conversationSmartListNeedToAccessMessageWebView(string currentUserDisplayName, string currentUserAlias, string currentUID)
+    signal conversationSmartListNeedToAccessMessageWebView(string currentUserDisplayName, string currentUserAlias, string currentUID, bool inCall, bool isIncomingCallInProgress)
     signal accountComboBoxNeedToShowWelcomePage(int index)
+    signal conversationSmartListViewNeedToShowWelcomePage()
 
     function deselectConversationSmartList() {
-        conversationSmartListView.deselectSmartList()
+        conversationSmartListView.currentIndex = -1
     }
 
     // intended -> since strange behavior will happen without this for stackview
@@ -23,6 +24,15 @@ Rectangle {
 
     AccountComboBoxQmlObjectHolder {
         id: accountComboBoxQmlObjectHolder
+
+        onAccountSignalsReconnect: {
+            CallCenter.connectCallstatusChangedSignal(accountId)
+            conversationSmartListViewQmlObjectHolder.connectConversationModel()
+        }
+    }
+
+    ConversationSmartListViewQmlObjectHolder {
+        id: conversationSmartListViewQmlObjectHolder
     }
 
     AccountComboBox {
@@ -38,16 +48,18 @@ Rectangle {
             contactSearchBar.clear()
         }
 
+        onNeedToUpdateSmartList: {
+            conversationSmartListView.currentIndex = -1
+            conversationSmartListView.updateSmartList(accountId)
+        }
+
         onNeedToBackToWelcomePage: {
             sidePanelRect.accountComboBoxNeedToShowWelcomePage(index)
         }
 
-        onNeedToUpdateSmartList: {
-            conversationSmartListView.updateSmartList(accountId)
-        }
-
         Component.onCompleted: {
             accountComboBoxQmlObjectHolder.setAccountComboBoxQmlObject(accountComboBox)
+            accountComboBoxQmlObjectHolder.accountChanged(0)
         }
 
     }
@@ -259,8 +271,18 @@ Rectangle {
 
                     width: parent.width
                     height: parent.height -  contactSearchBarRect.height - 15
+
+                    onNeedToBackToWelcomePage: {
+                        sidePanelRect.conversationSmartListViewNeedToShowWelcomePage()
+                    }
+
                     onNeedToAccessMessageWebView: {
-                        sidePanelRect.conversationSmartListNeedToAccessMessageWebView(currentUserDisplayName, currentUserAlias, currentUID)
+                        sidePanelRect.conversationSmartListNeedToAccessMessageWebView(currentUserDisplayName, currentUserAlias, currentUID, inCall, isIncomingCallInProgress)
+                    }
+
+                    Component.onCompleted: {
+                        conversationSmartListViewQmlObjectHolder.setConversationSmartListViewQmlObjectHolder(conversationSmartListView)
+                        conversationSmartListView.currentIndex = -1
                     }
                 }
             }
