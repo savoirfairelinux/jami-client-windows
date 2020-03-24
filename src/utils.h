@@ -109,6 +109,7 @@ bool isContactValid(const QString& contactUid, const lrc::api::ConversationModel
 bool getReplyMessageBox(QWidget* widget, const QString& title, const QString& text);
 
 // image
+QString getContactImageString(const QString& accountId, const QString& uid);
 QImage getCirclePhoto(const QImage original, int sizePhoto);
 QImage conversationPhoto(const QString& convUid, const lrc::api::account::Info& accountInfo);
 QColor getAvatarColor(const QString& canonicalUri);
@@ -336,6 +337,13 @@ public:
         dataDir.cdUp();
         return dataDir.absolutePath() + "/jami";
     }
+
+    Q_INVOKABLE const QString getContactImageString(const QString& accountId, const QString& uid) {
+        return Utils::getContactImageString(accountId, uid);
+    }
+
+    Q_INVOKABLE const QString getBestName(const QString& accountId, const QString& uid);
+    Q_INVOKABLE const QString getBestId(const QString& accountId, const QString& uid);
 
 private:
     QClipboard* clipboard_;
