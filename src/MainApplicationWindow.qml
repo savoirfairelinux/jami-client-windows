@@ -30,11 +30,8 @@ ApplicationWindow {
     overlay.modal: ColorOverlay {
         source: mainApplicationWindow.contentItem
         color: "transparent"
+
         // color animation
         ColorAnimation on color { to: Qt.rgba(0, 0, 0, 0.33); duration: 500 }
     }
-
-    /*onScreenChanged: {
-        mainApplicationWindow.displayScreenChanged()
-    }*/
 }

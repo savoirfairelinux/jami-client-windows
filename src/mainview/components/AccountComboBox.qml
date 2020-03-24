@@ -30,9 +30,9 @@ ComboBox {
         anchors.leftMargin: 5
         anchors.verticalCenter: accountComboBox.verticalCenter
 
-
         width: accountComboBox.height - 10
         height: accountComboBox.height - 10
+
         fillMode: Image.PreserveAspectFit
         source: "data:image/png;base64," + accountListModel.data(accountListModel.index(accountComboBox.currentIndex,0), 259)
         mipmap: true
@@ -92,6 +92,7 @@ ComboBox {
 
     TextMetrics {
         id: textMetricsUserAliasRoot
+
         font: textUserAliasRoot.font
         elide: Text.ElideMiddle
         elideWidth: accountComboBox.width - userImageRoot.width - settingsButton.width - 25
@@ -100,6 +101,7 @@ ComboBox {
 
     TextMetrics {
         id: textMetricsUsernameRoot
+
         font: textUsernameRoot.font
         elide: Text.ElideMiddle
         elideWidth: accountComboBox.width - userImageRoot.width - settingsButton.width - 25
@@ -112,6 +114,7 @@ ComboBox {
         anchors.right: accountComboBox.right
         anchors.rightMargin: 10
         anchors.verticalCenter: accountComboBox.verticalCenter
+
         width: 20
         height: 20
 
@@ -119,6 +122,7 @@ ComboBox {
             id: settingButtonRect
 
             radius: 30
+
             Image {
                 id: settingsButtonImage
 
@@ -137,6 +141,7 @@ ComboBox {
 
         implicitWidth: accountComboBox.width
         implicitHeight: accountComboBox.height
+
         border.width: 0
     }
 

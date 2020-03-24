@@ -154,6 +154,7 @@ QHash<int, QByteArray> SmartListModel::roleNames() const
     roles[UID] = "UID";
     roles[ContextMenuOpen] = "ContextMenuOpen";
     roles[InCall] = "InCall";
+    roles[IsIncomingCallInProgress] = "IsIncomingCallInProgress";
     roles[CallStateStr] = "CallStateStr";
     roles[SectionName] = "SectionName";
     roles[AccountId] = "AccountId";
@@ -245,6 +246,16 @@ SmartListModel::getConversationItemData(const conversation::Info& item,
         if (!convInfo.uid.isEmpty()) {
             auto callModel = LRCInstance::getCurrentCallModel();
             return QVariant(callModel->hasCall(convInfo.callId));
+        }
+        return QVariant(false);
+    }
+    case Role::IsIncomingCallInProgress:
+    {
+        auto& convInfo = LRCInstance::getConversationFromConvUid(item.uid);
+        if (!convInfo.uid.isEmpty()) {
+            auto callModel = LRCInstance::getCurrentCallModel();
+            auto call = callModel->getCall(convInfo.callId);
+            return QVariant(!call.isOutgoing && call.status != lrc::api::call::Status::IN_PROGRESS);
         }
         return QVariant(false);
     }
