@@ -9,6 +9,7 @@ import net.jami.tools.utils 1.0
  * The difference between the two is that the id is for referencing the object within QML,
  * while the objectName is required for referencing the object from C++
  */
+
 ColumnLayout {
     id: mainColumnLayout
 

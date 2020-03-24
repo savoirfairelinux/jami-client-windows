@@ -1,3 +1,4 @@
+
 /***************************************************************************
  * Copyright (C) 2020 by Savoir-faire Linux                                *
  * Author: Mingrui Zhang   <mingrui.zhang@savoirfairelinux.com>            *
@@ -18,35 +19,44 @@
 
 #pragma once
 
+#include "smartlistmodel.h"
+
 #include "lrcinstance.h"
 
 #include <QObject>
 #include <QString>
 
- // to ease the logic with the power of c++
-class AccountComboBoxQmlObjectHolder : public QObject {
+class ConversationSmartListViewQmlObjectHolder : public QObject
+{
     Q_OBJECT
 
 public:
-    explicit AccountComboBoxQmlObjectHolder(QObject* parent = 0);
-    ~AccountComboBoxQmlObjectHolder();
+    explicit ConversationSmartListViewQmlObjectHolder(QObject *parent = nullptr);
+    ~ConversationSmartListViewQmlObjectHolder();
 
     // Must call Q_INVOKABLE so that this function can be used in QML, qml to c++
-    Q_INVOKABLE void setAccountComboBoxQmlObject(QObject* obj);
-    Q_INVOKABLE void accountChanged(int index);
+    Q_INVOKABLE void setConversationSmartListViewQmlObjectHolder(QObject* obj);
+    Q_INVOKABLE bool connectConversationModel();
 
-    void setSelectedAccount(const QString& accountId, int index);
-    void backToWelcomePage(int index);
+    void backToWelcomePage();
     void deselectConversation();
 
-signals:
-    void accountSignalsReconnect(const QString& accountId);
-
 private:
-    void connectAccount(const QString& accountId);
-
     // Object pointer
-    QObject* accountComboBoxQmlObject_;
+    QObject* conversationSmartListViewQmlObject_;
 
-    lrc::api::profile::Type currentTypeFilter_ {};
+    SmartListModel* conversationSmartListModel_;
+
+    // connections
+    QMetaObject::Connection modelSortedConnection_;
+    QMetaObject::Connection modelUpdatedConnection_;
+    QMetaObject::Connection filterChangedConnection_;
+    QMetaObject::Connection newConversationConnection_;
+    QMetaObject::Connection conversationRemovedConnection_;
+    QMetaObject::Connection newInteractionConnection_;
+    QMetaObject::Connection interactionStatusUpdatedConnection_;
+    QMetaObject::Connection conversationClearedConnection;
+    QMetaObject::Connection selectedCallChanged_;
+    QMetaObject::Connection smartlistSelectionConnection_;
+    QMetaObject::Connection interactionRemovedConnection_;
 };
