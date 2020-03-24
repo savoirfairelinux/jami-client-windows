@@ -23,27 +23,41 @@
 #include <QObject>
 #include <QString>
 
- // to ease the logic with the power of c++
-class AccountComboBoxQmlObjectHolder : public QObject {
+class CallCenterQmlObjectHolder : public QObject
+{
     Q_OBJECT
 
 public:
-    explicit AccountComboBoxQmlObjectHolder(QObject* parent = 0);
-    ~AccountComboBoxQmlObjectHolder();
+    explicit CallCenterQmlObjectHolder(QObject *parent = nullptr);
+    ~CallCenterQmlObjectHolder();
 
     // Must call Q_INVOKABLE so that this function can be used in QML, qml to c++
-    Q_INVOKABLE void setAccountComboBoxQmlObject(QObject* obj);
-    Q_INVOKABLE void accountChanged(int index);
+    Q_INVOKABLE void setCallCenterQmlObjectHolder(QObject* obj);
+    Q_INVOKABLE void placeAudioOnlyCall();
+    Q_INVOKABLE void hangUpACall(const QString& accountId, const QString& convUid);
 
-    void setSelectedAccount(const QString& accountId, int index);
-    void backToWelcomePage(int index);
-    void deselectConversation();
+signals:
+    void showOutgoingCallPage(const QString& accountId, const QString& convUid);
+    void showIncomingCallPage();
+    void showAudioCallPage(const QString& accountId, const QString& convUid);
+    void setUIBestName(const QString& bestName, const QString& accountId, const QString& convUid);
+    void setUIBestId(const QString& bestId, const QString& accountId, const QString& convUid);
+    void callStatusChanged(const QString& status, const QString& accountId, const QString& convUid);
+    void callContactImageChanged(const QString& imageString, const QString& accountId, const QString& convUid);
+    void closeCallWindow(const QString& accountId, const QString& convUid);
+    void updateConversationSmartList();
+
+public slots:
+    void slotShowIncomingCallView(const QString& accountId, const lrc::api::conversation::Info& convInfo);
+    void slotShowCallView(const QString& accountId, const lrc::api::conversation::Info& convInfo);
+
 
 private:
-    void connectAccount(const QString& accountId);
+    void connectCallstatusChangedSignal(const QString& accountId);
+    QString contactImageFromCurrentConv(const QString& uid);
 
     // Object pointer
-    QObject* accountComboBoxQmlObject_;
+    QObject* callCenterQmlObject_;
 
-    lrc::api::profile::Type currentTypeFilter_ {};
+    QMetaObject::Connection callStatusChangedConnection_;
 };

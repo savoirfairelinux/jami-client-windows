@@ -45,6 +45,12 @@ Rectangle {
         messageWebViewHeader.sendContactRequestButtonVisible = visible
     }
 
+    function setMessagingHeaderButtonsVisible(visible) {
+        messageWebViewHeader.toggleMessagingHeaderButtonsVisible(visible)
+    }
+
+    anchors.fill: parent
+
     JamiFileDialog {
         id: jamiFileDialog
 
