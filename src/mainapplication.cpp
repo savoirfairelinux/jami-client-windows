@@ -27,11 +27,14 @@
 #include "pixbufmanipulator.h"
 #include "utils.h"
 #include "qrimageprovider.h"
+#include "tintedbuttonimageprovider.h"
 #include "accountlistmodel.h"
 #include "version.h"
 #include "smartlistmodel.h"
 #include "messagewebviewqmlobjectholder.h"
 #include "accountcomboboxqmlobjectholder.h"
+#include "callcenterqmlobjectholder.h"
+#include "calloverlayqmlobjectholder.h"
 
 #include <QFontDatabase>
 #include <QQmlContext>
@@ -287,9 +290,12 @@ MainApplication::qmlInitialization()
     // register object holder type
     qmlRegisterType<MessageWebViewQmlObjectHolder>("net.jami.MessageWebViewQmlObjectHolder", 1, 0, "MessageWebViewQmlObjectHolder");
     qmlRegisterType<AccountComboBoxQmlObjectHolder>("net.jami.AccountComboBoxQmlObjectHolder", 1, 0, "AccountComboBoxQmlObjectHolder");
+    qmlRegisterType<CallCenterQmlObjectHolder>("net.jami.CallCenterQmlObjectHolder", 1, 0, "CallCenterQmlObjectHolder");
+    qmlRegisterType<CallOverlayQmlObjectHolder>("net.jami.CallOverlayQmlObjectHolder", 1, 0, "CallOverlayQmlObjectHolder");
 
     // qmlRegisterSingletonType
     qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/src/constant/JamiTheme.qml")), "net.jami.constant.jamitheme", 1, 0, "JamiTheme");
+    qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/src/mainview/components/CallCenter.qml")), "net.jami.callcenter", 1, 0, "CallCenter");
 
     qmlRegisterSingletonType<LrcGeneralAdapter>(
         "net.jami.LrcGeneralAdapter", 1, 0, "LrcGeneralAdapter",
@@ -320,6 +326,7 @@ MainApplication::qmlInitialization()
 
     // add image provider
     engine_->addImageProvider(QLatin1String("qrImage"), new QrImageProvider());
+    engine_->addImageProvider(QLatin1String("tintedPixmap"), new TintedButtonImageProvider());
 
     engine_->load(QUrl(QStringLiteral("qrc:/src/MainApplicationWindow.qml")));
 }
