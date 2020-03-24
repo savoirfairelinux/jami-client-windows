@@ -182,7 +182,8 @@ HEADERS += ./src/aboutdialog.h \
         ./src/qrimageprovider.h \
         ./src/lrcinterface.h \
         ./src/messagewebviewqmlobjectholder.h \
-        ./src/accountcomboboxqmlobjectholder.h
+        ./src/accountcomboboxqmlobjectholder.h \
+        ./src/tintedbuttonimageprovider.h
 SOURCES += ./src/aboutdialog.cpp \
         ./src/banneditemwidget.cpp \
         ./src/conversationsfilterwidget.cpp \
