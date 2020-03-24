@@ -23,27 +23,34 @@
 #include <QObject>
 #include <QString>
 
- // to ease the logic with the power of c++
-class AccountComboBoxQmlObjectHolder : public QObject {
+class CallOverlayQmlObjectHolder : public QObject
+{
     Q_OBJECT
 
 public:
-    explicit AccountComboBoxQmlObjectHolder(QObject* parent = 0);
-    ~AccountComboBoxQmlObjectHolder();
+    explicit CallOverlayQmlObjectHolder(QObject* parent = nullptr);
+    ~CallOverlayQmlObjectHolder();
 
     // Must call Q_INVOKABLE so that this function can be used in QML, qml to c++
-    Q_INVOKABLE void setAccountComboBoxQmlObject(QObject* obj);
-    Q_INVOKABLE void accountChanged(int index);
+    Q_INVOKABLE void setCallOverlayQmlObjectHolder(QObject* obj);
+    Q_INVOKABLE void updateCallOverlay(const QString& accountId, const QString& convUid);
+    Q_INVOKABLE void hangUpThisCall();
+    Q_INVOKABLE void muteThisCallToggle();
+    Q_INVOKABLE void recordThisCallToggle();
 
-    void setSelectedAccount(const QString& accountId, int index);
-    void backToWelcomePage(int index);
-    void deselectConversation();
+signals:
+    void updateTimeText(const QString& time);
 
 private:
-    void connectAccount(const QString& accountId);
+
+    void setTime(const QString& accountId, const QString& convUid);
 
     // Object pointer
-    QObject* accountComboBoxQmlObject_;
+    QObject* callOverlayQmlObject_;
 
-    lrc::api::profile::Type currentTypeFilter_ {};
+    // for current conf/call info
+    QString accountId_;
+    QString convUid_;
+
+    QTimer* oneSecondTimer_;
 };
