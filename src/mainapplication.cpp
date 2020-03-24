@@ -27,11 +27,14 @@
 #include "pixbufmanipulator.h"
 #include "utils.h"
 #include "qrimageprovider.h"
+#include "tintedbuttonimageprovider.h"
 #include "accountlistmodel.h"
 #include "version.h"
-#include "smartlistmodel.h"
 #include "messagewebviewqmlobjectholder.h"
 #include "accountcomboboxqmlobjectholder.h"
+#include "callcenterqmlobjectholder.h"
+#include "calloverlayqmlobjectholder.h"
+#include "conversationsmartlistviewqmlobjectholder.h"
 
 #include <QFontDatabase>
 #include <QQmlContext>
@@ -62,9 +65,9 @@ MainApplication::applicationInitialization()
     QGuiApplication::setOrganizationDomain("jami.net");
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+    QCoreApplication::setAttribute(Qt::AA_UseOpenGLES);
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor);
-
     // initialize QtWebEngine
     QtWebEngine::initialize();
 #endif
@@ -286,10 +289,13 @@ MainApplication::qmlInitialization()
     // register object holder type
     qmlRegisterType<MessageWebViewQmlObjectHolder>("net.jami.MessageWebViewQmlObjectHolder", 1, 0, "MessageWebViewQmlObjectHolder");
     qmlRegisterType<AccountComboBoxQmlObjectHolder>("net.jami.AccountComboBoxQmlObjectHolder", 1, 0, "AccountComboBoxQmlObjectHolder");
+    qmlRegisterType<CallCenterQmlObjectHolder>("net.jami.CallCenterQmlObjectHolder", 1, 0, "CallCenterQmlObjectHolder");
+    qmlRegisterType<CallOverlayQmlObjectHolder>("net.jami.CallOverlayQmlObjectHolder", 1, 0, "CallOverlayQmlObjectHolder");
+    qmlRegisterType<ConversationSmartListViewQmlObjectHolder>("net.jami.ConversationSmartListViewQmlObjectHolder", 1, 0, "ConversationSmartListViewQmlObjectHolder");
 
     // qmlRegisterSingletonType
     qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/src/constant/JamiTheme.qml")), "net.jami.constant.jamitheme", 1, 0, "JamiTheme");
-
+    qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/src/mainview/components/CallCenter.qml")), "net.jami.callcenter", 1, 0, "CallCenter");
     qmlRegisterSingletonType<LrcGeneralAdapter>(
         "net.jami.LrcGeneralAdapter", 1, 0, "LrcGeneralAdapter",
         [](QQmlEngine* engine, QJSEngine* scriptEngine) -> QObject* {
@@ -299,17 +305,9 @@ MainApplication::qmlInitialization()
             return lrcGeneralAdapter;
         });
 
-    qmlRegisterSingletonType<SmartListModel>(
-        "net.jami.model.smartlist", 1, 0, "ConversationSmartListModel",
-        [](QQmlEngine* engine, QJSEngine* scriptEngine) -> QObject* {
-            Q_UNUSED(engine);
-            Q_UNUSED(scriptEngine);
-            SmartListModel* conversationSmartListModel = new SmartListModel(LRCInstance::getCurrAccId());
-            return conversationSmartListModel;
-        });
-
     // add image provider
     engine_->addImageProvider(QLatin1String("qrImage"), new QrImageProvider());
+    engine_->addImageProvider(QLatin1String("tintedPixmap"), new TintedButtonImageProvider());
 
     engine_->load(QUrl(QStringLiteral("qrc:/src/MainApplicationWindow.qml")));
 }
