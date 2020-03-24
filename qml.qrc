@@ -16,5 +16,11 @@
         <file>src/mainview/components/AccountComboBox.qml</file>
         <file>src/mainview/components/ConversationSmartListView.qml</file>
         <file>src/commoncomponents/JamiFileDialog.qml</file>
+        <file>src/mainview/components/CallStackViewWindow.qml</file>
+        <file>src/mainview/components/IncomingCallPage.qml</file>
+        <file>src/mainview/components/OutgoingCallPage.qml</file>
+        <file>src/mainview/components/AudioCallPage.qml</file>
+        <file>src/mainview/components/CallOverlay.qml</file>
+        <file>src/commoncomponents/TintedButton.qml</file>
     </qresource>
 </RCC>
