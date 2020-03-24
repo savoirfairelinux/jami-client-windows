@@ -3,6 +3,7 @@ import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import net.jami.constant.jamitheme 1.0
+import net.jami.callcenter 1.0
 
 import "../../commoncomponents"
 
@@ -15,6 +16,28 @@ Rectangle {
     property bool sendContactRequestButtonVisible: true
 
     signal backToWelcomeViewButtonClicked()
+
+    function showMessagingHeaderButtons() {
+        startAAudioCallButton.visible = true
+        startAVideoCallButton.visible = true
+    }
+
+    function hideMessagingHeaderButtons() {
+        startAAudioCallButton.visible = false
+        startAVideoCallButton.visible = false
+    }
+
+    Connections {
+        target: CallCenter
+
+        onSetCallPanelVisibility: {
+            if(visible) {
+                showMessagingHeaderButtons()
+            } else {
+                hideMessagingHeaderButtons()
+            }
+        }
+    }
 
     RowLayout {
         id: messagingHeaderRectRowLayout
@@ -125,6 +148,10 @@ Rectangle {
                 source: "qrc:/images/icons/ic_phone_24px.svg"
                 backgroundColor: "white"
                 onExitColor: "white"
+
+                onClicked: {
+                    CallCenter.placeAudioOnlyCall()
+                }
             }
 
             HoverableButton {
