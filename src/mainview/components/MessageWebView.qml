@@ -15,6 +15,7 @@ Rectangle {
     property string headerUserUserNameLabelText: ""
 
     signal needToGoBackToWelcomeView()
+    signal needToHideConversationInCall()
     signal setNewMessagesContent(string filePath)
 
     signal messagesCleared()
@@ -44,6 +45,16 @@ Rectangle {
     function setSendContactRequestButtonVisible(visible) {
         messageWebViewHeader.sendContactRequestButtonVisible = visible
     }
+
+    function setMessagingHeaderButtonsVisible(visible) {
+        messageWebViewHeader.toggleMessagingHeaderButtonsVisible(visible)
+    }
+
+    function resetMessagingHeaderBackButtonSource(reset) {
+        messageWebViewHeader.resetBackToWelcomeViewButtonSource(reset)
+    }
+
+    anchors.fill: parent
 
     JamiFileDialog {
         id: jamiFileDialog
@@ -75,6 +86,10 @@ Rectangle {
 
         onBackToWelcomeViewButtonClicked: {
             messageWebViewRect.needToGoBackToWelcomeView()
+        }
+
+        onNeedToHideConversationInCall: {
+            messageWebViewRect.needToHideConversationInCall()
         }
     }
 
