@@ -45,6 +45,8 @@ Rectangle {
         messageWebViewHeader.sendContactRequestButtonVisible = visible
     }
 
+    anchors.fill: parent
+
     JamiFileDialog {
         id: jamiFileDialog
 

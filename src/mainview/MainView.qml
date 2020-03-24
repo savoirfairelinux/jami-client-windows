@@ -5,6 +5,7 @@ import QtQuick.Layouts 1.14
 import QtQuick.Controls.Universal 2.12
 import QtGraphicalEffects 1.14
 import net.jami.constant.jamitheme 1.0
+import net.jami.callcenter 1.0
 import net.jami.model.account 1.0
 import net.jami.tools.utils 1.0
 import net.jami.MessageWebViewQmlObjectHolder 1.0
@@ -16,13 +17,13 @@ import "components"
 Window {
     id: mainViewWindow
 
-    property int minWidth: callViewStackPreferedWidth
+    property int minWidth: sidePanelViewStackPreferedWidth
     property int minHeight: aboutPopUpDialog.contentHeight
 
     property int mainViewWindowPreferedWidth: 650
     property int mainViewWindowPreferedHeight: 600
     property int splitViewHandlePreferedWidth: 4
-    property int callViewStackPreferedWidth: 250
+    property int sidePanelViewStackPreferedWidth: 250
     property int welcomePageGroupPreferedWidth: 250
     property int aboutPopUpPreferedWidth: 250
 
@@ -30,12 +31,44 @@ Window {
     property int tabBarLeftMargin: 8
     property int tabButtonShrinkSize: 8
 
+    function recursionStackViewItemMove(stackOne, stackTwo) {
+        // move all items (expect the bottom item) to stacktwo by the same order in stackone
+        if(stackOne.depth === 1) {
+            return
+        }
+
+        var tempItem = stackOne.pop(StackView.Immediate)
+        recursionStackViewItemMove(stackOne, stackTwo)
+        stackTwo.push(tempItem, StackView.Immediate)
+    }
+
     title: "Jami"
     visible: true
     width: mainViewWindowPreferedWidth
     height: mainViewWindowPreferedHeight
     minimumWidth: minWidth
     minimumHeight: minHeight
+
+    Connections {
+        target: CallCenter
+
+        onShowCallStack: {
+            callStackView.responsibleAccountId = accountId
+            callStackView.responsibleConvUid = convUid
+            if(welcomeViewStack.visible)
+                welcomeViewStack.push(callStackView)
+            else
+                sidePanelViewStack.push(callStackView)
+        }
+
+        onCloseCallStack: {
+            if(welcomeViewStack.visible)
+                welcomeViewStack.pop(communicationPageMessageWebView)
+            else
+                sidePanelViewStack.pop(communicationPageMessageWebView)
+            mainViewWindowSidePanel.deselectConversationSmartList()
+        }
+    }
 
     AccountListModel {
         id: accountListModel
@@ -53,12 +86,29 @@ Window {
             communicationPageMessageWebView.headerUserAliasLabelText = currentUserAlias
             communicationPageMessageWebView.headerUserUserNameLabelText = currentUserDisplayName
 
-            if(!communicationPageMessageWebView.visible && !welcomeViewStack.visible) {
-                callViewStack.push(communicationPageMessageWebView)
-            } else if(!communicationPageMessageWebView.visible && welcomeViewStack.visible) {
-                welcomeViewStack.push(communicationPageMessageWebView)
-            }
+            if(sidePanelViewStack.visible && welcomeViewStack.visible) {
+                if(inCall) {
+                    welcomeViewStack.push(communicationPageMessageWebView, StackView.Immediate)
+                    welcomeViewStack.push(callStackView)
+                } else {
+                    welcomeViewStack.push(communicationPageMessageWebView)
+                }
+            } else if(sidePanelViewStack.visible && !welcomeViewStack.visible) {
+                if(inCall) {
+                    sidePanelViewStack.push(communicationPageMessageWebView, StackView.Immediate)
+                    sidePanelViewStack.push(callStackView)
+                } else {
+                    sidePanelViewStack.push(communicationPageMessageWebView)
+                }
+            } else if(!sidePanelViewStack.visible && !welcomeViewStack.visible) {
+                if(inCall) {
+                    sidePanelViewStack.push(communicationPageMessageWebView, StackView.Immediate)
+                    sidePanelViewStack.push(callStackView)
+                } else {
+                    sidePanelViewStack.push(communicationPageMessageWebView)
+                }
 
+            }
             // set up chatview
             //console.log(LrcGeneralAdapter.mystruct.val)
             messageWebViewQmlObjectHolder.setupChatView(currentUID)
@@ -68,6 +118,22 @@ Window {
             // If the item argument is specified, all items down to (but not including) item will be popped
             welcomeViewStack.pop(welcomePage)
             welcomePage.currentAccountIndex = index
+        }
+
+        onConversationSmartListViewNeedToShowWelcomePage: {
+            welcomeViewStack.pop(welcomePage)
+            welcomePage.currentAccountIndex = 0
+        }
+    }
+
+    CallStackView {
+        id: callStackView
+
+        onOutgoingCallPageBackButtonIsClicked: {
+            if(welcomeViewStack.visible)
+                welcomeViewStack.pop(welcomePage)
+            else if(sidePanelViewStack.visible)
+                sidePanelViewStack.pop(mainViewWindowSidePanel)
         }
     }
 
@@ -92,7 +158,7 @@ Window {
         onNeedToGoBackToWelcomeView: {
             mainViewWindowSidePanel.deselectConversationSmartList()
             if(communicationPageMessageWebView.visible && !welcomeViewStack.visible) {
-                callViewStack.pop()
+                sidePanelViewStack.pop()
             } else if(communicationPageMessageWebView.visible && welcomeViewStack.visible) {
                 welcomeViewStack.pop()
             }
@@ -118,13 +184,13 @@ Window {
         }
 
         StackView {
-            id: callViewStack
+            id: sidePanelViewStack
 
-            property int maximumWidth: callViewStackPreferedWidth + 100
+            property int maximumWidth: sidePanelViewStackPreferedWidth + 100
 
             initialItem: mainViewWindowSidePanel
 
-            SplitView.minimumWidth: callViewStackPreferedWidth
+            SplitView.minimumWidth: sidePanelViewStackPreferedWidth
             SplitView.maximumWidth: maximumWidth
             SplitView.fillHeight: true
 
@@ -136,7 +202,7 @@ Window {
 
             initialItem: welcomePage
 
-            SplitView.maximumWidth: splitView.width - callViewStack.width
+            SplitView.maximumWidth: splitView.width - sidePanelViewStack.width
             SplitView.fillHeight: true
 
             clip: true
@@ -144,7 +210,7 @@ Window {
     }
 
     onWidthChanged: {
-        if(mainViewWindow.width < callViewStackPreferedWidth + welcomePageGroupPreferedWidth - 5 && welcomeViewStack.visible) {
+        if(mainViewWindow.width < sidePanelViewStackPreferedWidth + welcomePageGroupPreferedWidth - 5 && welcomeViewStack.visible) {
             welcomeViewStack.visible = false
 
             //The find callback function is called for each item in the stack
@@ -152,22 +218,28 @@ Window {
                 return index > 0
             })
             if(inWelcomeViewStack) {
-                callViewStack.push(welcomeViewStack.pop(StackView.Immediate), StackView.Immediate)
+                recursionStackViewItemMove(welcomeViewStack, sidePanelViewStack)
+                //sidePanelViewStack.push(welcomeViewStack.pop(StackView.Immediate), StackView.Immediate)
+                //welcomeViewStack.pop(null)
             }
 
-            callViewStack.maximumWidth = splitView.width
+            sidePanelViewStack.maximumWidth = splitView.width
+
             mainViewWindow.update()
-        } else if(mainViewWindow.width >= callViewStackPreferedWidth + welcomePageGroupPreferedWidth + 5 && !welcomeViewStack.visible) {
+        } else if(mainViewWindow.width >= sidePanelViewStackPreferedWidth + welcomePageGroupPreferedWidth + 5 && !welcomeViewStack.visible) {
             welcomeViewStack.visible = true
 
-            var inCallViewStack = callViewStack.find(function(item, index) {
+            var inSidePanelViewStack = sidePanelViewStack.find(function(item, index) {
                 return index > 0
             })
-            if(inCallViewStack) {
-                welcomeViewStack.push(callViewStack.pop(StackView.Immediate), StackView.Immediate)
+            if(inSidePanelViewStack) {
+                recursionStackViewItemMove(sidePanelViewStack, welcomeViewStack)
+                //welcomeViewStack.push(sidePanelViewStack.pop(StackView.Immediate), StackView.Immediate)
+                //sidePanelViewStack.pop(null)
             }
 
-            callViewStack.maximumWidth = callViewStackPreferedWidth + 100
+            sidePanelViewStack.maximumWidth = sidePanelViewStackPreferedWidth + 100
+
             mainViewWindow.update()
         }
     }
@@ -203,5 +275,9 @@ Window {
         y: Math.round((mainViewWindow.height - height) / 2)
         width: Math.max(mainViewWindow.width / 2, aboutPopUpPreferedWidth)
         height: aboutPopUpDialog.contentHeight
+    }
+
+    Component.onCompleted: {
+        CallCenter.init()
     }
 }
