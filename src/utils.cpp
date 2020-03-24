@@ -245,6 +245,16 @@ Utils::InvokeMailto(const QString& subject,
 #endif
 }
 
+QString
+Utils::getContactImageStringByConvUid(const QString& uid)
+{
+    return QString::fromLatin1(
+                Utils::QImageToByteArray(
+                    Utils::conversationPhoto(uid, LRCInstance::getCurrentAccountInfo())
+                ).toBase64().data()
+            );
+}
+
 QImage
 Utils::getCirclePhoto(const QImage original, int sizePhoto)
 {
@@ -927,4 +937,16 @@ Utils::humanFileSize(qint64 fileSize)
     //Round up to two decimal
     fileSizeF = roundf(fileSizeF * 100) / 100;
     return QString::number(fileSizeF) + " " + units[unit_position];
+}
+
+const QString
+Utils::UtilsAdapter::getBestNameByConvUid(const QString& uid) {
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    return Utils::bestNameForConversation(LRCInstance::getConversationFromConvUid(uid), *convModel);
+}
+
+const QString
+Utils::UtilsAdapter::getBestIdByConvUid(const QString& uid) {
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    return Utils::bestIdForConversation(LRCInstance::getConversationFromConvUid(uid), *convModel);
 }
