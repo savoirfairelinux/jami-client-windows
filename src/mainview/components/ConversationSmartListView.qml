@@ -3,36 +3,79 @@ import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import net.jami.constant.jamitheme 1.0
-import net.jami.model.smartlist 1.0
 
 ListView {
     id: conversationSmartListView
 
-    signal needToAccessMessageWebView(string currentUserDisplayName, string currentUserAlias, string currentUID)
+    signal needToAccessMessageWebView(string currentUserDisplayName, string currentUserAlias, string currentUID, bool inCall, bool isIncomingCallInProgress)
     signal needToDeselectItems()
+    signal needToBackToWelcomePage()
+
+    signal currentIndexIsChanged()
+    signal modelIsSorted()
+
+    function modelSorted(contactURIToCompare) {
+        var conversationSmartListViewModel = conversationSmartListView.model
+        conversationSmartListView.currentIndex = -1
+        updateConversationSmartListView()
+        for(var i = 0; i < count; i ++) {
+            if(conversationSmartListViewModel.data(conversationSmartListViewModel.index(i, 0), 261) === contactURIToCompare) {
+                conversationSmartListView.currentIndex = i
+                break
+            }
+        }
+        conversationSmartListView.modelIsSorted()
+    }
+
+    function updateConversationSmartListView() {
+        var conversationSmartListViewModel = conversationSmartListView.model
+        conversationSmartListViewModel.dataChanged(conversationSmartListViewModel.index(0, 0),
+                                                   conversationSmartListViewModel.index(conversationSmartListViewModel.rowCount() - 1, 0))
+    }
+
+    function setModel(model) {
+        conversationSmartListView.model = model
+    }
+
+    function backToWelcomePage() {
+        conversationSmartListView.needToBackToWelcomePage()
+    }
 
     function updateSmartList(accountId) {
-        ConversationSmartListModel.setAccount(accountId)
+        conversationSmartListView.model.setAccount(accountId)
     }
 
-    function deselectSmartList() {
-        conversationSmartListView.needToDeselectItems()
+    Connections {
+        target: CallCenter
+
+        onNeedToUpdateConversationSmartList: {
+            updateConversationSmartListView()
+        }
     }
 
-    model: ConversationSmartListModel
+    onCurrentIndexChanged: {
+        conversationSmartListView.currentIndexIsChanged()
+    }
+
     clip: true
 
     delegate: ItemDelegate {
         id: smartListItemDelegate
 
-        property bool isSelected: false
-
         Connections {
             target: conversationSmartListView
 
-            onNeedToDeselectItems: {
-                isSelected = false
-                mouseAreaSmartListItemDelegate.exited()
+            onCurrentIndexIsChanged: {
+                if(conversationSmartListView.currentIndex === -1 || conversationSmartListView.currentIndex !== index) {
+                    itemSmartListBackground.color = Qt.binding(function(){return InCall ? Qt.lighter(JamiTheme.selectionBlue, 1.8) : "white"})
+                } else {
+                    itemSmartListBackground.color = Qt.binding(function(){return InCall ? Qt.lighter(JamiTheme.selectionBlue, 1.8) : JamiTheme.releaseColor})
+                }
+            }
+
+            onModelIsSorted: {
+                //if(index === 0 && conversationSmartListView.currentIndex === index)
+                    //itemSmartListBackground.color = Qt.binding(function(){return InCall ? Qt.lighter(JamiTheme.selectionBlue, 1.8) : JamiTheme.releaseColor})
             }
         }
 
@@ -60,6 +103,8 @@ ListView {
 
             width: (parent.width - conversationSmartListUserImage.width - 20) / 2
             height: parent.height
+
+            color: "transparent"
 
             ColumnLayout {
                 id: conversationSmartListUserInfoColumnLayout
@@ -114,6 +159,8 @@ ListView {
             width: (parent.width - conversationSmartListUserImage.width - 20) / 2 - 10
             height: parent.height
 
+            color: "transparent"
+
             ColumnLayout {
                 id: conversationSmartListUserLastInteractionColumnLayout
 
@@ -149,7 +196,7 @@ ListView {
                         font: conversationSmartListUserLastInteractionMessage.font
                         elide: Text.ElideMiddle
                         elideWidth: conversationSmartListUserLastInteractionRect.width
-                        text: LastInteraction
+                        text: InCall ? CallStateStr : LastInteraction
                     }
 
                     text: textMetricsConversationSmartListUserLastInteractionMessage.elidedText
@@ -161,6 +208,8 @@ ListView {
 
         background: Rectangle {
             id: itemSmartListBackground
+
+            color: InCall ? Qt.lighter(JamiTheme.selectionBlue, 1.8) : "white"
 
             implicitWidth: conversationSmartListView.width
             implicitHeight: Math.max(conversationSmartListUserName.height + textMetricsConversationSmartListUserId.height + 10, conversationSmartListUserImage.height + 10)
@@ -175,16 +224,15 @@ ListView {
             acceptedButtons: Qt.LeftButton | Qt.RightButton
 
             onPressed: {
-                itemSmartListBackground.color = JamiTheme.pressColor
-                conversationSmartListUserLastInteractionRect.color = JamiTheme.pressColor
-                conversationSmartListUserInfoRect.color = JamiTheme.pressColor
+                if(!InCall) {
+                    itemSmartListBackground.color = JamiTheme.pressColor
+                }
             }
             onReleased: {
-                deselectSmartList()
-                isSelected = !isSelected
-                itemSmartListBackground.color = JamiTheme.releaseColor
-                conversationSmartListUserLastInteractionRect.color = JamiTheme.releaseColor
-                conversationSmartListUserInfoRect.color = JamiTheme.releaseColor
+                conversationSmartListView.currentIndex = index
+                if(!InCall) {
+                    itemSmartListBackground.color = JamiTheme.releaseColor
+                }
                 if (mouse.button === Qt.RightButton && Qt.platform.os == "windows") {
                     // make menu pos at mouse
                     var relativeMousePos = mapToItem(itemSmartListBackground, mouse.x, mouse.y)
@@ -192,23 +240,21 @@ ListView {
                     smartListContextMenu.y = relativeMousePos.y
                     smartListContextMenu.open()
                 } else if (mouse.button === Qt.LeftButton && Qt.platform.os == "windows") {
-                    conversationSmartListView.needToAccessMessageWebView(DisplayID == DisplayName ? "" : DisplayID, DisplayName, UID)
+                    conversationSmartListView.needToAccessMessageWebView(DisplayID == DisplayName ? "" : DisplayID, DisplayName, UID, InCall, IsIncomingCallInProgress)
                 }
             }
             onEntered: {
-                itemSmartListBackground.color = JamiTheme.hoverColor
-                conversationSmartListUserLastInteractionRect.color = JamiTheme.hoverColor
-                conversationSmartListUserInfoRect.color = JamiTheme.hoverColor
+                if(!InCall) {
+                    itemSmartListBackground.color = JamiTheme.hoverColor
+                }
             }
             onExited: {
-                if(!isSelected){
-                    itemSmartListBackground.color = "white"
-                    conversationSmartListUserLastInteractionRect.color = "white"
-                    conversationSmartListUserInfoRect.color = "white"
-                } else {
-                    itemSmartListBackground.color = JamiTheme.releaseColor
-                    conversationSmartListUserLastInteractionRect.color = JamiTheme.releaseColor
-                    conversationSmartListUserInfoRect.color = JamiTheme.releaseColor
+                if(!InCall) {
+                    if(conversationSmartListView.currentIndex != index || conversationSmartListView.currentIndex == -1) {
+                        itemSmartListBackground.color = Qt.binding(function(){return InCall ? Qt.lighter(JamiTheme.selectionBlue, 1.8) : "white"})
+                    } else {
+                        itemSmartListBackground.color = Qt.binding(function(){return InCall ? Qt.lighter(JamiTheme.selectionBlue, 1.8) : JamiTheme.releaseColor})
+                    }
                 }
             }
         }

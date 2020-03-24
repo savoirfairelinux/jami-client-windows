@@ -3,6 +3,7 @@ import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import net.jami.constant.jamitheme 1.0
+import net.jami.callcenter 1.0
 
 import "../../commoncomponents"
 
@@ -12,9 +13,20 @@ Rectangle {
     property int buttonPreferredSize: 30
     property string userAliasLabelText: ""
     property string userUserNameLabelText: ""
+    property string backToWelcomeViewButtonSource: "qrc:/images/icons/ic_arrow_back_24px.svg"
     property bool sendContactRequestButtonVisible: true
 
     signal backToWelcomeViewButtonClicked()
+    signal needToHideConversationInCall()
+
+    function resetBackToWelcomeViewButtonSource(reset) {
+        backToWelcomeViewButtonSource = reset ? "qrc:/images/icons/ic_arrow_back_24px.svg" : "qrc:/images/icons/round-close-24px.svg"
+    }
+
+    function toggleMessagingHeaderButtonsVisible(visible) {
+        startAAudioCallButton.visible = visible
+        startAVideoCallButton.visible = visible
+    }
 
     RowLayout {
         id: messagingHeaderRectRowLayout
@@ -30,12 +42,15 @@ Rectangle {
             Layout.preferredHeight: buttonPreferredSize
 
             radius: 30
-            source: "qrc:/images/icons/ic_arrow_back_24px.svg"
+            source: backToWelcomeViewButtonSource
             backgroundColor: "white"
             onExitColor: "white"
 
             onClicked: {
-                messagingHeaderRect.backToWelcomeViewButtonClicked()
+                if(backToWelcomeViewButtonSource === "qrc:/images/icons/ic_arrow_back_24px.svg")
+                    messagingHeaderRect.backToWelcomeViewButtonClicked()
+                else
+                    messagingHeaderRect.needToHideConversationInCall()
             }
         }
 
@@ -46,7 +61,7 @@ Rectangle {
             // width + margin
             Layout.preferredWidth: Math.max(100, messagingHeaderRect.width - backToWelcomeViewButton.width - buttonGroup.width - 30 - 6 - 5)
             Layout.preferredHeight: messagingHeaderRect.height
-            Layout.leftMargin: 5
+            Layout.leftMargin: 10
 
             ColumnLayout {
                 id: userNameOrIdColumnLayout
@@ -125,6 +140,10 @@ Rectangle {
                 source: "qrc:/images/icons/ic_phone_24px.svg"
                 backgroundColor: "white"
                 onExitColor: "white"
+
+                onClicked: {
+                    CallCenter.placeAudioOnlyCall()
+                }
             }
 
             HoverableButton {
