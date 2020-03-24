@@ -125,6 +125,12 @@ Rectangle {
                 source: "qrc:/images/icons/ic_phone_24px.svg"
                 backgroundColor: "white"
                 onExitColor: "white"
+
+                onClicked: {
+                    var component = Qt.createComponent("CallStackViewWindow.qml")
+                    var window    = component.createObject()
+                    window.show()
+                }
             }
 
             HoverableButton {

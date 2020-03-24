@@ -13,6 +13,14 @@ Item {
     property string transparentColor: "transparent"
     property string presenceGreen: "#4cd964"
 
+    property string acceptButtonGreen: "#4caf50"
+    property string acceptButtonHoverGreen: "#5db761"
+    property string acceptButtonPressedGreen: "#449d48"
+
+    property string declineButtonRed: "#f44336"
+    property string declineButtonHoverRed: "#f5554a"
+    property string declineButtonPressedRed: "#db3c30"
+
     // font color
     property string faddedFontColor: "#c0c0c0"
     property string faddedLastInteractionFontColor: "#868686"
