@@ -860,7 +860,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../newwizardwidget.ui" line="799"/>
         <location filename="../newwizardwidget.ui" line="1586"/>
         <source>Profile</source>
-        <translation type="unfinished"/>
+        <translation>Profil</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="953"/>
@@ -871,7 +871,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="1027"/>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>Compte</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1136"/>
@@ -1209,7 +1209,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="229"/>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>Compte</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="267"/>
@@ -1323,7 +1323,7 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="1453"/>
         <location filename="../settingswidget.ui" line="2761"/>
         <source>Profile</source>
-        <translation type="unfinished"/>
+        <translation>Profil</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1567"/>

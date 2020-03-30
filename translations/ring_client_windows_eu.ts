@@ -454,12 +454,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="332"/>
         <source>Start video call</source>
-        <translation type="unfinished"/>
+        <translation>Hasi bideo-deia</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="343"/>
         <source>Start audio call</source>
-        <translation type="unfinished"/>
+        <translation>Hasi audio-deia</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="354"/>
@@ -894,7 +894,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1148"/>
         <source>Register public username</source>
-        <translation type="unfinished"/>
+        <translation>Erregistratu izen publikoa</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1367"/>
@@ -1032,7 +1032,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2451"/>
         <source>Next</source>
-        <translation>Hurengoa</translation>
+        <translation>Hurrengoa</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="75"/>
@@ -1354,7 +1354,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1827"/>
         <source>Change Password</source>
-        <translation type="unfinished"/>
+        <translation>Aldatu pasahitza</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1868"/>

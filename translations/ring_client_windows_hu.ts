@@ -380,7 +380,7 @@ Másolja és ossza meg a barátaival!</translation>
     <message>
         <location filename="../callwidget.ui" line="956"/>
         <source>Error while generating QR Code</source>
-        <translation>Hiba a QR kód generálása közben</translation>
+        <translation>Hiba a QR-kód generálása közben</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1184"/>
@@ -1322,7 +1322,7 @@ Ismerősei képesek lesznek felhívni a felhasználónevét az azonosító haszn
     <message>
         <location filename="../settingswidget.ui" line="764"/>
         <source>Call Recordings</source>
-        <translation>Hívásfelvétel</translation>
+        <translation>Hívás felvételek</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1005"/>
