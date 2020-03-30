@@ -454,12 +454,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="332"/>
         <source>Start video call</source>
-        <translation type="unfinished"/>
+        <translation>Започване на видео разговор</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="343"/>
         <source>Start audio call</source>
-        <translation type="unfinished"/>
+        <translation>Започване на гласов разговор</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="354"/>
@@ -1354,7 +1354,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1827"/>
         <source>Change Password</source>
-        <translation type="unfinished"/>
+        <translation>Промяна на паролата</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1868"/>

@@ -1359,7 +1359,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1868"/>
         <source>Export Account</source>
-        <translation type="unfinished"/>
+        <translation>Eksporter konto</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1909"/>
