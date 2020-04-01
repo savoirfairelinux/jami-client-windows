@@ -424,9 +424,9 @@ void
 VideoOverlay::contactPickerPopup(SmartListModel::Type type, OverlayButton* locateButton)
 {
     ContactPicker contactPicker(this);
-    contactPicker.setType(type);
-    contactPicker.setTitle(QObject::tr("Add to conference"));
     contactPicker.setCurrentCalleeDisplayName(currentBestCalleeDisplayName_);
+    contactPicker.setType(type);
+    contactPicker.setTitle(type == SmartListModel::Type::CONFERENCE ? QObject::tr("Add to conference") : QObject::tr("Transfer this call"));
 
     connect(&contactPicker, &ContactPicker::contactWillJoinConference,
         this, &VideoOverlay::slotContactWillJoinConference);
