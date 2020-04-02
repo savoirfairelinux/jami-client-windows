@@ -35,7 +35,7 @@
 #include <QtGlobal>
 #include <QCryptographicHash>
 #include <QListWidget>
-#include <QClipBoard>
+#include <QClipboard>
 #include <QGuiApplication>
 #include <QDir>
 #include <QStandardPaths>

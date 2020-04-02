@@ -291,8 +291,6 @@ MainApplication::qmlInitialization()
     // register object holder type
     qmlRegisterType<MessageWebViewQmlObjectHolder>("net.jami.MessageWebViewQmlObjectHolder", 1, 0, "MessageWebViewQmlObjectHolder");
     qmlRegisterType<AccountComboBoxQmlObjectHolder>("net.jami.AccountComboBoxQmlObjectHolder", 1, 0, "AccountComboBoxQmlObjectHolder");
-==== BASE ====
-==== BASE ====
 
     // qmlRegisterSingletonType
     qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/src/constant/JamiTheme.qml")), "net.jami.constant.jamitheme", 1, 0, "JamiTheme");
