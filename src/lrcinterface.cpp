@@ -57,7 +57,9 @@ ConversationModelAdapter::~ConversationModelAdapter()
 QVariant
 ConversationModelAdapter::getConversationsSize()
 {
-    return model_.allFilteredConversations().size();
+    QVariant v;
+    v.setValue(model_.allFilteredConversations().size());
+    return v;
 }
 
 LrcGeneralAdapter::LrcGeneralAdapter(QObject* parent)
