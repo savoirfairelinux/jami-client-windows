@@ -21,7 +21,7 @@
 #include "lrcinstance.h"
 
 #include <QQmlEngine>
-#include <QJsEngine>
+#include <QJSEngine>
 
 using namespace lrc::api;
 

@@ -39,7 +39,7 @@
 
 #include <QFontDatabase>
 #include <QQmlContext>
-#include <QtWebEngine>
+#include <QtWebEngine/qtwebengineglobal.h>
 
 #include <locale.h>
 

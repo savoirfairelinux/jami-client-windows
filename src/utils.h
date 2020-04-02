@@ -35,7 +35,7 @@
 #include <QtGlobal>
 #include <QCryptographicHash>
 #include <QListWidget>
-#include <QClipBoard>
+#include <QClipboard>
 #include <QGuiApplication>
 #include <QDir>
 #include <QStandardPaths>
@@ -240,13 +240,7 @@ oneShotConnect( const typename QtPrivate::FunctionPointer<Func1>::Object* sender
 }
 
 void
-oneShotConnect(const QObject* sender, const char* signal, const QObject* receiver, const char* slot)
-{
-    QMetaObject::Connection* const connection = new QMetaObject::Connection;
-    *connection = QObject::connect(sender, signal, receiver, slot);
-    OneShotDisconnectConnection* disconnectConnection = new OneShotDisconnectConnection(sender, signal, connection);
-    Q_UNUSED(disconnectConnection)
-}
+oneShotConnect(const QObject* sender, const char* signal, const QObject* receiver, const char* slot);
 
 template<class T>
 class Blocker {

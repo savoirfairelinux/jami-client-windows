@@ -53,7 +53,7 @@
 #include <QtConcurrent/QtConcurrent>
 
 #include <QQmlEngine>
-#include <QJsEngine>
+#include <QJSEngine>
 
 #include <memory>
 

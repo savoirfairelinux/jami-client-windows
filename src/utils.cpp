@@ -813,6 +813,15 @@ Utils::setCurrentScalingRatio(float ratio)
     CURRENT_SCALING_RATIO = ratio;
 }
 
+void
+Utils::oneShotConnect(const QObject* sender, const char* signal, const QObject* receiver, const char* slot)
+{
+    QMetaObject::Connection* const connection = new QMetaObject::Connection;
+    *connection = QObject::connect(sender, signal, receiver, slot);
+    OneShotDisconnectConnection* disconnectConnection = new OneShotDisconnectConnection(sender, signal, connection);
+    Q_UNUSED(disconnectConnection)
+}
+
 QString
 Utils::formattedTime(int duration)
 {
