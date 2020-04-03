@@ -439,11 +439,25 @@ Utils::applyUpdates(bool updateToBeta, QWidget* parent)
             }
             auto args = QString(" /passive /norestart WIXNONUILAUNCH=1");
             auto dir = Utils::WinGetEnv("TEMP");
-            auto cmd = "powershell " + QString(dir) + "\\" + downloadPath.fileName()
-                + " /L*V " + QString(dir) + "\\jami_x64_install.log" + args;
-            auto retq = QProcess::startDetached(cmd);
-            if (retq) {
-                QCoreApplication::exit();
+            auto cmdStartInstaller = "powershell " + QString(dir) + "\\" + downloadPath.fileName()
+                                     + " /L*V " + QString(dir) + "\\jami_x64_install.log" + args;
+            auto cmdCloseWebEngine = "taskkill /im QtWebEngineProcess.exe /f";
+
+            QProcess process;
+            process.start(cmdCloseWebEngine);
+            if (process.waitForFinished(1000)) {
+                auto retq = QProcess::startDetached(cmdStartInstaller);
+                if (retq) {
+                    QApplication::exit();
+                } else {
+                    QMessageBox::critical(0,
+                        QObject::tr("Update"),
+                        QObject::tr("Installer cannot be started"));
+                }
+            } else {
+                QMessageBox::critical(0,
+                    QObject::tr("Update"),
+                    QObject::tr("QtWebEngineProcess cannot be closed"));
             }
         });
 }
