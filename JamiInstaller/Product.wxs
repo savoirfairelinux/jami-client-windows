@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?include Config.wxi?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
   <Product Id="*" Name="$(var.Name)" Language="1033" Version="$(fun.AutoVersion(1.0))" Manufacturer="$(var.Manufacturer)" UpgradeCode="7c45b52b-0390-4fe8-947a-3f13e82dd346">
     <Package InstallerVersion="301" Compressed="yes" InstallScope="perMachine" />
 
@@ -39,7 +39,12 @@
     <WixVariable Id="WixUISupportPerUser" Value="0" />
 
     <CustomAction Id="removeOldJamiFiles" Directory="APPLICATIONFOLDER" ExeCommand="cmd /c &quot;del vc_redist.x64.exe; del uninstall.exe; del WinSparkle.dll;&quot;" Execute="deferred" Return="ignore" HideTarget="no" Impersonate="no" />
-
+    <util:CloseApplication Id="closeQtWebEngineProcess" Target="QtWebEngineProcess.exe" CloseMessage="yes" RebootPrompt="no">
+      Installed
+    </util:CloseApplication>
+    <util:CloseApplication Id="closeJami" Target="Jami.exe" CloseMessage="yes" RebootPrompt="no">
+      Installed
+    </util:CloseApplication>
   </Product>
 
   <Fragment Id="DirectoryStructure">
@@ -104,6 +109,7 @@
       </InstallUISequence>
     </UI>
     <InstallExecuteSequence>
+      <Custom Action="WixCloseApplications" Before="InstallValidate">Installed</Custom>
       <Custom Action="removeOldJamiFiles" After="RemoveFiles" />
       <Custom Action="LaunchApplication_nonUI" After="InstallFinalize"> WIXNONUILAUNCH </Custom>
       <Custom Action="Overwrite_WixSetDefaultPerMachineFolder" After="WixSetDefaultPerMachineFolder" />
