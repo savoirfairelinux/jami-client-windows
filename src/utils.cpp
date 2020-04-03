@@ -439,12 +439,10 @@ Utils::applyUpdates(bool updateToBeta, QWidget* parent)
             }
             auto args = QString(" /passive /norestart WIXNONUILAUNCH=1");
             auto dir = Utils::WinGetEnv("TEMP");
-            auto cmd = "powershell " + QString(dir) + "\\" + downloadPath.fileName()
-                + " /L*V " + QString(dir) + "\\jami_x64_install.log" + args;
-            auto retq = QProcess::startDetached(cmd);
-            if (retq) {
-                QCoreApplication::exit();
-            }
+            auto cmdStartInstaller = "powershell " + QString(dir) + "\\" + downloadPath.fileName()
+                                     + " /L*V " + QString(dir) + "\\jami_x64_install.log" + args;
+
+            QProcess::startDetached(cmdStartInstaller);
         });
 }
 
