@@ -217,7 +217,7 @@ void AdvancedSIPSettingsWidget::updateAdvancedSIPSettings()
     connect(ui->networkInterfaceSpinBox, &QSpinBox::editingFinished, this, &AdvancedSIPSettingsWidget::networkInterfaceSpinBoxValueChanged);
 
     // published address
-    ui->checkBoxCustomAddressPort->setChecked(config.publishedSameAsLocal);
+    ui->checkBoxCustomAddressPort->setChecked(!config.publishedSameAsLocal);
     ui->lineEditSIPCustomAddress->setText(config.publishedAddress);
     ui->customPortSIPSpinBox->setValue(config.publishedPort);
 
@@ -626,7 +626,7 @@ void
 AdvancedSIPSettingsWidget::setUseCustomAddressAndPort(bool state)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.publishedSameAsLocal = state;
+    confProps.publishedSameAsLocal = !state;
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 
