@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae54ad7_067cfe06",
+        "filename": "src/utils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2020-04-03T22:18:23Z",
+      "side": 0,
+      "message": "Maybe we can still can QCoreApplication::exit(); ?",
+      "range": {
+        "startLine": 446,
+        "startChar": 16,
+        "endLine": 446,
+        "endChar": 41
+      },
+      "revId": "6d1722932bd5c44d517e92fa21f8132a38ffdfcc",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
