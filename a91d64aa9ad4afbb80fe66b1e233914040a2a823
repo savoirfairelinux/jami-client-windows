@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3231459e_3ffe0fce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-04-03T22:24:19Z",
+      "side": 1,
+      "message": "installer: close Jami and QWebEngineProcess using WiX CustomAction?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 81
+      },
+      "revId": "a91d64aa9ad4afbb80fe66b1e233914040a2a823",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dbec30d5_0efdc1c7",
         "filename": "JamiInstaller/Product.wxs",
         "patchSetId": 7
