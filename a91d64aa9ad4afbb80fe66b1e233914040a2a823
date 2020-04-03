@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbec30d5_0efdc1c7",
+        "filename": "JamiInstaller/Product.wxs",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-04-03T22:22:04Z",
+      "side": 1,
+      "message": "whitespace",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 4
+      },
+      "revId": "a91d64aa9ad4afbb80fe66b1e233914040a2a823",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
