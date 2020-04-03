@@ -22,6 +22,30 @@
       "revId": "a91d64aa9ad4afbb80fe66b1e233914040a2a823",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89568aa6_9969b53d",
+        "filename": "JamiInstaller/Product.wxs",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-04-03T22:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbec30d5_0efdc1c7",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 4
+      },
+      "revId": "a91d64aa9ad4afbb80fe66b1e233914040a2a823",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
