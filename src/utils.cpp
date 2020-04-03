@@ -35,6 +35,7 @@
 #include "networkmanager.h"
 #include "updateconfirmdialog.h"
 #include "version.h"
+#include "mainwindow.h"
 
 #include <globalinstances.h>
 #include <qrencode.h>
@@ -439,12 +440,13 @@ Utils::applyUpdates(bool updateToBeta, QWidget* parent)
             }
             auto args = QString(" /passive /norestart WIXNONUILAUNCH=1");
             auto dir = Utils::WinGetEnv("TEMP");
-            auto cmd = "powershell " + QString(dir) + "\\" + downloadPath.fileName()
-                + " /L*V " + QString(dir) + "\\jami_x64_install.log" + args;
-            auto retq = QProcess::startDetached(cmd);
-            if (retq) {
-                QCoreApplication::exit();
-            }
+            auto cmdStartInstaller = "powershell " + QString(dir) + "\\" + downloadPath.fileName()
+                                     + " /L*V " + QString(dir) + "\\jami_x64_install.log" + args;
+
+            MainWindow::instance().close();
+            LRCInstance::instance().reset();
+
+            QProcess::startDetached(cmdStartInstaller);
         });
 }
 
