@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "078e2426_6e5aaa17",
+        "filename": "src/callwidget.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1231,
+      "author": {
+        "id": 220
+      },
+      "writtenOn": "2020-04-06T19:46:22Z",
+      "side": 1,
+      "message": "should not be necessary. On gnome we do setCurrentCall when showing the currentCallView, even if the call is not paused",
+      "range": {
+        "startLine": 1231,
+        "startChar": 36,
+        "endLine": 1231,
+        "endChar": 98
+      },
+      "revId": "eec7ebd887130a09917477ca7b8ebc6468801c61",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
