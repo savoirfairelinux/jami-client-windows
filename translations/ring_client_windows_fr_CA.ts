@@ -465,7 +465,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="354"/>
         <source>Clear conversation</source>
-        <translation type="unfinished"/>
+        <translation>Effacer la conversation</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="361"/>
@@ -475,7 +475,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="373"/>
         <source>Block contact</source>
-        <translation type="unfinished"/>
+        <translation>Bloquer le contact</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="384"/>

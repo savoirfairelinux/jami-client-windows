@@ -20,7 +20,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="481"/>
         <source>Credits</source>
-        <translation type="unfinished"/>
+        <translation>Zasluge</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
@@ -349,7 +349,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="653"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation type="unfinished"/>
+        <translation>Jami je besplatan i slobodan softver za univerzalnu komunikaciju, koji poštuje slobode i privatnost svojih korisnika</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="693"/>

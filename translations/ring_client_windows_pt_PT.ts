@@ -25,7 +25,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
         <source>Free as in Freedom</source>
-        <translation type="unfinished"/>
+        <translation>Livre como em Liberdade</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>

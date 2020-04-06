@@ -398,7 +398,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="1943"/>
         <source>Add to contacts</source>
-        <translation type="unfinished"/>
+        <translation>Ajouter aux contacts</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="202"/>
@@ -464,7 +464,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="354"/>
         <source>Clear conversation</source>
-        <translation type="unfinished"/>
+        <translation>Effacer la conversation</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="361"/>
@@ -474,7 +474,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="373"/>
         <source>Block contact</source>
-        <translation type="unfinished"/>
+        <translation>Bloquer le contact</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="384"/>
@@ -575,12 +575,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../invitebuttonswidget.ui" line="83"/>
         <source>Accept</source>
-        <translation type="unfinished"/>
+        <translation>Accepter</translation>
     </message>
     <message>
         <location filename="../invitebuttonswidget.ui" line="131"/>
         <source>Refuse</source>
-        <translation type="unfinished"/>
+        <translation>Refuser</translation>
     </message>
     <message>
         <location filename="../invitebuttonswidget.ui" line="179"/>

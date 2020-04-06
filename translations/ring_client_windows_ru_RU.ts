@@ -60,7 +60,7 @@ Jami это защищённое и распределённое ПО для к�
     <message>
         <location filename="../accountitemdelegate.cpp" line="91"/>
         <source>Add Account</source>
-        <translation>Добавить Аккаунт</translation>
+        <translation>Добавить аккаунт</translation>
     </message>
 </context>
 <context>

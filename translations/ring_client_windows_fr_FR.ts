@@ -464,7 +464,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="354"/>
         <source>Clear conversation</source>
-        <translation type="unfinished"/>
+        <translation>Effacer la conversation</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="361"/>
