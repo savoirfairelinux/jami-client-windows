@@ -304,8 +304,9 @@ VideoView::updateCall(const QString& convUid,
     }
 
     overlay_->updateCall(convInfo);
+    auto isPaused = call->status == lrc::api::call::Status::PAUSED;
     // TODO(atraczyk): this should be part of the overlay
-    audioOnlyAvatar_->setAvatarVisible(call->isAudioOnly);
+    audioOnlyAvatar_->setAvatarVisible(call->isAudioOnly && !isPaused);
     if (call->isAudioOnly) {
         audioOnlyAvatar_->writeAvatarOverlay(convInfo);
     }
@@ -315,7 +316,6 @@ VideoView::updateCall(const QString& convUid,
 
     // distant
     ui->distantWidget->setRendererId(call->id);
-    auto isPaused = call->status == lrc::api::call::Status::PAUSED;
     ui->distantWidget->setVisible(!isPaused);
 }
 

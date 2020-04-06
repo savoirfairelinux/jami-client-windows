@@ -38,7 +38,7 @@ public:
     ~CallAudioOnlyAvatarOverlay();
     void setAvatarVisible(bool visible);
     void writeAvatarOverlay(const lrc::api::conversation::Info& convInfo);
-    void respondToPauseLabel(bool pauseButtonDisplayed);
+    void respondToPauseLabel(bool isPaused);
 
 private:
     Ui::CallAudioOnlyAvatarOverlay *ui;
