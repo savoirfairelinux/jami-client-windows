@@ -191,19 +191,15 @@ VideoOverlay::on_chatButton_toggled(bool checked)
 void
 VideoOverlay::on_holdButton_toggled(bool checked)
 {
-    // why is 'checked' unused?
     Q_UNUSED(checked);
     auto callId = LRCInstance::getCallIdForConversationUid(convUid_, accountId_);
     if (callId.isEmpty() || !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
         return;
     }
     auto callModel = LRCInstance::getCurrentCallModel();
-    bool onHold { false };
     if (callModel->hasCall(callId)) {
         callModel->togglePause(callId);
-        onHold = callModel->getCall(callId).status == lrc::api::call::Status::PAUSED;
     }
-    ui->onHoldLabel->setVisible(onHold);
 }
 
 void

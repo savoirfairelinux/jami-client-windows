@@ -55,7 +55,6 @@ public:
 
 signals:
     void setChatVisibility(bool visible);
-    void holdStateChanged(bool state);
     void videoMuteStateChanged(bool state);
 
 private:

@@ -56,7 +56,7 @@ CallAudioOnlyAvatarOverlay::writeAvatarOverlay(const lrc::api::conversation::Inf
 }
 
 void
-CallAudioOnlyAvatarOverlay::respondToPauseLabel(bool pauseButtonDisplayed)
+CallAudioOnlyAvatarOverlay::respondToPauseLabel(bool isPaused)
 {
-    setAvatarVisible(!pauseButtonDisplayed);
+    setAvatarVisible(!isPaused);
 }
