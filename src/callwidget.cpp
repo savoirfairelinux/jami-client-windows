@@ -663,7 +663,13 @@ CallWidget::slotShowCallView(const QString& accountId,
                              const lrc::api::conversation::Info& convInfo)
 {
     Q_UNUSED(accountId);
+
     qDebug() << "slotShowCallView";
+
+    if (!convInfo.callId.isEmpty()) {
+        auto & accInfo = LRCInstance::getAccountInfo(convInfo.accountId);
+        accInfo.callModel->setCurrentCall(convInfo.callId);
+    }
 
     // control visible callwidget buttons
     setCallPanelVisibility(true);
@@ -1226,17 +1232,6 @@ CallWidget::selectConversation(const lrc::api::conversation::Info& item)
         LRCInstance::setSelectedConvId(item.uid);
         accInfo.conversationModel->selectConversation(item.uid);
         accInfo.conversationModel->clearUnreadInteractions(item.uid);
-        if (!item.callId.isEmpty()) {
-            // when changing conversation, current call should only be set when there is a call on pause
-            if (accInfo.callModel->getCall(item.callId).status == lrc::api::call::Status::PAUSED) {
-                QtConcurrent::run(
-                    [convUid = item.uid, accId = item.accountId]{
-                        auto item = LRCInstance::getConversationFromConvUid(convUid);
-                        auto & accInfo = LRCInstance::getAccountInfo(item.accountId);
-                        accInfo.callModel->setCurrentCall(item.callId);
-                    });
-            }
-        }
         ui->conversationsFilterWidget->update();
         return true;
     }
@@ -1392,14 +1387,6 @@ CallWidget::connectAccount(const QString& accountId)
                     auto convInfo = LRCInstance::getConversationFromCallId(callId, accountId);
                     if (!convInfo.uid.isEmpty() && convInfo.uid == LRCInstance::getCurrentConvUid()) {
                         accInfo.conversationModel->selectConversation(convInfo.uid);
-                        if (!convInfo.callId.isEmpty()) {
-                            QtConcurrent::run(
-                                [convUid = convInfo.uid, accId = convInfo.accountId]{
-                                    auto item = LRCInstance::getConversationFromConvUid(convUid);
-                                    auto & accInfo = LRCInstance::getAccountInfo(item.accountId);
-                                    accInfo.callModel->setCurrentCall(item.callId);
-                                });
-                        }
                     }
                     LRCInstance::renderer()->addDistantRenderer(callId);
                     ui->videoView->updateCall();
