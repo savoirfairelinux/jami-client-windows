@@ -1,0 +1,7 @@
+Code-Review+2: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>
+Verified+1: Jenkins CI <jenkins@ring-packaging.cx>
+Submitted-by: Ming Rui Zhang <mingrui.zhang@savoirfairelinux.com>
+Submitted-at: Mon, 06 Apr 2020 15:48:40 -0400
+Reviewed-on: https://review.jami.net/c/ring-client-windows/+/14007
+Project: ring-client-windows
+Branch: refs/heads/master
