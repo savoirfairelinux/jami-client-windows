@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>919</width>
-    <height>690</height>
+    <width>890</width>
+    <height>656</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -39,8 +39,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>917</width>
-        <height>688</height>
+        <width>888</width>
+        <height>654</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
@@ -663,6 +663,34 @@
                               </property>
                               <property name="text" stdset="0">
                                <string>Keep minimized on close</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </item>
+                          <item>
+                           <layout class="QHBoxLayout" name="applicationOnStartUpLayout">
+                            <item>
+                             <widget class="ToggleSwitch" name="applicationOnStartUpCheckBox" native="true">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>30</height>
+                               </size>
+                              </property>
+                              <property name="font">
+                               <font>
+                                <pointsize>10</pointsize>
+                               </font>
+                              </property>
+                              <property name="text" stdset="0">
+                               <string>Run on Startup</string>
                               </property>
                              </widget>
                             </item>

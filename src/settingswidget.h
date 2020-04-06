@@ -132,6 +132,7 @@ private slots:
     void slotSetNotifications(bool state);
     void checkForUpdateSlot();
     void slotSetClosedOrMin(bool state);
+    void slotSetRunOnStartUp(bool state);
     void openDownloadFolderSlot();
     void openRecordFolderSlot();
     void slotAlwaysRecordingClicked(bool state);

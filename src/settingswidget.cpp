@@ -234,6 +234,8 @@ SettingsWidget::SettingsWidget(QWidget* parent)
 
     connect(ui->closeOrMinCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotSetClosedOrMin);
 
+    connect(ui->applicationOnStartUpCheckBox, &QAbstractButton::clicked, this, &SettingsWidget::slotSetRunOnStartUp);
+
     connect(ui->downloadButton, &QAbstractButton::clicked, this, &SettingsWidget::openDownloadFolderSlot);
 
     connect(ui->checkUpdateButton, &QAbstractButton::clicked, this, &SettingsWidget::checkForUpdateSlot);
@@ -909,6 +911,7 @@ SettingsWidget::populateGeneralSettings()
     Utils::setElidedText(ui->downloadButton, downloadPath);
 
     ui->closeOrMinCheckBox->setChecked(settings.value(SettingsKey::closeOrMinimized).toBool());
+    ui->applicationOnStartUpCheckBox->setChecked(Utils::CheckStartupLink(L"Jami"));
     auto notifs = settings.value(SettingsKey::enableNotifications).toBool();
     ui->notificationCheckBox->setChecked(notifs);
 
@@ -950,6 +953,18 @@ SettingsWidget::slotSetClosedOrMin(bool state)
 {
     QSettings settings("jami.net", "Jami");
     settings.setValue(SettingsKey::closeOrMinimized, state);
+}
+
+void
+SettingsWidget::slotSetRunOnStartUp(bool state)
+{
+    if (Utils::CheckStartupLink(L"Jami")) {
+        if (!state) {
+            Utils::DeleteStartupLink(L"Jami");
+        }
+    } else if (state) {
+        Utils::CreateStartupLink(L"Jami");
+    }
 }
 
 void
