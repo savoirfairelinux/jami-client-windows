@@ -383,26 +383,22 @@ CallWidget::setupSmartListContextMenu(const QPoint& pos)
     menu.addAction(videoCallAction);
     connect(videoCallAction, &QAction::triggered,
         [this, convUid, conversation, convModel]() {
-            if (!ui->messageView->isVisible())
-                showChatView(LRCInstance::getCurrAccId(), conversation);
+            convModel->placeCall(convUid);
             ui->callingPhoto->setPixmap(QPixmap::fromImage(imageForConv(convUid)));
             if (convUid != LRCInstance::getCurrentConvUid()) {
                 selectConversation(conversation);
             }
-            convModel->placeCall(convUid);
         });
     // audio call
     auto audioCallAction = new QAction(tr("Start audio call"), this);
     menu.addAction(audioCallAction);
     connect(audioCallAction, &QAction::triggered,
         [this, convUid, conversation, convModel]() {
-            if (!ui->messageView->isVisible())
-                showChatView(LRCInstance::getCurrAccId(), conversation);
+            convModel->placeAudioOnlyCall(convUid);
             ui->callingPhoto->setPixmap(QPixmap::fromImage(imageForConv(convUid)));
             if (convUid != LRCInstance::getCurrentConvUid()) {
                 selectConversation(conversation);
             }
-            convModel->placeAudioOnlyCall(convUid);
         });
     // clear conversation
     auto clearConversationAction = new QAction(tr("Clear conversation"), this);
