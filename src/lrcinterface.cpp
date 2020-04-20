@@ -33,3 +33,17 @@ LrcGeneralAdapter::getCurrAccId()
 {
     return LRCInstance::getCurrAccId();
 }
+
+const QStringList
+LrcGeneralAdapter::getCurrAccList()
+{
+    return LRCInstance::accountModel().getAccountList();
+}
+
+void
+LrcGeneralAdapter::setCurrentCall(const QString &accountId, const QString &convUid)
+{
+    auto convInfo = LRCInstance::getConversationFromConvUid(convUid, accountId);
+    auto &accInfo = LRCInstance::getAccountInfo(accountId);
+    accInfo.callModel->setCurrentCall(convInfo.callId);
+}

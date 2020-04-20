@@ -52,7 +52,7 @@ public:
         UID,
         ContextMenuOpen,
         InCall,
-        IsIncomingCallInProgress,
+        CallStackViewShouldShow,
         CallStateStr,
         SectionName,
         AccountId,

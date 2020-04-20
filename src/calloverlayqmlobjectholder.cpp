@@ -68,6 +68,8 @@ CallOverlayQmlObjectHolder::updateCallOverlay(const QString &accountId, const QS
     bool isRecording = accInfo.callModel->isRecording(convInfo.callId);
 
     emit buttonStatusChanged(isPaused, isAudioOnly, isAudioMuted, isVideoMuted, isRecording);
+    emit updateBestName(
+        Utils::bestNameForConversation(convInfo, *LRCInstance::getCurrentConversationModel()));
     /*//Set irrelevant buttons invisible
     ui->noVideoButton->setVisible(!isAudioOnly);
 
