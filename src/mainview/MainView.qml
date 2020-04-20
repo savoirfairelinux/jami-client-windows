@@ -88,15 +88,26 @@ Window {
             }
         }
 
-        onIncomingCallNeedToSetupCallStackView: {
+        onIncomingCallNeedToSetupMainView: {
             welcomeViewStack.pop(null, StackView.Immediate)
             sidePanelViewStack.pop(null, StackView.Immediate)
 
+            var index = LrcGeneralAdapter.getCurrAccList().indexOf(accountId)
+            var name = utilsAdapter.getBestName(accountId, convUid)
+            var id = utilsAdapter.getBestId(accountId, convUid)
+
+            mainViewWindowSidePanel.needToChangeToAccount(accountId, index)
+            communicationPageMessageWebView.headerUserAliasLabelText = name
+            communicationPageMessageWebView.headerUserUserNameLabelText = (name !== id) ? id : ""
             messageWebViewQmlObjectHolder.setupChatView(convUid)
 
             callStackView.needToCloseInCallConversation()
+            callStackView.setCorrspondingMessageWebView(
+                        communicationPageMessageWebView)
+
             callStackView.responsibleAccountId = accountId
             callStackView.responsibleConvUid = convUid
+            callStackView.updateCorrspondingUI()
         }
     }
 
@@ -120,26 +131,27 @@ Window {
             callStackView.responsibleAccountId = LrcGeneralAdapter.getCurrAccId(
                         )
             callStackView.responsibleConvUid = currentUID
+            callStackView.updateCorrspondingUI()
 
             welcomeViewStack.pop(null, StackView.Immediate)
             sidePanelViewStack.pop(null, StackView.Immediate)
 
             if (sidePanelViewStack.visible && welcomeViewStack.visible) {
-                if (inCall && !isIncomingCallInProgress) {
+                if (callStackViewShouldShow) {
                     welcomeViewStack.push(callStackView)
                 } else {
                     welcomeViewStack.push(communicationPageMessageWebView)
                 }
             } else if (sidePanelViewStack.visible
                        && !welcomeViewStack.visible) {
-                if (inCall && !isIncomingCallInProgress) {
+                if (callStackViewShouldShow) {
                     sidePanelViewStack.push(callStackView)
                 } else {
                     sidePanelViewStack.push(communicationPageMessageWebView)
                 }
             } else if (!sidePanelViewStack.visible
                        && !welcomeViewStack.visible) {
-                if (inCall && !isIncomingCallInProgress) {
+                if (callStackViewShouldShow) {
                     sidePanelViewStack.push(callStackView)
                 } else {
                     sidePanelViewStack.push(communicationPageMessageWebView)

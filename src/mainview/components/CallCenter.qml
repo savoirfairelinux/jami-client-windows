@@ -11,16 +11,13 @@ Item {
     signal showCallStack(string accountId, string convUid)
     signal closeCallStack(string accountId, string convUid)
     signal closePotentialIncomingCallPageWindow(string accountId, string convUid)
-    signal incomingCallNeedToSetupCallStackView(string accountId, string convUid)
+    signal incomingCallNeedToSetupMainView(string accountId, string convUid)
 
     signal showIncomingCallPage(string accountId, string convUid)
     signal showOutgoingCallPage(string accountId, string convUid)
     signal showAudioCallPage(string accountId, string convUid)
 
     signal callStatusChanged(string status, string accountId, string convUid)
-    signal callContactImageChanged(string image, string accountId, string convUid)
-    signal setUIBestName(string bestName, string accountId, string convUid)
-    signal setUIBestId(string bestId, string accountId, string convUid)
     signal needToUpdateConversationSmartList
 
     function init() {}
@@ -38,7 +35,7 @@ Item {
     }
 
     function acceptACall(accountId, convUid) {
-        callCenter.incomingCallNeedToSetupCallStackView(accountId, convUid)
+        callCenter.incomingCallNeedToSetupMainView(accountId, convUid)
         callCenterQmlObjectHolder.acceptACall(accountId, convUid)
     }
 
@@ -51,10 +48,6 @@ Item {
 
         onCallStatusChanged: {
             callCenter.callStatusChanged(status, accountId, convUid)
-        }
-
-        onCallContactImageChanged: {
-            callCenter.callContactImageChanged(imageString, accountId, convUid)
         }
 
         onShowOutgoingCallPage: {
@@ -74,14 +67,6 @@ Item {
         onCloseCallWindow: {
             callCenter.closeCallStack(accountId, convUid)
             callCenter.closePotentialIncomingCallPageWindow(accountId, convUid)
-        }
-
-        onSetUIBestName: {
-            callCenter.setUIBestName(bestName, accountId, convUid)
-        }
-
-        onSetUIBestId: {
-            callCenter.setUIBestId(bestId, accountId, convUid)
         }
 
         onUpdateConversationSmartList: {

@@ -109,12 +109,6 @@ CallCenterQmlObjectHolder::slotShowIncomingCallView(const QString &accountId,
         return;
     }
 
-    auto convModel = LRCInstance::getCurrentConversationModel();
-    //
-    auto bestName = Utils::bestNameForConversation(convInfo, *convModel);
-    auto bestId = Utils::bestIdForConversation(convInfo, *convModel);
-    auto finalBestId = (bestName != bestId) ? bestId : "";
-
     auto call = callModel->getCall(convInfo.callId);
     auto isCallSelected = LRCInstance::getCurrentConvUid() == convInfo.uid;
 
@@ -151,14 +145,6 @@ CallCenterQmlObjectHolder::slotShowIncomingCallView(const QString &accountId,
     //}
 
     emit callStatusChanged(lrc::api::call::to_string(call.status), accountId, convInfo.uid);
-    emit callContactImageChanged(Utils::getContactImageString(accountId, convInfo.uid),
-                                 accountId,
-                                 convInfo.uid);
-    emit setUIBestName(bestName, accountId, convInfo.uid);
-    emit setUIBestId(finalBestId, accountId, convInfo.uid);
-    //elidedLabel = sencondaryCallLabelFontMetrics.elidedText(finalBestId, Qt::ElideRight, ui->callingBestIdLabel->width());
-    //ui->callingBestIdLabel->setText(elidedLabel);
-    //ui->sipCallerBestIdLabel->setText(elidedLabel);
 
     //if (finalBestId.isEmpty())
     //    ui->sipCallerBestIdLabel->setVisible(false);
@@ -192,15 +178,7 @@ CallCenterQmlObjectHolder::slotShowCallView(const QString &accountId,
 
     //audioOnlyAvatar_->setAvatarVisible(call->isAudioOnly);
     if (call->isAudioOnly) {
-        emit callStatusChanged(lrc::api::call::to_string(call->status), accountId, convInfo.uid);
-        emit callContactImageChanged(Utils::getContactImageString(accountId, convInfo.uid),
-                                     accountId,
-                                     convInfo.uid);
-        emit setUIBestName(bestName, accountId, convInfo.uid);
-        emit setUIBestId(finalBestId, accountId, convInfo.uid);
-
         emit showAudioCallPage(accountId, convInfo.uid);
-        //audioOnlyAvatar_->writeAvatarOverlay(convInfo);
     }
 
     // preview

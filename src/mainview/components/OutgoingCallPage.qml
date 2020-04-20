@@ -20,6 +20,14 @@ Rectangle {
     signal callCancelButtonIsClicked
     signal backButtonIsClicked
 
+    function updateUI(accountId, convUid) {
+        contactImgSource = "data:image/png;base64," + utilsAdapter.getContactImageString(
+                    accountId, convUid)
+        bestName = utilsAdapter.getBestName(accountId, convUid)
+        var id = utilsAdapter.getBestId(accountId, convUid)
+        bestId = (bestName !== id) ? id : ""
+    }
+
     anchors.fill: parent
 
     color: "black"

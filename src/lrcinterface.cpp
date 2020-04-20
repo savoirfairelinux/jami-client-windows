@@ -33,3 +33,9 @@ LrcGeneralAdapter::getCurrAccId()
 {
     return LRCInstance::getCurrAccId();
 }
+
+const QStringList
+LrcGeneralAdapter::getCurrAccList()
+{
+    return LRCInstance::accountModel().getAccountList();
+}

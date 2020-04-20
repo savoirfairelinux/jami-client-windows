@@ -34,4 +34,5 @@ public:
     ~LrcGeneralAdapter();
 
     Q_INVOKABLE const QString getCurrAccId();
+    Q_INVOKABLE const QStringList getCurrAccList();
 };
