@@ -11,13 +11,13 @@ import "../../commoncomponents"
 Rectangle {
     id: callOverlayButtonGroupRect
 
-    signal buttonEntered()
+    signal buttonEntered
 
-    signal chatButtonClicked()
-    signal hangUpButtonClicked()
-    signal holdButtonClicked()
-    signal noMicButtonClicked()
-    signal recButtonClicked()
+    signal chatButtonClicked
+    signal hangUpButtonClicked
+    signal holdButtonClicked
+    signal noMicButtonClicked
+    signal recButtonClicked
 
     function holdButtonSetChecked(checked) {
         holdButton.setChecked(checked)
@@ -33,7 +33,7 @@ Rectangle {
 
             Layout.alignment: Qt.AlignCenter
             Layout.preferredHeight: 30
-            Layout.preferredWidth : 30
+            Layout.preferredWidth: 30
 
             tintColor: JamiTheme.hangUpButtonTintedRed
             normalPixmapSource: "qrc:/images/icons/ic_close_white_24dp.png"
@@ -53,7 +53,7 @@ Rectangle {
 
             Layout.alignment: Qt.AlignCenter
             Layout.preferredHeight: 30
-            Layout.preferredWidth : 30
+            Layout.preferredWidth: 30
 
             tintColor: JamiTheme.buttonTintedBlue
             normalPixmapSource: "qrc:/images/icons/ic_pause_white_24dp.png"
@@ -73,7 +73,7 @@ Rectangle {
 
             Layout.alignment: Qt.AlignCenter
             Layout.preferredHeight: 30
-            Layout.preferredWidth : 30
+            Layout.preferredWidth: 30
 
             tintColor: JamiTheme.buttonTintedBlue
             normalPixmapSource: "qrc:/images/icons/ic_group_add_white_24dp.png"
@@ -89,7 +89,7 @@ Rectangle {
 
             Layout.alignment: Qt.AlignCenter
             Layout.preferredHeight: 30
-            Layout.preferredWidth : 30
+            Layout.preferredWidth: 30
 
             tintColor: JamiTheme.buttonTintedBlue
             normalPixmapSource: "qrc:/images/icons/ic_chat_white_24dp.png"
@@ -109,7 +109,7 @@ Rectangle {
 
             Layout.alignment: Qt.AlignCenter
             Layout.preferredHeight: 30
-            Layout.preferredWidth : 30
+            Layout.preferredWidth: 30
 
             tintColor: JamiTheme.buttonTintedBlue
             normalPixmapSource: "qrc:/images/icons/ic_mic_white_24dp.png"
@@ -129,7 +129,7 @@ Rectangle {
 
             Layout.alignment: Qt.AlignCenter
             Layout.preferredHeight: 30
-            Layout.preferredWidth : 30
+            Layout.preferredWidth: 30
 
             tintColor: JamiTheme.buttonTintedBlue
             normalPixmapSource: "qrc:/images/icons/ic_voicemail_white_24dp_2x.png"

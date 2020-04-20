@@ -16,8 +16,8 @@ Rectangle {
     property string backToWelcomeViewButtonSource: "qrc:/images/icons/ic_arrow_back_24px.svg"
     property bool sendContactRequestButtonVisible: true
 
-    signal backToWelcomeViewButtonClicked()
-    signal needToHideConversationInCall()
+    signal backToWelcomeViewButtonClicked
+    signal needToHideConversationInCall
 
     function resetBackToWelcomeViewButtonSource(reset) {
         backToWelcomeViewButtonSource = reset ? "qrc:/images/icons/ic_arrow_back_24px.svg" : "qrc:/images/icons/round-close-24px.svg"
@@ -47,7 +47,7 @@ Rectangle {
             onExitColor: "white"
 
             onClicked: {
-                if(backToWelcomeViewButtonSource === "qrc:/images/icons/ic_arrow_back_24px.svg")
+                if (backToWelcomeViewButtonSource === "qrc:/images/icons/ic_arrow_back_24px.svg")
                     messagingHeaderRect.backToWelcomeViewButtonClicked()
                 else
                     messagingHeaderRect.needToHideConversationInCall()
@@ -59,7 +59,10 @@ Rectangle {
 
             Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
             // width + margin
-            Layout.preferredWidth: Math.max(100, messagingHeaderRect.width - backToWelcomeViewButton.width - buttonGroup.width - 30 - 6 - 5)
+            Layout.preferredWidth: Math.max(
+                                       100,
+                                       messagingHeaderRect.width - backToWelcomeViewButton.width
+                                       - buttonGroup.width - 30 - 6 - 5)
             Layout.preferredHeight: messagingHeaderRect.height
             Layout.leftMargin: 10
 
@@ -83,10 +86,10 @@ Rectangle {
                 }
 
                 TextMetrics {
-                    id:     textMetricsuserAliasLabel
+                    id: textMetricsuserAliasLabel
 
-                    font:   userAliasLabel.font
-                    text:   userAliasLabelText
+                    font: userAliasLabel.font
+                    text: userAliasLabelText
                     elideWidth: userNameOrIdRect.width
                     elide: Qt.ElideMiddle
                 }
@@ -108,14 +111,13 @@ Rectangle {
                 }
 
                 TextMetrics {
-                    id:     textMetricsuserUserNameLabel
+                    id: textMetricsuserUserNameLabel
 
-                    font:   userUserNameLabel.font
-                    text:   userUserNameLabelText
+                    font: userUserNameLabel.font
+                    text: userUserNameLabelText
                     elideWidth: userNameOrIdRect.width
                     elide: Qt.ElideMiddle
                 }
-
             }
         }
 

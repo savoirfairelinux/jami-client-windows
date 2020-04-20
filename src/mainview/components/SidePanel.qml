@@ -13,7 +13,7 @@ Rectangle {
 
     signal conversationSmartListNeedToAccessMessageWebView(string currentUserDisplayName, string currentUserAlias, string currentUID, bool inCall, bool isIncomingCallInProgress)
     signal accountComboBoxNeedToShowWelcomePage(int index)
-    signal conversationSmartListViewNeedToShowWelcomePage()
+    signal conversationSmartListViewNeedToShowWelcomePage
 
     function deselectConversationSmartList() {
         conversationSmartListView.currentIndex = -1
@@ -60,10 +60,10 @@ Rectangle {
         }
 
         Component.onCompleted: {
-            accountComboBoxQmlObjectHolder.setAccountComboBoxQmlObject(accountComboBox)
+            accountComboBoxQmlObjectHolder.setAccountComboBoxQmlObject(
+                        accountComboBox)
             accountComboBoxQmlObjectHolder.accountChanged(0)
         }
-
     }
 
     TabBar {
@@ -111,10 +111,23 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     hoverEnabled: true
-                    onPressed: { buttonRectOne.color = JamiTheme.pressColor; tabBar.currentIndex = 0; pageOne.down = true; pageTwo.down = false;}
-                    onReleased: { buttonRectOne.color = JamiTheme.releaseColor; }
-                    onEntered: { buttonRectOne.color = JamiTheme.hoverColor; }
-                    onExited: { buttonRectOne.color = Qt.binding(function() { return pageOne.down ? "white" : JamiTheme.releaseColor }); }
+                    onPressed: {
+                        buttonRectOne.color = JamiTheme.pressColor
+                        tabBar.currentIndex = 0
+                        pageOne.down = true
+                        pageTwo.down = false
+                    }
+                    onReleased: {
+                        buttonRectOne.color = JamiTheme.releaseColor
+                    }
+                    onEntered: {
+                        buttonRectOne.color = JamiTheme.hoverColor
+                    }
+                    onExited: {
+                        buttonRectOne.color = Qt.binding(function () {
+                            return pageOne.down ? "white" : JamiTheme.releaseColor
+                        })
+                    }
                 }
             }
         }
@@ -149,10 +162,23 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     hoverEnabled: true
-                    onPressed: { buttonRectTwo.color = JamiTheme.pressColor; tabBar.currentIndex = 1; pageTwo.down = true; pageOne.down = false;}
-                    onReleased: { buttonRectTwo.color = JamiTheme.releaseColor; }
-                    onEntered: { buttonRectTwo.color = JamiTheme.hoverColor; }
-                    onExited: { buttonRectTwo.color = Qt.binding(function() { return pageTwo.down ? "white" : JamiTheme.releaseColor }); }
+                    onPressed: {
+                        buttonRectTwo.color = JamiTheme.pressColor
+                        tabBar.currentIndex = 1
+                        pageTwo.down = true
+                        pageOne.down = false
+                    }
+                    onReleased: {
+                        buttonRectTwo.color = JamiTheme.releaseColor
+                    }
+                    onEntered: {
+                        buttonRectTwo.color = JamiTheme.hoverColor
+                    }
+                    onExited: {
+                        buttonRectTwo.color = Qt.binding(function () {
+                            return pageTwo.down ? "white" : JamiTheme.releaseColor
+                        })
+                    }
                 }
             }
         }
@@ -242,7 +268,6 @@ Rectangle {
 
                         font.pointSize: 8
 
-
                         Text {
                             id: placeholderTextForSearchBar
 
@@ -253,16 +278,18 @@ Rectangle {
                             text: qsTr("Find a new or existing contact")
                             font.pointSize: 8
                             color: "#aaa"
-                            visible: !contactSearchBar.text && !contactSearchBar.activeFocus
+                            visible: !contactSearchBar.text
+                                     && !contactSearchBar.activeFocus
                         }
 
                         background: Rectangle {
                             id: searchBarBackground
 
                             color: contactSearchBar.activeFocus ? "white" : JamiTheme.hoverColor
-                       }
+                        }
                         onTextChanged: {
-                            mainViewWindow.searchBarTextChanged(contactSearchBar.text)
+                            mainViewWindow.searchBarTextChanged(
+                                        contactSearchBar.text)
                         }
                     }
                 }
@@ -274,18 +301,22 @@ Rectangle {
                     anchors.left: parent.left
 
                     width: parent.width
-                    height: parent.height -  contactSearchBarRect.height - 15
+                    height: parent.height - contactSearchBarRect.height - 15
 
                     onNeedToBackToWelcomePage: {
                         sidePanelRect.conversationSmartListViewNeedToShowWelcomePage()
                     }
 
                     onNeedToAccessMessageWebView: {
-                        sidePanelRect.conversationSmartListNeedToAccessMessageWebView(currentUserDisplayName, currentUserAlias, currentUID, inCall, isIncomingCallInProgress)
+                        sidePanelRect.conversationSmartListNeedToAccessMessageWebView(
+                                    currentUserDisplayName, currentUserAlias,
+                                    currentUID, inCall,
+                                    isIncomingCallInProgress)
                     }
 
                     Component.onCompleted: {
-                        conversationSmartListViewQmlObjectHolder.setConversationSmartListViewQmlObjectHolder(conversationSmartListView)
+                        conversationSmartListViewQmlObjectHolder.setConversationSmartListViewQmlObjectHolder(
+                                    conversationSmartListView)
                         conversationSmartListView.currentIndex = -1
                     }
                 }

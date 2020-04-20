@@ -1,10 +1,9 @@
 /***************************************************************************
- * Copyright (C) 2017-2019 by Savoir-faire Linux                           *
+ * Copyright (C) 2017-2020 by Savoir-faire Linux                           *
  * Author: Alexandre Viau <alexandre.viau@savoirfairelinux.com>            *
  * Author: S�bastien Blin <sebastien.blin@savoirfairelinux.com>            *
  * Author: Hugo Lefeuvre <hugo.lefeuvre@savoirfairelinux.com>              *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
-
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -23,13 +22,14 @@
 #include "webchathelpers.h"
 
 QJsonObject
-buildInteractionJson(lrc::api::ConversationModel& conversationModel,
-    const uint64_t msgId,
-    const lrc::api::interaction::Info& interaction)
+buildInteractionJson(lrc::api::ConversationModel &conversationModel,
+                     const uint64_t msgId,
+                     const lrc::api::interaction::Info &interaction)
 {
     auto sender = interaction.authorUri;
     auto timestamp = QString::number(interaction.timestamp);
-    auto direction = lrc::api::interaction::isOutgoing(interaction) ? QString("out") : QString("in");
+    auto direction = lrc::api::interaction::isOutgoing(interaction) ? QString("out")
+                                                                    : QString("in");
 
     QJsonObject interactionObject = QJsonObject();
     interactionObject.insert("text", QJsonValue(interaction.body));
@@ -40,8 +40,7 @@ buildInteractionJson(lrc::api::ConversationModel& conversationModel,
     interactionObject.insert("direction", QJsonValue(direction));
     interactionObject.insert("duration", QJsonValue(interaction.duration));
 
-    switch (interaction.type)
-    {
+    switch (interaction.type) {
     case lrc::api::interaction::Type::TEXT:
         interactionObject.insert("type", QJsonValue("text"));
         break;
@@ -70,8 +69,7 @@ buildInteractionJson(lrc::api::ConversationModel& conversationModel,
         interactionObject.insert("delivery_status", QJsonValue("read"));
     }
 
-    switch (interaction.status)
-    {
+    switch (interaction.status) {
     case lrc::api::interaction::Status::SUCCESS:
         interactionObject.insert("delivery_status", QJsonValue("sent"));
         break;
@@ -119,22 +117,23 @@ buildInteractionJson(lrc::api::ConversationModel& conversationModel,
 }
 
 QString
-interactionToJsonInteractionObject(lrc::api::ConversationModel& conversationModel,
-    const uint64_t msgId,
-    const lrc::api::interaction::Info& interaction)
+interactionToJsonInteractionObject(lrc::api::ConversationModel &conversationModel,
+                                   const uint64_t msgId,
+                                   const lrc::api::interaction::Info &interaction)
 {
     auto interactionObject = buildInteractionJson(conversationModel, msgId, interaction);
     return QString(QJsonDocument(interactionObject).toJson(QJsonDocument::Compact));
 }
 
 QString
-interactionsToJsonArrayObject(lrc::api::ConversationModel& conversationModel,
-    const std::map<uint64_t,
-    lrc::api::interaction::Info> interactions)
+interactionsToJsonArrayObject(lrc::api::ConversationModel &conversationModel,
+                              const std::map<uint64_t, lrc::api::interaction::Info> interactions)
 {
     QJsonArray array;
-    for (const auto& interaction : interactions) {
-        auto interactionObject = buildInteractionJson(conversationModel, interaction.first, interaction.second);
+    for (const auto &interaction : interactions) {
+        auto interactionObject = buildInteractionJson(conversationModel,
+                                                      interaction.first,
+                                                      interaction.second);
         if (!interactionObject.isEmpty()) {
             array.append(interactionObject);
         }

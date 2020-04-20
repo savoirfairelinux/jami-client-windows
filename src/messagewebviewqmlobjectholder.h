@@ -24,50 +24,53 @@
 #include <QString>
 
 // to ease the logic with the power of c++
-class MessageWebViewQmlObjectHolder : public QObject {
+class MessageWebViewQmlObjectHolder : public QObject
+{
     Q_OBJECT
 
 public:
-    explicit MessageWebViewQmlObjectHolder(QObject* parent = 0);
+    explicit MessageWebViewQmlObjectHolder(QObject *parent = 0);
     ~MessageWebViewQmlObjectHolder();
 
     // Must call Q_INVOKABLE so that this function can be used in QML, qml to c++
-    Q_INVOKABLE void setMessageWebViewQmlObject(QObject* obj);
-    Q_INVOKABLE void setupChatView(const QString& uid);
+    Q_INVOKABLE void setMessageWebViewQmlObject(QObject *obj);
+    Q_INVOKABLE void setupChatView(const QString &uid);
 
     // run corrsponding js functions, c++ to qml
     void setMessagesVisibility(bool visible);
     void requestSendMessageContent();
-    void setInvitation(bool show, const QString& contactUri = "", const QString& contactId = "");
+    void setInvitation(bool show, const QString &contactUri = "", const QString &contactId = "");
     void clear();
-    void printHistory(lrc::api::ConversationModel& conversationModel,
+    void printHistory(lrc::api::ConversationModel &conversationModel,
                       const std::map<uint64_t, lrc::api::interaction::Info> interactions);
-    void setSenderImage(const QString& sender, const QString& senderImage);
-    void printNewInteraction(lrc::api::ConversationModel& conversationModel,
+    void setSenderImage(const QString &sender, const QString &senderImage);
+    void printNewInteraction(lrc::api::ConversationModel &conversationModel,
                              uint64_t msgId,
-                             const lrc::api::interaction::Info& interaction);
-    void setMessagesImageContent(const QString& path, bool isBased64 = false);
-    void setMessagesFileContent(const QString& path);
+                             const lrc::api::interaction::Info &interaction);
+    void setMessagesImageContent(const QString &path, bool isBased64 = false);
+    void setMessagesFileContent(const QString &path);
     void removeInteraction(uint64_t interactionId);
 
 public slots:
-    void slotSendMessageContentSaved(const QString& content);
+    void slotSendMessageContentSaved(const QString &content);
     void slotMessagesCleared();
     void slotMessagesLoaded();
-    void slotSendMessage(const QString& message);
-    void slotSendImage(const QString& message);
-    void slotSendFile(const QString& message);
-    void slotSetNewMessagesContent(const QString& path);
-    void slotDeleteInteraction(const QString& arg);
+    void slotSendMessage(const QString &message);
+    void slotSendImage(const QString &message);
+    void slotSendFile(const QString &message);
+    void slotSetNewMessagesContent(const QString &path);
+    void slotDeleteInteraction(const QString &arg);
 
 private:
-    void setConversationProfileData(const lrc::api::conversation::Info& convInfo);
-    void newInteraction(const QString& accountId, const QString& convUid,
-                        uint64_t interactionId, const interaction::Info& interaction);
+    void setConversationProfileData(const lrc::api::conversation::Info &convInfo);
+    void newInteraction(const QString &accountId,
+                        const QString &convUid,
+                        uint64_t interactionId,
+                        const interaction::Info &interaction);
     void connectConversationModel();
 
     // Object pointer
-    QObject* messageWebViewQmlObject_;
+    QObject *messageWebViewQmlObject_;
 
     QString LastConvUid_;
 
