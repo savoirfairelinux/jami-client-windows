@@ -11,9 +11,17 @@ import "../../commoncomponents"
 Rectangle {
     id: sidePanelRect
 
-    signal conversationSmartListNeedToAccessMessageWebView(string currentUserDisplayName, string currentUserAlias, string currentUID, bool inCall, bool isIncomingCallInProgress)
+    signal conversationSmartListNeedToAccessMessageWebView(string currentUserDisplayName, string currentUserAlias, string currentUID, bool callStackViewShouldShow)
     signal accountComboBoxNeedToShowWelcomePage(int index)
     signal conversationSmartListViewNeedToShowWelcomePage
+
+    function needToChangeToAccount(accountId, index) {
+        if (index !== -1) {
+            accountComboBox.currentIndex = index
+            accountComboBoxQmlObjectHolder.accountChanged(index)
+            contactSearchBar.clear()
+        }
+    }
 
     function deselectConversationSmartList() {
         conversationSmartListView.currentIndex = -1
@@ -310,8 +318,7 @@ Rectangle {
                     onNeedToAccessMessageWebView: {
                         sidePanelRect.conversationSmartListNeedToAccessMessageWebView(
                                     currentUserDisplayName, currentUserAlias,
-                                    currentUID, inCall,
-                                    isIncomingCallInProgress)
+                                    currentUID, callStackViewShouldShow)
                     }
 
                     Component.onCompleted: {

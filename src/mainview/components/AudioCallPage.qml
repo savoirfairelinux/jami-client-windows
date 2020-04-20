@@ -19,11 +19,14 @@ Rectangle {
 
     signal audioCallPageBackButtonIsClicked
 
-    function setCallOverlayBestName(bestName) {
-        audioCallOverlay.bestName = bestName
-    }
+    function updateUI(accountId, convUid) {
+        contactImgSource = "data:image/png;base64," + utilsAdapter.getContactImageString(
+                    accountId, convUid)
+        bestName = utilsAdapter.getBestName(accountId, convUid)
 
-    function updateCallOverlay(accountId, convUid) {
+        var id = utilsAdapter.getBestId(accountId, convUid)
+        bestId = (bestName !== id) ? id : ""
+
         callOverlayQmlObjectHolder.updateCallOverlay(accountId, convUid)
     }
 
@@ -86,6 +89,10 @@ Rectangle {
                 onShowOnHoldLabel: {
                     audioCallOverlay.showOnHoldImage(isPaused)
                     audioCallPageRectCentralRect.visible = !isPaused
+                }
+
+                onUpdateBestName: {
+                    audioCallOverlay.bestName = bestNameToBeUpdated
                 }
             }
 
