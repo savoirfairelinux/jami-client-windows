@@ -14,14 +14,14 @@ Rectangle {
     property string bestName: "Best Name"
     property string timeText: "00:00"
 
-    signal backButtonIsClicked()
+    signal backButtonIsClicked
 
-    signal overlayHangUpButtonClicked()
-    signal overlayChatButtonClicked()
+    signal overlayHangUpButtonClicked
+    signal overlayChatButtonClicked
 
-    signal overlayHoldButtonToggled()
-    signal overlayNoMicButtonToggled()
-    signal overlayRecButtonToggled()
+    signal overlayHoldButtonToggled
+    signal overlayNoMicButtonToggled
+    signal overlayRecButtonToggled
 
     function updateButtonStatus(isPaused, isAudioOnly, isAudioMuted, isVideoMuted, isRecording) {
         callOverlayButtonGroup.holdButtonSetChecked(isPaused)
@@ -37,10 +37,10 @@ Rectangle {
         id: callOverlayTimer
         interval: 5000
         onTriggered: {
-            if(overlayUpperPartRect.state !== 'freezed') {
+            if (overlayUpperPartRect.state !== 'freezed') {
                 overlayUpperPartRect.state = 'freezed'
             }
-            if(callOverlayButtonGroup.state !== 'freezed') {
+            if (callOverlayButtonGroup.state !== 'freezed') {
                 callOverlayButtonGroup.state = 'freezed'
             }
         }
@@ -99,9 +99,9 @@ Rectangle {
                 color: "white"
 
                 TextMetrics {
-                    id:     textMetricsjamiBestNameText
-                    font:   jamiBestNameText.font
-                    text:   bestName
+                    id: textMetricsjamiBestNameText
+                    font: jamiBestNameText.font
+                    text: bestName
                     elideWidth: overlayUpperPartRect.width / 3
                     elide: Qt.ElideMiddle
                 }
@@ -125,9 +125,9 @@ Rectangle {
                 color: "white"
 
                 TextMetrics {
-                    id:     textMetricscallTimerText
-                    font:   callTimerText.font
-                    text:   timeText
+                    id: textMetricscallTimerText
+                    font: callTimerText.font
+                    text: timeText
                     elideWidth: overlayUpperPartRect.width / 3
                     elide: Qt.ElideMiddle
                 }
@@ -139,20 +139,26 @@ Rectangle {
         states: [
             State {
                 name: "entered"
-                PropertyChanges { target: overlayUpperPartRect; opacity: 1 }
+                PropertyChanges {
+                    target: overlayUpperPartRect
+                    opacity: 1
+                }
             },
             State {
                 name: "freezed"
-                PropertyChanges { target: overlayUpperPartRect; opacity: 0 }
+                PropertyChanges {
+                    target: overlayUpperPartRect
+                    opacity: 0
+                }
             }
         ]
 
         transitions: Transition {
-                PropertyAnimation {
-                    target: overlayUpperPartRect
-                    property: "opacity"
-                    duration: 1000
-                }
+            PropertyAnimation {
+                target: overlayUpperPartRect
+                property: "opacity"
+                duration: 1000
+            }
         }
     }
 
@@ -210,20 +216,26 @@ Rectangle {
         states: [
             State {
                 name: "entered"
-                PropertyChanges { target: callOverlayButtonGroup; opacity: 1 }
+                PropertyChanges {
+                    target: callOverlayButtonGroup
+                    opacity: 1
+                }
             },
             State {
                 name: "freezed"
-                PropertyChanges { target: callOverlayButtonGroup; opacity: 0 }
+                PropertyChanges {
+                    target: callOverlayButtonGroup
+                    opacity: 0
+                }
             }
         ]
 
         transitions: Transition {
-                PropertyAnimation {
-                    target: callOverlayButtonGroup
-                    property: "opacity"
-                    duration: 1000
-                }
+            PropertyAnimation {
+                target: callOverlayButtonGroup
+                property: "opacity"
+                duration: 1000
+            }
         }
     }
 
@@ -285,20 +297,20 @@ Rectangle {
         acceptedButtons: Qt.NoButton
 
         onEntered: {
-            if(overlayUpperPartRect.state !== 'entered') {
+            if (overlayUpperPartRect.state !== 'entered') {
                 overlayUpperPartRect.state = 'entered'
             }
-            if(callOverlayButtonGroup.state !== 'entered') {
+            if (callOverlayButtonGroup.state !== 'entered') {
                 callOverlayButtonGroup.state = 'entered'
             }
             callOverlayTimer.restart()
         }
 
         onMouseXChanged: {
-            if(overlayUpperPartRect.state !== 'entered') {
+            if (overlayUpperPartRect.state !== 'entered') {
                 overlayUpperPartRect.state = 'entered'
             }
-            if(callOverlayButtonGroup.state !== 'entered') {
+            if (callOverlayButtonGroup.state !== 'entered') {
                 callOverlayButtonGroup.state = 'entered'
             }
             callOverlayTimer.restart()

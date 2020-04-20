@@ -85,13 +85,13 @@ Dialog {
         }
     }
 
-    Rectangle{
+    Rectangle {
         id: aboutPopUpContentRect
 
         anchors.fill: parent
 
         ColumnLayout {
-            id:aboutPopUpContentRectColumnLayout
+            id: aboutPopUpContentRectColumnLayout
 
             Image {
                 id: aboutPopUPJamiLogoImage
@@ -245,7 +245,8 @@ Dialog {
 
                 Layout.alignment: Qt.AlignCenter
                 // strangely, hoveredLink works badly when width grows too large
-                Layout.preferredWidth: Math.min(300, aboutPopUpContentRect.width)
+                Layout.preferredWidth: Math.min(300,
+                                                aboutPopUpContentRect.width)
                 // TextMetrics does not work for multi-lines
                 Layout.preferredHeight: textMetricsjamiNoneWarrantyHyperText.boundingRect.height * 2
                 Layout.bottomMargin: 10
@@ -307,7 +308,7 @@ Dialog {
                         }
 
                         onClicked: {
-                            if(changeLogOrCreditsStack.depth > 1) {
+                            if (changeLogOrCreditsStack.depth > 1) {
                                 changeLogOrCreditsStack.pop()
                             }
                         }
@@ -325,8 +326,9 @@ Dialog {
                         text: qsTr("Credits")
 
                         onClicked: {
-                            if(changeLogOrCreditsStack.depth == 1) {
-                                changeLogOrCreditsStack.push(projectCreditsScrollViewComponent)
+                            if (changeLogOrCreditsStack.depth == 1) {
+                                changeLogOrCreditsStack.push(
+                                            projectCreditsScrollViewComponent)
                             }
                         }
                     }

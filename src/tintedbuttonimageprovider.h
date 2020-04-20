@@ -18,22 +18,24 @@
 
 #pragma once
 
-#include "utils.h"
 #include "lrcinstance.h"
+#include "utils.h"
 
-#include <QQuickImageProvider>
-#include <QObject>
-#include <QString>
-#include <QPair>
 #include <QImage>
+#include <QObject>
+#include <QPair>
+#include <QQuickImageProvider>
+#include <QString>
 
 class TintedButtonImageProvider : public QObject, public QQuickImageProvider
 {
-
 public:
-    TintedButtonImageProvider() : QQuickImageProvider(QQuickImageProvider::Pixmap, QQmlImageProviderBase::ForceAsynchronousImageLoading) {}
+    TintedButtonImageProvider()
+        : QQuickImageProvider(QQuickImageProvider::Pixmap,
+                              QQmlImageProviderBase::ForceAsynchronousImageLoading)
+    {}
 
-    QPixmap requestPixmap(const QString& id, QSize* size, const QSize& requestedSize) override
+    QPixmap requestPixmap(const QString &id, QSize *size, const QSize &requestedSize) override
     {
         Q_UNUSED(size);
 
@@ -42,9 +44,8 @@ public:
         auto list = id.split('+', QString::SkipEmptyParts);
 
         if (list.size() == 2) {
-
             QPixmap pixmapToSend(":/images/icons/" + list[0]);
-            if(!requestedSize.isEmpty()) {
+            if (!requestedSize.isEmpty()) {
                 pixmapToSend = pixmapToSend.scaled(requestedSize, Qt::KeepAspectRatio);
             } else {
                 pixmapToSend = pixmapToSend.scaled(QSize(30, 30), Qt::KeepAspectRatio);

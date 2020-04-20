@@ -3,7 +3,6 @@ pragma Singleton
 import QtQuick 2.14
 
 //https://doc.qt.io/qt-5/qqmlengine.html#qmlRegisterSingletonType-3
-
 Item {
     // color strings
     property string hoverColor: "#c7c7c7"

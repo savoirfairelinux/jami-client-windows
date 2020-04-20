@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2017-2019 by Savoir-faire Linux                           *
+ * Copyright (C) 2017-2020 by Savoir-faire Linux                           *
  * Author: Alexandre Viau <alexandre.viau@savoirfairelinux.com>            *
  * Author: Sébastien Blin <sebastien.blin@savoirfairelinux.com>            *
  * Author: Hugo Lefeuvre <hugo.lefeuvre@savoirfairelinux.com>              *
@@ -22,19 +22,19 @@
 
 #pragma once
 
-#include <QJsonObject>
-#include <QJsonDocument>
-#include <QJsonArray>
 #include <QFile>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
 
 #include "api/conversationmodel.h"
 
-QJsonObject buildInteractionJson(lrc::api::ConversationModel& conversationModel,
+QJsonObject buildInteractionJson(lrc::api::ConversationModel &conversationModel,
                                  const uint64_t msgId,
-                                 const lrc::api::interaction::Info& interaction);
-QString interactionToJsonInteractionObject(lrc::api::ConversationModel& conversationModel,
+                                 const lrc::api::interaction::Info &interaction);
+QString interactionToJsonInteractionObject(lrc::api::ConversationModel &conversationModel,
                                            const uint64_t msgId,
-                                           const lrc::api::interaction::Info& interaction);
-QString interactionsToJsonArrayObject(lrc::api::ConversationModel& conversationModel,
-                                      const std::map<uint64_t,
-                                      lrc::api::interaction::Info> interactions);
+                                           const lrc::api::interaction::Info &interaction);
+QString interactionsToJsonArrayObject(
+    lrc::api::ConversationModel &conversationModel,
+    const std::map<uint64_t, lrc::api::interaction::Info> interactions);

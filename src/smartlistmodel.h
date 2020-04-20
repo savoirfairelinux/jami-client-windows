@@ -20,9 +20,9 @@
 #pragma once
 
 #include "api/account.h"
+#include "api/contact.h"
 #include "api/conversation.h"
 #include "api/conversationmodel.h"
-#include "api/contact.h"
 
 #include <QAbstractItemModel>
 
@@ -36,12 +36,7 @@ public:
     using ConversationInfo = lrc::api::conversation::Info;
     using ContactInfo = lrc::api::contact::Info;
 
-    enum class Type {
-        CONVERSATION,
-        CONFERENCE,
-        TRANSFER,
-        COUNT__
-    };
+    enum class Type { CONVERSATION, CONFERENCE, TRANSFER, COUNT__ };
 
     enum Role {
         DisplayName = Qt::UserRole + 1,
@@ -64,10 +59,10 @@ public:
         Draft
     };
 
-    explicit SmartListModel(const QString& accId,
+    explicit SmartListModel(const QString &accId,
                             QObject *parent = 0,
                             SmartListModel::Type listModelType = Type::CONVERSATION,
-                            const QString& convUid = {});
+                            const QString &convUid = {});
 
     // QAbstractItemModel
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
@@ -78,23 +73,22 @@ public:
     QModelIndex parent(const QModelIndex &child) const;
     Qt::ItemFlags flags(const QModelIndex &index) const;
 
-    Q_INVOKABLE void setAccount(const QString& accId);
-    Q_INVOKABLE void setConferenceableFilter(const QString& filter = {});
-    Q_INVOKABLE void toggleSection(const QString& section);
+    Q_INVOKABLE void setAccount(const QString &accId);
+    Q_INVOKABLE void setConferenceableFilter(const QString &filter = {});
+    Q_INVOKABLE void toggleSection(const QString &section);
 
     // hack for context menu highlight retention
-    bool isContextMenuOpen{ false };
+    bool isContextMenuOpen{false};
 
 private:
     QString accountId_;
 
-    QVariant getConversationItemData(const ConversationInfo& item,
-                                     const AccountInfo& accountInfo,
+    QVariant getConversationItemData(const ConversationInfo &item,
+                                     const AccountInfo &accountInfo,
                                      int role) const;
     // list sectioning
     QString convUid_;
     Type listModelType_;
     QMap<QString, bool> sectionState_;
     QMap<ConferenceableItem, ConferenceableValue> conferenceables_;
-
 };
