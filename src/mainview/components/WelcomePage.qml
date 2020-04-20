@@ -14,7 +14,7 @@ Rectangle {
 
     anchors.fill: parent
 
-    Rectangle{
+    Rectangle {
         id: welcomeRectComponentsGroup
 
         anchors.centerIn: parent
@@ -73,7 +73,9 @@ Rectangle {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
 
-                visible: accountListModel.data(accountListModel.index(currentAccountIndex,0), 260) === 1
+                visible: accountListModel.data(accountListModel.index(
+                                                   currentAccountIndex, 0),
+                                               260) === 1
                 text: qsTr("This is your ID.\nCopy and share it with your friends")
 
                 background: Rectangle {
@@ -81,7 +83,7 @@ Rectangle {
                 }
             }
 
-            Rectangle{
+            Rectangle {
                 id: jamiRegisteredNameRect
 
                 Layout.alignment: Qt.AlignCenter
@@ -89,7 +91,9 @@ Rectangle {
                 Layout.preferredHeight: 65
                 Layout.bottomMargin: 5
 
-                visible: accountListModel.data(accountListModel.index(currentAccountIndex,0), 260) === 1
+                visible: accountListModel.data(accountListModel.index(
+                                                   currentAccountIndex, 0),
+                                               260) === 1
 
                 ColumnLayout {
                     id: jamiRegisteredNameRectColumnLayout
@@ -114,15 +118,17 @@ Rectangle {
                     }
 
                     TextMetrics {
-                        id:     textMetricsjamiRegisteredNameText
+                        id: textMetricsjamiRegisteredNameText
 
-                        font:   jamiRegisteredNameText.font
-                        text:   accountListModel.data(accountListModel.index(currentAccountIndex,0), 258)
+                        font: jamiRegisteredNameText.font
+                        text: accountListModel.data(accountListModel.index(
+                                                        currentAccountIndex,
+                                                        0), 258)
                         elideWidth: welcomeRectComponentsGroup.width
                         elide: Qt.ElideMiddle
                     }
 
-                    RowLayout{
+                    RowLayout {
                         id: jamiRegisteredNameRowLayout
 
                         Layout.alignment: Qt.AlignCenter
@@ -140,7 +146,8 @@ Rectangle {
                             source: "qrc:/images/icons/ic_content_copy.svg"
 
                             onClicked: {
-                                utilsAdapter.setText(textMetricsjamiRegisteredNameText.text)
+                                utilsAdapter.setText(
+                                            textMetricsjamiRegisteredNameText.text)
                             }
                         }
 
@@ -155,7 +162,7 @@ Rectangle {
                             source: "qrc:/images/qrcode.png"
 
                             onClicked: {
-                                if(userQrImage.visible)
+                                if (userQrImage.visible)
                                     userQrImage.visible = false
                                 else
                                     userQrImage.visible = true
@@ -174,7 +181,7 @@ Rectangle {
 
                 visible: false
                 fillMode: Image.PreserveAspectFit
-                source:  "image://qrImage/account_" + currentAccountIndex + "_0_qr"
+                source: "image://qrImage/account_" + currentAccountIndex + "_0_qr"
                 // requestedSize
                 sourceSize.width: 100
                 sourceSize.height: 100
@@ -188,7 +195,9 @@ Rectangle {
                 Layout.preferredWidth: 200
                 Layout.preferredHeight: 200
 
-                visible: accountListModel.data(accountListModel.index(currentAccountIndex,0), 260) === 1 ? false : true
+                visible: accountListModel.data(accountListModel.index(
+                                                   currentAccountIndex, 0),
+                                               260) === 1 ? false : true
                 fillMode: Image.PreserveAspectFit
                 source: "qrc:/images/testSIPImage.png"
                 // requestedSize

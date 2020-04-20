@@ -26,14 +26,13 @@
 #include "globalinstances.h"
 
 // Client
-#include "pixbufmanipulator.h"
 #include "lrcinstance.h"
+#include "pixbufmanipulator.h"
 #include "utils.h"
 
 AccountListModel::AccountListModel(QObject *parent)
     : QAbstractListModel(parent)
-{
-}
+{}
 
 int
 AccountListModel::rowCount(const QModelIndex &parent) const
@@ -59,7 +58,7 @@ AccountListModel::data(const QModelIndex &index, int role) const
         return QVariant();
     }
 
-    auto& accountInfo = LRCInstance::accountModel().getAccountInfo(accountList.at(index.row()));
+    auto &accountInfo = LRCInstance::accountModel().getAccountInfo(accountList.at(index.row()));
 
     switch (role) {
     case Role::Alias:
@@ -67,11 +66,13 @@ AccountListModel::data(const QModelIndex &index, int role) const
     case Role::Username:
         return QVariant(Utils::secondBestNameForAccount(accountInfo));
     case Role::Type:
-        return QVariant(Utils::toUnderlyingValue<lrc::api::profile::Type>(accountInfo.profileInfo.type));
+        return QVariant(
+            Utils::toUnderlyingValue<lrc::api::profile::Type>(accountInfo.profileInfo.type));
     case Role::Status:
         return QVariant(Utils::toUnderlyingValue<lrc::api::account::Status>(accountInfo.status));
     case Role::Picture:
-        return QString::fromLatin1(Utils::QImageToByteArray(Utils::accountPhoto(accountInfo)).toBase64().data());
+        return QString::fromLatin1(
+            Utils::QImageToByteArray(Utils::accountPhoto(accountInfo)).toBase64().data());
     case Role::ID:
         return QVariant(accountInfo.id);
     }

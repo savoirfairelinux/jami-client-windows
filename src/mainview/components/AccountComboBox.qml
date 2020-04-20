@@ -16,11 +16,11 @@ ComboBox {
     currentIndex: 0
 
     function backToWelcomePage(index) {
-        accountComboBox.needToBackToWelcomePage(index);
+        accountComboBox.needToBackToWelcomePage(index)
     }
 
     function updateSmartList(accountId) {
-        accountComboBox.needToUpdateSmartList(accountId);
+        accountComboBox.needToUpdateSmartList(accountId)
     }
 
     Image {
@@ -34,7 +34,9 @@ ComboBox {
         height: accountComboBox.height - 10
 
         fillMode: Image.PreserveAspectFit
-        source: "data:image/png;base64," + accountListModel.data(accountListModel.index(accountComboBox.currentIndex,0), 259)
+        source: "data:image/png;base64," + accountListModel.data(
+                    accountListModel.index(accountComboBox.currentIndex, 0),
+                    259)
         mipmap: true
 
         Rectangle {
@@ -96,7 +98,8 @@ ComboBox {
         font: textUserAliasRoot.font
         elide: Text.ElideMiddle
         elideWidth: accountComboBox.width - userImageRoot.width - settingsButton.width - 25
-        text: accountListModel.data(accountListModel.index(accountComboBox.currentIndex,0), 257)
+        text: accountListModel.data(accountListModel.index(
+                                        accountComboBox.currentIndex, 0), 257)
     }
 
     TextMetrics {
@@ -105,7 +108,8 @@ ComboBox {
         font: textUsernameRoot.font
         elide: Text.ElideMiddle
         elideWidth: accountComboBox.width - userImageRoot.width - settingsButton.width - 25
-        text: accountListModel.data(accountListModel.index(accountComboBox.currentIndex,0), 258)
+        text: accountListModel.data(accountListModel.index(
+                                        accountComboBox.currentIndex, 0), 258)
     }
 
     Button {
@@ -154,40 +158,48 @@ ComboBox {
         propagateComposedEvents: true
 
         onPressed: {
-            if(isMouseOnSettingsButton(mouse))
+            if (isMouseOnSettingsButton(mouse))
                 settingButtonRect.color = JamiTheme.pressColor
             else
                 rootItemBackground.color = JamiTheme.pressColor
         }
         onReleased: {
-            if(isMouseOnSettingsButton(mouse)) {
+            if (isMouseOnSettingsButton(mouse)) {
                 settingButtonRect.color = JamiTheme.releaseColor
             } else {
                 rootItemBackground.color = JamiTheme.releaseColor
-                if(comboBoxPopup.opened) {
+                if (comboBoxPopup.opened) {
                     accountComboBox.popup.close()
                 } else {
                     accountComboBox.popup.open()
                 }
             }
         }
-        onEntered: { rootItemBackground.color = JamiTheme.hoverColor; }
-        onExited: { rootItemBackground.color = "white";}
+        onEntered: {
+            rootItemBackground.color = JamiTheme.hoverColor
+        }
+        onExited: {
+            rootItemBackground.color = "white"
+        }
         onMouseXChanged: {
             // manually make settings button hover
-            if(isMouseOnSettingsButton(mouse)){
-                settingButtonRect.color = JamiTheme.hoverColor;
-                rootItemBackground.color = "white";
+            if (isMouseOnSettingsButton(mouse)) {
+                settingButtonRect.color = JamiTheme.hoverColor
+                rootItemBackground.color = "white"
             } else {
-                settingButtonRect.color = "white";
-                rootItemBackground.color = JamiTheme.hoverColor;
+                settingButtonRect.color = "white"
+                rootItemBackground.color = JamiTheme.hoverColor
             }
         }
-        function isMouseOnSettingsButton(mouse){
+        function isMouseOnSettingsButton(mouse) {
             var mousePos = mapToItem(comboBoxRootMouseArea, mouse.x, mouse.y)
-            var settingsButtonPos = mapToItem(comboBoxRootMouseArea, settingsButton.x, settingsButton.y)
-            if((mousePos.x >= settingsButtonPos.x && mousePos.x <= settingsButtonPos.x + settingsButton.width) &&
-               (mousePos.y >= settingsButtonPos.y && mousePos.y <= settingsButtonPos.y + settingsButton.height))
+            var settingsButtonPos = mapToItem(comboBoxRootMouseArea,
+                                              settingsButton.x,
+                                              settingsButton.y)
+            if ((mousePos.x >= settingsButtonPos.x
+                 && mousePos.x <= settingsButtonPos.x + settingsButton.width)
+                    && (mousePos.y >= settingsButtonPos.y
+                        && mousePos.y <= settingsButtonPos.y + settingsButton.height))
                 return true
             return false
         }
@@ -202,7 +214,9 @@ ComboBox {
         y: accountComboBox.height - 1
         implicitWidth: accountComboBox.width - 1
         // hack - limite the accounts that can be shown
-        implicitHeight: Math.min(accountComboBox.height * Math.min(5, accountListModel.rowCount()), sidePanelRect.height)
+        implicitHeight: Math.min(accountComboBox.height * Math.min(
+                                     5, accountListModel.rowCount()),
+                                 sidePanelRect.height)
         padding: 0
 
         contentItem: ListView {
@@ -211,7 +225,7 @@ ComboBox {
             clip: true
             model: accountListModel
             implicitHeight: contentHeight
-            delegate:ItemDelegate {
+            delegate: ItemDelegate {
 
                 Image {
                     id: userImage
@@ -226,7 +240,8 @@ ComboBox {
                     fillMode: Image.PreserveAspectFit
                     mipmap: true
                     // in list view, index a signal interger
-                    source: "data:image/png;base64," + accountListModel.data(accountListModel.index(index, 0), 259)
+                    source: "data:image/png;base64," + accountListModel.data(
+                                accountListModel.index(index, 0), 259)
                 }
 
                 Text {
@@ -279,15 +294,21 @@ ComboBox {
                 MouseArea {
                     anchors.fill: parent
                     hoverEnabled: true
-                    onPressed: { itemCoboBackground.color = JamiTheme.pressColor; }
+                    onPressed: {
+                        itemCoboBackground.color = JamiTheme.pressColor
+                    }
                     onReleased: {
                         itemCoboBackground.color = JamiTheme.releaseColor
                         currentIndex = index
                         comboBoxPopup.close()
                         accountComboBox.accountChanged(index)
                     }
-                    onEntered: { itemCoboBackground.color = JamiTheme.hoverColor; }
-                    onExited: { itemCoboBackground.color = "white"; }
+                    onEntered: {
+                        itemCoboBackground.color = JamiTheme.hoverColor
+                    }
+                    onExited: {
+                        itemCoboBackground.color = "white"
+                    }
                 }
             }
 
@@ -302,7 +323,7 @@ ComboBox {
                 onExitColor: "white"
             }
 
-            ScrollIndicator.vertical: ScrollIndicator { }
+            ScrollIndicator.vertical: ScrollIndicator {}
         }
         background: Rectangle {
             id: accountComboBoxPopup

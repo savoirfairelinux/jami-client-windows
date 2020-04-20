@@ -17,7 +17,7 @@ Rectangle {
 
     property var corrspondingMessageWebView: null
 
-    signal audioCallPageBackButtonIsClicked()
+    signal audioCallPageBackButtonIsClicked
 
     function setCallOverlayBestName(bestName) {
         audioCallOverlay.bestName = bestName
@@ -29,13 +29,16 @@ Rectangle {
 
     function setAudioCallPageCorrspondingMessageWebView(webViewId) {
         corrspondingMessageWebView = webViewId
-        corrspondingMessageWebView.needToHideConversationInCall.disconnect(closeInCallConversation)
-        corrspondingMessageWebView.needToHideConversationInCall.connect(closeInCallConversation)
+        corrspondingMessageWebView.needToHideConversationInCall.disconnect(
+                    closeInCallConversation)
+        corrspondingMessageWebView.needToHideConversationInCall.connect(
+                    closeInCallConversation)
     }
 
     function closeInCallConversation() {
-        if(inAudioCallMessageWebViewStack.visible) {
-            corrspondingMessageWebView.resetMessagingHeaderBackButtonSource(true)
+        if (inAudioCallMessageWebViewStack.visible) {
+            corrspondingMessageWebView.resetMessagingHeaderBackButtonSource(
+                        true)
             corrspondingMessageWebView.setMessagingHeaderButtonsVisible(true)
             inAudioCallMessageWebViewStack.visible = false
             inAudioCallMessageWebViewStack.clear()
@@ -52,9 +55,9 @@ Rectangle {
         orientation: Qt.Vertical
 
         handle: Rectangle {
-                implicitWidth: audioCallPageRect.width
-                implicitHeight: JamiTheme.splitViewHandlePreferedWidth
-                color: SplitHandle.pressed ? JamiTheme.pressColor : (SplitHandle.hovered ? JamiTheme.hoverColor : JamiTheme.tabbarBorderColor)
+            implicitWidth: audioCallPageRect.width
+            implicitHeight: JamiTheme.splitViewHandlePreferedWidth
+            color: SplitHandle.pressed ? JamiTheme.pressColor : (SplitHandle.hovered ? JamiTheme.hoverColor : JamiTheme.tabbarBorderColor)
         }
 
         Rectangle {
@@ -74,7 +77,10 @@ Rectangle {
                 onButtonStatusChanged: {
                     audioCallOverlay.showOnHoldImage(isPaused)
                     audioCallPageRectCentralRect.visible = !isPaused
-                    audioCallOverlay.updateButtonStatus(isPaused, isAudioOnly, isAudioMuted, isVideoMuted, isRecording)
+                    audioCallOverlay.updateButtonStatus(isPaused, isAudioOnly,
+                                                        isAudioMuted,
+                                                        isVideoMuted,
+                                                        isRecording)
                 }
 
                 onShowOnHoldLabel: {
@@ -89,9 +95,11 @@ Rectangle {
                 anchors.fill: parent
 
                 onBackButtonIsClicked: {
-                    if(inAudioCallMessageWebViewStack.visible) {
-                        corrspondingMessageWebView.resetMessagingHeaderBackButtonSource(true)
-                        corrspondingMessageWebView.setMessagingHeaderButtonsVisible(true)
+                    if (inAudioCallMessageWebViewStack.visible) {
+                        corrspondingMessageWebView.resetMessagingHeaderBackButtonSource(
+                                    true)
+                        corrspondingMessageWebView.setMessagingHeaderButtonsVisible(
+                                    true)
                         inAudioCallMessageWebViewStack.visible = false
                         inAudioCallMessageWebViewStack.clear()
                     }
@@ -103,16 +111,21 @@ Rectangle {
                 }
 
                 onOverlayChatButtonClicked: {
-                    if(inAudioCallMessageWebViewStack.visible) {
-                        corrspondingMessageWebView.resetMessagingHeaderBackButtonSource(true)
-                        corrspondingMessageWebView.setMessagingHeaderButtonsVisible(true)
+                    if (inAudioCallMessageWebViewStack.visible) {
+                        corrspondingMessageWebView.resetMessagingHeaderBackButtonSource(
+                                    true)
+                        corrspondingMessageWebView.setMessagingHeaderButtonsVisible(
+                                    true)
                         inAudioCallMessageWebViewStack.visible = false
                         inAudioCallMessageWebViewStack.clear()
                     } else {
-                        corrspondingMessageWebView.resetMessagingHeaderBackButtonSource(false)
-                        corrspondingMessageWebView.setMessagingHeaderButtonsVisible(false)
+                        corrspondingMessageWebView.resetMessagingHeaderBackButtonSource(
+                                    false)
+                        corrspondingMessageWebView.setMessagingHeaderButtonsVisible(
+                                    false)
                         inAudioCallMessageWebViewStack.visible = true
-                        inAudioCallMessageWebViewStack.push(corrspondingMessageWebView)
+                        inAudioCallMessageWebViewStack.push(
+                                    corrspondingMessageWebView)
                     }
                 }
 
@@ -129,7 +142,8 @@ Rectangle {
                 }
 
                 Component.onCompleted: {
-                    callOverlayQmlObjectHolder.setCallOverlayQmlObjectHolder(audioCallOverlay)
+                    callOverlayQmlObjectHolder.setCallOverlayQmlObjectHolder(
+                                audioCallOverlay)
                 }
             }
 
@@ -139,7 +153,8 @@ Rectangle {
                 anchors.centerIn: parent
 
                 width: audioCallPageRect.width
-                height: audioCallPageRegisteredNameText.height + audioCallPageIdText.height + contactImage.height + 10
+                height: audioCallPageRegisteredNameText.height
+                        + audioCallPageIdText.height + contactImage.height + 10
 
                 ColumnLayout {
                     id: audioCallPageRectColumnLayout
@@ -176,9 +191,9 @@ Rectangle {
                         color: "white"
 
                         TextMetrics {
-                            id:     textMetricsAudioCallPageRegisteredNameText
-                            font:   audioCallPageRegisteredNameText.font
-                            text:   bestName
+                            id: textMetricsAudioCallPageRegisteredNameText
+                            font: audioCallPageRegisteredNameText.font
+                            text: bestName
                             elideWidth: audioCallPageRectCentralRect.width
                             elide: Qt.ElideMiddle
                         }
@@ -203,9 +218,9 @@ Rectangle {
                         color: "white"
 
                         TextMetrics {
-                            id:     textMetricsAudioCallPageIdText
-                            font:   audioCallPageIdText.font
-                            text:   bestId
+                            id: textMetricsAudioCallPageIdText
+                            font: audioCallPageIdText.font
+                            text: bestId
                             elideWidth: audioCallPageRectCentralRect.width
                             elide: Qt.ElideMiddle
                         }
@@ -228,7 +243,6 @@ Rectangle {
 
             clip: true
         }
-
     }
 
     color: "black"

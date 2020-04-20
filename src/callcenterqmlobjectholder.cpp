@@ -1,6 +1,11 @@
 /***************************************************************************
  * Copyright (C) 2020 by Savoir-faire Linux                                *
- * Author: Mingrui Zhang   <mingrui.zhang@savoirfairelinux.com>            *
+ * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
+ * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
+ * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -23,20 +28,25 @@
 
 CallCenterQmlObjectHolder::CallCenterQmlObjectHolder(QObject *parent)
     : QObject(parent)
-{
-}
+{}
 
-CallCenterQmlObjectHolder::~CallCenterQmlObjectHolder(){}
+CallCenterQmlObjectHolder::~CallCenterQmlObjectHolder() {}
 
 void
-CallCenterQmlObjectHolder::setCallCenterQmlObjectHolder(QObject* obj)
+CallCenterQmlObjectHolder::setCallCenterQmlObjectHolder(QObject *obj)
 {
     callCenterQmlObject_ = obj;
 
     connectCallstatusChangedSignal(LRCInstance::getCurrAccId());
 
-    connect(&LRCInstance::behaviorController(), &BehaviorController::showIncomingCallView, this, &CallCenterQmlObjectHolder::slotShowIncomingCallView);
-    connect(&LRCInstance::behaviorController(), &BehaviorController::showCallView, this, &CallCenterQmlObjectHolder::slotShowCallView);
+    connect(&LRCInstance::behaviorController(),
+            &BehaviorController::showIncomingCallView,
+            this,
+            &CallCenterQmlObjectHolder::slotShowIncomingCallView);
+    connect(&LRCInstance::behaviorController(),
+            &BehaviorController::showCallView,
+            this,
+            &CallCenterQmlObjectHolder::slotShowCallView);
 }
 
 void
@@ -49,7 +59,7 @@ CallCenterQmlObjectHolder::placeAudioOnlyCall()
 }
 
 void
-CallCenterQmlObjectHolder::hangUpACall(const QString& accountId, const QString& convUid)
+CallCenterQmlObjectHolder::hangUpACall(const QString &accountId, const QString &convUid)
 {
     auto convInfo = LRCInstance::getConversationFromConvUid(convUid, accountId);
     if (!convInfo.uid.isEmpty()) {
@@ -58,7 +68,7 @@ CallCenterQmlObjectHolder::hangUpACall(const QString& accountId, const QString& 
 }
 
 void
-CallCenterQmlObjectHolder::refuseACall(const QString& accountId, const QString& convUid)
+CallCenterQmlObjectHolder::refuseACall(const QString &accountId, const QString &convUid)
 {
     auto convInfo = LRCInstance::getConversationFromConvUid(convUid, accountId);
     if (!convInfo.uid.isEmpty()) {
@@ -67,7 +77,7 @@ CallCenterQmlObjectHolder::refuseACall(const QString& accountId, const QString& 
 }
 
 void
-CallCenterQmlObjectHolder::acceptACall(const QString& accountId, const QString& convUid)
+CallCenterQmlObjectHolder::acceptACall(const QString &accountId, const QString &convUid)
 {
     auto convInfo = LRCInstance::getConversationFromConvUid(convUid, accountId);
     if (!convInfo.uid.isEmpty()) {
@@ -76,8 +86,8 @@ CallCenterQmlObjectHolder::acceptACall(const QString& accountId, const QString& 
 }
 
 void
-CallCenterQmlObjectHolder::slotShowIncomingCallView(const QString& accountId,
-                                                    const conversation::Info& convInfo)
+CallCenterQmlObjectHolder::slotShowIncomingCallView(const QString &accountId,
+                                                    const conversation::Info &convInfo)
 {
     auto callModel = LRCInstance::getCurrentCallModel();
 
@@ -141,7 +151,9 @@ CallCenterQmlObjectHolder::slotShowIncomingCallView(const QString& accountId,
     //}
 
     emit callStatusChanged(lrc::api::call::to_string(call.status), accountId, convInfo.uid);
-    emit callContactImageChanged(Utils::getContactImageString(accountId, convInfo.uid), accountId, convInfo.uid);
+    emit callContactImageChanged(Utils::getContactImageString(accountId, convInfo.uid),
+                                 accountId,
+                                 convInfo.uid);
     emit setUIBestName(bestName, accountId, convInfo.uid);
     emit setUIBestId(finalBestId, accountId, convInfo.uid);
     //elidedLabel = sencondaryCallLabelFontMetrics.elidedText(finalBestId, Qt::ElideRight, ui->callingBestIdLabel->width());
@@ -157,8 +169,8 @@ CallCenterQmlObjectHolder::slotShowIncomingCallView(const QString& accountId,
 }
 
 void
-CallCenterQmlObjectHolder::slotShowCallView(const QString& accountId,
-                                            const lrc::api::conversation::Info& convInfo)
+CallCenterQmlObjectHolder::slotShowCallView(const QString &accountId,
+                                            const lrc::api::conversation::Info &convInfo)
 {
     // control visible callwidget buttons
     //emit setCallPanelVisibility(true);
@@ -181,7 +193,9 @@ CallCenterQmlObjectHolder::slotShowCallView(const QString& accountId,
     //audioOnlyAvatar_->setAvatarVisible(call->isAudioOnly);
     if (call->isAudioOnly) {
         emit callStatusChanged(lrc::api::call::to_string(call->status), accountId, convInfo.uid);
-        emit callContactImageChanged(Utils::getContactImageString(accountId, convInfo.uid), accountId, convInfo.uid);
+        emit callContactImageChanged(Utils::getContactImageString(accountId, convInfo.uid),
+                                     accountId,
+                                     convInfo.uid);
         emit setUIBestName(bestName, accountId, convInfo.uid);
         emit setUIBestId(finalBestId, accountId, convInfo.uid);
 
@@ -196,30 +210,32 @@ CallCenterQmlObjectHolder::slotShowCallView(const QString& accountId,
     //ui->distantWidget->setRendererId(call->id);
     //auto isPaused = call->status == lrc::api::call::Status::PAUSED;
     //ui->distantWidget->setVisible(!isPaused)
-    
+
     //ui->videoView->show();
     //ui->videoView->setFocus();
 }
 
 void
-CallCenterQmlObjectHolder::connectCallstatusChangedSignal(const QString& accountId)
+CallCenterQmlObjectHolder::connectCallstatusChangedSignal(const QString &accountId)
 {
-    auto& accInfo = LRCInstance::accountModel().getAccountInfo(accountId);
-    
+    auto &accInfo = LRCInstance::accountModel().getAccountInfo(accountId);
+
     QObject::disconnect(callStatusChangedConnection_);
 
     callStatusChangedConnection_ = QObject::connect(
         accInfo.callModel.get(),
         &lrc::api::NewCallModel::callStatusChanged,
-        [this, accountId](const QString& callId) {
-            auto& accInfo = LRCInstance::accountModel().getAccountInfo(accountId);
-            auto& callModel = accInfo.callModel;
+        [this, accountId](const QString &callId) {
+            auto &accInfo = LRCInstance::accountModel().getAccountInfo(accountId);
+            auto &callModel = accInfo.callModel;
             auto call = callModel->getCall(callId);
 
             // change status label text
             auto convInfo = LRCInstance::getConversationFromCallId(callId);
             if (!convInfo.uid.isEmpty()) {
-                emit callStatusChanged(lrc::api::call::to_string(call.status), accountId, convInfo.uid);
+                emit callStatusChanged(lrc::api::call::to_string(call.status),
+                                       accountId,
+                                       convInfo.uid);
             }
 
             switch (call.status) {
@@ -235,15 +251,16 @@ CallCenterQmlObjectHolder::connectCallstatusChangedSignal(const QString& account
                 }
                 // If it's a conference, change the smartlist index
                 // to the next remaining participant.
-                bool forceCallOnly{ false };
+                bool forceCallOnly{false};
                 if (!convInfo.confId.isEmpty()) {
                     auto callList = LRCInstance::getAPI().getConferenceSubcalls(convInfo.confId);
                     if (callList.empty()) {
-                        auto lastConferencee = LRCInstance::instance().popLastConferencee(convInfo.confId);
+                        auto lastConferencee = LRCInstance::instance().popLastConferencee(
+                            convInfo.confId);
                         callList.append(lastConferencee);
                         forceCallOnly = true;
                     }
-                    for (const auto& callId : callList) {
+                    for (const auto &callId : callList) {
                         if (!callModel->hasCall(callId)) {
                             continue;
                         }
@@ -254,8 +271,7 @@ CallCenterQmlObjectHolder::connectCallstatusChangedSignal(const QString& account
                             //ui->videoView->updateCall(otherConv.uid, otherConv.accountId, forceCallOnly);
                         }
                     }
-                }
-                else {
+                } else {
                     //ui->videoView->updateCall();
                     //setCallPanelVisibility(false);
                     //showConversationView();
