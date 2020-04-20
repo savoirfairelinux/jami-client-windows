@@ -44,12 +44,7 @@ signals:
     void showOutgoingCallPage(const QString &accountId, const QString &convUid);
     void showIncomingCallPage(const QString &accountId, const QString &convUid);
     void showAudioCallPage(const QString &accountId, const QString &convUid);
-    void setUIBestName(const QString &bestName, const QString &accountId, const QString &convUid);
-    void setUIBestId(const QString &bestId, const QString &accountId, const QString &convUid);
     void callStatusChanged(const QString &status, const QString &accountId, const QString &convUid);
-    void callContactImageChanged(const QString &imageString,
-                                 const QString &accountId,
-                                 const QString &convUid);
     void closeCallWindow(const QString &accountId, const QString &convUid);
     void updateConversationSmartList();
 

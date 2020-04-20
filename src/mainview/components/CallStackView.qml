@@ -26,6 +26,11 @@ Rectangle {
         audioCallPage.setAudioCallPageCorrspondingMessageWebView(webViewId)
     }
 
+    function updateCorrspondingUI() {
+        audioCallPage.updateUI(responsibleAccountId, responsibleConvUid)
+        outgoingCallPage.updateUI(responsibleAccountId, responsibleConvUid)
+    }
+
     Connections {
         target: CallCenter
 
@@ -68,8 +73,7 @@ Rectangle {
                 } else {
                     callStackMainView.pop(itemToFind)
                 }
-                audioCallPage.updateCallOverlay(responsibleAccountId,
-                                                responsibleConvUid)
+                audioCallPage.updateUI(responsibleAccountId, responsibleConvUid)
             }
         }
 
@@ -77,31 +81,6 @@ Rectangle {
             if (responsibleConvUid == convUid
                     && responsibleAccountId == accountId) {
                 outgoingCallPage.callStatusPresentation = status
-            }
-        }
-
-        onCallContactImageChanged: {
-            if (responsibleConvUid == convUid
-                    && responsibleAccountId == accountId) {
-                outgoingCallPage.contactImgSource = "data:image/png;base64," + image
-                audioCallPage.contactImgSource = "data:image/png;base64," + image
-            }
-        }
-
-        onSetUIBestName: {
-            if (responsibleConvUid == convUid
-                    && responsibleAccountId == accountId) {
-                outgoingCallPage.bestName = bestName
-                audioCallPage.bestName = bestName
-                audioCallPage.setCallOverlayBestName(bestName)
-            }
-        }
-
-        onSetUIBestId: {
-            if (responsibleConvUid == convUid
-                    && responsibleAccountId == accountId) {
-                outgoingCallPage.bestId = bestId
-                audioCallPage.bestId = bestId
             }
         }
     }

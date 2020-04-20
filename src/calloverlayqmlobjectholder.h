@@ -44,6 +44,7 @@ signals:
     void buttonStatusChanged(
         bool isPaused, bool isAudioOnly, bool isAudioMuted, bool isVideoMuted, bool isRecording);
     void showOnHoldLabel(bool isPaused);
+    void updateBestName(const QString &bestNameToBeUpdated);
 
 private:
     void setTime(const QString &accountId, const QString &convUid);
