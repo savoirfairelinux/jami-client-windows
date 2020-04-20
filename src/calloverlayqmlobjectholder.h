@@ -28,36 +28,32 @@ class CallOverlayQmlObjectHolder : public QObject
     Q_OBJECT
 
 public:
-    explicit CallOverlayQmlObjectHolder(QObject* parent = nullptr);
+    explicit CallOverlayQmlObjectHolder(QObject *parent = nullptr);
     ~CallOverlayQmlObjectHolder();
 
     // Must call Q_INVOKABLE so that this function can be used in QML, qml to c++
-    Q_INVOKABLE void setCallOverlayQmlObjectHolder(QObject* obj);
-    Q_INVOKABLE void updateCallOverlay(const QString& accountId, const QString& convUid);
+    Q_INVOKABLE void setCallOverlayQmlObjectHolder(QObject *obj);
+    Q_INVOKABLE void updateCallOverlay(const QString &accountId, const QString &convUid);
     Q_INVOKABLE void hangUpThisCall();
     Q_INVOKABLE void holdThisCallToggle();
     Q_INVOKABLE void muteThisCallToggle();
     Q_INVOKABLE void recordThisCallToggle();
 
 signals:
-    void updateTimeText(const QString& time);
-    void buttonStatusChanged(bool isPaused,
-                             bool isAudioOnly,
-                             bool isAudioMuted,
-                             bool isVideoMuted,
-                             bool isRecording);
+    void updateTimeText(const QString &time);
+    void buttonStatusChanged(
+        bool isPaused, bool isAudioOnly, bool isAudioMuted, bool isVideoMuted, bool isRecording);
     void showOnHoldLabel(bool isPaused);
 
 private:
-
-    void setTime(const QString& accountId, const QString& convUid);
+    void setTime(const QString &accountId, const QString &convUid);
 
     // Object pointer
-    QObject* callOverlayQmlObject_;
+    QObject *callOverlayQmlObject_;
 
     // for current conf/call info
     QString accountId_;
     QString convUid_;
 
-    QTimer* oneSecondTimer_;
+    QTimer *oneSecondTimer_;
 };

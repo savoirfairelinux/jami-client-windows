@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2020 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
  * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
@@ -21,27 +21,27 @@
 
 #include "pixbufmanipulator.h"
 
-#include <QSize>
-#include <QMetaType>
-#include <QImage>
-#include <QIODevice>
-#include <QByteArray>
 #include <QBuffer>
+#include <QByteArray>
+#include <QIODevice>
+#include <QImage>
+#include <QMetaType>
 #include <QPainter>
+#include <QSize>
 
 #include "globalinstances.h"
 
- // new LRC
-#include <api/contactmodel.h>
-#include <api/conversation.h>
+// new LRC
 #include <api/account.h>
 #include <api/contact.h>
+#include <api/contactmodel.h>
+#include <api/conversation.h>
 
 #include "utils.h"
-#include "ringthemeutils.h"
 #undef interface
 
-QVariant PixbufManipulator::personPhoto(const QByteArray& data, const QString& type)
+QVariant
+PixbufManipulator::personPhoto(const QByteArray &data, const QString &type)
 {
     QImage avatar;
     const bool ret = avatar.loadFromData(QByteArray::fromBase64(data), type.toLatin1());
@@ -53,7 +53,10 @@ QVariant PixbufManipulator::personPhoto(const QByteArray& data, const QString& t
 }
 
 QVariant
-PixbufManipulator::numberCategoryIcon(const QVariant& p, const QSize& size, bool displayPresence, bool isPresent)
+PixbufManipulator::numberCategoryIcon(const QVariant &p,
+                                      const QSize &size,
+                                      bool displayPresence,
+                                      bool isPresent)
 {
     Q_UNUSED(p)
     Q_UNUSED(size)
@@ -63,7 +66,7 @@ PixbufManipulator::numberCategoryIcon(const QVariant& p, const QSize& size, bool
 }
 
 QByteArray
-PixbufManipulator::toByteArray(const QVariant& pxm)
+PixbufManipulator::toByteArray(const QVariant &pxm)
 {
     auto image = pxm.value<QImage>();
     QByteArray ba = Utils::QImageToByteArray(image);
@@ -71,21 +74,22 @@ PixbufManipulator::toByteArray(const QVariant& pxm)
 }
 
 QVariant
-PixbufManipulator::userActionIcon(const UserActionElement& state) const
+PixbufManipulator::userActionIcon(const UserActionElement &state) const
 {
     Q_UNUSED(state)
     return QVariant();
 }
 
-QVariant PixbufManipulator::decorationRole(const QModelIndex& index)
+QVariant
+PixbufManipulator::decorationRole(const QModelIndex &index)
 {
     Q_UNUSED(index)
     return QVariant();
 }
 
 QVariant
-PixbufManipulator::decorationRole(const lrc::api::conversation::Info & conversationInfo,
-                                  const lrc::api::account::Info & accountInfo)
+PixbufManipulator::decorationRole(const lrc::api::conversation::Info &conversationInfo,
+                                  const lrc::api::account::Info &accountInfo)
 {
     QImage photo;
     auto contacts = conversationInfo.participants;
@@ -99,10 +103,11 @@ PixbufManipulator::decorationRole(const lrc::api::conversation::Info & conversat
         auto contactPhoto = contactInfo.profileInfo.avatar;
         auto bestName = Utils::bestNameForContact(contactInfo);
         auto bestId = Utils::bestIdForContact(contactInfo);
-        if (accountInfo.profileInfo.type == lrc::api::profile::Type::SIP &&
-            contactInfo.profileInfo.type == lrc::api::profile::Type::TEMPORARY) {
+        if (accountInfo.profileInfo.type == lrc::api::profile::Type::SIP
+            && contactInfo.profileInfo.type == lrc::api::profile::Type::TEMPORARY) {
             photo = Utils::fallbackAvatar(IMAGE_SIZE, QString(), QString());
-        } else if (contactInfo.profileInfo.type == lrc::api::profile::Type::TEMPORARY && contactInfo.profileInfo.uri.isEmpty()) {
+        } else if (contactInfo.profileInfo.type == lrc::api::profile::Type::TEMPORARY
+                   && contactInfo.profileInfo.uri.isEmpty()) {
             photo = Utils::fallbackAvatar(IMAGE_SIZE, QString(), QString());
         } else if (!contactPhoto.isEmpty()) {
             QByteArray byteArray = contactPhoto.toLocal8Bit();
@@ -119,7 +124,7 @@ PixbufManipulator::decorationRole(const lrc::api::conversation::Info & conversat
                                           "ring:" + contactInfo.profileInfo.uri,
                                           avatarName);
         }
+    } catch (...) {
     }
-    catch (...) {}
     return QVariant::fromValue(Utils::scaleAndFrame(photo, IMAGE_SIZE));
 }

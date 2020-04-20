@@ -15,8 +15,8 @@ Rectangle {
     property string responsibleConvUid: ""
     property string responsibleAccountId: ""
 
-    signal outgoingCallPageBackButtonIsClicked()
-    signal audioCallPageBackButtonIsClicked()
+    signal outgoingCallPageBackButtonIsClicked
+    signal audioCallPageBackButtonIsClicked
 
     function needToCloseInCallConversation() {
         audioCallPage.closeInCallConversation()
@@ -30,12 +30,13 @@ Rectangle {
         target: CallCenter
 
         onShowOutgoingCallPage: {
-            if(responsibleConvUid == convUid && responsibleAccountId == accountId) {
-                var itemToFind = callStackMainView.find(function(item) {
-                    return item.stackNumber === 1;
+            if (responsibleConvUid == convUid
+                    && responsibleAccountId == accountId) {
+                var itemToFind = callStackMainView.find(function (item) {
+                    return item.stackNumber === 1
                 })
 
-                if(!itemToFind) {
+                if (!itemToFind) {
                     callStackMainView.push(outgoingCallPage)
                 } else {
                     callStackMainView.pop(itemToFind)
@@ -44,44 +45,52 @@ Rectangle {
         }
 
         onShowIncomingCallPage: {
-            IncomingCallPageCreation.createincomingCallPageWindowObjects(accountId, convUid)
-            IncomingCallPageCreation.showIncomingCallPageWindow(accountId, convUid)
+            IncomingCallPageCreation.createincomingCallPageWindowObjects(
+                        accountId, convUid)
+            IncomingCallPageCreation.showIncomingCallPageWindow(accountId,
+                                                                convUid)
         }
 
         onClosePotentialIncomingCallPageWindow: {
-            IncomingCallPageCreation.closeIncomingCallPageWindow(accountId, convUid)
+            IncomingCallPageCreation.closeIncomingCallPageWindow(accountId,
+                                                                 convUid)
         }
 
         onShowAudioCallPage: {
-            if(responsibleConvUid == convUid && responsibleAccountId == accountId) {
-                var itemToFind = callStackMainView.find(function(item) {
-                    return item.stackNumber === 0;
+            if (responsibleConvUid == convUid
+                    && responsibleAccountId == accountId) {
+                var itemToFind = callStackMainView.find(function (item) {
+                    return item.stackNumber === 0
                 })
 
-                if(!itemToFind) {
+                if (!itemToFind) {
                     callStackMainView.push(audioCallPage)
                 } else {
                     callStackMainView.pop(itemToFind)
                 }
-                audioCallPage.updateCallOverlay(responsibleAccountId, responsibleConvUid)
+                audioCallPage.updateCallOverlay(responsibleAccountId,
+                                                responsibleConvUid)
             }
         }
 
         onCallStatusChanged: {
-            if(responsibleConvUid == convUid && responsibleAccountId == accountId) {
+            if (responsibleConvUid == convUid
+                    && responsibleAccountId == accountId) {
                 outgoingCallPage.callStatusPresentation = status
             }
         }
 
         onCallContactImageChanged: {
-            if(responsibleConvUid == convUid && responsibleAccountId == accountId) {
+            if (responsibleConvUid == convUid
+                    && responsibleAccountId == accountId) {
                 outgoingCallPage.contactImgSource = "data:image/png;base64," + image
                 audioCallPage.contactImgSource = "data:image/png;base64," + image
             }
         }
 
         onSetUIBestName: {
-            if(responsibleConvUid == convUid && responsibleAccountId == accountId) {
+            if (responsibleConvUid == convUid
+                    && responsibleAccountId == accountId) {
                 outgoingCallPage.bestName = bestName
                 audioCallPage.bestName = bestName
                 audioCallPage.setCallOverlayBestName(bestName)
@@ -89,7 +98,8 @@ Rectangle {
         }
 
         onSetUIBestId: {
-            if(responsibleConvUid == convUid && responsibleAccountId == accountId) {
+            if (responsibleConvUid == convUid
+                    && responsibleAccountId == accountId) {
                 outgoingCallPage.bestId = bestId
                 audioCallPage.bestId = bestId
             }

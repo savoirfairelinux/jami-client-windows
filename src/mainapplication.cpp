@@ -20,21 +20,20 @@
 
 #include "mainapplication.h"
 
-#include "globalsystemtray.h"
-//#include "accountmigrationdialog.h"
-#include "globalinstances.h"
-#include "lrcinterface.h"
-#include "pixbufmanipulator.h"
-#include "utils.h"
-#include "qrimageprovider.h"
-#include "tintedbuttonimageprovider.h"
-#include "accountlistmodel.h"
-#include "version.h"
-#include "messagewebviewqmlobjectholder.h"
 #include "accountcomboboxqmlobjectholder.h"
+#include "accountlistmodel.h"
 #include "callcenterqmlobjectholder.h"
 #include "calloverlayqmlobjectholder.h"
 #include "conversationsmartlistviewqmlobjectholder.h"
+#include "globalinstances.h"
+#include "globalsystemtray.h"
+#include "lrcinterface.h"
+#include "messagewebviewqmlobjectholder.h"
+#include "pixbufmanipulator.h"
+#include "qrimageprovider.h"
+#include "tintedbuttonimageprovider.h"
+#include "utils.h"
+#include "version.h"
 
 #include <QFontDatabase>
 #include <QQmlContext>
@@ -50,9 +49,9 @@
 #include <gnutls/gnutls.h>
 #endif
 
-MainApplication::MainApplication(int &argc, char** argv) :
-    QGuiApplication(argc, argv),
-    engine_(std::make_unique<QQmlApplicationEngine>())
+MainApplication::MainApplication(int &argc, char **argv)
+    : QGuiApplication(argc, argv)
+    , engine_(std::make_unique<QQmlApplicationEngine>())
 {
     QObject::connect(this, &QGuiApplication::aboutToQuit, [this] { exitApp(); });
 }
@@ -67,7 +66,8 @@ MainApplication::applicationInitialization()
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
     QCoreApplication::setAttribute(Qt::AA_UseOpenGLES);
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor);
+    QGuiApplication::setHighDpiScaleFactorRoundingPolicy(
+        Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor);
     // initialize QtWebEngine
     QtWebEngine::initialize();
 #endif
@@ -97,28 +97,26 @@ MainApplication::vsConsoleDebug()
 {
 #ifdef _MSC_VER
     // Print debug to output window if using VS
-    QObject::connect(
-        &LRCInstance::behaviorController(),
-        &lrc::api::BehaviorController::debugMessageReceived,
-        [](const QString& message) {
-            OutputDebugStringA((message + "\n").toStdString().c_str());
-        });
+    QObject::connect(&LRCInstance::behaviorController(),
+                     &lrc::api::BehaviorController::debugMessageReceived,
+                     [](const QString &message) {
+                         OutputDebugStringA((message + "\n").toStdString().c_str());
+                     });
 #endif
 }
 
 void
-MainApplication::fileDebug(QFile* debugFile)
+MainApplication::fileDebug(QFile *debugFile)
 {
-    QObject::connect(
-        &LRCInstance::behaviorController(),
-        &lrc::api::BehaviorController::debugMessageReceived,
-        [debugFile](const QString& message) {
-            if (debugFile->open(QIODevice::WriteOnly | QIODevice::Append)) {
-                auto msg = (message + "\n").toStdString().c_str();
-                debugFile->write(msg, qstrlen(msg));
-                debugFile->close();
-            }
-        });
+    QObject::connect(&LRCInstance::behaviorController(),
+                     &lrc::api::BehaviorController::debugMessageReceived,
+                     [debugFile](const QString &message) {
+                         if (debugFile->open(QIODevice::WriteOnly | QIODevice::Append)) {
+                             auto msg = (message + "\n").toStdString().c_str();
+                             debugFile->write(msg, qstrlen(msg));
+                             debugFile->close();
+                         }
+                     });
 }
 
 void
@@ -130,13 +128,13 @@ MainApplication::exitApp()
 #endif
 }
 
-char**
-MainApplication::parseInputArgument(int& argc, char* argv[], char* argToParse)
+char **
+MainApplication::parseInputArgument(int &argc, char *argv[], char *argToParse)
 {
     // forcefully append argToParse
     int oldArgc = argc;
     argc = argc + 1 + 1;
-    char** newArgv = new char* [argc];
+    char **newArgv = new char *[argc];
     for (int i = 0; i < oldArgc; i++) {
         newArgv[i] = argv[i];
     }
@@ -161,17 +159,19 @@ MainApplication::loadTranslations()
     const auto locale_name = QLocale::system().name();
     const auto locale_lang = locale_name.split('_')[0];
 
-    QTranslator* qtTranslator_lang = new QTranslator(this);
-    QTranslator* qtTranslator_name = new QTranslator(this);
+    QTranslator *qtTranslator_lang = new QTranslator(this);
+    QTranslator *qtTranslator_name = new QTranslator(this);
     if (locale_name != locale_lang) {
-        if (qtTranslator_lang->load("qt_" + locale_lang, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+        if (qtTranslator_lang->load("qt_" + locale_lang,
+                                    QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
             installTranslator(qtTranslator_lang);
     }
-    qtTranslator_name->load("qt_" + locale_name, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    qtTranslator_name->load("qt_" + locale_name,
+                            QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     installTranslator(qtTranslator_name);
 
-    QTranslator* lrcTranslator_lang = new QTranslator(this);
-    QTranslator* lrcTranslator_name = new QTranslator(this);
+    QTranslator *lrcTranslator_lang = new QTranslator(this);
+    QTranslator *lrcTranslator_name = new QTranslator(this);
     if (locale_name != locale_lang) {
         if (lrcTranslator_lang->load(appDir + "share/libringclient/translations/lrc_" + locale_lang))
             installTranslator(lrcTranslator_lang);
@@ -179,13 +179,15 @@ MainApplication::loadTranslations()
     if (lrcTranslator_name->load(appDir + "share/libringclient/translations/lrc_" + locale_name))
         installTranslator(lrcTranslator_name);
 
-    QTranslator* mainTranslator_lang = new QTranslator(this);
-    QTranslator* mainTranslator_name = new QTranslator(this);
+    QTranslator *mainTranslator_lang = new QTranslator(this);
+    QTranslator *mainTranslator_name = new QTranslator(this);
     if (locale_name != locale_lang) {
-        if (mainTranslator_lang->load(appDir + "share/ring/translations/ring_client_windows_" + locale_lang))
+        if (mainTranslator_lang->load(appDir + "share/ring/translations/ring_client_windows_"
+                                      + locale_lang))
             installTranslator(mainTranslator_lang);
     }
-    if (mainTranslator_name->load(appDir + "share/ring/translations/ring_client_windows_" + locale_name))
+    if (mainTranslator_name->load(appDir + "share/ring/translations/ring_client_windows_"
+                                  + locale_name))
         installTranslator(mainTranslator_name);
 }
 
@@ -193,17 +195,10 @@ void
 MainApplication::initLrc()
 {
     // init mainwindow and finish splash when mainwindow shows up
-    //splash_ = std::make_unique<SplashScreen>();
     std::atomic_bool isMigrating(false);
     LRCInstance::init(
         [this, &isMigrating] {
-            //splash_->setupUI(
-            //    QPixmap(":/images/logo-jami-standard-coul.png"),
-            //    QString("Jami - ") + QObject::tr("Migration needed"),
-            //    QObject::tr("Migration in progress... This may take a while."),
-            //    QColor(232, 232, 232)
-            //);
-            //splash_->show();
+            // TODO: splash screen for account migration
             isMigrating = true;
             while (isMigrating) {
                 this->processEvents();
@@ -215,13 +210,12 @@ MainApplication::initLrc()
             }
             isMigrating = false;
         });
-    //splash_->hide();
     LRCInstance::subscribeToDebugReceived();
     LRCInstance::getAPI().holdConferences = false;
 }
 
 void
-MainApplication::processInputArgument(bool& startMinimized)
+MainApplication::processInputArgument(bool &startMinimized)
 {
     debugFile_ = std::make_unique<QFile>(getDebugFilePath());
     QString uri = "";
@@ -229,8 +223,7 @@ MainApplication::processInputArgument(bool& startMinimized)
     for (auto string : QCoreApplication::arguments()) {
         if (string.startsWith("jami:")) {
             uri = string;
-        }
-        else {
+        } else {
             if (string == "-m" || string == "--minimized") {
                 startMinimized = true;
             }
@@ -255,18 +248,7 @@ MainApplication::processInputArgument(bool& startMinimized)
 bool
 MainApplication::startAccountMigration()
 {
-    //auto accountList = LRCInstance::accountModel().getAccountList();
-
-    //for (const QString& i : accountList) {
-    //    auto accountStatus = LRCInstance::accountModel().getAccountInfo(i).status;
-    //    if (accountStatus == lrc::api::account::Status::ERROR_NEED_MIGRATION) {
-    //        std::unique_ptr<AccountMigrationDialog> dialog = std::make_unique<AccountMigrationDialog>(nullptr, i);
-    //        int status = dialog->exec();
-
-    //        //migration failed
-    //        return status == 0 ? false : true;
-    //    }
-    //}
+    // TODO: account migration
     return true;
 }
 
@@ -287,23 +269,51 @@ MainApplication::qmlInitialization()
     qmlRegisterType<AccountListModel>("net.jami.model.account", 1, 0, "AccountListModel");
 
     // register object holder type
-    qmlRegisterType<MessageWebViewQmlObjectHolder>("net.jami.MessageWebViewQmlObjectHolder", 1, 0, "MessageWebViewQmlObjectHolder");
-    qmlRegisterType<AccountComboBoxQmlObjectHolder>("net.jami.AccountComboBoxQmlObjectHolder", 1, 0, "AccountComboBoxQmlObjectHolder");
-    qmlRegisterType<CallCenterQmlObjectHolder>("net.jami.CallCenterQmlObjectHolder", 1, 0, "CallCenterQmlObjectHolder");
-    qmlRegisterType<CallOverlayQmlObjectHolder>("net.jami.CallOverlayQmlObjectHolder", 1, 0, "CallOverlayQmlObjectHolder");
-    qmlRegisterType<ConversationSmartListViewQmlObjectHolder>("net.jami.ConversationSmartListViewQmlObjectHolder", 1, 0, "ConversationSmartListViewQmlObjectHolder");
+    qmlRegisterType<MessageWebViewQmlObjectHolder>("net.jami.MessageWebViewQmlObjectHolder",
+                                                   1,
+                                                   0,
+                                                   "MessageWebViewQmlObjectHolder");
+    qmlRegisterType<AccountComboBoxQmlObjectHolder>("net.jami.AccountComboBoxQmlObjectHolder",
+                                                    1,
+                                                    0,
+                                                    "AccountComboBoxQmlObjectHolder");
+    qmlRegisterType<CallCenterQmlObjectHolder>("net.jami.CallCenterQmlObjectHolder",
+                                               1,
+                                               0,
+                                               "CallCenterQmlObjectHolder");
+    qmlRegisterType<CallOverlayQmlObjectHolder>("net.jami.CallOverlayQmlObjectHolder",
+                                                1,
+                                                0,
+                                                "CallOverlayQmlObjectHolder");
+    qmlRegisterType<ConversationSmartListViewQmlObjectHolder>(
+        "net.jami.ConversationSmartListViewQmlObjectHolder",
+        1,
+        0,
+        "ConversationSmartListViewQmlObjectHolder");
 
     // qmlRegisterSingletonType
-    qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/src/constant/JamiTheme.qml")), "net.jami.constant.jamitheme", 1, 0, "JamiTheme");
-    qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/src/mainview/components/CallCenter.qml")), "net.jami.callcenter", 1, 0, "CallCenter");
-    qmlRegisterSingletonType<LrcGeneralAdapter>(
-        "net.jami.LrcGeneralAdapter", 1, 0, "LrcGeneralAdapter",
-        [](QQmlEngine* engine, QJSEngine* scriptEngine) -> QObject* {
-            Q_UNUSED(engine);
-            Q_UNUSED(scriptEngine);
-            LrcGeneralAdapter* lrcGeneralAdapter = new LrcGeneralAdapter();
-            return lrcGeneralAdapter;
-        });
+    qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/src/constant/JamiTheme.qml")),
+                             "net.jami.constant.jamitheme",
+                             1,
+                             0,
+                             "JamiTheme");
+    qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/src/mainview/components/CallCenter.qml")),
+                             "net.jami.callcenter",
+                             1,
+                             0,
+                             "CallCenter");
+    qmlRegisterSingletonType<LrcGeneralAdapter>("net.jami.LrcGeneralAdapter",
+                                                1,
+                                                0,
+                                                "LrcGeneralAdapter",
+                                                [](QQmlEngine *engine,
+                                                   QJSEngine *scriptEngine) -> QObject * {
+                                                    Q_UNUSED(engine);
+                                                    Q_UNUSED(scriptEngine);
+                                                    LrcGeneralAdapter *lrcGeneralAdapter
+                                                        = new LrcGeneralAdapter();
+                                                    return lrcGeneralAdapter;
+                                                });
 
     // add image provider
     engine_->addImageProvider(QLatin1String("qrImage"), new QrImageProvider());
@@ -347,7 +357,7 @@ MainApplication::applicationSetup()
     initLrc();
 
     // process input argument
-    bool startMinimized{ false };
+    bool startMinimized{false};
     processInputArgument(startMinimized);
 
     // start possible account migration

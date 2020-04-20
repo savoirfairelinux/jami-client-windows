@@ -25,9 +25,13 @@ Window {
     property variant clickPos: "1,1"
 
     function updateUI() {
-        incomingCallPage.contactImgSource = "data:image/png;base64," + utilsAdapter.getContactImageString(responsibleAccountId, responsibleConvUid)
-        incomingCallPage.bestName = utilsAdapter.getBestName(responsibleAccountId, responsibleConvUid)
-        var id = utilsAdapter.getBestId(responsibleAccountId, responsibleConvUid)
+        incomingCallPage.contactImgSource = "data:image/png;base64,"
+                + utilsAdapter.getContactImageString(responsibleAccountId,
+                                                     responsibleConvUid)
+        incomingCallPage.bestName = utilsAdapter.getBestName(
+                    responsibleAccountId, responsibleConvUid)
+        var id = utilsAdapter.getBestId(responsibleAccountId,
+                                        responsibleConvUid)
         incomingCallPage.bestId = (incomingCallPage.bestName !== id) ? id : ""
     }
 
@@ -40,7 +44,8 @@ Window {
     x: screen.virtualX + screen.width - width
     y: screen.virtualY + screen.height - height - 50
 
-    flags: Qt.SubWindow | Qt.Tool | Qt.FramelessWindowHint | Qt.WindowSystemMenuHint | Qt.WindowStaysOnTopHint
+    flags: Qt.SubWindow | Qt.Tool | Qt.FramelessWindowHint
+           | Qt.WindowSystemMenuHint | Qt.WindowStaysOnTopHint
     screen: Qt.application.screens[0]
 
     UtilsAdapter {
@@ -65,13 +70,13 @@ Window {
             height: 30
 
             onPressed: {
-                clickPos = Qt.point(mouse.x,mouse.y)
+                clickPos = Qt.point(mouse.x, mouse.y)
             }
 
             onPositionChanged: {
                 var delta = Qt.point(mouse.x - clickPos.x, mouse.y - clickPos.y)
-                incomingCallPage.x += delta.x;
-                incomingCallPage.y += delta.y;
+                incomingCallPage.x += delta.x
+                incomingCallPage.y += delta.y
             }
         }
 
@@ -125,7 +130,8 @@ Window {
                 Layout.topMargin: 5
 
                 Layout.preferredWidth: incomingCallPage.width
-                Layout.preferredHeight: jamiBestNameText.height + jamiBestIdText.height + talkToYouText.height + 20
+                Layout.preferredHeight: jamiBestNameText.height + jamiBestIdText.height
+                                        + talkToYouText.height + 20
 
                 ColumnLayout {
                     id: incomingCallPageTextRectColumnLayout
@@ -148,9 +154,9 @@ Window {
                         color: "white"
 
                         TextMetrics {
-                            id:     textMetricsjamiBestNameText
-                            font:   jamiBestNameText.font
-                            text:   bestName
+                            id: textMetricsjamiBestNameText
+                            font: jamiBestNameText.font
+                            text: bestName
                             elideWidth: incomingCallPageTextRect.width - 30
                             elide: Qt.ElideMiddle
                         }
@@ -174,9 +180,9 @@ Window {
                         color: "white"
 
                         TextMetrics {
-                            id:     textMetricsjamiBestIdText
-                            font:   jamiBestIdText.font
-                            text:   bestId
+                            id: textMetricsjamiBestIdText
+                            font: jamiBestIdText.font
+                            text: bestId
                             elideWidth: incomingCallPageTextRect.width - 30
                             elide: Qt.ElideMiddle
                         }
@@ -239,8 +245,8 @@ Window {
 
                         onClicked: {
                             incomingCallPage.close()
-                            //
-                            CallCenter.acceptACall(responsibleAccountId, responsibleConvUid)
+                            CallCenter.acceptACall(responsibleAccountId,
+                                                   responsibleConvUid)
                         }
                     }
 
@@ -280,7 +286,8 @@ Window {
 
                         onClicked: {
                             incomingCallPage.close()
-                            CallCenter.refuseACall(responsibleAccountId, responsibleConvUid)
+                            CallCenter.refuseACall(responsibleAccountId,
+                                                   responsibleConvUid)
                         }
                     }
 

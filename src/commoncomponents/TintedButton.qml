@@ -14,11 +14,11 @@ Button {
 
     property bool isSelected: false
 
-    signal buttonEntered()
+    signal buttonEntered
 
     function setChecked(checked) {
         isSelected = checked
-        if(isSelected) {
+        if (isSelected) {
             tintedButtonImage.source = selectedPixmapSource
         } else {
             tintedButtonImage.source = normalPixmapSource
@@ -32,7 +32,6 @@ Button {
 
         radius: 30
         color: "transparent"
-
 
         Image {
             id: tintedButtonImage
@@ -55,24 +54,30 @@ Button {
 
             onReleased: {
                 isSelected = !isSelected
-                if(isSelected) {
-                    tintedButtonImage.source = "image://tintedPixmap/" + selectedPixmapSource.replace("qrc:/images/icons/", "") + "+" + tintColor
+                if (isSelected) {
+                    tintedButtonImage.source = "image://tintedPixmap/"
+                            + selectedPixmapSource.replace(
+                                "qrc:/images/icons/", "") + "+" + tintColor
                 } else {
-                    tintedButtonImage.source = "image://tintedPixmap/" + normalPixmapSource.replace("qrc:/images/icons/", "") + "+" + tintColor
+                    tintedButtonImage.source = "image://tintedPixmap/" + normalPixmapSource.replace(
+                                "qrc:/images/icons/", "") + "+" + tintColor
                 }
                 tintedButton.clicked()
             }
             onEntered: {
                 // tinted
-                if(isSelected) {
-                    tintedButtonImage.source = "image://tintedPixmap/" + selectedPixmapSource.replace("qrc:/images/icons/", "") + "+" + tintColor
+                if (isSelected) {
+                    tintedButtonImage.source = "image://tintedPixmap/"
+                            + selectedPixmapSource.replace(
+                                "qrc:/images/icons/", "") + "+" + tintColor
                 } else {
-                    tintedButtonImage.source = "image://tintedPixmap/" + normalPixmapSource.replace("qrc:/images/icons/", "") + "+" + tintColor
+                    tintedButtonImage.source = "image://tintedPixmap/" + normalPixmapSource.replace(
+                                "qrc:/images/icons/", "") + "+" + tintColor
                 }
                 tintedButton.buttonEntered()
             }
             onExited: {
-                if(isSelected) {
+                if (isSelected) {
                     tintedButtonImage.source = selectedPixmapSource
                 } else {
                     tintedButtonImage.source = normalPixmapSource

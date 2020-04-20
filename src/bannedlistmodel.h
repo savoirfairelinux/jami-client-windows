@@ -1,5 +1,5 @@
 /***************************************************************************
-* Copyright (C) 2019-2019 by Savoir-faire Linux                                 *
+* Copyright (C) 2019-2020 by Savoir-faire Linux                            *
 * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                       *
 *                                                                          *
 * This program is free software; you can redistribute it and/or modify     *
@@ -22,12 +22,11 @@
 class BannedListModel : public QAbstractListModel
 {
     Q_OBJECT
-    BannedListModel(const BannedListModel& cpy);
+    BannedListModel(const BannedListModel &cpy);
 
 public:
     explicit BannedListModel(QObject *parent = nullptr);
 
     int rowCount(const QModelIndex &index = QModelIndex()) const override;
-    bool setData(const QModelIndex& index, const QVariant& value, int role = Qt::EditRole) override;
-
+    bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
 };

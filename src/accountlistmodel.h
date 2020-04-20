@@ -23,22 +23,15 @@
 
 // LRC
 #include "api/account.h"
-#include "api/conversation.h"
 #include "api/contact.h"
+#include "api/conversation.h"
 
 class AccountListModel : public QAbstractListModel
 {
     Q_OBJECT
 
 public:
-    enum Role {
-        Alias = Qt::UserRole + 1,
-        Username,
-        Picture,
-        Type,
-        Status,
-        ID
-    };
+    enum Role { Alias = Qt::UserRole + 1, Username, Picture, Type, Status, ID };
 
     explicit AccountListModel(QObject *parent = 0);
 

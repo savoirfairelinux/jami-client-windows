@@ -8,17 +8,19 @@ ListView {
     id: conversationSmartListView
 
     signal needToAccessMessageWebView(string currentUserDisplayName, string currentUserAlias, string currentUID, bool inCall, bool isIncomingCallInProgress)
-    signal needToDeselectItems()
-    signal needToBackToWelcomePage()
+    signal needToDeselectItems
+    signal needToBackToWelcomePage
 
-    signal currentIndexIsChanged()
+    signal currentIndexIsChanged
 
     function modelSorted(contactURIToCompare) {
         var conversationSmartListViewModel = conversationSmartListView.model
         conversationSmartListView.currentIndex = -1
         updateConversationSmartListView()
-        for(var i = 0; i < count; i ++) {
-            if(conversationSmartListViewModel.data(conversationSmartListViewModel.index(i, 0), 261) === contactURIToCompare) {
+        for (var i = 0; i < count; i++) {
+            if (conversationSmartListViewModel.data(
+                        conversationSmartListViewModel.index(i, 0),
+                        261) === contactURIToCompare) {
                 conversationSmartListView.currentIndex = i
                 break
             }
@@ -27,8 +29,10 @@ ListView {
 
     function updateConversationSmartListView() {
         var conversationSmartListViewModel = conversationSmartListView.model
-        conversationSmartListViewModel.dataChanged(conversationSmartListViewModel.index(0, 0),
-                                                   conversationSmartListViewModel.index(conversationSmartListViewModel.rowCount() - 1, 0))
+        conversationSmartListViewModel.dataChanged(
+                    conversationSmartListViewModel.index(0, 0),
+                    conversationSmartListViewModel.index(
+                        conversationSmartListViewModel.rowCount() - 1, 0))
     }
 
     function setModel(model) {
@@ -64,10 +68,17 @@ ListView {
             target: conversationSmartListView
 
             onCurrentIndexIsChanged: {
-                if(conversationSmartListView.currentIndex === -1 || conversationSmartListView.currentIndex !== index) {
-                    itemSmartListBackground.color = Qt.binding(function(){return InCall ? Qt.lighter(JamiTheme.selectionBlue, 1.8) : "white"})
+                if (conversationSmartListView.currentIndex === -1
+                        || conversationSmartListView.currentIndex !== index) {
+                    itemSmartListBackground.color = Qt.binding(function () {
+                        return InCall ? Qt.lighter(JamiTheme.selectionBlue,
+                                                   1.8) : "white"
+                    })
                 } else {
-                    itemSmartListBackground.color = Qt.binding(function(){return InCall ? Qt.lighter(JamiTheme.selectionBlue, 1.8) : JamiTheme.releaseColor})
+                    itemSmartListBackground.color = Qt.binding(function () {
+                        return InCall ? Qt.lighter(JamiTheme.selectionBlue,
+                                                   1.8) : JamiTheme.releaseColor
+                    })
                 }
             }
         }
@@ -205,48 +216,65 @@ ListView {
             color: InCall ? Qt.lighter(JamiTheme.selectionBlue, 1.8) : "white"
 
             implicitWidth: conversationSmartListView.width
-            implicitHeight: Math.max(conversationSmartListUserName.height + textMetricsConversationSmartListUserId.height + 10, conversationSmartListUserImage.height + 10)
+            implicitHeight: Math.max(
+                                conversationSmartListUserName.height
+                                + textMetricsConversationSmartListUserId.height + 10,
+                                conversationSmartListUserImage.height + 10)
             border.width: 0
         }
 
         MouseArea {
             id: mouseAreaSmartListItemDelegate
 
-            anchors.fill: parent;
-            hoverEnabled: true;
+            anchors.fill: parent
+            hoverEnabled: true
             acceptedButtons: Qt.LeftButton | Qt.RightButton
 
             onPressed: {
-                if(!InCall) {
+                if (!InCall) {
                     itemSmartListBackground.color = JamiTheme.pressColor
                 }
             }
             onReleased: {
                 conversationSmartListView.currentIndex = index
-                if(!InCall) {
+                if (!InCall) {
                     itemSmartListBackground.color = JamiTheme.releaseColor
                 }
-                if (mouse.button === Qt.RightButton && Qt.platform.os == "windows") {
+                if (mouse.button === Qt.RightButton
+                        && Qt.platform.os == "windows") {
                     // make menu pos at mouse
-                    var relativeMousePos = mapToItem(itemSmartListBackground, mouse.x, mouse.y)
+                    var relativeMousePos = mapToItem(itemSmartListBackground,
+                                                     mouse.x, mouse.y)
                     smartListContextMenu.x = relativeMousePos.x
                     smartListContextMenu.y = relativeMousePos.y
                     smartListContextMenu.open()
-                } else if (mouse.button === Qt.LeftButton && Qt.platform.os == "windows") {
-                    conversationSmartListView.needToAccessMessageWebView(DisplayID == DisplayName ? "" : DisplayID, DisplayName, UID, InCall, IsIncomingCallInProgress)
+                } else if (mouse.button === Qt.LeftButton
+                           && Qt.platform.os == "windows") {
+                    conversationSmartListView.needToAccessMessageWebView(
+                                DisplayID == DisplayName ? "" : DisplayID,
+                                DisplayName, UID, InCall,
+                                IsIncomingCallInProgress)
                 }
             }
             onEntered: {
-                if(!InCall) {
+                if (!InCall) {
                     itemSmartListBackground.color = JamiTheme.hoverColor
                 }
             }
             onExited: {
-                if(!InCall) {
-                    if(conversationSmartListView.currentIndex != index || conversationSmartListView.currentIndex == -1) {
-                        itemSmartListBackground.color = Qt.binding(function(){return InCall ? Qt.lighter(JamiTheme.selectionBlue, 1.8) : "white"})
+                if (!InCall) {
+                    if (conversationSmartListView.currentIndex != index
+                            || conversationSmartListView.currentIndex == -1) {
+                        itemSmartListBackground.color = Qt.binding(function () {
+                            return InCall ? Qt.lighter(JamiTheme.selectionBlue,
+                                                       1.8) : "white"
+                        })
                     } else {
-                        itemSmartListBackground.color = Qt.binding(function(){return InCall ? Qt.lighter(JamiTheme.selectionBlue, 1.8) : JamiTheme.releaseColor})
+                        itemSmartListBackground.color = Qt.binding(function () {
+                            return InCall ? Qt.lighter(
+                                                JamiTheme.selectionBlue,
+                                                1.8) : JamiTheme.releaseColor
+                        })
                     }
                 }
             }
@@ -267,16 +295,22 @@ ListView {
                     border.color: "black"
                     color: smartListCopyItem.down ? JamiTheme.releaseColor : "white"
                     MouseArea {
-                        anchors.fill: parent;
-                        hoverEnabled: true;
-                        onPressed: { smartListContextMenuBackRect.color = JamiTheme.pressColor; }
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        onPressed: {
+                            smartListContextMenuBackRect.color = JamiTheme.pressColor
+                        }
                         onReleased: {
                             smartListContextMenuBackRect.color = JamiTheme.releaseColor
                             smartListContextMenu.close()
                             contextMenuPopUpMock.open()
                         }
-                        onEntered: { smartListContextMenuBackRect.color = JamiTheme.hoverColor; }
-                        onExited: { smartListContextMenuBackRect.color = "white"; }
+                        onEntered: {
+                            smartListContextMenuBackRect.color = JamiTheme.hoverColor
+                        }
+                        onExited: {
+                            smartListContextMenuBackRect.color = "white"
+                        }
                     }
                 }
             }
@@ -287,5 +321,5 @@ ListView {
         }
     }
 
-    ScrollIndicator.vertical: ScrollIndicator { }
+    ScrollIndicator.vertical: ScrollIndicator {}
 }

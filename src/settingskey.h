@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2020 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -31,4 +31,4 @@ constexpr static char windowState[] = "windowState";
 constexpr static char autoUpdate[] = "autoUpdate";
 constexpr static char neverShowMeAgain[] = "neverShowMeAgain";
 constexpr static char hasRun[] = "hasRun";
-}
+} // namespace SettingsKey
