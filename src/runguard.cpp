@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2019 by Savoir-faire Linux                                *
+ * Copyright (C) 2019-2020 by Savoir-faire Linux                           *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -15,18 +15,15 @@
  * You should have received a copy of the GNU General Public License       *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
- // Based on: https://stackoverflow.com/a/28172162
+// Based on: https://stackoverflow.com/a/28172162
 
 #include "runguard.h"
-
 #include <QCryptographicHash>
 
-#include "mainwindow.h"
+namespace {
 
-namespace
-{
-
-QString generateKeyHash(const QString& key, const QString& salt)
+QString
+generateKeyHash(const QString &key, const QString &salt)
 {
     QByteArray data;
 
@@ -37,9 +34,9 @@ QString generateKeyHash(const QString& key, const QString& salt)
     return data;
 }
 
-}
+} // namespace
 
-RunGuard::RunGuard(const QString& key)
+RunGuard::RunGuard(const QString &key)
     : key_(key)
     , memLockKey_(generateKeyHash(key, "_memLockKey"))
     , sharedmemKey_(generateKeyHash(key, "_sharedmemKey"))
@@ -55,10 +52,11 @@ RunGuard::~RunGuard()
 void
 RunGuard::tryRestorePrimaryInstance()
 {
-    MainWindow::instance().showWindow();
+    //TODO: relaunch application
 }
 
-bool RunGuard::isAnotherRunning()
+bool
+RunGuard::isAnotherRunning()
 {
     if (sharedMem_.isAttached())
         return false;
@@ -72,7 +70,8 @@ bool RunGuard::isAnotherRunning()
     return isRunning;
 }
 
-bool RunGuard::tryToRun()
+bool
+RunGuard::tryToRun()
 {
 #ifdef Q_OS_WIN
     if (isAnotherRunning()) {
@@ -82,8 +81,8 @@ bool RunGuard::tryToRun()
         if (socket_ == nullptr) {
             socket_ = new QLocalSocket();
         }
-        if (socket_->state() == QLocalSocket::UnconnectedState ||
-            socket_->state() == QLocalSocket::ClosingState) {
+        if (socket_->state() == QLocalSocket::UnconnectedState
+            || socket_->state() == QLocalSocket::ClosingState) {
             socket_->connectToServer(key_);
         }
         if (socket_->state() == QLocalSocket::ConnectingState) {
@@ -106,18 +105,17 @@ bool RunGuard::tryToRun()
     server_ = new QLocalServer();
     server_->setSocketOptions(QLocalServer::UserAccessOption);
     server_->listen(key_);
-    QObject::connect(
-        server_,
-        &QLocalServer::newConnection,
-        this,
-        &RunGuard::tryRestorePrimaryInstance
-    );
+    QObject::connect(server_,
+                     &QLocalServer::newConnection,
+                     this,
+                     &RunGuard::tryRestorePrimaryInstance);
 #endif
 
     return true;
 }
 
-void RunGuard::release()
+void
+RunGuard::release()
 {
     memLock_.acquire();
     if (sharedMem_.isAttached())

@@ -1,6 +1,11 @@
 /***************************************************************************
  * Copyright (C) 2020 by Savoir-faire Linux                                *
- * Author: Mingrui Zhang   <mingrui.zhang@savoirfairelinux.com>            *
+ * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
+ * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
+ * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -21,24 +26,20 @@
 #include "utils.h"
 
 CallOverlayQmlObjectHolder::CallOverlayQmlObjectHolder(QObject *parent)
-    : QObject(parent),
-      oneSecondTimer_(new QTimer(this))
-{
+    : QObject(parent)
+    , oneSecondTimer_(new QTimer(this))
+{}
 
-}
-
-CallOverlayQmlObjectHolder::~CallOverlayQmlObjectHolder()
-{
-}
+CallOverlayQmlObjectHolder::~CallOverlayQmlObjectHolder() {}
 
 void
-CallOverlayQmlObjectHolder::setCallOverlayQmlObjectHolder(QObject* obj)
+CallOverlayQmlObjectHolder::setCallOverlayQmlObjectHolder(QObject *obj)
 {
     callOverlayQmlObject_ = obj;
 }
 
 void
-CallOverlayQmlObjectHolder::updateCallOverlay(const QString& accountId, const QString& convUid)
+CallOverlayQmlObjectHolder::updateCallOverlay(const QString &accountId, const QString &convUid)
 {
     // ?
     auto convInfo = LRCInstance::getConversationFromConvUid(convUid, accountId);
@@ -48,15 +49,12 @@ CallOverlayQmlObjectHolder::updateCallOverlay(const QString& accountId, const QS
 
     setTime(convInfo.accountId, convInfo.uid);
     QObject::disconnect(oneSecondTimer_);
-    QObject::connect(oneSecondTimer_, &QTimer::timeout,
-        [this] {
-            setTime(accountId_, convUid_);
-        });
+    QObject::connect(oneSecondTimer_, &QTimer::timeout, [this] { setTime(accountId_, convUid_); });
     oneSecondTimer_->start(20);
 
-    auto& accInfo = LRCInstance::accountModel().getAccountInfo(convInfo.accountId);
+    auto &accInfo = LRCInstance::accountModel().getAccountInfo(convInfo.accountId);
 
-    auto& convModel = accInfo.conversationModel;
+    auto &convModel = accInfo.conversationModel;
 
     auto call = LRCInstance::getCallInfoForConversation(convInfo);
     if (!call) {
@@ -101,7 +99,7 @@ CallOverlayQmlObjectHolder::hangUpThisCall()
             if (!convInfo.confId.isEmpty()) {
                 auto callList = LRCInstance::getAPI().getConferenceSubcalls(convInfo.confId);
                 if (callList.size() == 2) {
-                    for (const auto& cId : callList) {
+                    for (const auto &cId : callList) {
                         if (cId != convInfo.callId) {
                             LRCInstance::instance().pushLastConferencee(convInfo.confId, cId);
                         }
@@ -154,15 +152,15 @@ CallOverlayQmlObjectHolder::recordThisCallToggle()
 }
 
 void
-CallOverlayQmlObjectHolder::setTime(const QString& accountId, const QString& convUid)
+CallOverlayQmlObjectHolder::setTime(const QString &accountId, const QString &convUid)
 {
     auto callId = LRCInstance::getCallIdForConversationUid(convUid, accountId);
     if (callId.isEmpty() || !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
         return;
     }
     auto callInfo = LRCInstance::getCurrentCallModel()->getCall(callId);
-    if (callInfo.status == lrc::api::call::Status::IN_PROGRESS ||
-        callInfo.status == lrc::api::call::Status::PAUSED) {
+    if (callInfo.status == lrc::api::call::Status::IN_PROGRESS
+        || callInfo.status == lrc::api::call::Status::PAUSED) {
         auto timeString = LRCInstance::getCurrentCallModel()->getFormattedCallDuration(callId);
         emit updateTimeText(timeString);
     }

@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2020 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -27,22 +27,22 @@ class GlobalSystemTray : public QSystemTrayIcon
     Q_OBJECT
 
 public:
-    static GlobalSystemTray& instance()
+    static GlobalSystemTray &instance()
     {
-        static GlobalSystemTray* instance_ = new GlobalSystemTray();
+        static GlobalSystemTray *instance_ = new GlobalSystemTray();
 
         return *instance_;
     }
 
     // remember the last triggering account for the notification
     // safe since user cannot activate previous notifications
-    void setTriggeredAccountId(const QString& accountId);
+    void setTriggeredAccountId(const QString &accountId);
 
-    const QString& getTriggeredAccountId();
+    const QString &getTriggeredAccountId();
 
-    void setPossibleOnGoingConversationInfo(const lrc::api::conversation::Info& convInfo);
+    void setPossibleOnGoingConversationInfo(const lrc::api::conversation::Info &convInfo);
 
-    const lrc::api::conversation::Info& getPossibleOnGoingConversationInfo();
+    const lrc::api::conversation::Info &getPossibleOnGoingConversationInfo();
 
 private:
     GlobalSystemTray();

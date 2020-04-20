@@ -32,33 +32,35 @@ public:
     ~CallCenterQmlObjectHolder();
 
     // Must call Q_INVOKABLE so that this function can be used in QML, qml to c++
-    Q_INVOKABLE void setCallCenterQmlObjectHolder(QObject* obj);
+    Q_INVOKABLE void setCallCenterQmlObjectHolder(QObject *obj);
     Q_INVOKABLE void placeAudioOnlyCall();
-    Q_INVOKABLE void hangUpACall(const QString& accountId, const QString& convUid);
-    Q_INVOKABLE void refuseACall(const QString& accountId, const QString& convUid);
-    Q_INVOKABLE void acceptACall(const QString& accountId, const QString& convUid);
+    Q_INVOKABLE void hangUpACall(const QString &accountId, const QString &convUid);
+    Q_INVOKABLE void refuseACall(const QString &accountId, const QString &convUid);
+    Q_INVOKABLE void acceptACall(const QString &accountId, const QString &convUid);
 
-    Q_INVOKABLE void connectCallstatusChangedSignal(const QString& accountId);
+    Q_INVOKABLE void connectCallstatusChangedSignal(const QString &accountId);
 
 signals:
-    void showOutgoingCallPage(const QString& accountId, const QString& convUid);
-    void showIncomingCallPage(const QString& accountId, const QString& convUid);
-    void showAudioCallPage(const QString& accountId, const QString& convUid);
-    void setUIBestName(const QString& bestName, const QString& accountId, const QString& convUid);
-    void setUIBestId(const QString& bestId, const QString& accountId, const QString& convUid);
-    void callStatusChanged(const QString& status, const QString& accountId, const QString& convUid);
-    void callContactImageChanged(const QString& imageString, const QString& accountId, const QString& convUid);
-    void closeCallWindow(const QString& accountId, const QString& convUid);
+    void showOutgoingCallPage(const QString &accountId, const QString &convUid);
+    void showIncomingCallPage(const QString &accountId, const QString &convUid);
+    void showAudioCallPage(const QString &accountId, const QString &convUid);
+    void setUIBestName(const QString &bestName, const QString &accountId, const QString &convUid);
+    void setUIBestId(const QString &bestId, const QString &accountId, const QString &convUid);
+    void callStatusChanged(const QString &status, const QString &accountId, const QString &convUid);
+    void callContactImageChanged(const QString &imageString,
+                                 const QString &accountId,
+                                 const QString &convUid);
+    void closeCallWindow(const QString &accountId, const QString &convUid);
     void updateConversationSmartList();
 
 public slots:
-    void slotShowIncomingCallView(const QString& accountId, const lrc::api::conversation::Info& convInfo);
-    void slotShowCallView(const QString& accountId, const lrc::api::conversation::Info& convInfo);
-
+    void slotShowIncomingCallView(const QString &accountId,
+                                  const lrc::api::conversation::Info &convInfo);
+    void slotShowCallView(const QString &accountId, const lrc::api::conversation::Info &convInfo);
 
 private:
     // Object pointer
-    QObject* callCenterQmlObject_;
+    QObject *callCenterQmlObject_;
 
     QMetaObject::Connection callStatusChangedConnection_;
 };

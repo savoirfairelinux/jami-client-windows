@@ -20,41 +20,38 @@
 
 #pragma once
 
-//#include "splashscreen.h"
-
 #include <QFile>
 #include <QGuiApplication>
-#include <QQmlEngine>
 #include <QQmlApplicationEngine>
+#include <QQmlEngine>
 
-class MainApplication :public QGuiApplication
+class MainApplication : public QGuiApplication
 {
     Q_OBJECT
 
 public:
-    explicit MainApplication(int &argc, char** argv);
+    explicit MainApplication(int &argc, char **argv);
 
     bool applicationSetup();
     void exitApp();
 
     static void applicationInitialization();
     static QString getDebugFilePath();
-    static char** parseInputArgument(int& argc, char* argv[], char* argToParse);
+    static char **parseInputArgument(int &argc, char *argv[], char *argToParse);
 
 protected:
     void consoleDebug();
     void vsConsoleDebug();
-    void fileDebug(QFile* debugFile);
+    void fileDebug(QFile *debugFile);
 
 private:
     void loadTranslations();
     void initLrc();
-    void processInputArgument(bool& startMinimized);
+    void processInputArgument(bool &startMinimized);
     bool startAccountMigration();
     void setApplicationFont();
     void qmlInitialization();
 
-    //std::unique_ptr<SplashScreen> splash_;
     std::unique_ptr<QFile> debugFile_;
     std::unique_ptr<QQmlApplicationEngine> engine_;
 };

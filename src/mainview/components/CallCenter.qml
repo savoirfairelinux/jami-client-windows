@@ -5,7 +5,6 @@ import QtQuick.Controls 2.14
 import net.jami.CallCenterQmlObjectHolder 1.0
 
 //https://doc.qt.io/qt-5/qqmlengine.html#qmlRegisterSingletonType-3
-
 Item {
     id: callCenter
 
@@ -22,10 +21,9 @@ Item {
     signal callContactImageChanged(string image, string accountId, string convUid)
     signal setUIBestName(string bestName, string accountId, string convUid)
     signal setUIBestId(string bestId, string accountId, string convUid)
-    signal needToUpdateConversationSmartList()
+    signal needToUpdateConversationSmartList
 
-    function init() {
-    }
+    function init() {}
 
     function placeAudioOnlyCall() {
         callCenterQmlObjectHolder.placeAudioOnlyCall()
