@@ -82,6 +82,8 @@ CallCenterQmlObjectHolder::acceptACall(const QString &accountId, const QString &
     auto convInfo = LRCInstance::getConversationFromConvUid(convUid, accountId);
     if (!convInfo.uid.isEmpty()) {
         LRCInstance::getAccountInfo(accountId).callModel->accept(convInfo.callId);
+        auto &accInfo = LRCInstance::getAccountInfo(convInfo.accountId);
+        accInfo.callModel->setCurrentCall(convInfo.callId);
     }
 }
 
@@ -108,12 +110,6 @@ CallCenterQmlObjectHolder::slotShowIncomingCallView(const QString &accountId,
         emit showIncomingCallPage(accountId, convInfo.uid);
         return;
     }
-
-    auto convModel = LRCInstance::getCurrentConversationModel();
-    //
-    auto bestName = Utils::bestNameForConversation(convInfo, *convModel);
-    auto bestId = Utils::bestIdForConversation(convInfo, *convModel);
-    auto finalBestId = (bestName != bestId) ? bestId : "";
 
     auto call = callModel->getCall(convInfo.callId);
     auto isCallSelected = LRCInstance::getCurrentConvUid() == convInfo.uid;
@@ -151,14 +147,6 @@ CallCenterQmlObjectHolder::slotShowIncomingCallView(const QString &accountId,
     //}
 
     emit callStatusChanged(lrc::api::call::to_string(call.status), accountId, convInfo.uid);
-    emit callContactImageChanged(Utils::getContactImageString(accountId, convInfo.uid),
-                                 accountId,
-                                 convInfo.uid);
-    emit setUIBestName(bestName, accountId, convInfo.uid);
-    emit setUIBestId(finalBestId, accountId, convInfo.uid);
-    //elidedLabel = sencondaryCallLabelFontMetrics.elidedText(finalBestId, Qt::ElideRight, ui->callingBestIdLabel->width());
-    //ui->callingBestIdLabel->setText(elidedLabel);
-    //ui->sipCallerBestIdLabel->setText(elidedLabel);
 
     //if (finalBestId.isEmpty())
     //    ui->sipCallerBestIdLabel->setVisible(false);
@@ -172,11 +160,11 @@ void
 CallCenterQmlObjectHolder::slotShowCallView(const QString &accountId,
                                             const lrc::api::conversation::Info &convInfo)
 {
-    // control visible callwidget buttons
-    //emit setCallPanelVisibility(true);
+    if (!convInfo.callId.isEmpty()) {
+        auto &accInfo = LRCInstance::getAccountInfo(convInfo.accountId);
+        accInfo.callModel->setCurrentCall(convInfo.callId);
+    }
 
-    //ui->callStackWidget->setCurrentWidget(ui->videoPage);
-    //hideMiniSpinner();
     auto convModel = LRCInstance::getCurrentConversationModel();
 
     auto bestName = Utils::bestNameForConversation(convInfo, *convModel);
@@ -192,15 +180,7 @@ CallCenterQmlObjectHolder::slotShowCallView(const QString &accountId,
 
     //audioOnlyAvatar_->setAvatarVisible(call->isAudioOnly);
     if (call->isAudioOnly) {
-        emit callStatusChanged(lrc::api::call::to_string(call->status), accountId, convInfo.uid);
-        emit callContactImageChanged(Utils::getContactImageString(accountId, convInfo.uid),
-                                     accountId,
-                                     convInfo.uid);
-        emit setUIBestName(bestName, accountId, convInfo.uid);
-        emit setUIBestId(finalBestId, accountId, convInfo.uid);
-
         emit showAudioCallPage(accountId, convInfo.uid);
-        //audioOnlyAvatar_->writeAvatarOverlay(convInfo);
     }
 
     // preview
