@@ -1,8 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>src/mainview/components/KeyBoardShortcutTable.qml</file>
-        <file>src/mainview/components/KeyBoardShortcutKey.qml</file>
-        <file>src/mainview/components/UserProfileCard.qml</file>
         <file>src/MainApplicationWindow.qml</file>
         <file>src/mainview/MainView.qml</file>
         <file>src/commoncomponents/CustomBorder.qml</file>

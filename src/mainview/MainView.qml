@@ -32,7 +32,7 @@ Window {
 
     function recursionStackViewItemMove(stackOne, stackTwo) {
         // move all items (expect the bottom item) to stacktwo by the same order in stackone
-        if(stackOne.depth === 1) {
+        if (stackOne.depth === 1) {
             return
         }
 
@@ -52,10 +52,11 @@ Window {
         target: CallCenter
 
         onShowCallStack: {
-            if(callStackView.responsibleAccountId == accountId && callStackView.responsibleConvUid == convUid) {
-                if(welcomeViewStack.visible) {
+            if (callStackView.responsibleAccountId == accountId
+                    && callStackView.responsibleConvUid == convUid) {
+                if (welcomeViewStack.visible) {
                     welcomeViewStack.pop(null, StackView.Immediate)
-                    welcomeViewStack.push(callStackView,StackView.Immediate)
+                    welcomeViewStack.push(callStackView, StackView.Immediate)
                 } else {
                     sidePanelViewStack.pop(null, StackView.Immediate)
                     sidePanelViewStack.push(callStackView, StackView.Immediate)
@@ -64,19 +65,23 @@ Window {
         }
 
         onCloseCallStack: {
-            if(callStackView.responsibleAccountId == accountId && callStackView.responsibleConvUid == convUid) {
-                if(welcomeViewStack.find(function(item, index) {
-                        return item.objectName === "callStackViewObject"
-                    }) || sidePanelViewStack.find(function(item, index) {
-                        return item.objectName === "callStackViewObject"
-                    })) {
+            if (callStackView.responsibleAccountId == accountId
+                    && callStackView.responsibleConvUid == convUid) {
+                if (welcomeViewStack.find(function (item, index) {
+                    return item.objectName === "callStackViewObject"
+                }) || sidePanelViewStack.find(function (item, index) {
+                    return item.objectName === "callStackViewObject"
+                })) {
                     callStackView.needToCloseInCallConversation()
-                    if(welcomeViewStack.visible) {
+                    if (welcomeViewStack.visible) {
                         welcomeViewStack.pop(null, StackView.Immediate)
-                        welcomeViewStack.push(communicationPageMessageWebView, StackView.Immediate)
+                        welcomeViewStack.push(communicationPageMessageWebView,
+                                              StackView.Immediate)
                     } else {
                         sidePanelViewStack.pop(null, StackView.Immediate)
-                        sidePanelViewStack.push(communicationPageMessageWebView, StackView.Immediate)
+                        sidePanelViewStack.push(
+                                    communicationPageMessageWebView,
+                                    StackView.Immediate)
                     }
                     mainViewWindowSidePanel.deselectConversationSmartList()
                 }
@@ -112,36 +117,39 @@ Window {
             communicationPageMessageWebView.headerUserUserNameLabelText = currentUserDisplayName
 
             callStackView.needToCloseInCallConversation()
-            callStackView.responsibleAccountId =  LrcGeneralAdapter.getCurrAccId()
+            callStackView.responsibleAccountId = LrcGeneralAdapter.getCurrAccId(
+                        )
             callStackView.responsibleConvUid = currentUID
 
             welcomeViewStack.pop(null, StackView.Immediate)
             sidePanelViewStack.pop(null, StackView.Immediate)
 
-            if(sidePanelViewStack.visible && welcomeViewStack.visible) {
-                if(inCall && !isIncomingCallInProgress) {
+            if (sidePanelViewStack.visible && welcomeViewStack.visible) {
+                if (inCall && !isIncomingCallInProgress) {
                     welcomeViewStack.push(callStackView)
                 } else {
                     welcomeViewStack.push(communicationPageMessageWebView)
                 }
-            } else if(sidePanelViewStack.visible && !welcomeViewStack.visible) {
-                if(inCall && !isIncomingCallInProgress) {
+            } else if (sidePanelViewStack.visible
+                       && !welcomeViewStack.visible) {
+                if (inCall && !isIncomingCallInProgress) {
                     sidePanelViewStack.push(callStackView)
                 } else {
                     sidePanelViewStack.push(communicationPageMessageWebView)
                 }
-            } else if(!sidePanelViewStack.visible && !welcomeViewStack.visible) {
-                if(inCall && !isIncomingCallInProgress) {
+            } else if (!sidePanelViewStack.visible
+                       && !welcomeViewStack.visible) {
+                if (inCall && !isIncomingCallInProgress) {
                     sidePanelViewStack.push(callStackView)
                 } else {
                     sidePanelViewStack.push(communicationPageMessageWebView)
                 }
-
             }
 
             // set up chatview
             messageWebViewQmlObjectHolder.setupChatView(currentUID)
-            callStackView.setCorrspondingMessageWebView(communicationPageMessageWebView)
+            callStackView.setCorrspondingMessageWebView(
+                        communicationPageMessageWebView)
         }
 
         onAccountComboBoxNeedToShowWelcomePage: {
@@ -162,16 +170,16 @@ Window {
         objectName: "callStackViewObject"
 
         onAudioCallPageBackButtonIsClicked: {
-            if(welcomeViewStack.visible)
+            if (welcomeViewStack.visible)
                 welcomeViewStack.pop(welcomePage)
-            else if(sidePanelViewStack.visible)
+            else if (sidePanelViewStack.visible)
                 sidePanelViewStack.pop(mainViewWindowSidePanel)
         }
 
         onOutgoingCallPageBackButtonIsClicked: {
-            if(welcomeViewStack.visible)
+            if (welcomeViewStack.visible)
                 welcomeViewStack.pop(welcomePage)
-            else if(sidePanelViewStack.visible)
+            else if (sidePanelViewStack.visible)
                 sidePanelViewStack.pop(mainViewWindowSidePanel)
         }
     }
@@ -189,27 +197,30 @@ Window {
         id: communicationPageMessageWebView
 
         signal toSendMessageContentSaved(string arg)
-        signal toMessagesCleared()
-        signal toMessagesLoaded()
+        signal toMessagesCleared
+        signal toMessagesLoaded
 
         visible: false
 
         onNeedToGoBackToWelcomeView: {
             mainViewWindowSidePanel.deselectConversationSmartList()
-            if(communicationPageMessageWebView.visible && !welcomeViewStack.visible) {
+            if (communicationPageMessageWebView.visible
+                    && !welcomeViewStack.visible) {
                 sidePanelViewStack.pop()
-            } else if(communicationPageMessageWebView.visible && welcomeViewStack.visible) {
+            } else if (communicationPageMessageWebView.visible
+                       && welcomeViewStack.visible) {
                 welcomeViewStack.pop()
             }
         }
 
         Component.onCompleted: {
             // set qml MessageWebView object pointer to c++
-            messageWebViewQmlObjectHolder.setMessageWebViewQmlObject(communicationPageMessageWebView)
+            messageWebViewQmlObjectHolder.setMessageWebViewQmlObject(
+                        communicationPageMessageWebView)
         }
     }
 
-    SplitView  {
+    SplitView {
         id: splitView
 
         anchors.fill: parent
@@ -217,9 +228,9 @@ Window {
         height: mainViewWindow.height
 
         handle: Rectangle {
-                implicitWidth: JamiTheme.splitViewHandlePreferedWidth
-                implicitHeight: splitView.height
-                color: SplitHandle.pressed ? JamiTheme.pressColor : (SplitHandle.hovered ? JamiTheme.hoverColor : JamiTheme.tabbarBorderColor)
+            implicitWidth: JamiTheme.splitViewHandlePreferedWidth
+            implicitHeight: splitView.height
+            color: SplitHandle.pressed ? JamiTheme.pressColor : (SplitHandle.hovered ? JamiTheme.hoverColor : JamiTheme.tabbarBorderColor)
         }
 
         StackView {
@@ -249,14 +260,17 @@ Window {
     }
 
     onWidthChanged: {
-        if(mainViewWindow.width < sidePanelViewStackPreferedWidth + welcomePageGroupPreferedWidth - 5 && welcomeViewStack.visible) {
+        if (mainViewWindow.width < sidePanelViewStackPreferedWidth
+                + welcomePageGroupPreferedWidth - 5
+                && welcomeViewStack.visible) {
             welcomeViewStack.visible = false
 
             //The find callback function is called for each item in the stack
-            var inWelcomeViewStack = welcomeViewStack.find(function(item, index) {
-                return index > 0
-            })
-            if(inWelcomeViewStack) {
+            var inWelcomeViewStack = welcomeViewStack.find(
+                        function (item, index) {
+                            return index > 0
+                        })
+            if (inWelcomeViewStack) {
                 recursionStackViewItemMove(welcomeViewStack, sidePanelViewStack)
                 //sidePanelViewStack.push(welcomeViewStack.pop(StackView.Immediate), StackView.Immediate)
                 //welcomeViewStack.pop(null)
@@ -265,13 +279,16 @@ Window {
             sidePanelViewStack.maximumWidth = splitView.width
 
             mainViewWindow.update()
-        } else if(mainViewWindow.width >= sidePanelViewStackPreferedWidth + welcomePageGroupPreferedWidth + 5 && !welcomeViewStack.visible) {
+        } else if (mainViewWindow.width >= sidePanelViewStackPreferedWidth
+                   + welcomePageGroupPreferedWidth + 5
+                   && !welcomeViewStack.visible) {
             welcomeViewStack.visible = true
 
-            var inSidePanelViewStack = sidePanelViewStack.find(function(item, index) {
-                return index > 0
-            })
-            if(inSidePanelViewStack) {
+            var inSidePanelViewStack = sidePanelViewStack.find(
+                        function (item, index) {
+                            return index > 0
+                        })
+            if (inSidePanelViewStack) {
                 recursionStackViewItemMove(sidePanelViewStack, welcomeViewStack)
                 //welcomeViewStack.push(sidePanelViewStack.pop(StackView.Immediate), StackView.Immediate)
                 //sidePanelViewStack.pop(null)

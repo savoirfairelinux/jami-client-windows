@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2017-2019 by Savoir-faire Linux                                *
+ * Copyright (C) 2017-2020 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -20,8 +20,8 @@
 
 #include <QImage>
 
-#include <memory>
 #include <interfaces/pixmapmanipulatori.h>
+#include <memory>
 
 Q_DECLARE_METATYPE(QImage);
 
@@ -29,15 +29,19 @@ class Person;
 
 QByteArray QImageToByteArray(QImage image);
 
-class PixbufManipulator : public Interfaces::PixmapManipulatorI {
+class PixbufManipulator : public Interfaces::PixmapManipulatorI
+{
 public:
-    QVariant personPhoto(const QByteArray& data, const QString& type = "PNG") override;
+    QVariant personPhoto(const QByteArray &data, const QString &type = "PNG") override;
 
     /* TODO: the following methods return an empty QVariant/QByteArray */
-    QVariant   numberCategoryIcon(const QVariant& p, const QSize& size, bool displayPresence = false, bool isPresent = false) override;
-    QByteArray toByteArray(const QVariant& pxm) override;
-    QVariant   userActionIcon(const UserActionElement& state) const override;
-    QVariant   decorationRole(const QModelIndex& index) override;
-    QVariant   decorationRole(const lrc::api::conversation::Info& conversation,
-                              const lrc::api::account::Info& accountInfo) override;
+    QVariant numberCategoryIcon(const QVariant &p,
+                                const QSize &size,
+                                bool displayPresence = false,
+                                bool isPresent = false) override;
+    QByteArray toByteArray(const QVariant &pxm) override;
+    QVariant userActionIcon(const UserActionElement &state) const override;
+    QVariant decorationRole(const QModelIndex &index) override;
+    QVariant decorationRole(const lrc::api::conversation::Info &conversation,
+                            const lrc::api::account::Info &accountInfo) override;
 };

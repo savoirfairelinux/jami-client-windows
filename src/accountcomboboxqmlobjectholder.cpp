@@ -1,6 +1,11 @@
 /***************************************************************************
  * Copyright (C) 2020 by Savoir-faire Linux                                *
- * Author: Mingrui Zhang   <mingrui.zhang@savoirfairelinux.com>            *
+ * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
+ * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
+ * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
+ * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -20,17 +25,14 @@
 
 #include "utils.h"
 
-AccountComboBoxQmlObjectHolder::AccountComboBoxQmlObjectHolder(QObject* parent)
+AccountComboBoxQmlObjectHolder::AccountComboBoxQmlObjectHolder(QObject *parent)
     : QObject(parent)
-{
-}
+{}
 
-AccountComboBoxQmlObjectHolder::~AccountComboBoxQmlObjectHolder()
-{
-}
+AccountComboBoxQmlObjectHolder::~AccountComboBoxQmlObjectHolder() {}
 
 void
-AccountComboBoxQmlObjectHolder::setAccountComboBoxQmlObject(QObject* obj)
+AccountComboBoxQmlObjectHolder::setAccountComboBoxQmlObject(QObject *obj)
 {
     // Set the object pointer
     accountComboBoxQmlObject_ = obj;
@@ -45,7 +47,7 @@ AccountComboBoxQmlObjectHolder::accountChanged(int index)
 }
 
 void
-AccountComboBoxQmlObjectHolder::setSelectedAccount(const QString& accountId, int index)
+AccountComboBoxQmlObjectHolder::setSelectedAccount(const QString &accountId, int index)
 {
     LRCInstance::setSelectedAccountId(accountId);
 
@@ -53,9 +55,11 @@ AccountComboBoxQmlObjectHolder::setSelectedAccount(const QString& accountId, int
     // in call?
     backToWelcomePage(index);
 
-    auto& accountInfo = LRCInstance::accountModel().getAccountInfo(accountId);
+    auto &accountInfo = LRCInstance::accountModel().getAccountInfo(accountId);
 
-    QMetaObject::invokeMethod(accountComboBoxQmlObject_, "updateSmartList", Q_ARG(QVariant, accountId));
+    QMetaObject::invokeMethod(accountComboBoxQmlObject_,
+                              "updateSmartList",
+                              Q_ARG(QVariant, accountId));
 
     currentTypeFilter_ = accountInfo.profileInfo.type;
     LRCInstance::getCurrentConversationModel()->setFilter(accountInfo.profileInfo.type);
@@ -69,7 +73,9 @@ void
 AccountComboBoxQmlObjectHolder::backToWelcomePage(int index)
 {
     deselectConversation();
-    QMetaObject::invokeMethod(accountComboBoxQmlObject_, "backToWelcomePage", Q_ARG(QVariant, index));
+    QMetaObject::invokeMethod(accountComboBoxQmlObject_,
+                              "backToWelcomePage",
+                              Q_ARG(QVariant, index));
 }
 
 void
@@ -94,7 +100,7 @@ AccountComboBoxQmlObjectHolder::deselectConversation()
 }
 
 void
-AccountComboBoxQmlObjectHolder::connectAccount(const QString& accountId)
+AccountComboBoxQmlObjectHolder::connectAccount(const QString &accountId)
 {
     /*try {
         auto& accInfo = LRCInstance::accountModel().getAccountInfo(accountId);

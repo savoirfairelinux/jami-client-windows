@@ -1,5 +1,5 @@
 /***************************************************************************
-* Copyright (C) 2019-2019 by Savoir-faire Linux                                 *
+* Copyright (C) 2019-2020 by Savoir-faire Linux                            *
 * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                       *
 *                                                                          *
 * This program is free software; you can redistribute it and/or modify     *
@@ -21,8 +21,7 @@
 
 BannedListModel::BannedListModel(QObject *parent)
     : QAbstractListModel(parent)
-{
-}
+{}
 
 int
 BannedListModel::rowCount(const QModelIndex &index) const
@@ -34,7 +33,7 @@ BannedListModel::rowCount(const QModelIndex &index) const
 }
 
 bool
-BannedListModel::setData(const QModelIndex& index, const QVariant& value, int role)
+BannedListModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     Q_UNUSED(index);
     Q_UNUSED(value);

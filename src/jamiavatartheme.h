@@ -1,6 +1,6 @@
 /***************************************************************************
- * Copyright (C) 2019 by Savoir-faire Linux                                *
- * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
+ * Copyright (C) 2017-2020 by Savoir-faire Linux                           *
+ * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
  * it under the terms of the GNU General Public License as published by    *
@@ -16,27 +16,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
+#include <QColor>
+
 #pragma once
 
-#include <QDialog>
-
-namespace Ui {
-class UpdateConfirmDialog;
-}
-
-class UpdateConfirmDialog : public QDialog {
-    Q_OBJECT
-
-public:
-    UpdateConfirmDialog(QWidget* parent = nullptr);
-    ~UpdateConfirmDialog();
-
-    void changeToUpdateToBetaVersionText();
-
-private slots:
-    void on_updateCancelBtn_clicked();
-    void on_updateAcceptBtn_clicked();
-
-private:
-    Ui::UpdateConfirmDialog* ui;
+namespace JamiAvatarTheme {
+static const QColor defaultAvatarColor_ = {"#ff9e9e9e"}; //Grey
+static const QColor avatarColors_[]{
+    {"#fff44336"}, //Red
+    {"#ffe91e63"}, //Pink
+    {"#ff9c27b0"}, //Purple
+    {"#ff673ab7"}, //Deep Purple
+    {"#ff3f51b5"}, //Indigo
+    {"#ff2196f3"}, //Blue
+    {"#ff00bcd4"}, //Cyan
+    {"#ff009688"}, //Teal
+    {"#ff4caf50"}, //Green
+    {"#ff8bc34a"}, //Light Green
+    {"#ff9e9e9e"}, //Grey
+    {"#ffcddc39"}, //Lime
+    {"#ffffc107"}, //Amber
+    {"#ffff5722"}, //Deep Orange
+    {"#ff795548"}, //Brown
+    {"#ff607d8b"}  //Blue Grey
 };
+} // namespace JamiAvatarTheme

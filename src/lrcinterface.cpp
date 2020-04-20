@@ -22,14 +22,11 @@
  * LrcGeneralAdapter
  */
 
-LrcGeneralAdapter::LrcGeneralAdapter(QObject* parent)
+LrcGeneralAdapter::LrcGeneralAdapter(QObject *parent)
     : QObject(parent)
-{
-}
+{}
 
-LrcGeneralAdapter::~LrcGeneralAdapter()
-{
-}
+LrcGeneralAdapter::~LrcGeneralAdapter() {}
 
 const QString
 LrcGeneralAdapter::getCurrAccId()
