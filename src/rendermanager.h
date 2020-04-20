@@ -25,6 +25,12 @@
 #include <QObject>
 #include <QMutex>
 #include <QImage>
+#include <libavutil/pixfmt.h>
+
+extern "C" {
+    struct AVFrame;
+    struct SwsContext;
+}
 
 using namespace lrc::api;
 
@@ -66,6 +72,8 @@ public:
      */
     QImage* getFrame();
 
+    AVFrame* getAVFrame();
+
     /**
      * Check if the object is updating actively
      */
@@ -82,6 +90,11 @@ signals:
      * @param id of the renderer
      */
     void frameUpdated(const QString& id);
+    /**
+     * Emitted each time a frame is ready to be displayed.
+     * @param id of the renderer
+     */
+    void d3dFrameUpdated(const QString& id);
     /**
      * Emitted once in slotRenderingStopped.
      * @param id of the renderer
@@ -106,6 +119,9 @@ private slots:
     void slotRenderingStopped(const QString& id = video::PREVIEW_RENDERER_ID);
 
 private:
+    bool isHardwareAccelFormat(AVPixelFormat format);
+
+private:
     /* the id of the renderer */
     QString id_;
 
@@ -114,6 +130,8 @@ private:
 
     /* a local copy of the renderer's current frame */
     video::Frame frame_;
+    /* a local copy of the renderer's current avframe */
+    std::unique_ptr<AVFrame, void(*)(AVFrame*)> avFrame_;
 
     /* a the frame's storage data used to set the image */
     std::vector<uint8_t> buffer_;
@@ -132,6 +150,10 @@ private:
 
     /* connections to the underlying renderer signals in avmodel */
     RenderConnections renderConnections_;
+
+    std::unique_ptr<AVFrame, void(*)(AVFrame*)> pFrameCorrectFormat;
+    std::unique_ptr <SwsContext, void(*)(SwsContext*)> img_convert_ctx;
+    std::unique_ptr <uint8_t, void(*)(uint8_t*)> convertedFrameBuffer;
 };
 
 /**
@@ -159,7 +181,12 @@ public:
      */
     QImage* getPreviewFrame();
     /**
-     * Start capturing and rendering preview frames.
+     * Get the most recently rendered preview AVFrame.
+     * @return the rendered preview image
+     */
+    AVFrame* getPreviewAVFrame();
+    /**
+     * Start capturing and rendering preview avframe.
      * @param force if the capture device should be started
      * @param async
      */
@@ -177,6 +204,12 @@ public:
      */
     QImage* getFrame(const QString& id);
     /**
+     * Get the most recently rendered distant frame for a given id
+     * as an AVFrame pointer.
+     * @return the rendered preview image
+     */
+    AVFrame* getAVFrame(const QString& id);
+    /**
      * Add and connect a distant renderer for a given id
      * to a FrameWrapper object
      * @param id
@@ -188,6 +221,11 @@ public:
      * @param id
      */
     void removeDistantRenderer(const QString& id);
+    /**
+     * Toggle if we will use avframe
+     * @param useAVFrame
+     */
+    void setIsToUseAVFrame(bool useAVFrame);
 
 signals:
     /* Emitted when the size of the video capture device list changes. */
@@ -198,6 +236,8 @@ signals:
 
     /* Emitted when the preview has a new frame ready. */
     void previewFrameUpdated();
+    /* Emitted when the preview has a new frame object for OpenGL Widget ready. */
+    void previewD3DFrameUpdated();
 
     /* Emitted when the preview is stopped. */
     void previewRenderingStopped();
@@ -207,6 +247,9 @@ signals:
 
     /* Emitted when a distant renderer has a new frame ready for a given id. */
     void distantFrameUpdated(const QString& id);
+
+    /* Emitted when a distant renderer has a new avframe frame ready for a given id. */
+    void d3dDistantFrameUpdated(const QString& id);
 
     /* Emitted when a distant renderer is stopped for a given id. */
     void distantRenderingStopped(const QString& id);
