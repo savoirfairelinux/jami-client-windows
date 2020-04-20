@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2017 by Savoir-faire Linux                                *
+ * Copyright (C) 2015-2020 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -18,29 +18,27 @@
 
 #include "globalsystemtray.h"
 
-GlobalSystemTray::GlobalSystemTray()
-{
-}
+GlobalSystemTray::GlobalSystemTray() {}
 
-void 
-GlobalSystemTray::setTriggeredAccountId(const QString& accountId)
+void
+GlobalSystemTray::setTriggeredAccountId(const QString &accountId)
 {
     triggeredAccountId_ = accountId;
 }
 
-const QString&
+const QString &
 GlobalSystemTray::getTriggeredAccountId()
 {
     return triggeredAccountId_;
 }
 
 void
-GlobalSystemTray::setPossibleOnGoingConversationInfo(const lrc::api::conversation::Info& convInfo)
+GlobalSystemTray::setPossibleOnGoingConversationInfo(const lrc::api::conversation::Info &convInfo)
 {
     triggeredOnGoingConvInfo_ = convInfo;
 }
 
-const lrc::api::conversation::Info&
+const lrc::api::conversation::Info &
 GlobalSystemTray::getPossibleOnGoingConversationInfo()
 {
     return triggeredOnGoingConvInfo_;

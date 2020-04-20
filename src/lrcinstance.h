@@ -1,5 +1,5 @@
 /**************************************************************************
-| Copyright (C) 2019 by Savoir-faire Linux                                |
+| Copyright (C) 2019-2020 by Savoir-faire Linux                           |
 | Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          |
 | Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      |
 | Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              |
@@ -23,33 +23,32 @@
 #undef ERROR
 #endif
 
-#include "settingskey.h"
 #include "accountlistmodel.h"
-#include "utils.h"
 #include "rendermanager.h"
-#include "networkmanager.h"
+#include "settingskey.h"
+#include "utils.h"
 
-#include "api/lrc.h"
 #include "api/account.h"
+#include "api/avmodel.h"
+#include "api/behaviorcontroller.h"
+#include "api/contact.h"
+#include "api/contactmodel.h"
+#include "api/conversation.h"
+#include "api/conversationmodel.h"
+#include "api/datatransfermodel.h"
+#include "api/lrc.h"
 #include "api/newaccountmodel.h"
 #include "api/newcallmodel.h"
-#include "api/newdevicemodel.h"
 #include "api/newcodecmodel.h"
-#include "api/behaviorcontroller.h"
-#include "api/avmodel.h"
-#include "api/conversation.h"
-#include "api/contactmodel.h"
-#include "api/contact.h"
-#include "api/datatransfermodel.h"
-#include "api/conversationmodel.h"
+#include "api/newdevicemodel.h"
 #include "api/peerdiscoverymodel.h"
 
-#include <QObject>
-#include <QMutex>
-#include <QSettings>
-#include <QRegularExpression>
-#include <QPixmap>
 #include <QBuffer>
+#include <QMutex>
+#include <QObject>
+#include <QPixmap>
+#include <QRegularExpression>
+#include <QSettings>
 #include <QtConcurrent/QtConcurrent>
 
 #include <memory>
@@ -57,64 +56,50 @@
 using namespace lrc::api;
 
 using migrateCallback = std::function<void()>;
-using getConvPredicate = std::function<bool(const conversation::Info& conv)>;
+using getConvPredicate = std::function<bool(const conversation::Info &conv)>;
 
 class LRCInstance : public QObject
 {
     Q_OBJECT
 
 public:
-    static LRCInstance& instance(migrateCallback willMigrate = {},
-                                 migrateCallback didMigrate = {}) {
+    static LRCInstance &instance(migrateCallback willMigrate = {}, migrateCallback didMigrate = {})
+    {
         static LRCInstance instance_(willMigrate, didMigrate);
         return instance_;
     };
-    static void init(migrateCallback willMigrate = {},
-                     migrateCallback didMigrate = {}) {
+    static void init(migrateCallback willMigrate = {}, migrateCallback didMigrate = {})
+    {
         instance(willMigrate, didMigrate);
     };
-    static Lrc& getAPI() {
-        return *(instance().lrc_);
-    };
-    static RenderManager* renderer() {
-        return instance().renderer_.get();
-    }
-    static void connectivityChanged() {
-        instance().lrc_->connectivityChanged();
-    };
-    static NewAccountModel& accountModel() {
-        return instance().lrc_->getAccountModel();
-    };
-    static BehaviorController& behaviorController() {
+    static Lrc &getAPI() { return *(instance().lrc_); };
+    static RenderManager *renderer() { return instance().renderer_.get(); }
+    static void connectivityChanged() { instance().lrc_->connectivityChanged(); };
+    static NewAccountModel &accountModel() { return instance().lrc_->getAccountModel(); };
+    static BehaviorController &behaviorController()
+    {
         return instance().lrc_->getBehaviorController();
     };
-    static DataTransferModel& dataTransferModel() {
+    static DataTransferModel &dataTransferModel()
+    {
         return instance().lrc_->getDataTransferModel();
     };
-    static AVModel& avModel() {
-        return instance().lrc_->getAVModel();
-    };
-    static bool isConnected() {
-        return instance().lrc_->isConnected();
-    };
-    static VectorString getActiveCalls() {
-        return instance().lrc_->activeCalls();
-    };
-    static const account::Info&
-    getAccountInfo(const QString& accountId) {
+    static AVModel &avModel() { return instance().lrc_->getAVModel(); };
+    static bool isConnected() { return instance().lrc_->isConnected(); };
+    static VectorString getActiveCalls() { return instance().lrc_->activeCalls(); };
+    static const account::Info &getAccountInfo(const QString &accountId)
+    {
         return accountModel().getAccountInfo(accountId);
     };
-    static const account::Info&
-    getCurrentAccountInfo() {
-        return getAccountInfo(getCurrAccId());
-    };
-    static bool hasVideoCall() {
+    static const account::Info &getCurrentAccountInfo() { return getAccountInfo(getCurrAccId()); };
+    static bool hasVideoCall()
+    {
         auto activeCalls = instance().lrc_->activeCalls();
         auto accountList = accountModel().getAccountList();
         bool result = false;
-        for (const auto& callId : activeCalls) {
-            for (const auto& accountId : accountList) {
-                auto& accountInfo = accountModel().getAccountInfo(accountId);
+        for (const auto &callId : activeCalls) {
+            for (const auto &accountId : accountList) {
+                auto &accountInfo = accountModel().getAccountInfo(accountId);
                 if (accountInfo.callModel->hasCall(callId)) {
                     auto call = accountInfo.callModel->getCall(callId);
                     result |= !(call.isAudioOnly || call.videoMuted);
@@ -123,8 +108,7 @@ public:
         }
         return result;
     };
-    static QString
-    getCallIdForConversationUid(const QString& convUid, const QString& accountId)
+    static QString getCallIdForConversationUid(const QString &convUid, const QString &accountId)
     {
         auto convInfo = LRCInstance::getConversationFromConvUid(convUid, accountId);
         if (convInfo.uid.isEmpty()) {
@@ -132,10 +116,10 @@ public:
         }
         return convInfo.confId.isEmpty() ? convInfo.callId : convInfo.confId;
     }
-    static const call::Info*
-    getCallInfo(const QString& callId, const QString& accountId) {
+    static const call::Info *getCallInfo(const QString &callId, const QString &accountId)
+    {
         try {
-            auto& accInfo = LRCInstance::accountModel().getAccountInfo(accountId);
+            auto &accInfo = LRCInstance::accountModel().getAccountInfo(accountId);
             if (!accInfo.callModel->hasCall(callId)) {
                 return nullptr;
             }
@@ -144,34 +128,34 @@ public:
             return nullptr;
         }
     }
-    static const call::Info*
-    getCallInfoForConversation(const conversation::Info& convInfo,
-                               bool forceCallOnly = {}) {
+    static const call::Info *getCallInfoForConversation(const conversation::Info &convInfo,
+                                                        bool forceCallOnly = {})
+    {
         try {
             auto accountId = convInfo.accountId;
-            auto& accInfo = LRCInstance::accountModel().getAccountInfo(accountId);
-            auto callId = forceCallOnly ?
-                convInfo.callId :
-                (convInfo.confId.isEmpty() ? convInfo.callId : convInfo.confId);
+            auto &accInfo = LRCInstance::accountModel().getAccountInfo(accountId);
+            auto callId = forceCallOnly
+                              ? convInfo.callId
+                              : (convInfo.confId.isEmpty() ? convInfo.callId : convInfo.confId);
             if (!accInfo.callModel->hasCall(callId)) {
                 return nullptr;
             }
             return &accInfo.callModel->getCall(callId);
-        } catch(...) {
+        } catch (...) {
             return nullptr;
         }
     }
-    static const conversation::Info&
-    getConversation(const QString& accountId,
-                    getConvPredicate pred = {},
-                    bool filtered=false) {
+    static const conversation::Info &getConversation(const QString &accountId,
+                                                     getConvPredicate pred = {},
+                                                     bool filtered = false)
+    {
         using namespace lrc::api;
         static conversation::Info invalid = {};
         try {
-            auto& accInfo = LRCInstance::getAccountInfo(accountId);
-            auto& convModel = accInfo.conversationModel;
+            auto &accInfo = LRCInstance::getAccountInfo(accountId);
+            auto &convModel = accInfo.conversationModel;
             if (filtered) {
-                auto& convs = convModel->allFilteredConversations();
+                auto &convs = convModel->allFilteredConversations();
                 auto conv = std::find_if(convs.begin(), convs.end(), pred);
                 if (conv != convs.end()) {
                     return *conv;
@@ -181,59 +165,58 @@ public:
                      i <= Utils::toUnderlyingValue(profile::Type::TEMPORARY);
                      ++i) {
                     auto filter = Utils::toEnum<profile::Type>(i);
-                    auto& convs = convModel->getFilteredConversations(filter);
+                    auto &convs = convModel->getFilteredConversations(filter);
                     auto conv = std::find_if(convs.begin(), convs.end(), pred);
                     if (conv != convs.end()) {
                         return *conv;
                     }
                 }
             }
-        } catch(...) {}
+        } catch (...) {
+        }
         return invalid;
     }
-    static const conversation::Info&
-    getConversationFromCallId(const QString& callId,
-                              const QString& accountId = {},
-                              bool filtered = false) {
-        return getConversation(!accountId.isEmpty() ? accountId : getCurrAccId(),
-            [&](const conversation::Info& conv) -> bool {
-                return callId == conv.callId;
-            }, filtered);
+    static const conversation::Info &getConversationFromCallId(const QString &callId,
+                                                               const QString &accountId = {},
+                                                               bool filtered = false)
+    {
+        return getConversation(
+            !accountId.isEmpty() ? accountId : getCurrAccId(),
+            [&](const conversation::Info &conv) -> bool { return callId == conv.callId; },
+            filtered);
     }
-    static const conversation::Info&
-    getConversationFromConvUid(const QString& convUid,
-                               const QString& accountId = {},
-                               bool filtered = false) {
-        return getConversation(!accountId.isEmpty() ? accountId : getCurrAccId(),
-            [&](const conversation::Info& conv) -> bool {
-                return convUid == conv.uid;
-            }, filtered);
+    static const conversation::Info &getConversationFromConvUid(const QString &convUid,
+                                                                const QString &accountId = {},
+                                                                bool filtered = false)
+    {
+        return getConversation(
+            !accountId.isEmpty() ? accountId : getCurrAccId(),
+            [&](const conversation::Info &conv) -> bool { return convUid == conv.uid; },
+            filtered);
     }
-    static const conversation::Info&
-    getConversationFromPeerUri(const QString& peerUri,
-                               const QString& accountId = {},
-                               bool filtered = false) {
-        return getConversation(!accountId.isEmpty() ? accountId : getCurrAccId(),
-            [&](const conversation::Info& conv) -> bool {
-                return peerUri == conv.participants[0];
-            }, filtered);
+    static const conversation::Info &getConversationFromPeerUri(const QString &peerUri,
+                                                                const QString &accountId = {},
+                                                                bool filtered = false)
+    {
+        return getConversation(
+            !accountId.isEmpty() ? accountId : getCurrAccId(),
+            [&](const conversation::Info &conv) -> bool { return peerUri == conv.participants[0]; },
+            filtered);
     }
-    static const conversation::Info&
-    getCurrentConversation() {
+    static const conversation::Info &getCurrentConversation()
+    {
         return getConversationFromConvUid(getCurrentConvUid());
     }
 
-    static ConversationModel*
-    getCurrentConversationModel() {
+    static ConversationModel *getCurrentConversationModel()
+    {
         return getCurrentAccountInfo().conversationModel.get();
     };
 
-    static NewCallModel*
-    getCurrentCallModel() {
-        return getCurrentAccountInfo().callModel.get();
-    };
+    static NewCallModel *getCurrentCallModel() { return getCurrentAccountInfo().callModel.get(); };
 
-    static const QString& getCurrAccId() {
+    static const QString &getCurrAccId()
+    {
         auto accountList = accountModel().getAccountList();
         if (instance().selectedAccountId_.isEmpty() && accountList.size()) {
             instance().selectedAccountId_ = accountList.at(0);
@@ -241,21 +224,22 @@ public:
         return instance().selectedAccountId_;
     };
 
-    static void setSelectedAccountId(const QString& accountId = {}) {
+    static void setSelectedAccountId(const QString &accountId = {})
+    {
         instance().selectedAccountId_ = accountId;
         QSettings settings("jami.net", "Jami");
         settings.setValue(SettingsKey::selectedAccount, accountId);
     };
 
-    static const QString& getCurrentConvUid() {
-        return instance().selectedConvUid_;
-    };
+    static const QString &getCurrentConvUid() { return instance().selectedConvUid_; };
 
-    static void setSelectedConvId(const QString& convUid = {}) {
+    static void setSelectedConvId(const QString &convUid = {})
+    {
         instance().selectedConvUid_ = convUid;
     };
 
-    static void reset(bool newInstance = false) {
+    static void reset(bool newInstance = false)
+    {
         if (newInstance) {
             instance().renderer_.reset(new RenderManager(avModel()));
             instance().lrc_.reset(new Lrc());
@@ -265,7 +249,8 @@ public:
         }
     };
 
-    static const int getCurrentAccountIndex(){
+    static const int getCurrentAccountIndex()
+    {
         for (int i = 0; i < accountModel().getAccountList().size(); i++) {
             if (accountModel().getAccountList()[i] == getCurrAccId()) {
                 return i;
@@ -274,12 +259,17 @@ public:
         return -1;
     };
 
-    static const QPixmap getCurrAccPixmap() {
-        return instance().accountListModel_.data(instance().accountListModel_
-            .index(getCurrentAccountIndex()), AccountListModel::Role::Picture).value<QPixmap>();
+    static const QPixmap getCurrAccPixmap()
+    {
+        return instance()
+            .accountListModel_
+            .data(instance().accountListModel_.index(getCurrentAccountIndex()),
+                  AccountListModel::Role::Picture)
+            .value<QPixmap>();
     };
 
-    static void setCurrAccAvatar(const QPixmap& avatarPixmap) {
+    static void setCurrAccAvatar(const QPixmap &avatarPixmap)
+    {
         QByteArray ba;
         QBuffer bu(&ba);
         bu.open(QIODevice::WriteOnly);
@@ -288,11 +278,13 @@ public:
         accountModel().setAvatar(getCurrAccId(), str);
     };
 
-    static void setCurrAccAvatar(const QString& avatar) {
+    static void setCurrAccAvatar(const QString &avatar)
+    {
         accountModel().setAvatar(getCurrAccId(), avatar);
     };
 
-    static void setCurrAccDisplayName(const QString& displayName) {
+    static void setCurrAccDisplayName(const QString &displayName)
+    {
         auto accountId = LRCInstance::getCurrAccId();
         accountModel().setAlias(accountId, displayName);
         // force save to .yml
@@ -300,17 +292,12 @@ public:
         LRCInstance::accountModel().setAccountConfig(accountId, confProps);
     };
 
-    static const account::ConfProperties_t& getCurrAccConfig() {
+    static const account::ConfProperties_t &getCurrAccConfig()
+    {
         return instance().getCurrentAccountInfo().confProperties;
     }
 
-    static void subscribeToDebugReceived() {
-        instance().lrc_->subscribeToDebugReceived();
-    }
-
-    static NetWorkManager* getNetworkManager() {
-        return instance().netWorkManager_.get();
-    }
+    static void subscribeToDebugReceived() { instance().lrc_->subscribeToDebugReceived(); }
 
     static void startAudioMeter(bool async)
     {
@@ -342,28 +329,26 @@ public:
         }
     }
 
-    static QString getContentDraft(const QString& convUid,
-                                   const QString& accountId)
+    static QString getContentDraft(const QString &convUid, const QString &accountId)
     {
         auto draftKey = accountId + "_" + convUid;
         return instance().contentDrafts_[draftKey];
     }
 
-    static void setContentDraft(const QString& convUid,
-                                const QString& accountId,
-                                const QString& content)
+    static void setContentDraft(const QString &convUid,
+                                const QString &accountId,
+                                const QString &content)
     {
         auto draftKey = accountId + "_" + convUid;
         instance().contentDrafts_[draftKey] = content;
     }
 
-    static void pushLastConferencee(const QString& confId,
-                                     const QString& callId)
+    static void pushLastConferencee(const QString &confId, const QString &callId)
     {
         instance().lastConferencees_[confId] = callId;
     }
 
-    static QString popLastConferencee(const QString& confId)
+    static QString popLastConferencee(const QString &confId)
     {
         QString callId = {};
         auto iter = instance().lastConferencees_.find(confId);
@@ -378,16 +363,14 @@ signals:
     void accountListChanged();
 
 private:
-    LRCInstance(migrateCallback willMigrateCb = {},
-                migrateCallback didMigrateCb = {}) {
+    LRCInstance(migrateCallback willMigrateCb = {}, migrateCallback didMigrateCb = {})
+    {
         lrc_ = std::make_unique<Lrc>(willMigrateCb, didMigrateCb);
         renderer_ = std::make_unique<RenderManager>(lrc_->getAVModel());
-        netWorkManager_ = std::make_unique<NetWorkManager>();
     };
 
     std::unique_ptr<Lrc> lrc_;
     std::unique_ptr<RenderManager> renderer_;
-    std::unique_ptr<NetWorkManager> netWorkManager_;
     AccountListModel accountListModel_;
     QString selectedAccountId_;
     QString selectedConvUid_;

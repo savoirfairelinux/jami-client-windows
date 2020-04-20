@@ -46,13 +46,19 @@ Button {
 
             hoverEnabled: true
 
-            onPressed: { hoverableButtonBackground.color = onPressColor; }
+            onPressed: {
+                hoverableButtonBackground.color = onPressColor
+            }
             onReleased: {
                 hoverableButtonBackground.color = onReleaseColor
                 hoverableButton.clicked()
             }
-            onEntered: { hoverableButtonBackground.color = onEnterColor; }
-            onExited: { hoverableButtonBackground.color = onExitColor; }
+            onEntered: {
+                hoverableButtonBackground.color = onEnterColor
+            }
+            onExited: {
+                hoverableButtonBackground.color = onExitColor
+            }
         }
     }
 }

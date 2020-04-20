@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2019 by Savoir-faire Linux                                *
+ * Copyright (C) 2019-2020 by Savoir-faire Linux                           *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -28,8 +28,9 @@
 class RunGuard : public QObject
 {
     Q_OBJECT;
+
 public:
-    RunGuard(const QString& key);
+    RunGuard(const QString &key);
     ~RunGuard();
 
     bool isAnotherRunning();
