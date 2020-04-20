@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
+ * Copyright (C) 2015-2020 by Savoir-faire Linux                           *
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  * Author: Isa Nanic <isa.nanic@savoirfairelinux.com                       *
@@ -21,42 +21,40 @@
 #include "utils.h"
 
 #ifdef Q_OS_WIN
-#include <windows.h>
 #include <lmcons.h>
-#include <shobjidl.h>
 #include <shlguid.h>
 #include <shlobj.h>
 #include <shlwapi.h>
+#include <shobjidl.h>
+#include <windows.h>
 #endif
 
-#include "pixbufmanipulator.h"
 #include "globalsystemtray.h"
+#include "jamiavatartheme.h"
 #include "lrcinstance.h"
-#include "networkmanager.h"
-#include "updateconfirmdialog.h"
+#include "pixbufmanipulator.h"
 #include "version.h"
-#include "mainwindow.h"
 
 #include <globalinstances.h>
 #include <qrencode.h>
 
 //Qt
-#include <QBitmap>
-#include <QObject>
-#include <QErrorMessage>
-#include <QPainter>
-#include <QStackedWidget>
-#include <QPropertyAnimation>
 #include <QApplication>
+#include <QBitmap>
+#include <QErrorMessage>
 #include <QFile>
 #include <QMessageBox>
+#include <QObject>
+#include <QPainter>
+#include <QPropertyAnimation>
 #include <QScreen>
-#include <QtConcurrent/QtConcurrent>
+#include <QStackedWidget>
 #include <QSvgRenderer>
 #include <QTranslator>
+#include <QtConcurrent/QtConcurrent>
 
 bool
-Utils::CreateStartupLink(const std::wstring& wstrAppName)
+Utils::CreateStartupLink(const std::wstring &wstrAppName)
 {
 #ifdef Q_OS_WIN
     TCHAR szPath[MAX_PATH];
@@ -77,22 +75,24 @@ Utils::CreateStartupLink(const std::wstring& wstrAppName)
 }
 
 bool
-Utils::CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink) {
+Utils::CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink)
+{
 #ifdef Q_OS_WIN
     HRESULT hres;
-    IShellLink* psl;
+    IShellLink *psl;
 
-    hres = CoCreateInstance(CLSID_ShellLink, NULL,
-                            CLSCTX_INPROC_SERVER, IID_IShellLink, (LPVOID*)&psl);
-    if (SUCCEEDED(hres))
-    {
-        IPersistFile* ppf;
+    hres = CoCreateInstance(CLSID_ShellLink,
+                            NULL,
+                            CLSCTX_INPROC_SERVER,
+                            IID_IShellLink,
+                            (LPVOID *) &psl);
+    if (SUCCEEDED(hres)) {
+        IPersistFile *ppf;
         psl->SetPath(lpszPathObj);
         psl->SetArguments(TEXT("--minimized"));
 
-        hres = psl->QueryInterface(IID_IPersistFile, (LPVOID*)&ppf);
-        if (SUCCEEDED(hres))
-        {
+        hres = psl->QueryInterface(IID_IPersistFile, (LPVOID *) &ppf);
+        if (SUCCEEDED(hres)) {
             hres = ppf->Save(lpszPathLink, TRUE);
             ppf->Release();
         }
@@ -107,7 +107,8 @@ Utils::CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink) {
 }
 
 void
-Utils::DeleteStartupLink(const std::wstring& wstrAppName) {
+Utils::DeleteStartupLink(const std::wstring &wstrAppName)
+{
 #ifdef Q_OS_WIN
     TCHAR startupPath[MAX_PATH];
     SHGetFolderPathW(NULL, CSIDL_STARTUP, NULL, 0, startupPath);
@@ -120,7 +121,8 @@ Utils::DeleteStartupLink(const std::wstring& wstrAppName) {
 }
 
 bool
-Utils::CheckStartupLink(const std::wstring& wstrAppName) {
+Utils::CheckStartupLink(const std::wstring &wstrAppName)
+{
 #ifdef Q_OS_WIN
     TCHAR startupPath[MAX_PATH];
     SHGetFolderPathW(NULL, CSIDL_STARTUP, NULL, 0, startupPath);
@@ -133,8 +135,8 @@ Utils::CheckStartupLink(const std::wstring& wstrAppName) {
 #endif
 }
 
-const char*
-Utils::WinGetEnv(const char* name)
+const char *
+Utils::WinGetEnv(const char *name)
 {
 #ifdef Q_OS_WIN
     const DWORD buffSize = 65535;
@@ -183,7 +185,8 @@ Utils::removeOldVersions()
 }
 
 QString
-Utils::GetRingtonePath() {
+Utils::GetRingtonePath()
+{
 #ifdef Q_OS_WIN
     TCHAR workingDirectory[MAX_PATH];
     GetCurrentDirectory(MAX_PATH, workingDirectory);
@@ -197,7 +200,8 @@ Utils::GetRingtonePath() {
 }
 
 QString
-Utils::GenGUID() {
+Utils::GenGUID()
+{
 #ifdef Q_OS_WIN
     GUID gidReference;
     wchar_t *str;
@@ -206,8 +210,7 @@ Utils::GenGUID() {
         StringFromCLSID(gidReference, &str);
         auto gStr = QString::fromWCharArray(str);
         return gStr.remove("{").remove("}").toLower();
-    }
-    else
+    } else
         return QString();
 #else
     return QString("");
@@ -215,21 +218,26 @@ Utils::GenGUID() {
 }
 
 QString
-Utils::GetISODate() {
+Utils::GetISODate()
+{
 #ifdef Q_OS_WIN
     SYSTEMTIME lt;
     GetSystemTime(&lt);
-    return QString("%1-%2-%3T%4:%5:%6Z").arg(lt.wYear).arg(lt.wMonth,2,10,QChar('0')).arg(lt.wDay,2,10,QChar('0'))
-            .arg(lt.wHour,2,10,QChar('0')).arg(lt.wMinute,2,10,QChar('0')).arg(lt.wSecond,2,10,QChar('0'));
+    return QString("%1-%2-%3T%4:%5:%6Z")
+        .arg(lt.wYear)
+        .arg(lt.wMonth, 2, 10, QChar('0'))
+        .arg(lt.wDay, 2, 10, QChar('0'))
+        .arg(lt.wHour, 2, 10, QChar('0'))
+        .arg(lt.wMinute, 2, 10, QChar('0'))
+        .arg(lt.wSecond, 2, 10, QChar('0'));
 #else
     return QString();
 #endif
 }
 
 void
-Utils::InvokeMailto(const QString& subject,
-                    const QString& body,
-                    const QString& attachement) {
+Utils::InvokeMailto(const QString &subject, const QString &body, const QString &attachement)
+{
 #ifdef Q_OS_WIN
     HKEY hKey;
     LONG lRes = RegOpenKeyExW(HKEY_CLASSES_ROOT, L"mailto", 0, KEY_READ, &hKey);
@@ -246,13 +254,13 @@ Utils::InvokeMailto(const QString& subject,
 }
 
 QString
-Utils::getContactImageString(const QString& accountId, const QString& uid)
+Utils::getContactImageString(const QString &accountId, const QString &uid)
 {
     return QString::fromLatin1(
-                Utils::QImageToByteArray(
-                    Utils::conversationPhoto(uid, LRCInstance::getAccountInfo(accountId))
-                ).toBase64().data()
-            );
+        Utils::QImageToByteArray(
+            Utils::conversationPhoto(uid, LRCInstance::getAccountInfo(accountId)))
+            .toBase64()
+            .data());
 }
 
 QImage
@@ -265,8 +273,11 @@ Utils::getCirclePhoto(const QImage original, int sizePhoto)
     painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
     painter.setBrush(QBrush(Qt::white));
     auto scaledPhoto = original
-            .scaled(sizePhoto, sizePhoto, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation)
-            .convertToFormat(QImage::Format_ARGB32_Premultiplied);
+                           .scaled(sizePhoto,
+                                   sizePhoto,
+                                   Qt::KeepAspectRatioByExpanding,
+                                   Qt::SmoothTransformation)
+                           .convertToFormat(QImage::Format_ARGB32_Premultiplied);
     int margin = 0;
     if (scaledPhoto.width() > sizePhoto) {
         margin = (scaledPhoto.width() - sizePhoto) / 2;
@@ -278,17 +289,18 @@ Utils::getCirclePhoto(const QImage original, int sizePhoto)
 }
 
 void
-Utils::setStackWidget(QStackedWidget* stack, QWidget* widget)
+Utils::setStackWidget(QStackedWidget *stack, QWidget *widget)
 {
     if (stack->indexOf(widget) != -1 && stack->currentWidget() != widget) {
         stack->setCurrentWidget(widget);
     }
 }
 
-void Utils::showSystemNotification(QWidget* widget,
-                                   const QString& message,
-                                   long delay,
-                                   const QString& triggeredAccountId)
+void
+Utils::showSystemNotification(QWidget *widget,
+                              const QString &message,
+                              long delay,
+                              const QString &triggeredAccountId)
 {
     QSettings settings("jami.net", "Jami");
     if (settings.value(SettingsKey::enableNotifications).toBool()) {
@@ -298,11 +310,12 @@ void Utils::showSystemNotification(QWidget* widget,
     }
 }
 
-void Utils::showSystemNotification(QWidget* widget,
-                                   const QString & sender,
-                                   const QString & message,
-                                   long delay,
-                                   const QString& triggeredAccountId)
+void
+Utils::showSystemNotification(QWidget *widget,
+                              const QString &sender,
+                              const QString &message,
+                              long delay,
+                              const QString &triggeredAccountId)
 {
     QSettings settings("jami.net", "Jami");
     if (settings.value(SettingsKey::enableNotifications).toBool()) {
@@ -313,14 +326,14 @@ void Utils::showSystemNotification(QWidget* widget,
 }
 
 QSize
-Utils::getRealSize(QScreen* screen)
+Utils::getRealSize(QScreen *screen)
 {
 #ifdef Q_OS_WIN
     DEVMODE dmThisScreen;
     ZeroMemory(&dmThisScreen, sizeof(dmThisScreen));
-    EnumDisplaySettings((const wchar_t *)screen->name().utf16(),
+    EnumDisplaySettings((const wchar_t *) screen->name().utf16(),
                         ENUM_CURRENT_SETTINGS,
-                        (DEVMODE*)&dmThisScreen);
+                        (DEVMODE *) &dmThisScreen);
     return QSize(dmThisScreen.dmPelsWidth, dmThisScreen.dmPelsHeight);
 #else
     return {};
@@ -328,22 +341,21 @@ Utils::getRealSize(QScreen* screen)
 }
 
 void
-Utils::forceDeleteAsync(const QString& path)
+Utils::forceDeleteAsync(const QString &path)
 {
     // keep deleting file until the process holding it let go
     // Or the file itself does not exist anymore
-    QtConcurrent::run(
-        [path] {
-            QFile file(path);
-            if (!QFile::exists(path))
-                return;
-            int retries{ 0 };
-            while (!file.remove() && retries < 5) {
-                qDebug().noquote() << "\n" << file.errorString() << "\n";
-                QThread::msleep(10);
-                ++retries;
-            }
-        });
+    QtConcurrent::run([path] {
+        QFile file(path);
+        if (!QFile::exists(path))
+            return;
+        int retries{0};
+        while (!file.remove() && retries < 5) {
+            qDebug().noquote() << "\n" << file.errorString() << "\n";
+            QThread::msleep(10);
+            ++retries;
+        }
+    });
 }
 
 QString
@@ -377,22 +389,24 @@ Utils::getProjectCredits()
     while (!in.atEnd()) {
         QString currentLine = in.readLine();
         if (credits.isEmpty()) {
-            credits += "<h3 align=\"center\" style=\" margin-top:0px; " +
-                       QString("margin-bottom:0px; margin-left:0px; margin-right:0px; ") +
-                       "-qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">" +
-                       UtilsAdapter::tr("Created by:") + "</span></h3>";
-        }
-        else if(currentLine.contains("Marianne Forget")) {
-            credits += "<h3 align=\"center\" style=\" margin-top:0px; margin-bottom:0px; " +
-                       QString("margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">") +
-                       "<span style=\" font-weight:600;\">" +
-                       UtilsAdapter::tr("Artwork by:") + "</span></h3>";
+            credits += "<h3 align=\"center\" style=\" margin-top:0px; "
+                       + QString("margin-bottom:0px; margin-left:0px; margin-right:0px; ")
+                       + "-qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">"
+                       + UtilsAdapter::tr("Created by:") + "</span></h3>";
+        } else if (currentLine.contains("Marianne Forget")) {
+            credits
+                += "<h3 align=\"center\" style=\" margin-top:0px; margin-bottom:0px; "
+                   + QString(
+                       "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">")
+                   + "<span style=\" font-weight:600;\">" + UtilsAdapter::tr("Artwork by:")
+                   + "</span></h3>";
         }
         credits += currentLine;
     }
-    credits += "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; " +
-               QString("margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">") +
-               UtilsAdapter::tr("Based on the SFLPhone project") + "</p>";
+    credits += "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; "
+               + QString(
+                   "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">")
+               + UtilsAdapter::tr("Based on the SFLPhone project") + "</p>";
 
     return credits;
 }
@@ -402,104 +416,36 @@ Utils::cleanUpdateFiles()
 {
     // Delete all logs and msi in the %TEMP% directory before launching
     QString dir = QString(Utils::WinGetEnv("TEMP"));
-    QDir log_dir(dir, { "jami*.log" });
-    for (const QString& filename : log_dir.entryList()) {
+    QDir log_dir(dir, {"jami*.log"});
+    for (const QString &filename : log_dir.entryList()) {
         log_dir.remove(filename);
     }
-    QDir msi_dir(dir, { "jami*.msi" });
-    for (const QString& filename : msi_dir.entryList()) {
+    QDir msi_dir(dir, {"jami*.msi"});
+    for (const QString &filename : msi_dir.entryList()) {
         msi_dir.remove(filename);
     }
-    QDir version_dir(dir, { "version" });
-    for (const QString& filename : version_dir.entryList()) {
+    QDir version_dir(dir, {"version"});
+    for (const QString &filename : version_dir.entryList()) {
         version_dir.remove(filename);
     }
 }
 
 void
-Utils::checkForUpdates(bool withUI, QWidget* parent)
+Utils::checkForUpdates(bool withUI, QWidget *parent)
 {
-    Utils::cleanUpdateFiles();
-    QUrl downloadPath { isBeta ?
-                        QUrl::fromEncoded("https://dl.jami.net/windows/beta/version") :
-                        QUrl::fromEncoded("https://dl.jami.net/windows/version")
-    };
-
-    LRCInstance::instance().getNetworkManager()->getRequestReply(
-        downloadPath,
-        [parent, withUI] (int status, const QString& onlineVersion) {
-            if (status != 200) {
-                if (withUI) {
-                    QMessageBox::critical(0,
-                        QObject::tr("Update"),
-                        QObject::tr("Version cannot be verified"));
-                }
-                return;
-            }
-            auto currentVersion = QString(VERSION_STRING).toULongLong();
-            if (onlineVersion.isEmpty()) {
-                qWarning() << "No version file found";
-            } else if (onlineVersion.toULongLong() > currentVersion) {
-                qDebug() << "New version found";
-                Utils::applyUpdates(false, parent);
-            } else {
-                qDebug() << "No new version found";
-                if (withUI) {
-                    QMessageBox::information(0,
-                        QObject::tr("Update"),
-                        QObject::tr("No new version found"));
-                }
-            }
-        });
+    // TODO: check update logic
 }
 
 void
-Utils::applyUpdates(bool updateToBeta, QWidget* parent)
+Utils::applyUpdates(bool updateToBeta, QWidget *parent)
 {
-    if (!parent->findChild<UpdateConfirmDialog*>()) {
-        UpdateConfirmDialog updateDialog(parent);
-        if(updateToBeta)
-            updateDialog.changeToUpdateToBetaVersionText();
-        auto ret = updateDialog.exec();
-        if (ret != QDialog::Accepted)
-            return;
-    } else
-        return;
-
-    QUrl downloadPath;
-    if (updateToBeta || isBeta) {
-        downloadPath = QUrl::fromEncoded("https://dl.jami.net/windows/beta/jami.beta.x64.msi");
-    } else {
-        downloadPath = QUrl::fromEncoded("https://dl.jami.net/windows/jami.release.x64.msi");
-    }
-
-    LRCInstance::instance().getNetworkManager()->getRequestFile(
-        downloadPath,
-        WinGetEnv("TEMP"),
-        true,
-        [parent, downloadPath](int status) {
-            if (status != 200) {
-                QMessageBox::critical(0,
-                    QObject::tr("Update"),
-                    QObject::tr("Installer download failed, please contact support"));
-                return;
-            }
-            auto args = QString(" /passive /norestart WIXNONUILAUNCH=1");
-            auto dir = Utils::WinGetEnv("TEMP");
-            auto cmdStartInstaller = "powershell " + QString(dir) + "\\" + downloadPath.fileName()
-                                     + " /L*V " + QString(dir) + "\\jami_x64_install.log" + args;
-
-            MainWindow::instance().close();
-            LRCInstance::instance().reset();
-
-            QProcess::startDetached(cmdStartInstaller);
-        });
+    // TODO: update logic
 }
 
 // new lrc helpers
 
 inline QString
-removeEndlines(const QString& str)
+removeEndlines(const QString &str)
 {
     QString trimmed(str);
     trimmed.remove(QChar('\n'));
@@ -508,7 +454,8 @@ removeEndlines(const QString& str)
 }
 
 QString
-Utils::bestIdForConversation(const lrc::api::conversation::Info& conv, const lrc::api::ConversationModel& model)
+Utils::bestIdForConversation(const lrc::api::conversation::Info &conv,
+                             const lrc::api::ConversationModel &model)
 {
     auto contact = model.owner.contactModel->getContact(conv.participants[0]);
     if (!contact.registeredName.isEmpty()) {
@@ -518,7 +465,7 @@ Utils::bestIdForConversation(const lrc::api::conversation::Info& conv, const lrc
 }
 
 QString
-Utils::bestIdForAccount(const lrc::api::account::Info& account)
+Utils::bestIdForAccount(const lrc::api::account::Info &account)
 {
     if (!account.registeredName.isEmpty()) {
         return removeEndlines(account.registeredName);
@@ -527,7 +474,7 @@ Utils::bestIdForAccount(const lrc::api::account::Info& account)
 }
 
 QString
-Utils::bestNameForAccount(const lrc::api::account::Info& account)
+Utils::bestNameForAccount(const lrc::api::account::Info &account)
 {
     if (account.profileInfo.alias.isEmpty()) {
         return bestIdForAccount(account);
@@ -536,7 +483,7 @@ Utils::bestNameForAccount(const lrc::api::account::Info& account)
 }
 
 QString
-Utils::bestIdForContact(const lrc::api::contact::Info& contact)
+Utils::bestIdForContact(const lrc::api::contact::Info &contact)
 {
     if (!contact.registeredName.isEmpty()) {
         return removeEndlines(contact.registeredName);
@@ -545,7 +492,7 @@ Utils::bestIdForContact(const lrc::api::contact::Info& contact)
 }
 
 QString
-Utils::bestNameForContact(const lrc::api::contact::Info& contact)
+Utils::bestNameForContact(const lrc::api::contact::Info &contact)
 {
     auto alias = removeEndlines(contact.profileInfo.alias);
     if (alias.length() == 0) {
@@ -555,7 +502,8 @@ Utils::bestNameForContact(const lrc::api::contact::Info& contact)
 }
 
 QString
-Utils::bestNameForConversation(const lrc::api::conversation::Info& conv, const lrc::api::ConversationModel& model)
+Utils::bestNameForConversation(const lrc::api::conversation::Info &conv,
+                               const lrc::api::ConversationModel &model)
 {
     try {
         auto contact = model.owner.contactModel->getContact(conv.participants[0]);
@@ -564,50 +512,48 @@ Utils::bestNameForConversation(const lrc::api::conversation::Info& conv, const l
             return bestIdForConversation(conv, model);
         }
         return alias;
-    } catch (...) {}
+    } catch (...) {
+    }
     return {};
 }
 
 // returns empty string if only infoHash is available, second best identifier otherwise
 QString
-Utils::secondBestNameForAccount(const lrc::api::account::Info& account)
+Utils::secondBestNameForAccount(const lrc::api::account::Info &account)
 {
     auto alias = removeEndlines(account.profileInfo.alias);
     auto registeredName = removeEndlines(account.registeredName);
     auto infoHash = account.profileInfo.uri;
 
-    if (!alias.length() == 0) { // if alias exists
+    if (!alias.length() == 0) {              // if alias exists
         if (!registeredName.length() == 0) { // if registeredName exists
             return registeredName;
-        }
-        else {
+        } else {
             return infoHash;
         }
-    }
-    else {
+    } else {
         if (!registeredName.length() == 0) { // if registeredName exists
             return infoHash;
-        }
-        else {
+        } else {
             return "";
         }
     }
 }
 
 lrc::api::profile::Type
-Utils::profileType(const lrc::api::conversation::Info& conv, const lrc::api::ConversationModel& model)
+Utils::profileType(const lrc::api::conversation::Info &conv,
+                   const lrc::api::ConversationModel &model)
 {
     try {
         auto contact = model.owner.contactModel->getContact(conv.participants[0]);
         return contact.profileInfo.type;
-    }
-    catch (...) {
+    } catch (...) {
         return lrc::api::profile::Type::INVALID;
     }
 }
 
 std::string
-Utils::formatTimeString(const std::time_t& timestamp)
+Utils::formatTimeString(const std::time_t &timestamp)
 {
     std::time_t now = std::time(nullptr);
     char interactionDay[64];
@@ -618,39 +564,40 @@ Utils::formatTimeString(const std::time_t& timestamp)
         char interactionTime[64];
         std::strftime(interactionTime, sizeof(interactionTime), "%R", std::localtime(&timestamp));
         return interactionTime;
-    }
-    else {
+    } else {
         return interactionDay;
     }
 }
 
 bool
-Utils::isInteractionGenerated(const lrc::api::interaction::Type& type)
+Utils::isInteractionGenerated(const lrc::api::interaction::Type &type)
 {
-    return  type == lrc::api::interaction::Type::CALL ||
-            type == lrc::api::interaction::Type::CONTACT;
+    return type == lrc::api::interaction::Type::CALL
+           || type == lrc::api::interaction::Type::CONTACT;
 }
 
 bool
-Utils::isContactValid(const QString& contactUid, const lrc::api::ConversationModel& model)
+Utils::isContactValid(const QString &contactUid, const lrc::api::ConversationModel &model)
 {
     auto contact = model.owner.contactModel->getContact(contactUid);
-    return  (contact.profileInfo.type == lrc::api::profile::Type::PENDING ||
-            contact.profileInfo.type == lrc::api::profile::Type::TEMPORARY ||
-            contact.profileInfo.type == lrc::api::profile::Type::RING ||
-            contact.profileInfo.type == lrc::api::profile::Type::SIP) &&
-            !contact.profileInfo.uri.isEmpty();
+    return (contact.profileInfo.type == lrc::api::profile::Type::PENDING
+            || contact.profileInfo.type == lrc::api::profile::Type::TEMPORARY
+            || contact.profileInfo.type == lrc::api::profile::Type::RING
+            || contact.profileInfo.type == lrc::api::profile::Type::SIP)
+           && !contact.profileInfo.uri.isEmpty();
 }
 
-bool Utils::getReplyMessageBox(QWidget* widget, const QString& title, const QString& text)
+bool
+Utils::getReplyMessageBox(QWidget *widget, const QString &title, const QString &text)
 {
-    if (QMessageBox::question(widget, title, text, QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
+    if (QMessageBox::question(widget, title, text, QMessageBox::Yes | QMessageBox::No)
+        == QMessageBox::Yes)
         return true;
     return false;
 }
 
 QImage
-Utils::conversationPhoto(const QString& convUid, const lrc::api::account::Info& accountInfo)
+Utils::conversationPhoto(const QString &convUid, const lrc::api::account::Info &accountInfo)
 {
     auto convInfo = LRCInstance::getConversationFromConvUid(convUid, accountInfo.id, false);
     if (!convInfo.uid.isEmpty()) {
@@ -662,23 +609,25 @@ Utils::conversationPhoto(const QString& convUid, const lrc::api::account::Info& 
 }
 
 QColor
-Utils::getAvatarColor(const QString& canonicalUri) {
+Utils::getAvatarColor(const QString &canonicalUri)
+{
     if (canonicalUri.isEmpty()) {
-        return RingTheme::defaultAvatarColor_;
+        return JamiAvatarTheme::defaultAvatarColor_;
     }
-    auto h = QString(QCryptographicHash::hash(canonicalUri.toLocal8Bit(), QCryptographicHash::Md5).toHex());
+    auto h = QString(
+        QCryptographicHash::hash(canonicalUri.toLocal8Bit(), QCryptographicHash::Md5).toHex());
     if (h.isEmpty() || h.isNull()) {
-        return RingTheme::defaultAvatarColor_;
+        return JamiAvatarTheme::defaultAvatarColor_;
     }
     auto colorIndex = std::string("0123456789abcdef").find(h.at(0).toLatin1());
-    return RingTheme::avatarColors_[colorIndex];
+    return JamiAvatarTheme::avatarColors_[colorIndex];
 }
 
 // Generate a QImage representing a dummy user avatar, when user doesn't provide it.
 // Current rendering is a flat colored circle with a centered letter.
 // The color of the letter is computed from the circle color to be visible whaterver be the circle color.
 QImage
-Utils::fallbackAvatar(const QSize size, const QString& canonicalUriStr, const QString& letterStr)
+Utils::fallbackAvatar(const QSize size, const QString &canonicalUriStr, const QString &letterStr)
 {
     // We start with a transparent avatar
     QImage avatar(size, QImage::Format_ARGB32);
@@ -734,11 +683,9 @@ Utils::fallbackAvatar(const QSize size, const QString& canonicalUriStr, const QS
 }
 
 QImage
-Utils::fallbackAvatar(const QSize size, const std::string& alias, const std::string& uri)
+Utils::fallbackAvatar(const QSize size, const std::string &alias, const std::string &uri)
 {
-    return fallbackAvatar(size,
-        QString::fromStdString(uri),
-        QString::fromStdString(alias));
+    return fallbackAvatar(size, QString::fromStdString(uri), QString::fromStdString(alias));
 }
 
 QByteArray
@@ -752,19 +699,19 @@ Utils::QImageToByteArray(QImage image)
 }
 
 QImage
-Utils::cropImage(const QImage& img)
+Utils::cropImage(const QImage &img)
 {
     QRect rect;
     auto w = img.width();
     auto h = img.height();
     if (w > h) {
-        return img.copy({ (w - h) / 2, 0, h, h });
+        return img.copy({(w - h) / 2, 0, h, h});
     }
-    return img.copy({ 0, (h - w) / 2, w, w });
+    return img.copy({0, (h - w) / 2, w, w});
 }
 
 QPixmap
-Utils::pixmapFromSvg(const QString& svg_resource, const QSize& size)
+Utils::pixmapFromSvg(const QString &svg_resource, const QSize &size)
 {
     QSvgRenderer svgRenderer(svg_resource);
     QPixmap pixmap(size);
@@ -778,10 +725,10 @@ QImage
 Utils::setupQRCode(QString ringID, int margin)
 {
     auto rcode = QRcode_encodeString(ringID.toStdString().c_str(),
-        0, //Let the version be decided by libqrencode
-        QR_ECLEVEL_L, // Lowest level of error correction
-        QR_MODE_8, // 8-bit data mode
-        1);
+                                     0,            //Let the version be decided by libqrencode
+                                     QR_ECLEVEL_L, // Lowest level of error correction
+                                     QR_MODE_8,    // 8-bit data mode
+                                     1);
     if (not rcode) {
         qWarning() << "Failed to generate QR code: " << strerror(errno);
         return QImage();
@@ -795,16 +742,15 @@ Utils::setupQRCode(QString ringID, int margin)
     painter.setPen(QPen(Qt::black, 0.1, Qt::SolidLine, Qt::FlatCap, Qt::MiterJoin));
     painter.setBrush(Qt::black);
     painter.fillRect(QRect(0, 0, qrwidth, qrwidth), Qt::white);
-    unsigned char* p;
+    unsigned char *p;
     p = rcode->data;
     for (int y = 0; y < rcode->width; y++) {
-        unsigned char* row = (p + (y * rcode->width));
+        unsigned char *row = (p + (y * rcode->width));
         for (int x = 0; x < rcode->width; x++) {
             if (*(row + x) & 0x1) {
                 painter.drawRect(margin + x, margin + y, 1, 1);
             }
         }
-
     }
     painter.end();
     QRcode_free(rcode);
@@ -826,7 +772,8 @@ Utils::setCurrentScalingRatio(float ratio)
 QString
 Utils::formattedTime(int duration)
 {
-    if (duration == 0) return {};
+    if (duration == 0)
+        return {};
     std::string formattedString;
     auto minutes = duration / 60;
     auto seconds = duration % 60;
@@ -838,13 +785,14 @@ Utils::formattedTime(int duration)
     } else {
         formattedString += "00:";
     }
-    if (seconds < 10) formattedString += "0";
+    if (seconds < 10)
+        formattedString += "0";
     formattedString += std::to_string(seconds);
     return QString::fromStdString(formattedString);
 }
 
 QByteArray
-Utils::QByteArrayFromFile(const QString& filename)
+Utils::QByteArrayFromFile(const QString &filename)
 {
     QFile file(filename);
     if (file.open(QIODevice::ReadOnly)) {
@@ -856,7 +804,7 @@ Utils::QByteArrayFromFile(const QString& filename)
 }
 
 QPixmap
-Utils::generateTintedPixmap(const QString& filename, QColor color)
+Utils::generateTintedPixmap(const QString &filename, QColor color)
 {
     QPixmap px(filename);
     QImage tmpImage = px.toImage();
@@ -869,7 +817,8 @@ Utils::generateTintedPixmap(const QString& filename, QColor color)
     return QPixmap::fromImage(tmpImage);
 }
 
-QPixmap Utils::generateTintedPixmap(const QPixmap& pix, QColor color)
+QPixmap
+Utils::generateTintedPixmap(const QPixmap &pix, QColor color)
 {
     QPixmap px = pix;
     QImage tmpImage = px.toImage();
@@ -883,13 +832,13 @@ QPixmap Utils::generateTintedPixmap(const QPixmap& pix, QColor color)
 }
 
 QImage
-Utils::scaleAndFrame(const QImage photo, const QSize& size)
+Utils::scaleAndFrame(const QImage photo, const QSize &size)
 {
     return photo.scaled(size, Qt::KeepAspectRatio, Qt::SmoothTransformation);
 }
 
 QImage
-Utils::accountPhoto(const lrc::api::account::Info& accountInfo, const QSize& size)
+Utils::accountPhoto(const lrc::api::account::Info &accountInfo, const QSize &size)
 {
     QImage photo;
     if (!accountInfo.profileInfo.avatar.isEmpty()) {
@@ -899,16 +848,15 @@ Utils::accountPhoto(const lrc::api::account::Info& accountInfo, const QSize& siz
         auto bestId = bestIdForAccount(accountInfo);
         auto bestName = bestNameForAccount(accountInfo);
         QString letterStr = bestId == bestName ? QString() : bestName;
-        QString prefix = accountInfo.profileInfo.type == lrc::api::profile::Type::RING ? "ring:" : "sip:";
-        photo = fallbackAvatar(size,
-            prefix + accountInfo.profileInfo.uri,
-            letterStr);
+        QString prefix = accountInfo.profileInfo.type == lrc::api::profile::Type::RING ? "ring:"
+                                                                                       : "sip:";
+        photo = fallbackAvatar(size, prefix + accountInfo.profileInfo.uri, letterStr);
     }
     return scaleAndFrame(photo, size);
 }
 
 void
-Utils::swapQListWidgetItems(QListWidget* list, bool down)
+Utils::swapQListWidgetItems(QListWidget *list, bool down)
 {
     QListWidgetItem *current = list->currentItem();
     int currIndex = list->row(current);
@@ -925,10 +873,10 @@ Utils::humanFileSize(qint64 fileSize)
     float fileSizeF = static_cast<float>(fileSize);
     float thresh = 1024;
 
-    if(abs(fileSizeF) < thresh) {
+    if (abs(fileSizeF) < thresh) {
         return QString::number(fileSizeF) + " B";
     }
-    QString units[] = { "kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
+    QString units[] = {"kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"};
     int unit_position = -1;
     do {
         fileSizeF /= thresh;
@@ -940,13 +888,17 @@ Utils::humanFileSize(qint64 fileSize)
 }
 
 const QString
-Utils::UtilsAdapter::getBestName(const QString& accountId, const QString& uid) {
+Utils::UtilsAdapter::getBestName(const QString &accountId, const QString &uid)
+{
     auto convModel = LRCInstance::getAccountInfo(accountId).conversationModel.get();
-    return Utils::bestNameForConversation(LRCInstance::getConversationFromConvUid(uid, accountId), *convModel);
+    return Utils::bestNameForConversation(LRCInstance::getConversationFromConvUid(uid, accountId),
+                                          *convModel);
 }
 
 const QString
-Utils::UtilsAdapter::getBestId(const QString& accountId, const QString& uid) {
+Utils::UtilsAdapter::getBestId(const QString &accountId, const QString &uid)
+{
     auto convModel = LRCInstance::getAccountInfo(accountId).conversationModel.get();
-    return Utils::bestIdForConversation(LRCInstance::getConversationFromConvUid(uid, accountId), *convModel);
+    return Utils::bestIdForConversation(LRCInstance::getConversationFromConvUid(uid, accountId),
+                                        *convModel);
 }

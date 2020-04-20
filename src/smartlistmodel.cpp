@@ -20,19 +20,19 @@
 
 #include "smartlistmodel.h"
 
+#include "lrcinstance.h"
 #include "pixbufmanipulator.h"
 #include "utils.h"
-#include "lrcinstance.h"
 
-#include "globalinstances.h"
 #include "api/contactmodel.h"
+#include "globalinstances.h"
 
 #include <QDateTime>
 
-SmartListModel::SmartListModel(const QString& accId,
+SmartListModel::SmartListModel(const QString &accId,
                                QObject *parent,
                                SmartListModel::Type listModelType,
-                               const QString& convUid)
+                               const QString &convUid)
     : QAbstractListModel(parent)
     , accountId_(accId)
     , listModelType_(listModelType)
@@ -43,11 +43,12 @@ SmartListModel::SmartListModel(const QString& accId,
     }
 }
 
-int SmartListModel::rowCount(const QModelIndex &parent) const
+int
+SmartListModel::rowCount(const QModelIndex &parent) const
 {
     if (!parent.isValid()) {
-        auto& accInfo = LRCInstance::accountModel().getAccountInfo(accountId_);
-        auto& convModel = accInfo.conversationModel;
+        auto &accInfo = LRCInstance::accountModel().getAccountInfo(accountId_);
+        auto &convModel = accInfo.conversationModel;
         if (listModelType_ == Type::TRANSFER) {
             auto filterType = accInfo.profileInfo.type;
             return convModel->getFilteredConversations(filterType).size();
@@ -67,21 +68,23 @@ int SmartListModel::rowCount(const QModelIndex &parent) const
     return 0; // A valid QModelIndex returns 0 as no entry has sub-elements
 }
 
-int SmartListModel::columnCount(const QModelIndex &parent) const
+int
+SmartListModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
     return 1;
 }
 
-QVariant SmartListModel::data(const QModelIndex &index, int role) const
+QVariant
+SmartListModel::data(const QModelIndex &index, int role) const
 {
     if (!index.isValid()) {
         return QVariant();
     }
 
     try {
-        auto& accountInfo = LRCInstance::accountModel().getAccountInfo(accountId_);
-        auto& convModel = accountInfo.conversationModel;
+        auto &accountInfo = LRCInstance::accountModel().getAccountInfo(accountId_);
+        auto &convModel = accountInfo.conversationModel;
         lrc::api::conversation::Info item;
         if (listModelType_ == Type::TRANSFER) {
             auto filterType = accountInfo.profileInfo.type;
@@ -98,14 +101,13 @@ QVariant SmartListModel::data(const QModelIndex &index, int role) const
                 bool callsOpen = sectionState_[tr("Calls")];
                 bool contactsOpen = sectionState_[tr("Contacts")];
                 auto callSectionEnd = callsOpen ? calls.size() + 1 : 1;
-                auto contactSectionEnd = contactsOpen ?
-                    callSectionEnd + contacts.size() + 1 :
-                    callSectionEnd + 1;
+                auto contactSectionEnd = contactsOpen ? callSectionEnd + contacts.size() + 1
+                                                      : callSectionEnd + 1;
                 if (index.row() < callSectionEnd) {
                     if (index.row() == 0) {
-                        return QVariant(role == Role::SectionName ?
-                            (callsOpen ? "➖ " : "➕ ") + QString(tr("Calls")) :
-                            "");
+                        return QVariant(role == Role::SectionName
+                                            ? (callsOpen ? "➖ " : "➕ ") + QString(tr("Calls"))
+                                            : "");
                     } else {
                         auto idx = index.row() - 1;
                         itemConvUid = calls.at(idx).at(0).convId;
@@ -113,9 +115,9 @@ QVariant SmartListModel::data(const QModelIndex &index, int role) const
                     }
                 } else if (index.row() < contactSectionEnd) {
                     if (index.row() == callSectionEnd) {
-                        return QVariant(role == Role::SectionName ?
-                            (contactsOpen ? "➖ " : "➕ ") + QString(tr("Contacts")) :
-                            "");
+                        return QVariant(role == Role::SectionName
+                                            ? (contactsOpen ? "➖ " : "➕ ") + QString(tr("Contacts"))
+                                            : "");
                     } else {
                         auto idx = index.row() - (callSectionEnd + 1);
                         itemConvUid = contacts.at(idx).at(0).convId;
@@ -127,19 +129,20 @@ QVariant SmartListModel::data(const QModelIndex &index, int role) const
                 return QVariant(itemAccId);
             }
             item = LRCInstance::getConversationFromConvUid(itemConvUid, itemAccId);
-            auto& itemAccountInfo = LRCInstance::accountModel().getAccountInfo(itemAccId);
+            auto &itemAccountInfo = LRCInstance::accountModel().getAccountInfo(itemAccId);
             return getConversationItemData(item, itemAccountInfo, role);
         } else if (listModelType_ == Type::CONVERSATION) {
             item = convModel->filteredConversation(index.row());
             return getConversationItemData(item, accountInfo, role);
         }
-    } catch (const std::exception& e) {
+    } catch (const std::exception &e) {
         qWarning() << e.what();
     }
     return QVariant();
 }
 
-QHash<int, QByteArray> SmartListModel::roleNames() const
+QHash<int, QByteArray>
+SmartListModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
     roles[DisplayName] = "DisplayName";
@@ -163,11 +166,11 @@ QHash<int, QByteArray> SmartListModel::roleNames() const
 }
 
 void
-SmartListModel::setConferenceableFilter(const QString& filter)
+SmartListModel::setConferenceableFilter(const QString &filter)
 {
     beginResetModel();
-    auto& accountInfo = LRCInstance::accountModel().getAccountInfo(accountId_);
-    auto& convModel = accountInfo.conversationModel;
+    auto &accountInfo = LRCInstance::accountModel().getAccountInfo(accountId_);
+    auto &convModel = accountInfo.conversationModel;
     conferenceables_ = convModel->getConferenceableConversations(convUid_, filter);
     sectionState_[tr("Calls")] = true;
     sectionState_[tr("Contacts")] = true;
@@ -175,7 +178,7 @@ SmartListModel::setConferenceableFilter(const QString& filter)
 }
 
 void
-SmartListModel::toggleSection(const QString& section)
+SmartListModel::toggleSection(const QString &section)
 {
     beginResetModel();
     if (section.contains(tr("Calls"))) {
@@ -187,71 +190,64 @@ SmartListModel::toggleSection(const QString& section)
 }
 
 QVariant
-SmartListModel::getConversationItemData(const conversation::Info& item,
-                                        const account::Info& accountInfo,
+SmartListModel::getConversationItemData(const conversation::Info &item,
+                                        const account::Info &accountInfo,
                                         int role) const
 {
     if (item.participants.size() <= 0) {
         return QVariant();
     }
-    auto& contactModel = accountInfo.contactModel;
+    auto &contactModel = accountInfo.contactModel;
     switch (role) {
     case Role::Picture: {
-        auto contactImage = GlobalInstances::pixmapManipulator().decorationRole(item, accountInfo).value<QImage>();
+        auto contactImage
+            = GlobalInstances::pixmapManipulator().decorationRole(item, accountInfo).value<QImage>();
         return QString::fromLatin1(Utils::QImageToByteArray(contactImage).toBase64().data());
     }
-    case Role::DisplayName:
-    {
-        auto& contact = contactModel->getContact(item.participants[0]);
+    case Role::DisplayName: {
+        auto &contact = contactModel->getContact(item.participants[0]);
         return QVariant(Utils::bestNameForContact(contact));
     }
-    case Role::DisplayID:
-    {
-        auto& contact = contactModel->getContact(item.participants[0]);
+    case Role::DisplayID: {
+        auto &contact = contactModel->getContact(item.participants[0]);
         return QVariant(Utils::bestIdForContact(contact));
     }
-    case Role::Presence:
-    {
-        auto& contact = contactModel->getContact(item.participants[0]);
+    case Role::Presence: {
+        auto &contact = contactModel->getContact(item.participants[0]);
         return QVariant(contact.isPresent);
     }
-    case Role::URI:
-    {
-        auto& contact = contactModel->getContact(item.participants[0]);
+    case Role::URI: {
+        auto &contact = contactModel->getContact(item.participants[0]);
         return QVariant(contact.profileInfo.uri);
     }
     case Role::UnreadMessagesCount:
         return QVariant(item.unreadMessages);
-    case Role::LastInteractionDate:
-    {
-        auto& date = item.interactions.at(item.lastMessageUid).timestamp;
+    case Role::LastInteractionDate: {
+        auto &date = item.interactions.at(item.lastMessageUid).timestamp;
         return QVariant(QString::fromStdString(Utils::formatTimeString(date)));
     }
     case Role::LastInteraction:
         return QVariant(item.interactions.at(item.lastMessageUid).body);
     case Role::LastInteractionType:
         return QVariant(Utils::toUnderlyingValue(item.interactions.at(item.lastMessageUid).type));
-    case Role::ContactType:
-    {
-        auto& contact = contactModel->getContact(item.participants[0]);
+    case Role::ContactType: {
+        auto &contact = contactModel->getContact(item.participants[0]);
         return QVariant(Utils::toUnderlyingValue(contact.profileInfo.type));
     }
     case Role::UID:
         return QVariant(item.uid);
     case Role::ContextMenuOpen:
         return QVariant(isContextMenuOpen);
-    case Role::InCall:
-    {
-        auto& convInfo = LRCInstance::getConversationFromConvUid(item.uid);
+    case Role::InCall: {
+        auto &convInfo = LRCInstance::getConversationFromConvUid(item.uid);
         if (!convInfo.uid.isEmpty()) {
             auto callModel = LRCInstance::getCurrentCallModel();
             return QVariant(callModel->hasCall(convInfo.callId));
         }
         return QVariant(false);
     }
-    case Role::IsIncomingCallInProgress:
-    {
-        auto& convInfo = LRCInstance::getConversationFromConvUid(item.uid);
+    case Role::IsIncomingCallInProgress: {
+        auto &convInfo = LRCInstance::getConversationFromConvUid(item.uid);
         if (!convInfo.uid.isEmpty()) {
             auto callModel = LRCInstance::getCurrentCallModel();
             auto call = callModel->getCall(convInfo.callId);
@@ -259,9 +255,8 @@ SmartListModel::getConversationItemData(const conversation::Info& item,
         }
         return QVariant(false);
     }
-    case Role::CallStateStr:
-    {
-        auto& convInfo = LRCInstance::getConversationFromConvUid(item.uid);
+    case Role::CallStateStr: {
+        auto &convInfo = LRCInstance::getConversationFromConvUid(item.uid);
         if (!convInfo.uid.isEmpty()) {
             auto call = LRCInstance::getCallInfoForConversation(convInfo);
             if (call) {
@@ -279,7 +274,8 @@ SmartListModel::getConversationItemData(const conversation::Info& item,
     return QVariant();
 }
 
-QModelIndex SmartListModel::index(int row, int column, const QModelIndex &parent) const
+QModelIndex
+SmartListModel::index(int row, int column, const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
     if (column != 0) {
@@ -292,28 +288,29 @@ QModelIndex SmartListModel::index(int row, int column, const QModelIndex &parent
     return QModelIndex();
 }
 
-QModelIndex SmartListModel::parent(const QModelIndex &child) const
+QModelIndex
+SmartListModel::parent(const QModelIndex &child) const
 {
     Q_UNUSED(child);
     return QModelIndex();
 }
 
-Qt::ItemFlags SmartListModel::flags(const QModelIndex &index) const
+Qt::ItemFlags
+SmartListModel::flags(const QModelIndex &index) const
 {
     auto flags = QAbstractItemModel::flags(index) | Qt::ItemNeverHasChildren | Qt::ItemIsSelectable;
     auto type = Utils::toEnum<lrc::api::profile::Type>(data(index, Role::ContactType).value<int>());
     auto uid = data(index, Role::UID).value<QString>();
     if (!index.isValid()) {
         return QAbstractItemModel::flags(index);
-    } else if ( (type == lrc::api::profile::Type::TEMPORARY &&
-                uid.isEmpty())) {
+    } else if ((type == lrc::api::profile::Type::TEMPORARY && uid.isEmpty())) {
         flags &= ~(Qt::ItemIsSelectable);
     }
     return flags;
 }
 
 void
-SmartListModel::setAccount(const QString& accountId)
+SmartListModel::setAccount(const QString &accountId)
 {
     beginResetModel();
     accountId_ = accountId;

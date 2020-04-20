@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2019 by Savoir-faire Linux                                *
+ * Copyright (C) 2019-2020 by Savoir-faire Linux                           *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  *                                                                         *
  * This program is free software; you can redistribute it and/or modify    *
@@ -27,10 +27,13 @@
 class NetworkEventHandler : public INetworkListManagerEvents
 {
 public:
-    NetworkEventHandler() : m_lRefCnt(1) {};
-    virtual ~NetworkEventHandler() {};
+    NetworkEventHandler()
+        : m_lRefCnt(1){};
+    virtual ~NetworkEventHandler(){};
 
-    HRESULT STDMETHODCALLTYPE QueryInterface(REFIID riid, void **ppvObject) {
+    HRESULT STDMETHODCALLTYPE
+    QueryInterface(REFIID riid, void **ppvObject)
+    {
         HRESULT hr = S_OK;
         if (IsEqualIID(riid, IID_IUnknown)) {
             *ppvObject = (IUnknown *) this;
@@ -42,10 +45,14 @@ public:
 
         return hr;
     };
-    ULONG STDMETHODCALLTYPE AddRef() {
+    ULONG STDMETHODCALLTYPE
+    AddRef()
+    {
         return (ULONG) InterlockedIncrement(&m_lRefCnt);
     };
-    ULONG STDMETHODCALLTYPE Release() {
+    ULONG STDMETHODCALLTYPE
+    Release()
+    {
         LONG res = InterlockedDecrement(&m_lRefCnt);
         if (res == 0) {
             delete this;
@@ -54,7 +61,8 @@ public:
     };
 
     virtual HRESULT STDMETHODCALLTYPE
-    ConnectivityChanged(NLM_CONNECTIVITY newConnectivity) {
+    ConnectivityChanged(NLM_CONNECTIVITY newConnectivity)
+    {
         qDebug() << "connectivity changed: " << newConnectivity;
         if (connectivityChangedCb_) {
             connectivityChangedCb_();
@@ -62,7 +70,9 @@ public:
         return S_OK;
     };
 
-    void setOnConnectivityChangedCallBack(std::function<void()>&& cb) {
+    void
+    setOnConnectivityChangedCallBack(std::function<void()> &&cb)
+    {
         connectivityChangedCb_ = cb;
     };
 
@@ -72,7 +82,7 @@ private:
     std::function<void()> connectivityChangedCb_;
 };
 
-ConnectivityMonitor::ConnectivityMonitor(QObject* parent)
+ConnectivityMonitor::ConnectivityMonitor(QObject *parent)
     : QObject(parent)
 {
     CoInitialize(NULL);
@@ -80,14 +90,16 @@ ConnectivityMonitor::ConnectivityMonitor(QObject* parent)
     IUnknown *pUnknown = NULL;
 
     HRESULT hr = CoCreateInstance(CLSID_NetworkListManager,
-        NULL, CLSCTX_ALL, IID_IUnknown, (void **) &pUnknown);
+                                  NULL,
+                                  CLSCTX_ALL,
+                                  IID_IUnknown,
+                                  (void **) &pUnknown);
     if (FAILED(hr)) {
         return;
     }
 
     pNetworkListManager_ = NULL;
-    hr = pUnknown->QueryInterface(IID_INetworkListManager,
-        (void **) &pNetworkListManager_);
+    hr = pUnknown->QueryInterface(IID_INetworkListManager, (void **) &pNetworkListManager_);
     if (FAILED(hr)) {
         destroy();
         pUnknown->Release();
@@ -96,7 +108,7 @@ ConnectivityMonitor::ConnectivityMonitor(QObject* parent)
 
     pCPContainer_ = NULL;
     hr = pNetworkListManager_->QueryInterface(IID_IConnectionPointContainer,
-        (void **) &pCPContainer_);
+                                              (void **) &pCPContainer_);
     if (FAILED(hr)) {
         destroy();
         pUnknown->Release();
@@ -104,15 +116,11 @@ ConnectivityMonitor::ConnectivityMonitor(QObject* parent)
     }
 
     pConnectPoint_ = NULL;
-    hr = pCPContainer_->FindConnectionPoint(IID_INetworkListManagerEvents,
-        &pConnectPoint_);
+    hr = pCPContainer_->FindConnectionPoint(IID_INetworkListManagerEvents, &pConnectPoint_);
     if (SUCCEEDED(hr)) {
         cookie_ = NULL;
         netEventHandler_ = new NetworkEventHandler;
-        netEventHandler_->setOnConnectivityChangedCallBack(
-            [this] {
-                emit connectivityChanged();
-            });
+        netEventHandler_->setOnConnectivityChangedCallBack([this] { emit connectivityChanged(); });
         hr = pConnectPoint_->Advise((IUnknown *) netEventHandler_, &cookie_);
     } else {
         destroy();

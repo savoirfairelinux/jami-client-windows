@@ -21,19 +21,21 @@
 #include "accountlistmodel.h"
 #include "lrcinstance.h"
 
-#include <QQuickImageProvider>
-#include <QObject>
-#include <QString>
-#include <QPair>
 #include <QImage>
+#include <QObject>
+#include <QPair>
+#include <QQuickImageProvider>
+#include <QString>
 
 class QrImageProvider : public QObject, public QQuickImageProvider
 {
-
 public:
-    QrImageProvider() : QQuickImageProvider(QQuickImageProvider::Image, QQmlImageProviderBase::ForceAsynchronousImageLoading){}
+    QrImageProvider()
+        : QQuickImageProvider(QQuickImageProvider::Image,
+                              QQmlImageProviderBase::ForceAsynchronousImageLoading)
+    {}
 
-    QPair<int, int> getIndexFromID(const QString& id)
+    QPair<int, int> getIndexFromID(const QString &id)
     {
         // should be string like account_0_0 (index 0, index 1)
         auto list = id.split('_', QString::SkipEmptyParts);
@@ -44,7 +46,7 @@ public:
         return QPair<int, int>(0, 0);
     }
 
-    QImage requestImage(const QString& id, QSize* size, const QSize& requestedSize) override
+    QImage requestImage(const QString &id, QSize *size, const QSize &requestedSize) override
     {
         Q_UNUSED(size);
 
@@ -55,10 +57,12 @@ public:
             return QImage();
         }
 
-        auto& accountInfo = LRCInstance::accountModel().getAccountInfo(accountList.at(indexPair.first));
+        auto &accountInfo = LRCInstance::accountModel().getAccountInfo(
+            accountList.at(indexPair.first));
 
-        if(!requestedSize.isEmpty())
-            return Utils::setupQRCode(accountInfo.profileInfo.uri, 0).scaled(requestedSize, Qt::KeepAspectRatio);
+        if (!requestedSize.isEmpty())
+            return Utils::setupQRCode(accountInfo.profileInfo.uri, 0)
+                .scaled(requestedSize, Qt::KeepAspectRatio);
         else
             return Utils::setupQRCode(accountInfo.profileInfo.uri, 0);
     }

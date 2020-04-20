@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2019 by Savoir-faire Linux                                *
+ * Copyright (C) 2019-2020 by Savoir-faire Linux                           *
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
  * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
  *                                                                         *
@@ -23,8 +23,7 @@
 
 using namespace lrc::api;
 
-FrameWrapper::FrameWrapper(AVModel& avModel,
-                           const QString& id)
+FrameWrapper::FrameWrapper(AVModel &avModel, const QString &id)
     : avModel_(avModel)
     , id_(id)
     , isRendering_(false)
@@ -41,19 +40,18 @@ void
 FrameWrapper::connectStartRendering()
 {
     QObject::disconnect(renderConnections_.started);
-    renderConnections_.started = QObject::connect(
-        &avModel_,
-        &AVModel::rendererStarted,
-        this,
-        &FrameWrapper::slotRenderingStarted);
+    renderConnections_.started = QObject::connect(&avModel_,
+                                                  &AVModel::rendererStarted,
+                                                  this,
+                                                  &FrameWrapper::slotRenderingStarted);
 }
 
 bool
 FrameWrapper::startRendering()
 {
     try {
-        renderer_ = const_cast<video::Renderer*>(&avModel_.getRenderer(id_));
-    } catch (std::out_of_range& e) {
+        renderer_ = const_cast<video::Renderer *>(&avModel_.getRenderer(id_));
+    } catch (std::out_of_range &e) {
         qWarning() << e.what();
         return false;
     }
@@ -61,22 +59,20 @@ FrameWrapper::startRendering()
     QObject::disconnect(renderConnections_.updated);
     QObject::disconnect(renderConnections_.stopped);
 
-    renderConnections_.updated = QObject::connect(
-        &avModel_,
-        &AVModel::frameUpdated,
-        this,
-        &FrameWrapper::slotFrameUpdated);
+    renderConnections_.updated = QObject::connect(&avModel_,
+                                                  &AVModel::frameUpdated,
+                                                  this,
+                                                  &FrameWrapper::slotFrameUpdated);
 
-    renderConnections_.stopped = QObject::connect(
-        &avModel_,
-        &AVModel::rendererStopped,
-        this,
-        &FrameWrapper::slotRenderingStopped);
+    renderConnections_.stopped = QObject::connect(&avModel_,
+                                                  &AVModel::rendererStopped,
+                                                  this,
+                                                  &FrameWrapper::slotRenderingStopped);
 
     return true;
 }
 
-QImage*
+QImage *
 FrameWrapper::getFrame()
 {
     return image_.get();
@@ -89,7 +85,7 @@ FrameWrapper::isRendering()
 }
 
 void
-FrameWrapper::slotRenderingStarted(const QString& id)
+FrameWrapper::slotRenderingStarted(const QString &id)
 {
     if (id != id_) {
         return;
@@ -106,7 +102,7 @@ FrameWrapper::slotRenderingStarted(const QString& id)
 }
 
 void
-FrameWrapper::slotFrameUpdated(const QString& id)
+FrameWrapper::slotFrameUpdated(const QString &id)
 {
     if (id != id_) {
         return;
@@ -132,12 +128,10 @@ FrameWrapper::slotFrameUpdated(const QString& id)
          */
         if (size != 0 && size == width * height * 4) {
             buffer_ = std::move(frame_.storage);
-            image_.reset(
-                new QImage((uchar*) buffer_.data(),
-                width,
-                height,
-                QImage::Format_ARGB32_Premultiplied)
-            );
+            image_.reset(new QImage((uchar *) buffer_.data(),
+                                    width,
+                                    height,
+                                    QImage::Format_ARGB32_Premultiplied));
 #else
         if (frame_.ptr) {
             image_.reset(new QImage(frame_.ptr, width, height, QImage::Format_ARGB32));
@@ -149,7 +143,7 @@ FrameWrapper::slotFrameUpdated(const QString& id)
 }
 
 void
-FrameWrapper::slotRenderingStopped(const QString& id)
+FrameWrapper::slotRenderingStopped(const QString &id)
 {
     if (id != id_) {
         return;
@@ -171,33 +165,32 @@ FrameWrapper::slotRenderingStopped(const QString& id)
     emit renderingStopped(id);
 }
 
-RenderManager::RenderManager(AVModel& avModel)
-    :avModel_(avModel)
+RenderManager::RenderManager(AVModel &avModel)
+    : avModel_(avModel)
 {
     deviceListSize_ = avModel_.getDevices().size();
-    connect(&avModel_, &lrc::api::AVModel::deviceEvent,
-            this, &RenderManager::slotDeviceEvent);
+    connect(&avModel_, &lrc::api::AVModel::deviceEvent, this, &RenderManager::slotDeviceEvent);
 
     previewFrameWrapper_ = std::make_unique<FrameWrapper>(avModel_);
 
     QObject::connect(previewFrameWrapper_.get(),
-        &FrameWrapper::renderingStarted,
-        [this](const QString& id) {
-            Q_UNUSED(id);
-            emit previewRenderingStarted();
-        });
+                     &FrameWrapper::renderingStarted,
+                     [this](const QString &id) {
+                         Q_UNUSED(id);
+                         emit previewRenderingStarted();
+                     });
     QObject::connect(previewFrameWrapper_.get(),
-        &FrameWrapper::frameUpdated,
-        [this](const QString& id) {
-            Q_UNUSED(id);
-            emit previewFrameUpdated();
-        });
+                     &FrameWrapper::frameUpdated,
+                     [this](const QString &id) {
+                         Q_UNUSED(id);
+                         emit previewFrameUpdated();
+                     });
     QObject::connect(previewFrameWrapper_.get(),
-        &FrameWrapper::renderingStopped,
-        [this](const QString& id) {
-            Q_UNUSED(id);
-            emit previewRenderingStopped();
-        });
+                     &FrameWrapper::renderingStopped,
+                     [this](const QString &id) {
+                         Q_UNUSED(id);
+                         emit previewRenderingStopped();
+                     });
 
     previewFrameWrapper_->connectStartRendering();
 }
@@ -206,7 +199,7 @@ RenderManager::~RenderManager()
 {
     previewFrameWrapper_.reset();
 
-    for (auto& dfw : distantFrameWrapperMap_) {
+    for (auto &dfw : distantFrameWrapperMap_) {
         dfw.second.reset();
     }
 }
@@ -217,13 +210,14 @@ RenderManager::isPreviewing()
     return previewFrameWrapper_->isRendering();
 }
 
-QImage*
+QImage *
 RenderManager::getPreviewFrame()
 {
     return previewFrameWrapper_->getFrame();
 }
 
-void RenderManager::stopPreviewing(bool async)
+void
+RenderManager::stopPreviewing(bool async)
 {
     if (!previewFrameWrapper_->isRendering()) {
         return;
@@ -236,7 +230,8 @@ void RenderManager::stopPreviewing(bool async)
     }
 }
 
-void RenderManager::startPreviewing(bool force, bool async)
+void
+RenderManager::startPreviewing(bool force, bool async)
 {
     if (previewFrameWrapper_->isRendering() && !force) {
         return;
@@ -255,8 +250,8 @@ void RenderManager::startPreviewing(bool force, bool async)
     }
 }
 
-QImage*
-RenderManager::getFrame(const QString& id)
+QImage *
+RenderManager::getFrame(const QString &id)
 {
     auto dfwIt = distantFrameWrapperMap_.find(id);
     if (dfwIt != distantFrameWrapperMap_.end()) {
@@ -266,11 +261,11 @@ RenderManager::getFrame(const QString& id)
 }
 
 void
-RenderManager::addDistantRenderer(const QString& id)
+RenderManager::addDistantRenderer(const QString &id)
 {
     // check if a FrameWrapper with this id exists
     auto dfwIt = distantFrameWrapperMap_.find(id);
-    if ( dfwIt != distantFrameWrapperMap_.end()) {
+    if (dfwIt != distantFrameWrapperMap_.end()) {
         if (!dfwIt->second->startRendering()) {
             qWarning() << "Couldn't start rendering for id: " << id;
         }
@@ -278,21 +273,21 @@ RenderManager::addDistantRenderer(const QString& id)
         auto dfw = std::make_unique<FrameWrapper>(avModel_, id);
 
         // connect this to the FrameWrapper
-        distantConnectionMap_[id].started = QObject::connect(
-            dfw.get(), &FrameWrapper::renderingStarted,
-            [this](const QString& id) {
-                emit distantRenderingStarted(id);
-            });
-        distantConnectionMap_[id].updated = QObject::connect(
-            dfw.get(), &FrameWrapper::frameUpdated,
-            [this](const QString& id) {
-                emit distantFrameUpdated(id);
-            });
-        distantConnectionMap_[id].stopped = QObject::connect(
-            dfw.get(), &FrameWrapper::renderingStopped,
-            [this](const QString& id) {
-                emit distantRenderingStopped(id);
-            });
+        distantConnectionMap_[id].started = QObject::connect(dfw.get(),
+                                                             &FrameWrapper::renderingStarted,
+                                                             [this](const QString &id) {
+                                                                 emit distantRenderingStarted(id);
+                                                             });
+        distantConnectionMap_[id].updated = QObject::connect(dfw.get(),
+                                                             &FrameWrapper::frameUpdated,
+                                                             [this](const QString &id) {
+                                                                 emit distantFrameUpdated(id);
+                                                             });
+        distantConnectionMap_[id].stopped = QObject::connect(dfw.get(),
+                                                             &FrameWrapper::renderingStopped,
+                                                             [this](const QString &id) {
+                                                                 emit distantRenderingStopped(id);
+                                                             });
 
         // connect FrameWrapper to avmodel
         dfw->connectStartRendering();
@@ -303,7 +298,7 @@ RenderManager::addDistantRenderer(const QString& id)
 }
 
 void
-RenderManager::removeDistantRenderer(const QString& id)
+RenderManager::removeDistantRenderer(const QString &id)
 {
     auto dfwIt = distantFrameWrapperMap_.find(id);
     if (dfwIt != distantFrameWrapperMap_.end()) {
@@ -329,7 +324,7 @@ RenderManager::slotDeviceEvent()
     auto deviceList = avModel_.getDevices();
     auto currentDeviceListSize = deviceList.size();
 
-    DeviceEvent deviceEvent {DeviceEvent::None};
+    DeviceEvent deviceEvent{DeviceEvent::None};
     if (currentDeviceListSize > deviceListSize_) {
         deviceEvent = DeviceEvent::Added;
     } else if (currentDeviceListSize < deviceListSize_) {
@@ -345,15 +340,13 @@ RenderManager::slotDeviceEvent()
             avModel_.clearCurrentVideoCaptureDevice();
             avModel_.switchInputTo({});
             stopPreviewing();
-        } else if (deviceEvent == DeviceEvent::RemovedCurrent &&
-                   currentDeviceListSize > 0) {
+        } else if (deviceEvent == DeviceEvent::RemovedCurrent && currentDeviceListSize > 0) {
             avModel_.setCurrentVideoCaptureDevice(defaultDevice);
             startPreviewing(true);
         } else {
             startPreviewing();
         }
-    } else if (deviceEvent == DeviceEvent::Added &&
-               currentDeviceListSize == 1) {
+    } else if (deviceEvent == DeviceEvent::Added && currentDeviceListSize == 1) {
         avModel_.setCurrentVideoCaptureDevice(defaultDevice);
     }
 

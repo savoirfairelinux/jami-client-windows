@@ -17,8 +17,8 @@ Rectangle {
     property string bestName: "Best Name"
     property string bestId: "Best Id"
 
-    signal callCancelButtonIsClicked()
-    signal backButtonIsClicked()
+    signal callCancelButtonIsClicked
+    signal backButtonIsClicked
 
     anchors.fill: parent
 
@@ -69,7 +69,8 @@ Rectangle {
             Layout.topMargin: 5
 
             Layout.preferredWidth: outgoingCallPageRect.width
-            Layout.preferredHeight: jamiBestNameText.height + jamiBestIdText.height + callStatusText.height + spinnerImage.height + 20
+            Layout.preferredHeight: jamiBestNameText.height + jamiBestIdText.height
+                                    + callStatusText.height + spinnerImage.height + 20
 
             color: "transparent"
 
@@ -94,9 +95,9 @@ Rectangle {
                     color: "white"
 
                     TextMetrics {
-                        id:     textMetricsjamiBestNameText
-                        font:   jamiBestNameText.font
-                        text:   bestName
+                        id: textMetricsjamiBestNameText
+                        font: jamiBestNameText.font
+                        text: bestName
                         elideWidth: outgoingCallPageTextRect.width - 50
                         elide: Qt.ElideMiddle
                     }
@@ -120,9 +121,9 @@ Rectangle {
                     color: Qt.lighter("white", 1.5)
 
                     TextMetrics {
-                        id:     textMetricsjamiBestIdText
-                        font:   jamiBestIdText.font
-                        text:   bestId
+                        id: textMetricsjamiBestIdText
+                        font: jamiBestIdText.font
+                        text: bestId
                         elideWidth: outgoingCallPageTextRect.width - 50
                         elide: Qt.ElideMiddle
                     }

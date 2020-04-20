@@ -23,30 +23,31 @@
 #include <QObject>
 #include <QString>
 
- // to ease the logic with the power of c++
-class AccountComboBoxQmlObjectHolder : public QObject {
+// to ease the logic with the power of c++
+class AccountComboBoxQmlObjectHolder : public QObject
+{
     Q_OBJECT
 
 public:
-    explicit AccountComboBoxQmlObjectHolder(QObject* parent = 0);
+    explicit AccountComboBoxQmlObjectHolder(QObject *parent = 0);
     ~AccountComboBoxQmlObjectHolder();
 
     // Must call Q_INVOKABLE so that this function can be used in QML, qml to c++
-    Q_INVOKABLE void setAccountComboBoxQmlObject(QObject* obj);
+    Q_INVOKABLE void setAccountComboBoxQmlObject(QObject *obj);
     Q_INVOKABLE void accountChanged(int index);
 
-    void setSelectedAccount(const QString& accountId, int index);
+    void setSelectedAccount(const QString &accountId, int index);
     void backToWelcomePage(int index);
     void deselectConversation();
 
 signals:
-    void accountSignalsReconnect(const QString& accountId);
+    void accountSignalsReconnect(const QString &accountId);
 
 private:
-    void connectAccount(const QString& accountId);
+    void connectAccount(const QString &accountId);
 
     // Object pointer
-    QObject* accountComboBoxQmlObject_;
+    QObject *accountComboBoxQmlObject_;
 
-    lrc::api::profile::Type currentTypeFilter_ {};
+    lrc::api::profile::Type currentTypeFilter_{};
 };

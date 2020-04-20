@@ -20,8 +20,8 @@
 
 #include "lrcinstance.h"
 
-#include <QQmlEngine>
 #include <QJsEngine>
+#include <QQmlEngine>
 
 using namespace lrc::api;
 
@@ -30,7 +30,7 @@ class LrcGeneralAdapter : public QObject
     Q_OBJECT;
 
 public:
-    explicit LrcGeneralAdapter(QObject* parent = 0);
+    explicit LrcGeneralAdapter(QObject *parent = 0);
     ~LrcGeneralAdapter();
 
     Q_INVOKABLE const QString getCurrAccId();

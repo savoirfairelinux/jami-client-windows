@@ -35,7 +35,7 @@ public:
     ~ConversationSmartListViewQmlObjectHolder();
 
     // Must call Q_INVOKABLE so that this function can be used in QML, qml to c++
-    Q_INVOKABLE void setConversationSmartListViewQmlObjectHolder(QObject* obj);
+    Q_INVOKABLE void setConversationSmartListViewQmlObjectHolder(QObject *obj);
     Q_INVOKABLE bool connectConversationModel();
 
     void backToWelcomePage();
@@ -43,9 +43,9 @@ public:
 
 private:
     // Object pointer
-    QObject* conversationSmartListViewQmlObject_;
+    QObject *conversationSmartListViewQmlObject_;
 
-    SmartListModel* conversationSmartListModel_;
+    SmartListModel *conversationSmartListModel_;
 
     // connections
     QMetaObject::Connection modelSortedConnection_;
