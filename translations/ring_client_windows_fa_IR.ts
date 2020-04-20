@@ -335,12 +335,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="184"/>
         <source>Show conversations</source>
-        <translation>نمایش مکالمات</translation>
+        <translation>نمایش گفتگو‌ها</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="187"/>
         <source>Conversations</source>
-        <translation> گفتگو</translation>
+        <translation>گفتگو‌ها</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="368"/>
@@ -463,12 +463,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="343"/>
         <source>Start audio call</source>
-        <translation>شروع مکالمه صوتی</translation>
+        <translation>شروع تماس صوتی</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="354"/>
         <source>Clear conversation</source>
-        <translation>پاک کردن مکالمه</translation>
+        <translation>پاک کردن گفتگو</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="361"/>
@@ -597,7 +597,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>مکالمه</translation>
+        <translation>گفتگو</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="62"/>

@@ -59,7 +59,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountitemdelegate.cpp" line="91"/>
         <source>Add Account</source>
-        <translation type="unfinished"/>
+        <translation>アカウントを追加</translation>
     </message>
 </context>
 <context>

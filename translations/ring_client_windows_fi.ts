@@ -10,12 +10,12 @@
     <message>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>about button</source>
-        <translation type="unfinished"/>
+        <translation>tietoja-painike</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="478"/>
         <source>credits button</source>
-        <translation type="unfinished"/>
+        <translation>tekijät -painike</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="481"/>
@@ -25,13 +25,14 @@
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
         <source>Free as in Freedom</source>
-        <translation type="unfinished"/>
+        <translation>Ilmainen kuin vapaus</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="563"/>
         <source>The Microsoft Windows client for Jami.
 Jami is a secured and distributed communication software.</source>
-        <translation type="unfinished"/>
+        <translation>Jami -sovellus Microsoft Windowsille.
+Jami on turvallinen ja hajautettu viestintäsovellus.</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="32"/>
@@ -59,7 +60,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../accountitemdelegate.cpp" line="91"/>
         <source>Add Account</source>
-        <translation type="unfinished"/>
+        <translation>Lisää tunnus</translation>
     </message>
 </context>
 <context>
@@ -67,22 +68,22 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Muoto</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="55"/>
         <source>Call Settings</source>
-        <translation type="unfinished"/>
+        <translation>Puheluasetukset</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="102"/>
         <source>Auto Answer Calls</source>
-        <translation type="unfinished"/>
+        <translation>Vastaa puheluihin automaattisesti</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="130"/>
         <source>Enable Custom Ringtone</source>
-        <translation type="unfinished"/>
+        <translation>Oma soittoääni</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="191"/>
@@ -92,7 +93,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="281"/>
         <source>STUN Address</source>
-        <translation type="unfinished"/>
+        <translation>STUN osoite</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="293"/>
@@ -102,27 +103,27 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="317"/>
         <source>Use UPnP</source>
-        <translation type="unfinished"/>
+        <translation>Käytä UPnP</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="329"/>
         <source>Use TURN</source>
-        <translation type="unfinished"/>
+        <translation>Käytä TURNia</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="359"/>
         <source>TURN Password</source>
-        <translation type="unfinished"/>
+        <translation>TURN salasana</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="391"/>
         <source>TURN Username</source>
-        <translation type="unfinished"/>
+        <translation>TURN käyttäjänimi</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="423"/>
         <source>TURN Address</source>
-        <translation type="unfinished"/>
+        <translation>TURN osoite</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="464"/>
@@ -137,22 +138,22 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="539"/>
         <source>Video Codecs</source>
-        <translation type="unfinished"/>
+        <translation>Videokoodekit</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="692"/>
         <source>Audio Codecs</source>
-        <translation type="unfinished"/>
+        <translation>Äänikoodekit</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.cpp" line="142"/>
         <source>Audio Files (*.wav *.ogg *.opus *.mp3 *aiff *wma)</source>
-        <translation type="unfinished"/>
+        <translation>Äänitiedostot (*.wav *.ogg *.opus *.mp3 *aiff * wma)</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.cpp" line="151"/>
         <source>Add a custom ringtone</source>
-        <translation type="unfinished"/>
+        <translation>Lisää oma soittoääni</translation>
     </message>
 </context>
 <context>
@@ -160,37 +161,37 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Muoto</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="61"/>
         <source>Call Settings</source>
-        <translation type="unfinished"/>
+        <translation>Puheluasetukset</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="108"/>
         <source>Allow Calls From Untrusted Peers</source>
-        <translation type="unfinished"/>
+        <translation>Salli puhelut tuntemattomilta</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="133"/>
         <source>Auto Answer Calls</source>
-        <translation type="unfinished"/>
+        <translation>Vastaa puheluihin automaattisesti</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="161"/>
         <source>Enable Custom Ringtone</source>
-        <translation type="unfinished"/>
+        <translation>Oma soittoääni</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.cpp" line="188"/>
         <source>Add a custom ringtone</source>
-        <translation type="unfinished"/>
+        <translation>Lisää oma soittoääni</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="225"/>
         <source>Name Server</source>
-        <translation type="unfinished"/>
+        <translation>Nimipalvelin</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="275"/>
@@ -200,17 +201,17 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="351"/>
         <source>OpenDHT Configuration</source>
-        <translation type="unfinished"/>
+        <translation>OpenDHT-määritykset</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="398"/>
         <source>Enable Proxy</source>
-        <translation type="unfinished"/>
+        <translation>Proxy käyttöön</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="454"/>
         <source>Bootstrap</source>
-        <translation type="unfinished"/>
+        <translation>Bootstrap</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="530"/>
@@ -225,17 +226,17 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="583"/>
         <source>User Certificate</source>
-        <translation type="unfinished"/>
+        <translation>Käyttäjäsertifikaatti</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="622"/>
         <source>Private Key</source>
-        <translation type="unfinished"/>
+        <translation>Henkilökohtainen salausavain</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="634"/>
         <source>CA Certificate</source>
-        <translation type="unfinished"/>
+        <translation>CA-sertifikaatti</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="766"/>
@@ -250,32 +251,32 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="856"/>
         <source>STUN Address</source>
-        <translation type="unfinished"/>
+        <translation>STUN-osoite</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="892"/>
         <source>Use UPnP</source>
-        <translation type="unfinished"/>
+        <translation>Käytä UPnP</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="904"/>
         <source>Use TURN</source>
-        <translation type="unfinished"/>
+        <translation>Käytä TURNia</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="934"/>
         <source>TURN Password</source>
-        <translation type="unfinished"/>
+        <translation>TURN salasana</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="966"/>
         <source>TURN Username</source>
-        <translation type="unfinished"/>
+        <translation>TURN käyttäjänimi</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="998"/>
         <source>TURN Address</source>
-        <translation type="unfinished"/>
+        <translation>TURN osoite</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1039"/>
@@ -290,17 +291,17 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1267"/>
         <source>Audio Codecs</source>
-        <translation type="unfinished"/>
+        <translation>Äänikoodekit</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1114"/>
         <source>Video Codecs</source>
-        <translation type="unfinished"/>
+        <translation>Videokoodekit</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.cpp" line="181"/>
         <source>Audio Files (*.wav *.ogg *.opus *.mp3 *aiff *wma)</source>
-        <translation type="unfinished"/>
+        <translation>Äänitiedostot (*.wav *.ogg *.opus *.mp3 *aiff * wma)</translation>
     </message>
 </context>
 <context>
@@ -308,7 +309,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../animatedoverlay.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Muoto</translation>
     </message>
 </context>
 <context>
@@ -316,17 +317,17 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../banneditemwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Muoto</translation>
     </message>
     <message>
         <location filename="../banneditemwidget.ui" line="80"/>
         <source>name</source>
-        <translation type="unfinished"/>
+        <translation>nimi</translation>
     </message>
     <message>
         <location filename="../banneditemwidget.ui" line="104"/>
         <source>id</source>
-        <translation type="unfinished"/>
+        <translation>id</translation>
     </message>
 </context>
 <context>
@@ -334,7 +335,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="184"/>
         <source>Show conversations</source>
-        <translation type="unfinished"/>
+        <translation>Näytä keskustelu</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="187"/>
@@ -344,7 +345,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="368"/>
         <source>Search contact text input</source>
-        <translation type="unfinished"/>
+        <translation>Hae yhteystieto tekstihaulla</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="653"/>
@@ -357,22 +358,24 @@ Jami is a secured and distributed communication software.</source>
  This is your ID.
 Copy and share it with your friends!
                                       </source>
-        <translation type="unfinished"/>
+        <translation>
+Tämä on sinun ID-tunnus.
+Kopioi ja jaa se ystäviesi kanssa!</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="806"/>
         <source>Show ring ID QR code</source>
-        <translation type="unfinished"/>
+        <translation>Näytä ring ID QR-koodi</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="857"/>
         <source>Share ring ID button</source>
-        <translation type="unfinished"/>
+        <translation>Jaa ring ID -painike</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="915"/>
         <source>Double-click to copy</source>
-        <translation type="unfinished"/>
+        <translation>Kopioi kaksoisnapsauttamalla</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="956"/>
@@ -383,17 +386,17 @@ Copy and share it with your friends!
         <location filename="../callwidget.ui" line="1184"/>
         <location filename="../callwidget.ui" line="1434"/>
         <source>best name</source>
-        <translation type="unfinished"/>
+        <translation>paras nimi</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1208"/>
         <source>best Id</source>
-        <translation type="unfinished"/>
+        <translation>paras Id</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1734"/>
         <source>Back to homepage button</source>
-        <translation type="unfinished"/>
+        <translation>Takaisin kotisivulle -painike</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1943"/>
@@ -403,18 +406,18 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="202"/>
         <source>Show invites</source>
-        <translation type="unfinished"/>
+        <translation>Näytä kutsut</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="205"/>
         <source>Invites</source>
-        <translation type="unfinished"/>
+        <translation>Kutsut</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="377"/>
         <location filename="../callwidget.cpp" line="552"/>
         <source>Find a new or existing contact</source>
-        <translation type="unfinished"/>
+        <translation>Etsi uusi tai olemassaoleva yhteystieto</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1444"/>
@@ -424,12 +427,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="1517"/>
         <source>Answer incoming call button</source>
-        <translation type="unfinished"/>
+        <translation>Vastaa saapuvaan puheluun -painike</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1589"/>
         <source>Ignore incoming call button</source>
-        <translation type="unfinished"/>
+        <translation>Ohita saapuvan puhelun -painike</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1539"/>
@@ -454,22 +457,22 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="332"/>
         <source>Start video call</source>
-        <translation type="unfinished"/>
+        <translation>Aloita videopuhelu</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="343"/>
         <source>Start audio call</source>
-        <translation type="unfinished"/>
+        <translation>Aloita äänipuhelu</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="354"/>
         <source>Clear conversation</source>
-        <translation type="unfinished"/>
+        <translation>Tyhjennä keskustelu</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="361"/>
         <source>Remove contact</source>
-        <translation type="unfinished"/>
+        <translation>Poista yhteystieto</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="373"/>
@@ -489,24 +492,24 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="943"/>
         <source>Contact me on Jami</source>
-        <translation type="unfinished"/>
+        <translation>Ota minuun yhteyttä Jamilla</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="943"/>
         <source>My Id is : </source>
-        <translation type="unfinished"/>
+        <translation>Minun id on : </translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="847"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
-        <translation type="unfinished"/>
+        <translation>%1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="852"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
-        <translation type="unfinished"/>
+        <translation>%1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="675"/>
@@ -557,17 +560,17 @@ Copy and share it with your friends!
     <message>
         <location filename="../deviceitemwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Muoto</translation>
     </message>
     <message>
         <location filename="../deviceitemwidget.ui" line="105"/>
         <source>Device Id</source>
-        <translation type="unfinished"/>
+        <translation>Laitteen Id</translation>
     </message>
     <message>
         <location filename="../deviceitemwidget.ui" line="143"/>
         <source>this device</source>
-        <translation type="unfinished"/>
+        <translation>tämä laite</translation>
     </message>
 </context>
 <context>
@@ -623,7 +626,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="402"/>
         <source>Your PIN is</source>
-        <translation type="unfinished"/>
+        <translation>Sinun PIN on</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="432"/>
@@ -638,17 +641,17 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="553"/>
         <source>Close</source>
-        <translation type="unfinished"/>
+        <translation>Sulje</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.cpp" line="34"/>
         <source>Link Another Device</source>
-        <translation type="unfinished"/>
+        <translation>Linkitä toinen laite</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.cpp" line="96"/>
         <source>Incorrect password</source>
-        <translation type="unfinished"/>
+        <translation>Väärä salasana</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.cpp" line="110"/>
@@ -685,7 +688,7 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.ui" line="35"/>
         <source>Set Registered Name</source>
-        <translation type="unfinished"/>
+        <translation>Aseta rekisteröity nimi</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="163"/>
@@ -695,12 +698,12 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.ui" line="244"/>
         <source>Password text input</source>
-        <translation type="unfinished"/>
+        <translation>Salasana tekstinsyöttö</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="250"/>
         <source>Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>Salasanan tekstikenttä</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="256"/>
@@ -720,7 +723,7 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.ui" line="424"/>
         <source>Registering Name</source>
-        <translation type="unfinished"/>
+        <translation>Rekisteröidään nimeä</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="548"/>
@@ -730,17 +733,17 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.ui" line="618"/>
         <source>Close</source>
-        <translation type="unfinished"/>
+        <translation>Sulje</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.cpp" line="82"/>
         <source>Incorrect password</source>
-        <translation type="unfinished"/>
+        <translation>Väärä salasana</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.cpp" line="85"/>
         <source>Network error</source>
-        <translation type="unfinished"/>
+        <translation>Verkkovirhe</translation>
     </message>
 </context>
 <context>
@@ -748,22 +751,22 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Muoto</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="141"/>
         <source>Welcome Label</source>
-        <translation type="unfinished"/>
+        <translation>Tervehdysmerkki</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="147"/>
         <source> Welcome to</source>
-        <translation type="unfinished"/>
+        <translation>Tervetuloa</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="185"/>
         <source>Welcome Logo</source>
-        <translation type="unfinished"/>
+        <translation>Tervetuloa logo</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="239"/>
@@ -808,7 +811,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="340"/>
         <source>Create a SIP account</source>
-        <translation type="unfinished"/>
+        <translation>Luo SIP tunnus</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="405"/>
@@ -832,12 +835,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="531"/>
         <source>Enter your pin:</source>
-        <translation type="unfinished"/>
+        <translation>Syötä pin-koodisi:</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="599"/>
         <source>Or import a file:</source>
-        <translation type="unfinished"/>
+        <translation>Tai tuo tiedosto:</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="626"/>
@@ -849,7 +852,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../newwizardwidget.cpp" line="83"/>
         <location filename="../newwizardwidget.cpp" line="218"/>
         <source>(None)</source>
-        <translation type="unfinished"/>
+        <translation>(Ei mitään)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="705"/>
@@ -866,7 +869,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../newwizardwidget.ui" line="953"/>
         <location filename="../newwizardwidget.ui" line="1767"/>
         <source>Profile name</source>
-        <translation type="unfinished"/>
+        <translation>Profiilin nimi</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1027"/>
@@ -884,7 +887,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1142"/>
         <source>Public username checkbox</source>
-        <translation type="unfinished"/>
+        <translation>Julkinen käyttäjänimi valintaruutu</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1145"/>
@@ -899,7 +902,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1367"/>
         <source>Public username edit</source>
-        <translation type="unfinished"/>
+        <translation>Julkisen käyttäjänimen muokkaus</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1373"/>
@@ -909,12 +912,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1289"/>
         <source>Password text input</source>
-        <translation type="unfinished"/>
+        <translation>Salasana tekstinsyöttö</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1295"/>
         <source>Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>Salasanan tekstikenttä</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1301"/>
@@ -926,7 +929,7 @@ instead of using your ID.</source>
         <location filename="../newwizardwidget.ui" line="1211"/>
         <location filename="../newwizardwidget.ui" line="1217"/>
         <source>Password confirmation text input</source>
-        <translation type="unfinished"/>
+        <translation>Salasanan vahvistuksen tekstikenttä</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1223"/>
@@ -941,22 +944,22 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1973"/>
         <source>SIP Server edit</source>
-        <translation type="unfinished"/>
+        <translation>SIP-palvelimen muokkaus</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1979"/>
         <source>Server</source>
-        <translation type="unfinished"/>
+        <translation>Palvelin</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2045"/>
         <source>SIP proxy input</source>
-        <translation type="unfinished"/>
+        <translation>Syötä SIP-välityspalvelin</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2051"/>
         <source>SIP proxy text entry</source>
-        <translation type="unfinished"/>
+        <translation>SIP-välityspalvelimen tekstikenttä</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2057"/>
@@ -966,12 +969,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2123"/>
         <source>SIP username input</source>
-        <translation type="unfinished"/>
+        <translation>Syötä SIP-käyttäjänimi</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2129"/>
         <source>SIP Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>SIP-salasanan tekstikenttä</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2135"/>
@@ -982,17 +985,17 @@ instead of using your ID.</source>
         <location filename="../newwizardwidget.ui" line="2201"/>
         <location filename="../newwizardwidget.ui" line="2207"/>
         <source>SIP Password text input</source>
-        <translation type="unfinished"/>
+        <translation>Syötä SIP-salasana</translation>
     </message>
     <message utf8="true">
         <location filename="../newwizardwidget.ui" line="2282"/>
         <source>Generating your Jami account…</source>
-        <translation type="unfinished"/>
+        <translation>Luodaan Jami-tiliä...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2356"/>
         <source>Previous page button</source>
-        <translation type="unfinished"/>
+        <translation>Edellinen sivu -painike</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2362"/>
@@ -1017,12 +1020,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2405"/>
         <source>Back</source>
-        <translation type="unfinished"/>
+        <translation>Takaisin</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2442"/>
         <source>Next page Button</source>
-        <translation type="unfinished"/>
+        <translation>Seuraava sivu -painike</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2448"/>
@@ -1052,7 +1055,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="419"/>
         <source>Migrating your Jami account...</source>
-        <translation type="unfinished"/>
+        <translation>Jami-tilisi siirretään…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="412"/>
@@ -1062,12 +1065,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="404"/>
         <source>Generating your Jami account...</source>
-        <translation type="unfinished"/>
+        <translation>Luodaan sinun Jami-tiliä...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="422"/>
         <source>Generating your SIP account...</source>
-        <translation type="unfinished"/>
+        <translation>Luodaan sinun SIP-tiliä...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="533"/>
@@ -1080,27 +1083,27 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.ui" line="32"/>
         <source>Change Account Password</source>
-        <translation type="unfinished"/>
+        <translation>Vaihda tilin salasana</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="97"/>
         <source>Enter Current Password</source>
-        <translation type="unfinished"/>
+        <translation>Anna nykyinen salasana</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="169"/>
         <source>Enter New Password</source>
-        <translation type="unfinished"/>
+        <translation>Anna uusi salasana</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="190"/>
         <source>Confirm New Password</source>
-        <translation type="unfinished"/>
+        <translation>Vahvista uusi salasana</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="247"/>
         <source>Confirm</source>
-        <translation type="unfinished"/>
+        <translation>Vahvista</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="290"/>
@@ -1110,7 +1113,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.ui" line="143"/>
         <source>Current Password Incorrect</source>
-        <translation type="unfinished"/>
+        <translation>Nykyinen salasana väärä</translation>
     </message>
 </context>
 <context>
@@ -1126,12 +1129,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../photoboothwidget.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Muoto</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.ui" line="120"/>
         <source>Photobooth display</source>
-        <translation type="unfinished"/>
+        <translation>Valokuvanäyttö</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.cpp" line="92"/>
@@ -1141,7 +1144,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../photoboothwidget.cpp" line="94"/>
         <source>Image Files (*.jpg *.jpeg *.png)</source>
-        <translation type="unfinished"/>
+        <translation>Kuvatiedostot (*.jpg *.jpeg *.png)</translation>
     </message>
 </context>
 <context>
@@ -1183,7 +1186,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../banneditemwidget.cpp" line="39"/>
         <source>Add as contact</source>
-        <translation type="unfinished"/>
+        <translation>Lisää yhteystietona</translation>
     </message>
 </context>
 <context>
@@ -1191,7 +1194,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../ringbutton.ui" line="140"/>
         <source>Select folder</source>
-        <translation type="unfinished"/>
+        <translation>Valitse kansio</translation>
     </message>
 </context>
 <context>
@@ -1199,7 +1202,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Muoto</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="141"/>
@@ -1221,7 +1224,7 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="305"/>
         <location filename="../settingswidget.ui" line="3416"/>
         <source>Audio / Video</source>
-        <translation type="unfinished"/>
+        <translation>Ääni / Video</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="542"/>
@@ -1231,7 +1234,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="610"/>
         <source>Enable desktop notifications</source>
-        <translation type="unfinished"/>
+        <translation>Työpöytäilmoitukset käyttöön</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="653"/>
@@ -1241,47 +1244,47 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="678"/>
         <source>Download folder</source>
-        <translation type="unfinished"/>
+        <translation>Ladatut kansio</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="811"/>
         <source>Save in</source>
-        <translation type="unfinished"/>
+        <translation>Tallenna sisään</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="904"/>
         <source>Always Recording</source>
-        <translation type="unfinished"/>
+        <translation>Tallentaa aina</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="943"/>
         <source>Updates</source>
-        <translation type="unfinished"/>
+        <translation>Päivitykset</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1008"/>
         <source>Check for updates automatically every</source>
-        <translation type="unfinished"/>
+        <translation>Tarkista päivitykset automaattisesti joka</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1032"/>
         <source>Interval between update checks in days selector</source>
-        <translation type="unfinished"/>
+        <translation>Päivitystarkistusten välinen aika</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1038"/>
         <source> days</source>
-        <translation type="unfinished"/>
+        <translation>päivää</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1081"/>
         <source>Check for updates now button</source>
-        <translation type="unfinished"/>
+        <translation>Tarkista päivitykset nyt -painike</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1084"/>
         <source>Check for updates now</source>
-        <translation type="unfinished"/>
+        <translation>Tarkista päivitykset nyt</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3027"/>
@@ -1292,32 +1295,32 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="1418"/>
         <location filename="../settingswidget.ui" line="2729"/>
         <source>Enable</source>
-        <translation type="unfinished"/>
+        <translation>Päällä</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="607"/>
         <source>toggle enable notifications</source>
-        <translation type="unfinished"/>
+        <translation>Vaihda ilmoitukset käyttöön</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="650"/>
         <source>Toggle keep minimized on close</source>
-        <translation type="unfinished"/>
+        <translation>Valinta pidä pinennettynä suljettaessa</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="764"/>
         <source>Call Recordings</source>
-        <translation type="unfinished"/>
+        <translation>Puhelun tallenteet</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1005"/>
         <source>Toggle automatic updates</source>
-        <translation type="unfinished"/>
+        <translation>Vaihda automaattiset päivitykset</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1231"/>
         <source>Jami Account</source>
-        <translation type="unfinished"/>
+        <translation>Jami tunnus</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1453"/>
@@ -1329,17 +1332,17 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="1567"/>
         <location filename="../settingswidget.ui" line="2875"/>
         <source>Identity</source>
-        <translation type="unfinished"/>
+        <translation>Tunnistetiedot</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1614"/>
         <source>Id</source>
-        <translation type="unfinished"/>
+        <translation>Id</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1673"/>
         <source>Registered name</source>
-        <translation type="unfinished"/>
+        <translation>Rekisteröity nimi</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1721"/>
@@ -1354,38 +1357,38 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1827"/>
         <source>Change Password</source>
-        <translation type="unfinished"/>
+        <translation>Vaihda salasana</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1868"/>
         <source>Export Account</source>
-        <translation type="unfinished"/>
+        <translation>Vie tunnus</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1909"/>
         <location filename="../settingswidget.ui" line="3089"/>
         <source>Delete Account</source>
-        <translation type="unfinished"/>
+        <translation>Poista tunnus</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1973"/>
         <source>Linked Devices</source>
-        <translation type="unfinished"/>
+        <translation>Linkitetyt laitteet</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2078"/>
         <source>Link Another Device</source>
-        <translation type="unfinished"/>
+        <translation>Linkitä toinen laite</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2142"/>
         <source>Banned Contacts</source>
-        <translation type="unfinished"/>
+        <translation>Estetyt yhteystiedot</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3788"/>
         <source>Format</source>
-        <translation type="unfinished"/>
+        <translation>Muoto</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3831"/>
@@ -1401,7 +1404,7 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="2359"/>
         <location filename="../settingswidget.ui" line="3187"/>
         <source>Advanced Account Settings</source>
-        <translation type="unfinished"/>
+        <translation>Tunnuksen lisäasetukset</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2554"/>
@@ -1431,7 +1434,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3511"/>
         <source>Microphone</source>
-        <translation type="unfinished"/>
+        <translation>Mikrofoni</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3551"/>
@@ -1441,12 +1444,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3585"/>
         <source>Output Device</source>
-        <translation type="unfinished"/>
+        <translation>Ulostulon laite</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3625"/>
         <source>Choose the output device</source>
-        <translation type="unfinished"/>
+        <translation>Valitse laitteen ulostulo</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3682"/>
@@ -1461,7 +1464,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3766"/>
         <source>Video device selector</source>
-        <translation type="unfinished"/>
+        <translation>Videolaitteen valitsin</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="459"/>
@@ -1471,23 +1474,23 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.cpp" line="466"/>
         <source>This name is already taken</source>
-        <translation type="unfinished"/>
+        <translation>Tämä nimi on jo varattu</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="92"/>
         <location filename="../settingswidget.cpp" line="110"/>
         <source>Enter an alias</source>
-        <translation type="unfinished"/>
+        <translation>Anna lempinimi</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="473"/>
         <source>Register this name</source>
-        <translation type="unfinished"/>
+        <translation>Rekisteröi tämä nimi</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="550"/>
         <source>Remove Device</source>
-        <translation type="unfinished"/>
+        <translation>Poista laite</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="551"/>
@@ -1502,17 +1505,17 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.cpp" line="589"/>
         <source>Export Account Here</source>
-        <translation type="unfinished"/>
+        <translation>Vie tili tähän</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="887"/>
         <source>Select A Folder For Your Downloads</source>
-        <translation type="unfinished"/>
+        <translation>Valitse kansio latauksia varten</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="904"/>
         <source>Select A Folder For Your Recordings</source>
-        <translation type="unfinished"/>
+        <translation>Valitse kansio nauhoituksia varten</translation>
     </message>
 </context>
 <context>
@@ -1540,7 +1543,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../videooverlay.ui" line="244"/>
         <source>Record call</source>
-        <translation type="unfinished"/>
+        <translation>Tallenna puhelu</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="325"/>
@@ -1555,7 +1558,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../videooverlay.ui" line="393"/>
         <source>00:00</source>
-        <translation type="unfinished"/>
+        <translation>00:00</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="57"/>

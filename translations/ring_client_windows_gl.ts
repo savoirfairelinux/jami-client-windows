@@ -931,7 +931,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1223"/>
         <source>Confirm password</source>
-        <translation type="unfinished"/>
+        <translation>Confirmar contrasinal</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1814"/>
@@ -987,7 +987,7 @@ instead of using your ID.</source>
     <message utf8="true">
         <location filename="../newwizardwidget.ui" line="2282"/>
         <source>Generating your Jami account…</source>
-        <translation type="unfinished"/>
+        <translation>Estase a xerar a súa conta Jami...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2356"/>
@@ -1002,7 +1002,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2365"/>
         <source>Previous</source>
-        <translation type="unfinished"/>
+        <translation>Anterior</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2396"/>
@@ -1530,7 +1530,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../videooverlay.ui" line="124"/>
         <source>Chat</source>
-        <translation type="unfinished"/>
+        <translation>Chat</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="162"/>
