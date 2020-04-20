@@ -7,7 +7,7 @@ import net.jami.constant.jamitheme 1.0
 ListView {
     id: conversationSmartListView
 
-    signal needToAccessMessageWebView(string currentUserDisplayName, string currentUserAlias, string currentUID, bool inCall, bool isIncomingCallInProgress)
+    signal needToAccessMessageWebView(string currentUserDisplayName, string currentUserAlias, string currentUID, bool callStackViewShouldShow)
     signal needToDeselectItems
     signal needToBackToWelcomePage
 
@@ -252,8 +252,7 @@ ListView {
                            && Qt.platform.os == "windows") {
                     conversationSmartListView.needToAccessMessageWebView(
                                 DisplayID == DisplayName ? "" : DisplayID,
-                                DisplayName, UID, InCall,
-                                IsIncomingCallInProgress)
+                                DisplayName, UID, CallStackViewShouldShow)
                 }
             }
             onEntered: {
