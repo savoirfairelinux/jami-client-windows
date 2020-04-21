@@ -36,6 +36,8 @@ AccountComboBoxQmlObjectHolder::setAccountComboBoxQmlObject(QObject *obj)
 {
     // Set the object pointer
     accountComboBoxQmlObject_ = obj;
+
+    connectAccount(LRCInstance::getCurrAccId());
 }
 
 void
@@ -102,8 +104,14 @@ AccountComboBoxQmlObjectHolder::deselectConversation()
 void
 AccountComboBoxQmlObjectHolder::connectAccount(const QString &accountId)
 {
-    /*try {
-        auto& accInfo = LRCInstance::accountModel().getAccountInfo(accountId);
+    try {
+        auto &accInfo = LRCInstance::accountModel().getAccountInfo(accountId);
+        QObject::disconnect(accountStatusChangedConnection_);
+        accountStatusChangedConnection_
+            = QObject::connect(accInfo.accountModel,
+                               &lrc::api::NewAccountModel::accountStatusChanged,
+                               [this] { emit accountStatusChanged(); });
+        /*
         QObject::disconnect(contactAddedConnection_);
         contactAddedConnection_ = QObject::connect(
             accInfo.contactModel.get(),
@@ -134,9 +142,8 @@ AccountComboBoxQmlObjectHolder::connectAccount(const QString &accountId)
                 Q_UNUSED(callId);
                 LRCInstance::renderer()->addDistantRenderer(confId);
                 ui->videoView->updateCall();
-            });
-    }
-    catch (...) {
+            });*/
+    } catch (...) {
         qWarning() << "Couldn't get account: " << accountId;
-    }*/
+    }
 }

@@ -178,6 +178,10 @@ Window {
             welcomeViewStack.pop(welcomePage)
             welcomePage.currentAccountIndex = 0
         }
+
+        onAccountSignalsReconnect: {
+            messageWebViewQmlObjectHolder.connectConversationModel()
+        }
     }
 
     CallStackView {
