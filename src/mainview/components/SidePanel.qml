@@ -35,6 +35,7 @@ Rectangle {
     signal conversationSmartListViewNeedToShowWelcomePage
     signal accountSignalsReconnect(string accountId)
     signal needToUpdateConversationForAddedContact
+    signal needToAddNewAccount
 
 
     /*
@@ -68,12 +69,36 @@ Rectangle {
         contactSearchBar.clearText()
     }
 
+    function accountChangedUIReset() {
+        contactSearchBar.clearText()
+        contactSearchBar.setPlaceholderString(
+                    JamiTheme.contactSearchBarPlaceHolderConversationText)
+        sidePanelTabBar.converstationTabDown = true
+        sidePanelTabBar.invitationTabDown = false
+    }
+
     function needToChangeToAccount(accountId, index) {
         if (index !== -1) {
             accountComboBox.currentIndex = index
             AccountAdapter.accountChanged(index)
-            contactSearchBar.clearText()
+            accountChangedUIReset()
         }
+    }
+
+    function newAccountAdded(index) {
+        accountComboBox.resetAccountListModel()
+
+
+        /*
+         * To make sure that the ui is refreshed for accountComboBox.
+         * Note: index here should always be zero.
+         */
+        if (accountComboBox.currentIndex === 0)
+            accountComboBox.currentIndex = 1
+        accountComboBox.currentIndex = index
+        accountComboBox.updateAccountListModel()
+        AccountAdapter.accountChanged(index)
+        accountChangedUIReset()
     }
 
     function deselectConversationSmartList() {
@@ -121,11 +146,7 @@ Rectangle {
 
         onAccountChanged: {
             AccountAdapter.accountChanged(index)
-            contactSearchBar.clearText()
-            contactSearchBar.setPlaceholderString(
-                        JamiTheme.contactSearchBarPlaceHolderConversationText)
-            sidePanelTabBar.converstationTabDown = true
-            sidePanelTabBar.invitationTabDown = false
+            accountChangedUIReset()
         }
 
         onNeedToUpdateSmartList: {
@@ -135,6 +156,10 @@ Rectangle {
 
         onNeedToBackToWelcomePage: {
             sidePanelRect.accountComboBoxNeedToShowWelcomePage(index)
+        }
+
+        onNewAccountButtonClicked: {
+            sidePanelRect.needToAddNewAccount()
         }
 
         Component.onCompleted: {
