@@ -42,6 +42,7 @@ public:
 
 signals:
     void accountSignalsReconnect(const QString &accountId);
+    void accountStatusChanged();
 
 private:
     void connectAccount(const QString &accountId);
@@ -50,4 +51,6 @@ private:
     QObject *accountComboBoxQmlObject_;
 
     lrc::api::profile::Type currentTypeFilter_{};
+
+    QMetaObject::Connection accountStatusChangedConnection_;
 };
