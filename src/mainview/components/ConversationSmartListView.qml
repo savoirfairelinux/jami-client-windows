@@ -96,6 +96,62 @@ ListView {
             fillMode: Image.PreserveAspectFit
             source: "data:image/png;base64," + Picture
             mipmap: true
+
+            Rectangle {
+                id: presenseRect
+
+                anchors.right: conversationSmartListUserImage.right
+                anchors.rightMargin: 1
+                anchors.bottom: conversationSmartListUserImage.bottom
+                anchors.bottomMargin: 2
+
+                width: 14
+                height: 14
+
+                // enum REGISTERED == 5
+                visible: Presence
+
+                Rectangle {
+                    id: presenseCycle
+
+                    anchors.centerIn: presenseRect
+
+                    width: 10
+                    height: 10
+
+                    radius: 30
+                    color: JamiTheme.presenceGreen
+                }
+
+                radius: 30
+                color: "white"
+            }
+
+            Rectangle {
+                id: unreadMessageCountRect
+
+                anchors.right: conversationSmartListUserImage.right
+                anchors.rightMargin: 1
+                anchors.top: conversationSmartListUserImage.top
+                anchors.topMargin: 2
+
+                width: 14
+                height: 14
+
+                visible: UnreadMessagesCount > 0
+
+                Text {
+                    id: unreadMessageCounttext
+
+                    anchors.centerIn: unreadMessageCountRect
+
+                    text: UnreadMessagesCount > 9 ? ".." : UnreadMessagesCount
+                    color: "white"
+                }
+
+                radius: 30
+                color: JamiTheme.notificationRed
+            }
         }
 
         Rectangle {

@@ -111,6 +111,7 @@ ConversationSmartListViewQmlObjectHolder::connectConversationModel()
                                       "modelSorted",
                                       Q_ARG(QVariant, contactURI));
         });
+
     modelUpdatedConnection_
         = QObject::connect(currentConversationModel,
                            &lrc::api::ConversationModel::conversationUpdated,
@@ -119,6 +120,7 @@ ConversationSmartListViewQmlObjectHolder::connectConversationModel()
                                QMetaObject::invokeMethod(conversationSmartListViewQmlObject_,
                                                          "updateConversationSmartListView");
                            });
+
     filterChangedConnection_ = QObject::connect(
         currentConversationModel, &lrc::api::ConversationModel::filterChanged, [this]() {
             QMetaObject::invokeMethod(conversationSmartListViewQmlObject_,
@@ -128,6 +130,7 @@ ConversationSmartListViewQmlObjectHolder::connectConversationModel()
             QMetaObject::invokeMethod(conversationSmartListViewQmlObject_,
                                       "updateConversationSmartListView");
         });
+
     newConversationConnection_
         = QObject::connect(currentConversationModel,
                            &lrc::api::ConversationModel::newConversation,
@@ -144,6 +147,7 @@ ConversationSmartListViewQmlObjectHolder::connectConversationModel()
         = QObject::connect(currentConversationModel,
                            &lrc::api::ConversationModel::conversationRemoved,
                            [this]() { backToWelcomePage(); });
+
     conversationClearedConnection
         = QObject::connect(currentConversationModel,
                            &lrc::api::ConversationModel::conversationCleared,
@@ -156,6 +160,15 @@ ConversationSmartListViewQmlObjectHolder::connectConversationModel()
                                }
                                backToWelcomePage();
                            });
+
+    newInteractionConnection_
+        = QObject::connect(currentConversationModel,
+                           &lrc::api::ConversationModel::newInteraction,
+                           [this] {
+                               QMetaObject::invokeMethod(conversationSmartListViewQmlObject_,
+                                                         "updateConversationSmartListView");
+                           });
+
     interactionStatusUpdatedConnection_ = QObject::connect(
         currentConversationModel,
         &lrc::api::ConversationModel::interactionStatusUpdated,
