@@ -11,6 +11,7 @@ Item {
     property string tabbarBorderColor: "#e3e3e3"
     property string transparentColor: "transparent"
     property string presenceGreen: "#4cd964"
+    property string notificationRed: "#ff3b30"
 
     property string acceptButtonGreen: "#4caf50"
     property string acceptButtonHoverGreen: "#5db761"

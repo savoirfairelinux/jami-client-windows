@@ -35,6 +35,7 @@ public:
     // Must call Q_INVOKABLE so that this function can be used in QML, qml to c++
     Q_INVOKABLE void setMessageWebViewQmlObject(QObject *obj);
     Q_INVOKABLE void setupChatView(const QString &uid);
+    Q_INVOKABLE void connectConversationModel();
 
     // run corrsponding js functions, c++ to qml
     void setMessagesVisibility(bool visible);
@@ -50,6 +51,8 @@ public:
     void setMessagesImageContent(const QString &path, bool isBased64 = false);
     void setMessagesFileContent(const QString &path);
     void removeInteraction(uint64_t interactionId);
+
+    bool selectConversation(const lrc::api::conversation::Info &item);
 
 public slots:
     void slotSendMessageContentSaved(const QString &content);
@@ -67,7 +70,6 @@ private:
                         const QString &convUid,
                         uint64_t interactionId,
                         const interaction::Info &interaction);
-    void connectConversationModel();
 
     // Object pointer
     QObject *messageWebViewQmlObject_;
