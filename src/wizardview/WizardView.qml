@@ -76,6 +76,7 @@ Window {
 
     onClosing: {
         close.accepted = false
+        changePageQML(controlPanelStackView.welcomePageStackId)
         wizardViewWindow.hide()
         wizardViewWindow.wizardViewIsClosed()
     }
@@ -94,6 +95,7 @@ Window {
                 changePageQML(controlPanelStackView.backupKeysPageId)
             } else {
                 wizardViewWindow.hide()
+                changePageQML(controlPanelStackView.welcomePageStackId)
                 needToShowMainViewWindow(addedAccountIndex)
                 LRCInstance.accountListChanged()
             }
@@ -541,6 +543,7 @@ Window {
                                 }
 
                                 wizardViewWindow.hide()
+                                changePageQML(controlPanelStackView.welcomePageStackId)
                                 needToShowMainViewWindow(addedAccountIndex)
                                 LRCInstance.accountListChanged()
                             }
@@ -548,6 +551,7 @@ Window {
 
                             onSkip_Btn_Clicked: {
                                 wizardViewWindow.hide()
+                                changePageQML(controlPanelStackView.welcomePageStackId)
                                 needToShowMainViewWindow(addedAccountIndex)
                                 LRCInstance.accountListChanged()
                             }

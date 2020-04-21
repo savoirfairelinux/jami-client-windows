@@ -29,6 +29,7 @@ ComboBox {
     signal accountChanged(int index)
     signal needToBackToWelcomePage(int index)
     signal needToUpdateSmartList(string accountId)
+    signal newAccountButtonClicked
 
     currentIndex: 0
 
@@ -48,6 +49,14 @@ ComboBox {
         accountListModel.dataChanged(accountListModel.index(0, 0),
                                      accountListModel.index(
                                          accountListModel.rowCount() - 1, 0))
+    }
+
+
+    /*
+     * Reset accountListModel.
+     */
+    function resetAccountListModel() {
+        accountListModel.reset()
     }
 
     Image {
@@ -270,6 +279,10 @@ ComboBox {
 
         onAccountNeedToChange: {
             accountComboBox.accountChanged(index)
+        }
+
+        onNewAccountButtonClicked: {
+            accountComboBox.newAccountButtonClicked()
         }
     }
 }

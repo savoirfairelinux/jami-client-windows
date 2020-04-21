@@ -54,7 +54,7 @@
 
 MainApplication::MainApplication(int &argc, char **argv)
     : QGuiApplication(argc, argv)
-    , engine_(std::make_unique<QQmlApplicationEngine>())
+    , engine_(new QQmlApplicationEngine())
 {
     QObject::connect(this, &QGuiApplication::aboutToQuit, [this] { exitApp(); });
 }
