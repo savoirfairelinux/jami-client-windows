@@ -23,6 +23,12 @@ ComboBox {
         accountComboBox.needToUpdateSmartList(accountId)
     }
 
+    function updateAccountListModel() {
+        accountListModel.dataChanged(accountListModel.index(0, 0),
+                                     accountListModel.index(
+                                         accountListModel.rowCount() - 2, 0))
+    }
+
     Image {
         id: userImageRoot
 
@@ -49,6 +55,11 @@ ComboBox {
 
             width: 14
             height: 14
+
+            // enum REGISTERED == 5
+            visible: accountListModel.data(accountListModel.index(
+                                               accountComboBox.currentIndex,
+                                               0), 261) === 5
 
             Rectangle {
                 id: presenseCycle
