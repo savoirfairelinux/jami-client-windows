@@ -14,6 +14,7 @@ Rectangle {
     signal conversationSmartListNeedToAccessMessageWebView(string currentUserDisplayName, string currentUserAlias, string currentUID, bool callStackViewShouldShow)
     signal accountComboBoxNeedToShowWelcomePage(int index)
     signal conversationSmartListViewNeedToShowWelcomePage
+    signal accountSignalsReconnect(string accountId)
 
     function needToChangeToAccount(accountId, index) {
         if (index !== -1) {
@@ -24,6 +25,7 @@ Rectangle {
     }
 
     function deselectConversationSmartList() {
+        conversationSmartListViewQmlObjectHolder.deselectConversation()
         conversationSmartListView.currentIndex = -1
     }
 
@@ -36,6 +38,7 @@ Rectangle {
         onAccountSignalsReconnect: {
             CallCenter.connectCallstatusChangedSignal(accountId)
             conversationSmartListViewQmlObjectHolder.connectConversationModel()
+            sidePanelRect.accountSignalsReconnect(accountId)
         }
     }
 
