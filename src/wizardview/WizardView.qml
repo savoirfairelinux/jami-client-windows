@@ -27,6 +27,7 @@ import net.jami.AccountAdapter 1.0
 import net.jami.NameDirectory 1.0
 import net.jami.UtilsAdapter 1.0
 import net.jami.LRCInstance 1.0
+import net.jami.LrcGeneralAdaptor 1.0
 import net.jami.NewAccountModel 1.0
 import lrc.api.namespaces 1.0
 
@@ -184,7 +185,7 @@ Window {
         btnNext.visible = (navVisible == true)
         btnPevious.visible = (navVisible == true)
         btnBack.visible = (back == true)
-                && (UtilsAdapter.getAccountListSize() != 0)
+                && (LrcGeneralAdaptor.getAccountListSize() != 0)
     }
 
     function processWizardInformationsQML() {

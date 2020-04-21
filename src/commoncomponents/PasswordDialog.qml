@@ -21,6 +21,7 @@ import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import QtQuick.Controls.Styles 1.4
 import net.jami.UtilsAdapter 1.0
+import net.jami.LrcGeneralAdaptor 1.0
 import net.jami.AccountAdapter 1.0
 import net.jami.NewAccountModel 1.0
 
@@ -71,7 +72,7 @@ Dialog {
     }
 
     function exportAccountQML() {
-        var success = accoundModel.exportToFile(UtilsAdapter.getCurrAccId(),path,currentPasswordEdit.text)
+        var success = accoundModel.exportToFile(LrcGeneralAdaptor.getCurrAccId(),path,currentPasswordEdit.text)
 
         spinnerLabel.visible = false
         if (success) {
@@ -83,7 +84,7 @@ Dialog {
         }
     }
     function savePasswordQML() {
-        var success = AccountAdapter.savePassword(UtilsAdapter.getCurrAccId(),currentPasswordEdit.text, passwordEdit.text)
+        var success = AccountAdapter.savePassword(LrcGeneralAdaptor.getCurrAccId(),currentPasswordEdit.text, passwordEdit.text)
 
         spinnerLabel.visible = false
         if (success) {

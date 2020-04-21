@@ -5,6 +5,7 @@ import QtQuick.Controls.Styles 1.4
 import QtQuick.Dialogs 1.3
 import QtGraphicalEffects 1.0
 import net.jami.UtilsAdapter 1.0
+import net.jami.LrcGeneralAdaptor 1.0
 import net.jami.PhotoboothPreviewRender 1.0
 
 ColumnLayout{
@@ -21,13 +22,13 @@ ColumnLayout{
 
     function startBooth(force = false){
         hasAvatar = false
-        UtilsAdapter.startPreviewing(force)
+        LrcGeneralAdaptor.startPreviewing(force)
         takePhotoState = true
     }
 
     function stopBooth(){
-        if(!UtilsAdapter.hasVideoCall()) {
-            UtilsAdapter.stopPreviewing()
+        if(!LrcGeneralAdaptor.hasVideoCall()) {
+            LrcGeneralAdaptor.stopPreviewing()
         }
 
         takePhotoState = false
