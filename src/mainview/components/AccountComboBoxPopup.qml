@@ -27,6 +27,7 @@ Popup {
     id: comboBoxPopup
 
     signal accountNeedToChange(int index)
+    signal newAccountButtonClicked
 
     y: accountComboBox.height - 1
     implicitWidth: accountComboBox.width - 1
@@ -150,6 +151,11 @@ Popup {
             text: qsTr("Add Account") + "+"
             backgroundColor: "white"
             onExitColor: "white"
+
+            onClicked: {
+                comboBoxPopup.close()
+                comboBoxPopup.newAccountButtonClicked()
+            }
         }
 
         ScrollIndicator.vertical: ScrollIndicator {}

@@ -78,8 +78,7 @@ signals:
      * send report failure to QML to make it show the right UI state .
      */
     void reportFailure();
-    void accountAdded(bool showBackUp);
-    void showMainViewWindow();
+    void accountAdded(bool showBackUp, int index);
 
 private:
     void initQmlObject() override final;

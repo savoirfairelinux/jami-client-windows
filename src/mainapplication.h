@@ -56,5 +56,5 @@ private:
     void qmlInitialization();
 
     std::unique_ptr<QFile> debugFile_;
-    std::unique_ptr<QQmlApplicationEngine> engine_;
+    QQmlApplicationEngine *engine_;
 };
