@@ -4,30 +4,33 @@ import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import QtQuick.Controls.Universal 2.12
 import QtGraphicalEffects 1.14
+import net.jami.UtilsAdapter 1.0
+
+import "wizardview"
+import "js/mainapplicationcomponentcreation.js" as MainApplicationComponentCreation
 
 ApplicationWindow {
     id: mainApplicationWindow
 
-    property int minWidth: 500
-    property int minHeight: 500
-    property int textPointSize: 8
-
     Universal.theme: Universal.Light
 
-    title: "Jami"
-    visible: true
-    width: 600
-    minimumWidth: minWidth
-    minimumHeight: minHeight
+    visible: false
 
-    Loader {
+
+    /*Loader {
         id: mainViewLoader
-    }
 
-    MouseArea {
-        anchors.fill: parent
-        //onClicked: mainViewLoader.source = "mainview/MainView.qml"
-        onClicked: mainViewLoader.source = "wizardview/WizardView.qml"
+        Component.onCompleted: {
+            if(UtilsAdapter.getCurrAccList().size === 0) {
+                mainViewLoader.source = "wizardview/WizardView.qml"
+            } else {
+                mainViewLoader.source = "mainview/MainView.qml"
+            }
+        }
+    }*/
+    Component.onCompleted: {
+        MainApplicationComponentCreation.createWizardViewWindowObjects()
+        MainApplicationComponentCreation.showWizardViewWindow()
     }
 
     overlay.modal: ColorOverlay {
