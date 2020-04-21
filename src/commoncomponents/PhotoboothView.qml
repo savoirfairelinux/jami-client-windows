@@ -20,13 +20,13 @@ ColumnLayout{
 
     function startBooth(force = false){
         hasAvatar = false
-        UtilsAdapter.startPreviewing(force)
+        LrcGeneralAdaptor.startPreviewing(force)
         takePhotoState = true
     }
 
     function stopBooth(){
-        if(!UtilsAdapter.hasVideoCall()) {
-            UtilsAdapter.stopPreviewing()
+        if(!LrcGeneralAdaptor.hasVideoCall()) {
+            LrcGeneralAdaptor.stopPreviewing()
         }
 
         takePhotoState = false

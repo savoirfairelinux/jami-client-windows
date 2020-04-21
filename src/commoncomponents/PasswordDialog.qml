@@ -69,7 +69,7 @@ Dialog {
     }
 
     function exportAccountQML() {
-        var success = accoundModel.exportToFile(UtilsAdapter.getCurrAccId(),path,currentPasswordEdit.text)
+        var success = accoundModel.exportToFile(LrcGeneralAdaptor.getCurrAccId(),path,currentPasswordEdit.text)
 
         spinnerLabel.visible = false
         if (success) {
@@ -81,7 +81,7 @@ Dialog {
         }
     }
     function savePasswordQML() {
-        var success = AccountAdapter.savePassword(UtilsAdapter.getCurrAccId(),currentPasswordEdit.text, passwordEdit.text)
+        var success = AccountAdapter.savePassword(LrcGeneralAdaptor.getCurrAccId(),currentPasswordEdit.text, passwordEdit.text)
 
         spinnerLabel.visible = false
         if (success) {
