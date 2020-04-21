@@ -10,7 +10,6 @@
         <file>src/wizardview/components/ConnectToAccountManagerPage.qml</file>
         <file>src/wizardview/components/SpinnerPage.qml</file>
         <file>src/wizardview/components/CollapsiblePasswordWidget.qml</file>
-
         <file>src/MainApplicationWindow.qml</file>
         <file>src/mainview/MainView.qml</file>
         <file>src/commoncomponents/CustomBorder.qml</file>
@@ -33,5 +32,6 @@
         <file>src/mainview/components/CallOverlayButtonGroup.qml</file>
         <file>src/mainview/components/CallCenter.qml</file>
         <file>src/mainview/js/incomingcallpagecreation.js</file>
+        <file>src/js/mainapplicationcomponentcreation.js</file>
     </qresource>
 </RCC>
