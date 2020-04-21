@@ -85,12 +85,18 @@ AccountAdapter::createJamiAccount(const QVariantMap &settings,
             if (!settings["registeredName"].toString().isEmpty()) {
                 Utils::oneShotConnect(&LRCInstance::accountModel(),
                                       &lrc::api::NewAccountModel::nameRegistrationEnded,
-                                      [this, showBackup] { emit accountAdded(showBackup); });
+                                      [this, showBackup](const QString &accountId) {
+                                          emit accountAdded(showBackup,
+                                                            LRCInstance::accountModel()
+                                                                .getAccountList()
+                                                                .indexOf(accountId));
+                                      });
                 LRCInstance::accountModel().registerName(LRCInstance::getCurrAccId(),
                                                          "",
                                                          settings["registeredName"].toString());
             } else {
-                emit accountAdded(showBackup);
+                emit accountAdded(showBackup,
+                                  LRCInstance::accountModel().getAccountList().indexOf(accountId));
             }
             // set up avatar pixmap from photobooth
             QImage avatarImg;
@@ -144,6 +150,10 @@ AccountAdapter::createSIPAccount(const QVariantMap &settings, QString photoBooth
                               } else {
                                   LRCInstance::setCurrAccAvatar(QPixmap::fromImage(avatarImg));
                               }
+
+                              emit accountAdded(false,
+                                                LRCInstance::accountModel().getAccountList().indexOf(
+                                                    accountId));
                           });
 
     connectFailure();
@@ -161,7 +171,6 @@ AccountAdapter::createSIPAccount(const QVariantMap &settings, QString photoBooth
                                                      settings["username"].toString(),
                                                      additionalAccountConfig);
         QThread::sleep(2);
-        emit showMainViewWindow();
         emit LRCInstance::instance().accountListChanged();
     });
 }
@@ -175,7 +184,9 @@ AccountAdapter::createJAMSAccount(const QVariantMap &settings)
                               Q_UNUSED(accountId)
                               if (!LRCInstance::accountModel().getAccountList().size())
                                   return;
-                              emit showMainViewWindow();
+                              emit accountAdded(false,
+                                                LRCInstance::accountModel().getAccountList().indexOf(
+                                                    accountId));
                               emit LRCInstance::instance().accountListChanged();
                           });
 

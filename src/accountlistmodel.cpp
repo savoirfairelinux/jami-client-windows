@@ -130,3 +130,10 @@ AccountListModel::flags(const QModelIndex &index) const
     }
     return flags;
 }
+
+void
+AccountListModel::reset()
+{
+    beginResetModel();
+    endResetModel();
+}
