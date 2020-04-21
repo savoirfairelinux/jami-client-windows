@@ -49,6 +49,13 @@ Window {
     property int tabBarLeftMargin: 8
     property int tabButtonShrinkSize: 8
 
+    signal needToAddNewAccount
+    signal closeApp
+
+    function newAccountAdded(index) {
+        mainViewWindowSidePanel.newAccountAdded(index)
+    }
+
     function recursionStackViewItemMove(stackOne, stackTwo) {
 
 
@@ -262,6 +269,10 @@ Window {
             mainViewWindowSidePanel.clearContactSearchBar()
             mainViewWindowSidePanel.forceReselectConversationSmartListCurrentIndex()
         }
+
+        onNeedToAddNewAccount: {
+            mainViewWindow.needToAddNewAccount()
+        }
     }
 
     CallStackView {
@@ -444,5 +455,11 @@ Window {
 
     Component.onCompleted: {
         CallAdapter.initQmlObject()
+    }
+
+    onClosing: {
+        close.accepted = false
+        mainViewWindow.hide()
+        mainViewWindow.closeApp()
     }
 }

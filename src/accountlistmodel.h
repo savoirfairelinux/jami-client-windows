@@ -48,4 +48,9 @@ public:
     QModelIndex index(int row, int column = 0, const QModelIndex &parent = QModelIndex()) const;
     QModelIndex parent(const QModelIndex &child) const;
     Qt::ItemFlags flags(const QModelIndex &index) const;
+
+    /*
+     * This function is to reset the model when there's new account added.
+     */
+    Q_INVOKABLE void reset();
 };
