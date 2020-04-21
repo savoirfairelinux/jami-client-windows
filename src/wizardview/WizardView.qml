@@ -179,7 +179,7 @@ Window {
         btnNext.visible = (navVisible == true)
         btnPevious.visible = (navVisible == true)
         btnBack.visible = (back == true)
-                && (UtilsAdapter.getAccountListSize() != 0)
+                && (LrcGeneralAdaptor.getAccountListSize() != 0)
     }
 
     function processWizardInformationsQML() {
