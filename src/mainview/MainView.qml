@@ -134,7 +134,7 @@ Window {
             welcomeViewStack.pop(null, StackView.Immediate)
             sidePanelViewStack.pop(null, StackView.Immediate)
 
-            var index = UtilsAdapter.getCurrAccList().indexOf(accountId)
+            var index = LrcGeneralAdaptor.getCurrAccList().indexOf(accountId)
             var name = UtilsAdapter.getBestName(accountId, convUid)
             var id = UtilsAdapter.getBestId(accountId, convUid)
 
@@ -169,19 +169,19 @@ Window {
             communicationPageMessageWebView.headerUserUserNameLabelText = currentUserDisplayName
 
             callStackView.needToCloseInCallConversationAndPotentialWindow()
-            callStackView.responsibleAccountId = UtilsAdapter.getCurrAccId()
+            callStackView.responsibleAccountId = LrcGeneralAdaptor.getCurrAccId()
             callStackView.responsibleConvUid = currentUID
             callStackView.updateCorrspondingUI()
 
             if (callStackViewShouldShow) {
                 if (callStateStr == "Talking" || callStateStr == "Hold") {
-                    UtilsAdapter.setCurrentCall(UtilsAdapter.getCurrAccId(),
+                    LrcGeneralAdaptor.setCurrentCall(LrcGeneralAdaptor.getCurrAccId(),
                                                 currentUID)
                     if (isAudioOnly)
                         callStackView.showAudioCallPage()
                     else
                         callStackView.showVideoCallPage(
-                                    UtilsAdapter.getCallId(
+                                    LrcGeneralAdaptor.getCallId(
                                         callStackView.responsibleAccountId,
                                         callStackView.responsibleConvUid))
                 } else {
