@@ -4,30 +4,64 @@ import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import QtQuick.Controls.Universal 2.12
 import QtGraphicalEffects 1.14
+import net.jami.Models 1.0
+
+import "mainview"
+import "wizardview"
 
 ApplicationWindow {
     id: mainApplicationWindow
 
-    property int minWidth: 500
-    property int minHeight: 500
-    property int textPointSize: 8
-
     Universal.theme: Universal.Light
 
-    title: "Jami"
-    visible: true
-    width: 600
-    minimumWidth: minWidth
-    minimumHeight: minHeight
+    visible: false
 
     Loader {
         id: mainViewLoader
+
+        asynchronous: true
+        visible: status == Loader.Ready
+        source: ""
+
+        Connections {
+            target: mainViewLoader.item
+
+            function onNeedToAddNewAccount() {
+                wizardView.show()
+            }
+
+            function onCloseApp() {
+                Qt.quit()
+            }
+        }
     }
 
-    MouseArea {
-        anchors.fill: parent
-        //onClicked: mainViewLoader.source = "mainview/MainView.qml"
-        onClicked: mainViewLoader.source = "wizardview/WizardView.qml"
+    WizardView {
+        id: wizardView
+
+        onNeedToShowMainViewWindow: {
+            if (mainViewLoader.source.toString() !== "qrc:/src/mainview/MainView.qml")
+                mainViewLoader.setSource("qrc:/src/mainview/MainView.qml")
+            if(accountIndex !== -1)
+                mainViewLoader.item.newAccountAdded(accountIndex)
+        }
+
+        onWizardViewIsClosed: {
+            if (mainViewLoader.source.toString() !== "qrc:/src/mainview/MainView.qml") {
+                Qt.quit()
+            }
+        }
+    }
+
+    Component.onCompleted: {
+        setX(Screen.width / 2 - width / 2)
+        setY(Screen.height / 2 - height / 2)
+
+        if (!UtilsAdapter.getAccountListSize()) {
+            wizardView.show()
+        } else {
+            mainViewLoader.setSource("qrc:/src/mainview/MainView.qml")
+        }
     }
 
     overlay.modal: ColorOverlay {
