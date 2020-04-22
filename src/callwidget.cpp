@@ -983,7 +983,7 @@ CallWidget::setupChatView(const lrc::api::conversation::Info& convInfo)
     ui->sendContactRequestButton->setVisible(shouldShowSendContactRequestBtn);
 
     ui->messageView->setMessagesVisibility(false);
-
+    ui->messageView->contactIsComposing(convInfo.uid, "", false);
     connect(LRCInstance::getCurrentConversationModel(), &ConversationModel::composingStatusChanged, ui->messageView, &MessageWebView::contactIsComposing);
     Utils::oneShotConnect(ui->messageView, &MessageWebView::sendMessageContentSaved,
         [this, convInfo, accountId = accountInfo.id, lastConvUid = lastConvUid_](const QString& content) {
