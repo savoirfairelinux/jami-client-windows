@@ -28,6 +28,9 @@ Item {
 
     property string closeButtonLighterBlack: "#4c4c4c"
 
+    property string contactSearchBarPlaceHolderTextFontColor: "#767676"
+    property string contactSearchBarPlaceHolderGreyBackground: "#dddddd"
+
     // font
     property string faddedFontColor: "#c0c0c0"
     property string faddedLastInteractionFontColor: "#505050"

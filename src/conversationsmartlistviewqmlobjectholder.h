@@ -37,11 +37,20 @@ public:
     // Must call Q_INVOKABLE so that this function can be used in QML, qml to c++
     Q_INVOKABLE void setConversationSmartListViewQmlObjectHolder(QObject *obj);
     Q_INVOKABLE bool connectConversationModel();
+    Q_INVOKABLE void selectConversation(const QString &accountId, const QString &convUid);
+    Q_INVOKABLE void selectConversation(int index);
     Q_INVOKABLE void deselectConversation();
 
     void backToWelcomePage();
+    bool selectConversation(const lrc::api::conversation::Info &item,
+                            bool preventSendingSignal = false);
+
+signals:
+    void showChatView(const QString &accountId, const QString &convUid);
 
 private:
+    void updateConversationForNewContact(const QString &convUid);
+
     // Object pointer
     QObject *conversationSmartListViewQmlObject_;
 
@@ -54,7 +63,6 @@ private:
     QMetaObject::Connection newConversationConnection_;
     QMetaObject::Connection conversationRemovedConnection_;
     QMetaObject::Connection newInteractionConnection_;
-    QMetaObject::Connection interactionStatusUpdatedConnection_;
     QMetaObject::Connection conversationClearedConnection;
     QMetaObject::Connection selectedCallChanged_;
     QMetaObject::Connection smartlistSelectionConnection_;
