@@ -76,6 +76,7 @@ public:
     Q_INVOKABLE void setAccount(const QString &accId);
     Q_INVOKABLE void setConferenceableFilter(const QString &filter = {});
     Q_INVOKABLE void toggleSection(const QString &section);
+    Q_INVOKABLE int currentUidSmartListModelIndex();
 
     // hack for context menu highlight retention
     bool isContextMenuOpen{false};

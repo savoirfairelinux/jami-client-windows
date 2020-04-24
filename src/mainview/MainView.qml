@@ -83,7 +83,6 @@ Window {
                                     communicationPageMessageWebView,
                                     StackView.Immediate)
                     }
-                    mainViewWindowSidePanel.deselectConversationSmartList()
                 }
             }
         }
@@ -96,10 +95,8 @@ Window {
             var name = utilsAdapter.getBestName(accountId, convUid)
             var id = utilsAdapter.getBestId(accountId, convUid)
 
-            mainViewWindowSidePanel.needToChangeToAccount(accountId, index)
             communicationPageMessageWebView.headerUserAliasLabelText = name
             communicationPageMessageWebView.headerUserUserNameLabelText = (name !== id) ? id : ""
-            messageWebViewQmlObjectHolder.setupChatView(convUid)
 
             callStackView.needToCloseInCallConversation()
             callStackView.setCorrspondingMessageWebView(
@@ -108,6 +105,11 @@ Window {
             callStackView.responsibleAccountId = accountId
             callStackView.responsibleConvUid = convUid
             callStackView.updateCorrspondingUI()
+
+            mainViewWindowSidePanel.needToChangeToAccount(accountId, index)
+            mainViewWindowSidePanel.selectConversationSmartList(accountId,
+                                                                convUid)
+            messageWebViewQmlObjectHolder.setupChatView(convUid)
         }
     }
 
@@ -137,6 +139,20 @@ Window {
             callStackView.responsibleConvUid = currentUID
             callStackView.updateCorrspondingUI()
 
+            // set up chatview
+            messageWebViewQmlObjectHolder.setupChatView(currentUID)
+            callStackView.setCorrspondingMessageWebView(
+                        communicationPageMessageWebView)
+
+            if (welcomeViewStack.find(function (item, index) {
+                return item.objectName === "communicationPageMessageWebView"
+            }) || sidePanelViewStack.find(function (item, index) {
+                return item.objectName === "communicationPageMessageWebView"
+            })) {
+                if (!callStackViewShouldShow)
+                    return
+            }
+
             welcomeViewStack.pop(null, StackView.Immediate)
             sidePanelViewStack.pop(null, StackView.Immediate)
 
@@ -161,11 +177,6 @@ Window {
                     sidePanelViewStack.push(communicationPageMessageWebView)
                 }
             }
-
-            // set up chatview
-            messageWebViewQmlObjectHolder.setupChatView(currentUID)
-            callStackView.setCorrspondingMessageWebView(
-                        communicationPageMessageWebView)
         }
 
         onAccountComboBoxNeedToShowWelcomePage: {
@@ -180,7 +191,13 @@ Window {
         }
 
         onAccountSignalsReconnect: {
-            messageWebViewQmlObjectHolder.connectConversationModel()
+            messageWebViewQmlObjectHolder.accountChangedSetUp(accountId)
+        }
+
+        onNeedToUpdateConversationForAddedContact: {
+            messageWebViewQmlObjectHolder.updateConversationForAddedContact()
+            mainViewWindowSidePanel.clearContactSearchBar()
+            mainViewWindowSidePanel.forceReselectConversationSmartListCurrentIndex()
         }
     }
 
@@ -190,6 +207,7 @@ Window {
         objectName: "callStackViewObject"
 
         onAudioCallPageBackButtonIsClicked: {
+            mainViewWindowSidePanel.deselectConversationSmartList()
             if (welcomeViewStack.visible)
                 welcomeViewStack.pop(welcomePage)
             else if (sidePanelViewStack.visible)
@@ -197,6 +215,7 @@ Window {
         }
 
         onOutgoingCallPageBackButtonIsClicked: {
+            mainViewWindowSidePanel.deselectConversationSmartList()
             if (welcomeViewStack.visible)
                 welcomeViewStack.pop(welcomePage)
             else if (sidePanelViewStack.visible)
@@ -216,6 +235,8 @@ Window {
     MessageWebView {
         id: communicationPageMessageWebView
 
+        objectName: "communicationPageMessageWebView"
+
         signal toSendMessageContentSaved(string arg)
         signal toMessagesCleared
         signal toMessagesLoaded
@@ -231,6 +252,22 @@ Window {
                        && welcomeViewStack.visible) {
                 welcomeViewStack.pop()
             }
+        }
+
+        onNeedToSendContactRequest: {
+            messageWebViewQmlObjectHolder.sendContactRequest()
+        }
+
+        onAcceptInvitation: {
+            messageWebViewQmlObjectHolder.acceptInvitation()
+        }
+
+        onRefuseInvitation: {
+            messageWebViewQmlObjectHolder.refuseInvitation()
+        }
+
+        onBlockConversation: {
+            messageWebViewQmlObjectHolder.blockConversation()
         }
 
         Component.onCompleted: {

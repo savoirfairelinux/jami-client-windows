@@ -26,7 +26,7 @@ ComboBox {
     function updateAccountListModel() {
         accountListModel.dataChanged(accountListModel.index(0, 0),
                                      accountListModel.index(
-                                         accountListModel.rowCount() - 2, 0))
+                                         accountListModel.rowCount() - 1, 0))
     }
 
     Image {
