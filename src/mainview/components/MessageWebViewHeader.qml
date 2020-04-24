@@ -18,6 +18,7 @@ Rectangle {
 
     signal backToWelcomeViewButtonClicked
     signal needToHideConversationInCall
+    signal sendContactRequestButtonClicked
 
     function resetBackToWelcomeViewButtonSource(reset) {
         backToWelcomeViewButtonSource = reset ? "qrc:/images/icons/ic_arrow_back_24px.svg" : "qrc:/images/icons/round-close-24px.svg"
@@ -65,6 +66,8 @@ Rectangle {
                                        - buttonGroup.width - 30 - 6 - 5)
             Layout.preferredHeight: messagingHeaderRect.height
             Layout.leftMargin: 10
+
+            color: "transparent"
 
             ColumnLayout {
                 id: userNameOrIdColumnLayout
@@ -125,14 +128,16 @@ Rectangle {
             id: buttonGroup
 
             Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-            Layout.preferredWidth: buttonPreferredSize * 3
+            Layout.preferredWidth: buttonPreferredSize * 3 + 18
             Layout.preferredHeight: buttonPreferredSize
             Layout.rightMargin: 20
+
+            color: "transparent"
 
             HoverableButton {
                 id: startAAudioCallButton
 
-                anchors.left: buttonGroup.left
+                anchors.right: startAVideoCallButton.left
                 anchors.verticalCenter: buttonGroup.verticalCenter
 
                 height: buttonPreferredSize
@@ -144,6 +149,7 @@ Rectangle {
                 onExitColor: "white"
 
                 onClicked: {
+                    messagingHeaderRect.sendContactRequestButtonClicked()
                     CallCenter.placeAudioOnlyCall()
                 }
             }
@@ -151,8 +157,8 @@ Rectangle {
             HoverableButton {
                 id: startAVideoCallButton
 
-                anchors.left: startAAudioCallButton.right
-                anchors.leftMargin: 3
+                anchors.right: sendContactRequestButton.left
+                anchors.leftMargin: 5
                 anchors.verticalCenter: buttonGroup.verticalCenter
 
                 height: buttonPreferredSize
@@ -167,8 +173,9 @@ Rectangle {
             HoverableButton {
                 id: sendContactRequestButton
 
-                anchors.left: startAVideoCallButton.right
-                anchors.leftMargin: 3
+                anchors.leftMargin: 5
+                anchors.right: buttonGroup.right
+                anchors.rightMargin: 8
                 anchors.verticalCenter: buttonGroup.verticalCenter
 
                 height: buttonPreferredSize
@@ -179,7 +186,29 @@ Rectangle {
                 source: "qrc:/images/icons/ic_person_add_black_24dp_2x.png"
                 backgroundColor: "white"
                 onExitColor: "white"
+
+                onClicked: {
+                    messagingHeaderRect.sendContactRequestButtonClicked()
+                    sendContactRequestButtonVisible = false
+                }
+
+                onVisibleChanged: {
+                    if (sendContactRequestButton.visible) {
+                        sendContactRequestButton.width = buttonPreferredSize
+                    } else {
+                        sendContactRequestButton.width = 0
+                    }
+                }
             }
         }
+    }
+
+    CustomBorder {
+        commonBorder: false
+        lBorderwidth: 0
+        rBorderwidth: 0
+        tBorderwidth: 0
+        bBorderwidth: 1
+        borderColor: JamiTheme.tabbarBorderColor
     }
 }
