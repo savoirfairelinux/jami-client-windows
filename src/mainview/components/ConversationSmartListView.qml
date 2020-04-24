@@ -8,10 +8,14 @@ ListView {
     id: conversationSmartListView
 
     signal needToAccessMessageWebView(string currentUserDisplayName, string currentUserAlias, string currentUID, bool callStackViewShouldShow)
+    signal needToSelectItems(int index)
     signal needToDeselectItems
     signal needToBackToWelcomePage
+    signal needToGrabFocus
 
+    signal needToShowChatView(string accountId, string convUid)
     signal currentIndexIsChanged
+    signal forceUpdatePotentialInvalidItem
 
     function modelSorted(contactURIToCompare) {
         var conversationSmartListViewModel = conversationSmartListView.model
@@ -33,6 +37,7 @@ ListView {
                     conversationSmartListViewModel.index(0, 0),
                     conversationSmartListViewModel.index(
                         conversationSmartListViewModel.rowCount() - 1, 0))
+        conversationSmartListView.forceUpdatePotentialInvalidItem()
     }
 
     function setModel(model) {
@@ -67,6 +72,11 @@ ListView {
         Connections {
             target: conversationSmartListView
 
+            onForceUpdatePotentialInvalidItem: {
+                smartListItemDelegate.visible = conversationSmartListView.model.rowCount(
+                            ) <= index ? false : true
+            }
+
             onCurrentIndexIsChanged: {
                 if (conversationSmartListView.currentIndex === -1
                         || conversationSmartListView.currentIndex !== index) {
@@ -79,6 +89,14 @@ ListView {
                         return InCall ? Qt.lighter(JamiTheme.selectionBlue,
                                                    1.8) : JamiTheme.releaseColor
                     })
+                }
+            }
+
+            onNeedToShowChatView: {
+                if (convUid === UID) {
+                    conversationSmartListView.needToAccessMessageWebView(
+                                DisplayID == DisplayName ? "" : DisplayID,
+                                DisplayName, UID, CallStackViewShouldShow)
                 }
             }
         }
@@ -306,9 +324,8 @@ ListView {
                     smartListContextMenu.open()
                 } else if (mouse.button === Qt.LeftButton
                            && Qt.platform.os == "windows") {
-                    conversationSmartListView.needToAccessMessageWebView(
-                                DisplayID == DisplayName ? "" : DisplayID,
-                                DisplayName, UID, CallStackViewShouldShow)
+                    conversationSmartListView.needToSelectItems(index)
+                    conversationSmartListView.needToGrabFocus()
                 }
             }
             onEntered: {

@@ -37,15 +37,31 @@ public:
     // Must call Q_INVOKABLE so that this function can be used in QML, qml to c++
     Q_INVOKABLE void setConversationSmartListViewQmlObjectHolder(QObject *obj);
     Q_INVOKABLE bool connectConversationModel();
+    Q_INVOKABLE void selectConversation(const QString &accountId, const QString &convUid);
+    Q_INVOKABLE void selectConversation(int index);
     Q_INVOKABLE void deselectConversation();
+    Q_INVOKABLE void accountChangedSetUp(const QString &accountId);
+    Q_INVOKABLE void updateConversationsFilterWidget();
+    Q_INVOKABLE void setConversationFilter(const QString &type);
 
+    void setConversationFilter(lrc::api::profile::Type filter);
     void backToWelcomePage();
+    bool selectConversation(const lrc::api::conversation::Info &item,
+                            bool preventSendingSignal = false);
+
+signals:
+    void showChatView(const QString &accountId, const QString &convUid);
+    void showConversationTabs(bool visible);
 
 private:
+    void updateConversationForNewContact(const QString &convUid);
+
     // Object pointer
     QObject *conversationSmartListViewQmlObject_;
 
     SmartListModel *conversationSmartListModel_;
+
+    lrc::api::profile::Type currentTypeFilter_{};
 
     // connections
     QMetaObject::Connection modelSortedConnection_;
@@ -54,7 +70,6 @@ private:
     QMetaObject::Connection newConversationConnection_;
     QMetaObject::Connection conversationRemovedConnection_;
     QMetaObject::Connection newInteractionConnection_;
-    QMetaObject::Connection interactionStatusUpdatedConnection_;
     QMetaObject::Connection conversationClearedConnection;
     QMetaObject::Connection selectedCallChanged_;
     QMetaObject::Connection smartlistSelectionConnection_;

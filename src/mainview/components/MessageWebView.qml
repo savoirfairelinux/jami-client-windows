@@ -16,6 +16,7 @@ Rectangle {
 
     signal needToGoBackToWelcomeView
     signal needToHideConversationInCall
+    signal needToSendContactRequest
     signal setNewMessagesContent(string filePath)
 
     signal messagesCleared
@@ -90,6 +91,10 @@ Rectangle {
 
         onNeedToHideConversationInCall: {
             messageWebViewRect.needToHideConversationInCall()
+        }
+
+        onSendContactRequestButtonClicked: {
+            messageWebViewRect.needToSendContactRequest()
         }
     }
 
@@ -206,6 +211,7 @@ Rectangle {
         id: messageWebView
 
         anchors.top: messageWebViewHeader.bottom
+        anchors.topMargin: 1
         anchors.left: messageWebViewRect.left
 
         width: messageWebViewRect.width

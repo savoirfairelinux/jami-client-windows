@@ -121,7 +121,9 @@ bool getReplyMessageBox(QWidget *widget, const QString &title, const QString &te
 // image
 QString getContactImageString(const QString &accountId, const QString &uid);
 QImage getCirclePhoto(const QImage original, int sizePhoto);
-QImage conversationPhoto(const QString &convUid, const lrc::api::account::Info &accountInfo);
+QImage conversationPhoto(const QString &convUid,
+                         const lrc::api::account::Info &accountInfo,
+                         bool filtered = false);
 QColor getAvatarColor(const QString &canonicalUri);
 QImage fallbackAvatar(const QSize size,
                       const QString &canonicalUriStr,
@@ -139,12 +141,13 @@ QImage setupQRCode(QString ringID, int margin);
 
 // rounded corner
 template<typename T>
-void fillRoundRectPath(QPainter &painter,
-                       const T &brushType,
-                       const QRect &rectToDraw,
-                       qreal cornerRadius,
-                       int xTransFormOffset = 0,
-                       int yTransFormOffset = 0)
+void
+fillRoundRectPath(QPainter &painter,
+                  const T &brushType,
+                  const QRect &rectToDraw,
+                  qreal cornerRadius,
+                  int xTransFormOffset = 0,
+                  int yTransFormOffset = 0)
 {
     QBrush brush(brushType);
     brush.setTransform(QTransform::fromTranslate(rectToDraw.x() + xTransFormOffset,
@@ -198,7 +201,8 @@ public:
     }
 
 public slots:
-    void slotOneShotDisconnectConnection()
+    void
+    slotOneShotDisconnectConnection()
     {
         if (connection_) {
             QObject::disconnect(*connection_);
@@ -217,9 +221,10 @@ private:
 };
 
 template<typename Func1, typename Func2>
-void oneShotConnect(const typename QtPrivate::FunctionPointer<Func1>::Object *sender,
-                    Func1 signal,
-                    Func2 slot)
+void
+oneShotConnect(const typename QtPrivate::FunctionPointer<Func1>::Object *sender,
+               Func1 signal,
+               Func2 slot)
 {
     QMetaObject::Connection *const connection = new QMetaObject::Connection;
     *connection = QObject::connect(sender, signal, slot);
@@ -237,10 +242,11 @@ void oneShotConnect(const typename QtPrivate::FunctionPointer<Func1>::Object *se
 }
 
 template<typename Func1, typename Func2>
-void oneShotConnect(const typename QtPrivate::FunctionPointer<Func1>::Object *sender,
-                    Func1 signal,
-                    const typename QtPrivate::FunctionPointer<Func2>::Object *receiver,
-                    Func2 slot)
+void
+oneShotConnect(const typename QtPrivate::FunctionPointer<Func1>::Object *sender,
+               Func1 signal,
+               const typename QtPrivate::FunctionPointer<Func2>::Object *receiver,
+               Func2 slot)
 {
     QMetaObject::Connection *const connection = new QMetaObject::Connection;
     *connection = QObject::connect(sender, signal, receiver, slot);
@@ -257,10 +263,8 @@ void oneShotConnect(const typename QtPrivate::FunctionPointer<Func1>::Object *se
     });
 }
 
-void oneShotConnect(const QObject *sender,
-                    const char *signal,
-                    const QObject *receiver,
-                    const char *slot)
+void
+oneShotConnect(const QObject *sender, const char *signal, const QObject *receiver, const char *slot)
 {
     QMetaObject::Connection *const connection = new QMetaObject::Connection;
     *connection = QObject::connect(sender, signal, receiver, slot);
@@ -286,16 +290,18 @@ public:
 };
 
 template<class T>
-inline Blocker<T> whileBlocking(T *blocked)
+inline Blocker<T>
+whileBlocking(T *blocked)
 {
     return Blocker<T>(blocked);
 }
 
 template<typename T>
-void setElidedText(T *object,
-                   const QString &text,
-                   Qt::TextElideMode mode = Qt::ElideMiddle,
-                   int padding = 32)
+void
+setElidedText(T *object,
+              const QString &text,
+              Qt::TextElideMode mode = Qt::ElideMiddle,
+              int padding = 32)
 {
     QFontMetrics metrics(object->font());
     QString clippedText = metrics.elidedText(text, mode, object->width() - padding);
@@ -328,20 +334,38 @@ public:
         clipboard_ = QGuiApplication::clipboard();
     }
 
-    Q_INVOKABLE const QString getChangeLog() { return Utils::getChangeLog(); }
+    Q_INVOKABLE const QString
+    getChangeLog()
+    {
+        return Utils::getChangeLog();
+    }
 
-    Q_INVOKABLE const QString getProjectCredits() { return Utils::getProjectCredits(); }
+    Q_INVOKABLE const QString
+    getProjectCredits()
+    {
+        return Utils::getProjectCredits();
+    }
 
-    Q_INVOKABLE const QString getVersionStr() { return QString(VERSION_STRING); }
+    Q_INVOKABLE const QString
+    getVersionStr()
+    {
+        return QString(VERSION_STRING);
+    }
 
-    Q_INVOKABLE void setText(QString text) { clipboard_->setText(text, QClipboard::Clipboard); }
+    Q_INVOKABLE void
+    setText(QString text)
+    {
+        clipboard_->setText(text, QClipboard::Clipboard);
+    }
 
-    Q_INVOKABLE const QString qStringFromFile(const QString &filename)
+    Q_INVOKABLE const QString
+    qStringFromFile(const QString &filename)
     {
         return Utils::QByteArrayFromFile(filename);
     }
 
-    Q_INVOKABLE const QString getStyleSheet(const QString &name, const QString &source)
+    Q_INVOKABLE const QString
+    getStyleSheet(const QString &name, const QString &source)
     {
         auto simplifiedCSS = source.simplified().replace("'", "\"");
         QString s = QString::fromLatin1("(function() {"
@@ -355,18 +379,22 @@ public:
         return s;
     }
 
-    Q_INVOKABLE const QString getCachePath()
+    Q_INVOKABLE const QString
+    getCachePath()
     {
         QDir dataDir(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation));
         dataDir.cdUp();
         return dataDir.absolutePath() + "/jami";
     }
 
-    Q_INVOKABLE const QString getContactImageString(const QString &accountId, const QString &uid)
+    Q_INVOKABLE const QString
+    getContactImageString(const QString &accountId, const QString &uid)
     {
         return Utils::getContactImageString(accountId, uid);
     }
 
+    Q_INVOKABLE int getTotalUnreadMessages();
+    Q_INVOKABLE int getTotalPendingRequest();
     Q_INVOKABLE const QString getBestName(const QString &accountId, const QString &uid);
     Q_INVOKABLE const QString getBestId(const QString &accountId, const QString &uid);
 

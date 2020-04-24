@@ -5,23 +5,60 @@ import QtQuick.Layouts 1.14
 import net.jami.constant.jamitheme 1.0
 import net.jami.AccountComboBoxQmlObjectHolder 1.0
 import net.jami.ConversationSmartListViewQmlObjectHolder 1.0
+import net.jami.ContactSearchBarQmlObjectHolder 1.0
 
 import "../../commoncomponents"
 
 Rectangle {
     id: sidePanelRect
 
+    property bool tabBarVisible: true
+    property int pendingRequestCount: 0
+    property int totalUnreadMessagesCount: 0
+
     signal conversationSmartListNeedToAccessMessageWebView(string currentUserDisplayName, string currentUserAlias, string currentUID, bool callStackViewShouldShow)
     signal accountComboBoxNeedToShowWelcomePage(int index)
     signal conversationSmartListViewNeedToShowWelcomePage
     signal accountSignalsReconnect(string accountId)
+    signal needToUpdateConversationForAddedContact
+
+    // Hack -> force redraw
+    function forceReselectConversationSmartListCurrentIndex() {
+        var index = conversationSmartListView.currentIndex
+        conversationSmartListView.currentIndex = -1
+        conversationSmartListView.currentIndex = index
+    }
+
+    // for contact request conv to be focused correctly
+    function setCurrentUidSmartListModelIndex() {
+        conversationSmartListView.currentIndex
+                = conversationSmartListView.model.currentUidSmartListModelIndex(
+                    )
+    }
+
+    function updatePendingRequestCount() {
+        pendingRequestCount = utilsAdapter.getTotalPendingRequest()
+    }
+
+    function updateTotalUnreadMessagesCount() {
+        totalUnreadMessagesCount = utilsAdapter.getTotalUnreadMessages()
+    }
+
+    function clearContactSearchBar() {
+        contactSearchBar.clearText()
+    }
 
     function needToChangeToAccount(accountId, index) {
         if (index !== -1) {
             accountComboBox.currentIndex = index
             accountComboBoxQmlObjectHolder.accountChanged(index)
-            contactSearchBar.clear()
+            contactSearchBar.clearText()
         }
+    }
+
+    function selectConversationSmartList(accountId, convUid) {
+        conversationSmartListViewQmlObjectHolder.selectConversation(accountId,
+                                                                    convUid)
     }
 
     function deselectConversationSmartList() {
@@ -37,13 +74,32 @@ Rectangle {
 
         onAccountSignalsReconnect: {
             CallCenter.connectCallstatusChangedSignal(accountId)
-            conversationSmartListViewQmlObjectHolder.connectConversationModel()
+            conversationSmartListViewQmlObjectHolder.accountChangedSetUp(
+                        accountId)
             sidePanelRect.accountSignalsReconnect(accountId)
+        }
+
+        onUpdateConversationForAddedContact: {
+            sidePanelRect.needToUpdateConversationForAddedContact()
+        }
+
+        onAccountStatusChanged: {
+            accountComboBox.updateAccountListModel()
         }
     }
 
     ConversationSmartListViewQmlObjectHolder {
         id: conversationSmartListViewQmlObjectHolder
+
+        onShowChatView: {
+            conversationSmartListView.needToShowChatView(accountId, convUid)
+        }
+
+        onShowConversationTabs: {
+            tabBarVisible = visible
+            updatePendingRequestCount()
+            updateTotalUnreadMessagesCount()
+        }
     }
 
     AccountComboBox {
@@ -58,7 +114,11 @@ Rectangle {
 
         onAccountChanged: {
             accountComboBoxQmlObjectHolder.accountChanged(index)
-            contactSearchBar.clear()
+            contactSearchBar.clearText()
+            contactSearchBar.setPlaceholderString(
+                        JamiTheme.contactSearchBarPlaceHolderConversationText)
+            pageOne.down = true
+            pageTwo.down = false
         }
 
         onNeedToUpdateSmartList: {
@@ -88,7 +148,21 @@ Rectangle {
         width: sidePanelRect.width
         height: Math.max(pageOne.height, pageTwo.height)
 
+        visible: tabBarVisible
+
         currentIndex: 0
+
+        onVisibleChanged: {
+            if (!tabBarVisible) {
+                tabBar.height = 0
+                tabBar.anchors.topMargin = 12
+            } else {
+                tabBar.height = Qt.binding(function () {
+                    return Math.max(pageOne.height, pageTwo.height)
+                })
+                tabBar.anchors.topMargin = 20
+            }
+        }
 
         TabButton {
             id: pageOne
@@ -97,6 +171,32 @@ Rectangle {
             height: textConvElement.height + 10
 
             down: true
+
+            Rectangle {
+                id: totalUnreadMessagesCountRect
+
+                anchors.right: pageOne.right
+                anchors.rightMargin: 5
+                anchors.bottom: pageOne.bottom
+                anchors.bottomMargin: pageOne.height - totalUnreadMessagesCountRect.height / 2
+
+                width: 14
+                height: 14
+
+                visible: totalUnreadMessagesCount > 0
+
+                Text {
+                    id: totalUnreadMessagesCountText
+
+                    anchors.centerIn: totalUnreadMessagesCountRect
+
+                    text: totalUnreadMessagesCount > 9 ? "···" : totalUnreadMessagesCount
+                    color: "white"
+                }
+
+                radius: 30
+                color: JamiTheme.notificationRed
+            }
 
             background: Rectangle {
                 id: buttonRectOne
@@ -124,9 +224,14 @@ Rectangle {
                     hoverEnabled: true
                     onPressed: {
                         buttonRectOne.color = JamiTheme.pressColor
-                        tabBar.currentIndex = 0
+                        conversationSmartListViewQmlObjectHolder.setConversationFilter(
+                                    "")
+                        contactSearchBar.setPlaceholderString(
+                                    JamiTheme.contactSearchBarPlaceHolderConversationText)
                         pageOne.down = true
                         pageTwo.down = false
+                        setCurrentUidSmartListModelIndex()
+                        forceReselectConversationSmartListCurrentIndex()
                     }
                     onReleased: {
                         buttonRectOne.color = JamiTheme.releaseColor
@@ -148,6 +253,32 @@ Rectangle {
 
             width: tabBar.width / 2 - tabButtonShrinkSize
             height: textInvElement.height + 10
+
+            Rectangle {
+                id: pendingRequestCountRect
+
+                anchors.right: pageTwo.right
+                anchors.rightMargin: 5
+                anchors.bottom: pageTwo.bottom
+                anchors.bottomMargin: pageTwo.height - pendingRequestCountRect.height / 2
+
+                width: 14
+                height: 14
+
+                visible: pendingRequestCount > 0
+
+                Text {
+                    id: pendingRequestCountText
+
+                    anchors.centerIn: pendingRequestCountRect
+
+                    text: pendingRequestCount > 9 ? "···" : pendingRequestCount
+                    color: "white"
+                }
+
+                radius: 30
+                color: JamiTheme.notificationRed
+            }
 
             background: Rectangle {
                 id: buttonRectTwo
@@ -175,7 +306,10 @@ Rectangle {
                     hoverEnabled: true
                     onPressed: {
                         buttonRectTwo.color = JamiTheme.pressColor
-                        tabBar.currentIndex = 1
+                        conversationSmartListViewQmlObjectHolder.setConversationFilter(
+                                    "PENDING")
+                        contactSearchBar.setPlaceholderString(
+                                    JamiTheme.contactSearchBarPlaceHolderInivitionText)
                         pageTwo.down = true
                         pageOne.down = false
                     }
@@ -196,7 +330,7 @@ Rectangle {
     }
 
     Rectangle {
-        id: stackLayoutRect
+        id: sidePanelColumnRect
 
         anchors.top: tabBar.bottom
         anchors.topMargin: -12
@@ -210,142 +344,88 @@ Rectangle {
         Rectangle {
             id: hideTopBoarderRect
 
-            anchors.top: stackLayoutRect.top
-            anchors.left: stackLayoutRect.left
+            anchors.top: sidePanelColumnRect.top
+            anchors.left: sidePanelColumnRect.left
             anchors.leftMargin: tabBarLeftMargin + 5
 
             width: pageOne.width + pageTwo.width - 9
             height: 1
 
+            visible: tabBarVisible
+
+            onVisibleChanged: {
+                if (!tabBarVisible)
+                    sidePanelColumnRect.border.width = 0
+                else
+                    sidePanelColumnRect.border.width = 1
+            }
+
             color: "white"
         }
 
-        StackLayout {
-            id: stackLayoutView
+        ColumnLayout {
+            id: columnLayoutView
 
-            anchors.centerIn: stackLayoutRect
+            anchors.centerIn: sidePanelColumnRect
 
-            width: stackLayoutRect.width - 10
-            height: stackLayoutRect.height - 20
+            width: sidePanelColumnRect.width - 10
+            height: sidePanelColumnRect.height - 20
 
-            currentIndex: tabBar.currentIndex
+            ContactSearchBarQmlObjectHolder {
+                id: contactSearchBarQmlObjectHolder
+            }
 
-            Item {
-                id: stackOne
+            // search bar container to embed search label
+            ContactSearchBar {
+                id: contactSearchBar
 
-                Layout.fillHeight: stackLayoutView
-                Layout.fillWidth: stackLayoutView
+                Layout.alignment: Qt.AlignCenter
+                Layout.topMargin: 10
+                Layout.rightMargin: 5
+                Layout.leftMargin: 5
+                Layout.preferredWidth: parent.width - 10
+                Layout.preferredHeight: 35
 
-                // search bar container to embed search label
-                Rectangle {
-                    id: contactSearchBarRect
-
-                    anchors.top: parent.top
-                    anchors.topMargin: 10
-                    anchors.left: parent.left
-                    anchors.leftMargin: 5
-                    anchors.right: parent.right
-                    anchors.rightMargin: 5
-
-                    width: parent.width - 10
-                    height: 35
-
-                    border.color: JamiTheme.pressColor
-                    radius: 10
-                    color: contactSearchBar.activeFocus ? "white" : JamiTheme.hoverColor
-
-                    Image {
-                        id: searchIconImage
-
-                        anchors.verticalCenter: contactSearchBarRect.verticalCenter
-                        anchors.left: contactSearchBarRect.left
-
-                        width: contactSearchBarRect.height
-                        height: contactSearchBarRect.height
-
-                        fillMode: Image.PreserveAspectFit
-                        mipmap: true
-                        source: "qrc:/images/icons/ic_baseline-search-24px.svg"
-                    }
-
-                    TextField {
-                        id: contactSearchBar
-
-                        anchors.verticalCenter: contactSearchBarRect.verticalCenter
-                        anchors.left: searchIconImage.right
-
-                        width: contactSearchBarRect.width - searchIconImage.width - 10
-                        height: contactSearchBarRect.height - 5
-
-                        font.pointSize: 8
-
-                        Text {
-                            id: placeholderTextForSearchBar
-
-                            anchors.verticalCenter: contactSearchBar.verticalCenter
-                            anchors.left: contactSearchBar.left
-                            anchors.leftMargin: 5
-
-                            text: qsTr("Find a new or existing contact")
-                            font.pointSize: 8
-                            color: "#aaa"
-                            visible: !contactSearchBar.text
-                                     && !contactSearchBar.activeFocus
-                        }
-
-                        background: Rectangle {
-                            id: searchBarBackground
-
-                            color: contactSearchBar.activeFocus ? "white" : JamiTheme.hoverColor
-                        }
-                        onTextChanged: {
-                            mainViewWindow.searchBarTextChanged(
-                                        contactSearchBar.text)
-                        }
-                    }
+                onContactSearchBarTextChanged: {
+                    contactSearchBarQmlObjectHolder.setConversationFilter(text)
                 }
 
-                ConversationSmartListView {
-                    id: conversationSmartListView
-
-                    anchors.bottom: parent.bottom
-                    anchors.left: parent.left
-
-                    width: parent.width
-                    height: parent.height - contactSearchBarRect.height - 15
-
-                    onNeedToBackToWelcomePage: {
-                        sidePanelRect.conversationSmartListViewNeedToShowWelcomePage()
-                    }
-
-                    onNeedToAccessMessageWebView: {
-                        sidePanelRect.conversationSmartListNeedToAccessMessageWebView(
-                                    currentUserDisplayName, currentUserAlias,
-                                    currentUID, callStackViewShouldShow)
-                    }
-
-                    Component.onCompleted: {
-                        conversationSmartListViewQmlObjectHolder.setConversationSmartListViewQmlObjectHolder(
-                                    conversationSmartListView)
-                        conversationSmartListView.currentIndex = -1
-                    }
+                Component.onCompleted: {
+                    contactSearchBarQmlObjectHolder.setContactSearchBarQmlObject(
+                                contactSearchBar)
                 }
             }
 
-            Item {
-                id: stackTwo
+            ConversationSmartListView {
+                id: conversationSmartListView
 
-                Layout.fillHeight: stackLayoutView
-                Layout.fillWidth: stackLayoutView
+                Layout.alignment: Qt.AlignCenter
+                Layout.preferredWidth: parent.width
+                Layout.preferredHeight: parent.height - contactSearchBar.height - 30
 
-                Image {
-                    id: popImg
+                onNeedToSelectItems: {
+                    conversationSmartListViewQmlObjectHolder.selectConversation(
+                                index)
+                }
 
-                    anchors.centerIn: parent
-                    width: 50
-                    height: 50
-                    fillMode: Image.PreserveAspectFit
-                    source: "qrc:/images/jami.png"
+                onNeedToBackToWelcomePage: {
+                    sidePanelRect.conversationSmartListViewNeedToShowWelcomePage()
+                }
+
+                onNeedToAccessMessageWebView: {
+                    sidePanelRect.conversationSmartListNeedToAccessMessageWebView(
+                                currentUserDisplayName, currentUserAlias,
+                                currentUID, callStackViewShouldShow)
+                }
+
+                onNeedToGrabFocus: {
+                    contactSearchBar.clearFocus()
+                }
+
+                Component.onCompleted: {
+                    conversationSmartListViewQmlObjectHolder.setConversationSmartListViewQmlObjectHolder(
+                                conversationSmartListView)
+                    conversationSmartListView.currentIndex = -1
                 }
             }
         }
