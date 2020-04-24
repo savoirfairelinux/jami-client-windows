@@ -129,7 +129,8 @@ HEADERS += ./src/smartlistmodel.h \
         ./src/tintedbuttonimageprovider.h \
         ./src/callcenterqmlobjectholder.h \
         ./src/calloverlayqmlobjectholder.h \
-        ./src/conversationsmartlistviewqmlobjectholder.h
+        ./src/conversationsmartlistviewqmlobjectholder.h \
+        src/contactsearchbarqmlobjectholder.h
 SOURCES += ./src/bannedlistmodel.cpp \
         ./src/accountlistmodel.cpp \
         ./src/runguard.cpp \
@@ -147,6 +148,7 @@ SOURCES += ./src/bannedlistmodel.cpp \
         ./src/accountcomboboxqmlobjectholder.cpp \
         ./src/callcenterqmlobjectholder.cpp \
         ./src/calloverlayqmlobjectholder.cpp \
-        ./src/conversationsmartlistviewqmlobjectholder.cpp
+        ./src/conversationsmartlistviewqmlobjectholder.cpp \
+        src/contactsearchbarqmlobjectholder.cpp
 RESOURCES += ./ressources.qrc \
              ./qml.qrc

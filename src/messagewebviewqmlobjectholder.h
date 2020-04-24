@@ -36,6 +36,8 @@ public:
     Q_INVOKABLE void setMessageWebViewQmlObject(QObject *obj);
     Q_INVOKABLE void setupChatView(const QString &uid);
     Q_INVOKABLE void connectConversationModel();
+    Q_INVOKABLE void sendContactRequest();
+    Q_INVOKABLE void updateConversationForAddedContact();
 
     // run corrsponding js functions, c++ to qml
     void setMessagesVisibility(bool visible);
@@ -48,11 +50,12 @@ public:
     void printNewInteraction(lrc::api::ConversationModel &conversationModel,
                              uint64_t msgId,
                              const lrc::api::interaction::Info &interaction);
+    void updateInteraction(lrc::api::ConversationModel &conversationModel,
+                           uint64_t msgId,
+                           const lrc::api::interaction::Info &interaction);
     void setMessagesImageContent(const QString &path, bool isBased64 = false);
     void setMessagesFileContent(const QString &path);
     void removeInteraction(uint64_t interactionId);
-
-    bool selectConversation(const lrc::api::conversation::Info &item);
 
 public slots:
     void slotSendMessageContentSaved(const QString &content);
@@ -78,5 +81,6 @@ private:
 
     // interaction connections
     QMetaObject::Connection newInteractionConnection_;
+    QMetaObject::Connection interactionStatusUpdatedConnection_;
     QMetaObject::Connection interactionRemovedConnection_;
 };
