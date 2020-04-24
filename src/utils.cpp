@@ -597,9 +597,11 @@ Utils::getReplyMessageBox(QWidget *widget, const QString &title, const QString &
 }
 
 QImage
-Utils::conversationPhoto(const QString &convUid, const lrc::api::account::Info &accountInfo)
+Utils::conversationPhoto(const QString &convUid,
+                         const lrc::api::account::Info &accountInfo,
+                         bool filtered)
 {
-    auto convInfo = LRCInstance::getConversationFromConvUid(convUid, accountInfo.id, false);
+    auto convInfo = LRCInstance::getConversationFromConvUid(convUid, accountInfo.id, filtered);
     if (!convInfo.uid.isEmpty()) {
         return GlobalInstances::pixmapManipulator()
             .decorationRole(convInfo, accountInfo)
@@ -901,4 +903,27 @@ Utils::UtilsAdapter::getBestId(const QString &accountId, const QString &uid)
     auto convModel = LRCInstance::getAccountInfo(accountId).conversationModel.get();
     return Utils::bestIdForConversation(LRCInstance::getConversationFromConvUid(uid, accountId),
                                         *convModel);
+}
+
+int
+Utils::UtilsAdapter::getTotalUnreadMessages()
+{
+    int totalUnreadMessages{0};
+    if (LRCInstance::getCurrentAccountInfo().profileInfo.type != lrc::api::profile::Type::SIP) {
+        auto convModel = LRCInstance::getCurrentConversationModel();
+        auto ringConversations = convModel->getFilteredConversations(lrc::api::profile::Type::RING);
+        std::for_each(ringConversations.begin(),
+                      ringConversations.end(),
+                      [&totalUnreadMessages, convModel](const auto &conversation) {
+                          totalUnreadMessages += conversation.unreadMessages;
+                      });
+    }
+    return totalUnreadMessages;
+}
+
+int
+Utils::UtilsAdapter::getTotalPendingRequest()
+{
+    auto &accountInfo = LRCInstance::getCurrentAccountInfo();
+    return accountInfo.contactModel->pendingRequestCount();
 }

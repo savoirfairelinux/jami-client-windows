@@ -62,10 +62,6 @@ AccountComboBoxQmlObjectHolder::setSelectedAccount(const QString &accountId, int
     QMetaObject::invokeMethod(accountComboBoxQmlObject_,
                               "updateSmartList",
                               Q_ARG(QVariant, accountId));
-
-    currentTypeFilter_ = accountInfo.profileInfo.type;
-    LRCInstance::getCurrentConversationModel()->setFilter(accountInfo.profileInfo.type);
-    //updateConversationsFilterWidget();
     connectAccount(accountId);
     emit accountSignalsReconnect(accountId);
     //emit slotAccountChangedFinished();
@@ -106,43 +102,43 @@ AccountComboBoxQmlObjectHolder::connectAccount(const QString &accountId)
 {
     try {
         auto &accInfo = LRCInstance::accountModel().getAccountInfo(accountId);
+
         QObject::disconnect(accountStatusChangedConnection_);
+        QObject::disconnect(contactAddedConnection_);
+
         accountStatusChangedConnection_
             = QObject::connect(accInfo.accountModel,
                                &lrc::api::NewAccountModel::accountStatusChanged,
                                [this] { emit accountStatusChanged(); });
-        /*
-        QObject::disconnect(contactAddedConnection_);
-        contactAddedConnection_ = QObject::connect(
-            accInfo.contactModel.get(),
-            &lrc::api::ContactModel::contactAdded,
-            [this, accountId](const QString& contactUri) {
-                auto& accInfo = LRCInstance::accountModel().getAccountInfo(accountId);
-                auto convModel = LRCInstance::getCurrentConversationModel();
-                auto conversation = LRCInstance::getCurrentConversation();
-                if (conversation.uid.isEmpty()) {
-                    return;
-                }
-                if (contactUri == accInfo.contactModel->getContact(conversation.participants.at(0)).profileInfo.uri) {
-                    // update call screen
-                    auto avatarImg = QPixmap::fromImage(imageForConv(conversation.uid));
-                    ui->callingPhoto->setPixmap(avatarImg);
-                    ui->callerPhoto->setPixmap(avatarImg);
-                    // update conversation
-                    ui->messageView->clear();
-                    setConversationProfileData(conversation);
-                    ui->messageView->printHistory(*convModel, conversation.interactions);
-                }
-            });
-        QObject::disconnect(addedToConferenceConnection_);
-        addedToConferenceConnection_ = QObject::connect(
-            accInfo.callModel.get(),
-            &NewCallModel::callAddedToConference,
-            [this](const QString& callId, const QString& confId) {
-                Q_UNUSED(callId);
-                LRCInstance::renderer()->addDistantRenderer(confId);
-                ui->videoView->updateCall();
-            });*/
+
+        contactAddedConnection_
+            = QObject::connect(accInfo.contactModel.get(),
+                               &lrc::api::ContactModel::contactAdded,
+                               [this, accountId](const QString &contactUri) {
+                                   auto &accInfo = LRCInstance::accountModel().getAccountInfo(
+                                       accountId);
+                                   auto convModel = LRCInstance::getCurrentConversationModel();
+                                   auto conversation = LRCInstance::getCurrentConversation();
+                                   if (conversation.uid.isEmpty()) {
+                                       return;
+                                   }
+                                   if (contactUri
+                                       == accInfo.contactModel
+                                              ->getContact(conversation.participants.at(0))
+                                              .profileInfo.uri) {
+                                       // update conversation
+                                       emit updateConversationForAddedContact();
+                                   }
+                               });
+        /*QObject::disconnect(addedToConferenceConnection_);
+        addedToConferenceConnection_
+            = QObject::connect(accInfo.callModel.get(),
+                               &NewCallModel::callAddedToConference,
+                               [this](const QString &callId, const QString &confId) {
+                                   Q_UNUSED(callId);
+                                   LRCInstance::renderer()->addDistantRenderer(confId);
+                                   ui->videoView->updateCall();
+                               });*/
     } catch (...) {
         qWarning() << "Couldn't get account: " << accountId;
     }
