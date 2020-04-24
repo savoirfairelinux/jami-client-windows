@@ -18,39 +18,21 @@
 
 #pragma once
 
-#include "lrcinstance.h"
-
 #include <QObject>
 #include <QString>
 
-// to ease the logic with the power of c++
-class AccountComboBoxQmlObjectHolder : public QObject
+class ContactSearchBarQmlObjectHolder : public QObject
 {
     Q_OBJECT
-
 public:
-    explicit AccountComboBoxQmlObjectHolder(QObject *parent = 0);
-    ~AccountComboBoxQmlObjectHolder();
+    explicit ContactSearchBarQmlObjectHolder(QObject *parent = nullptr);
+    ~ContactSearchBarQmlObjectHolder();
 
     // Must call Q_INVOKABLE so that this function can be used in QML, qml to c++
-    Q_INVOKABLE void setAccountComboBoxQmlObject(QObject *obj);
-    Q_INVOKABLE void accountChanged(int index);
-
-    void setSelectedAccount(const QString &accountId, int index);
-    void backToWelcomePage(int index);
-    void deselectConversation();
-
-signals:
-    void accountSignalsReconnect(const QString &accountId);
-    void accountStatusChanged();
-    void updateConversationForAddedContact();
+    Q_INVOKABLE void setContactSearchBarQmlObject(QObject *obj);
+    Q_INVOKABLE void setConversationFilter(const QString &filter);
 
 private:
-    void connectAccount(const QString &accountId);
-
     // Object pointer
-    QObject *accountComboBoxQmlObject_;
-
-    QMetaObject::Connection accountStatusChangedConnection_;
-    QMetaObject::Connection contactAddedConnection_;
+    QObject *contactSearchBarQmlObject_;
 };

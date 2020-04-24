@@ -75,46 +75,41 @@ MessageWebViewQmlObjectHolder::setupChatView(const QString &uid)
         return;
     }
 
-    if (selectConversation(convInfo)) {
-        if (!LastConvUid_.compare(LRCInstance::getCurrentConvUid())) {
-            return;
+    LastConvUid_ = LRCInstance::getCurrentConvUid();
+
+    QString contactURI = convInfo.participants.at(0);
+
+    bool isContact = false;
+    auto selectedAccountId = LRCInstance::getCurrAccId();
+    auto &accountInfo = LRCInstance::accountModel().getAccountInfo(selectedAccountId);
+    bool isRINGAccount = accountInfo.profileInfo.type == lrc::api::profile::Type::RING;
+
+    lrc::api::profile::Type contactType;
+    try {
+        auto contactInfo = accountInfo.contactModel->getContact(contactURI);
+        if (contactInfo.isTrusted) {
+            isContact = true;
         }
-        LastConvUid_ = LRCInstance::getCurrentConvUid();
-
-        QString contactURI = convInfo.participants.at(0);
-
-        bool isContact = false;
-        auto selectedAccountId = LRCInstance::getCurrAccId();
-        auto &accountInfo = LRCInstance::accountModel().getAccountInfo(selectedAccountId);
-        bool isRINGAccount = accountInfo.profileInfo.type == lrc::api::profile::Type::RING;
-
-        lrc::api::profile::Type contactType;
-        try {
-            auto contactInfo = accountInfo.contactModel->getContact(contactURI);
-            if (contactInfo.isTrusted) {
-                isContact = true;
-            }
-            contactType = contactInfo.profileInfo.type;
-        } catch (...) {
-        }
-
-        bool shouldShowSendContactRequestBtn = !isContact
-                                               && contactType != lrc::api::profile::Type::SIP;
-
-        QMetaObject::invokeMethod(messageWebViewQmlObject_,
-                                  "setSendContactRequestButtonVisible",
-                                  Q_ARG(QVariant, shouldShowSendContactRequestBtn));
-
-        setMessagesVisibility(false);
-        //connect(LRCInstance::getCurrentConversationModel(), &ConversationModel::composingStatusChanged, ui->messageView, &MessageWebView::contactIsComposing);
-
-        Utils::oneShotConnect(messageWebViewQmlObject_,
-                              SIGNAL(sendMessageContentSaved(const QString &)),
-                              this,
-                              SLOT(slotSendMessageContentSaved(const QString &)));
-
-        requestSendMessageContent();
+        contactType = contactInfo.profileInfo.type;
+    } catch (...) {
     }
+
+    bool shouldShowSendContactRequestBtn = !isContact
+                                           && contactType != lrc::api::profile::Type::SIP;
+
+    QMetaObject::invokeMethod(messageWebViewQmlObject_,
+                              "setSendContactRequestButtonVisible",
+                              Q_ARG(QVariant, shouldShowSendContactRequestBtn));
+
+    setMessagesVisibility(false);
+    //connect(LRCInstance::getCurrentConversationModel(), &ConversationModel::composingStatusChanged, ui->messageView, &MessageWebView::contactIsComposing);
+
+    Utils::oneShotConnect(messageWebViewQmlObject_,
+                          SIGNAL(sendMessageContentSaved(const QString &)),
+                          this,
+                          SLOT(slotSendMessageContentSaved(const QString &)));
+
+    requestSendMessageContent();
 }
 
 void
@@ -124,6 +119,7 @@ MessageWebViewQmlObjectHolder::connectConversationModel()
 
     QObject::disconnect(newInteractionConnection_);
     QObject::disconnect(interactionRemovedConnection_);
+    QObject::disconnect(interactionStatusUpdatedConnection_);
 
     newInteractionConnection_
         = QObject::connect(currentConversationModel,
@@ -135,6 +131,22 @@ MessageWebViewQmlObjectHolder::connectConversationModel()
                                newInteraction(accountId, convUid, interactionId, interaction);
                            });
 
+    interactionStatusUpdatedConnection_ = QObject::connect(
+        currentConversationModel,
+        &lrc::api::ConversationModel::interactionStatusUpdated,
+        [this](const QString &convUid,
+               uint64_t interactionId,
+               const lrc::api::interaction::Info &interaction) {
+            if (convUid != LRCInstance::getCurrentConvUid()) {
+                return;
+            }
+            auto &currentAccountInfo = LRCInstance::getCurrentAccountInfo();
+            auto currentConversationModel = currentAccountInfo.conversationModel.get();
+            currentConversationModel->clearUnreadInteractions(convUid);
+            //ui->conversationsFilterWidget->update();
+            updateInteraction(*currentConversationModel, interactionId, interaction);
+        });
+
     interactionRemovedConnection_
         = QObject::connect(currentConversationModel,
                            &lrc::api::ConversationModel::interactionRemoved,
@@ -144,6 +156,34 @@ MessageWebViewQmlObjectHolder::connectConversationModel()
                            });
 
     currentConversationModel->setFilter("");
+}
+
+void
+MessageWebViewQmlObjectHolder::sendContactRequest()
+{
+    auto convInfo = LRCInstance::getCurrentConversation();
+    if (!convInfo.uid.isEmpty()) {
+        LRCInstance::getCurrentConversationModel()->makePermanent(convInfo.uid);
+    }
+}
+
+void
+MessageWebViewQmlObjectHolder::accountChangedSetUp(const QString &accoountId)
+{
+    Q_UNUSED(accoountId)
+
+    connectConversationModel();
+}
+
+void
+MessageWebViewQmlObjectHolder::updateConversationForAddedContact()
+{
+    auto conversation = LRCInstance::getCurrentConversation();
+    auto convModel = LRCInstance::getCurrentConversationModel();
+
+    clear();
+    setConversationProfileData(conversation);
+    printHistory(*convModel, conversation.interactions);
 }
 
 void
@@ -303,7 +343,7 @@ MessageWebViewQmlObjectHolder::setConversationProfileData(
         if (!contact.profileInfo.avatar.isEmpty()) {
             setSenderImage(contactUri, contact.profileInfo.avatar);
         } else {
-            auto avatar = Utils::conversationPhoto(convInfo.uid, *accInfo);
+            auto avatar = Utils::conversationPhoto(convInfo.uid, *accInfo, true);
             QByteArray ba;
             QBuffer bu(&ba);
             avatar.save(&bu, "PNG");
@@ -419,6 +459,20 @@ MessageWebViewQmlObjectHolder::printNewInteraction(lrc::api::ConversationModel &
 }
 
 void
+MessageWebViewQmlObjectHolder::updateInteraction(lrc::api::ConversationModel &conversationModel,
+                                                 uint64_t msgId,
+                                                 const lrc::api::interaction::Info &interaction)
+{
+    auto interactionObject
+        = interactionToJsonInteractionObject(conversationModel, msgId, interaction).toUtf8();
+    if (interactionObject.isEmpty()) {
+        return;
+    }
+    QString s = QString::fromLatin1("updateMessage(%1);").arg(interactionObject.constData());
+    QMetaObject::invokeMethod(messageWebViewQmlObject_, "webViewRunJavaScript", Q_ARG(QVariant, s));
+}
+
+void
 MessageWebViewQmlObjectHolder::setMessagesImageContent(const QString &path, bool isBased64)
 {
     if (isBased64) {
@@ -456,18 +510,4 @@ MessageWebViewQmlObjectHolder::removeInteraction(uint64_t interactionId)
 {
     QString s = QString::fromLatin1("removeInteraction(%1);").arg(QString::number(interactionId));
     QMetaObject::invokeMethod(messageWebViewQmlObject_, "webViewRunJavaScript", Q_ARG(QVariant, s));
-}
-
-bool
-MessageWebViewQmlObjectHolder::selectConversation(const lrc::api::conversation::Info &item)
-{
-    if (LRCInstance::getCurrentConvUid() == item.uid) {
-        return false;
-    } else if (item.participants.size() > 0) {
-        auto &accInfo = LRCInstance::getAccountInfo(item.accountId);
-        LRCInstance::setSelectedConvId(item.uid);
-        accInfo.conversationModel->clearUnreadInteractions(item.uid);
-        //ui->conversationsFilterWidget->update();
-        return true;
-    }
 }

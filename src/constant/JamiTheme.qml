@@ -28,10 +28,17 @@ Item {
 
     property string closeButtonLighterBlack: "#4c4c4c"
 
+    property string contactSearchBarPlaceHolderTextFontColor: "#767676"
+    property string contactSearchBarPlaceHolderGreyBackground: "#dddddd"
+
     // font
     property string faddedFontColor: "#c0c0c0"
     property string faddedLastInteractionFontColor: "#505050"
 
     property int splitViewHandlePreferedWidth: 4
     property int textFontSize: 9
+
+    // place holder text
+    property string contactSearchBarPlaceHolderConversationText: qsTr("Find a new or existing contact")
+    property string contactSearchBarPlaceHolderInivitionText: qsTr("Search your received invitations")
 }
