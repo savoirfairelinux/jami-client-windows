@@ -205,34 +205,61 @@ SmartListModel::getConversationItemData(const conversation::Info &item,
         return QString::fromLatin1(Utils::QImageToByteArray(contactImage).toBase64().data());
     }
     case Role::DisplayName: {
-        auto &contact = contactModel->getContact(item.participants[0]);
-        return QVariant(Utils::bestNameForContact(contact));
+        if (!item.participants.isEmpty()) {
+            auto &contact = contactModel->getContact(item.participants[0]);
+            return QVariant(Utils::bestNameForContact(contact));
+        }
+        return QVariant("");
     }
     case Role::DisplayID: {
-        auto &contact = contactModel->getContact(item.participants[0]);
-        return QVariant(Utils::bestIdForContact(contact));
+        if (!item.participants.isEmpty()) {
+            auto &contact = contactModel->getContact(item.participants[0]);
+            return QVariant(Utils::bestIdForContact(contact));
+        }
+        return QVariant("");
     }
     case Role::Presence: {
-        auto &contact = contactModel->getContact(item.participants[0]);
-        return QVariant(contact.isPresent);
+        if (!item.participants.isEmpty()) {
+            auto &contact = contactModel->getContact(item.participants[0]);
+            return QVariant(contact.isPresent);
+        }
+        return QVariant(false);
     }
     case Role::URI: {
-        auto &contact = contactModel->getContact(item.participants[0]);
-        return QVariant(contact.profileInfo.uri);
+        if (!item.participants.isEmpty()) {
+            auto &contact = contactModel->getContact(item.participants[0]);
+            return QVariant(contact.profileInfo.uri);
+        }
+        return QVariant("");
     }
     case Role::UnreadMessagesCount:
         return QVariant(item.unreadMessages);
     case Role::LastInteractionDate: {
-        auto &date = item.interactions.at(item.lastMessageUid).timestamp;
-        return QVariant(QString::fromStdString(Utils::formatTimeString(date)));
+        if (!item.interactions.empty()) {
+            auto &date = item.interactions.at(item.lastMessageUid).timestamp;
+            return QVariant(QString::fromStdString(Utils::formatTimeString(date)));
+        }
+        return QVariant("");
     }
-    case Role::LastInteraction:
-        return QVariant(item.interactions.at(item.lastMessageUid).body);
-    case Role::LastInteractionType:
-        return QVariant(Utils::toUnderlyingValue(item.interactions.at(item.lastMessageUid).type));
+    case Role::LastInteraction: {
+        if (!item.interactions.empty()) {
+            return QVariant(item.interactions.at(item.lastMessageUid).body);
+        }
+        return QVariant("");
+    }
+    case Role::LastInteractionType: {
+        if (!item.interactions.empty()) {
+            return QVariant(
+                Utils::toUnderlyingValue(item.interactions.at(item.lastMessageUid).type));
+        }
+        return QVariant(0);
+    }
     case Role::ContactType: {
-        auto &contact = contactModel->getContact(item.participants[0]);
-        return QVariant(Utils::toUnderlyingValue(contact.profileInfo.type));
+        if (!item.participants.isEmpty()) {
+            auto &contact = contactModel->getContact(item.participants[0]);
+            return QVariant(Utils::toUnderlyingValue(contact.profileInfo.type));
+        }
+        return QVariant(0);
     }
     case Role::UID:
         return QVariant(item.uid);
@@ -272,8 +299,12 @@ SmartListModel::getConversationItemData(const conversation::Info &item,
     }
     case Role::SectionName:
         return QVariant(QString());
-    case Role::Draft:
-        return LRCInstance::getContentDraft(item.uid, accountInfo.id);
+    case Role::Draft: {
+        if (!item.uid.isEmpty()) {
+            return LRCInstance::getContentDraft(item.uid, accountInfo.id);
+        }
+        return QVariant("");
+    }
     }
     return QVariant();
 }

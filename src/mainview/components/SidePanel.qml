@@ -5,6 +5,7 @@ import QtQuick.Layouts 1.14
 import net.jami.constant.jamitheme 1.0
 import net.jami.AccountComboBoxQmlObjectHolder 1.0
 import net.jami.ConversationSmartListViewQmlObjectHolder 1.0
+import net.jami.ContactSearchBarQmlObjectHolder 1.0
 
 import "../../commoncomponents"
 
@@ -15,13 +16,30 @@ Rectangle {
     signal accountComboBoxNeedToShowWelcomePage(int index)
     signal conversationSmartListViewNeedToShowWelcomePage
     signal accountSignalsReconnect(string accountId)
+    signal needToUpdateConversationForAddedContact
+
+    // Hack -> force redraw
+    function forceReselectConversationSmartListCurrentIndex() {
+        var index = conversationSmartListView.currentIndex
+        conversationSmartListView.currentIndex = -1
+        conversationSmartListView.currentIndex = index
+    }
+
+    function clearContactSearchBar() {
+        contactSearchBar.clearText()
+    }
 
     function needToChangeToAccount(accountId, index) {
         if (index !== -1) {
             accountComboBox.currentIndex = index
             accountComboBoxQmlObjectHolder.accountChanged(index)
-            contactSearchBar.clear()
+            contactSearchBar.clearText()
         }
+    }
+
+    function selectConversationSmartList(accountId, convUid) {
+        conversationSmartListViewQmlObjectHolder.selectConversation(accountId,
+                                                                    convUid)
     }
 
     function deselectConversationSmartList() {
@@ -40,10 +58,18 @@ Rectangle {
             conversationSmartListViewQmlObjectHolder.connectConversationModel()
             sidePanelRect.accountSignalsReconnect(accountId)
         }
+
+        onUpdateConversationForAddedContact: {
+            sidePanelRect.needToUpdateConversationForAddedContact()
+        }
     }
 
     ConversationSmartListViewQmlObjectHolder {
         id: conversationSmartListViewQmlObjectHolder
+
+        onShowChatView: {
+            conversationSmartListView.needToShowChatView(accountId, convUid)
+        }
     }
 
     AccountComboBox {
@@ -58,7 +84,7 @@ Rectangle {
 
         onAccountChanged: {
             accountComboBoxQmlObjectHolder.accountChanged(index)
-            contactSearchBar.clear()
+            contactSearchBar.clearText()
         }
 
         onNeedToUpdateSmartList: {
@@ -74,6 +100,7 @@ Rectangle {
             accountComboBoxQmlObjectHolder.setAccountComboBoxQmlObject(
                         accountComboBox)
             accountComboBoxQmlObjectHolder.accountChanged(0)
+            accountComboBox.updateAccountListModel()
         }
     }
 
@@ -236,9 +263,13 @@ Rectangle {
                 Layout.fillHeight: stackLayoutView
                 Layout.fillWidth: stackLayoutView
 
+                ContactSearchBarQmlObjectHolder {
+                    id: contactSearchBarQmlObjectHolder
+                }
+
                 // search bar container to embed search label
-                Rectangle {
-                    id: contactSearchBarRect
+                ContactSearchBar {
+                    id: contactSearchBar
 
                     anchors.top: parent.top
                     anchors.topMargin: 10
@@ -250,58 +281,14 @@ Rectangle {
                     width: parent.width - 10
                     height: 35
 
-                    border.color: JamiTheme.pressColor
-                    radius: 10
-                    color: contactSearchBar.activeFocus ? "white" : JamiTheme.hoverColor
-
-                    Image {
-                        id: searchIconImage
-
-                        anchors.verticalCenter: contactSearchBarRect.verticalCenter
-                        anchors.left: contactSearchBarRect.left
-
-                        width: contactSearchBarRect.height
-                        height: contactSearchBarRect.height
-
-                        fillMode: Image.PreserveAspectFit
-                        mipmap: true
-                        source: "qrc:/images/icons/ic_baseline-search-24px.svg"
+                    onContactSearchBarTextChanged: {
+                        contactSearchBarQmlObjectHolder.setConversationFilter(
+                                    text)
                     }
 
-                    TextField {
-                        id: contactSearchBar
-
-                        anchors.verticalCenter: contactSearchBarRect.verticalCenter
-                        anchors.left: searchIconImage.right
-
-                        width: contactSearchBarRect.width - searchIconImage.width - 10
-                        height: contactSearchBarRect.height - 5
-
-                        font.pointSize: 8
-
-                        Text {
-                            id: placeholderTextForSearchBar
-
-                            anchors.verticalCenter: contactSearchBar.verticalCenter
-                            anchors.left: contactSearchBar.left
-                            anchors.leftMargin: 5
-
-                            text: qsTr("Find a new or existing contact")
-                            font.pointSize: 8
-                            color: "#aaa"
-                            visible: !contactSearchBar.text
-                                     && !contactSearchBar.activeFocus
-                        }
-
-                        background: Rectangle {
-                            id: searchBarBackground
-
-                            color: contactSearchBar.activeFocus ? "white" : JamiTheme.hoverColor
-                        }
-                        onTextChanged: {
-                            mainViewWindow.searchBarTextChanged(
-                                        contactSearchBar.text)
-                        }
+                    Component.onCompleted: {
+                        contactSearchBarQmlObjectHolder.setContactSearchBarQmlObject(
+                                    contactSearchBar)
                     }
                 }
 
@@ -312,7 +299,12 @@ Rectangle {
                     anchors.left: parent.left
 
                     width: parent.width
-                    height: parent.height - contactSearchBarRect.height - 15
+                    height: parent.height - contactSearchBar.height - 15
+
+                    onNeedToSelectItems: {
+                        conversationSmartListViewQmlObjectHolder.selectConversation(
+                                    index)
+                    }
 
                     onNeedToBackToWelcomePage: {
                         sidePanelRect.conversationSmartListViewNeedToShowWelcomePage()
@@ -322,6 +314,10 @@ Rectangle {
                         sidePanelRect.conversationSmartListNeedToAccessMessageWebView(
                                     currentUserDisplayName, currentUserAlias,
                                     currentUID, callStackViewShouldShow)
+                    }
+
+                    onNeedToGrabFocus: {
+                        contactSearchBar.clearFocus()
                     }
 
                     Component.onCompleted: {

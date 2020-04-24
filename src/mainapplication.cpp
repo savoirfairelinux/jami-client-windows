@@ -24,6 +24,7 @@
 #include "accountlistmodel.h"
 #include "callcenterqmlobjectholder.h"
 #include "calloverlayqmlobjectholder.h"
+#include "contactsearchbarqmlobjectholder.h"
 #include "conversationsmartlistviewqmlobjectholder.h"
 #include "globalinstances.h"
 #include "globalsystemtray.h"
@@ -290,6 +291,11 @@ MainApplication::qmlInitialization()
         1,
         0,
         "ConversationSmartListViewQmlObjectHolder");
+
+    qmlRegisterType<ContactSearchBarQmlObjectHolder>("net.jami.ContactSearchBarQmlObjectHolder",
+                                                1,
+                                                0,
+                                                "ContactSearchBarQmlObjectHolder");
 
     // qmlRegisterSingletonType
     qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/src/constant/JamiTheme.qml")),

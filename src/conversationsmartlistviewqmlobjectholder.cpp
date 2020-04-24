@@ -42,6 +42,12 @@ ConversationSmartListViewQmlObjectHolder::setConversationSmartListViewQmlObjectH
                               "setModel",
                               Q_ARG(QVariant, QVariant::fromValue(conversationSmartListModel_)));
 
+    connect(&LRCInstance::behaviorController(),
+            &BehaviorController::showChatView,
+            [this](const QString &accountId, lrc::api::conversation::Info convInfo) {
+                emit showChatView(accountId, convInfo.uid);
+            });
+
     connectConversationModel();
 }
 
@@ -50,6 +56,55 @@ ConversationSmartListViewQmlObjectHolder::backToWelcomePage()
 {
     deselectConversation();
     QMetaObject::invokeMethod(conversationSmartListViewQmlObject_, "backToWelcomePage");
+}
+
+void
+ConversationSmartListViewQmlObjectHolder::selectConversation(const QString &accountId,
+                                                             const QString &convUid)
+{
+    selectConversation(LRCInstance::getConversationFromConvUid(convUid, accountId), true);
+}
+
+void
+ConversationSmartListViewQmlObjectHolder::selectConversation(int index)
+{
+    auto convModel = LRCInstance::getCurrentConversationModel();
+
+    if (convModel == nullptr) {
+        return;
+    }
+
+    const auto item = convModel->filteredConversation(index);
+
+    if (selectConversation(item)) {
+        auto convUid = conversationSmartListModel_
+                           ->data(conversationSmartListModel_->index(index, 0),
+                                  static_cast<int>(SmartListModel::Role::UID))
+                           .toString();
+        auto &conversation = LRCInstance::getConversationFromConvUid(convUid);
+        // is calling, show callview(can use showChatView signal, since it will be determined on qml)
+        if (!conversation.uid.isEmpty()
+            && LRCInstance::getCurrentCallModel()->hasCall(conversation.callId)) {
+            emit showChatView(LRCInstance::getCurrAccId(), conversation.uid);
+        }
+    }
+}
+
+bool
+ConversationSmartListViewQmlObjectHolder::selectConversation(
+    const lrc::api::conversation::Info &item, bool preventSendingSignal)
+{
+    if (LRCInstance::getCurrentConvUid() == item.uid) {
+        return false;
+    } else if (item.participants.size() > 0) {
+        auto &accInfo = LRCInstance::getAccountInfo(item.accountId);
+        LRCInstance::setSelectedConvId(item.uid);
+        if (!preventSendingSignal)
+            accInfo.conversationModel->selectConversation(item.uid);
+        accInfo.conversationModel->clearUnreadInteractions(item.uid);
+        //ui->conversationsFilterWidget->update();
+        return true;
+    }
 }
 
 void
@@ -65,7 +120,7 @@ ConversationSmartListViewQmlObjectHolder::deselectConversation()
         return;
     }
 
-    //currentConversationModel->selectConversation("");
+    currentConversationModel->selectConversation("");
     LRCInstance::setSelectedConvId();
 
     //if (auto smartListSelectionModel = ui->smartList->selectionModel()) {
@@ -88,13 +143,14 @@ ConversationSmartListViewQmlObjectHolder::connectConversationModel()
     QObject::disconnect(newConversationConnection_);
     QObject::disconnect(conversationRemovedConnection_);
     QObject::disconnect(conversationClearedConnection);
-    QObject::disconnect(interactionStatusUpdatedConnection_);
     QObject::disconnect(newInteractionConnection_);
     QObject::disconnect(interactionRemovedConnection_);
 
     modelSortedConnection_ = QObject::connect(
         currentConversationModel, &lrc::api::ConversationModel::modelSorted, [this]() {
             //updateConversationsFilterWidget();
+            QMetaObject::invokeMethod(conversationSmartListViewQmlObject_,
+                                      "updateConversationSmartListView");
             auto convUid = LRCInstance::getCurrentConversation().uid;
             auto convModel = LRCInstance::getCurrentConversationModel();
             auto &conversation = LRCInstance::getConversationFromConvUid(convUid);
@@ -139,10 +195,11 @@ ConversationSmartListViewQmlObjectHolder::connectConversationModel()
                                                          "updateSmartList",
                                                          Q_ARG(QVariant,
                                                                LRCInstance::getCurrAccId()));
-                               //updateConversationForNewContact(convUid);
+                               updateConversationForNewContact(convUid);
                                //ui->conversationsFilterWidget->update();
                                //ui->currentAccountComboBox->canPlaceAudioOnlyCall(convUid);
                            });
+
     conversationRemovedConnection_
         = QObject::connect(currentConversationModel,
                            &lrc::api::ConversationModel::conversationRemoved,
@@ -169,24 +226,30 @@ ConversationSmartListViewQmlObjectHolder::connectConversationModel()
                                                          "updateConversationSmartListView");
                            });
 
-    interactionStatusUpdatedConnection_ = QObject::connect(
-        currentConversationModel,
-        &lrc::api::ConversationModel::interactionStatusUpdated,
-        [this](const QString &convUid,
-               uint64_t interactionId,
-               const lrc::api::interaction::Info &interaction) {
-            if (convUid != LRCInstance::getCurrentConvUid()) {
-                return;
-            }
-            auto &currentAccountInfo = LRCInstance::getCurrentAccountInfo();
-            auto currentConversationModel = currentAccountInfo.conversationModel.get();
-            currentConversationModel->clearUnreadInteractions(convUid);
-            //ui->conversationsFilterWidget->update();
-            //ui->messageView->updateInteraction(*currentConversationModel, interactionId, interaction);
-        });
-
     currentConversationModel->setFilter("");
     // clear search field
     //ui->ringContactLineEdit->setText("");
     return true;
+}
+
+void
+ConversationSmartListViewQmlObjectHolder::updateConversationForNewContact(const QString &convUid)
+{
+    auto convModel = LRCInstance::getCurrentConversationModel();
+    if (convModel == nullptr) {
+        return;
+    }
+    auto selectedUid = LRCInstance::getCurrentConvUid();
+    auto &conversation = LRCInstance::getConversationFromConvUid(convUid, {}, true);
+    if (!conversation.uid.isEmpty()) {
+        try {
+            auto contact = convModel->owner.contactModel->getContact(conversation.participants[0]);
+            if (!contact.profileInfo.uri.isEmpty() && contact.profileInfo.uri == selectedUid) {
+                LRCInstance::setSelectedConvId(convUid);
+                convModel->selectConversation(convUid);
+            }
+        } catch (...) {
+            return;
+        }
+    }
 }
