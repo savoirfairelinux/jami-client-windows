@@ -334,7 +334,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="184"/>
         <source>Show conversations</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar  conversas</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="187"/>
@@ -403,7 +403,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="202"/>
         <source>Show invites</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar convites</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="205"/>

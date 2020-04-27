@@ -447,7 +447,7 @@ Kopioi ja jaa se ystäviesi kanssa!</translation>
     <message>
         <location filename="../callwidget.ui" line="1280"/>
         <source>Cancel outgoing call</source>
-        <translation type="unfinished"/>
+        <translation>Peruuta lähtevä puhelu</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1305"/>
@@ -487,7 +487,7 @@ Kopioi ja jaa se ystäviesi kanssa!</translation>
     <message>
         <location filename="../callwidget.cpp" line="561"/>
         <source>Search your received invitations</source>
-        <translation type="unfinished"/>
+        <translation>Hae vastaanotetuista kutsuista</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="943"/>
@@ -522,22 +522,22 @@ Kopioi ja jaa se ystäviesi kanssa!</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="35"/>
         <source>Account deletion</source>
-        <translation type="unfinished"/>
+        <translation>Tilin poisto</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="58"/>
         <source>Do you really want to delete the following account?</source>
-        <translation type="unfinished"/>
+        <translation>Haluatko todella poistaa seuraavan tilin?</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="153"/>
         <source>If this account hasn&apos;t been exported, or added to another device, it will be irrevocably lost.</source>
-        <translation type="unfinished"/>
+        <translation>Jos tätä tiliä ei ole viety tai lisätty toiseen laitteeseen, se katoaa lopullisesti.</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="235"/>
         <source>Permanently delete account</source>
-        <translation type="unfinished"/>
+        <translation>Poista tili pysyvästi</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="241"/>
@@ -547,7 +547,7 @@ Kopioi ja jaa se ystäviesi kanssa!</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="278"/>
         <source>Cancel account deletion</source>
-        <translation type="unfinished"/>
+        <translation>Peruuta tilin poisto</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="284"/>
@@ -596,12 +596,12 @@ Kopioi ja jaa se ystäviesi kanssa!</translation>
     <message>
         <location filename="../linkdevicedialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Valintaikkuna</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="62"/>
         <source>Enter your account password</source>
-        <translation type="unfinished"/>
+        <translation>Anna tilisi salasana</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="117"/>
@@ -636,7 +636,7 @@ Kopioi ja jaa se ystäviesi kanssa!</translation>
     <message>
         <location filename="../linkdevicedialog.ui" line="477"/>
         <source>This pin and the account password should be entered in your device within 10 minutes.</source>
-        <translation type="unfinished"/>
+        <translation>Tämä pin-koodi ja tilin salasana on syötettävä laitteeseesi 10 minuutin kuluessa.</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="553"/>
@@ -657,7 +657,8 @@ Kopioi ja jaa se ystäviesi kanssa!</translation>
         <location filename="../linkdevicedialog.cpp" line="110"/>
         <source>Something went wrong.
 Please try again later.</source>
-        <translation type="unfinished"/>
+        <translation>Jokin meni pieleen.
+Yritä myöhemmin uudelleen.</translation>
     </message>
 </context>
 <context>
@@ -693,7 +694,7 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.ui" line="163"/>
         <source>Enter your account password</source>
-        <translation type="unfinished"/>
+        <translation>Anna tilisi salasana</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="244"/>
@@ -728,7 +729,7 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.ui" line="548"/>
         <source>Something went wrong</source>
-        <translation type="unfinished"/>
+        <translation>Jokin meni pieleen.</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="618"/>
@@ -771,12 +772,12 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="239"/>
         <source>Create Jami account button</source>
-        <translation type="unfinished"/>
+        <translation>Luo Jami-tilin kuvake</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="245"/>
         <source>Push button for Jami account creation start trigger</source>
-        <translation type="unfinished"/>
+        <translation>Paina painiketta Jami-tilin luomiseksi</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="251"/>
@@ -786,12 +787,12 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="282"/>
         <source>Link device button</source>
-        <translation type="unfinished"/>
+        <translation>Linkitä laite painike</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="288"/>
         <source>Push button for device linkage start trigger</source>
-        <translation type="unfinished"/>
+        <translation>Paina painiketta laitteen linkittämiseksi</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="291"/>
@@ -801,12 +802,12 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="328"/>
         <source>Create Jami SIP account button</source>
-        <translation type="unfinished"/>
+        <translation>Luo Jami SIP-tilin painike</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="334"/>
         <source>Push button for Jami SIP account creation start trigger</source>
-        <translation type="unfinished"/>
+        <translation>Paina painiketta Jami SIP-tilin luomiseksi</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="340"/>
@@ -816,7 +817,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="405"/>
         <source>Link this device to an existing account</source>
-        <translation type="unfinished"/>
+        <translation>Yhdistä tämä laite olemassa olevaan tiliin</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="469"/>
@@ -830,7 +831,16 @@ p, li { white-space: pre-wrap; }
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Go to the &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Devices&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; tab&lt;/span&gt;&lt;/li&gt;
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Select &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;Jos haluat linkittää tämän laitteen toiseen tiliin, sinun on &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;ensin hankittava PIN&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt; -koodi. PIN-koodin luominen:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Mene &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;tilihallinnan asetuksiin&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; aiemmasta laitteesta.&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Valitse &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Jamin tili&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; mitä haluat käyttää&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Mene &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Laitteet&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; välilehteen&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Valitse &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Lisää laite&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;Saat tarvittavan PIN-koodin tämän lomakkeen lopussa. PIN-koodi on voimassa vain &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 minuuttia&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="531"/>
@@ -845,7 +855,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="626"/>
         <source>Link from exported account archive file</source>
-        <translation type="unfinished"/>
+        <translation>Linkki viedystä tilin arkistotiedostosta</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="629"/>
@@ -882,7 +892,10 @@ p, li { white-space: pre-wrap; }
 This will reserve the username so that only you can use it.
 Your friends will be able to call you with your usename
 instead of using your ID.</source>
-        <translation type="unfinished"/>
+        <translation>Rekisteröi käyttäjänimesi.
+Tämä varaa käyttäjätunnuksen, jotta vain sinä voit käyttää sitä.
+Kaverisi voivat soittaa sinulle käyttäjänimelläsi sen sijaan,
+että käyttäisit tunnustasi.</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1142"/>
@@ -892,7 +905,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1145"/>
         <source>Checkbox selecting if the user wants a public username</source>
-        <translation type="unfinished"/>
+        <translation>Merkitse laatikko, jos käyttäjä haluaa julkisen käyttänimen</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1148"/>
@@ -1000,7 +1013,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2362"/>
         <source>push button to access previous page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>paina painiketta päästäksesi ohjatun toiminnon edelliselle sivulle</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2365"/>
@@ -1010,12 +1023,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2396"/>
         <source>Cancel account create/link</source>
-        <translation type="unfinished"/>
+        <translation>Peruuta tilin luominen/linkitys</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2402"/>
         <source>push button to cancel account creation or linking</source>
-        <translation type="unfinished"/>
+        <translation>Painamalla painiketta voit peruuttaa tilin luomisen tai linkittämisen</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2405"/>
@@ -1030,7 +1043,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2448"/>
         <source>Push button to access next page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>Painamalla painiketta pääset ohjatun toiminnon seuraavalle sivulle</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2451"/>
@@ -1045,12 +1058,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="77"/>
         <source>Jami archive files (*.gz); All files (*)</source>
-        <translation type="unfinished"/>
+        <translation>Jami-arkistoidut tiedostot (*.gz); Kaikki tiedostot (*)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="123"/>
         <source>Your account needs to be migrated. Enter your password.</source>
-        <translation type="unfinished"/>
+        <translation>Tilisi on siirrettävä. Syötä salasanasi.</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="419"/>
@@ -1060,7 +1073,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="412"/>
         <source>Importing account archive...</source>
-        <translation type="unfinished"/>
+        <translation>Tuo tili varmistuksen kautta</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="404"/>
@@ -1075,7 +1088,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="533"/>
         <source>Error creating account</source>
-        <translation type="unfinished"/>
+        <translation>Virhe tilin luomisessa</translation>
     </message>
 </context>
 <context>
@@ -1176,12 +1189,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../deviceitemwidget.cpp" line="44"/>
         <source>Unlink Device From Account</source>
-        <translation type="unfinished"/>
+        <translation>Irrota laite tililtä</translation>
     </message>
     <message>
         <location filename="../deviceitemwidget.cpp" line="80"/>
         <source>Save new device name</source>
-        <translation type="unfinished"/>
+        <translation>Tallenna uuden laitteen nimi</translation>
     </message>
     <message>
         <location filename="../banneditemwidget.cpp" line="39"/>
@@ -1347,7 +1360,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1721"/>
         <source>Type here to register a username</source>
-        <translation type="unfinished"/>
+        <translation>Kirjoita tähän rekisteröidäksesi käyttäjänimen</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1755"/>
@@ -1393,12 +1406,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3831"/>
         <source>Video device framerate selector</source>
-        <translation type="unfinished"/>
+        <translation>Videolaitteen kuvanopeuden valitsin</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3967"/>
         <source>Preview unavailable</source>
-        <translation type="unfinished"/>
+        <translation>Esikatselua ei käytettävissä</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2359"/>
@@ -1439,7 +1452,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3551"/>
         <source>Audio input device selector</source>
-        <translation type="unfinished"/>
+        <translation>Äänen sisääntulon valitsin</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3585"/>
@@ -1469,7 +1482,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.cpp" line="459"/>
         <source>A registered name should not have any spaces and must be at least three letters long</source>
-        <translation type="unfinished"/>
+        <translation>Rekisteröitävässä nimessä ei saa olla välilyöntejä ja sen on oltava vähintään kolme kirjainta pitkä</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="466"/>
@@ -1495,12 +1508,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.cpp" line="551"/>
         <source>Enter this account&apos;s password to confirm the removal of this device</source>
-        <translation type="unfinished"/>
+        <translation>Anna tämän tilin salasana vahvistaaksesi laitteen poistamisen</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="558"/>
         <source>Are you sure you wish to remove this device?</source>
-        <translation type="unfinished"/>
+        <translation>Haluatko varmasti poistaa tämän laitteen?</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="589"/>
