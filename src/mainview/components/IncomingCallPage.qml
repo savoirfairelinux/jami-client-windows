@@ -3,8 +3,9 @@ import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import QtQuick.Controls.Universal 2.12
-import net.jami.tools.utils 1.0
-import net.jami.constant.jamitheme 1.0
+import net.jami.UtilsAdapter 1.0
+import net.jami.JamiTheme 1.0
+import net.jami.CallAdapter 1.0
 
 import "../../commoncomponents"
 
@@ -101,7 +102,8 @@ Window {
 
             onClicked: {
                 incomingCallPage.close()
-                CallCenter.refuseACall(responsibleAccountId, responsibleConvUid)
+                CallAdapter.refuseACall(responsibleAccountId,
+                                        responsibleConvUid)
             }
         }
 
@@ -245,8 +247,8 @@ Window {
 
                         onClicked: {
                             incomingCallPage.close()
-                            CallCenter.acceptACall(responsibleAccountId,
-                                                   responsibleConvUid)
+                            CallAdapter.acceptACall(responsibleAccountId,
+                                                    responsibleConvUid)
                         }
                     }
 
@@ -286,8 +288,8 @@ Window {
 
                         onClicked: {
                             incomingCallPage.close()
-                            CallCenter.refuseACall(responsibleAccountId,
-                                                   responsibleConvUid)
+                            CallAdapter.refuseACall(responsibleAccountId,
+                                                    responsibleConvUid)
                         }
                     }
 

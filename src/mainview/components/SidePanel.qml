@@ -2,10 +2,10 @@ import QtQuick 2.14
 import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
-import net.jami.constant.jamitheme 1.0
-import net.jami.AccountComboBoxQmlObjectHolder 1.0
-import net.jami.ConversationSmartListViewQmlObjectHolder 1.0
-import net.jami.ContactSearchBarQmlObjectHolder 1.0
+import net.jami.JamiTheme 1.0
+import net.jami.AccountAdapter 1.0
+import net.jami.ConversationsAdapter 1.0
+import net.jami.CallAdapter 1.0
 
 import "../../commoncomponents"
 
@@ -51,56 +51,22 @@ Rectangle {
     function needToChangeToAccount(accountId, index) {
         if (index !== -1) {
             accountComboBox.currentIndex = index
-            accountComboBoxQmlObjectHolder.accountChanged(index)
+            AccountAdapter.accountChanged(index)
             contactSearchBar.clearText()
         }
     }
 
     function selectConversationSmartList(accountId, convUid) {
-        conversationSmartListViewQmlObjectHolder.selectConversation(accountId,
-                                                                    convUid)
+        ConversationsAdapter.selectConversation(accountId, convUid)
     }
 
     function deselectConversationSmartList() {
-        conversationSmartListViewQmlObjectHolder.deselectConversation()
+        ConversationsAdapter.deselectConversation()
         conversationSmartListView.currentIndex = -1
     }
 
     // intended -> since strange behavior will happen without this for stackview
     anchors.fill: parent
-
-    AccountComboBoxQmlObjectHolder {
-        id: accountComboBoxQmlObjectHolder
-
-        onAccountSignalsReconnect: {
-            CallCenter.connectCallstatusChangedSignal(accountId)
-            conversationSmartListViewQmlObjectHolder.accountChangedSetUp(
-                        accountId)
-            sidePanelRect.accountSignalsReconnect(accountId)
-        }
-
-        onUpdateConversationForAddedContact: {
-            sidePanelRect.needToUpdateConversationForAddedContact()
-        }
-
-        onAccountStatusChanged: {
-            accountComboBox.updateAccountListModel()
-        }
-    }
-
-    ConversationSmartListViewQmlObjectHolder {
-        id: conversationSmartListViewQmlObjectHolder
-
-        onShowChatView: {
-            conversationSmartListView.needToShowChatView(accountId, convUid)
-        }
-
-        onShowConversationTabs: {
-            tabBarVisible = visible
-            updatePendingRequestCount()
-            updateTotalUnreadMessagesCount()
-        }
-    }
 
     AccountComboBox {
         id: accountComboBox
@@ -112,8 +78,26 @@ Rectangle {
 
         currentIndex: 0
 
+        Connections {
+            target: AccountAdapter
+
+            onAccountSignalsReconnect: {
+                CallAdapter.connectCallstatusChangedSignal(accountId)
+                ConversationsAdapter.accountChangedSetUp(accountId)
+                sidePanelRect.accountSignalsReconnect(accountId)
+            }
+
+            onUpdateConversationForAddedContact: {
+                sidePanelRect.needToUpdateConversationForAddedContact()
+            }
+
+            onAccountStatusChanged: {
+                accountComboBox.updateAccountListModel()
+            }
+        }
+
         onAccountChanged: {
-            accountComboBoxQmlObjectHolder.accountChanged(index)
+            AccountAdapter.accountChanged(index)
             contactSearchBar.clearText()
             contactSearchBar.setPlaceholderString(
                         JamiTheme.contactSearchBarPlaceHolderConversationText)
@@ -131,9 +115,8 @@ Rectangle {
         }
 
         Component.onCompleted: {
-            accountComboBoxQmlObjectHolder.setAccountComboBoxQmlObject(
-                        accountComboBox)
-            accountComboBoxQmlObjectHolder.accountChanged(0)
+            AccountAdapter.setQmlObject(this)
+            AccountAdapter.accountChanged(0)
         }
     }
 
@@ -224,8 +207,7 @@ Rectangle {
                     hoverEnabled: true
                     onPressed: {
                         buttonRectOne.color = JamiTheme.pressColor
-                        conversationSmartListViewQmlObjectHolder.setConversationFilter(
-                                    "")
+                        ConversationsAdapter.setConversationFilter("")
                         contactSearchBar.setPlaceholderString(
                                     JamiTheme.contactSearchBarPlaceHolderConversationText)
                         pageOne.down = true
@@ -306,8 +288,7 @@ Rectangle {
                     hoverEnabled: true
                     onPressed: {
                         buttonRectTwo.color = JamiTheme.pressColor
-                        conversationSmartListViewQmlObjectHolder.setConversationFilter(
-                                    "PENDING")
+                        ConversationsAdapter.setConversationFilter("PENDING")
                         contactSearchBar.setPlaceholderString(
                                     JamiTheme.contactSearchBarPlaceHolderInivitionText)
                         pageTwo.down = true
@@ -371,10 +352,6 @@ Rectangle {
             width: sidePanelColumnRect.width - 10
             height: sidePanelColumnRect.height - 20
 
-            ContactSearchBarQmlObjectHolder {
-                id: contactSearchBarQmlObjectHolder
-            }
-
             // search bar container to embed search label
             ContactSearchBar {
                 id: contactSearchBar
@@ -387,12 +364,7 @@ Rectangle {
                 Layout.preferredHeight: 35
 
                 onContactSearchBarTextChanged: {
-                    contactSearchBarQmlObjectHolder.setConversationFilter(text)
-                }
-
-                Component.onCompleted: {
-                    contactSearchBarQmlObjectHolder.setContactSearchBarQmlObject(
-                                contactSearchBar)
+                    utilsAdapter.setConversationFilter(text)
                 }
             }
 
@@ -403,9 +375,23 @@ Rectangle {
                 Layout.preferredWidth: parent.width
                 Layout.preferredHeight: parent.height - contactSearchBar.height - 30
 
+                Connections {
+                    target: ConversationsAdapter
+
+                    onShowChatView: {
+                        conversationSmartListView.needToShowChatView(accountId,
+                                                                     convUid)
+                    }
+
+                    onShowConversationTabs: {
+                        tabBarVisible = visible
+                        updatePendingRequestCount()
+                        updateTotalUnreadMessagesCount()
+                    }
+                }
+
                 onNeedToSelectItems: {
-                    conversationSmartListViewQmlObjectHolder.selectConversation(
-                                index)
+                    ConversationsAdapter.selectConversation(index)
                 }
 
                 onNeedToBackToWelcomePage: {
@@ -423,8 +409,7 @@ Rectangle {
                 }
 
                 Component.onCompleted: {
-                    conversationSmartListViewQmlObjectHolder.setConversationSmartListViewQmlObjectHolder(
-                                conversationSmartListView)
+                    ConversationsAdapter.setQmlObject(this)
                     conversationSmartListView.currentIndex = -1
                 }
             }

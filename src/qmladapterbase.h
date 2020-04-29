@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2020 by Savoir-faire Linux
- * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>
  * Author: Mingrui Zhang   <mingrui.zhang@savoirfairelinux.com>
  *
  * This program is free software; you can redistribute it and/or modify
@@ -19,19 +18,33 @@
 
 #pragma once
 
-#include <QtQuick>
+#include <QObject>
 
-class DistantRenderer : public QQuickPaintedItem
+/*
+ * The main purpose of this class is to operate on qml objects,
+ * or provide api calls to qml objects that cannot be done directly in qml.
+ */
+class QmlAdapterBase : public QObject
 {
     Q_OBJECT
 public:
-    explicit DistantRenderer(QQuickItem *parent = 0);
-    ~DistantRenderer();
+    explicit QmlAdapterBase(QObject *parent = nullptr);
+    ~QmlAdapterBase();
 
-    Q_INVOKABLE void setRendererId(const QString &id);
+    /*
+     * This function should be called in the Component.onCompleted slot
+     * in the qml component that this adapter should attach to.
+     */
+    Q_INVOKABLE void setQmlObject(QObject *obj);
 
-private:
-    void paint(QPainter *painter);
+protected:
+    /*
+     *Once the qml object is set, custom actions can be done in this function.
+     */
+    virtual void initQmlObject() = 0;
 
-    QString distantRenderId_;
+    /*
+     * Object pointer.
+     */
+    QObject *qmlObj_;
 };
