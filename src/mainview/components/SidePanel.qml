@@ -2,8 +2,8 @@ import QtQuick 2.14
 import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
-import net.jami.constant.jamitheme 1.0
-import net.jami.AccountComboBoxQmlObjectHolder 1.0
+import net.jami.JamiTheme 1.0
+import net.jami.AccountAdapter 1.0
 import net.jami.ConversationSmartListViewQmlObjectHolder 1.0
 import net.jami.ContactSearchBarQmlObjectHolder 1.0
 
@@ -51,7 +51,7 @@ Rectangle {
     function needToChangeToAccount(accountId, index) {
         if (index !== -1) {
             accountComboBox.currentIndex = index
-            accountComboBoxQmlObjectHolder.accountChanged(index)
+            AccountAdapter.accountChanged(index)
             contactSearchBar.clearText()
         }
     }
@@ -68,25 +68,6 @@ Rectangle {
 
     // intended -> since strange behavior will happen without this for stackview
     anchors.fill: parent
-
-    AccountComboBoxQmlObjectHolder {
-        id: accountComboBoxQmlObjectHolder
-
-        onAccountSignalsReconnect: {
-            CallCenter.connectCallstatusChangedSignal(accountId)
-            conversationSmartListViewQmlObjectHolder.accountChangedSetUp(
-                        accountId)
-            sidePanelRect.accountSignalsReconnect(accountId)
-        }
-
-        onUpdateConversationForAddedContact: {
-            sidePanelRect.needToUpdateConversationForAddedContact()
-        }
-
-        onAccountStatusChanged: {
-            accountComboBox.updateAccountListModel()
-        }
-    }
 
     ConversationSmartListViewQmlObjectHolder {
         id: conversationSmartListViewQmlObjectHolder
@@ -112,8 +93,27 @@ Rectangle {
 
         currentIndex: 0
 
+        Connections {
+            target: AccountAdapter
+
+            onAccountSignalsReconnect: {
+                CallCenter.connectCallstatusChangedSignal(accountId)
+                conversationSmartListViewQmlObjectHolder.accountChangedSetUp(
+                            accountId)
+                sidePanelRect.accountSignalsReconnect(accountId)
+            }
+
+            onUpdateConversationForAddedContact: {
+                sidePanelRect.needToUpdateConversationForAddedContact()
+            }
+
+            onAccountStatusChanged: {
+                accountComboBox.updateAccountListModel()
+            }
+        }
+
         onAccountChanged: {
-            accountComboBoxQmlObjectHolder.accountChanged(index)
+            AccountAdapter.accountChanged(index)
             contactSearchBar.clearText()
             contactSearchBar.setPlaceholderString(
                         JamiTheme.contactSearchBarPlaceHolderConversationText)
@@ -131,9 +131,8 @@ Rectangle {
         }
 
         Component.onCompleted: {
-            accountComboBoxQmlObjectHolder.setAccountComboBoxQmlObject(
-                        accountComboBox)
-            accountComboBoxQmlObjectHolder.accountChanged(0)
+            AccountAdapter.setQmlObject(accountComboBox)
+            AccountAdapter.accountChanged(0)
         }
     }
 

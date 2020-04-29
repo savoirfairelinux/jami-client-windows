@@ -4,7 +4,7 @@ import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import QtQuick.Controls.Universal 2.12
 import QtGraphicalEffects 1.14
-import net.jami.constant.jamitheme 1.0
+import net.jami.JamiTheme 1.0
 import net.jami.CallOverlayQmlObjectHolder 1.0
 import net.jami.DistantRenderer 1.0
 import net.jami.VideoCallPreviewRenderer 1.0
@@ -231,6 +231,7 @@ Rectangle {
                 y: videoCallPageMainRect.height - previewRenderer.height - previewMargin
                 z: -1
 
+
                 /*layer.enabled: true
                 layer.effect: OpacityMask {
                     maskSource: Rectangle {
@@ -242,7 +243,6 @@ Rectangle {
                         radius: 15
                     }
                 }*/
-
                 states: [
                     State {
                         name: "geoChanging"
