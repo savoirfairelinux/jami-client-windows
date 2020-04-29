@@ -1,22 +1,22 @@
-/***************************************************************************
- * Copyright (C) 2015-2020 by Savoir-faire Linux                           *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
- * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
- * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
- *                                                                         *
- * This program is free software; you can redistribute it and/or modify    *
- * it under the terms of the GNU General Public License as published by    *
- * the Free Software Foundation; either version 3 of the License, or       *
- * (at your option) any later version.                                     *
- *                                                                         *
- * This program is distributed in the hope that it will be useful,         *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of          *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the           *
- * GNU General Public License for more details.                            *
- *                                                                         *
- * You should have received a copy of the GNU General Public License       *
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
- **************************************************************************/
+/*
+ * Copyright (C) 2015-2020 by Savoir-faire Linux
+ * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
 #include "mainapplication.h"
 
@@ -30,7 +30,7 @@
 #include "globalinstances.h"
 #include "globalsystemtray.h"
 #include "lrcinterface.h"
-#include "messagewebviewqmlobjectholder.h"
+#include "messagesadapter.h"
 #include "pixbufmanipulator.h"
 #include "previewrenderer.h"
 #include "qrimageprovider.h"
@@ -272,10 +272,6 @@ MainApplication::qmlInitialization()
     qmlRegisterType<AccountListModel>("net.jami.model.account", 1, 0, "AccountListModel");
 
     // register object holder type
-    qmlRegisterType<MessageWebViewQmlObjectHolder>("net.jami.MessageWebViewQmlObjectHolder",
-                                                   1,
-                                                   0,
-                                                   "MessageWebViewQmlObjectHolder");
     qmlRegisterType<AccountComboBoxQmlObjectHolder>("net.jami.AccountComboBoxQmlObjectHolder",
                                                     1,
                                                     0,
@@ -326,6 +322,19 @@ MainApplication::qmlInitialization()
                                                         = new LrcGeneralAdapter();
                                                     return lrcGeneralAdapter;
                                                 });
+
+    qmlRegisterSingletonType<MessageAdapter>("net.jami.MessageAdapter",
+                                             1,
+                                             0,
+                                             "MessageAdapter",
+                                             [](QQmlEngine *engine,
+                                                QJSEngine *scriptEngine) -> QObject * {
+                                                 Q_UNUSED(engine);
+                                                 Q_UNUSED(scriptEngine);
+                                                 MessageAdapter *messageAdapter
+                                                     = new MessageAdapter();
+                                                 return messageAdapter;
+                                             });
 
     // add image provider
     engine_->addImageProvider(QLatin1String("qrImage"), new QrImageProvider());
