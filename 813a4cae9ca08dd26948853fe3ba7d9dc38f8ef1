@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b32d5f12_4ece383c",
+        "filename": "src/newwizardviewqmlobjectholder.cpp",
+        "patchSetId": 135
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-04-29T15:28:28Z",
+      "side": 1,
+      "message": "Too much interlacing of ui logic within the c++ code imo.",
+      "revId": "813a4cae9ca08dd26948853fe3ba7d9dc38f8ef1",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb629a80_7f7d9bc5",
+        "filename": "src/newwizardviewqmlobjectholder.cpp",
+        "patchSetId": 135
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-04-29T15:28:28Z",
+      "side": 1,
+      "message": "this ui logic should be in qml",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 1
+      },
+      "revId": "813a4cae9ca08dd26948853fe3ba7d9dc38f8ef1",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5630a603_aaafc14d",
+        "filename": "src/newwizardviewqmlobjectholder.cpp",
+        "patchSetId": 135
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-04-29T15:28:28Z",
+      "side": 1,
+      "message": "I don\u0027t see why the wizard transaction parameters are fed to the c++ code bit by bit. This could all be done with a JSON/QVariantMap as a NewWizardViewQmlObjectHolder::createAccount().",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "813a4cae9ca08dd26948853fe3ba7d9dc38f8ef1",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
