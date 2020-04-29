@@ -1,9 +1,27 @@
+
+/*
+ * Copyright (C) 2020 by Savoir-faire Linux
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 import QtQuick 2.14
-import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import QtWebEngine 1.10
 import QtWebChannel 1.14
+import net.jami.MessagesAdapter 1.0
 
 import "../../commoncomponents"
 
@@ -17,27 +35,10 @@ Rectangle {
     signal needToGoBackToWelcomeView
     signal needToHideConversationInCall
     signal needToSendContactRequest
-    signal setNewMessagesContent(string filePath)
 
+    signal sendMessageContentSaved(string arg)
     signal messagesCleared
     signal messagesLoaded
-    signal pasteKeyDetected
-    signal deleteInteraction(string arg)
-    signal retryInteraction(string arg)
-    signal openFile(string arg)
-    signal acceptFile(string arg)
-    signal refuseFile(string arg)
-    signal sendMessage(string arg)
-    signal sendImage(string arg)
-    signal sendFile(string arg)
-    signal log(string arg)
-    signal acceptInvitation
-    signal refuseInvitation
-    signal blockConversation
-    signal openAudioRecorder(int spikePosX, int spikePosY)
-    signal openVideoRecorder(int spikePosX, int spikePosY)
-    signal sendMessageContentSaved(string arg)
-    signal onComposing(bool isComposing)
 
     function webViewRunJavaScript(arg) {
         messageWebView.runJavaScript(arg)
@@ -68,7 +69,7 @@ Rectangle {
             for (var index = 0; index < filePaths.length; ++index) {
                 // trim file:///
                 var trimmedFilePrefixPath = filePaths[index].substr(8)
-                messageWebViewRect.setNewMessagesContent(trimmedFilePrefixPath)
+                MessagesAdapter.setNewMessagesContent(trimmedFilePrefixPath)
             }
         }
     }
@@ -94,116 +95,96 @@ Rectangle {
         }
 
         onSendContactRequestButtonClicked: {
-            messageWebViewRect.needToSendContactRequest()
+            MessagesAdapter.sendContactRequest()
         }
     }
 
     QtObject {
         id: jsBridgeObject
 
-        // ID, under which this object will be known at WebEngineView side
+
+        /*
+         * ID, under which this object will be known at WebEngineView side.
+         */
         WebChannel.id: "jsbridge"
 
-        // functions that are exposed, return code can be derived from js side
-        // by setting callback function
+
+        /*
+         * Functions that are exposed, return code can be derived from js side
+         * by setting callback function.
+         */
         function deleteInteraction(arg) {
-            messageWebViewRect.deleteInteraction(arg)
-            return 0
+            MessagesAdapter.deleteInteraction(arg)
         }
 
         function retryInteraction(arg) {
-            messageWebViewRect.retryInteraction(arg)
-            return 0
+            MessagesAdapter.retryInteraction(arg)
         }
 
         function openFile(arg) {
-            messageWebViewRect.openFile(arg)
-            return 0
+            MessagesAdapter.openFile(arg)
         }
 
         function acceptFile(arg) {
-            messageWebViewRect.acceptFile(arg)
-            return 0
+            MessagesAdapter.acceptFile(arg)
         }
 
         function refuseFile(arg) {
-            messageWebViewRect.refuseFile(arg)
-            return 0
+            MessagesAdapter.refuseFile(arg)
         }
 
         function sendMessage(arg) {
-            messageWebViewRect.sendMessage(arg)
-            return 0
+            MessagesAdapter.sendMessage(arg)
         }
 
         function sendImage(arg) {
-            messageWebViewRect.sendImage(arg)
-            return 0
+            MessagesAdapter.sendImage(arg)
         }
 
         function sendFile(arg) {
-            messageWebViewRect.sendFile(arg)
-            return 0
+            MessagesAdapter.sendFile(arg)
         }
 
         function selectFile() {
             jamiFileDialog.open()
-            return 0
-        }
-
-        function log(arg) {
-            messageWebViewRect.log(arg)
-            return 0
         }
 
         function acceptInvitation() {
-            messageWebViewRect.acceptInvitation()
-            return 0
+            MessagesAdapter.acceptInvitation()
         }
 
         function refuseInvitation() {
-            messageWebViewRect.refuseInvitation()
-            return 0
+            MessagesAdapter.refuseInvitation()
         }
 
         function blockConversation() {
-            messageWebViewRect.blockConversation()
-            return 0
+            MessagesAdapter.blockConversation()
         }
 
         function emitMessagesCleared() {
             messageWebViewRect.messagesCleared()
-            return 0
         }
 
         function emitMessagesLoaded() {
             messageWebViewRect.messagesLoaded()
-            return 0
         }
 
         function emitPasteKeyDetected() {
-            messageWebViewRect.pasteKeyDetected()
-            return 0
+            MessagesAdapter.pasteKeyDetected()
         }
 
-        function openAudioRecorder(spikePosX, spikePosY) {
-            messageWebViewRect.openAudioRecorder(spikePosX, spikePosY)
-            return 0
+        function openAudioRecorder(spikePosX, spikePosY) {//messageWebViewRect.openAudioRecorder(spikePosX, spikePosY)
         }
 
-        function openVideoRecorder(spikePosX, spikePosY) {
-            messageWebViewRect.openVideoRecorder(spikePosX, spikePosY)
-            return 0
+        function openVideoRecorder(spikePosX, spikePosY) {//messageWebViewRect.openVideoRecorder(spikePosX, spikePosY)
         }
 
         function saveSendMessageContent(arg) {
             messageWebViewRect.sendMessageContentSaved(arg)
-            return 0
         }
 
         function onComposing(isComposing) {
-            messageWebViewRect.onComposing(isComposing)
-            return 0
+            MessagesAdapter.onComposing(isComposing)
         }
     }
 
@@ -232,7 +213,6 @@ Rectangle {
         webChannel: messageWebViewChannel
         profile: messageWebViewProfile
 
-        //qrc:///qtwebchannel/qwebchannel.js
         onLoadingChanged: {
             if (loadRequest.status == WebEngineView.LoadSucceededStatus) {
                 messageWebView.runJavaScript(utilsAdapter.getStyleSheet(
@@ -266,6 +246,10 @@ Rectangle {
         }
     }
 
+
+    /*
+     * Provide WebEngineProfile.
+     */
     WebEngineProfile {
         id: messageWebViewProfile
 
@@ -276,10 +260,12 @@ Rectangle {
         httpUserAgent: "jami-windows"
     }
 
+
+    /*
+     * Provide WebChannel by registering jsBridgeObject.
+     */
     WebChannel {
         id: messageWebViewChannel
         registeredObjects: [jsBridgeObject]
     }
-
-    color: "pink"
 }
