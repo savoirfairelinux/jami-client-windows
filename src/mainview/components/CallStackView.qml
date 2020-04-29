@@ -16,19 +16,22 @@ Rectangle {
     property string responsibleAccountId: ""
 
     signal outgoingCallPageBackButtonIsClicked
-    signal audioCallPageBackButtonIsClicked
+    signal callPageBackButtonIsClicked
 
     function needToCloseInCallConversation() {
         audioCallPage.closeInCallConversation()
+        videoCallPage.closeInCallConversation()
     }
 
     function setCorrspondingMessageWebView(webViewId) {
         audioCallPage.setAudioCallPageCorrspondingMessageWebView(webViewId)
+        videoCallPage.setVideoCallPageCorrspondingMessageWebView(webViewId)
     }
 
     function updateCorrspondingUI() {
         audioCallPage.updateUI(responsibleAccountId, responsibleConvUid)
         outgoingCallPage.updateUI(responsibleAccountId, responsibleConvUid)
+        videoCallPage.updateUI(responsibleAccountId, responsibleConvUid)
     }
 
     Connections {
@@ -77,6 +80,23 @@ Rectangle {
             }
         }
 
+        onShowVideoCallPage: {
+            if (responsibleConvUid == convUid
+                    && responsibleAccountId == accountId) {
+                var itemToFind = callStackMainView.find(function (item) {
+                    return item.stackNumber === 2
+                })
+
+                if (!itemToFind) {
+                    callStackMainView.push(videoCallPage)
+                } else {
+                    callStackMainView.pop(itemToFind)
+                }
+                videoCallPage.updateUI(responsibleAccountId, responsibleConvUid)
+                videoCallPage.setDistantRendererId(callId)
+            }
+        }
+
         onCallStatusChanged: {
             if (responsibleConvUid == convUid
                     && responsibleAccountId == accountId) {
@@ -91,7 +111,7 @@ Rectangle {
         property int stackNumber: 0
 
         onAudioCallPageBackButtonIsClicked: {
-            callStackViewWindow.audioCallPageBackButtonIsClicked()
+            callStackViewWindow.callPageBackButtonIsClicked()
         }
     }
 
@@ -106,6 +126,16 @@ Rectangle {
 
         onBackButtonIsClicked: {
             callStackViewWindow.outgoingCallPageBackButtonIsClicked()
+        }
+    }
+
+    VideoCallPage {
+        id: videoCallPage
+
+        property int stackNumber: 2
+
+        onVideoCallPageBackButtonIsClicked: {
+            callStackViewWindow.callPageBackButtonIsClicked()
         }
     }
 

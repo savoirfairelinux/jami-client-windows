@@ -26,11 +26,13 @@
 #include "calloverlayqmlobjectholder.h"
 #include "contactsearchbarqmlobjectholder.h"
 #include "conversationsmartlistviewqmlobjectholder.h"
+#include "distantrenderer.h"
 #include "globalinstances.h"
 #include "globalsystemtray.h"
 #include "lrcinterface.h"
 #include "messagewebviewqmlobjectholder.h"
 #include "pixbufmanipulator.h"
+#include "previewrenderer.h"
 #include "qrimageprovider.h"
 #include "tintedbuttonimageprovider.h"
 #include "utils.h"
@@ -293,9 +295,18 @@ MainApplication::qmlInitialization()
         "ConversationSmartListViewQmlObjectHolder");
 
     qmlRegisterType<ContactSearchBarQmlObjectHolder>("net.jami.ContactSearchBarQmlObjectHolder",
-                                                1,
-                                                0,
-                                                "ContactSearchBarQmlObjectHolder");
+                                                     1,
+                                                     0,
+                                                     "ContactSearchBarQmlObjectHolder");
+
+    qmlRegisterType<PreviewRenderer>("net.jami.PreviewRenderer", 1, 0, "PreviewRenderer");
+
+    qmlRegisterType<VideoCallPreviewRenderer>("net.jami.VideoCallPreviewRenderer",
+                                              1,
+                                              0,
+                                              "VideoCallPreviewRenderer");
+
+    qmlRegisterType<DistantRenderer>("net.jami.DistantRenderer", 1, 0, "DistantRenderer");
 
     // qmlRegisterSingletonType
     qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/src/constant/JamiTheme.qml")),
