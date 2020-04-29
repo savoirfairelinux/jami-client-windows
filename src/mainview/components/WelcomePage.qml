@@ -2,7 +2,7 @@ import QtQuick 2.14
 import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
-import net.jami.constant.jamitheme 1.0
+import net.jami.JamiTheme 1.0
 
 import "../../commoncomponents"
 
@@ -54,10 +54,6 @@ Rectangle {
                 verticalAlignment: Text.AlignVCenter
 
                 text: qsTr("Jami is a free software for universal communication which repects the freedoms and privacy of its user.")
-
-                background: Rectangle {
-                    color: "yellow"
-                }
             }
 
             Label {
@@ -77,10 +73,7 @@ Rectangle {
                                                    currentAccountIndex, 0),
                                                260) === 1
                 text: qsTr("This is your ID.\nCopy and share it with your friends")
-
-                background: Rectangle {
-                    color: "orange"
-                }
+                color: JamiTheme.faddedFontColor
             }
 
             Rectangle {
@@ -162,30 +155,11 @@ Rectangle {
                             source: "qrc:/images/qrcode.png"
 
                             onClicked: {
-                                if (userQrImage.visible)
-                                    userQrImage.visible = false
-                                else
-                                    userQrImage.visible = true
+                                qrDialog.open()
                             }
                         }
                     }
                 }
-            }
-
-            Image {
-                id: userQrImage
-
-                Layout.alignment: Qt.AlignCenter
-                Layout.preferredWidth: 90
-                Layout.preferredHeight: 90
-
-                visible: false
-                fillMode: Image.PreserveAspectFit
-                source: "image://qrImage/account_" + currentAccountIndex + "_0_qr"
-                // requestedSize
-                sourceSize.width: 100
-                sourceSize.height: 100
-                mipmap: true
             }
 
             Image {
@@ -195,6 +169,7 @@ Rectangle {
                 Layout.preferredWidth: 200
                 Layout.preferredHeight: 200
 
+                // check if account type is ring
                 visible: accountListModel.data(accountListModel.index(
                                                    currentAccountIndex, 0),
                                                260) === 1 ? false : true
@@ -225,7 +200,6 @@ Rectangle {
                 aboutPopUpDialog.open()
             }
         }
-        color: "blue"
     }
 
     CustomBorder {
@@ -236,5 +210,4 @@ Rectangle {
         bBorderwidth: 0
         borderColor: JamiTheme.tabbarBorderColor
     }
-    color: "pink"
 }

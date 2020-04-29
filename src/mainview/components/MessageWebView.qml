@@ -280,6 +280,4 @@ Rectangle {
         id: messageWebViewChannel
         registeredObjects: [jsBridgeObject]
     }
-
-    color: "pink"
 }
