@@ -59,6 +59,15 @@ CallCenterQmlObjectHolder::placeAudioOnlyCall()
 }
 
 void
+CallCenterQmlObjectHolder::placeCall()
+{
+    auto convInfo = LRCInstance::getCurrentConversation();
+    if (!convInfo.uid.isEmpty()) {
+        LRCInstance::getCurrentConversationModel()->placeCall(convInfo.uid);
+    }
+}
+
+void
 CallCenterQmlObjectHolder::hangUpACall(const QString &accountId, const QString &convUid)
 {
     auto convInfo = LRCInstance::getConversationFromConvUid(convUid, accountId);
@@ -181,6 +190,8 @@ CallCenterQmlObjectHolder::slotShowCallView(const QString &accountId,
     //audioOnlyAvatar_->setAvatarVisible(call->isAudioOnly);
     if (call->isAudioOnly) {
         emit showAudioCallPage(accountId, convInfo.uid);
+    } else {
+        emit showVideoCallPage(accountId, convInfo.uid, call->id);
     }
 
     // preview
