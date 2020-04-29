@@ -1,10 +1,27 @@
+
+/*
+ * Copyright (C) 2020 by Savoir-faire Linux
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 import QtQuick 2.14
-import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import QtQuick.Controls.Universal 2.12
 import QtQml 2.14
-import net.jami.constant.jamitheme 1.0
+import net.jami.JamiTheme 1.0
 
 import "../../commoncomponents"
 
@@ -15,16 +32,13 @@ Rectangle {
     property string timeText: "00:00"
 
     signal backButtonIsClicked
-
-    signal overlayHangUpButtonClicked
     signal overlayChatButtonClicked
 
-    signal overlayHoldButtonToggled
-    signal overlayNoMicButtonToggled
-    signal overlayRecButtonToggled
-
-    function updateButtonStatus(isPaused, isAudioOnly, isAudioMuted, isVideoMuted, isRecording) {
-        callOverlayButtonGroup.holdButtonSetChecked(isPaused)
+    function updateButtonStatus(isPaused, isAudioOnly, isAudioMuted, isVideoMuted, isRecording, isSIP, isConferenceCall) {
+        callOverlayButtonGroup.setButtonStatus(isPaused, isAudioOnly,
+                                               isAudioMuted, isVideoMuted,
+                                               isRecording, isSIP,
+                                               isConferenceCall)
     }
 
     function showOnHoldImage(visible) {
@@ -33,6 +47,10 @@ Rectangle {
 
     anchors.fill: parent
 
+
+    /*
+     * Timer to decide when overlay fade out
+     */
     Timer {
         id: callOverlayTimer
         interval: 5000
@@ -136,6 +154,12 @@ Rectangle {
 
         color: "transparent"
 
+
+        /*
+         * Rect states: "entered" state should make overlay fade in,
+         *              "freezed" state should make overlay fade out.
+         * Combine with PropertyAnimation of opacity.
+         */
         states: [
             State {
                 name: "entered"
@@ -189,24 +213,8 @@ Rectangle {
         height: 60
         opacity: 0
 
-        onHangUpButtonClicked: {
-            callOverlayRect.overlayHangUpButtonClicked()
-        }
-
-        onHoldButtonClicked: {
-            callOverlayRect.overlayHoldButtonToggled()
-        }
-
         onChatButtonClicked: {
             callOverlayRect.overlayChatButtonClicked()
-        }
-
-        onNoMicButtonClicked: {
-            callOverlayRect.overlayNoMicButtonToggled()
-        }
-
-        onRecButtonClicked: {
-            callOverlayRect.overlayRecButtonToggled()
         }
 
         onButtonEntered: {
@@ -239,6 +247,10 @@ Rectangle {
         }
     }
 
+
+    /*
+     * MouseAreas to make sure that overlay states are correctly set.
+     */
     MouseArea {
         id: callOverlayButtonGroupLeftSideMouseArea
 

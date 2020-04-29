@@ -1,6 +1,6 @@
+
 /*
  * Copyright (C) 2020 by Savoir-faire Linux
- * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>
  * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>
  *
  * This program is free software; you can redistribute it and/or modify
@@ -16,38 +16,38 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
+import QtQuick 2.14
+import QtQuick.Controls 2.14
+import net.jami.JamiTheme 1.0
 
-#pragma once
+ScrollView {
+    id: projectCreditsScrollView
 
-#include <QtQuick>
+    anchors.fill: parent
 
-class PreviewRenderer : public QQuickPaintedItem
-{
-    Q_OBJECT
-public:
-    explicit PreviewRenderer(QQuickItem *parent = 0);
-    ~PreviewRenderer();
+    clip: true
 
-protected:
-    void paint(QPainter *painter) override;
+    ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
 
-private:
-    QMetaObject::Connection previewFrameUpdatedConnection_;
-    QMetaObject::Connection previewRenderingStopped_;
-};
+    TextEdit {
+        id: projectCreditsTextArea
 
-class VideoCallPreviewRenderer : public PreviewRenderer
-{
-    Q_OBJECT
-public:
-    explicit VideoCallPreviewRenderer(QQuickItem *parent = 0);
-    ~VideoCallPreviewRenderer();
+        horizontalAlignment: Text.AlignHCenter
 
-    Q_INVOKABLE qreal getPreviewImageScalingFactor();
+        width: projectCreditsScrollView.width
 
-signals:
-    void previewImageAvailable();
+        readOnly: true
+        wrapMode: Text.WordWrap
 
-private:
-    void paint(QPainter *painter) override final;
-};
+        font.pointSize: JamiTheme.textFontSize - 3
+        text: utilsAdapter.getProjectCredits()
+        textFormat: TextEdit.RichText
+    }
+
+    background: Rectangle {
+        id: projectCreditsScrollViewBackground
+
+        radius: 5
+        border.color: JamiTheme.tabbarBorderColor
+    }
+}

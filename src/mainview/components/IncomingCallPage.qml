@@ -1,19 +1,48 @@
+
+/*
+ * Copyright (C) 2020 by Savoir-faire Linux
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 import QtQuick 2.14
 import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import QtQuick.Controls.Universal 2.12
-import net.jami.tools.utils 1.0
-import net.jami.constant.jamitheme 1.0
+import net.jami.UtilsAdapter 1.0
+import net.jami.JamiTheme 1.0
+import net.jami.CallAdapter 1.0
 
 import "../../commoncomponents"
 
+
+/*
+ * IncomingCallPage as a seperate window,
+ * exist at the right bottom, as a notification to user that
+ * a call is incoming.
+ */
 Window {
     id: incomingCallPage
 
     property int minWidth: 300
     property int minHeight: 400
 
+
+    /*
+     * The unique identifier for incomingCallPage
+     */
     property string responsibleAccountId: ""
     property string responsibleConvUid: ""
 
@@ -41,6 +70,10 @@ Window {
     maximumWidth: minWidth + 300
     maximumHeight: minHeight + 300
 
+
+    /*
+     * Screen right bottom.
+     */
     x: screen.virtualX + screen.width - width
     y: screen.virtualY + screen.height - height - 50
 
@@ -60,6 +93,10 @@ Window {
         radius: 15
         color: "black"
 
+
+        /*
+         * Simulate window drag. (top with height 30)
+         */
         MouseArea {
             id: dragMouseArea
 
@@ -101,7 +138,8 @@ Window {
 
             onClicked: {
                 incomingCallPage.close()
-                CallCenter.refuseACall(responsibleAccountId, responsibleConvUid)
+                CallAdapter.refuseACall(responsibleAccountId,
+                                        responsibleConvUid)
             }
         }
 
@@ -245,8 +283,8 @@ Window {
 
                         onClicked: {
                             incomingCallPage.close()
-                            CallCenter.acceptACall(responsibleAccountId,
-                                                   responsibleConvUid)
+                            CallAdapter.acceptACall(responsibleAccountId,
+                                                    responsibleConvUid)
                         }
                     }
 
@@ -286,8 +324,8 @@ Window {
 
                         onClicked: {
                             incomingCallPage.close()
-                            CallCenter.refuseACall(responsibleAccountId,
-                                                   responsibleConvUid)
+                            CallAdapter.refuseACall(responsibleAccountId,
+                                                    responsibleConvUid)
                         }
                     }
 
