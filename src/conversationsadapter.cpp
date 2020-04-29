@@ -1,44 +1,42 @@
-/***************************************************************************
- * Copyright (C) 2020 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
- * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
- * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
- * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
- * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
- * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
- *                                                                         *
- * This program is free software; you can redistribute it and/or modify    *
- * it under the terms of the GNU General Public License as published by    *
- * the Free Software Foundation; either version 3 of the License, or       *
- * (at your option) any later version.                                     *
- *                                                                         *
- * This program is distributed in the hope that it will be useful,         *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of          *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the           *
- * GNU General Public License for more details.                            *
- *                                                                         *
- * You should have received a copy of the GNU General Public License       *
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
- **************************************************************************/
+/*
+ * Copyright (C) 2020 by Savoir-faire Linux
+ * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>
+ * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>
+ * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>
+ * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
-#include "conversationsmartlistviewqmlobjectholder.h"
+#include "conversationsadapter.h"
 
 #include "utils.h"
 
-ConversationSmartListViewQmlObjectHolder::ConversationSmartListViewQmlObjectHolder(QObject *parent)
-    : QObject(parent)
+ConversationsAdapter::ConversationsAdapter(QObject *parent)
+    : QmlAdapterBase(parent)
 {}
 
-ConversationSmartListViewQmlObjectHolder::~ConversationSmartListViewQmlObjectHolder() {}
+ConversationsAdapter::~ConversationsAdapter() {}
 
 void
-ConversationSmartListViewQmlObjectHolder::setConversationSmartListViewQmlObjectHolder(QObject *obj)
+ConversationsAdapter::initQmlObject()
 {
-    conversationSmartListViewQmlObject_ = obj;
-
     conversationSmartListModel_ = new SmartListModel(LRCInstance::getCurrAccId(), this);
 
-    QMetaObject::invokeMethod(conversationSmartListViewQmlObject_,
+    QMetaObject::invokeMethod(qmlObj_,
                               "setModel",
                               Q_ARG(QVariant, QVariant::fromValue(conversationSmartListModel_)));
 
@@ -52,21 +50,20 @@ ConversationSmartListViewQmlObjectHolder::setConversationSmartListViewQmlObjectH
 }
 
 void
-ConversationSmartListViewQmlObjectHolder::backToWelcomePage()
+ConversationsAdapter::backToWelcomePage()
 {
     deselectConversation();
-    QMetaObject::invokeMethod(conversationSmartListViewQmlObject_, "backToWelcomePage");
+    QMetaObject::invokeMethod(qmlObj_, "backToWelcomePage");
 }
 
 void
-ConversationSmartListViewQmlObjectHolder::selectConversation(const QString &accountId,
-                                                             const QString &convUid)
+ConversationsAdapter::selectConversation(const QString &accountId, const QString &convUid)
 {
     selectConversation(LRCInstance::getConversationFromConvUid(convUid, accountId), true);
 }
 
 void
-ConversationSmartListViewQmlObjectHolder::selectConversation(int index)
+ConversationsAdapter::selectConversation(int index)
 {
     auto convModel = LRCInstance::getCurrentConversationModel();
 
@@ -82,7 +79,9 @@ ConversationSmartListViewQmlObjectHolder::selectConversation(int index)
                                   static_cast<int>(SmartListModel::Role::UID))
                            .toString();
         auto &conversation = LRCInstance::getConversationFromConvUid(convUid);
-        // is calling, show callview(can use showChatView signal, since it will be determined on qml)
+        /*
+         * If it is calling, show callview (can use showChatView signal, since it will be determined on qml)
+         */
         if (!conversation.uid.isEmpty()
             && LRCInstance::getCurrentCallModel()->hasCall(conversation.callId)) {
             emit showChatView(LRCInstance::getCurrAccId(), conversation.uid);
@@ -91,8 +90,8 @@ ConversationSmartListViewQmlObjectHolder::selectConversation(int index)
 }
 
 bool
-ConversationSmartListViewQmlObjectHolder::selectConversation(
-    const lrc::api::conversation::Info &item, bool preventSendingSignal)
+ConversationsAdapter::selectConversation(const lrc::api::conversation::Info &item,
+                                         bool preventSendingSignal)
 {
     if (LRCInstance::getCurrentConvUid() == item.uid) {
         return false;
@@ -108,7 +107,7 @@ ConversationSmartListViewQmlObjectHolder::selectConversation(
 }
 
 void
-ConversationSmartListViewQmlObjectHolder::deselectConversation()
+ConversationsAdapter::deselectConversation()
 {
     if (LRCInstance::getCurrentConvUid().isEmpty()) {
         return;
@@ -125,8 +124,11 @@ ConversationSmartListViewQmlObjectHolder::deselectConversation()
 }
 
 void
-ConversationSmartListViewQmlObjectHolder::accountChangedSetUp(const QString &accountId)
+ConversationsAdapter::accountChangedSetUp(const QString &accountId)
 {
+    /*
+     * Should be called when current account is changed
+     */
     auto &accountInfo = LRCInstance::accountModel().getAccountInfo(accountId);
     currentTypeFilter_ = accountInfo.profileInfo.type;
     LRCInstance::getCurrentConversationModel()->setFilter(accountInfo.profileInfo.type);
@@ -136,8 +138,11 @@ ConversationSmartListViewQmlObjectHolder::accountChangedSetUp(const QString &acc
 }
 
 void
-ConversationSmartListViewQmlObjectHolder::updateConversationsFilterWidget()
+ConversationsAdapter::updateConversationsFilterWidget()
 {
+    /*
+     * Update status of "Conversations" and "Invitations"
+     */
     auto invites = LRCInstance::getCurrentAccountInfo().contactModel->pendingRequestCount();
     if (invites == 0 && currentTypeFilter_ == lrc::api::profile::Type::PENDING) {
         currentTypeFilter_ = lrc::api::profile::Type::RING;
@@ -147,8 +152,12 @@ ConversationSmartListViewQmlObjectHolder::updateConversationsFilterWidget()
 }
 
 void
-ConversationSmartListViewQmlObjectHolder::setConversationFilter(const QString &type)
+ConversationsAdapter::setConversationFilter(const QString &type)
 {
+    /*
+     * Set conversation filter according to type
+     * type needs to be recognizable by lrc::api::profile::to_type
+     */
     if (type.isEmpty()) {
         if (LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::RING)
             setConversationFilter(lrc::api::profile::Type::RING);
@@ -160,7 +169,7 @@ ConversationSmartListViewQmlObjectHolder::setConversationFilter(const QString &t
 }
 
 void
-ConversationSmartListViewQmlObjectHolder::setConversationFilter(lrc::api::profile::Type filter)
+ConversationsAdapter::setConversationFilter(lrc::api::profile::Type filter)
 {
     if (currentTypeFilter_ == filter) {
         return;
@@ -170,8 +179,11 @@ ConversationSmartListViewQmlObjectHolder::setConversationFilter(lrc::api::profil
 }
 
 bool
-ConversationSmartListViewQmlObjectHolder::connectConversationModel()
+ConversationsAdapter::connectConversationModel()
 {
+    /*
+     * Signal connections
+     */
     auto currentConversationModel = LRCInstance::getCurrentAccountInfo().conversationModel.get();
 
     QObject::disconnect(modelSortedConnection_);
@@ -186,8 +198,7 @@ ConversationSmartListViewQmlObjectHolder::connectConversationModel()
     modelSortedConnection_ = QObject::connect(
         currentConversationModel, &lrc::api::ConversationModel::modelSorted, [this]() {
             updateConversationsFilterWidget();
-            QMetaObject::invokeMethod(conversationSmartListViewQmlObject_,
-                                      "updateConversationSmartListView");
+            QMetaObject::invokeMethod(qmlObj_, "updateConversationSmartListView");
             auto convUid = LRCInstance::getCurrentConversation().uid;
             auto convModel = LRCInstance::getCurrentConversationModel();
             auto &conversation = LRCInstance::getConversationFromConvUid(convUid);
@@ -200,9 +211,7 @@ ConversationSmartListViewQmlObjectHolder::connectConversationModel()
                        == lrc::api::profile::Type::TEMPORARY) {
                 return;
             }
-            QMetaObject::invokeMethod(conversationSmartListViewQmlObject_,
-                                      "modelSorted",
-                                      Q_ARG(QVariant, contactURI));
+            QMetaObject::invokeMethod(qmlObj_, "modelSorted", Q_ARG(QVariant, contactURI));
         });
 
     modelUpdatedConnection_
@@ -211,25 +220,23 @@ ConversationSmartListViewQmlObjectHolder::connectConversationModel()
                            [this](const QString &convUid) {
                                Q_UNUSED(convUid);
                                updateConversationsFilterWidget();
-                               QMetaObject::invokeMethod(conversationSmartListViewQmlObject_,
-                                                         "updateConversationSmartListView");
+                               QMetaObject::invokeMethod(qmlObj_, "updateConversationSmartListView");
                            });
 
     filterChangedConnection_ = QObject::connect(
         currentConversationModel, &lrc::api::ConversationModel::filterChanged, [this]() {
-            QMetaObject::invokeMethod(conversationSmartListViewQmlObject_,
+            QMetaObject::invokeMethod(qmlObj_,
                                       "updateSmartList",
                                       Q_ARG(QVariant, LRCInstance::getCurrAccId()));
             updateConversationsFilterWidget();
-            QMetaObject::invokeMethod(conversationSmartListViewQmlObject_,
-                                      "updateConversationSmartListView");
+            QMetaObject::invokeMethod(qmlObj_, "updateConversationSmartListView");
         });
 
     newConversationConnection_
         = QObject::connect(currentConversationModel,
                            &lrc::api::ConversationModel::newConversation,
                            [this](const QString &convUid) {
-                               QMetaObject::invokeMethod(conversationSmartListViewQmlObject_,
+                               QMetaObject::invokeMethod(qmlObj_,
                                                          "updateSmartList",
                                                          Q_ARG(QVariant,
                                                                LRCInstance::getCurrAccId()));
@@ -261,8 +268,7 @@ ConversationSmartListViewQmlObjectHolder::connectConversationModel()
                            &lrc::api::ConversationModel::newInteraction,
                            [this] {
                                updateConversationsFilterWidget();
-                               QMetaObject::invokeMethod(conversationSmartListViewQmlObject_,
-                                                         "updateConversationSmartListView");
+                               QMetaObject::invokeMethod(qmlObj_, "updateConversationSmartListView");
                            });
 
     currentConversationModel->setFilter("");
@@ -272,7 +278,7 @@ ConversationSmartListViewQmlObjectHolder::connectConversationModel()
 }
 
 void
-ConversationSmartListViewQmlObjectHolder::updateConversationForNewContact(const QString &convUid)
+ConversationsAdapter::updateConversationForNewContact(const QString &convUid)
 {
     auto convModel = LRCInstance::getCurrentConversationModel();
     if (convModel == nullptr) {

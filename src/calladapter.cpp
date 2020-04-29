@@ -1,56 +1,54 @@
-/***************************************************************************
- * Copyright (C) 2020 by Savoir-faire Linux                                *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
- * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
- * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
- * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
- * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>                      *
- * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
- *                                                                         *
- * This program is free software; you can redistribute it and/or modify    *
- * it under the terms of the GNU General Public License as published by    *
- * the Free Software Foundation; either version 3 of the License, or       *
- * (at your option) any later version.                                     *
- *                                                                         *
- * This program is distributed in the hope that it will be useful,         *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of          *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the           *
- * GNU General Public License for more details.                            *
- *                                                                         *
- * You should have received a copy of the GNU General Public License       *
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
- **************************************************************************/
+/*
+ * Copyright (C) 2020 by Savoir-faire Linux
+ * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>
+ * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>
+ * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>
+ * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
-#include "callcenterqmlobjectholder.h"
+#include "calladapter.h"
 
 #include "globalsystemtray.h"
 #include "utils.h"
 
-CallCenterQmlObjectHolder::CallCenterQmlObjectHolder(QObject *parent)
-    : QObject(parent)
+CallAdapter::CallAdapter(QObject *parent)
+    : QmlAdapterBase(parent)
 {}
 
-CallCenterQmlObjectHolder::~CallCenterQmlObjectHolder() {}
+CallAdapter::~CallAdapter() {}
 
 void
-CallCenterQmlObjectHolder::setCallCenterQmlObjectHolder(QObject *obj)
+CallAdapter::initQmlObject()
 {
-    callCenterQmlObject_ = obj;
-
     connectCallstatusChangedSignal(LRCInstance::getCurrAccId());
 
     connect(&LRCInstance::behaviorController(),
             &BehaviorController::showIncomingCallView,
             this,
-            &CallCenterQmlObjectHolder::slotShowIncomingCallView);
+            &CallAdapter::slotShowIncomingCallView);
     connect(&LRCInstance::behaviorController(),
             &BehaviorController::showCallView,
             this,
-            &CallCenterQmlObjectHolder::slotShowCallView);
+            &CallAdapter::slotShowCallView);
 }
 
 void
-CallCenterQmlObjectHolder::placeAudioOnlyCall()
+CallAdapter::placeAudioOnlyCall()
 {
     auto convInfo = LRCInstance::getCurrentConversation();
     if (!convInfo.uid.isEmpty()) {
@@ -59,7 +57,7 @@ CallCenterQmlObjectHolder::placeAudioOnlyCall()
 }
 
 void
-CallCenterQmlObjectHolder::placeCall()
+CallAdapter::placeCall()
 {
     auto convInfo = LRCInstance::getCurrentConversation();
     if (!convInfo.uid.isEmpty()) {
@@ -68,7 +66,7 @@ CallCenterQmlObjectHolder::placeCall()
 }
 
 void
-CallCenterQmlObjectHolder::hangUpACall(const QString &accountId, const QString &convUid)
+CallAdapter::hangUpACall(const QString &accountId, const QString &convUid)
 {
     auto convInfo = LRCInstance::getConversationFromConvUid(convUid, accountId);
     if (!convInfo.uid.isEmpty()) {
@@ -77,7 +75,7 @@ CallCenterQmlObjectHolder::hangUpACall(const QString &accountId, const QString &
 }
 
 void
-CallCenterQmlObjectHolder::refuseACall(const QString &accountId, const QString &convUid)
+CallAdapter::refuseACall(const QString &accountId, const QString &convUid)
 {
     auto convInfo = LRCInstance::getConversationFromConvUid(convUid, accountId);
     if (!convInfo.uid.isEmpty()) {
@@ -86,8 +84,9 @@ CallCenterQmlObjectHolder::refuseACall(const QString &accountId, const QString &
 }
 
 void
-CallCenterQmlObjectHolder::acceptACall(const QString &accountId, const QString &convUid)
+CallAdapter::acceptACall(const QString &accountId, const QString &convUid)
 {
+    emit incomingCallNeedToSetupMainView(accountId, convUid);
     auto convInfo = LRCInstance::getConversationFromConvUid(convUid, accountId);
     if (!convInfo.uid.isEmpty()) {
         LRCInstance::getAccountInfo(accountId).callModel->accept(convInfo.callId);
@@ -97,8 +96,7 @@ CallCenterQmlObjectHolder::acceptACall(const QString &accountId, const QString &
 }
 
 void
-CallCenterQmlObjectHolder::slotShowIncomingCallView(const QString &accountId,
-                                                    const conversation::Info &convInfo)
+CallAdapter::slotShowIncomingCallView(const QString &accountId, const conversation::Info &convInfo)
 {
     auto callModel = LRCInstance::getCurrentCallModel();
 
@@ -127,6 +125,7 @@ CallCenterQmlObjectHolder::slotShowIncomingCallView(const QString &accountId,
     if (call.isOutgoing) {
         if (isCallSelected) {
             emit showOutgoingCallPage(accountId, convInfo.uid);
+            emit showCallStack(accountId, convInfo.uid);
         }
     } else {
         /*if (!QApplication::focusWidget() && GlobalSystemTray::instance().getTriggeredAccountId().isEmpty()) {
@@ -166,8 +165,7 @@ CallCenterQmlObjectHolder::slotShowIncomingCallView(const QString &accountId,
 }
 
 void
-CallCenterQmlObjectHolder::slotShowCallView(const QString &accountId,
-                                            const lrc::api::conversation::Info &convInfo)
+CallAdapter::slotShowCallView(const QString &accountId, const lrc::api::conversation::Info &convInfo)
 {
     if (!convInfo.callId.isEmpty()) {
         auto &accInfo = LRCInstance::getAccountInfo(convInfo.accountId);
@@ -193,6 +191,7 @@ CallCenterQmlObjectHolder::slotShowCallView(const QString &accountId,
     } else {
         emit showVideoCallPage(accountId, convInfo.uid, call->id);
     }
+    emit showCallStack(accountId, convInfo.uid);
 
     // preview
     //previewWidget_->setVisible(shouldShowPreview(forceCallOnly));
@@ -207,7 +206,7 @@ CallCenterQmlObjectHolder::slotShowCallView(const QString &accountId,
 }
 
 void
-CallCenterQmlObjectHolder::connectCallstatusChangedSignal(const QString &accountId)
+CallAdapter::connectCallstatusChangedSignal(const QString &accountId)
 {
     auto &accInfo = LRCInstance::accountModel().getAccountInfo(accountId);
 
@@ -267,7 +266,8 @@ CallCenterQmlObjectHolder::connectCallstatusChangedSignal(const QString &account
                     //setCallPanelVisibility(false);
                     //showConversationView();
                     //callTerminating(callId);
-                    emit closeCallWindow(accountId, convInfo.uid);
+                    emit closeCallStack(accountId, convInfo.uid);
+                    emit closePotentialIncomingCallPageWindow(accountId, convInfo.uid);
                 }
 
                 break;

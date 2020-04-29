@@ -20,7 +20,6 @@
         <file>src/mainview/components/CallOverlay.qml</file>
         <file>src/commoncomponents/TintedButton.qml</file>
         <file>src/mainview/components/CallOverlayButtonGroup.qml</file>
-        <file>src/mainview/components/CallCenter.qml</file>
         <file>src/mainview/js/incomingcallpagecreation.js</file>
         <file>src/mainview/components/ContactSearchBar.qml</file>
         <file>src/mainview/components/VideoCallPage.qml</file>

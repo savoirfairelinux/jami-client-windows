@@ -890,7 +890,7 @@ Utils::humanFileSize(qint64 fileSize)
 }
 
 const QString
-Utils::UtilsAdapter::getBestName(const QString &accountId, const QString &uid)
+UtilsAdapter::getBestName(const QString &accountId, const QString &uid)
 {
     auto convModel = LRCInstance::getAccountInfo(accountId).conversationModel.get();
     return Utils::bestNameForConversation(LRCInstance::getConversationFromConvUid(uid, accountId),
@@ -898,7 +898,7 @@ Utils::UtilsAdapter::getBestName(const QString &accountId, const QString &uid)
 }
 
 const QString
-Utils::UtilsAdapter::getBestId(const QString &accountId, const QString &uid)
+UtilsAdapter::getBestId(const QString &accountId, const QString &uid)
 {
     auto convModel = LRCInstance::getAccountInfo(accountId).conversationModel.get();
     return Utils::bestIdForConversation(LRCInstance::getConversationFromConvUid(uid, accountId),
@@ -906,7 +906,7 @@ Utils::UtilsAdapter::getBestId(const QString &accountId, const QString &uid)
 }
 
 int
-Utils::UtilsAdapter::getTotalUnreadMessages()
+UtilsAdapter::getTotalUnreadMessages()
 {
     int totalUnreadMessages{0};
     if (LRCInstance::getCurrentAccountInfo().profileInfo.type != lrc::api::profile::Type::SIP) {
@@ -922,8 +922,14 @@ Utils::UtilsAdapter::getTotalUnreadMessages()
 }
 
 int
-Utils::UtilsAdapter::getTotalPendingRequest()
+UtilsAdapter::getTotalPendingRequest()
 {
     auto &accountInfo = LRCInstance::getCurrentAccountInfo();
     return accountInfo.contactModel->pendingRequestCount();
+}
+
+void
+UtilsAdapter::setConversationFilter(const QString &filter)
+{
+    LRCInstance::getCurrentConversationModel()->setFilter(filter);
 }
