@@ -1,23 +1,23 @@
-/***************************************************************************
- * Copyright (C) 2015-2020 by Savoir-faire Linux                           *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
- * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
- * Author: Isa Nanic <isa.nanic@savoirfairelinux.com                       *
- * Author: Mingrui Zhang   <mingrui.zhang@savoirfairelinux.com>            *
- *                                                                         *
- * This program is free software; you can redistribute it and/or modify    *
- * it under the terms of the GNU General Public License as published by    *
- * the Free Software Foundation; either version 3 of the License, or       *
- * (at your option) any later version.                                     *
- *                                                                         *
- * This program is distributed in the hope that it will be useful,         *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of          *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the           *
- * GNU General Public License for more details.                            *
- *                                                                         *
- * You should have received a copy of the GNU General Public License       *
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
- **************************************************************************/
+/*
+ * Copyright (C) 2015-2020 by Savoir-faire Linux
+ * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>
+ * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>
+ * Author: Mingrui Zhang   <mingrui.zhang@savoirfairelinux.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 #pragma once
 
 #include "version.h"
@@ -33,6 +33,7 @@
 #include <QLabel>
 #include <QListWidget>
 #include <QMessageBox>
+#include <QQmlEngine>
 #include <QStackedWidget>
 #include <QStandardPaths>
 #include <QString>
@@ -63,7 +64,25 @@ static constexpr bool isBeta = false;
 
 namespace Utils {
 
-// system
+// Qml type register
+#define QML_REGISTERSINGLETONTYPE(T, MAJ, MIN) \
+    qmlRegisterSingletonType<T>("net.jami." #T, \
+                                MAJ, \
+                                MIN, \
+                                #T, \
+                                [](QQmlEngine *e, QJSEngine *se) -> QObject * { \
+                                    Q_UNUSED(e); \
+                                    Q_UNUSED(se); \
+                                    T *obj = new T(); \
+                                    return obj; \
+                                });
+
+#define QML_REGISTERSINGLETONTYPE_URL(URL, T, MAJ, MIN) \
+    qmlRegisterSingletonType(QUrl(URL), "net.jami." #T, MAJ, MIN, #T);
+
+#define QML_REGISTERTYPE(T, MAJ, MIN) qmlRegisterType<T>("net.jami." #T, MAJ, MIN, #T);
+
+// System
 bool CreateStartupLink(const std::wstring &wstrAppName);
 void DeleteStartupLink(const std::wstring &wstrAppName);
 bool CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink);
@@ -93,12 +112,12 @@ QString getProjectCredits();
 float getCurrentScalingRatio();
 void setCurrentScalingRatio(float ratio);
 
-// updates
+// Updates
 void cleanUpdateFiles();
 void checkForUpdates(bool withUI, QWidget *parent = nullptr);
 void applyUpdates(bool updateToBeta, QWidget *parent = nullptr);
 
-// names
+// Names
 QString bestIdForConversation(const lrc::api::conversation::Info &conv,
                               const lrc::api::ConversationModel &model);
 QString bestIdForAccount(const lrc::api::account::Info &account);
@@ -112,13 +131,13 @@ QString secondBestNameForAccount(
 lrc::api::profile::Type profileType(const lrc::api::conversation::Info &conv,
                                     const lrc::api::ConversationModel &model);
 
-// interactions
+// Interactions
 std::string formatTimeString(const std::time_t &timestamp);
 bool isInteractionGenerated(const lrc::api::interaction::Type &interaction);
 bool isContactValid(const QString &contactUid, const lrc::api::ConversationModel &model);
 bool getReplyMessageBox(QWidget *widget, const QString &title, const QString &text);
 
-// image
+// Image
 QString getContactImageString(const QString &accountId, const QString &uid);
 QImage getCirclePhoto(const QImage original, int sizePhoto);
 QImage conversationPhoto(const QString &convUid,
@@ -139,7 +158,7 @@ QImage cropImage(const QImage &img);
 QPixmap pixmapFromSvg(const QString &svg_resource, const QSize &size);
 QImage setupQRCode(QString ringID, int margin);
 
-// rounded corner
+// Rounded corner
 template<typename T>
 void
 fillRoundRectPath(QPainter &painter,
@@ -157,16 +176,16 @@ fillRoundRectPath(QPainter &painter,
     painter.fillPath(painterPath, brush);
 }
 
-// time
+// Time
 QString formattedTime(int seconds);
 
-// misc helpers
+// Misc helpers
 void swapQListWidgetItems(QListWidget *list, bool down = true);
 
 // Byte to human readable size
 QString humanFileSize(qint64 fileSize);
 
-// device plug or unplug enum
+// Device plug or unplug enum
 enum class DevicePlugStatus { Plugged, Unplugged, Unchanged };
 
 class OneShotDisconnectConnection : public QObject
@@ -323,6 +342,7 @@ constexpr inline
 {
     return static_cast<E>(value);
 }
+} // namespace Utils
 
 class UtilsAdapter : public QObject
 {
@@ -401,4 +421,3 @@ public:
 private:
     QClipboard *clipboard_;
 };
-} // namespace Utils
