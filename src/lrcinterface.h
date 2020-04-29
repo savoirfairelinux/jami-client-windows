@@ -36,4 +36,6 @@ public:
     Q_INVOKABLE const QString getCurrAccId();
     Q_INVOKABLE const QStringList getCurrAccList();
     Q_INVOKABLE void setCurrentCall(const QString &accountId, const QString &convUid);
+    Q_INVOKABLE void startPreviewing(bool force);
+    Q_INVOKABLE void stopPreviewing();
 };

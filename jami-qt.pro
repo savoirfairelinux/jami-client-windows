@@ -130,7 +130,9 @@ HEADERS += ./src/smartlistmodel.h \
         ./src/callcenterqmlobjectholder.h \
         ./src/calloverlayqmlobjectholder.h \
         ./src/conversationsmartlistviewqmlobjectholder.h \
-        ./src/contactsearchbarqmlobjectholder.h
+        ./src/contactsearchbarqmlobjectholder.h \
+        ./src/distantrenderer.h \
+        ./src/previewrenderer.h
 SOURCES += ./src/bannedlistmodel.cpp \
         ./src/accountlistmodel.cpp \
         ./src/runguard.cpp \
@@ -149,6 +151,8 @@ SOURCES += ./src/bannedlistmodel.cpp \
         ./src/callcenterqmlobjectholder.cpp \
         ./src/calloverlayqmlobjectholder.cpp \
         ./src/conversationsmartlistviewqmlobjectholder.cpp \
-        ./src/contactsearchbarqmlobjectholder.cpp
+        ./src/contactsearchbarqmlobjectholder.cpp \
+        ./src/distantrenderer.cpp \
+        ./src/previewrenderer.cpp
 RESOURCES += ./ressources.qrc \
              ./qml.qrc
