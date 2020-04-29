@@ -21,7 +21,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  **************************************************************************/
 
-#include "messagewebviewqmlobjectholder.h"
+#include "messageadapter.h"
 #include "webchathelpers.h"
 
 #include "utils.h"
@@ -31,35 +31,32 @@
 #include <QList>
 #include <QUrl>
 
-MessageWebViewQmlObjectHolder::MessageWebViewQmlObjectHolder(QObject *parent)
-    : QObject(parent)
+MessageAdapter::MessageAdapter(QObject *parent)
+    : QmlBaseAdapter(parent)
 {}
 
-MessageWebViewQmlObjectHolder::~MessageWebViewQmlObjectHolder() {}
+MessageAdapter::~MessageAdapter() {}
 
 void
-MessageWebViewQmlObjectHolder::setMessageWebViewQmlObject(QObject *obj)
+MessageAdapter::objectSetUp()
 {
-    // Set the object pointer
-    messageWebViewQmlObject_ = obj;
-
-    connect(messageWebViewQmlObject_,
+    connect(correspondingQmlObject_,
             SIGNAL(sendMessage(const QString &)),
             this,
             SLOT(slotSendMessage(const QString &)));
-    connect(messageWebViewQmlObject_,
+    connect(correspondingQmlObject_,
             SIGNAL(sendImage(const QString &)),
             this,
             SLOT(slotSendImage(const QString &)));
-    connect(messageWebViewQmlObject_,
+    connect(correspondingQmlObject_,
             SIGNAL(sendFile(const QString &)),
             this,
             SLOT(slotSendFile(const QString &)));
-    connect(messageWebViewQmlObject_,
+    connect(correspondingQmlObject_,
             SIGNAL(setNewMessagesContent(const QString &)),
             this,
             SLOT(slotSetNewMessagesContent(const QString &)));
-    connect(messageWebViewQmlObject_,
+    connect(correspondingQmlObject_,
             SIGNAL(deleteInteraction(const QString &)),
             this,
             SLOT(slotDeleteInteraction(const QString &)));
@@ -68,7 +65,7 @@ MessageWebViewQmlObjectHolder::setMessageWebViewQmlObject(QObject *obj)
 }
 
 void
-MessageWebViewQmlObjectHolder::setupChatView(const QString &uid)
+MessageAdapter::setupChatView(const QString &uid)
 {
     auto &convInfo = LRCInstance::getConversationFromConvUid(uid);
     if (convInfo.uid.isEmpty()) {
@@ -97,14 +94,14 @@ MessageWebViewQmlObjectHolder::setupChatView(const QString &uid)
     bool shouldShowSendContactRequestBtn = !isContact
                                            && contactType != lrc::api::profile::Type::SIP;
 
-    QMetaObject::invokeMethod(messageWebViewQmlObject_,
+    QMetaObject::invokeMethod(correspondingQmlObject_,
                               "setSendContactRequestButtonVisible",
                               Q_ARG(QVariant, shouldShowSendContactRequestBtn));
 
     setMessagesVisibility(false);
     //connect(LRCInstance::getCurrentConversationModel(), &ConversationModel::composingStatusChanged, ui->messageView, &MessageWebView::contactIsComposing);
 
-    Utils::oneShotConnect(messageWebViewQmlObject_,
+    Utils::oneShotConnect(correspondingQmlObject_,
                           SIGNAL(sendMessageContentSaved(const QString &)),
                           this,
                           SLOT(slotSendMessageContentSaved(const QString &)));
@@ -113,7 +110,7 @@ MessageWebViewQmlObjectHolder::setupChatView(const QString &uid)
 }
 
 void
-MessageWebViewQmlObjectHolder::connectConversationModel()
+MessageAdapter::connectConversationModel()
 {
     auto currentConversationModel = LRCInstance::getCurrentAccountInfo().conversationModel.get();
 
@@ -159,7 +156,7 @@ MessageWebViewQmlObjectHolder::connectConversationModel()
 }
 
 void
-MessageWebViewQmlObjectHolder::sendContactRequest()
+MessageAdapter::sendContactRequest()
 {
     auto convInfo = LRCInstance::getCurrentConversation();
     if (!convInfo.uid.isEmpty()) {
@@ -168,7 +165,7 @@ MessageWebViewQmlObjectHolder::sendContactRequest()
 }
 
 void
-MessageWebViewQmlObjectHolder::accountChangedSetUp(const QString &accoountId)
+MessageAdapter::accountChangedSetUp(const QString &accoountId)
 {
     Q_UNUSED(accoountId)
 
@@ -176,7 +173,7 @@ MessageWebViewQmlObjectHolder::accountChangedSetUp(const QString &accoountId)
 }
 
 void
-MessageWebViewQmlObjectHolder::updateConversationForAddedContact()
+MessageAdapter::updateConversationForAddedContact()
 {
     auto conversation = LRCInstance::getCurrentConversation();
     auto convModel = LRCInstance::getCurrentConversationModel();
@@ -187,13 +184,13 @@ MessageWebViewQmlObjectHolder::updateConversationForAddedContact()
 }
 
 void
-MessageWebViewQmlObjectHolder::slotSendMessageContentSaved(const QString &content)
+MessageAdapter::slotSendMessageContentSaved(const QString &content)
 {
     if (!LastConvUid_.isEmpty()) {
         //LRCInstance::setContentDraft(LastConvUid_, LRCInstance::getCurrAccId(), content);
     }
 
-    Utils::oneShotConnect(messageWebViewQmlObject_,
+    Utils::oneShotConnect(correspondingQmlObject_,
                           SIGNAL(messagesCleared()),
                           this,
                           SLOT(slotMessagesCleared()));
@@ -206,14 +203,14 @@ MessageWebViewQmlObjectHolder::slotSendMessageContentSaved(const QString &conten
 }
 
 void
-MessageWebViewQmlObjectHolder::slotMessagesCleared()
+MessageAdapter::slotMessagesCleared()
 {
     auto &convInfo = LRCInstance::getConversationFromConvUid(LRCInstance::getCurrentConvUid());
     auto convModel = LRCInstance::getCurrentConversationModel();
 
     printHistory(*convModel, convInfo.interactions);
 
-    Utils::oneShotConnect(messageWebViewQmlObject_,
+    Utils::oneShotConnect(correspondingQmlObject_,
                           SIGNAL(messagesLoaded()),
                           this,
                           SLOT(slotMessagesLoaded()));
@@ -222,13 +219,13 @@ MessageWebViewQmlObjectHolder::slotMessagesCleared()
 }
 
 void
-MessageWebViewQmlObjectHolder::slotMessagesLoaded()
+MessageAdapter::slotMessagesLoaded()
 {
     setMessagesVisibility(true);
 }
 
 void
-MessageWebViewQmlObjectHolder::slotSendMessage(const QString &message)
+MessageAdapter::slotSendMessage(const QString &message)
 {
     try {
         auto convUid = LRCInstance::getCurrentConvUid();
@@ -239,7 +236,7 @@ MessageWebViewQmlObjectHolder::slotSendMessage(const QString &message)
 }
 
 void
-MessageWebViewQmlObjectHolder::slotSendImage(const QString &message)
+MessageAdapter::slotSendImage(const QString &message)
 {
     if (message.startsWith("data:image/png;base64,")) {
         //img tag contains base64 data, trim "data:image/png;base64," from data
@@ -283,7 +280,7 @@ MessageWebViewQmlObjectHolder::slotSendImage(const QString &message)
 }
 
 void
-MessageWebViewQmlObjectHolder::slotSendFile(const QString &message)
+MessageAdapter::slotSendFile(const QString &message)
 {
     QFileInfo fi(message);
     QString fileName = fi.fileName();
@@ -296,7 +293,7 @@ MessageWebViewQmlObjectHolder::slotSendFile(const QString &message)
 }
 
 void
-MessageWebViewQmlObjectHolder::slotSetNewMessagesContent(const QString &path)
+MessageAdapter::slotSetNewMessagesContent(const QString &path)
 {
     if (path.length() == 0)
         return;
@@ -310,7 +307,7 @@ MessageWebViewQmlObjectHolder::slotSetNewMessagesContent(const QString &path)
 }
 
 void
-MessageWebViewQmlObjectHolder::slotDeleteInteraction(const QString &arg)
+MessageAdapter::slotDeleteInteraction(const QString &arg)
 {
     bool ok;
     uint64_t interactionUid = arg.toULongLong(&ok);
@@ -323,8 +320,7 @@ MessageWebViewQmlObjectHolder::slotDeleteInteraction(const QString &arg)
 }
 
 void
-MessageWebViewQmlObjectHolder::setConversationProfileData(
-    const lrc::api::conversation::Info &convInfo)
+MessageAdapter::setConversationProfileData(const lrc::api::conversation::Info &convInfo)
 {
     auto convModel = LRCInstance::getCurrentConversationModel();
     auto accInfo = &LRCInstance::getCurrentAccountInfo();
@@ -354,10 +350,10 @@ MessageWebViewQmlObjectHolder::setConversationProfileData(
 }
 
 void
-MessageWebViewQmlObjectHolder::newInteraction(const QString &accountId,
-                                              const QString &convUid,
-                                              uint64_t interactionId,
-                                              const interaction::Info &interaction)
+MessageAdapter::newInteraction(const QString &accountId,
+                               const QString &convUid,
+                               uint64_t interactionId,
+                               const interaction::Info &interaction)
 {
     Q_UNUSED(interactionId);
     try {
@@ -387,51 +383,48 @@ MessageWebViewQmlObjectHolder::newInteraction(const QString &accountId,
 
 // Js invoke
 void
-MessageWebViewQmlObjectHolder::setMessagesVisibility(bool visible)
+MessageAdapter::setMessagesVisibility(bool visible)
 {
     QString s = QString::fromLatin1(visible ? "showMessagesDiv();" : "hideMessagesDiv();");
-    QMetaObject::invokeMethod(messageWebViewQmlObject_, "webViewRunJavaScript", Q_ARG(QVariant, s));
+    QMetaObject::invokeMethod(correspondingQmlObject_, "webViewRunJavaScript", Q_ARG(QVariant, s));
 }
 
 void
-MessageWebViewQmlObjectHolder::requestSendMessageContent()
+MessageAdapter::requestSendMessageContent()
 {
     QString s = QString::fromLatin1("requestSendMessageContent();");
-    QMetaObject::invokeMethod(messageWebViewQmlObject_, "webViewRunJavaScript", Q_ARG(QVariant, s));
+    QMetaObject::invokeMethod(correspondingQmlObject_, "webViewRunJavaScript", Q_ARG(QVariant, s));
 }
 
 void
-MessageWebViewQmlObjectHolder::setInvitation(bool show,
-                                             const QString &contactUri,
-                                             const QString &contactId)
+MessageAdapter::setInvitation(bool show, const QString &contactUri, const QString &contactId)
 {
     QString s
         = show
               ? QString::fromLatin1("showInvitation(\"%1\", \"%2\")").arg(contactUri).arg(contactId)
               : QString::fromLatin1("showInvitation()");
 
-    QMetaObject::invokeMethod(messageWebViewQmlObject_, "webViewRunJavaScript", Q_ARG(QVariant, s));
+    QMetaObject::invokeMethod(correspondingQmlObject_, "webViewRunJavaScript", Q_ARG(QVariant, s));
 }
 
 void
-MessageWebViewQmlObjectHolder::clear()
+MessageAdapter::clear()
 {
     QString s = QString::fromLatin1("clearMessages();");
-    QMetaObject::invokeMethod(messageWebViewQmlObject_, "webViewRunJavaScript", Q_ARG(QVariant, s));
+    QMetaObject::invokeMethod(correspondingQmlObject_, "webViewRunJavaScript", Q_ARG(QVariant, s));
 }
 
 void
-MessageWebViewQmlObjectHolder::printHistory(
-    lrc::api::ConversationModel &conversationModel,
-    const std::map<uint64_t, lrc::api::interaction::Info> interactions)
+MessageAdapter::printHistory(lrc::api::ConversationModel &conversationModel,
+                             const std::map<uint64_t, lrc::api::interaction::Info> interactions)
 {
     auto interactionsStr = interactionsToJsonArrayObject(conversationModel, interactions).toUtf8();
     QString s = QString::fromLatin1("printHistory(%1);").arg(interactionsStr.constData());
-    QMetaObject::invokeMethod(messageWebViewQmlObject_, "webViewRunJavaScript", Q_ARG(QVariant, s));
+    QMetaObject::invokeMethod(correspondingQmlObject_, "webViewRunJavaScript", Q_ARG(QVariant, s));
 }
 
 void
-MessageWebViewQmlObjectHolder::setSenderImage(const QString &sender, const QString &senderImage)
+MessageAdapter::setSenderImage(const QString &sender, const QString &senderImage)
 {
     QJsonObject setSenderImageObject = QJsonObject();
     setSenderImageObject.insert("sender_contact_method", QJsonValue(sender));
@@ -441,13 +434,13 @@ MessageWebViewQmlObjectHolder::setSenderImage(const QString &sender, const QStri
         QJsonDocument(setSenderImageObject).toJson(QJsonDocument::Compact));
     QString s = QString::fromLatin1("setSenderImage(%1);")
                     .arg(setSenderImageObjectString.toUtf8().constData());
-    QMetaObject::invokeMethod(messageWebViewQmlObject_, "webViewRunJavaScript", Q_ARG(QVariant, s));
+    QMetaObject::invokeMethod(correspondingQmlObject_, "webViewRunJavaScript", Q_ARG(QVariant, s));
 }
 
 void
-MessageWebViewQmlObjectHolder::printNewInteraction(lrc::api::ConversationModel &conversationModel,
-                                                   uint64_t msgId,
-                                                   const lrc::api::interaction::Info &interaction)
+MessageAdapter::printNewInteraction(lrc::api::ConversationModel &conversationModel,
+                                    uint64_t msgId,
+                                    const lrc::api::interaction::Info &interaction)
 {
     auto interactionObject
         = interactionToJsonInteractionObject(conversationModel, msgId, interaction).toUtf8();
@@ -455,13 +448,13 @@ MessageWebViewQmlObjectHolder::printNewInteraction(lrc::api::ConversationModel &
         return;
     }
     QString s = QString::fromLatin1("addMessage(%1);").arg(interactionObject.constData());
-    QMetaObject::invokeMethod(messageWebViewQmlObject_, "webViewRunJavaScript", Q_ARG(QVariant, s));
+    QMetaObject::invokeMethod(correspondingQmlObject_, "webViewRunJavaScript", Q_ARG(QVariant, s));
 }
 
 void
-MessageWebViewQmlObjectHolder::updateInteraction(lrc::api::ConversationModel &conversationModel,
-                                                 uint64_t msgId,
-                                                 const lrc::api::interaction::Info &interaction)
+MessageAdapter::updateInteraction(lrc::api::ConversationModel &conversationModel,
+                                  uint64_t msgId,
+                                  const lrc::api::interaction::Info &interaction)
 {
     auto interactionObject
         = interactionToJsonInteractionObject(conversationModel, msgId, interaction).toUtf8();
@@ -469,27 +462,27 @@ MessageWebViewQmlObjectHolder::updateInteraction(lrc::api::ConversationModel &co
         return;
     }
     QString s = QString::fromLatin1("updateMessage(%1);").arg(interactionObject.constData());
-    QMetaObject::invokeMethod(messageWebViewQmlObject_, "webViewRunJavaScript", Q_ARG(QVariant, s));
+    QMetaObject::invokeMethod(correspondingQmlObject_, "webViewRunJavaScript", Q_ARG(QVariant, s));
 }
 
 void
-MessageWebViewQmlObjectHolder::setMessagesImageContent(const QString &path, bool isBased64)
+MessageAdapter::setMessagesImageContent(const QString &path, bool isBased64)
 {
     if (isBased64) {
         QString param = QString("addImage_base64('%1')").arg(path);
-        QMetaObject::invokeMethod(messageWebViewQmlObject_,
+        QMetaObject::invokeMethod(correspondingQmlObject_,
                                   "webViewRunJavaScript",
                                   Q_ARG(QVariant, param));
     } else {
         QString param = QString("addImage_path('%1')").arg(path);
-        QMetaObject::invokeMethod(messageWebViewQmlObject_,
+        QMetaObject::invokeMethod(correspondingQmlObject_,
                                   "webViewRunJavaScript",
                                   Q_ARG(QVariant, param));
     }
 }
 
 void
-MessageWebViewQmlObjectHolder::setMessagesFileContent(const QString &path)
+MessageAdapter::setMessagesFileContent(const QString &path)
 {
     qint64 fileSize = QFileInfo(path).size();
     QString fileName = QFileInfo(path).fileName();
@@ -500,29 +493,29 @@ MessageWebViewQmlObjectHolder::setMessagesFileContent(const QString &path)
     QString param = QString("addFile_path('%1','%2','%3')")
                         .arg(path, fileName, Utils::humanFileSize(fileSize));
 
-    QMetaObject::invokeMethod(messageWebViewQmlObject_,
+    QMetaObject::invokeMethod(correspondingQmlObject_,
                               "webViewRunJavaScript",
                               Q_ARG(QVariant, param));
 }
 
 void
-MessageWebViewQmlObjectHolder::removeInteraction(uint64_t interactionId)
+MessageAdapter::removeInteraction(uint64_t interactionId)
 {
     QString s = QString::fromLatin1("removeInteraction(%1);").arg(QString::number(interactionId));
-    QMetaObject::invokeMethod(messageWebViewQmlObject_, "webViewRunJavaScript", Q_ARG(QVariant, s));
+    QMetaObject::invokeMethod(correspondingQmlObject_, "webViewRunJavaScript", Q_ARG(QVariant, s));
 }
 
 // js Q_INVOKABLE
 
 void
-MessageWebViewQmlObjectHolder::acceptInvitation()
+MessageAdapter::acceptInvitation()
 {
     auto convUid = LRCInstance::getCurrentConvUid();
     LRCInstance::getCurrentConversationModel()->makePermanent(convUid);
 }
 
 void
-MessageWebViewQmlObjectHolder::refuseInvitation()
+MessageAdapter::refuseInvitation()
 {
     auto convUid = LRCInstance::getCurrentConvUid();
     LRCInstance::getCurrentConversationModel()->removeConversation(convUid, false);
@@ -530,7 +523,7 @@ MessageWebViewQmlObjectHolder::refuseInvitation()
 }
 
 void
-MessageWebViewQmlObjectHolder::blockConversation()
+MessageAdapter::blockConversation()
 {
     auto convUid = LRCInstance::getCurrentConvUid();
     LRCInstance::getCurrentConversationModel()->removeConversation(convUid, true);

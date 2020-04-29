@@ -30,7 +30,7 @@
 #include "globalinstances.h"
 #include "globalsystemtray.h"
 #include "lrcinterface.h"
-#include "messagewebviewqmlobjectholder.h"
+#include "messageadapter.h"
 #include "pixbufmanipulator.h"
 #include "previewrenderer.h"
 #include "qrimageprovider.h"
@@ -272,10 +272,6 @@ MainApplication::qmlInitialization()
     qmlRegisterType<AccountListModel>("net.jami.model.account", 1, 0, "AccountListModel");
 
     // register object holder type
-    qmlRegisterType<MessageWebViewQmlObjectHolder>("net.jami.MessageWebViewQmlObjectHolder",
-                                                   1,
-                                                   0,
-                                                   "MessageWebViewQmlObjectHolder");
     qmlRegisterType<AccountComboBoxQmlObjectHolder>("net.jami.AccountComboBoxQmlObjectHolder",
                                                     1,
                                                     0,
@@ -326,6 +322,19 @@ MainApplication::qmlInitialization()
                                                         = new LrcGeneralAdapter();
                                                     return lrcGeneralAdapter;
                                                 });
+
+    qmlRegisterSingletonType<MessageAdapter>("net.jami.MessageAdapter",
+                                             1,
+                                             0,
+                                             "MessageAdapter",
+                                             [](QQmlEngine *engine,
+                                                QJSEngine *scriptEngine) -> QObject * {
+                                                 Q_UNUSED(engine);
+                                                 Q_UNUSED(scriptEngine);
+                                                 MessageAdapter *messageAdapter
+                                                     = new MessageAdapter();
+                                                 return messageAdapter;
+                                             });
 
     // add image provider
     engine_->addImageProvider(QLatin1String("qrImage"), new QrImageProvider());

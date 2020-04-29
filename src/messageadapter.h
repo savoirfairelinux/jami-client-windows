@@ -19,21 +19,20 @@
 #pragma once
 
 #include "lrcinstance.h"
+#include "qmlbaseadapter.h"
 
 #include <QObject>
 #include <QString>
 
 // to ease the logic with the power of c++
-class MessageWebViewQmlObjectHolder : public QObject
+class MessageAdapter : public QmlBaseAdapter
 {
     Q_OBJECT
 
 public:
-    explicit MessageWebViewQmlObjectHolder(QObject *parent = 0);
-    ~MessageWebViewQmlObjectHolder();
+    explicit MessageAdapter(QObject *parent = 0);
+    ~MessageAdapter();
 
-    // Must call Q_INVOKABLE so that this function can be used in QML, qml to c++
-    Q_INVOKABLE void setMessageWebViewQmlObject(QObject *obj);
     Q_INVOKABLE void setupChatView(const QString &uid);
     Q_INVOKABLE void connectConversationModel();
     Q_INVOKABLE void sendContactRequest();
@@ -74,14 +73,12 @@ public slots:
     void slotDeleteInteraction(const QString &arg);
 
 private:
+    void objectSetUp() override final;
     void setConversationProfileData(const lrc::api::conversation::Info &convInfo);
     void newInteraction(const QString &accountId,
                         const QString &convUid,
                         uint64_t interactionId,
                         const interaction::Info &interaction);
-
-    // Object pointer
-    QObject *messageWebViewQmlObject_;
 
     QString LastConvUid_;
 
