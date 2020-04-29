@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2019-2020 by Savoir-faire Linux
-* Author: Isa Nanic <isa.nanic@savoirfairelinux.com>
+ * Copyright (C) 2020 by Savoir-faire Linux
+ * Author: Mingrui Zhang   <mingrui.zhang@savoirfairelinux.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,18 +16,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
+#include "qmladapterbase.h"
 
-#include <QAbstractListModel>
-
-class BannedListModel : public QAbstractListModel
+QmlAdapterBase::QmlAdapterBase(QObject *parent)
+    : QObject(parent)
 {
-    Q_OBJECT
-    BannedListModel(const BannedListModel &cpy);
+    qmlObj_ = nullptr;
+}
 
-public:
-    explicit BannedListModel(QObject *parent = nullptr);
+QmlAdapterBase::~QmlAdapterBase() {}
 
-    int rowCount(const QModelIndex &index = QModelIndex()) const override;
-    bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
-};
+void
+QmlAdapterBase::setQmlObject(QObject *obj)
+{
+    qmlObj_ = obj;
+
+    initQmlObject();
+}

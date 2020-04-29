@@ -1,17 +1,38 @@
+
+/*
+ * Copyright (C) 2020 by Savoir-faire Linux
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 import QtQuick 2.14
 import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import QtQuick.Controls.Universal 2.12
 import QtGraphicalEffects 1.14
-import net.jami.constant.jamitheme 1.0
-import net.jami.callcenter 1.0
-import net.jami.model.account 1.0
-import net.jami.tools.utils 1.0
-import net.jami.MessageWebViewQmlObjectHolder 1.0
+import net.jami.JamiTheme 1.0
+import net.jami.CallAdapter 1.0
+import net.jami.AccountListModel 1.0
+import net.jami.UtilsAdapter 1.0
+import net.jami.MessagesAdapter 1.0
 import net.jami.LrcGeneralAdapter 1.0
 
-// import qml component files
+
+/*
+ * Import qml component files.
+ */
 import "components"
 
 Window {
@@ -26,12 +47,19 @@ Window {
     property int welcomePageGroupPreferedWidth: 250
     property int aboutPopUpPreferedWidth: 250
 
-    // To calculate tab bar bottom border hidden rect left margin
+
+    /*
+     * To calculate tab bar bottom border hidden rect left margin.
+     */
     property int tabBarLeftMargin: 8
     property int tabButtonShrinkSize: 8
 
     function recursionStackViewItemMove(stackOne, stackTwo) {
-        // move all items (expect the bottom item) to stacktwo by the same order in stackone
+
+
+        /*
+         * Move all items (expect the bottom item) to stacktwo by the same order in stackone.
+         */
         if (stackOne.depth === 1) {
             return
         }
@@ -49,9 +77,15 @@ Window {
     minimumHeight: minHeight
 
     Connections {
-        target: CallCenter
+        target: CallAdapter
 
         onShowCallStack: {
+
+
+            /*
+             * Check if it is coming from the current responsible call,
+             * and push views onto the correct stackview
+             */
             if (callStackView.responsibleAccountId == accountId
                     && callStackView.responsibleConvUid == convUid) {
                 if (welcomeViewStack.visible) {
@@ -65,6 +99,11 @@ Window {
         }
 
         onCloseCallStack: {
+
+
+            /*
+             * Check if call stack view is on any of the stackview.
+             */
             if (callStackView.responsibleAccountId == accountId
                     && callStackView.responsibleConvUid == convUid) {
                 if (welcomeViewStack.find(function (item, index) {
@@ -88,6 +127,11 @@ Window {
         }
 
         onIncomingCallNeedToSetupMainView: {
+
+
+            /*
+             * Set up the call stack view that is needed by call overlay.
+             */
             welcomeViewStack.pop(null, StackView.Immediate)
             sidePanelViewStack.pop(null, StackView.Immediate)
 
@@ -109,7 +153,7 @@ Window {
             mainViewWindowSidePanel.needToChangeToAccount(accountId, index)
             mainViewWindowSidePanel.selectConversationSmartList(accountId,
                                                                 convUid)
-            messageWebViewQmlObjectHolder.setupChatView(convUid)
+            MessagesAdapter.setupChatView(convUid)
         }
     }
 
@@ -139,8 +183,11 @@ Window {
             callStackView.responsibleConvUid = currentUID
             callStackView.updateCorrspondingUI()
 
-            // set up chatview
-            messageWebViewQmlObjectHolder.setupChatView(currentUID)
+
+            /*
+             * Set up chatview.
+             */
+            MessagesAdapter.setupChatView(currentUID)
             callStackView.setCorrspondingMessageWebView(
                         communicationPageMessageWebView)
 
@@ -153,6 +200,10 @@ Window {
                     return
             }
 
+
+            /*
+             * Push messageWebView or callStackView onto the correct stackview
+             */
             welcomeViewStack.pop(null, StackView.Immediate)
             sidePanelViewStack.pop(null, StackView.Immediate)
 
@@ -180,22 +231,28 @@ Window {
         }
 
         onAccountComboBoxNeedToShowWelcomePage: {
-            // If the item argument is specified, all items down to (but not including) item will be popped
+
+
+            /*
+             * If the item argument is specified, all items down to (but not including) item will be popped.
+             */
             welcomeViewStack.pop(welcomePage)
             welcomePage.currentAccountIndex = index
+            qrDialog.currentAccountIndex = index
         }
 
         onConversationSmartListViewNeedToShowWelcomePage: {
             welcomeViewStack.pop(welcomePage)
             welcomePage.currentAccountIndex = 0
+            qrDialog.currentAccountIndex = 0
         }
 
         onAccountSignalsReconnect: {
-            messageWebViewQmlObjectHolder.accountChangedSetUp(accountId)
+            MessagesAdapter.accountChangedSetUp(accountId)
         }
 
         onNeedToUpdateConversationForAddedContact: {
-            messageWebViewQmlObjectHolder.updateConversationForAddedContact()
+            MessagesAdapter.updateConversationForAddedContact()
             mainViewWindowSidePanel.clearContactSearchBar()
             mainViewWindowSidePanel.forceReselectConversationSmartListCurrentIndex()
         }
@@ -228,10 +285,6 @@ Window {
         visible: false
     }
 
-    MessageWebViewQmlObjectHolder {
-        id: messageWebViewQmlObjectHolder
-    }
-
     MessageWebView {
         id: communicationPageMessageWebView
 
@@ -242,6 +295,14 @@ Window {
         signal toMessagesLoaded
 
         visible: false
+
+        Connections {
+            target: MessagesAdapter
+
+            onNeedToUpdateSmartList: {
+                mainViewWindowSidePanel.forceUpdateConversationSmartListView()
+            }
+        }
 
         onNeedToGoBackToWelcomeView: {
             mainViewWindowSidePanel.deselectConversationSmartList()
@@ -254,26 +315,13 @@ Window {
             }
         }
 
-        onNeedToSendContactRequest: {
-            messageWebViewQmlObjectHolder.sendContactRequest()
-        }
-
-        onAcceptInvitation: {
-            messageWebViewQmlObjectHolder.acceptInvitation()
-        }
-
-        onRefuseInvitation: {
-            messageWebViewQmlObjectHolder.refuseInvitation()
-        }
-
-        onBlockConversation: {
-            messageWebViewQmlObjectHolder.blockConversation()
-        }
-
         Component.onCompleted: {
-            // set qml MessageWebView object pointer to c++
-            messageWebViewQmlObjectHolder.setMessageWebViewQmlObject(
-                        communicationPageMessageWebView)
+
+
+            /*
+             * Set qml MessageWebView object pointer to c++.
+             */
+            MessagesAdapter.setQmlObject(this)
         }
     }
 
@@ -317,20 +365,26 @@ Window {
     }
 
     onWidthChanged: {
+
+
+        /*
+         * Hide unnecessary stackview when width is changed
+         */
         if (mainViewWindow.width < sidePanelViewStackPreferedWidth
                 + welcomePageGroupPreferedWidth - 5
                 && welcomeViewStack.visible) {
             welcomeViewStack.visible = false
 
-            //The find callback function is called for each item in the stack
+
+            /*
+             * The find callback function is called for each item in the stack.
+             */
             var inWelcomeViewStack = welcomeViewStack.find(
                         function (item, index) {
                             return index > 0
                         })
             if (inWelcomeViewStack) {
                 recursionStackViewItemMove(welcomeViewStack, sidePanelViewStack)
-                //sidePanelViewStack.push(welcomeViewStack.pop(StackView.Immediate), StackView.Immediate)
-                //welcomeViewStack.pop(null)
             }
 
             sidePanelViewStack.maximumWidth = splitView.width
@@ -347,8 +401,6 @@ Window {
                         })
             if (inSidePanelViewStack) {
                 recursionStackViewItemMove(sidePanelViewStack, welcomeViewStack)
-                //welcomeViewStack.push(sidePanelViewStack.pop(StackView.Immediate), StackView.Immediate)
-                //sidePanelViewStack.pop(null)
             }
 
             sidePanelViewStack.maximumWidth = sidePanelViewStackPreferedWidth + 100
@@ -363,7 +415,7 @@ Window {
         x: Math.round((mainViewWindow.width - width) / 2)
         y: Math.round((mainViewWindow.height - height) / 2)
         width: Math.min(mainViewWindow.width, mainViewWindow.height) / 3 * 2
-        // when dialog is opened, trigger mainViewWindow overlay which is defined in overlay.model (model : true is necessary)
+
         modal: true
 
         standardButtons: Dialog.Ok | Dialog.Cancel
@@ -390,7 +442,16 @@ Window {
         height: aboutPopUpDialog.contentHeight
     }
 
+    WelcomePageQrDialog {
+        id: qrDialog
+
+        x: Math.round((mainViewWindow.width - width) / 2)
+        y: Math.round((mainViewWindow.height - height) / 2)
+        width: qrDialog.contentHeight
+        height: qrDialog.contentHeight
+    }
+
     Component.onCompleted: {
-        CallCenter.init()
+        CallAdapter.initQmlObject()
     }
 }

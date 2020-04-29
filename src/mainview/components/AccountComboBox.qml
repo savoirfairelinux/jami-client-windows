@@ -1,8 +1,25 @@
+
+/*
+ * Copyright (C) 2020 by Savoir-faire Linux
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 import QtQuick 2.14
-import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
-import net.jami.constant.jamitheme 1.0
+import net.jami.JamiTheme 1.0
 
 import "../../commoncomponents"
 
@@ -23,6 +40,10 @@ ComboBox {
         accountComboBox.needToUpdateSmartList(accountId)
     }
 
+
+    /*
+     * Refresh every item in accountListModel.
+     */
     function updateAccountListModel() {
         accountListModel.dataChanged(accountListModel.index(0, 0),
                                      accountListModel.index(
@@ -40,6 +61,11 @@ ComboBox {
         height: accountComboBox.height - 10
 
         fillMode: Image.PreserveAspectFit
+
+
+        /*
+         * Base 64 format
+         */
         source: "data:image/png;base64," + accountListModel.data(
                     accountListModel.index(accountComboBox.currentIndex, 0),
                     259)
@@ -56,7 +82,10 @@ ComboBox {
             width: 14
             height: 14
 
-            // enum REGISTERED == 5
+
+            /*
+             * Visible when account is registered, enum REGISTERED == 5.
+             */
             visible: accountListModel.data(accountListModel.index(
                                                accountComboBox.currentIndex,
                                                0), 261) === 5
@@ -109,6 +138,11 @@ ComboBox {
         font: textUserAliasRoot.font
         elide: Text.ElideMiddle
         elideWidth: accountComboBox.width - userImageRoot.width - settingsButton.width - 25
+
+
+        /*
+         * Role::Alias
+         */
         text: accountListModel.data(accountListModel.index(
                                         accountComboBox.currentIndex, 0), 257)
     }
@@ -119,6 +153,11 @@ ComboBox {
         font: textUsernameRoot.font
         elide: Text.ElideMiddle
         elideWidth: accountComboBox.width - userImageRoot.width - settingsButton.width - 25
+
+
+        /*
+         * Role::Username
+         */
         text: accountListModel.data(accountListModel.index(
                                         accountComboBox.currentIndex, 0), 258)
     }
@@ -193,7 +232,11 @@ ComboBox {
             rootItemBackground.color = "white"
         }
         onMouseXChanged: {
-            // manually make settings button hover
+
+
+            /*
+             * Manually making settings button hover
+             */
             if (isMouseOnSettingsButton(mouse)) {
                 settingButtonRect.color = JamiTheme.hoverColor
                 rootItemBackground.color = "white"
@@ -218,135 +261,15 @@ ComboBox {
 
     indicator: null
 
-    // overwrite the combo box pop up to add footer (for add accounts)
-    popup: Popup {
+
+    /*
+     * Overwrite the combo box pop up to add footer (for add accounts).
+     */
+    popup: AccountComboBoxPopup {
         id: comboBoxPopup
 
-        y: accountComboBox.height - 1
-        implicitWidth: accountComboBox.width - 1
-        // hack - limite the accounts that can be shown
-        implicitHeight: Math.min(accountComboBox.height * Math.min(
-                                     5, accountListModel.rowCount()),
-                                 sidePanelRect.height)
-        padding: 0
-
-        contentItem: ListView {
-            id: comboBoxPopupListView
-
-            clip: true
-            model: accountListModel
-            implicitHeight: contentHeight
-            delegate: ItemDelegate {
-
-                Image {
-                    id: userImage
-
-                    anchors.left: parent.left
-                    anchors.leftMargin: 5
-                    anchors.verticalCenter: parent.verticalCenter
-
-                    width: 30
-                    height: parent.height
-
-                    fillMode: Image.PreserveAspectFit
-                    mipmap: true
-                    // in list view, index a signal interger
-                    source: "data:image/png;base64," + accountListModel.data(
-                                accountListModel.index(index, 0), 259)
-                }
-
-                Text {
-                    id: textUserAliasPopup
-
-                    anchors.left: userImage.right
-                    anchors.leftMargin: 10
-                    anchors.top: itemCoboBackground.top
-                    anchors.topMargin: 5
-
-                    text: textMetricsUserAliasPopup.elidedText
-                    font.pointSize: JamiTheme.textFontSize
-                }
-
-                Text {
-                    id: textUsernamePopup
-
-                    anchors.left: userImage.right
-                    anchors.leftMargin: 10
-                    anchors.top: textUserAliasPopup.bottom
-                    anchors.topMargin: 5
-
-                    text: textMetricsUsernamePopup.elidedText
-                    font.pointSize: JamiTheme.textFontSize
-                    color: JamiTheme.faddedFontColor
-                }
-
-                TextMetrics {
-                    id: textMetricsUserAliasPopup
-                    elide: Text.ElideMiddle
-                    elideWidth: accountComboBox.width - userImage.width - settingsButton.width - 30
-                    text: Alias
-                }
-
-                TextMetrics {
-                    id: textMetricsUsernamePopup
-                    elide: Text.ElideMiddle
-                    elideWidth: accountComboBox.width - userImage.width - settingsButton.width - 30
-                    text: Username
-                }
-
-                background: Rectangle {
-                    id: itemCoboBackground
-
-                    implicitWidth: accountComboBox.width
-                    implicitHeight: accountComboBox.height
-                    border.width: 0
-                }
-
-                MouseArea {
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    onPressed: {
-                        itemCoboBackground.color = JamiTheme.pressColor
-                    }
-                    onReleased: {
-                        itemCoboBackground.color = JamiTheme.releaseColor
-                        currentIndex = index
-                        comboBoxPopup.close()
-                        accountComboBox.accountChanged(index)
-                    }
-                    onEntered: {
-                        itemCoboBackground.color = JamiTheme.hoverColor
-                    }
-                    onExited: {
-                        itemCoboBackground.color = "white"
-                    }
-                }
-            }
-
-            footer: HoverableButton {
-                id: comboBoxFooterItem
-
-                implicitWidth: accountComboBox.width
-                implicitHeight: accountComboBox.height
-
-                text: qsTr("Add Account") + "+"
-                backgroundColor: "white"
-                onExitColor: "white"
-            }
-
-            ScrollIndicator.vertical: ScrollIndicator {}
-        }
-        background: Rectangle {
-            id: accountComboBoxPopup
-
-            CustomBorder {
-                commonBorder: false
-                lBorderwidth: 0
-                rBorderwidth: 1
-                tBorderwidth: 0
-                bBorderwidth: 1
-                borderColor: JamiTheme.tabbarBorderColor
-            }
+        onAccountNeedToChange: {
+            accountComboBox.accountChanged(index)
         }
     }
 }

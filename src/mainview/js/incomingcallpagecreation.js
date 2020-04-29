@@ -1,11 +1,40 @@
-// map<accountId, map<convUid, callwindowpointer>>
+
+/*
+ * Copyright (C) 2020 by Savoir-faire Linux
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+
+/*
+ * Global incomingCallPage storage map<accountId, map<convUid, callwindowpointer>>.
+ */
 let incomingCallPageWindowMap = new Map()
 
+
+/*
+ * Global incomingCallPage component, object variable for creation.
+ */
 var incomingCallPageWindowComponent
 var incomingCallPageWindowObject
 
 function createincomingCallPageWindowObjects(accountId, convUid) {
-    // check if the corrsponding call exists or not
+
+    /*
+     * Check if the corrsponding call exists or not.
+     */
     if (incomingCallPageWindowMap.has(accountId)) {
         if (incomingCallPageWindowMap.get(accountId).has(convUid)) {
             return
@@ -24,7 +53,10 @@ function finishCreation(accountId, convUid) {
     if (incomingCallPageWindowComponent.status === Component.Ready) {
         incomingCallPageWindowObject = incomingCallPageWindowComponent.createObject()
         if (incomingCallPageWindowObject === null) {
-            // Error Handling
+
+            /*
+             * Error Handling.
+             */
             console.log("Error creating object for accountId" + accountId)
         }
 
@@ -32,7 +64,9 @@ function finishCreation(accountId, convUid) {
         incomingCallPageWindowObject.responsibleAccountId = accountId
         incomingCallPageWindowObject.updateUI()
 
-        // set maps
+        /*
+         * Record in map.
+         */
         if (incomingCallPageWindowMap.has(accountId)) {
             incomingCallPageWindowMap.get(accountId).set(
                         convUid, incomingCallPageWindowObject)
@@ -44,7 +78,6 @@ function finishCreation(accountId, convUid) {
                                           incomingCallPageWindowTempMap)
         }
     } else if (incomingCallPageWindowComponent.status === Component.Error) {
-        // Error Handling
         console.log("Error loading component:",
                     incomingCallPageWindowComponent.errorString())
     }
@@ -65,6 +98,10 @@ function closeIncomingCallPageWindow(accountId, convUid) {
         if (incomingCallPageWindowTempMap.has(convUid)) {
             var incomingCallPageWindow = incomingCallPageWindowTempMap.get(
                         convUid)
+
+            /*
+             * Close incomingCallPageWindow and clear the memory
+             */
             incomingCallPageWindow.close()
             incomingCallPageWindow.destroy()
             incomingCallPageWindowTempMap.delete(convUid)
