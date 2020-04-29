@@ -1,6 +1,7 @@
+
 /*
  * Copyright (C) 2020 by Savoir-faire Linux
- * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,27 +16,36 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
+import QtQuick 2.14
+import QtQuick.Controls 2.14
+import net.jami.JamiTheme 1.0
 
-#pragma once
+ScrollView {
+    id: changeLogScrollView
 
-#include "lrcinstance.h"
+    anchors.fill: parent
 
-#include <QJsEngine>
-#include <QQmlEngine>
+    clip: true
 
-using namespace lrc::api;
+    ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
 
-class LrcGeneralAdapter : public QObject
-{
-    Q_OBJECT;
+    TextEdit {
+        id: changeLogTextArea
 
-public:
-    explicit LrcGeneralAdapter(QObject *parent = 0);
-    ~LrcGeneralAdapter();
+        width: changeLogScrollView.width
 
-    Q_INVOKABLE const QString getCurrAccId();
-    Q_INVOKABLE const QStringList getCurrAccList();
-    Q_INVOKABLE void setCurrentCall(const QString &accountId, const QString &convUid);
-    Q_INVOKABLE void startPreviewing(bool force);
-    Q_INVOKABLE void stopPreviewing();
-};
+        readOnly: true
+        wrapMode: Text.WordWrap
+
+        font.pointSize: JamiTheme.textFontSize - 3
+        text: utilsAdapter.getChangeLog()
+        textFormat: TextEdit.RichText
+    }
+
+    background: Rectangle {
+        id: changeLogScrollViewBackground
+
+        radius: 5
+        border.color: JamiTheme.tabbarBorderColor
+    }
+}
