@@ -16,6 +16,7 @@ Item {
     signal showIncomingCallPage(string accountId, string convUid)
     signal showOutgoingCallPage(string accountId, string convUid)
     signal showAudioCallPage(string accountId, string convUid)
+    signal showVideoCallPage(string accountId, string convUid, string callId)
 
     signal callStatusChanged(string status, string accountId, string convUid)
     signal needToUpdateConversationSmartList
@@ -24,6 +25,10 @@ Item {
 
     function placeAudioOnlyCall() {
         callCenterQmlObjectHolder.placeAudioOnlyCall()
+    }
+
+    function placeCall() {
+        callCenterQmlObjectHolder.placeCall()
     }
 
     function hangUpACall(accountId, convUid) {
@@ -61,6 +66,11 @@ Item {
 
         onShowAudioCallPage: {
             callCenter.showAudioCallPage(accountId, convUid)
+            callCenter.showCallStack(accountId, convUid)
+        }
+
+        onShowVideoCallPage: {
+            callCenter.showVideoCallPage(accountId, convUid, callId)
             callCenter.showCallStack(accountId, convUid)
         }
 
