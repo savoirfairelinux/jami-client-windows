@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aaf96db_8bb127db",
+        "filename": "src/messageadapter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-04-29T18:39:28Z",
+      "side": 1,
+      "message": "MessageAdapter --\u003e MessagesAdapter",
+      "revId": "2beaf16187f33665a68a7a4b81811a2a61e96f41",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c93ed0ef_f6efd8f8",
+        "filename": "src/qmlbaseadapter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-04-29T18:39:28Z",
+      "side": 1,
+      "message": "pls start using the header that has no * at the end\nex:\n/*\n * Copyright (C) 2020 by Savoir-faire Linux\n * Author: Mingrui Zhang   \u003cmingrui.zhang@savoirfairelinux.com\u003e\n...\n */",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 76
+      },
+      "revId": "2beaf16187f33665a68a7a4b81811a2a61e96f41",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41194987_76dae94f",
+        "filename": "src/qmlbaseadapter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-04-29T18:39:28Z",
+      "side": 1,
+      "message": "same no * at the end with multiline comment blocks. prepare for doxygen!",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 82
+      },
+      "revId": "2beaf16187f33665a68a7a4b81811a2a61e96f41",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28361465_6dbe434d",
+        "filename": "src/qmlbaseadapter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-04-29T18:39:28Z",
+      "side": 1,
+      "message": "the reader must have an understanding of Q_INVOKABLE, so just explain that this function should be called in the Component.onCompleted slot in the qml component this adapter is currently attached to. If needed in the future, this could add to list of unique object pointers if it needs to be connected to more than one component at a time. Otherwise, it each component takes ownership one at a time to receive qml method invokation requests.",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 81
+      },
+      "revId": "2beaf16187f33665a68a7a4b81811a2a61e96f41",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b92e6e56_b81fc3ec",
+        "filename": "src/qmlbaseadapter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-04-29T18:39:28Z",
+      "side": 1,
+      "message": "should this really be virtual?",
+      "range": {
+        "startLine": 37,
+        "startChar": 16,
+        "endLine": 37,
+        "endChar": 23
+      },
+      "revId": "2beaf16187f33665a68a7a4b81811a2a61e96f41",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b1bad9f_9e09471f",
+        "filename": "src/qmlbaseadapter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-04-29T18:39:28Z",
+      "side": 1,
+      "message": "setQmlObject is better imo",
+      "range": {
+        "startLine": 37,
+        "startChar": 29,
+        "endLine": 37,
+        "endChar": 42
+      },
+      "revId": "2beaf16187f33665a68a7a4b81811a2a61e96f41",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2288956_478f4abc",
+        "filename": "src/qmlbaseadapter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-04-29T18:39:28Z",
+      "side": 1,
+      "message": "comment here",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 35
+      },
+      "revId": "2beaf16187f33665a68a7a4b81811a2a61e96f41",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "585d87ae_20e4cfa4",
+        "filename": "src/qmlbaseadapter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-04-29T18:39:28Z",
+      "side": 1,
+      "message": "initQmlObject",
+      "range": {
+        "startLine": 40,
+        "startChar": 17,
+        "endLine": 40,
+        "endChar": 28
+      },
+      "revId": "2beaf16187f33665a68a7a4b81811a2a61e96f41",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e342b51a_f4c474e7",
+        "filename": "src/qmlbaseadapter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-04-29T18:39:28Z",
+      "side": 1,
+      "message": "qmlObj_",
+      "range": {
+        "startLine": 43,
+        "startChar": 13,
+        "endLine": 43,
+        "endChar": 36
+      },
+      "revId": "2beaf16187f33665a68a7a4b81811a2a61e96f41",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
