@@ -47,3 +47,17 @@ LrcGeneralAdapter::setCurrentCall(const QString &accountId, const QString &convU
     auto &accInfo = LRCInstance::getAccountInfo(accountId);
     accInfo.callModel->setCurrentCall(convInfo.callId);
 }
+
+Q_INVOKABLE void
+LrcGeneralAdapter::startPreviewing(bool force)
+{
+    LRCInstance::renderer()->startPreviewing(force);
+}
+
+Q_INVOKABLE void
+LrcGeneralAdapter::stopPreviewing()
+{
+    if (!LRCInstance::hasVideoCall()) {
+        LRCInstance::renderer()->stopPreviewing();
+    }
+}

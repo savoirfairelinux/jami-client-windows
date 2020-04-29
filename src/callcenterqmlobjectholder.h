@@ -34,6 +34,7 @@ public:
     // Must call Q_INVOKABLE so that this function can be used in QML, qml to c++
     Q_INVOKABLE void setCallCenterQmlObjectHolder(QObject *obj);
     Q_INVOKABLE void placeAudioOnlyCall();
+    Q_INVOKABLE void placeCall();
     Q_INVOKABLE void hangUpACall(const QString &accountId, const QString &convUid);
     Q_INVOKABLE void refuseACall(const QString &accountId, const QString &convUid);
     Q_INVOKABLE void acceptACall(const QString &accountId, const QString &convUid);
@@ -44,6 +45,7 @@ signals:
     void showOutgoingCallPage(const QString &accountId, const QString &convUid);
     void showIncomingCallPage(const QString &accountId, const QString &convUid);
     void showAudioCallPage(const QString &accountId, const QString &convUid);
+    void showVideoCallPage(const QString &accountId, const QString &convUid, const QString &callId);
     void callStatusChanged(const QString &status, const QString &accountId, const QString &convUid);
     void closeCallWindow(const QString &accountId, const QString &convUid);
     void updateConversationSmartList();

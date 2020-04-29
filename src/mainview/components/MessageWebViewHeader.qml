@@ -168,6 +168,11 @@ Rectangle {
                 source: "qrc:/images/icons/ic_video_call_24px.svg"
                 backgroundColor: "white"
                 onExitColor: "white"
+
+                onClicked: {
+                    messagingHeaderRect.sendContactRequestButtonClicked()
+                    CallCenter.placeCall()
+                }
             }
 
             HoverableButton {
