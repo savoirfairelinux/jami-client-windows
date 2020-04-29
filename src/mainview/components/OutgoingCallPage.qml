@@ -3,8 +3,8 @@ import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import QtQuick.Controls.Universal 2.12
-import net.jami.constant.jamitheme 1.0
-import net.jami.callcenter 1.0
+import net.jami.JamiTheme 1.0
+import net.jami.CallAdapter 1.0
 
 import "../../commoncomponents"
 

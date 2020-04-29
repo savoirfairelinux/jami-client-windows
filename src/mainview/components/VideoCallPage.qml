@@ -4,8 +4,8 @@ import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import QtQuick.Controls.Universal 2.12
 import QtGraphicalEffects 1.14
-import net.jami.constant.jamitheme 1.0
-import net.jami.CallOverlayQmlObjectHolder 1.0
+import net.jami.JamiTheme 1.0
+import net.jami.CallAdapter 1.0
 import net.jami.DistantRenderer 1.0
 import net.jami.VideoCallPreviewRenderer 1.0
 
@@ -31,7 +31,7 @@ Rectangle {
         var id = utilsAdapter.getBestId(accountId, convUid)
         bestId = (bestName !== id) ? id : ""
 
-        callOverlayQmlObjectHolder.updateCallOverlay(accountId, convUid)
+        CallAdapter.updateCallOverlay(accountId, convUid)
     }
 
     function setDistantRendererId(id) {
@@ -119,34 +119,36 @@ Rectangle {
             SplitView.minimumHeight: videoCallPageRect.height / 2 + 20
             SplitView.fillWidth: true
 
-            CallOverlayQmlObjectHolder {
-                id: callOverlayQmlObjectHolder
-
-                onUpdateTimeText: {
-                    videoCallOverlay.timeText = time
-                }
-
-                onButtonStatusChanged: {
-                    videoCallOverlay.showOnHoldImage(isPaused)
-                    videoCallOverlay.updateButtonStatus(isPaused, isAudioOnly,
-                                                        isAudioMuted,
-                                                        isVideoMuted,
-                                                        isRecording)
-                }
-
-                onShowOnHoldLabel: {
-                    videoCallOverlay.showOnHoldImage(isPaused)
-                }
-
-                onUpdateBestName: {
-                    videoCallOverlay.bestName = bestNameToBeUpdated
-                }
-            }
-
             CallOverlay {
                 id: videoCallOverlay
 
                 anchors.fill: parent
+
+                Connections {
+                    target: CallAdapter
+
+                    onUpdateTimeText: {
+                        videoCallOverlay.timeText = time
+                    }
+
+                    onButtonStatusChanged: {
+                        videoCallOverlay.showOnHoldImage(isPaused)
+                        videoCallOverlay.updateButtonStatus(isPaused,
+                                                            isAudioOnly,
+                                                            isAudioMuted,
+                                                            isVideoMuted,
+                                                            isRecording, isSIP,
+                                                            isConferenceCall)
+                    }
+
+                    onShowOnHoldLabel: {
+                        videoCallOverlay.showOnHoldImage(isPaused)
+                    }
+
+                    onUpdateBestName: {
+                        videoCallOverlay.bestName = bestNameToBeUpdated
+                    }
+                }
 
                 onBackButtonIsClicked: {
                     if (inVideoCallMessageWebViewStack.visible) {
@@ -158,10 +160,6 @@ Rectangle {
                         inVideoCallMessageWebViewStack.clear()
                     }
                     videoCallPageRect.videoCallPageBackButtonIsClicked()
-                }
-
-                onOverlayHangUpButtonClicked: {
-                    callOverlayQmlObjectHolder.hangUpThisCall()
                 }
 
                 onOverlayChatButtonClicked: {
@@ -181,23 +179,6 @@ Rectangle {
                         inVideoCallMessageWebViewStack.push(
                                     corrspondingMessageWebView)
                     }
-                }
-
-                onOverlayHoldButtonToggled: {
-                    callOverlayQmlObjectHolder.holdThisCallToggle()
-                }
-
-                onOverlayNoMicButtonToggled: {
-                    callOverlayQmlObjectHolder.muteThisCallToggle()
-                }
-
-                onOverlayRecButtonToggled: {
-                    callOverlayQmlObjectHolder.recordThisCallToggle()
-                }
-
-                Component.onCompleted: {
-                    callOverlayQmlObjectHolder.setCallOverlayQmlObjectHolder(
-                                videoCallOverlay)
                 }
             }
 
@@ -230,18 +211,6 @@ Rectangle {
                 x: videoCallPageMainRect.width - previewRenderer.width - previewMargin
                 y: videoCallPageMainRect.height - previewRenderer.height - previewMargin
                 z: -1
-
-                /*layer.enabled: true
-                layer.effect: OpacityMask {
-                    maskSource: Rectangle {
-                        id: mask
-
-                        width: previewRenderer.width
-                        height: previewRenderer.height
-
-                        radius: 15
-                    }
-                }*/
 
                 states: [
                     State {

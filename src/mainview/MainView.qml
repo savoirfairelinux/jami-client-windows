@@ -4,11 +4,11 @@ import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import QtQuick.Controls.Universal 2.12
 import QtGraphicalEffects 1.14
-import net.jami.constant.jamitheme 1.0
-import net.jami.callcenter 1.0
-import net.jami.model.account 1.0
-import net.jami.tools.utils 1.0
-import net.jami.MessageWebViewQmlObjectHolder 1.0
+import net.jami.JamiTheme 1.0
+import net.jami.CallAdapter 1.0
+import net.jami.AccountListModel 1.0
+import net.jami.UtilsAdapter 1.0
+import net.jami.MessagesAdapter 1.0
 import net.jami.LrcGeneralAdapter 1.0
 
 // import qml component files
@@ -49,7 +49,7 @@ Window {
     minimumHeight: minHeight
 
     Connections {
-        target: CallCenter
+        target: CallAdapter
 
         onShowCallStack: {
             if (callStackView.responsibleAccountId == accountId
@@ -109,7 +109,7 @@ Window {
             mainViewWindowSidePanel.needToChangeToAccount(accountId, index)
             mainViewWindowSidePanel.selectConversationSmartList(accountId,
                                                                 convUid)
-            messageWebViewQmlObjectHolder.setupChatView(convUid)
+            MessagesAdapter.setupChatView(convUid)
         }
     }
 
@@ -140,7 +140,7 @@ Window {
             callStackView.updateCorrspondingUI()
 
             // set up chatview
-            messageWebViewQmlObjectHolder.setupChatView(currentUID)
+            MessagesAdapter.setupChatView(currentUID)
             callStackView.setCorrspondingMessageWebView(
                         communicationPageMessageWebView)
 
@@ -183,19 +183,21 @@ Window {
             // If the item argument is specified, all items down to (but not including) item will be popped
             welcomeViewStack.pop(welcomePage)
             welcomePage.currentAccountIndex = index
+            qrDialog.currentAccountIndex = index
         }
 
         onConversationSmartListViewNeedToShowWelcomePage: {
             welcomeViewStack.pop(welcomePage)
             welcomePage.currentAccountIndex = 0
+            qrDialog.currentAccountIndex = 0
         }
 
         onAccountSignalsReconnect: {
-            messageWebViewQmlObjectHolder.accountChangedSetUp(accountId)
+            MessagesAdapter.accountChangedSetUp(accountId)
         }
 
         onNeedToUpdateConversationForAddedContact: {
-            messageWebViewQmlObjectHolder.updateConversationForAddedContact()
+            MessagesAdapter.updateConversationForAddedContact()
             mainViewWindowSidePanel.clearContactSearchBar()
             mainViewWindowSidePanel.forceReselectConversationSmartListCurrentIndex()
         }
@@ -228,10 +230,6 @@ Window {
         visible: false
     }
 
-    MessageWebViewQmlObjectHolder {
-        id: messageWebViewQmlObjectHolder
-    }
-
     MessageWebView {
         id: communicationPageMessageWebView
 
@@ -255,25 +253,24 @@ Window {
         }
 
         onNeedToSendContactRequest: {
-            messageWebViewQmlObjectHolder.sendContactRequest()
+            MessagesAdapter.sendContactRequest()
         }
 
         onAcceptInvitation: {
-            messageWebViewQmlObjectHolder.acceptInvitation()
+            MessagesAdapter.acceptInvitation()
         }
 
         onRefuseInvitation: {
-            messageWebViewQmlObjectHolder.refuseInvitation()
+            MessagesAdapter.refuseInvitation()
         }
 
         onBlockConversation: {
-            messageWebViewQmlObjectHolder.blockConversation()
+            MessagesAdapter.blockConversation()
         }
 
         Component.onCompleted: {
             // set qml MessageWebView object pointer to c++
-            messageWebViewQmlObjectHolder.setMessageWebViewQmlObject(
-                        communicationPageMessageWebView)
+            MessagesAdapter.setQmlObject(this)
         }
     }
 
@@ -390,7 +387,16 @@ Window {
         height: aboutPopUpDialog.contentHeight
     }
 
+    WelcomePageQrDialog {
+        id: qrDialog
+
+        x: Math.round((mainViewWindow.width - width) / 2)
+        y: Math.round((mainViewWindow.height - height) / 2)
+        width: qrDialog.contentHeight
+        height: qrDialog.contentHeight
+    }
+
     Component.onCompleted: {
-        CallCenter.init()
+        CallAdapter.initQmlObject()
     }
 }
