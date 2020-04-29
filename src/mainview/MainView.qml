@@ -206,7 +206,7 @@ Window {
 
         objectName: "callStackViewObject"
 
-        onAudioCallPageBackButtonIsClicked: {
+        onCallPageBackButtonIsClicked: {
             mainViewWindowSidePanel.deselectConversationSmartList()
             if (welcomeViewStack.visible)
                 welcomeViewStack.pop(welcomePage)
