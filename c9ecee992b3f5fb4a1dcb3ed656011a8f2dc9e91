@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0bbe012_d4f034f6",
+        "filename": "src/mainapplication.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-04-29T19:37:15Z",
+      "side": 1,
+      "message": "maybe you can define a macro like:\n\n#define QML_REGISTERSINGLETONTYPE(T, MAJ, MIN) \\\n    qmlRegisterSingletonType\u003cT\u003e(\"net.jami.\"#T, \\\n                                MAJ, MIN, #T, \\\n                                [](QQmlEngine *e, QJSEngine *se) -\u003e QObject * { \\\n                                    Q_UNUSED(e); Q_UNUSED(se); \\\n                                    T *obj \u003d new T(); return obj; \\\n                                });\n\nthen just do QML_REGISTERSINGLETONTYPE(MessagesAdapter, 1, 0);\n\nand replace others",
+      "range": {
+        "startLine": 326,
+        "startChar": 4,
+        "endLine": 337,
+        "endChar": 49
+      },
+      "revId": "c9ecee992b3f5fb4a1dcb3ed656011a8f2dc9e91",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}

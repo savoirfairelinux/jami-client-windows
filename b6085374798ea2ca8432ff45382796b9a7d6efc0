@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fbc167a_af4345da",
+        "filename": "src/qmlbaseadapter.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-04-29T19:37:15Z",
+      "side": 1,
+      "message": "QmlBaseAdapter --\u003e QmlAdapterBase. Generally, the least specific quality at the end.",
+      "revId": "b6085374798ea2ca8432ff45382796b9a7d6efc0",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbd808ec_9506f1c3",
+        "filename": "src/qmlbaseadapter.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-04-29T19:37:15Z",
+      "side": 1,
+      "message": "We should have the habit of placing comments starting with a capital letter and ending with a period, unless the end is a bullet list or a diagram, etc. Same for others below.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 3
+      },
+      "revId": "b6085374798ea2ca8432ff45382796b9a7d6efc0",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faaf2503_f84f2fa3",
+        "filename": "src/qmlbaseadapter.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-04-29T19:37:15Z",
+      "side": 1,
+      "message": "remove this extra line",
+      "revId": "b6085374798ea2ca8432ff45382796b9a7d6efc0",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
