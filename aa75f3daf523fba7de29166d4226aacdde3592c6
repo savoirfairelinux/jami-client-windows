@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d221ae2_1af55529",
+        "filename": "src/messagewebviewqmlobjectholder.h",
+        "patchSetId": 75
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-04-29T16:26:53Z",
+      "side": 1,
+      "message": "merge these class types with adapters, register singleton ?",
+      "revId": "aa75f3daf523fba7de29166d4226aacdde3592c6",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "260f0d44_c2b0c0c9",
+        "filename": "src/messagewebviewqmlobjectholder.h",
+        "patchSetId": 75
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-04-29T16:26:53Z",
+      "side": 1,
+      "message": "setObject(...) in base class QmlAdapter",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 62
+      },
+      "revId": "aa75f3daf523fba7de29166d4226aacdde3592c6",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11a20eef_dfdb1db7",
+        "filename": "src/messagewebviewqmlobjectholder.h",
+        "patchSetId": 75
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-04-29T16:26:53Z",
+      "side": 1,
+      "message": "-\u003e obj_",
+      "range": {
+        "startLine": 70,
+        "startChar": 13,
+        "endLine": 70,
+        "endChar": 37
+      },
+      "revId": "aa75f3daf523fba7de29166d4226aacdde3592c6",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
