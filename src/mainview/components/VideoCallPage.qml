@@ -1,11 +1,28 @@
+
+/*
+ * Copyright (C) 2020 by Savoir-faire Linux
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 import QtQuick 2.14
-import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import QtQuick.Controls.Universal 2.12
 import QtGraphicalEffects 1.14
-import net.jami.constant.jamitheme 1.0
-import net.jami.CallOverlayQmlObjectHolder 1.0
+import net.jami.JamiTheme 1.0
+import net.jami.CallAdapter 1.0
 import net.jami.DistantRenderer 1.0
 import net.jami.VideoCallPreviewRenderer 1.0
 
@@ -31,7 +48,7 @@ Rectangle {
         var id = utilsAdapter.getBestId(accountId, convUid)
         bestId = (bestName !== id) ? id : ""
 
-        callOverlayQmlObjectHolder.updateCallOverlay(accountId, convUid)
+        CallAdapter.updateCallOverlay(accountId, convUid)
     }
 
     function setDistantRendererId(id) {
@@ -57,7 +74,11 @@ Rectangle {
     }
 
     function previewMagneticSnap() {
-        // Calculate the position where the previewRenderer should attach to
+
+
+        /*
+         * Calculate the position where the previewRenderer should attach to.
+         */
         var previewRendererCenter = Qt.point(
                     previewRenderer.x + previewRenderer.width / 2,
                     previewRenderer.y + previewRenderer.height / 2)
@@ -119,34 +140,36 @@ Rectangle {
             SplitView.minimumHeight: videoCallPageRect.height / 2 + 20
             SplitView.fillWidth: true
 
-            CallOverlayQmlObjectHolder {
-                id: callOverlayQmlObjectHolder
-
-                onUpdateTimeText: {
-                    videoCallOverlay.timeText = time
-                }
-
-                onButtonStatusChanged: {
-                    videoCallOverlay.showOnHoldImage(isPaused)
-                    videoCallOverlay.updateButtonStatus(isPaused, isAudioOnly,
-                                                        isAudioMuted,
-                                                        isVideoMuted,
-                                                        isRecording)
-                }
-
-                onShowOnHoldLabel: {
-                    videoCallOverlay.showOnHoldImage(isPaused)
-                }
-
-                onUpdateBestName: {
-                    videoCallOverlay.bestName = bestNameToBeUpdated
-                }
-            }
-
             CallOverlay {
                 id: videoCallOverlay
 
                 anchors.fill: parent
+
+                Connections {
+                    target: CallAdapter
+
+                    onUpdateTimeText: {
+                        videoCallOverlay.timeText = time
+                    }
+
+                    onButtonStatusChanged: {
+                        videoCallOverlay.showOnHoldImage(isPaused)
+                        videoCallOverlay.updateButtonStatus(isPaused,
+                                                            isAudioOnly,
+                                                            isAudioMuted,
+                                                            isVideoMuted,
+                                                            isRecording, isSIP,
+                                                            isConferenceCall)
+                    }
+
+                    onShowOnHoldLabel: {
+                        videoCallOverlay.showOnHoldImage(isPaused)
+                    }
+
+                    onUpdateBestName: {
+                        videoCallOverlay.bestName = bestNameToBeUpdated
+                    }
+                }
 
                 onBackButtonIsClicked: {
                     if (inVideoCallMessageWebViewStack.visible) {
@@ -158,10 +181,6 @@ Rectangle {
                         inVideoCallMessageWebViewStack.clear()
                     }
                     videoCallPageRect.videoCallPageBackButtonIsClicked()
-                }
-
-                onOverlayHangUpButtonClicked: {
-                    callOverlayQmlObjectHolder.hangUpThisCall()
                 }
 
                 onOverlayChatButtonClicked: {
@@ -182,23 +201,6 @@ Rectangle {
                                     corrspondingMessageWebView)
                     }
                 }
-
-                onOverlayHoldButtonToggled: {
-                    callOverlayQmlObjectHolder.holdThisCallToggle()
-                }
-
-                onOverlayNoMicButtonToggled: {
-                    callOverlayQmlObjectHolder.muteThisCallToggle()
-                }
-
-                onOverlayRecButtonToggled: {
-                    callOverlayQmlObjectHolder.recordThisCallToggle()
-                }
-
-                Component.onCompleted: {
-                    callOverlayQmlObjectHolder.setCallOverlayQmlObjectHolder(
-                                videoCallOverlay)
-                }
             }
 
             DistantRenderer {
@@ -215,7 +217,8 @@ Rectangle {
                 id: previewRenderer
 
 
-                /* Property is used in the {} expression for height (extra dependency),
+                /*
+                 * Property is used in the {} expression for height (extra dependency),
                  * it will not affect the true height expression, since expression
                  * at last will be taken only, but it will force the height to update
                  * and reevaluate getPreviewImageScalingFactor().
@@ -230,18 +233,6 @@ Rectangle {
                 x: videoCallPageMainRect.width - previewRenderer.width - previewMargin
                 y: videoCallPageMainRect.height - previewRenderer.height - previewMargin
                 z: -1
-
-                /*layer.enabled: true
-                layer.effect: OpacityMask {
-                    maskSource: Rectangle {
-                        id: mask
-
-                        width: previewRenderer.width
-                        height: previewRenderer.height
-
-                        radius: 15
-                    }
-                }*/
 
                 states: [
                     State {
@@ -281,13 +272,20 @@ Rectangle {
                     }
 
                     onPositionChanged: {
-                        // Calculate mouse position relative change
+
+
+                        /*
+                         * Calculate mouse position relative change.
+                         */
                         var delta = Qt.point(mouse.x - clickPos.x,
                                              mouse.y - clickPos.y)
                         var deltaW = previewRenderer.x + delta.x + previewRenderer.width
                         var deltaH = previewRenderer.y + delta.y + previewRenderer.height
 
-                        // Check if the previewRenderer exceeds the border of videoCallPageMainRect
+
+                        /*
+                         * Check if the previewRenderer exceeds the border of videoCallPageMainRect.
+                         */
                         if (deltaW < videoCallPageMainRect.width
                                 && previewRenderer.x + delta.x > 1)
                             previewRenderer.x += delta.x

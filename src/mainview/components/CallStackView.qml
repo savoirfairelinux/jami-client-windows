@@ -1,9 +1,27 @@
+
+/*
+ * Copyright (C) 2020 by Savoir-faire Linux
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 import QtQuick 2.14
-import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import QtQuick.Controls.Universal 2.12
-import net.jami.constant.jamitheme 1.0
+import net.jami.JamiTheme 1.0
+import net.jami.CallAdapter 1.0
 
 import "../js/incomingcallpagecreation.js" as IncomingCallPageCreation
 
@@ -12,6 +30,11 @@ Rectangle {
 
     anchors.fill: parent
 
+
+    /*
+     * When selected conversation is changed,
+     * these values will also be changed.
+     */
     property string responsibleConvUid: ""
     property string responsibleAccountId: ""
 
@@ -35,9 +58,14 @@ Rectangle {
     }
 
     Connections {
-        target: CallCenter
+        target: CallAdapter
 
         onShowOutgoingCallPage: {
+
+
+            /*
+             * Need to check whether it is the current selected conversation.
+             */
             if (responsibleConvUid == convUid
                     && responsibleAccountId == accountId) {
                 var itemToFind = callStackMainView.find(function (item) {
@@ -53,6 +81,11 @@ Rectangle {
         }
 
         onShowIncomingCallPage: {
+
+
+            /*
+             * Check is done within the js
+             */
             IncomingCallPageCreation.createincomingCallPageWindowObjects(
                         accountId, convUid)
             IncomingCallPageCreation.showIncomingCallPageWindow(accountId,
@@ -121,7 +154,7 @@ Rectangle {
         property int stackNumber: 1
 
         onCallCancelButtonIsClicked: {
-            CallCenter.hangUpACall(responsibleAccountId, responsibleConvUid)
+            CallAdapter.hangUpACall(responsibleAccountId, responsibleConvUid)
         }
 
         onBackButtonIsClicked: {

@@ -1,22 +1,23 @@
-/***************************************************************************
- * Copyright (C) 2015-2020 by Savoir-faire Linux                           *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
- * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
- * Author: Isa Nanic <isa.nanic@savoirfairelinux.com                       *
- *                                                                         *
- * This program is free software; you can redistribute it and/or modify    *
- * it under the terms of the GNU General Public License as published by    *
- * the Free Software Foundation; either version 3 of the License, or       *
- * (at your option) any later version.                                     *
- *                                                                         *
- * This program is distributed in the hope that it will be useful,         *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of          *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the           *
- * GNU General Public License for more details.                            *
- *                                                                         *
- * You should have received a copy of the GNU General Public License       *
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
- **************************************************************************/
+/*
+ * Copyright (C) 2015-2020 by Savoir-faire Linux
+ * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>
+ * Author: Isa Nanic <isa.nanic@savoirfairelinux.com
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
 #include "utils.h"
 
@@ -890,7 +891,7 @@ Utils::humanFileSize(qint64 fileSize)
 }
 
 const QString
-Utils::UtilsAdapter::getBestName(const QString &accountId, const QString &uid)
+UtilsAdapter::getBestName(const QString &accountId, const QString &uid)
 {
     auto convModel = LRCInstance::getAccountInfo(accountId).conversationModel.get();
     return Utils::bestNameForConversation(LRCInstance::getConversationFromConvUid(uid, accountId),
@@ -898,7 +899,7 @@ Utils::UtilsAdapter::getBestName(const QString &accountId, const QString &uid)
 }
 
 const QString
-Utils::UtilsAdapter::getBestId(const QString &accountId, const QString &uid)
+UtilsAdapter::getBestId(const QString &accountId, const QString &uid)
 {
     auto convModel = LRCInstance::getAccountInfo(accountId).conversationModel.get();
     return Utils::bestIdForConversation(LRCInstance::getConversationFromConvUid(uid, accountId),
@@ -906,7 +907,7 @@ Utils::UtilsAdapter::getBestId(const QString &accountId, const QString &uid)
 }
 
 int
-Utils::UtilsAdapter::getTotalUnreadMessages()
+UtilsAdapter::getTotalUnreadMessages()
 {
     int totalUnreadMessages{0};
     if (LRCInstance::getCurrentAccountInfo().profileInfo.type != lrc::api::profile::Type::SIP) {
@@ -922,8 +923,14 @@ Utils::UtilsAdapter::getTotalUnreadMessages()
 }
 
 int
-Utils::UtilsAdapter::getTotalPendingRequest()
+UtilsAdapter::getTotalPendingRequest()
 {
     auto &accountInfo = LRCInstance::getCurrentAccountInfo();
     return accountInfo.contactModel->pendingRequestCount();
+}
+
+void
+UtilsAdapter::setConversationFilter(const QString &filter)
+{
+    LRCInstance::getCurrentConversationModel()->setFilter(filter);
 }

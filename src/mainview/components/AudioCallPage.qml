@@ -1,10 +1,27 @@
+
+/*
+ * Copyright (C) 2020 by Savoir-faire Linux
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 import QtQuick 2.14
-import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import QtQuick.Controls.Universal 2.12
-import net.jami.constant.jamitheme 1.0
-import net.jami.CallOverlayQmlObjectHolder 1.0
+import net.jami.JamiTheme 1.0
+import net.jami.CallAdapter 1.0
 
 import "../../commoncomponents"
 
@@ -27,7 +44,7 @@ Rectangle {
         var id = utilsAdapter.getBestId(accountId, convUid)
         bestId = (bestName !== id) ? id : ""
 
-        callOverlayQmlObjectHolder.updateCallOverlay(accountId, convUid)
+        CallAdapter.updateCallOverlay(accountId, convUid)
     }
 
     function setAudioCallPageCorrspondingMessageWebView(webViewId) {
@@ -70,36 +87,38 @@ Rectangle {
             SplitView.minimumHeight: audioCallPageRect.height / 2 + 20
             SplitView.fillWidth: true
 
-            CallOverlayQmlObjectHolder {
-                id: callOverlayQmlObjectHolder
-
-                onUpdateTimeText: {
-                    audioCallOverlay.timeText = time
-                }
-
-                onButtonStatusChanged: {
-                    audioCallOverlay.showOnHoldImage(isPaused)
-                    audioCallPageRectCentralRect.visible = !isPaused
-                    audioCallOverlay.updateButtonStatus(isPaused, isAudioOnly,
-                                                        isAudioMuted,
-                                                        isVideoMuted,
-                                                        isRecording)
-                }
-
-                onShowOnHoldLabel: {
-                    audioCallOverlay.showOnHoldImage(isPaused)
-                    audioCallPageRectCentralRect.visible = !isPaused
-                }
-
-                onUpdateBestName: {
-                    audioCallOverlay.bestName = bestNameToBeUpdated
-                }
-            }
-
             CallOverlay {
                 id: audioCallOverlay
 
                 anchors.fill: parent
+
+                Connections {
+                    target: CallAdapter
+
+                    onUpdateTimeText: {
+                        audioCallOverlay.timeText = time
+                    }
+
+                    onButtonStatusChanged: {
+                        audioCallOverlay.showOnHoldImage(isPaused)
+                        audioCallPageRectCentralRect.visible = !isPaused
+                        audioCallOverlay.updateButtonStatus(isPaused,
+                                                            isAudioOnly,
+                                                            isAudioMuted,
+                                                            isVideoMuted,
+                                                            isRecording, isSIP,
+                                                            isConferenceCall)
+                    }
+
+                    onShowOnHoldLabel: {
+                        audioCallOverlay.showOnHoldImage(isPaused)
+                        audioCallPageRectCentralRect.visible = !isPaused
+                    }
+
+                    onUpdateBestName: {
+                        audioCallOverlay.bestName = bestNameToBeUpdated
+                    }
+                }
 
                 onBackButtonIsClicked: {
                     if (inAudioCallMessageWebViewStack.visible) {
@@ -111,10 +130,6 @@ Rectangle {
                         inAudioCallMessageWebViewStack.clear()
                     }
                     audioCallPageRect.audioCallPageBackButtonIsClicked()
-                }
-
-                onOverlayHangUpButtonClicked: {
-                    callOverlayQmlObjectHolder.hangUpThisCall()
                 }
 
                 onOverlayChatButtonClicked: {
@@ -134,23 +149,6 @@ Rectangle {
                         inAudioCallMessageWebViewStack.push(
                                     corrspondingMessageWebView)
                     }
-                }
-
-                onOverlayHoldButtonToggled: {
-                    callOverlayQmlObjectHolder.holdThisCallToggle()
-                }
-
-                onOverlayNoMicButtonToggled: {
-                    callOverlayQmlObjectHolder.muteThisCallToggle()
-                }
-
-                onOverlayRecButtonToggled: {
-                    callOverlayQmlObjectHolder.recordThisCallToggle()
-                }
-
-                Component.onCompleted: {
-                    callOverlayQmlObjectHolder.setCallOverlayQmlObjectHolder(
-                                audioCallOverlay)
                 }
             }
 
