@@ -124,7 +124,7 @@ HEADERS += ./src/smartlistmodel.h \
         ./src/mainapplication.h \
         ./src/qrimageprovider.h \
         ./src/lrcinterface.h \
-        ./src/messagewebviewqmlobjectholder.h \
+        ./src/messageadapter.h \
         ./src/accountcomboboxqmlobjectholder.h \
         ./src/tintedbuttonimageprovider.h \
         ./src/callcenterqmlobjectholder.h \
@@ -132,7 +132,8 @@ HEADERS += ./src/smartlistmodel.h \
         ./src/conversationsmartlistviewqmlobjectholder.h \
         ./src/contactsearchbarqmlobjectholder.h \
         ./src/distantrenderer.h \
-        ./src/previewrenderer.h
+        ./src/previewrenderer.h \
+        ./src/qmlbaseadapter.h
 SOURCES += ./src/bannedlistmodel.cpp \
         ./src/accountlistmodel.cpp \
         ./src/runguard.cpp \
@@ -146,13 +147,14 @@ SOURCES += ./src/bannedlistmodel.cpp \
         ./src/connectivitymonitor.cpp \
         ./src/mainapplication.cpp \
         ./src/lrcinterface.cpp \
-        ./src/messagewebviewqmlobjectholder.cpp \
+        ./src/messageadapter.cpp \
         ./src/accountcomboboxqmlobjectholder.cpp \
         ./src/callcenterqmlobjectholder.cpp \
         ./src/calloverlayqmlobjectholder.cpp \
         ./src/conversationsmartlistviewqmlobjectholder.cpp \
         ./src/contactsearchbarqmlobjectholder.cpp \
         ./src/distantrenderer.cpp \
-        ./src/previewrenderer.cpp
+        ./src/previewrenderer.cpp \
+        ./src/qmlbaseadapter.cpp
 RESOURCES += ./ressources.qrc \
              ./qml.qrc

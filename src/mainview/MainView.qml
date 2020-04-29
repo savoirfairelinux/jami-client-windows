@@ -8,7 +8,7 @@ import net.jami.constant.jamitheme 1.0
 import net.jami.callcenter 1.0
 import net.jami.model.account 1.0
 import net.jami.tools.utils 1.0
-import net.jami.MessageWebViewQmlObjectHolder 1.0
+import net.jami.MessageAdapter 1.0
 import net.jami.LrcGeneralAdapter 1.0
 
 // import qml component files
@@ -109,7 +109,7 @@ Window {
             mainViewWindowSidePanel.needToChangeToAccount(accountId, index)
             mainViewWindowSidePanel.selectConversationSmartList(accountId,
                                                                 convUid)
-            messageWebViewQmlObjectHolder.setupChatView(convUid)
+            MessageAdapter.setupChatView(convUid)
         }
     }
 
@@ -140,7 +140,7 @@ Window {
             callStackView.updateCorrspondingUI()
 
             // set up chatview
-            messageWebViewQmlObjectHolder.setupChatView(currentUID)
+            MessageAdapter.setupChatView(currentUID)
             callStackView.setCorrspondingMessageWebView(
                         communicationPageMessageWebView)
 
@@ -191,11 +191,11 @@ Window {
         }
 
         onAccountSignalsReconnect: {
-            messageWebViewQmlObjectHolder.accountChangedSetUp(accountId)
+            MessageAdapter.accountChangedSetUp(accountId)
         }
 
         onNeedToUpdateConversationForAddedContact: {
-            messageWebViewQmlObjectHolder.updateConversationForAddedContact()
+            MessageAdapter.updateConversationForAddedContact()
             mainViewWindowSidePanel.clearContactSearchBar()
             mainViewWindowSidePanel.forceReselectConversationSmartListCurrentIndex()
         }
@@ -228,10 +228,6 @@ Window {
         visible: false
     }
 
-    MessageWebViewQmlObjectHolder {
-        id: messageWebViewQmlObjectHolder
-    }
-
     MessageWebView {
         id: communicationPageMessageWebView
 
@@ -255,25 +251,24 @@ Window {
         }
 
         onNeedToSendContactRequest: {
-            messageWebViewQmlObjectHolder.sendContactRequest()
+            MessageAdapter.sendContactRequest()
         }
 
         onAcceptInvitation: {
-            messageWebViewQmlObjectHolder.acceptInvitation()
+            MessageAdapter.acceptInvitation()
         }
 
         onRefuseInvitation: {
-            messageWebViewQmlObjectHolder.refuseInvitation()
+            MessageAdapter.refuseInvitation()
         }
 
         onBlockConversation: {
-            messageWebViewQmlObjectHolder.blockConversation()
+            MessageAdapter.blockConversation()
         }
 
         Component.onCompleted: {
             // set qml MessageWebView object pointer to c++
-            messageWebViewQmlObjectHolder.setMessageWebViewQmlObject(
-                        communicationPageMessageWebView)
+            MessageAdapter.declareObject(this)
         }
     }
 
