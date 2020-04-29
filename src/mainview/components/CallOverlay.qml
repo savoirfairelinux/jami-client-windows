@@ -4,7 +4,7 @@ import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import QtQuick.Controls.Universal 2.12
 import QtQml 2.14
-import net.jami.constant.jamitheme 1.0
+import net.jami.JamiTheme 1.0
 
 import "../../commoncomponents"
 
@@ -15,16 +15,13 @@ Rectangle {
     property string timeText: "00:00"
 
     signal backButtonIsClicked
-
-    signal overlayHangUpButtonClicked
     signal overlayChatButtonClicked
 
-    signal overlayHoldButtonToggled
-    signal overlayNoMicButtonToggled
-    signal overlayRecButtonToggled
-
-    function updateButtonStatus(isPaused, isAudioOnly, isAudioMuted, isVideoMuted, isRecording) {
-        callOverlayButtonGroup.holdButtonSetChecked(isPaused)
+    function updateButtonStatus(isPaused, isAudioOnly, isAudioMuted, isVideoMuted, isRecording, isSIP, isConferenceCall) {
+        callOverlayButtonGroup.setButtonStatus(isPaused, isAudioOnly,
+                                               isAudioMuted, isVideoMuted,
+                                               isRecording, isSIP,
+                                               isConferenceCall)
     }
 
     function showOnHoldImage(visible) {
@@ -189,24 +186,8 @@ Rectangle {
         height: 60
         opacity: 0
 
-        onHangUpButtonClicked: {
-            callOverlayRect.overlayHangUpButtonClicked()
-        }
-
-        onHoldButtonClicked: {
-            callOverlayRect.overlayHoldButtonToggled()
-        }
-
         onChatButtonClicked: {
             callOverlayRect.overlayChatButtonClicked()
-        }
-
-        onNoMicButtonClicked: {
-            callOverlayRect.overlayNoMicButtonToggled()
-        }
-
-        onRecButtonClicked: {
-            callOverlayRect.overlayRecButtonToggled()
         }
 
         onButtonEntered: {

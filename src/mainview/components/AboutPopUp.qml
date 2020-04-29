@@ -1,88 +1,48 @@
+/*
+ * Copyright (C) 2020 by Savoir-faire Linux
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 import QtQuick 2.14
-import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
-import net.jami.constant.jamitheme 1.0
+import net.jami.JamiTheme 1.0
 
 import "../../commoncomponents"
 
 Dialog {
     id: aboutPopUp
 
-    // when dialog is opened, trigger mainViewWindow overlay which is defined in overlay.model (model : true is necessary)
+
+    /*
+     * When dialog is opened, trigger mainViewWindow overlay which is defined in overlay.model (model : true is necessary).
+     */
     modal: true
 
-    // content height + margin
+
+    /*
+     * Content height + margin.
+     */
     contentHeight: aboutPopUpContentRectColumnLayout.height + 5 * 7
 
-    Component {
-        id: changeLogScrollViewComponent
-
-        ScrollView {
-            id: changeLogScrollView
-
-            anchors.fill: parent
-
-            clip: true
-
-            ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
-
-            TextEdit {
-                id: changeLogTextArea
-
-                width: changeLogScrollView.width
-
-                readOnly: true
-                wrapMode: Text.WordWrap
-
-                font.pointSize: JamiTheme.textFontSize - 3
-                text: utilsAdapter.getChangeLog()
-                textFormat: TextEdit.RichText
-            }
-
-            background: Rectangle {
-                id: changeLogScrollViewBackground
-
-                radius: 5
-                border.color: "yellow"
-            }
-        }
+    ProjectCreditsScrollView {
+        id: projectCreditsScrollView
     }
 
-    Component {
-        id: projectCreditsScrollViewComponent
-
-        ScrollView {
-            id: projectCreditsScrollView
-
-            anchors.fill: parent
-
-            clip: true
-
-            ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
-
-            TextEdit {
-                id: projectCreditsTextArea
-
-                horizontalAlignment: Text.AlignHCenter
-
-                width: projectCreditsScrollView.width
-
-                readOnly: true
-                wrapMode: Text.WordWrap
-
-                font.pointSize: JamiTheme.textFontSize - 3
-                text: utilsAdapter.getProjectCredits()
-                textFormat: TextEdit.RichText
-            }
-
-            background: Rectangle {
-                id: projectCreditsScrollViewBackground
-
-                radius: 5
-                border.color: "yellow"
-            }
-        }
+    ChangeLogScrollView {
+        id: changeLogScrollView
     }
 
     Rectangle {
@@ -124,10 +84,6 @@ Dialog {
                     font: jamiVersionText.font
                     text: qsTr("version") + ": " + utilsAdapter.getVersionStr()
                 }
-
-                background: Rectangle {
-                    color: "yellow"
-                }
             }
 
             Label {
@@ -151,10 +107,6 @@ Dialog {
                     font: jamiSlogansText.font
                     text: qsTr("Free as in Freedom")
                 }
-
-                background: Rectangle {
-                    color: "orange"
-                }
             }
 
             Label {
@@ -171,19 +123,22 @@ Dialog {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
 
-                // TextMetrics does not work for multi-line
-                text: qsTr("The Microsoft Windows client for Jami.\nJami is a secured and distributed communciation software.")
 
-                background: Rectangle {
-                    color: "pink"
-                }
+                /*
+                 * TextMetrics does not work for multi-line.
+                 */
+                text: qsTr("The Microsoft Windows client for Jami.\nJami is a secured and distributed communciation software.")
             }
 
             Label {
                 id: jamiDeclarationHyperText
 
                 Layout.alignment: Qt.AlignCenter
-                // strangely, hoveredLink works badly when width grows too large
+
+
+                /*
+                 * Strangely, hoveredLink works badly when width grows too large
+                 */
                 Layout.preferredWidth: 50
                 Layout.preferredHeight: textMetricsjamiDeclarationHyperText.boundingRect.height
                 Layout.topMargin: 5
@@ -208,10 +163,6 @@ Dialog {
                     acceptedButtons: Qt.NoButton // we don't want to eat clicks on the Text
                     cursorShape: parent.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
                 }
-
-                background: Rectangle {
-                    color: "pink"
-                }
             }
 
             Label {
@@ -234,20 +185,14 @@ Dialog {
                     font: jamiDeclarationYearText.font
                     text: "© 2015-2020 Savoir-faire Linux"
                 }
-
-                background: Rectangle {
-                    color: "pink"
-                }
             }
 
             Label {
                 id: jamiNoneWarrantyHyperText
 
                 Layout.alignment: Qt.AlignCenter
-                // strangely, hoveredLink works badly when width grows too large
                 Layout.preferredWidth: Math.min(300,
                                                 aboutPopUpContentRect.width)
-                // TextMetrics does not work for multi-lines
                 Layout.preferredHeight: textMetricsjamiNoneWarrantyHyperText.boundingRect.height * 2
                 Layout.bottomMargin: 10
 
@@ -270,10 +215,6 @@ Dialog {
                     anchors.fill: parent
                     acceptedButtons: Qt.NoButton // we don't want to eat clicks on the Text
                     cursorShape: parent.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
-                }
-
-                background: Rectangle {
-                    color: "yellow"
                 }
             }
 
@@ -327,13 +268,13 @@ Dialog {
 
                         onClicked: {
                             if (changeLogOrCreditsStack.depth == 1) {
+                                console.log("s")
                                 changeLogOrCreditsStack.push(
-                                            projectCreditsScrollViewComponent)
+                                            projectCreditsScrollView)
                             }
                         }
                     }
                 }
-                color: "purple"
             }
 
             StackView {
@@ -344,7 +285,7 @@ Dialog {
                 Layout.preferredHeight: 150
                 Layout.bottomMargin: 5
 
-                initialItem: changeLogScrollViewComponent
+                initialItem: changeLogScrollView
 
                 clip: true
             }
