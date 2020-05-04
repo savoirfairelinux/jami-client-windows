@@ -931,7 +931,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1223"/>
         <source>Confirm password</source>
-        <translation type="unfinished"/>
+        <translation>Berretsi pasahitza</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1814"/>

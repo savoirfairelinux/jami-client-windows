@@ -31,7 +31,7 @@
         <location filename="../aboutdialog.ui" line="563"/>
         <source>The Microsoft Windows client for Jami.
 Jami is a secured and distributed communication software.</source>
-        <translation>سرویس‌گیر ویندوز مایکروسافت برای جمی.
+        <translation>سرویس‌گیرنده ویندوز مایکروسافت برای جمی.
 جمی یک نرم افزار ارتباطی امن و توزیع شده است.</translation>
     </message>
     <message>

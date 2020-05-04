@@ -831,7 +831,16 @@ p, li { white-space: pre-wrap; }
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Go to the &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Devices&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; tab&lt;/span&gt;&lt;/li&gt;
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Select &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;Bu cihazı başka bir hesapla eşlemek için, önce &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt; PIN edinmeniz gerekir&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt; PIN kodu edinmek için:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Bir önceki &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;cihazınızdaki hesap ayarları&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; yönetimine gidin&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;İstediğiniz &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Jami hesabını&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; seçin&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Cihazlar &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;sekmesine &lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; gidin &lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Cihaz &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt; Ekleyi seçin&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;Bu formu doldurmak için gerekli PIN kodunu alacaksınız. Bu PIN sadece &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 dakika geçerlidir.&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="531"/>
@@ -933,7 +942,7 @@ kullanıcı adınızla sizi arayabilecek.</translation>
         <location filename="../newwizardwidget.ui" line="1211"/>
         <location filename="../newwizardwidget.ui" line="1217"/>
         <source>Password confirmation text input</source>
-        <translation type="unfinished"/>
+        <translation>Şifre onay metni girişi</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1223"/>
@@ -948,22 +957,22 @@ kullanıcı adınızla sizi arayabilecek.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="1973"/>
         <source>SIP Server edit</source>
-        <translation type="unfinished"/>
+        <translation>SIP Sunucusu düzenleme</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1979"/>
         <source>Server</source>
-        <translation type="unfinished"/>
+        <translation>Sunucu</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2045"/>
         <source>SIP proxy input</source>
-        <translation type="unfinished"/>
+        <translation>SIP proxy girişi</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2051"/>
         <source>SIP proxy text entry</source>
-        <translation type="unfinished"/>
+        <translation>SIP proxy metin girişi</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2057"/>
@@ -978,7 +987,7 @@ kullanıcı adınızla sizi arayabilecek.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="2129"/>
         <source>SIP Password text entry</source>
-        <translation type="unfinished"/>
+        <translation>SIP Parolası metin girişi</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2135"/>
@@ -989,7 +998,7 @@ kullanıcı adınızla sizi arayabilecek.</translation>
         <location filename="../newwizardwidget.ui" line="2201"/>
         <location filename="../newwizardwidget.ui" line="2207"/>
         <source>SIP Password text input</source>
-        <translation type="unfinished"/>
+        <translation>SIP Şifre metin girişi</translation>
     </message>
     <message utf8="true">
         <location filename="../newwizardwidget.ui" line="2282"/>
@@ -1004,7 +1013,7 @@ kullanıcı adınızla sizi arayabilecek.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="2362"/>
         <source>push button to access previous page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>sihirbazın önceki sayfasına erişmek için düğmeye basın</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2365"/>
@@ -1014,12 +1023,12 @@ kullanıcı adınızla sizi arayabilecek.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="2396"/>
         <source>Cancel account create/link</source>
-        <translation type="unfinished"/>
+        <translation>Hesap oluşturmayı / bağlantıyı iptal et</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2402"/>
         <source>push button to cancel account creation or linking</source>
-        <translation type="unfinished"/>
+        <translation>hesap oluşturmayı veya bağlamayı iptal etmek için düğmeye basın</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2405"/>
@@ -1034,7 +1043,7 @@ kullanıcı adınızla sizi arayabilecek.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="2448"/>
         <source>Push button to access next page of wizard</source>
-        <translation type="unfinished"/>
+        <translation>Sihirbazın sonraki sayfasına erişmek için düğmeye basın</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2451"/>
@@ -1074,7 +1083,7 @@ kullanıcı adınızla sizi arayabilecek.</translation>
     <message>
         <location filename="../newwizardwidget.cpp" line="422"/>
         <source>Generating your SIP account...</source>
-        <translation type="unfinished"/>
+        <translation>SIP hesabınız oluşturuluyor ...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="533"/>
@@ -1185,12 +1194,12 @@ kullanıcı adınızla sizi arayabilecek.</translation>
     <message>
         <location filename="../deviceitemwidget.cpp" line="80"/>
         <source>Save new device name</source>
-        <translation type="unfinished"/>
+        <translation>Yeni cihaz adını kaydet</translation>
     </message>
     <message>
         <location filename="../banneditemwidget.cpp" line="39"/>
         <source>Add as contact</source>
-        <translation type="unfinished"/>
+        <translation>Kişi listesine ekle</translation>
     </message>
 </context>
 <context>
@@ -1273,7 +1282,7 @@ kullanıcı adınızla sizi arayabilecek.</translation>
     <message>
         <location filename="../settingswidget.ui" line="1032"/>
         <source>Interval between update checks in days selector</source>
-        <translation type="unfinished"/>
+        <translation>Gün seçicideki güncelleme denetimleri aralığı</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1038"/>
@@ -1304,27 +1313,27 @@ kullanıcı adınızla sizi arayabilecek.</translation>
     <message>
         <location filename="../settingswidget.ui" line="607"/>
         <source>toggle enable notifications</source>
-        <translation type="unfinished"/>
+        <translation>bildirimleri etkinleştirmeyi aç / kapat</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="650"/>
         <source>Toggle keep minimized on close</source>
-        <translation type="unfinished"/>
+        <translation>Kapatırken simge durumuna küçültmeyi aç / kapat</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="764"/>
         <source>Call Recordings</source>
-        <translation type="unfinished"/>
+        <translation>Çağrı Kayıtları</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1005"/>
         <source>Toggle automatic updates</source>
-        <translation type="unfinished"/>
+        <translation>Otomatik güncellemeleri aç / kapat</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1231"/>
         <source>Jami Account</source>
-        <translation type="unfinished"/>
+        <translation>Jami Hesabı</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1453"/>
@@ -1392,17 +1401,17 @@ kullanıcı adınızla sizi arayabilecek.</translation>
     <message>
         <location filename="../settingswidget.ui" line="3788"/>
         <source>Format</source>
-        <translation type="unfinished"/>
+        <translation>Biçim</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3831"/>
         <source>Video device framerate selector</source>
-        <translation type="unfinished"/>
+        <translation>Video cihazı kare hızı seçici</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3967"/>
         <source>Preview unavailable</source>
-        <translation type="unfinished"/>
+        <translation>Önizleme kullanılamıyor</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2359"/>
@@ -1484,7 +1493,7 @@ kullanıcı adınızla sizi arayabilecek.</translation>
         <location filename="../settingswidget.cpp" line="92"/>
         <location filename="../settingswidget.cpp" line="110"/>
         <source>Enter an alias</source>
-        <translation type="unfinished"/>
+        <translation>Bir takma ad girin</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="473"/>
@@ -1504,7 +1513,7 @@ kullanıcı adınızla sizi arayabilecek.</translation>
     <message>
         <location filename="../settingswidget.cpp" line="558"/>
         <source>Are you sure you wish to remove this device?</source>
-        <translation type="unfinished"/>
+        <translation>Bu cihazı kaldırmak istediğinizden emin misiniz?</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="589"/>

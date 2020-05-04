@@ -87,7 +87,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="191"/>
         <source>Connectivity</source>
-        <translation type="unfinished"/>
+        <translation>接続性</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="281"/>
@@ -240,7 +240,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="766"/>
         <source>Connectivity</source>
-        <translation type="unfinished"/>
+        <translation>接続性</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="868"/>
@@ -1383,7 +1383,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2142"/>
         <source>Banned Contacts</source>
-        <translation type="unfinished"/>
+        <translation>禁止された連絡先</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3788"/>
@@ -1558,7 +1558,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../videooverlay.ui" line="393"/>
         <source>00:00</source>
-        <translation type="unfinished"/>
+        <translation>00:00</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="57"/>
