@@ -34,6 +34,9 @@
 #include "utils.h"
 #include "ringthemeutils.h"
 
+#undef REGISTERED
+#include "../daemon/src/dring/account_const.h"
+
 NewWizardWidget::NewWizardWidget(QWidget* parent) :
     NavWidget(parent),
     ui(new Ui::NewWizardWidget),
@@ -548,21 +551,16 @@ NewWizardWidget::createAccount()
     if (isConnectingToManager) {
         Utils::oneShotConnect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountAdded,
             [this](const QString& accountId) {
+                Q_UNUSED(accountId)
                 if (!LRCInstance::accountModel().getAccountList().size())
                     return;
-                //set default ringtone
-                auto confProps = LRCInstance::accountModel().getAccountConfig(accountId);
-                confProps.Ringtone.ringtonePath = Utils::GetRingtonePath();
-                LRCInstance::accountModel().setAccountConfig(accountId, confProps);
                 emit NavigationRequested(ScreenEnum::CallScreen);
                 emit LRCInstance::instance().accountListChanged();
         });
     } else {
         Utils::oneShotConnect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountAdded,
             [this, isRing, isCreating](const QString& accountId) {
-                //set default ringtone
                 auto confProps = LRCInstance::accountModel().getAccountConfig(accountId);
-                confProps.Ringtone.ringtonePath = Utils::GetRingtonePath();
                 if (!isRing) {
                     // set SIP details
                     confProps.hostname = inputPara_["hostname"];
@@ -626,11 +624,15 @@ NewWizardWidget::createAccount()
         });
     QtConcurrent::run(
         [this, isRing, isConnectingToManager] {
+            QMap<QString, QString> additionalAccountConfig;
+            additionalAccountConfig.insert(DRing::Account::ConfProperties::Ringtone::PATH, Utils::GetRingtonePath());
+
             if (isConnectingToManager) {
                 LRCInstance::accountModel().connectToAccountManager(
                     inputPara_["username"],
                     inputPara_["password"],
-                    inputPara_["manager"]
+                    inputPara_["manager"],
+                    additionalAccountConfig
                 );
             } else if (isRing) {
                 LRCInstance::accountModel().createNewAccount(
@@ -638,7 +640,9 @@ NewWizardWidget::createAccount()
                     inputPara_["alias"],
                     inputPara_["archivePath"],
                     inputPara_["password"],
-                    inputPara_["archivePin"]
+                    inputPara_["archivePin"],
+                    "",
+                    additionalAccountConfig
                 );
             } else {
                 LRCInstance::accountModel().createNewAccount(
@@ -647,7 +651,8 @@ NewWizardWidget::createAccount()
                     inputPara_["archivePath"],
                     "",
                     "",
-                    inputPara_["username"]
+                    inputPara_["username"],
+                    additionalAccountConfig
                 );
                 QThread::sleep(2);
                 emit NavigationRequested(ScreenEnum::CallScreen);
