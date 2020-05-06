@@ -550,19 +550,13 @@ NewWizardWidget::createAccount()
             [this](const QString& accountId) {
                 if (!LRCInstance::accountModel().getAccountList().size())
                     return;
-                //set default ringtone
-                auto confProps = LRCInstance::accountModel().getAccountConfig(accountId);
-                confProps.Ringtone.ringtonePath = Utils::GetRingtonePath();
-                LRCInstance::accountModel().setAccountConfig(accountId, confProps);
                 emit NavigationRequested(ScreenEnum::CallScreen);
                 emit LRCInstance::instance().accountListChanged();
         });
     } else {
         Utils::oneShotConnect(&LRCInstance::accountModel(), &lrc::api::NewAccountModel::accountAdded,
             [this, isRing, isCreating](const QString& accountId) {
-                //set default ringtone
                 auto confProps = LRCInstance::accountModel().getAccountConfig(accountId);
-                confProps.Ringtone.ringtonePath = Utils::GetRingtonePath();
                 if (!isRing) {
                     // set SIP details
                     confProps.hostname = inputPara_["hostname"];
@@ -630,7 +624,8 @@ NewWizardWidget::createAccount()
                 LRCInstance::accountModel().connectToAccountManager(
                     inputPara_["username"],
                     inputPara_["password"],
-                    inputPara_["manager"]
+                    inputPara_["manager"],
+                    Utils::GetRingtonePath()
                 );
             } else if (isRing) {
                 LRCInstance::accountModel().createNewAccount(
@@ -638,7 +633,8 @@ NewWizardWidget::createAccount()
                     inputPara_["alias"],
                     inputPara_["archivePath"],
                     inputPara_["password"],
-                    inputPara_["archivePin"]
+                    inputPara_["archivePin"],
+                    Utils::GetRingtonePath()
                 );
             } else {
                 LRCInstance::accountModel().createNewAccount(
@@ -647,7 +643,8 @@ NewWizardWidget::createAccount()
                     inputPara_["archivePath"],
                     "",
                     "",
-                    inputPara_["username"]
+                    inputPara_["username"],
+                    Utils::GetRingtonePath()
                 );
                 QThread::sleep(2);
                 emit NavigationRequested(ScreenEnum::CallScreen);
