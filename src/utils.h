@@ -78,6 +78,7 @@ void forceDeleteAsync(const QString& path);
 QString getChangeLog();
 float getCurrentScalingRatio();
 void setCurrentScalingRatio(float ratio);
+bool exportAccount(QWidget* parent);
 
 // updates
 void cleanUpdateFiles();

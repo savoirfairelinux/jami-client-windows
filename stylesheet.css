@@ -602,6 +602,11 @@ QLabel#dragDropLabel {
     background: rgba(216, 234, 252, 0.95);
 }
 
+QLabel#wrongPasswordLabel {
+    color: red;
+    margin-left: 8px;
+}
+
 /* setAvatarDialog { */
 QPushButton#pictureButton:default, QPushButton#fileButton:default {
     background-color: rgb(0, 192, 213,);
@@ -639,10 +644,6 @@ QSpinBox::down-button {
 }
 
 /* SettingsWidget { */
-SettingsWidget QLabel#wrongPasswordLabel {
-    color: red;
-    margin-left: 8px;
-}
 SettingsWidget QLabel#exportedPIN {
     color: darkblue;
     margin-bottom: 4px;

@@ -749,33 +749,7 @@ SettingsWidget::unban(int index)
 void
 SettingsWidget::exportAccountSlot()
 {
-    QFileDialog dialog(this);
-    auto openPath = QDir::homePath() + "/Desktop" + "/export.gz";
-    auto fileUri = QFileDialog::getSaveFileUrl(this, tr("Export Account"), QUrl::fromLocalFile(openPath),
-                                               tr("Gzip File") + " (*.gz)", nullptr, QFileDialog::DontResolveSymlinks);
-
-    if (!fileUri.isEmpty()) {
-        // remove prefix from QUri encoded data
-        QString filePrefix { "file:///" };
-        auto filePath = QString::fromLocal8Bit(fileUri.toEncoded());
-        filePath = filePath.remove(filePrefix);
-
-        if (LRCInstance::getCurrAccConfig().archiveHasPassword) {
-            PasswordDialog dialog (this, PasswordEnteringPurpose::ExportAccount);
-            dialog.setExportPath(filePath);
-            int doneCode = dialog.exec();
-            if (doneCode == PasswordDialog::SuccessCode)
-                QMessageBox::information(0, tr("Success"), tr("Export Successful"));
-        } else {
-            bool success = LRCInstance::accountModel().exportToFile(LRCInstance::getCurrAccId(), filePath);
-            if (success) {
-                QMessageBox::information(0, tr("Success"), tr("Export Successful"));
-            } else {
-                QMessageBox::critical(0, tr("Error"), tr("Export Failed"));
-            }
-
-        }
-    }
+    Utils::exportAccount(this);
 }
 
 void

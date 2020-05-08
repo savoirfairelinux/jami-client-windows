@@ -360,15 +360,10 @@ NewWizardWidget::on_skipBtn_clicked()
 void
 NewWizardWidget::on_exportBtn_clicked()
 {
-    QFileDialog dialog(this);
-    QString dir = QFileDialog::getExistingDirectory(this, tr("Export Account Here"),
-        QDir::homePath() + "/Desktop", QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
-
-    if (!dir.isEmpty()) {
-        LRCInstance::accountModel().exportToFile(LRCInstance::getCurrAccId(), dir + "/export.gz");
+    if (Utils::exportAccount(this)) {
+        emit NavigationRequested(ScreenEnum::CallScreen);
+        emit LRCInstance::instance().accountListChanged();
     }
-    emit NavigationRequested(ScreenEnum::CallScreen);
-    emit LRCInstance::instance().accountListChanged();
 }
 
 void

@@ -36,6 +36,7 @@
 #include "updateconfirmdialog.h"
 #include "version.h"
 #include "mainwindow.h"
+#include "passworddialog.h"
 
 #include <globalinstances.h>
 #include <qrencode.h>
@@ -44,6 +45,7 @@
 #include <QBitmap>
 #include <QObject>
 #include <QErrorMessage>
+#include <QFileDialog>
 #include <QPainter>
 #include <QStackedWidget>
 #include <QPropertyAnimation>
@@ -775,6 +777,43 @@ void
 Utils::setCurrentScalingRatio(float ratio)
 {
     CURRENT_SCALING_RATIO = ratio;
+}
+
+bool
+Utils::exportAccount(QWidget* parent)
+{
+    QFileDialog dialog(parent);
+    auto openPath = QDir::homePath() + "/Desktop" + "/export.gz";
+    auto fileUri = QFileDialog::getSaveFileUrl(parent, QObject::tr("Export Account"), QUrl::fromLocalFile(openPath),
+                                               QObject::tr("Gzip File") + " (*.gz)", nullptr, QFileDialog::DontResolveSymlinks);
+
+    if (!fileUri.isEmpty()) {
+        // remove prefix from QUri encoded data
+        QString filePrefix{ "file:///" };
+        auto filePath = QString::fromLocal8Bit(fileUri.toEncoded());
+        filePath = filePath.remove(filePrefix);
+
+        if (LRCInstance::getCurrAccConfig().archiveHasPassword) {
+            PasswordDialog dialog(parent, PasswordEnteringPurpose::ExportAccount);
+            dialog.setExportPath(filePath);
+            int doneCode = dialog.exec();
+            if (doneCode == PasswordDialog::SuccessCode) {
+                QMessageBox::information(0, QObject::tr("Success"), QObject::tr("Export Successful"));
+                return true;
+            }
+        }
+        else {
+            bool success = LRCInstance::accountModel().exportToFile(LRCInstance::getCurrAccId(), filePath);
+            if (success) {
+                QMessageBox::information(0, QObject::tr("Success"), QObject::tr("Export Successful"));
+            } else {
+                QMessageBox::critical(0, QObject::tr("Error"), QObject::tr("Export Failed"));
+            }
+            return success;
+
+        }
+    }
+    return false;
 }
 
 QString
