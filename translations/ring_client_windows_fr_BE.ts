@@ -87,7 +87,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="191"/>
         <source>Connectivity</source>
-        <translation type="unfinished"/>
+        <translation>Connectivité</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="281"/>
@@ -97,7 +97,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="293"/>
         <source>Use STUN</source>
-        <translation type="unfinished"/>
+        <translation>Utiliser STUN</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="317"/>
@@ -107,7 +107,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="329"/>
         <source>Use TURN</source>
-        <translation type="unfinished"/>
+        <translation>Utiliser le TURN</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="359"/>
@@ -195,7 +195,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="275"/>
         <source>Address</source>
-        <translation type="unfinished"/>
+        <translation>Adresse</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="351"/>
@@ -210,12 +210,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="454"/>
         <source>Bootstrap</source>
-        <translation type="unfinished"/>
+        <translation>Amorcer</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="530"/>
         <source>Security</source>
-        <translation type="unfinished"/>
+        <translation>Sécurité</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="571"/>
@@ -240,12 +240,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="766"/>
         <source>Connectivity</source>
-        <translation type="unfinished"/>
+        <translation>Connectivité</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="868"/>
         <source>Use STUN</source>
-        <translation type="unfinished"/>
+        <translation>Utiliser STUN</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="856"/>
@@ -260,7 +260,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="904"/>
         <source>Use TURN</source>
-        <translation type="unfinished"/>
+        <translation>Utiliser le TURN</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="934"/>
@@ -854,7 +854,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="705"/>
         <source>Password:</source>
-        <translation type="unfinished"/>
+        <translation>Mot de passe:</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="799"/>
@@ -1292,7 +1292,7 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="1418"/>
         <location filename="../settingswidget.ui" line="2729"/>
         <source>Enable</source>
-        <translation type="unfinished"/>
+        <translation>Activé</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="607"/>
@@ -1359,7 +1359,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1868"/>
         <source>Export Account</source>
-        <translation type="unfinished"/>
+        <translation>Sauvegarder Compte</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1909"/>
@@ -1380,7 +1380,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2142"/>
         <source>Banned Contacts</source>
-        <translation type="unfinished"/>
+        <translation>Contacts bannis</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3788"/>

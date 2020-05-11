@@ -5,7 +5,7 @@
         <location filename="../aboutdialog.ui" line="435"/>
         <location filename="../aboutdialog.ui" line="465"/>
         <source>About</source>
-        <translation type="unfinished"/>
+        <translation>アプリについて</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="462"/>
@@ -41,7 +41,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../aboutdialog.cpp" line="39"/>
         <source>Created by:</source>
-        <translation type="unfinished"/>
+        <translation>作成者:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="73"/>
@@ -235,7 +235,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="634"/>
         <source>CA Certificate</source>
-        <translation type="unfinished"/>
+        <translation>CA証明書</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="766"/>
@@ -334,7 +334,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="184"/>
         <source>Show conversations</source>
-        <translation type="unfinished"/>
+        <translation>会話を表示</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="187"/>
@@ -467,7 +467,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="354"/>
         <source>Clear conversation</source>
-        <translation type="unfinished"/>
+        <translation>会話履歴を削除</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="361"/>
@@ -477,7 +477,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="373"/>
         <source>Block contact</source>
-        <translation>ブロックした連絡先</translation>
+        <translation>連絡先をブロック</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="384"/>
@@ -487,7 +487,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="561"/>
         <source>Search your received invitations</source>
-        <translation type="unfinished"/>
+        <translation>受信した招待を検索</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="943"/>
@@ -503,18 +503,18 @@ Copy and share it with your friends!
         <location filename="../callwidget.cpp" line="847"/>
         <source>%1</source>
         <comment>%1 is the contact username</comment>
-        <translation type="unfinished"/>
+        <translation>%1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="852"/>
         <source>%1</source>
         <comment>%1 is the contact unique identifier</comment>
-        <translation type="unfinished"/>
+        <translation>%1</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="675"/>
         <source>Call incoming from %1</source>
-        <translation type="unfinished"/>
+        <translation>%1 から着信</translation>
     </message>
 </context>
 <context>
@@ -601,7 +601,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="62"/>
         <source>Enter your account password</source>
-        <translation type="unfinished"/>
+        <translation>アカウントのパスワードを入力してください</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="117"/>
@@ -621,7 +621,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="279"/>
         <source>Exporting account</source>
-        <translation type="unfinished"/>
+        <translation>アカウントをエクスポート中</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="402"/>
@@ -646,7 +646,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.cpp" line="34"/>
         <source>Link Another Device</source>
-        <translation type="unfinished"/>
+        <translation>別のデバイスをリンク</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.cpp" line="96"/>
@@ -675,7 +675,7 @@ Please try again later.</source>
     <message>
         <location filename="../mainwindow.cpp" line="111"/>
         <source>About</source>
-        <translation type="unfinished"/>
+        <translation>アプリについて</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
@@ -693,7 +693,7 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.ui" line="163"/>
         <source>Enter your account password</source>
-        <translation type="unfinished"/>
+        <translation>アカウントのパスワードを入力してください</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="244"/>
@@ -811,7 +811,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="340"/>
         <source>Create a SIP account</source>
-        <translation type="unfinished"/>
+        <translation>SIPアカウントを作成</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="405"/>
@@ -835,7 +835,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="531"/>
         <source>Enter your pin:</source>
-        <translation type="unfinished"/>
+        <translation>PINを入力:</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="599"/>
@@ -852,7 +852,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../newwizardwidget.cpp" line="83"/>
         <location filename="../newwizardwidget.cpp" line="218"/>
         <source>(None)</source>
-        <translation type="unfinished"/>
+        <translation>(なし)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="705"/>
@@ -869,7 +869,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../newwizardwidget.ui" line="953"/>
         <location filename="../newwizardwidget.ui" line="1767"/>
         <source>Profile name</source>
-        <translation type="unfinished"/>
+        <translation>プロフィール名</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1027"/>
@@ -907,7 +907,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1373"/>
         <source>Choose your username</source>
-        <translation type="unfinished"/>
+        <translation>ユーザー名を選択</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1289"/>
@@ -944,7 +944,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1973"/>
         <source>SIP Server edit</source>
-        <translation type="unfinished"/>
+        <translation>SIPサーバーを編集</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1979"/>
@@ -1005,7 +1005,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2365"/>
         <source>Previous</source>
-        <translation type="unfinished"/>
+        <translation>戻る</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2396"/>
@@ -1040,7 +1040,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="75"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>ファイルを開く</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="77"/>
@@ -1060,7 +1060,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="412"/>
         <source>Importing account archive...</source>
-        <translation type="unfinished"/>
+        <translation>アカウントのアーカイブをインポート中...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="404"/>
@@ -1103,7 +1103,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../passworddialog.ui" line="247"/>
         <source>Confirm</source>
-        <translation type="unfinished"/>
+        <translation>確認</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="290"/>
@@ -1139,7 +1139,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../photoboothwidget.cpp" line="92"/>
         <source>Choose File</source>
-        <translation type="unfinished"/>
+        <translation>ファイルの選択</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.cpp" line="94"/>
@@ -1152,7 +1152,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../messagewebview.cpp" line="374"/>
         <source>Choose File</source>
-        <translation type="unfinished"/>
+        <translation>ファイルの選択</translation>
     </message>
     <message>
         <location filename="../messagewebview.cpp" line="374"/>
@@ -1274,7 +1274,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1038"/>
         <source> days</source>
-        <translation type="unfinished"/>
+        <translation>日</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1081"/>
@@ -1320,7 +1320,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1231"/>
         <source>Jami Account</source>
-        <translation type="unfinished"/>
+        <translation>Jamiアカウント</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1453"/>
@@ -1378,7 +1378,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2078"/>
         <source>Link Another Device</source>
-        <translation type="unfinished"/>
+        <translation>別のデバイスをリンク</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2142"/>

@@ -20,7 +20,7 @@
     <message>
         <location filename="../aboutdialog.ui" line="481"/>
         <source>Credits</source>
-        <translation type="unfinished"/>
+        <translation>Partisipan</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="547"/>
@@ -349,7 +349,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="653"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation type="unfinished"/>
+        <translation>Jami adalah perangkat lunak gratis untuk komunikasi universal yang menghormati kebebasan dan privasi penggunanya</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="693"/>
@@ -662,7 +662,7 @@ Please try again later.</source>
     <message>
         <location filename="../mainwindow.cpp" line="83"/>
         <source>Settings</source>
-        <translation type="unfinished"/>
+        <translation>Setelan</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="94"/>
@@ -1204,7 +1204,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="141"/>
         <source>Settings</source>
-        <translation type="unfinished"/>
+        <translation>Setelan</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="229"/>
@@ -1426,7 +1426,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3461"/>
         <source>Audio</source>
-        <translation type="unfinished"/>
+        <translation>Suara</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3511"/>
@@ -1451,7 +1451,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3682"/>
         <source>Video</source>
-        <translation type="unfinished"/>
+        <translation>Video</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3720"/>

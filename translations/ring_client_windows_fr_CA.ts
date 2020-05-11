@@ -855,7 +855,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="705"/>
         <source>Password:</source>
-        <translation type="unfinished"/>
+        <translation>Mot de passe:</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="799"/>
@@ -1293,7 +1293,7 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="1418"/>
         <location filename="../settingswidget.ui" line="2729"/>
         <source>Enable</source>
-        <translation type="unfinished"/>
+        <translation>Activé</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="607"/>
@@ -1360,7 +1360,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1868"/>
         <source>Export Account</source>
-        <translation type="unfinished"/>
+        <translation>Sauvegarder Compte</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1909"/>
