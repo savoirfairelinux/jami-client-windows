@@ -30,5 +30,6 @@
         <file>src/mainview/components/ConversationSmartListUserImage.qml</file>
         <file>src/mainview/components/SidePanelTabBar.qml</file>
         <file>src/mainview/components/WelcomePageQrDialog.qml</file>
+        <file>src/commoncomponents/GeneralMenuItem.qml</file>
     </qresource>
 </RCC>

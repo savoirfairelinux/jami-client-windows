@@ -22,6 +22,8 @@ import QtQuick.Layouts 1.14
 import net.jami.JamiTheme 1.0
 import net.jami.CallAdapter 1.0
 
+import "../../commoncomponents"
+
 ItemDelegate {
     id: smartListItemDelegate
 
@@ -262,41 +264,43 @@ ItemDelegate {
 
     Menu {
         id: smartListContextMenu
-        MenuItem {
-            id: smartListCopyItem
-            text: qsTr("Popup")
-            font.pointSize: 10
-            background: Rectangle {
-                id: smartListContextMenuBackRect
 
-                implicitWidth: 150
-                implicitHeight: 30
-                border.width: 1
-                border.color: "black"
-                color: smartListCopyItem.down ? JamiTheme.releaseColor : "white"
-                MouseArea {
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    onPressed: {
-                        smartListContextMenuBackRect.color = JamiTheme.pressColor
-                    }
-                    onReleased: {
-                        smartListContextMenuBackRect.color = JamiTheme.releaseColor
-                        smartListContextMenu.close()
-                        contextMenuPopUpMock.open()
-                    }
-                    onEntered: {
-                        smartListContextMenuBackRect.color = JamiTheme.hoverColor
-                    }
-                    onExited: {
-                        smartListContextMenuBackRect.color = "white"
-                    }
-                }
+        /*
+         * All GeneralMenuItems should remain the same width / height
+         */
+        topMargin: 2
+        leftMargin: 2
+        rightMargin: 2
+        bottomMargin: 2
+
+        GeneralMenuItem {
+            id: startVideoCallItem
+
+            itemName: qsTr("Popup")
+
+            onClicked: {
+                smartListContextMenu.close()
+                contextMenuPopUpMock.open()
             }
         }
+
+        MenuSeparator {
+            padding: 0
+            topPadding: 12
+            bottomPadding: 12
+            contentItem: Rectangle {
+                implicitWidth: 200
+                implicitHeight: 1
+                color: "#1E000000"
+            }
+        }
+
         background: Rectangle {
-            implicitWidth: 150
-            implicitHeight: 30
+            implicitWidth: startVideoCallItem.preferredWidth + 5
+            implicitHeight: startVideoCallItem.preferredHeight * smartListContextMenu.count + 5
+
+            border.width: 1
+            border.color: JamiTheme.tabbarBorderColor
         }
     }
 }
