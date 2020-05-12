@@ -79,10 +79,6 @@ Rectangle {
         }
     }
 
-    function selectConversationSmartList(accountId, convUid) {
-        ConversationsAdapter.selectConversation(accountId, convUid)
-    }
-
     function deselectConversationSmartList() {
         ConversationsAdapter.deselectConversation()
         conversationSmartListView.currentIndex = -1
