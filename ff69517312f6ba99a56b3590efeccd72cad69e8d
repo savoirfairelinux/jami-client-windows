@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bed18e2e_f83774a3",
+        "filename": "src/constant/JamiTheme.qml",
+        "patchSetId": 157
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-12T20:06:58Z",
+      "side": 1,
+      "message": "Can be deleted",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 5
+      },
+      "revId": "ff69517312f6ba99a56b3590efeccd72cad69e8d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
