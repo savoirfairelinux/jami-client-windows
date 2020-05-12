@@ -46,6 +46,420 @@
       "revId": "ff69517312f6ba99a56b3590efeccd72cad69e8d",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14e7f53d_0b4eac32",
+        "filename": "src/lrcinterface.cpp",
+        "patchSetId": 157
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-12T20:50:25Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 1
+      },
+      "revId": "ff69517312f6ba99a56b3590efeccd72cad69e8d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8877b7a_1aab439a",
+        "filename": "src/lrcinterface.h",
+        "patchSetId": 157
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-12T20:50:25Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 48
+      },
+      "revId": "ff69517312f6ba99a56b3590efeccd72cad69e8d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d046984a_02bd30ac",
+        "filename": "src/mainapplication.cpp",
+        "patchSetId": 157
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-12T20:50:25Z",
+      "side": 1,
+      "message": "I think we can use LrcGeneralAdapter",
+      "range": {
+        "startLine": 299,
+        "startChar": 4,
+        "endLine": 299,
+        "endChar": 63
+      },
+      "revId": "ff69517312f6ba99a56b3590efeccd72cad69e8d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33c69f40_ff8562bd",
+        "filename": "src/mainapplication.cpp",
+        "patchSetId": 157
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-12T20:50:25Z",
+      "side": 1,
+      "message": "delete releated content",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 309,
+        "endChar": 55
+      },
+      "revId": "ff69517312f6ba99a56b3590efeccd72cad69e8d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cd9c1f6_fa8999ef",
+        "filename": "src/passworddialogqmlobjectholder.cpp",
+        "patchSetId": 157
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-12T20:50:25Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 76
+      },
+      "revId": "ff69517312f6ba99a56b3590efeccd72cad69e8d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88ee2c77_5a1309a0",
+        "filename": "src/passworddialogqmlobjectholder.h",
+        "patchSetId": 157
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-12T20:50:25Z",
+      "side": 1,
+      "message": "Functions can be merged into AccountAdapter",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "ff69517312f6ba99a56b3590efeccd72cad69e8d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5adeff64_e6a83ccc",
+        "filename": "src/utils.h",
+        "patchSetId": 157
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-12T20:50:25Z",
+      "side": 1,
+      "message": "Put NameDirectory into \"net.jami.\"",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 35
+      },
+      "revId": "ff69517312f6ba99a56b3590efeccd72cad69e8d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fc27730_4d902570",
+        "filename": "src/utils.h",
+        "patchSetId": 157
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-12T20:50:25Z",
+      "side": 1,
+      "message": "Can be deleted",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 74
+      },
+      "revId": "ff69517312f6ba99a56b3590efeccd72cad69e8d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "438eaa5b_d3775f2e",
+        "filename": "src/wizardview/WizardView.qml",
+        "patchSetId": 157
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-12T20:50:25Z",
+      "side": 1,
+      "message": "Comment Header",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 19
+      },
+      "revId": "ff69517312f6ba99a56b3590efeccd72cad69e8d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4705ce4_35c43edc",
+        "filename": "src/wizardview/WizardView.qml",
+        "patchSetId": 157
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-12T20:50:25Z",
+      "side": 1,
+      "message": "As an example, this can be put directly in jami account creation page\nby using the power of singleton NameDirectory, AccountAdapter\n\nSimply the code",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 9
+      },
+      "revId": "ff69517312f6ba99a56b3590efeccd72cad69e8d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21b437e0_82f7f26c",
+        "filename": "src/wizardview/components/CollapsiblePasswordWidget.qml",
+        "patchSetId": 157
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-12T20:50:25Z",
+      "side": 1,
+      "message": "Use qmlfmt to format",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 5
+      },
+      "revId": "ff69517312f6ba99a56b3590efeccd72cad69e8d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89388a67_bec1ee7d",
+        "filename": "src/wizardview/components/ConnectToAccountManagerPage.qml",
+        "patchSetId": 157
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-12T20:50:25Z",
+      "side": 1,
+      "message": "Can be made to be one compnent",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 9
+      },
+      "revId": "ff69517312f6ba99a56b3590efeccd72cad69e8d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eb156b1_5ef7d371",
+        "filename": "src/wizardview/components/CreateSIPAccountPage.qml",
+        "patchSetId": 157
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-12T20:50:25Z",
+      "side": 1,
+      "message": "Make it reusable",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 9
+      },
+      "revId": "ff69517312f6ba99a56b3590efeccd72cad69e8d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a4d0af0_1fa8d3b7",
+        "filename": "src/wizardview/components/SpinnerPage.qml",
+        "patchSetId": 157
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-12T20:50:25Z",
+      "side": 1,
+      "message": "qml fmt",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 30
+      },
+      "revId": "ff69517312f6ba99a56b3590efeccd72cad69e8d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94177a49_2cafe06f",
+        "filename": "src/wizardview/components/WelcomePageLayout.qml",
+        "patchSetId": 157
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-12T20:50:25Z",
+      "side": 1,
+      "message": "make resuable",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 5
+      },
+      "revId": "ff69517312f6ba99a56b3590efeccd72cad69e8d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f5897f6_1dd0f70e",
+        "filename": "src/wizardview/js/wizardviewjshelpers.js",
+        "patchSetId": 157
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-12T20:50:25Z",
+      "side": 1,
+      "message": "delete for now",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "ff69517312f6ba99a56b3590efeccd72cad69e8d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "589ed86e_fe4f7070",
+        "filename": "src/wizardviewadapter.cpp",
+        "patchSetId": 157
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-12T20:50:25Z",
+      "side": 1,
+      "message": "Move to account adapter",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 76
+      },
+      "revId": "ff69517312f6ba99a56b3590efeccd72cad69e8d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c9a4b6c_1ae9ef70",
+        "filename": "src/wizardviewadapter.h",
+        "patchSetId": 157
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-12T20:50:25Z",
+      "side": 1,
+      "message": "Change it to QmlAdapterBase\n\ntreat it as QML_REGISTERSINGLETONTYPE",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 40
+      },
+      "revId": "ff69517312f6ba99a56b3590efeccd72cad69e8d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
     }
   ]
 }
