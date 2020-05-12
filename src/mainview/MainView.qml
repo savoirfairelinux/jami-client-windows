@@ -28,6 +28,7 @@ import net.jami.AccountListModel 1.0
 import net.jami.UtilsAdapter 1.0
 import net.jami.MessagesAdapter 1.0
 import net.jami.LrcGeneralAdapter 1.0
+import net.jami.ConversationsAdapter 1.0
 
 
 /*
@@ -151,8 +152,8 @@ Window {
             callStackView.updateCorrspondingUI()
 
             mainViewWindowSidePanel.needToChangeToAccount(accountId, index)
-            mainViewWindowSidePanel.selectConversationSmartList(accountId,
-                                                                convUid)
+            ConversationsAdapter.selectConversation(accountId, convUid)
+
             MessagesAdapter.setupChatView(convUid)
         }
     }
@@ -406,30 +407,6 @@ Window {
             sidePanelViewStack.maximumWidth = sidePanelViewStackPreferedWidth + 100
 
             mainViewWindow.update()
-        }
-    }
-
-    Dialog {
-        id: contextMenuPopUpMock
-
-        x: Math.round((mainViewWindow.width - width) / 2)
-        y: Math.round((mainViewWindow.height - height) / 2)
-        width: Math.min(mainViewWindow.width, mainViewWindow.height) / 3 * 2
-
-        modal: true
-
-        standardButtons: Dialog.Ok | Dialog.Cancel
-
-        contentHeight: popImg.height
-
-        Image {
-            id: popImg
-
-            anchors.centerIn: parent
-            width: 50
-            height: 50
-            fillMode: Image.PreserveAspectFit
-            source: "qrc:/images/jami.png"
         }
     }
 

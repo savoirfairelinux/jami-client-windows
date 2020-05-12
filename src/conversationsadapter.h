@@ -34,7 +34,9 @@ public:
     ~ConversationsAdapter();
 
     Q_INVOKABLE bool connectConversationModel();
-    Q_INVOKABLE void selectConversation(const QString &accountId, const QString &convUid);
+    Q_INVOKABLE void selectConversation(const QString &accountId,
+                                        const QString &convUid,
+                                        bool preventSendingSignal = true);
     Q_INVOKABLE void selectConversation(int index);
     Q_INVOKABLE void deselectConversation();
     Q_INVOKABLE void accountChangedSetUp(const QString &accountId);
@@ -44,7 +46,7 @@ public:
     void setConversationFilter(lrc::api::profile::Type filter);
     void backToWelcomePage();
     bool selectConversation(const lrc::api::conversation::Info &item,
-                            bool preventSendingSignal = false);
+                            bool preventSendingSignal = true);
 
 signals:
     void showChatView(const QString &accountId, const QString &convUid);

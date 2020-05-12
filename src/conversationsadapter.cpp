@@ -57,9 +57,12 @@ ConversationsAdapter::backToWelcomePage()
 }
 
 void
-ConversationsAdapter::selectConversation(const QString &accountId, const QString &convUid)
+ConversationsAdapter::selectConversation(const QString &accountId,
+                                         const QString &convUid,
+                                         bool preventSendingSignal)
 {
-    selectConversation(LRCInstance::getConversationFromConvUid(convUid, accountId), true);
+    selectConversation(LRCInstance::getConversationFromConvUid(convUid, accountId),
+                       preventSendingSignal);
 }
 
 void
@@ -73,14 +76,14 @@ ConversationsAdapter::selectConversation(int index)
 
     const auto item = convModel->filteredConversation(index);
 
-    if (selectConversation(item)) {
+    if (selectConversation(item, false)) {
         auto convUid = conversationSmartListModel_
                            ->data(conversationSmartListModel_->index(index, 0),
                                   static_cast<int>(SmartListModel::Role::UID))
                            .toString();
         auto &conversation = LRCInstance::getConversationFromConvUid(convUid);
         /*
-         * If it is calling, show callview (can use showChatView signal, since it will be determined on qml)
+         * If it is calling, show callview (can use showChatView signal, since it will be determined on qml).
          */
         if (!conversation.uid.isEmpty()
             && LRCInstance::getCurrentCallModel()->hasCall(conversation.callId)) {
