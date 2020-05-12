@@ -409,30 +409,6 @@ Window {
         }
     }
 
-    Dialog {
-        id: contextMenuPopUpMock
-
-        x: Math.round((mainViewWindow.width - width) / 2)
-        y: Math.round((mainViewWindow.height - height) / 2)
-        width: Math.min(mainViewWindow.width, mainViewWindow.height) / 3 * 2
-
-        modal: true
-
-        standardButtons: Dialog.Ok | Dialog.Cancel
-
-        contentHeight: popImg.height
-
-        Image {
-            id: popImg
-
-            anchors.centerIn: parent
-            width: 50
-            height: 50
-            fillMode: Image.PreserveAspectFit
-            source: "qrc:/images/jami.png"
-        }
-    }
-
     AboutPopUp {
         id: aboutPopUpDialog
 

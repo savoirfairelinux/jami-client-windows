@@ -22,6 +22,8 @@ import QtQuick.Layouts 1.14
 import net.jami.JamiTheme 1.0
 import net.jami.CallAdapter 1.0
 
+import "../../commoncomponents"
+
 ItemDelegate {
     id: smartListItemDelegate
 
@@ -260,43 +262,7 @@ ItemDelegate {
         }
     }
 
-    Menu {
+    ConversationSmartListContextMenu {
         id: smartListContextMenu
-        MenuItem {
-            id: smartListCopyItem
-            text: qsTr("Popup")
-            font.pointSize: 10
-            background: Rectangle {
-                id: smartListContextMenuBackRect
-
-                implicitWidth: 150
-                implicitHeight: 30
-                border.width: 1
-                border.color: "black"
-                color: smartListCopyItem.down ? JamiTheme.releaseColor : "white"
-                MouseArea {
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    onPressed: {
-                        smartListContextMenuBackRect.color = JamiTheme.pressColor
-                    }
-                    onReleased: {
-                        smartListContextMenuBackRect.color = JamiTheme.releaseColor
-                        smartListContextMenu.close()
-                        contextMenuPopUpMock.open()
-                    }
-                    onEntered: {
-                        smartListContextMenuBackRect.color = JamiTheme.hoverColor
-                    }
-                    onExited: {
-                        smartListContextMenuBackRect.color = "white"
-                    }
-                }
-            }
-        }
-        background: Rectangle {
-            implicitWidth: 150
-            implicitHeight: 30
-        }
     }
 }
