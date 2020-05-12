@@ -22,6 +22,30 @@
       "revId": "ff69517312f6ba99a56b3590efeccd72cad69e8d",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94290338_26065206",
+        "filename": "src/constant/JamiTheme.qml",
+        "patchSetId": 157
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 649
+      },
+      "writtenOn": "2020-05-12T20:08:14Z",
+      "side": 1,
+      "message": "understood",
+      "parentUuid": "bed18e2e_f83774a3",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 5
+      },
+      "revId": "ff69517312f6ba99a56b3590efeccd72cad69e8d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
     }
   ]
 }

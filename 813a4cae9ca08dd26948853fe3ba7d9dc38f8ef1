@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "51ead627_c93ca519",
+        "filename": "src/newwizardviewqmlobjectholder.cpp",
+        "patchSetId": 135
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 649
+      },
+      "writtenOn": "2020-05-12T20:08:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b32d5f12_4ece383c",
+      "revId": "813a4cae9ca08dd26948853fe3ba7d9dc38f8ef1",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb629a80_7f7d9bc5",
         "filename": "src/newwizardviewqmlobjectholder.cpp",
         "patchSetId": 135
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "bb85e5de_d79aa055",
+        "filename": "src/newwizardviewqmlobjectholder.cpp",
+        "patchSetId": 135
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 649
+      },
+      "writtenOn": "2020-05-12T20:08:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb629a80_7f7d9bc5",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 1
+      },
+      "revId": "813a4cae9ca08dd26948853fe3ba7d9dc38f8ef1",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5630a603_aaafc14d",
         "filename": "src/newwizardviewqmlobjectholder.cpp",
         "patchSetId": 135
@@ -62,6 +104,30 @@
       "revId": "813a4cae9ca08dd26948853fe3ba7d9dc38f8ef1",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5860eb06_924f9009",
+        "filename": "src/newwizardviewqmlobjectholder.cpp",
+        "patchSetId": 135
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 649
+      },
+      "writtenOn": "2020-05-12T20:08:14Z",
+      "side": 1,
+      "message": "It\u0027s solved as suggested in the latest patch",
+      "parentUuid": "5630a603_aaafc14d",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "813a4cae9ca08dd26948853fe3ba7d9dc38f8ef1",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
