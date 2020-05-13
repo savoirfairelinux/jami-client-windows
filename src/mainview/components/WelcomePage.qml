@@ -110,32 +110,30 @@ Rectangle {
 
                     spacing: 0
 
-                    TextEdit {
+                    Text {
                         id: jamiRegisteredNameText
 
                         Layout.alignment: Qt.AlignCenter
                         Layout.preferredWidth: welcomeRectComponentsGroup.width
                         Layout.preferredHeight: 30
 
-                        selectByMouse: true
-                        readOnly: true
                         font.pointSize: JamiTheme.textFontSize
 
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
 
                         text: textMetricsjamiRegisteredNameText.elidedText
-                    }
 
-                    TextMetrics {
-                        id: textMetricsjamiRegisteredNameText
+                        TextMetrics {
+                            id: textMetricsjamiRegisteredNameText
 
-                        font: jamiRegisteredNameText.font
-                        text: accountListModel.data(accountListModel.index(
-                                                        currentAccountIndex,
-                                                        0), 258)
-                        elideWidth: welcomeRectComponentsGroup.width
-                        elide: Qt.ElideMiddle
+                            font: jamiRegisteredNameText.font
+                            text: accountListModel.data(accountListModel.index(
+                                                            currentAccountIndex,
+                                                            0), 258)
+                            elideWidth: welcomeRectComponentsGroup.width
+                            elide: Qt.ElideMiddle
+                        }
                     }
 
                     RowLayout {

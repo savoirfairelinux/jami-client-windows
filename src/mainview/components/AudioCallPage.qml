@@ -177,7 +177,7 @@ Rectangle {
                         asynchronous: true
                     }
 
-                    TextEdit {
+                    Text {
                         id: audioCallPageRegisteredNameText
 
                         Layout.alignment: Qt.AlignCenter
@@ -185,8 +185,6 @@ Rectangle {
                         Layout.preferredWidth: audioCallPageRectCentralRect.width
                         Layout.preferredHeight: 50
 
-                        selectByMouse: true
-                        readOnly: true
                         font.pointSize: JamiTheme.textFontSize + 3
 
                         horizontalAlignment: Text.AlignHCenter
@@ -204,7 +202,7 @@ Rectangle {
                         }
                     }
 
-                    TextEdit {
+                    Text {
                         id: audioCallPageIdText
 
                         Layout.alignment: Qt.AlignCenter
@@ -212,8 +210,6 @@ Rectangle {
                         Layout.preferredWidth: audioCallPageRectCentralRect.width
                         Layout.preferredHeight: 30
 
-                        selectByMouse: true
-                        readOnly: true
                         font.pointSize: JamiTheme.textFontSize
 
                         horizontalAlignment: Text.AlignHCenter
