@@ -102,15 +102,13 @@ Rectangle {
             ColumnLayout {
                 id: outgoingCallPageTextRectColumnLayout
 
-                TextEdit {
+                Text {
                     id: jamiBestNameText
 
                     Layout.alignment: Qt.AlignCenter
                     Layout.preferredWidth: outgoingCallPageTextRect.width
                     Layout.preferredHeight: 50
 
-                    selectByMouse: true
-                    readOnly: true
                     font.pointSize: JamiTheme.textFontSize + 3
 
                     horizontalAlignment: Text.AlignHCenter
@@ -128,15 +126,13 @@ Rectangle {
                     }
                 }
 
-                TextEdit {
+                Text {
                     id: jamiBestIdText
 
                     Layout.alignment: Qt.AlignCenter
                     Layout.preferredWidth: outgoingCallPageTextRect.width
                     Layout.preferredHeight: 30
 
-                    selectByMouse: true
-                    readOnly: true
                     font.pointSize: JamiTheme.textFontSize
 
                     horizontalAlignment: Text.AlignHCenter
@@ -164,15 +160,13 @@ Rectangle {
                     source: "qrc:/images/waiting.gif"
                 }
 
-                TextEdit {
+                Text {
                     id: callStatusText
 
                     Layout.alignment: Qt.AlignCenter
                     Layout.preferredWidth: outgoingCallPageTextRect.width
                     Layout.preferredHeight: 30
 
-                    selectByMouse: true
-                    readOnly: true
                     font.pointSize: JamiTheme.textFontSize
 
                     horizontalAlignment: Text.AlignHCenter

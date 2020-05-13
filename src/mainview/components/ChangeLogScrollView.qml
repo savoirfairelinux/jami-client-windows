@@ -34,12 +34,20 @@ ScrollView {
 
         width: changeLogScrollView.width
 
+        selectByMouse: false
         readOnly: true
         wrapMode: Text.WordWrap
 
         font.pointSize: JamiTheme.textFontSize - 3
         text: utilsAdapter.getChangeLog()
         textFormat: TextEdit.RichText
+
+        MouseArea {
+            anchors.fill: parent
+            propagateComposedEvents: true
+            cursorShape: Qt.ArrowCursor
+            acceptedButtons: Qt.NoButton
+        }
     }
 
     background: Rectangle {

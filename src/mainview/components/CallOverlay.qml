@@ -99,15 +99,13 @@ Rectangle {
                 }
             }
 
-            TextEdit {
+            Text {
                 id: jamiBestNameText
 
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
                 Layout.preferredWidth: overlayUpperPartRect.width / 3
                 Layout.preferredHeight: 50
 
-                selectByMouse: false
-                readOnly: true
                 font.pointSize: JamiTheme.textFontSize
 
                 horizontalAlignment: Text.AlignHCenter
@@ -125,15 +123,13 @@ Rectangle {
                 }
             }
 
-            TextEdit {
+            Text {
                 id: callTimerText
 
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                 Layout.preferredWidth: overlayUpperPartRect.width / 3
                 Layout.preferredHeight: 50
 
-                selectByMouse: false
-                readOnly: true
                 font.pointSize: JamiTheme.textFontSize
 
                 horizontalAlignment: Text.AlignHCenter
