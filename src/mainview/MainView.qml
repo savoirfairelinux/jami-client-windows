@@ -428,6 +428,15 @@ Window {
         height: qrDialog.contentHeight
     }
 
+    UserProfile {
+        id: userProfile
+
+        x: Math.round((mainViewWindow.width - width) / 2)
+        y: Math.round((mainViewWindow.height - height) / 2)
+        width: Math.max(mainViewWindow.width / 2, aboutPopUpPreferedWidth)
+        height: userProfile.contentHeight
+    }
+
     Component.onCompleted: {
         CallAdapter.initQmlObject()
     }

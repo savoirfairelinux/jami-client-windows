@@ -234,6 +234,11 @@ ItemDelegate {
                 smartListContextMenu.y = relativeMousePos.y
                 smartListContextMenu.responsibleAccountId = LrcGeneralAdapter.getCurrAccId()
                 smartListContextMenu.responsibleConvUid = UID
+                userProfile.responsibleConvUid = UID
+                userProfile.aliasText = DisplayName
+                userProfile.registeredNameText = DisplayID
+                userProfile.idText = URI
+                userProfile.contactPicBase64 = Picture
                 smartListContextMenu.open()
             } else if (mouse.button === Qt.LeftButton
                        && Qt.platform.os == "windows") {

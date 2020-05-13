@@ -33,5 +33,6 @@
         <file>src/commoncomponents/GeneralMenuItem.qml</file>
         <file>src/mainview/components/ConversationSmartListContextMenu.qml</file>
         <file>src/commoncomponents/GeneralMenuSeparator.qml</file>
+        <file>src/mainview/components/UserProfile.qml</file>
     </qresource>
 </RCC>
