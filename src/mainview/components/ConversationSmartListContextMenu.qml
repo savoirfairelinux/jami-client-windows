@@ -138,6 +138,7 @@ Menu {
 
         onClicked: {
             contextMenu.close()
+            userProfile.open()
         }
     }
 

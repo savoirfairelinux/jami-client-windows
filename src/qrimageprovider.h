@@ -35,16 +35,30 @@ public:
                               QQmlImageProviderBase::ForceAsynchronousImageLoading)
     {}
 
-    QPair<int, int>
+    enum class QrType { Account, Contact };
+
+    /*
+    * Id should be string like account_0 (account index),
+    * or contact_xxx (uid).
+    * Cannot use getCurrentAccId to replace account index,
+    * since we need to keep each image id unique.
+    */
+    QPair<QrType, QString>
     getIndexFromID(const QString &id)
     {
-        // should be string like account_0_0 (index 0, index 1)
         auto list = id.split('_', QString::SkipEmptyParts);
         if (list.contains("account")) {
-            return QPair<int, int>(list[1].toInt(), list[2].toInt());
+            return QPair(QrType::Account, list[1]);
+        } else if (list.contains("contact") && list.size() > 1) {
+            /*
+             * For contact_xxx, xxx is "" initially
+             */
+            auto convInfo = LRCInstance::getConversationFromConvUid(list[1]);
+            auto contact = LRCInstance::getCurrentAccountInfo().contactModel->getContact(
+                convInfo.participants.at(0));
+            return QPair(QrType::Contact, contact.profileInfo.uri);
         }
-        qDebug().noquote() << "accountImage provider id format incorrect";
-        return QPair<int, int>(0, 0);
+        return QPair(QrType::Account, "");
     }
 
     QImage
@@ -52,20 +66,28 @@ public:
     {
         Q_UNUSED(size);
 
+        QString uri;
         auto indexPair = getIndexFromID(id);
 
-        auto accountList = LRCInstance::accountModel().getAccountList();
-        if (accountList.size() <= indexPair.first) {
-            return QImage();
+        if (indexPair.first == QrType::Contact) {
+            uri = indexPair.second;
+        } else {
+            if (indexPair.second.isEmpty())
+                return QImage();
+
+            auto accountList = LRCInstance::accountModel().getAccountList();
+            auto accountIndex = indexPair.second.toInt();
+            if (accountList.size() <= accountIndex)
+                return QImage();
+
+            auto &accountInfo = LRCInstance::accountModel().getAccountInfo(
+                accountList.at(accountIndex));
+            uri = accountInfo.profileInfo.uri;
         }
 
-        auto &accountInfo = LRCInstance::accountModel().getAccountInfo(
-            accountList.at(indexPair.first));
-
         if (!requestedSize.isEmpty())
-            return Utils::setupQRCode(accountInfo.profileInfo.uri, 0)
-                .scaled(requestedSize, Qt::KeepAspectRatio);
+            return Utils::setupQRCode(uri, 0).scaled(requestedSize, Qt::KeepAspectRatio);
         else
-            return Utils::setupQRCode(accountInfo.profileInfo.uri, 0);
+            return Utils::setupQRCode(uri, 0);
     }
 };
