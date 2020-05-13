@@ -37,20 +37,20 @@ Dialog {
     /*
      * Content height + margin.
      */
-    contentHeight: userQrImage.height + 10
+    contentHeight: userQrImage.height + 30
 
     Image {
         id: userQrImage
 
         anchors.centerIn: parent
 
-        width: 300
-        height: 300
+        width: 250
+        height: 250
 
         fillMode: Image.PreserveAspectFit
-        source: "image://qrImage/account_" + currentAccountIndex + "_0_qr"
-        sourceSize.width: 310
-        sourceSize.height: 310
+        source: "image://qrImage/account_" + currentAccountIndex
+        sourceSize.width: 260
+        sourceSize.height: 260
         mipmap: true
     }
 
