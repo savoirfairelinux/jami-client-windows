@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ecb5005_f1604d36",
+        "filename": "src/commoncomponents/PasswordDialog.qml",
+        "patchSetId": 158
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-13T19:14:49Z",
+      "side": 1,
+      "message": "Something like this\n\n/*\n * Copyright (C) 2017-2020 by Savoir-faire Linux\n * Author: Anthony Léonard \u003canthony.leonard@savoirfairelinux.com\u003e\n * Author: Andreas Traczyk \u003candreas.traczyk@savoirfairelinux.com\u003e\n * Author: Mingrui Zhang \u003cmingrui.zhang@savoirfairelinux.com\u003e\n *\n * This program is free software; you can redistribute it and/or modify\n * it under the terms of the GNU General Public License as published by\n * the Free Software Foundation; either version 3 of the License, or\n * (at your option) any later version.\n *\n * This program is distributed in the hope that it will be useful,\n * but WITHOUT ANY WARRANTY; without even the implied warranty of\n * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n * GNU General Public License for more details.\n *\n * You should have received a copy of the GNU General Public License\n * along with this program.  If not, see \u003chttp://www.gnu.org/licenses/\u003e.\n */",
+      "revId": "755cb7f13b89d1e4ac7642ff0078f1435b5c2c9d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfb09ccc_b22e4977",
+        "filename": "src/utils.h",
+        "patchSetId": 158
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-13T19:14:49Z",
+      "side": 1,
+      "message": "duplicated with the previous macro",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 35
+      },
+      "revId": "755cb7f13b89d1e4ac7642ff0078f1435b5c2c9d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16a95a58_f509e9af",
+        "filename": "src/wizardview/components/BackupKeyPage.qml",
+        "patchSetId": 158
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-13T19:14:49Z",
+      "side": 1,
+      "message": "same",
+      "revId": "755cb7f13b89d1e4ac7642ff0078f1435b5c2c9d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05a73da8_6b4de2f7",
+        "filename": "src/wizardview/components/BackupKeyPage.qml",
+        "patchSetId": 158
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-13T19:14:49Z",
+      "side": 1,
+      "message": "Comment start with Upper case, then end with a .",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 7
+      },
+      "revId": "755cb7f13b89d1e4ac7642ff0078f1435b5c2c9d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef5cbe8e_794babf7",
+        "filename": "src/wizardview/components/CollapsiblePasswordWidget.qml",
+        "patchSetId": 158
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-13T19:14:49Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 76
+      },
+      "revId": "755cb7f13b89d1e4ac7642ff0078f1435b5c2c9d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a92a8cd6_af216dfa",
+        "filename": "src/wizardview/components/CollapsiblePasswordWidget.qml",
+        "patchSetId": 158
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-13T19:14:49Z",
+      "side": 1,
+      "message": "Comment start with Upper case, then end with a .",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 114
+      },
+      "revId": "755cb7f13b89d1e4ac7642ff0078f1435b5c2c9d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd8a112b_8a51d4c7",
+        "filename": "src/wizardview/components/CreateAccountPage.qml",
+        "patchSetId": 158
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-13T19:14:49Z",
+      "side": 1,
+      "message": "Comment start with Upper case, then end with a .\nuse the following\n/*\n *\n */",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 109
+      },
+      "revId": "755cb7f13b89d1e4ac7642ff0078f1435b5c2c9d",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
