@@ -174,15 +174,13 @@ Window {
                 ColumnLayout {
                     id: incomingCallPageTextRectColumnLayout
 
-                    TextEdit {
+                    Text {
                         id: jamiBestNameText
 
                         Layout.alignment: Qt.AlignCenter
                         Layout.preferredWidth: incomingCallPageTextRect.width
                         Layout.preferredHeight: 50
 
-                        selectByMouse: true
-                        readOnly: true
                         font.pointSize: JamiTheme.textFontSize + 3
 
                         horizontalAlignment: Text.AlignHCenter
@@ -200,15 +198,13 @@ Window {
                         }
                     }
 
-                    TextEdit {
+                    Text {
                         id: jamiBestIdText
 
                         Layout.alignment: Qt.AlignCenter
                         Layout.preferredWidth: incomingCallPageTextRect.width
                         Layout.preferredHeight: 30
 
-                        selectByMouse: true
-                        readOnly: true
                         font.pointSize: JamiTheme.textFontSize
 
                         horizontalAlignment: Text.AlignHCenter
@@ -226,15 +222,13 @@ Window {
                         }
                     }
 
-                    TextEdit {
+                    Text {
                         id: talkToYouText
 
                         Layout.alignment: Qt.AlignCenter
                         Layout.preferredWidth: incomingCallPageTextRect.width
                         Layout.preferredHeight: 30
 
-                        selectByMouse: true
-                        readOnly: true
                         font.pointSize: JamiTheme.textFontSize
 
                         horizontalAlignment: Text.AlignHCenter
