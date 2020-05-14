@@ -34,5 +34,10 @@
         <file>src/mainview/components/ConversationSmartListContextMenu.qml</file>
         <file>src/commoncomponents/GeneralMenuSeparator.qml</file>
         <file>src/mainview/components/UserProfile.qml</file>
+        <file>src/mainview/components/VideoCallPageContextMenu.qml</file>
+        <file>src/mainview/js/videocontextmenucreation.js</file>
+        <file>src/mainview/components/VideoCallPageContextMenuDeviceItem.qml</file>
+        <file>src/mainview/components/SelectScreen.qml</file>
+        <file>src/mainview/js/selectscreenwindowcreation.js</file>
     </qresource>
 </RCC>
