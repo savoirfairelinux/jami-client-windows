@@ -18,6 +18,7 @@
  */
 import QtQuick 2.14
 import QtQuick.Controls 2.14
+import QtQuick.Layouts 1.14
 import net.jami.JamiTheme 1.0
 
 
@@ -25,11 +26,13 @@ import net.jami.JamiTheme 1.0
  * General menu item.
  * Can control top, bottom, left, right border width.
  * Use onClicked slot to simulate item click event.
+ * Can have image icon at the left of the text.
  */
 MenuItem {
     id: menuItem
 
     property string itemName: ""
+    property string iconSource: ""
     property int preferredWidth: 150
     property int preferredHeight: 30
     property int topBorderWidth: 0
@@ -39,8 +42,52 @@ MenuItem {
 
     signal clicked
 
-    text: itemName
-    font.pointSize: JamiTheme.textFontSize - 3
+    contentItem: Rectangle {
+        id: menuItemContentRect
+
+        anchors.fill: parent
+
+        RowLayout {
+            id: menuItemContentRectRowLayout
+
+            anchors.fill: menuItemContentRect
+
+            Image {
+                id: contextMenuItemImage
+
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+                Layout.leftMargin: 5
+                Layout.preferredWidth: 25
+                Layout.preferredHeight: 25
+
+                visible: false
+                fillMode: Image.PreserveAspectFit
+                mipmap: true
+            }
+
+            Text {
+                id: contextMenuItemText
+
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+                Layout.leftMargin: contextMenuItemImage.visible ? 0 : 5
+                Layout.preferredWidth: contextMenuItemImage.visible ? (preferredWidth - contextMenuItemImage.width - 5) : preferredWidth
+                Layout.preferredHeight: 30
+
+                text: itemName
+                font.pointSize: JamiTheme.textFontSize - 3
+                horizontalAlignment: Text.AlignLeft
+                verticalAlignment: Text.AlignVCenter
+            }
+        }
+        color: "transparent"
+    }
+
+    onIconSourceChanged: {
+        if (iconSource !== "") {
+            contextMenuItemImage.source = iconSource
+            contextMenuItemImage.visible = true
+        }
+    }
 
     background: Rectangle {
         id: contextMenuBackgroundRect
