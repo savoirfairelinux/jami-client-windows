@@ -120,6 +120,14 @@ Rectangle {
 
     anchors.fill: parent
 
+    Connections {
+        target: CallAdapter
+
+        onCloseCallStack: {
+            videoCallPageContextMenu.closePotentialWindows()
+        }
+    }
+
     SplitView {
         id: mainColumnLayout
 
@@ -313,6 +321,28 @@ Rectangle {
             visible: false
 
             clip: true
+        }
+    }
+
+    VideoCallPageContextMenu {
+        id: videoCallPageContextMenu
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        propagateComposedEvents: true
+        acceptedButtons: Qt.RightButton
+        onClicked: {
+
+
+            /*
+             * Make menu pos at mouse.
+             */
+            var relativeMousePos = mapToItem(videoCallPageRect,
+                                             mouse.x, mouse.y)
+            videoCallPageContextMenu.x = relativeMousePos.x
+            videoCallPageContextMenu.y = relativeMousePos.y
+            videoCallPageContextMenu.activate()
         }
     }
 
