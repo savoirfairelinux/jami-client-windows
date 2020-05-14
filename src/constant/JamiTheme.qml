@@ -48,6 +48,7 @@ Item {
     property string buttonTintedBlue: "#00aaff"
 
     property string selectionBlue: "#109ede"
+    property string selectionGreen: "#21be2b"
 
     property string closeButtonLighterBlack: "#4c4c4c"
 

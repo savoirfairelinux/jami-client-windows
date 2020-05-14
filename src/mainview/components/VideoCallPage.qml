@@ -316,5 +316,27 @@ Rectangle {
         }
     }
 
+    VideoCallPageContextMenu {
+        id: videoCallPageContextMenu
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        propagateComposedEvents: true
+        acceptedButtons: Qt.RightButton
+        onClicked: {
+
+
+            /*
+             * Make menu pos at mouse.
+             */
+            var relativeMousePos = mapToItem(videoCallPageRect,
+                                             mouse.x, mouse.y)
+            videoCallPageContextMenu.x = relativeMousePos.x
+            videoCallPageContextMenu.y = relativeMousePos.y
+            videoCallPageContextMenu.activate()
+        }
+    }
+
     color: "black"
 }
