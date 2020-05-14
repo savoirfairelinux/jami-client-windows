@@ -112,7 +112,7 @@ Window {
                 }) || sidePanelViewStack.find(function (item, index) {
                     return item.objectName === "callStackViewObject"
                 })) {
-                    callStackView.needToCloseInCallConversation()
+                    callStackView.needToCloseInCallConversationAndPotentialWindow()
                     if (welcomeViewStack.visible) {
                         welcomeViewStack.pop(null, StackView.Immediate)
                         welcomeViewStack.push(communicationPageMessageWebView,
@@ -143,7 +143,7 @@ Window {
             communicationPageMessageWebView.headerUserAliasLabelText = name
             communicationPageMessageWebView.headerUserUserNameLabelText = (name !== id) ? id : ""
 
-            callStackView.needToCloseInCallConversation()
+            callStackView.needToCloseInCallConversationAndPotentialWindow()
             callStackView.setCorrspondingMessageWebView(
                         communicationPageMessageWebView)
 
@@ -178,7 +178,7 @@ Window {
                 LrcGeneralAdapter.setCurrentCall(LrcGeneralAdapter.getCurrAccId(
                                                      ), currentUID)
             }
-            callStackView.needToCloseInCallConversation()
+            callStackView.needToCloseInCallConversationAndPotentialWindow()
             callStackView.responsibleAccountId = LrcGeneralAdapter.getCurrAccId(
                         )
             callStackView.responsibleConvUid = currentUID

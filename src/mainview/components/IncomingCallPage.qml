@@ -77,8 +77,7 @@ Window {
     x: screen.virtualX + screen.width - width
     y: screen.virtualY + screen.height - height - 50
 
-    flags: Qt.SubWindow | Qt.Tool | Qt.FramelessWindowHint
-           | Qt.WindowSystemMenuHint | Qt.WindowStaysOnTopHint
+    flags: Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint
     screen: Qt.application.screens[0]
 
     UtilsAdapter {

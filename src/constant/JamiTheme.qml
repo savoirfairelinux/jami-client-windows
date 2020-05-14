@@ -36,6 +36,8 @@ Item {
     property string presenceGreen: "#4cd964"
     property string notificationRed: "#ff3b30"
 
+    property string screenSelectionBorderGreen: "green"
+
     property string acceptButtonGreen: "#4caf50"
     property string acceptButtonHoverGreen: "#5db761"
     property string acceptButtonPressedGreen: "#449d48"
@@ -48,6 +50,8 @@ Item {
     property string buttonTintedBlue: "#00aaff"
 
     property string selectionBlue: "#109ede"
+    property string selectionGreen: "#21be2b"
+    property string rubberBandSelectionBlue: "steelblue"
 
     property string closeButtonLighterBlack: "#4c4c4c"
 

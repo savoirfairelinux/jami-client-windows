@@ -32,6 +32,7 @@ var incomingCallPageWindowObject
 
 function createincomingCallPageWindowObjects(accountId, convUid) {
 
+
     /*
      * Check if the corrsponding call exists or not.
      */
@@ -45,41 +46,38 @@ function createincomingCallPageWindowObjects(accountId, convUid) {
                 "../components/IncomingCallPage.qml")
     if (incomingCallPageWindowComponent.status === Component.Ready)
         finishCreation(accountId, convUid)
-    else
-        incomingCallPageWindowComponent.statusChanged.connect(finishCreation)
+    else if (incomingCallPageWindowComponent.status === Component.Error)
+        console.log("Error loading component:",
+                    incomingCallPageWindowComponent.errorString())
 }
 
 function finishCreation(accountId, convUid) {
-    if (incomingCallPageWindowComponent.status === Component.Ready) {
-        incomingCallPageWindowObject = incomingCallPageWindowComponent.createObject()
-        if (incomingCallPageWindowObject === null) {
+    incomingCallPageWindowObject = incomingCallPageWindowComponent.createObject(
+                )
+    if (incomingCallPageWindowObject === null) {
 
-            /*
-             * Error Handling.
-             */
-            console.log("Error creating object for accountId" + accountId)
-        }
-
-        incomingCallPageWindowObject.responsibleConvUid = convUid
-        incomingCallPageWindowObject.responsibleAccountId = accountId
-        incomingCallPageWindowObject.updateUI()
 
         /*
-         * Record in map.
+         * Error Handling.
          */
-        if (incomingCallPageWindowMap.has(accountId)) {
-            incomingCallPageWindowMap.get(accountId).set(
-                        convUid, incomingCallPageWindowObject)
-        } else {
-            let incomingCallPageWindowTempMap = new Map()
-            incomingCallPageWindowTempMap.set(convUid,
-                                              incomingCallPageWindowObject)
-            incomingCallPageWindowMap.set(accountId,
-                                          incomingCallPageWindowTempMap)
-        }
-    } else if (incomingCallPageWindowComponent.status === Component.Error) {
-        console.log("Error loading component:",
-                    incomingCallPageWindowComponent.errorString())
+        console.log("Error creating object for accountId" + accountId)
+    }
+
+    incomingCallPageWindowObject.responsibleConvUid = convUid
+    incomingCallPageWindowObject.responsibleAccountId = accountId
+    incomingCallPageWindowObject.updateUI()
+
+
+    /*
+     * Record in map.
+     */
+    if (incomingCallPageWindowMap.has(accountId)) {
+        incomingCallPageWindowMap.get(accountId).set(
+                    convUid, incomingCallPageWindowObject)
+    } else {
+        let incomingCallPageWindowTempMap = new Map()
+        incomingCallPageWindowTempMap.set(convUid, incomingCallPageWindowObject)
+        incomingCallPageWindowMap.set(accountId, incomingCallPageWindowTempMap)
     }
 }
 
@@ -98,6 +96,7 @@ function closeIncomingCallPageWindow(accountId, convUid) {
         if (incomingCallPageWindowTempMap.has(convUid)) {
             var incomingCallPageWindow = incomingCallPageWindowTempMap.get(
                         convUid)
+
 
             /*
              * Close incomingCallPageWindow and clear the memory
