@@ -17,6 +17,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 import QtQuick 2.14
+import QtQuick.Window 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import QtQuick.Controls.Universal 2.12
@@ -24,6 +25,7 @@ import net.jami.JamiTheme 1.0
 import net.jami.CallAdapter 1.0
 
 import "../js/incomingcallpagecreation.js" as IncomingCallPageCreation
+import "../js/videocallfullscreenwindowcontainercreation.js" as VideoCallFullScreenWindowContainerCreation
 
 Rectangle {
     id: callStackViewWindow
@@ -41,9 +43,17 @@ Rectangle {
     signal outgoingCallPageBackButtonIsClicked
     signal callPageBackButtonIsClicked
 
-    function needToCloseInCallConversation() {
+    function needToCloseInCallConversationAndPotentialWindow() {
         audioCallPage.closeInCallConversation()
         videoCallPage.closeInCallConversation()
+
+
+        /*
+         * Close potential window, context menu releated windows.
+         */
+        if (VideoCallFullScreenWindowContainerCreation.getObject())
+            VideoCallFullScreenWindowContainerCreation.getObject().close()
+        videoCallPage.closeContextMenuAndRelatedWindows()
     }
 
     function setCorrspondingMessageWebView(webViewId) {
@@ -73,9 +83,10 @@ Rectangle {
                 })
 
                 if (!itemToFind) {
-                    callStackMainView.push(outgoingCallPage)
+                    callStackMainView.push(outgoingCallPage,
+                                           StackView.Immediate)
                 } else {
-                    callStackMainView.pop(itemToFind)
+                    callStackMainView.pop(itemToFind, StackView.Immediate)
                 }
             }
         }
@@ -105,9 +116,9 @@ Rectangle {
                 })
 
                 if (!itemToFind) {
-                    callStackMainView.push(audioCallPage)
+                    callStackMainView.push(audioCallPage, StackView.Immediate)
                 } else {
-                    callStackMainView.pop(itemToFind)
+                    callStackMainView.pop(itemToFind, StackView.Immediate)
                 }
                 audioCallPage.updateUI(responsibleAccountId, responsibleConvUid)
             }
@@ -121,9 +132,9 @@ Rectangle {
                 })
 
                 if (!itemToFind) {
-                    callStackMainView.push(videoCallPage)
+                    callStackMainView.push(videoCallPage, StackView.Immediate)
                 } else {
-                    callStackMainView.pop(itemToFind)
+                    callStackMainView.pop(itemToFind, StackView.Immediate)
                 }
                 videoCallPage.updateUI(responsibleAccountId, responsibleConvUid)
                 videoCallPage.setDistantRendererId(callId)
@@ -169,6 +180,29 @@ Rectangle {
 
         onVideoCallPageBackButtonIsClicked: {
             callStackViewWindow.callPageBackButtonIsClicked()
+        }
+
+        onNeedToShowInFullScreen: {
+            if (!VideoCallFullScreenWindowContainerCreation.getObject())
+                VideoCallFullScreenWindowContainerCreation.createvideoCallFullScreenWindowContainerObject()
+
+            if (!VideoCallFullScreenWindowContainerCreation.getObject(
+                        ).visible) {
+                VideoCallFullScreenWindowContainerCreation.getObject(
+                            ).setAsChild(videoCallPage)
+
+
+                /*
+                 * Hack: show first, then showFullScreen to make sure that the showFullScreen
+                 * display on the correct screen.
+                 */
+                VideoCallFullScreenWindowContainerCreation.getObject().show()
+                VideoCallFullScreenWindowContainerCreation.getObject(
+                            ).showFullScreen()
+            } else {
+                videoCallPage.parent = callStackMainView
+                VideoCallFullScreenWindowContainerCreation.getObject().close()
+            }
         }
     }
 

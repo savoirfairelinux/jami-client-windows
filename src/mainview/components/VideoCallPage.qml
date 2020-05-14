@@ -41,6 +41,7 @@ Rectangle {
     property var corrspondingMessageWebView: null
 
     signal videoCallPageBackButtonIsClicked
+    signal needToShowInFullScreen
 
     function updateUI(accountId, convUid) {
         bestName = utilsAdapter.getBestName(accountId, convUid)
@@ -71,6 +72,11 @@ Rectangle {
             inVideoCallMessageWebViewStack.visible = false
             inVideoCallMessageWebViewStack.clear()
         }
+    }
+
+    function closeContextMenuAndRelatedWindows() {
+        videoCallPageContextMenu.closePotentialWindows()
+        videoCallPageContextMenu.close()
     }
 
     function previewMagneticSnap() {
@@ -313,6 +319,34 @@ Rectangle {
             visible: false
 
             clip: true
+        }
+    }
+
+    VideoCallPageContextMenu {
+        id: videoCallPageContextMenu
+
+        onFullScreenNeeded: {
+            videoCallPageRect.needToShowInFullScreen()
+        }
+    }
+
+    MouseArea {
+        anchors.fill: parent
+
+        propagateComposedEvents: true
+        acceptedButtons: Qt.RightButton
+
+        onClicked: {
+
+
+            /*
+             * Make menu pos at mouse.
+             */
+            var relativeMousePos = mapToItem(videoCallPageRect,
+                                             mouse.x, mouse.y)
+            videoCallPageContextMenu.x = relativeMousePos.x
+            videoCallPageContextMenu.y = relativeMousePos.y
+            videoCallPageContextMenu.activate()
         }
     }
 
