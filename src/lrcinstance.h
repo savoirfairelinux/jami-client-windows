@@ -328,6 +328,17 @@ public:
     };
 
     static void
+    setAvatarForAccount(const QPixmap &avatarPixmap, const QString &accountID)
+    {
+        QByteArray ba;
+        QBuffer bu(&ba);
+        bu.open(QIODevice::WriteOnly);
+        avatarPixmap.save(&bu, "PNG");
+        auto str = QString::fromLocal8Bit(ba.toBase64());
+        accountModel().setAvatar(accountID, str);
+    };
+
+    static void
     setCurrAccAvatar(const QPixmap &avatarPixmap)
     {
         QByteArray ba;
