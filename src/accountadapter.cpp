@@ -66,12 +66,14 @@ AccountAdapter::connectFailure()
 }
 
 void
-AccountAdapter::createJamiAccount(const QVariantMap &settings, bool isCreating)
+AccountAdapter::createJamiAccount(const QVariantMap &settings,
+                                  QString photoBoothImgBase64,
+                                  bool isCreating)
 {
     Utils::oneShotConnect(
         &LRCInstance::accountModel(),
         &lrc::api::NewAccountModel::accountAdded,
-        [this, settings, isCreating](const QString &accountId) {
+        [this, settings, isCreating, photoBoothImgBase64](const QString &accountId) {
             QSettings qSettings("jami.net", "Jami");
             if (not qSettings.contains(SettingsKey::neverShowMeAgain)) {
                 qSettings.setValue(SettingsKey::neverShowMeAgain, false);
@@ -90,8 +92,15 @@ AccountAdapter::createJamiAccount(const QVariantMap &settings, bool isCreating)
             } else {
                 emit accountAdded(showBackup);
             }
-            //TODO: set up avatar pixmap from photobooth
-            //LRCInstance::setCurrAccAvatar(ui->setAvatarWidget->getAvatarPixmap());
+            // set up avatar pixmap from photobooth
+            QImage avatarImg;
+            const bool ret = avatarImg.loadFromData(
+                QByteArray::fromBase64(photoBoothImgBase64.toLatin1()));
+            if (!ret) {
+                qDebug() << "JAMI account creation BASE64 image loading failed";
+            } else {
+                LRCInstance::setAvatarForAccount(QPixmap::fromImage(avatarImg), accountId);
+            }
         });
 
     connectFailure();
@@ -112,11 +121,11 @@ AccountAdapter::createJamiAccount(const QVariantMap &settings, bool isCreating)
 }
 
 void
-AccountAdapter::createSIPAccount(const QVariantMap &settings)
+AccountAdapter::createSIPAccount(const QVariantMap &settings, QString photoBoothImgBase64)
 {
     Utils::oneShotConnect(&LRCInstance::accountModel(),
                           &lrc::api::NewAccountModel::accountAdded,
-                          [this, settings](const QString &accountId) {
+                          [this, settings, photoBoothImgBase64](const QString &accountId) {
                               auto confProps = LRCInstance::accountModel().getAccountConfig(
                                   accountId);
                               // set SIP details
@@ -126,8 +135,16 @@ AccountAdapter::createSIPAccount(const QVariantMap &settings)
                               confProps.proxyServer = settings["proxy"].toString();
                               LRCInstance::accountModel().setAccountConfig(accountId, confProps);
 
-                              // TODO: set up photobooth avatar to SIP avatar
-                              //LRCInstance::setCurrAccAvatar(ui->setSIPAvatarWidget->getAvatarPixmap());
+                              // set up photobooth avatar to SIP avatar
+                              QImage avatarImg;
+                              const bool ret = avatarImg.loadFromData(
+                                  QByteArray::fromBase64(photoBoothImgBase64.toLatin1()));
+                              if (!ret) {
+                                  qDebug() << "SIP account creation BASE64 image loading failed";
+                              } else {
+                                  LRCInstance::setAvatarForAccount(QPixmap::fromImage(avatarImg),
+                                                                   accountId);
+                              }
                           });
 
     connectFailure();
