@@ -30,6 +30,8 @@ ColumnLayout {
     property alias text_sipUsernameEditAlias: sipUsernameEdit.text
     property alias text_sipPasswordEditAlias: sipPasswordEdit.text
 
+    property alias boothImgBase64: setSIPAvatarWidget.imgBase64
+
     function initializeOnShowUp() {
         clearAllTextFields()
     }
@@ -42,6 +44,15 @@ ColumnLayout {
         sipFullNameEdit.clear()
         sipUsernameEdit.clear()
     }
+
+    function startBooth(){
+        setSIPAvatarWidget.startBooth()
+    }
+
+    function stopBooth(){
+        setSIPAvatarWidget.stopBooth()
+    }
+
     Layout.fillWidth: true
     Layout.fillHeight: true
 
@@ -70,17 +81,17 @@ ColumnLayout {
         verticalAlignment: Text.AlignVCenter
     }
 
-    Rectangle {
+    PhotoboothView{
         id: setSIPAvatarWidget
+
         Layout.alignment: Qt.AlignHCenter
+
         Layout.maximumWidth: 261
         Layout.preferredWidth: 261
         Layout.minimumWidth: 261
         Layout.maximumHeight: 261
         Layout.preferredHeight: 261
         Layout.minimumHeight: 261
-
-        color: "blue"
     }
 
     RowLayout {
