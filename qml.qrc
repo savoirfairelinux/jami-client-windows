@@ -2,6 +2,7 @@
     <qresource prefix="/">
         <file>src/commoncomponents/PasswordDialog.qml</file>
         <file>src/commoncomponents/InfoLineEdit.qml</file>
+        <file>src/commoncomponents/PhotoboothView.qml</file>
         <file>src/wizardview/WizardView.qml</file>
         <file>src/wizardview/components/WelcomePageLayout.qml</file>
         <file>src/wizardview/components/CreateAccountPage.qml</file>
