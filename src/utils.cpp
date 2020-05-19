@@ -1014,6 +1014,12 @@ UtilsAdapter::stopPreviewing()
     }
 }
 
+Q_INVOKABLE bool
+UtilsAdapter::hasVideoCall()
+{
+    return LRCInstance::hasVideoCall();
+}
+
 const QString
 UtilsAdapter::getCallId(const QString &accountId, const QString &convUid)
 {
