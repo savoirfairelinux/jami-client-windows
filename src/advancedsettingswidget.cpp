@@ -108,7 +108,7 @@ AdvancedSettingsWidget::updateAdvancedSettings()
 {
     auto config = LRCInstance::getCurrAccConfig();
     //Call Settings
-    ui->checkBoxUntrusted->setChecked(config.allowIncoming);
+    ui->checkBoxUntrusted->setChecked(config.DHT.PublicInCalls);
     ui->checkBoxAutoAnswer->setChecked(config.autoAnswer);
     ui->checkBoxCustomRingtone->setChecked(config.Ringtone.ringtoneEnabled);
 
@@ -154,7 +154,7 @@ void
 AdvancedSettingsWidget::setCallsUntrusted(bool state)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
-    confProps.allowIncoming = state;
+    confProps.DHT.PublicInCalls = state;
     LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
 }
 void
