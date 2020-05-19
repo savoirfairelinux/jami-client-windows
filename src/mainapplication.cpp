@@ -279,6 +279,7 @@ MainApplication::qmlInitialization()
     QML_REGISTERTYPE(PreviewRenderer, 1, 0);
     QML_REGISTERTYPE(VideoCallPreviewRenderer, 1, 0);
     QML_REGISTERTYPE(DistantRenderer, 1, 0);
+    QML_REGISTERTYPE(PhotoboothPreviewRender, 1, 0)
 
     /*
      * Adapter - qmlRegisterSingletonType
