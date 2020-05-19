@@ -69,7 +69,9 @@ AccountAdapter::connectFailure()
 }
 
 void
-AccountAdapter::createJamiAccount(const QVariantMap &settings, bool isCreating)
+AccountAdapter::createJamiAccount(const QVariantMap &settings,
+                                  QString photoBoothImgBase64,
+                                  bool isCreating)
 {
     Utils::oneShotConnect(
         &LRCInstance::accountModel(),
@@ -94,6 +96,8 @@ AccountAdapter::createJamiAccount(const QVariantMap &settings, bool isCreating)
                 emit accountAdded(showBackup);
             }
             //TODO: set up avatar pixmap from photobooth
+            //QImage avatarImg;
+            //avatarImg.loadFromData(QByteArray::fromBase64(photoBoothImgBase64))
             //LRCInstance::setCurrAccAvatar(ui->setAvatarWidget->getAvatarPixmap());
         });
 
@@ -115,7 +119,7 @@ AccountAdapter::createJamiAccount(const QVariantMap &settings, bool isCreating)
 }
 
 void
-AccountAdapter::createSIPAccount(const QVariantMap &settings)
+AccountAdapter::createSIPAccount(const QVariantMap &settings, QString photoBoothImgBase64)
 {
     Utils::oneShotConnect(&LRCInstance::accountModel(),
                           &lrc::api::NewAccountModel::accountAdded,

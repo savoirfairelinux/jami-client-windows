@@ -467,6 +467,17 @@ public:
         return fi.fileName();
     }
 
+    Q_INVOKABLE QString
+    getCroppedImageBase64FromFile(QString fileName, int size)
+    {
+        auto image = Utils::cropImage(QImage(fileName));
+        auto croppedImage = image.scaled(size,
+                                         size,
+                                         Qt::KeepAspectRatioByExpanding,
+                                         Qt::SmoothTransformation);
+        return QString::fromLocal8Bit(Utils::QImageToByteArray(croppedImage).toBase64());
+    }
+
 private:
     QClipboard *clipboard_;
 };
