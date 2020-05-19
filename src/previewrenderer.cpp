@@ -64,8 +64,9 @@ PreviewRenderer::paint(QPainter *painter)
         setWidth(previewWidth);
         setHeight(previewHeight);
 
-        scaledPreview = previewImage->scaled(previewWidth, previewHeight, Qt::KeepAspectRatio);
-        painter->drawImage(QRect(0, 0, width(), height()), scaledPreview);
+        scaledPreview = previewImage->scaled(size().toSize(), Qt::KeepAspectRatio);
+        painter->drawImage(QRect(0, 0, scaledPreview.width(), scaledPreview.height()),
+                           scaledPreview);
     }
 }
 
@@ -96,6 +97,49 @@ VideoCallPreviewRenderer::paint(QPainter *painter)
 
         QImage scaledPreview;
         scaledPreview = previewImage->scaled(size().toSize(), Qt::KeepAspectRatio);
+        painter->drawImage(QRect(0, 0, scaledPreview.width(), scaledPreview.height()),
+                           scaledPreview);
+    }
+}
+
+PhotoboothPreviewRender::PhotoboothPreviewRender(QQuickItem *parent)
+    : PreviewRenderer(parent)
+{
+    connect(LRCInstance::renderer(), &RenderManager::previewRenderingStopped, [this]() {
+        emit hideBooth();
+    });
+}
+
+PhotoboothPreviewRender::~PhotoboothPreviewRender() {}
+
+QImage
+PhotoboothPreviewRender::takePhoto()
+{
+    if (auto previewImage = LRCInstance::renderer()->getPreviewFrame()) {
+        return previewImage->copy();
+    }
+    return QImage();
+}
+
+QString
+PhotoboothPreviewRender::takeCroppedPhotoToBase64(int size)
+{
+    auto image = Utils::cropImage(takePhoto());
+    auto avatar = image.scaled(size, size, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
+
+    return QString::fromLatin1(Utils::QImageToByteArray(avatar).toBase64().data());
+}
+
+void
+PhotoboothPreviewRender::paint(QPainter *painter)
+{
+    painter->setRenderHint(QPainter::Antialiasing, true);
+
+    auto previewImage = LRCInstance::renderer()->getPreviewFrame();
+    if (previewImage) {
+        QImage scaledPreview;
+        scaledPreview = Utils::getCirclePhoto(*previewImage,
+                                              height() <= width() ? height() : width());
         painter->drawImage(QRect(0, 0, scaledPreview.width(), scaledPreview.height()),
                            scaledPreview);
     }
