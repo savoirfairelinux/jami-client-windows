@@ -33,6 +33,9 @@ ColumnLayout {
     property alias checkState_signUpCheckboxAlias: signUpCheckbox.checked
     property alias isToSetPassword_checkState_choosePasswordCheckBox: choosePasswordCheckBox.checked
 
+    // photo booth alias
+    property alias boothImgBase64: setAvatarWidget.imgBase64
+
     // collapse password widget property aliases
     property alias text_passwordEditAlias: collapsiblePasswordWidget.text_passwordEditAlias
     property alias text_confirmPasswordEditAlias: collapsiblePasswordWidget.text_confirmPasswordEditAlias
@@ -63,6 +66,14 @@ ColumnLayout {
         }
     }
 
+    function startBooth(){
+        setAvatarWidget.startBooth()
+    }
+
+    function stopBooth(){
+        setAvatarWidget.stopBooth()
+    }
+
     Layout.fillWidth: true
     Layout.fillHeight: true
 
@@ -91,17 +102,17 @@ ColumnLayout {
         verticalAlignment: Text.AlignVCenter
     }
 
-    Rectangle {
+    PhotoboothView{
         id: setAvatarWidget
+
         Layout.alignment: Qt.AlignHCenter
+
         Layout.maximumWidth: 261
         Layout.preferredWidth: 261
         Layout.minimumWidth: 261
         Layout.maximumHeight: 261
         Layout.preferredHeight: 261
         Layout.minimumHeight: 261
-
-        color: "green"
     }
 
     RowLayout {
