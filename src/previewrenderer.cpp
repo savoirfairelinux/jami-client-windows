@@ -100,3 +100,47 @@ VideoCallPreviewRenderer::paint(QPainter *painter)
                            scaledPreview);
     }
 }
+
+PhotoboothPreviewRender::PhotoboothPreviewRender(QQuickItem *parent)
+    : PreviewRenderer(parent)
+{
+    connect(LRCInstance::renderer(), &RenderManager::previewRenderingStopped, [this]() {
+        emit hideBooth();
+    });
+}
+
+PhotoboothPreviewRender::~PhotoboothPreviewRender() {}
+
+QImage
+PhotoboothPreviewRender::takePhoto()
+{
+    if (auto previewImage = LRCInstance::renderer()->getPreviewFrame()) {
+        return previewImage->copy();
+    }
+    return QImage();
+}
+
+void
+PhotoboothPreviewRender::paint(QPainter *painter)
+{
+    painter->setRenderHint(QPainter::Antialiasing, true);
+
+    auto previewImage = LRCInstance::renderer()->getPreviewFrame();
+    if (previewImage) {
+        QImage scaledPreview;
+        scaledPreview = Utils::getCirclePhoto(*previewImage,
+                                              height() <= width() ? height() : width());
+        painter->drawImage(QRect(0, 0, width(), height()), scaledPreview);
+    }
+}
+
+void
+PhotoboothPreviewRender::paintBackground(QPainter *painter)
+{
+    QBrush brush(Qt::black);
+    QPainterPath path;
+
+    auto r = this->width() / 2;
+    path.addEllipse(QPoint(r, r), r, r);
+    painter->fillPath(path, brush);
+}

@@ -467,6 +467,22 @@ public:
         return fi.fileName();
     }
 
+    Q_INVOKABLE QString
+    getImageBase64(QImage img)
+    {
+        return QString::fromLatin1(Utils::QImageToByteArray(img).toBase64().data());
+    }
+
+    Q_INVOKABLE QImage
+    getCroppedImage(QString fileName, int size)
+    {
+        auto image = Utils::cropImage(QImage(fileName));
+        auto avatar = image.scaled(size,
+                                   size,
+                                   Qt::KeepAspectRatioByExpanding,
+                                   Qt::SmoothTransformation);
+    }
+
 private:
     QClipboard *clipboard_;
 };
