@@ -46,5 +46,6 @@
         <file>src/mainview/components/UserProfile.qml</file>
         <file>src/commoncomponents/PasswordDialog.qml</file>
         <file>src/commoncomponents/InfoLineEdit.qml</file>
+        <file>src/commoncomponents/PhotoboothView.qml</file>
     </qresource>
 </RCC>
