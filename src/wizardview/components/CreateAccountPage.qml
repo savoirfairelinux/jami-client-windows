@@ -91,8 +91,9 @@ ColumnLayout {
         verticalAlignment: Text.AlignVCenter
     }
 
-    Rectangle {
+    PhotoboothView{
         id: setAvatarWidget
+
         Layout.alignment: Qt.AlignHCenter
         Layout.maximumWidth: 261
         Layout.preferredWidth: 261
@@ -100,8 +101,6 @@ ColumnLayout {
         Layout.maximumHeight: 261
         Layout.preferredHeight: 261
         Layout.minimumHeight: 261
-
-        color: "green"
     }
 
     RowLayout {
