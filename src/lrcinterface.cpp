@@ -66,6 +66,12 @@ LrcGeneralAdapter::stopPreviewing()
     }
 }
 
+Q_INVOKABLE bool
+LrcGeneralAdapter::hasVideoCall()
+{
+    return LRCInstance::hasVideoCall();
+}
+
 int
 LrcGeneralAdapter::getAccountListSize()
 {
