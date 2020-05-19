@@ -137,10 +137,11 @@ Window {
         case WizardView.CREATE:
         case WizardView.IMPORT:
             AccountAdapter.createJamiAccount(inputParaObject,
-                              (wizardMode === WizardView.CREATE))
+                                             createAccountPage.boothImgBase64,
+                                             (wizardMode === WizardView.CREATE))
             break
         default:
-            AccountAdapter.createSIPAccount(inputParaObject)
+            AccountAdapter.createSIPAccount(inputParaObject,createSIPAccountPage.boothImgBase64)
         }
 
         changePageQML(controlPanelStackView.spinnerPageId)
@@ -273,11 +274,13 @@ Window {
             // validate wizard progression
             validateWizardProgressionQML()
             // start photobooth
+            createAccountPage.startBooth()
         } else if (pageIndex == controlPanelStackView.createSIPAccountPageId) {
             createSIPAccountPage.initializeOnShowUp()
             setNavBarVisibility(true)
             btnNext.enabled = true
             // start photo booth
+            createSIPAccountPage.startBooth()
         } else if (pageIndex == controlPanelStackView.importFromDevicePageId) {
             importFromDevicePage.initializeOnShowUp()
             setNavBarVisibility(true)
@@ -604,7 +607,14 @@ Window {
                     }
 
                     onClicked: {
-                        // TODO: stop photobooth previewing
+                        // stop photobooth previewing
+                        if(controlPanelStackView.currentIndex == controlPanelStackView.createAccountPageId) {
+                            createAccountPage.stopBooth()
+                        }
+                        if(controlPanelStackView.currentIndex == controlPanelStackView.createSIPAccountPageId) {
+                            createSIPAccountPage.stopBooth()
+                        }
+
                         // Disconnect registered name found Connection
                         registeredNameFoundConnection.enabled = false
                         // deal with look up status label and collapsible password widget
@@ -693,7 +703,14 @@ Window {
                     }
 
                     onClicked: {
-                        // TODO: stop photobooth
+                        // stop photobooth previewing
+                        if(controlPanelStackView.currentIndex == controlPanelStackView.createAccountPageId) {
+                            createAccountPage.stopBooth()
+                        }
+                        if(controlPanelStackView.currentIndex == controlPanelStackView.createSIPAccountPageId) {
+                            createSIPAccountPage.stopBooth()
+                        }
+
                         registeredNameFoundConnection.enabled = false
 
                         if (controlPanelStackView.currentIndex

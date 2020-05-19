@@ -480,6 +480,7 @@ public:
     Q_INVOKABLE void setCurrentCall(const QString &accountId, const QString &convUid);
     Q_INVOKABLE void startPreviewing(bool force);
     Q_INVOKABLE void stopPreviewing();
+    Q_INVOKABLE bool hasVideoCall();
     Q_INVOKABLE const QString getCallId(const QString &accountId, const QString &convUid);
     Q_INVOKABLE QString
     stringSimplifier(QString input)
@@ -498,6 +499,17 @@ public:
     {
         QFileInfo fi(inputFileName);
         return fi.fileName();
+    }
+
+    Q_INVOKABLE QString
+    getCroppedImageBase64FromFile(QString fileName, int size)
+    {
+        auto image = Utils::cropImage(QImage(fileName));
+        auto croppedImage = image.scaled(size,
+                                         size,
+                                         Qt::KeepAspectRatioByExpanding,
+                                         Qt::SmoothTransformation);
+        return QString::fromLatin1(Utils::QImageToByteArray(croppedImage).toBase64().data());
     }
 
 private:
