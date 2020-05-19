@@ -51,3 +51,17 @@ signals:
 private:
     void paint(QPainter *painter) override final;
 };
+
+class PhotoboothPreviewRender : public PreviewRenderer
+{
+    Q_OBJECT
+public:
+    explicit PhotoboothPreviewRender(QQuickItem *parent = 0);
+    ~PhotoboothPreviewRender();
+
+    Q_INVOKABLE QImage takePhoto();
+
+private:
+    void paint(QPainter *painter) override final;
+    void paintBackground(QPainter *painter);
+};
