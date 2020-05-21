@@ -197,7 +197,7 @@ Rectangle {
                             id: textMetricsAudioCallPageRegisteredNameText
                             font: audioCallPageRegisteredNameText.font
                             text: bestName
-                            elideWidth: audioCallPageRectCentralRect.width
+                            elideWidth: audioCallPageRectCentralRect.width - 50
                             elide: Qt.ElideMiddle
                         }
                     }
@@ -222,7 +222,7 @@ Rectangle {
                             id: textMetricsAudioCallPageIdText
                             font: audioCallPageIdText.font
                             text: bestId
-                            elideWidth: audioCallPageRectCentralRect.width
+                            elideWidth: audioCallPageRectCentralRect.width - 50
                             elide: Qt.ElideMiddle
                         }
                     }

@@ -102,19 +102,43 @@ CallAdapter::slotShowIncomingCallView(const QString &accountId, const conversati
     auto callModel = LRCInstance::getCurrentCallModel();
 
     if (!callModel->hasCall(convInfo.callId)) {
-        //auto convModel = LRCInstance::getAccountInfo(accountId).conversationModel.get();
-        //auto formattedName = Utils::bestNameForConversation(convInfo, *convModel);
-        //if (GlobalSystemTray::instance().getTriggeredAccountId() != accountId) {
-        //    GlobalSystemTray::instance().setPossibleOnGoingConversationInfo(convInfo);
-        //    Utils::showSystemNotification(
-        //        this,
-        //        QString(tr("Call incoming from %1 to %2"))
-        //        .arg(formattedName)
-        //        .arg(Utils::bestNameForAccount(LRCInstance::getAccountInfo(accountId))),
-        //        5000,
-        //        accountId
-        //        );
-        //}
+        /*
+         * Connection to close potential incoming call page when it is not current account.
+         */
+        auto &accInfo = LRCInstance::accountModel().getAccountInfo(accountId);
+
+        QObject::disconnect(closeIncomingCallPageConnection_);
+
+        closeIncomingCallPageConnection_
+            = QObject::connect(accInfo.callModel.get(),
+                               &lrc::api::NewCallModel::callStatusChanged,
+                               [this, accountId, uid = convInfo.uid](const QString &callId) {
+                                   auto &accInfo = LRCInstance::accountModel().getAccountInfo(
+                                       accountId);
+                                   auto &callModel = accInfo.callModel;
+                                   auto call = callModel->getCall(callId);
+
+                                   switch (call.status) {
+                                   case lrc::api::call::Status::INVALID:
+                                   case lrc::api::call::Status::INACTIVE:
+                                   case lrc::api::call::Status::ENDED:
+                                   case lrc::api::call::Status::PEER_BUSY:
+                                   case lrc::api::call::Status::TIMEOUT:
+                                   case lrc::api::call::Status::TERMINATING: {
+                                       if (!uid.isEmpty())
+                                           emit closePotentialIncomingCallPageWindow(accountId, uid);
+                                       break;
+                                   }
+                                   default:
+                                       break;
+                                   }
+
+                                   emit updateConversationSmartList();
+                                   QObject::disconnect(closeIncomingCallPageConnection_);
+                               });
+        /*
+         * Show incoming call page only.
+         */
         emit showIncomingCallPage(accountId, convInfo.uid);
         return;
     }
@@ -221,7 +245,9 @@ CallAdapter::connectCallstatusChangedSignal(const QString &accountId)
             auto &callModel = accInfo.callModel;
             auto call = callModel->getCall(callId);
 
-            // change status label text
+            /*
+             * Change status label text.
+             */
             auto convInfo = LRCInstance::getConversationFromCallId(callId);
             if (!convInfo.uid.isEmpty()) {
                 emit callStatusChanged(lrc::api::call::to_string(call.status),
@@ -298,7 +324,6 @@ CallAdapter::connectCallstatusChangedSignal(const QString &accountId)
 /*
  * For Call Overlay
  */
-
 void
 CallAdapter::updateCallOverlay(const QString &accountId, const QString &convUid)
 {
