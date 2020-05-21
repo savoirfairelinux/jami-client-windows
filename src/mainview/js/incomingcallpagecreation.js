@@ -84,7 +84,12 @@ function finishCreation(accountId, convUid) {
 function showIncomingCallPageWindow(accountId, convUid) {
     if (incomingCallPageWindowMap.has(accountId)) {
         if (incomingCallPageWindowMap.get(accountId).has(convUid)) {
-            incomingCallPageWindowMap.get(accountId).get(convUid).show()
+            if (!incomingCallPageWindowMap.get(accountId).get(
+                        convUid).visible) {
+                incomingCallPageWindowMap.get(accountId).get(convUid).show()
+                incomingCallPageWindowMap.get(accountId).get(
+                            convUid).updatePositionToRightBottom()
+            }
         }
     }
 }

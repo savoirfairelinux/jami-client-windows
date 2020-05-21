@@ -64,18 +64,28 @@ Window {
         incomingCallPage.bestId = (incomingCallPage.bestName !== id) ? id : ""
     }
 
+    function updatePositionToRightBottom() {
+
+
+        /*
+         * Screen right bottom,
+         * since the qt screen.virtualY, virtualX does not work properly,
+         * we need to calculate the screen x, y ourselves, by
+         * using to fact that window will always be in the middle if no x or y
+         * specificed.
+         * ex: https://doc.qt.io/qt-5/qscreen.html#geometry-prop
+         */
+        console.log("dsdas + " + incomingCallPage.x)
+        var virtualX = (incomingCallPage.x + width / 2) - screen.width / 2
+        incomingCallPage.x = virtualX + screen.width - width
+        incomingCallPage.y = screen.height - height - 50
+    }
+
     minimumWidth: minWidth
     minimumHeight: minHeight
 
     maximumWidth: minWidth + 300
     maximumHeight: minHeight + 300
-
-
-    /*
-     * Screen right bottom.
-     */
-    x: screen.virtualX + screen.width - width
-    y: screen.virtualY + screen.height - height - 50
 
     flags: Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint
     screen: Qt.application.screens[0]
