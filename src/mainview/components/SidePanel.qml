@@ -198,7 +198,7 @@ Rectangle {
 
             anchors.centerIn: sidePanelColumnRect
 
-            width: sidePanelColumnRect.width - 10
+            width: sidePanelColumnRect.width
             height: sidePanelColumnRect.height - 20
 
 

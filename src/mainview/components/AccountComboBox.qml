@@ -169,8 +169,8 @@ ComboBox {
         anchors.rightMargin: 10
         anchors.verticalCenter: accountComboBox.verticalCenter
 
-        width: 20
-        height: 20
+        width: 25
+        height: 25
 
         background: Rectangle {
             id: settingButtonRect
@@ -181,8 +181,8 @@ ComboBox {
                 id: settingsButtonImage
 
                 anchors.centerIn: settingButtonRect
-                width: settingsButton.width - 2
-                height: settingsButton.height - 2
+                width: settingsButton.width - 8
+                height: settingsButton.height - 8
                 fillMode: Image.PreserveAspectFit
                 mipmap: true
                 source: "qrc:/images/icons/round-settings-24px.svg"

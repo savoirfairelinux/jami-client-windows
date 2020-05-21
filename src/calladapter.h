@@ -85,6 +85,7 @@ public slots:
 
 private:
     QMetaObject::Connection callStatusChangedConnection_;
+    QMetaObject::Connection closeIncomingCallPageConnection_;
 
     /*
      * For Call Overlay
