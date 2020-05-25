@@ -1,0 +1,7 @@
+Code-Review+2: Sébastien Blin <sebastien.blin@savoirfairelinux.com>
+Verified+1: Jenkins CI <jenkins@ring-packaging.cx>
+Submitted-by: Ming Rui Zhang <mingrui.zhang@savoirfairelinux.com>
+Submitted-at: Mon, 25 May 2020 15:12:30 -0400
+Reviewed-on: https://review.jami.net/c/ring-client-windows/+/14371
+Project: ring-client-windows
+Branch: refs/heads/master
