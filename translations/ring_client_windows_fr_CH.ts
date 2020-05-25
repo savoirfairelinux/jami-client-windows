@@ -339,7 +339,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="187"/>
         <source>Conversations</source>
-        <translation type="unfinished"/>
+        <translation>Conversations</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="368"/>
@@ -1032,7 +1032,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2451"/>
         <source>Next</source>
-        <translation type="unfinished"/>
+        <translation>Suivant</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="75"/>
