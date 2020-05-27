@@ -53,6 +53,7 @@ public:
         UID,
         ContextMenuOpen,
         InCall,
+        IsAudioOnly,
         CallStackViewShouldShow,
         CallStateStr,
         SectionName,

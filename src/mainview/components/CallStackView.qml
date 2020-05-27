@@ -67,6 +67,47 @@ Rectangle {
         videoCallPage.updateUI(responsibleAccountId, responsibleConvUid)
     }
 
+    function showAudioCallPage() {
+        var itemToFind = callStackMainView.find(function (item) {
+            return item.stackNumber === 0
+        })
+
+        if (!itemToFind) {
+            callStackMainView.push(audioCallPage, StackView.Immediate)
+        } else {
+            callStackMainView.pop(itemToFind, StackView.Immediate)
+        }
+        audioCallPage.updateUI(responsibleAccountId, responsibleConvUid)
+    }
+
+    function showOutgoingCallPage(currentCallStatus) {
+        var itemToFind = callStackMainView.find(function (item) {
+            return item.stackNumber === 1
+        })
+
+        if (!itemToFind) {
+            callStackMainView.push(outgoingCallPage, StackView.Immediate)
+        } else {
+            callStackMainView.pop(itemToFind, StackView.Immediate)
+        }
+        if (currentCallStatus !== "")
+            outgoingCallPage.callStatusPresentation = currentCallStatus
+    }
+
+    function showVideoCallPage(callId) {
+        var itemToFind = callStackMainView.find(function (item) {
+            return item.stackNumber === 2
+        })
+
+        if (!itemToFind) {
+            callStackMainView.push(videoCallPage, StackView.Immediate)
+        } else {
+            callStackMainView.pop(itemToFind, StackView.Immediate)
+        }
+        videoCallPage.updateUI(responsibleAccountId, responsibleConvUid)
+        videoCallPage.setDistantRendererId(callId)
+    }
+
     Connections {
         target: CallAdapter
 
@@ -78,16 +119,7 @@ Rectangle {
              */
             if (responsibleConvUid == convUid
                     && responsibleAccountId == accountId) {
-                var itemToFind = callStackMainView.find(function (item) {
-                    return item.stackNumber === 1
-                })
-
-                if (!itemToFind) {
-                    callStackMainView.push(outgoingCallPage,
-                                           StackView.Immediate)
-                } else {
-                    callStackMainView.pop(itemToFind, StackView.Immediate)
-                }
+                showOutgoingCallPage()
             }
         }
 
@@ -111,33 +143,14 @@ Rectangle {
         onShowAudioCallPage: {
             if (responsibleConvUid == convUid
                     && responsibleAccountId == accountId) {
-                var itemToFind = callStackMainView.find(function (item) {
-                    return item.stackNumber === 0
-                })
-
-                if (!itemToFind) {
-                    callStackMainView.push(audioCallPage, StackView.Immediate)
-                } else {
-                    callStackMainView.pop(itemToFind, StackView.Immediate)
-                }
-                audioCallPage.updateUI(responsibleAccountId, responsibleConvUid)
+                showAudioCallPage()
             }
         }
 
         onShowVideoCallPage: {
             if (responsibleConvUid == convUid
                     && responsibleAccountId == accountId) {
-                var itemToFind = callStackMainView.find(function (item) {
-                    return item.stackNumber === 2
-                })
-
-                if (!itemToFind) {
-                    callStackMainView.push(videoCallPage, StackView.Immediate)
-                } else {
-                    callStackMainView.pop(itemToFind, StackView.Immediate)
-                }
-                videoCallPage.updateUI(responsibleAccountId, responsibleConvUid)
-                videoCallPage.setDistantRendererId(callId)
+                showVideoCallPage(callId)
             }
         }
 

@@ -61,3 +61,19 @@ LrcGeneralAdapter::stopPreviewing()
         LRCInstance::renderer()->stopPreviewing();
     }
 }
+
+const QString
+LrcGeneralAdapter::getCallId(const QString &accountId, const QString &convUid)
+{
+    auto convInfo = LRCInstance::getConversationFromConvUid(convUid, accountId);
+    if (convInfo.uid.isEmpty()) {
+        return "";
+    }
+
+    auto call = LRCInstance::getCallInfoForConversation(convInfo, false);
+    if (!call) {
+        return "";
+    }
+
+    return call->id;
+}

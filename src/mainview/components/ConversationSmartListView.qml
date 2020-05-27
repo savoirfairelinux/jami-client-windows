@@ -25,7 +25,7 @@ import net.jami.CallAdapter 1.0
 ListView {
     id: conversationSmartListView
 
-    signal needToAccessMessageWebView(string currentUserDisplayName, string currentUserAlias, string currentUID, bool callStackViewShouldShow)
+    signal needToAccessMessageWebView(string currentUserDisplayName, string currentUserAlias, string currentUID, bool callStackViewShouldShow, bool isAudioOnly, string callStateStr)
     signal needToSelectItems(int index)
     signal needToDeselectItems
     signal needToBackToWelcomePage

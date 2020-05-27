@@ -22,6 +22,9 @@ import QtQuick.Layouts 1.14
 import QtQuick.Controls.Universal 2.12
 import QtQml 2.14
 import net.jami.JamiTheme 1.0
+import net.jami.ContactAdapter 1.0
+
+import "../js/contactpickercreation.js" as ContactPickerCreation
 
 import "../../commoncomponents"
 
@@ -43,6 +46,10 @@ Rectangle {
 
     function showOnHoldImage(visible) {
         onHoldImage.visible = visible
+    }
+
+    function closePotentialContactPicker() {
+        ContactPickerCreation.closeContactPicker()
     }
 
     anchors.fill: parent
@@ -213,6 +220,20 @@ Rectangle {
             callOverlayRect.overlayChatButtonClicked()
         }
 
+        onAddToConferenceButtonClicked: {
+
+
+            /*
+             * Create contact picker.
+             */
+            ContactPickerCreation.createContactPickerObjects(
+                        ContactPicker.ContactPickerType.JAMICONFERENCE,
+                        callOverlayRect)
+            ContactPickerCreation.calculateCurrentGeo(
+                        callOverlayRect.width / 2, callOverlayRect.height / 2)
+            ContactPickerCreation.openContactPicker()
+        }
+
         onButtonEntered: {
             callOverlayRectMouseArea.entered()
         }
@@ -326,4 +347,14 @@ Rectangle {
     }
 
     color: "transparent"
+
+    onWidthChanged: {
+        ContactPickerCreation.calculateCurrentGeo(callOverlayRect.width / 2,
+                                                  callOverlayRect.height / 2)
+    }
+
+    onHeightChanged: {
+        ContactPickerCreation.calculateCurrentGeo(callOverlayRect.width / 2,
+                                                  callOverlayRect.height / 2)
+    }
 }

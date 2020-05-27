@@ -81,6 +81,10 @@ Window {
         target: CallAdapter
 
         onShowCallStack: {
+            if (forceReset) {
+                callStackView.responsibleAccountId = accountId
+                callStackView.responsibleConvUid = convUid
+            }
 
 
             /*
@@ -174,15 +178,27 @@ Window {
             communicationPageMessageWebView.headerUserAliasLabelText = currentUserAlias
             communicationPageMessageWebView.headerUserUserNameLabelText = currentUserDisplayName
 
-            if (callStackViewShouldShow) {
-                LrcGeneralAdapter.setCurrentCall(LrcGeneralAdapter.getCurrAccId(
-                                                     ), currentUID)
-            }
             callStackView.needToCloseInCallConversationAndPotentialWindow()
             callStackView.responsibleAccountId = LrcGeneralAdapter.getCurrAccId(
                         )
             callStackView.responsibleConvUid = currentUID
             callStackView.updateCorrspondingUI()
+
+            if (callStackViewShouldShow) {
+                if (callStateStr == "Talking" || callStateStr == "Hold") {
+                    LrcGeneralAdapter.setCurrentCall(
+                                LrcGeneralAdapter.getCurrAccId(), currentUID)
+                    if (isAudioOnly)
+                        callStackView.showAudioCallPage()
+                    else
+                        callStackView.showVideoCallPage(
+                                    LrcGeneralAdapter.getCallId(
+                                        callStackView.responsibleAccountId,
+                                        callStackView.responsibleConvUid))
+                } else {
+                    callStackView.showOutgoingCallPage(callStateStr)
+                }
+            }
 
 
             /*

@@ -43,8 +43,6 @@ Rectangle {
 
         var id = utilsAdapter.getBestId(accountId, convUid)
         bestId = (bestName !== id) ? id : ""
-
-        CallAdapter.updateCallOverlay(accountId, convUid)
     }
 
     function setAudioCallPageCorrspondingMessageWebView(webViewId) {

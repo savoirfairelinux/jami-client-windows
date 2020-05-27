@@ -83,10 +83,6 @@ AccountAdapter::deselectConversation()
 
     currentConversationModel->selectConversation("");
     LRCInstance::setSelectedConvId();
-
-    //if (auto smartListSelectionModel = ui->smartList->selectionModel()) {
-    //    smartListSelectionModel->clear();
-    //}
 }
 
 void
@@ -118,19 +114,20 @@ AccountAdapter::connectAccount(const QString &accountId)
                                        == accInfo.contactModel
                                               ->getContact(conversation.participants.at(0))
                                               .profileInfo.uri) {
-                                       // update conversation
+                                       /*
+                                        * Update conversation.
+                                        */
                                        emit updateConversationForAddedContact();
                                    }
                                });
-        /*QObject::disconnect(addedToConferenceConnection_);
+        QObject::disconnect(addedToConferenceConnection_);
         addedToConferenceConnection_
             = QObject::connect(accInfo.callModel.get(),
                                &NewCallModel::callAddedToConference,
                                [this](const QString &callId, const QString &confId) {
                                    Q_UNUSED(callId);
                                    LRCInstance::renderer()->addDistantRenderer(confId);
-                                   ui->videoView->updateCall();
-                               });*/
+                               });
     } catch (...) {
         qWarning() << "Couldn't get account: " << accountId;
     }

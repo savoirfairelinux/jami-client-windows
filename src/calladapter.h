@@ -44,7 +44,6 @@ public:
     /*
      * For Call Overlay
      */
-    Q_INVOKABLE void updateCallOverlay(const QString &accountId, const QString &convUid);
     Q_INVOKABLE void hangUpThisCall();
     Q_INVOKABLE void holdThisCallToggle();
     Q_INVOKABLE void muteThisCallToggle();
@@ -56,13 +55,14 @@ signals:
     void showIncomingCallPage(const QString &accountId, const QString &convUid);
     void showAudioCallPage(const QString &accountId, const QString &convUid);
     void showVideoCallPage(const QString &accountId, const QString &convUid, const QString &callId);
-    void showCallStack(const QString &accountId, const QString &convUid);
+    void showCallStack(const QString &accountId, const QString &convUid, bool forceReset = false);
     void closeCallStack(const QString &accountId, const QString &convUid);
     void closePotentialIncomingCallPageWindow(const QString &accountId, const QString &convUid);
     void callStatusChanged(const QString &status, const QString &accountId, const QString &convUid);
     void updateConversationSmartList();
 
     void incomingCallNeedToSetupMainView(const QString &accountId, const QString &convUid);
+    void previewVisibilityNeedToChange(bool visible);
 
     /*
      * For Call Overlay
@@ -84,6 +84,17 @@ public slots:
     void slotShowCallView(const QString &accountId, const lrc::api::conversation::Info &convInfo);
 
 private:
+    void updateCall(const QString &convUid = {},
+                    const QString &accountId = {},
+                    bool forceCallOnly = false);
+    bool shouldShowPreview(bool force);
+
+    /*
+     * Current conf/call info.
+     */
+    QString accountId_;
+    QString convUid_;
+
     QMetaObject::Connection callStatusChangedConnection_;
     QMetaObject::Connection closeIncomingCallPageConnection_;
 
@@ -91,12 +102,7 @@ private:
      * For Call Overlay
      */
     void setTime(const QString &accountId, const QString &convUid);
-
-    /*
-     * Call Overlay - current conf/call info
-     */
-    QString accountId_;
-    QString convUid_;
+    void updateCallOverlay(const lrc::api::conversation::Info &convInfo);
 
     QTimer *oneSecondTimer_;
 };

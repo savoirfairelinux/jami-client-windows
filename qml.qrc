@@ -43,5 +43,8 @@
         <file>src/mainview/js/screenrubberbandcreation.js</file>
         <file>src/mainview/js/videocallfullscreenwindowcontainercreation.js</file>
         <file>src/mainview/components/VideoCallFullScreenWindowContainer.qml</file>
+        <file>src/mainview/components/ContactPicker.qml</file>
+        <file>src/mainview/js/contactpickercreation.js</file>
+        <file>src/mainview/components/ContactPickerItemDelegate.qml</file>
     </qresource>
 </RCC>

@@ -192,42 +192,55 @@ CallAdapter::slotShowIncomingCallView(const QString &accountId, const conversati
 void
 CallAdapter::slotShowCallView(const QString &accountId, const lrc::api::conversation::Info &convInfo)
 {
-    if (!convInfo.callId.isEmpty()) {
-        auto &accInfo = LRCInstance::getAccountInfo(convInfo.accountId);
-        accInfo.callModel->setCurrentCall(convInfo.callId);
+    updateCall(convInfo.uid, accountId);
+}
+
+void
+CallAdapter::updateCall(const QString &convUid, const QString &accountId, bool forceCallOnly)
+{
+    accountId_ = accountId.isEmpty() ? accountId_ : accountId;
+    convUid_ = convUid.isEmpty() ? convUid_ : convUid;
+
+    auto convInfo = LRCInstance::getConversationFromConvUid(convUid_, accountId_);
+    if (convInfo.uid.isEmpty()) {
+        return;
     }
 
-    auto convModel = LRCInstance::getCurrentConversationModel();
-
-    auto bestName = Utils::bestNameForConversation(convInfo, *convModel);
-    auto bestId = Utils::bestIdForConversation(convInfo, *convModel);
-    auto finalBestId = (bestName != bestId) ? bestId : "";
-
-    auto call = LRCInstance::getCallInfoForConversation(convInfo, false);
+    auto call = LRCInstance::getCallInfoForConversation(convInfo, forceCallOnly);
     if (!call) {
         return;
     }
 
-    //overlay_->updateCall(convInfo);
-
-    //audioOnlyAvatar_->setAvatarVisible(call->isAudioOnly);
     if (call->isAudioOnly) {
-        emit showAudioCallPage(accountId, convInfo.uid);
+        emit showAudioCallPage(accountId_, convUid_);
     } else {
-        emit showVideoCallPage(accountId, convInfo.uid, call->id);
+        emit showVideoCallPage(accountId_, convUid_, call->id);
     }
-    emit showCallStack(accountId, convInfo.uid);
 
-    // preview
-    //previewWidget_->setVisible(shouldShowPreview(forceCallOnly));
+    updateCallOverlay(convInfo);
 
-    // distant
-    //ui->distantWidget->setRendererId(call->id);
-    //auto isPaused = call->status == lrc::api::call::Status::PAUSED;
-    //ui->distantWidget->setVisible(!isPaused)
+    /*
+     * Preview.
+     */
+    emit previewVisibilityNeedToChange(shouldShowPreview(forceCallOnly));
 
-    //ui->videoView->show();
-    //ui->videoView->setFocus();
+    emit showCallStack(accountId_, convUid_);
+}
+
+bool
+CallAdapter::shouldShowPreview(bool force)
+{
+    bool shouldShowPreview{false};
+    auto convInfo = LRCInstance::getConversationFromConvUid(convUid_, accountId_);
+    if (convInfo.uid.isEmpty()) {
+        return shouldShowPreview;
+    }
+    auto call = LRCInstance::getCallInfoForConversation(convInfo, force);
+    if (call) {
+        shouldShowPreview = !call->isAudioOnly && !(call->status == lrc::api::call::Status::PAUSED)
+                            && !call->videoMuted && call->type != lrc::api::call::Type::CONFERENCE;
+    }
+    return shouldShowPreview;
 }
 
 void
@@ -266,8 +279,10 @@ CallAdapter::connectCallstatusChangedSignal(const QString &accountId)
                 if (convInfo.uid.isEmpty()) {
                     break;
                 }
-                // If it's a conference, change the smartlist index
-                // to the next remaining participant.
+                /*
+                 * If it's a conference, change the smartlist index
+                 * to the next remaining participant.
+                 */
                 bool forceCallOnly{false};
                 if (!convInfo.confId.isEmpty()) {
                     auto callList = LRCInstance::getAPI().getConferenceSubcalls(convInfo.confId);
@@ -283,16 +298,15 @@ CallAdapter::connectCallstatusChangedSignal(const QString &accountId)
                         }
                         auto otherConv = LRCInstance::getConversationFromCallId(callId);
                         if (!otherConv.uid.isEmpty() && otherConv.uid != convInfo.uid) {
+                            /*
+                             * Reset the call view corresponding accountId, uid.
+                             */
                             LRCInstance::setSelectedConvId(otherConv.uid);
-                            //selectSmartlistItem(otherConv.uid);
-                            //ui->videoView->updateCall(otherConv.uid, otherConv.accountId, forceCallOnly);
+                            showCallStack(otherConv.accountId, otherConv.uid, true);
+                            updateCall(otherConv.uid, otherConv.accountId, forceCallOnly);
                         }
                     }
                 } else {
-                    //ui->videoView->updateCall();
-                    //setCallPanelVisibility(false);
-                    //showConversationView();
-                    //callTerminating(callId);
                     emit closeCallStack(accountId, convInfo.uid);
                     emit closePotentialIncomingCallPageWindow(accountId, convInfo.uid);
                 }
@@ -306,13 +320,12 @@ CallAdapter::connectCallstatusChangedSignal(const QString &accountId)
                     accInfo.conversationModel->selectConversation(convInfo.uid);
                 }
                 LRCInstance::renderer()->addDistantRenderer(callId);
-                //ui->videoView->updateCall();
+                updateCall();
+                LRCInstance::getAccountInfo(accountId).callModel->setCurrentCall(callId);
                 break;
             }
             case lrc::api::call::Status::PAUSED:
-                //ui->videoView->resetPreview();
-                //ui->videoView->updateCall();
-                //slotShowCallView(accountId, convInfo);
+                updateCall();
             default:
                 break;
             }
@@ -325,20 +338,14 @@ CallAdapter::connectCallstatusChangedSignal(const QString &accountId)
  * For Call Overlay
  */
 void
-CallAdapter::updateCallOverlay(const QString &accountId, const QString &convUid)
+CallAdapter::updateCallOverlay(const lrc::api::conversation::Info &convInfo)
 {
-    // ?
-    auto convInfo = LRCInstance::getConversationFromConvUid(convUid, accountId);
-
-    accountId_ = convInfo.accountId;
-    convUid_ = convInfo.uid;
-
-    setTime(convInfo.accountId, convInfo.uid);
+    setTime(accountId_, convUid_);
     QObject::disconnect(oneSecondTimer_);
     QObject::connect(oneSecondTimer_, &QTimer::timeout, [this] { setTime(accountId_, convUid_); });
     oneSecondTimer_->start(20);
 
-    auto &accInfo = LRCInstance::accountModel().getAccountInfo(convInfo.accountId);
+    auto &accInfo = LRCInstance::accountModel().getAccountInfo(accountId_);
 
     auto &convModel = accInfo.conversationModel;
 
@@ -371,8 +378,10 @@ CallAdapter::hangUpThisCall()
     if (!convInfo.uid.isEmpty()) {
         auto callModel = LRCInstance::getAccountInfo(accountId_).callModel.get();
         if (callModel->hasCall(convInfo.callId)) {
-            // Store the last remaining participant of the conference
-            // so we can switch the smartlist index after termination.
+            /*
+             * Store the last remaining participant of the conference,
+             * so we can switch the smartlist index after termination.
+             */
             if (!convInfo.confId.isEmpty()) {
                 auto callList = LRCInstance::getAPI().getConferenceSubcalls(convInfo.confId);
                 if (callList.size() == 2) {
@@ -439,8 +448,7 @@ CallAdapter::videoPauseThisCallToggle()
     if (callModel->hasCall(callId)) {
         callModel->toggleMedia(callId, lrc::api::NewCallModel::Media::VIDEO);
     }
-    // TODO: Reset Preview
-    //emit videoMuteStateChanged(checked);
+    emit previewVisibilityNeedToChange(shouldShowPreview(false));
 }
 
 void

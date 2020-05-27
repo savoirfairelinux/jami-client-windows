@@ -64,7 +64,8 @@ ItemDelegate {
             if (convUid === UID) {
                 conversationSmartListView.needToAccessMessageWebView(
                             DisplayID == DisplayName ? "" : DisplayID,
-                            DisplayName, UID, CallStackViewShouldShow)
+                            DisplayName, UID, CallStackViewShouldShow,
+                            IsAudioOnly, CallStateStr)
             }
         }
     }

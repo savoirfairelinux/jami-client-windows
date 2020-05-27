@@ -24,6 +24,7 @@
 #include "accountlistmodel.h"
 #include "avadapter.h"
 #include "calladapter.h"
+#include "contactadapter.h"
 #include "conversationsadapter.h"
 #include "distantrenderer.h"
 #include "globalinstances.h"
@@ -292,6 +293,7 @@ MainApplication::qmlInitialization()
     QML_REGISTERSINGLETONTYPE(MessagesAdapter, 1, 0);
     QML_REGISTERSINGLETONTYPE(ConversationsAdapter, 1, 0);
     QML_REGISTERSINGLETONTYPE(AvAdapter, 1, 0);
+    QML_REGISTERSINGLETONTYPE(ContactAdapter, 1, 0);
 
     /*
      * Namespaces - qmlRegisterUncreatableMetaObject

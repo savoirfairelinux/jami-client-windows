@@ -105,5 +105,6 @@
         <file>images/icons/av_icons/stop-24px.svg</file>
         <file>images/icons/av_icons/mic-24px.svg</file>
         <file>images/testSIPImage.png</file>
+        <file>images/icons/ic_close_black_24dp.png</file>
     </qresource>
 </RCC>

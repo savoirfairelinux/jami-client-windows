@@ -48,8 +48,6 @@ Rectangle {
 
         var id = utilsAdapter.getBestId(accountId, convUid)
         bestId = (bestName !== id) ? id : ""
-
-        CallAdapter.updateCallOverlay(accountId, convUid)
     }
 
     function setDistantRendererId(id) {
@@ -77,6 +75,7 @@ Rectangle {
     function closeContextMenuAndRelatedWindows() {
         videoCallPageContextMenu.closePotentialWindows()
         videoCallPageContextMenu.close()
+        videoCallOverlay.closePotentialContactPicker()
     }
 
     function previewMagneticSnap() {
@@ -230,6 +229,14 @@ Rectangle {
                  * and reevaluate getPreviewImageScalingFactor().
                  */
                 property int previewImageScalingFactorUpdated: 0
+
+                Connections {
+                    target: CallAdapter
+
+                    onPreviewVisibilityNeedToChange: {
+                        previewRenderer.visible = visible
+                    }
+                }
 
                 width: videoCallPageMainRect.width / 4
                 height: {

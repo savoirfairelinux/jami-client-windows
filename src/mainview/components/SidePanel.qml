@@ -33,7 +33,7 @@ Rectangle {
     property int pendingRequestCount: 0
     property int totalUnreadMessagesCount: 0
 
-    signal conversationSmartListNeedToAccessMessageWebView(string currentUserDisplayName, string currentUserAlias, string currentUID, bool callStackViewShouldShow)
+    signal conversationSmartListNeedToAccessMessageWebView(string currentUserDisplayName, string currentUserAlias, string currentUID, bool callStackViewShouldShow, bool isAudioOnly, string callStateStr)
     signal accountComboBoxNeedToShowWelcomePage(int index)
     signal conversationSmartListViewNeedToShowWelcomePage
     signal accountSignalsReconnect(string accountId)
@@ -253,7 +253,8 @@ Rectangle {
                 onNeedToAccessMessageWebView: {
                     sidePanelRect.conversationSmartListNeedToAccessMessageWebView(
                                 currentUserDisplayName, currentUserAlias,
-                                currentUID, callStackViewShouldShow)
+                                currentUID, callStackViewShouldShow,
+                                isAudioOnly, callStateStr)
                 }
 
                 onNeedToGrabFocus: {

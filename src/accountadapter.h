@@ -57,4 +57,5 @@ private:
 
     QMetaObject::Connection accountStatusChangedConnection_;
     QMetaObject::Connection contactAddedConnection_;
+    QMetaObject::Connection addedToConferenceConnection_;
 };
