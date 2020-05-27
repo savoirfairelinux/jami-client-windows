@@ -25,8 +25,9 @@
 #include "api/conversationmodel.h"
 
 #include <QPainter>
+#include <QPainterPath>
 
-SmartlistSelectorButtonNotifier::SmartlistSelectorButtonNotifier(QWidget *parent)
+SmartlistSelectorButtonNotifier::SmartlistSelectorButtonNotifier(QWidget* parent)
     : QPushButton(parent)
 {
 }
@@ -37,7 +38,7 @@ void SmartlistSelectorButtonNotifier::setTypeFilter(lrc::api::profile::Type filt
 }
 
 void
-SmartlistSelectorButtonNotifier::paintEvent(QPaintEvent *event)
+SmartlistSelectorButtonNotifier::paintEvent(QPaintEvent* event)
 {
     // nb: don't paint the 'button' here!
     // QPushButton::paintEvent(event);

@@ -21,6 +21,7 @@
 #include "smartlistselectorbuttonnotifier.h"
 
 #include <QPushButton>
+#include <QPainterPath>
 
 class SmartlistSelectorButtonNotifier : public QPushButton
 {
