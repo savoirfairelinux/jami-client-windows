@@ -26,6 +26,7 @@
 #include <QComboBox>
 #include <QLabel>
 #include <QPushButton>
+#include <QPainterPath>
 
 namespace Ui {
     class CurrentAccountComboBox;
@@ -34,7 +35,7 @@ namespace Ui {
 class CurrentAccountComboBox : public QComboBox
 {
     Q_OBJECT
-    CurrentAccountComboBox(const CurrentAccountComboBox& cpy);
+        CurrentAccountComboBox(const CurrentAccountComboBox& cpy);
 
 public:
     explicit CurrentAccountComboBox(QWidget* parent = nullptr);
@@ -53,10 +54,10 @@ signals:
 
 protected:
     void paintEvent(QPaintEvent* e);
-    void resizeEvent(QResizeEvent *event);
+    void resizeEvent(QResizeEvent* event);
     void mousePressEvent(QMouseEvent* mouseEvent);
     void mouseMoveEvent(QMouseEvent* event);
-    void leaveEvent(QEvent * event);
+    void leaveEvent(QEvent* event);
     void showPopup();
     void hidePopup();
 
@@ -85,5 +86,5 @@ private:
     const int voicemailBorder_ = 4;
     const int voicemailSize_ = 24;
 
-    std::map<QString, std::pair<int,int>> voicemailMap_;
+    std::map<QString, std::pair<int, int>> voicemailMap_;
 };

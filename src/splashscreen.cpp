@@ -19,6 +19,7 @@
 
 #include <QEvent>
 #include <QMovie>
+#include <QPainterPath>
 
 constexpr static const int textSectionHeight = 48;
 
