@@ -19,6 +19,7 @@
 #pragma once
 
 #include <QtWidgets>
+#include <QPainterPath>
 
 class ToggleSwitch : public QAbstractButton {
     Q_OBJECT;
@@ -44,7 +45,7 @@ public:
     QBrush brush() const {
         return brush_;
     }
-    void setBrush(const QBrush &brush) {
+    void setBrush(const QBrush& brush) {
         brush_ = brush;
     }
 
@@ -60,7 +61,7 @@ public:
 
 protected:
     void paintEvent(QPaintEvent*) override;
-    void mouseMoveEvent(QMouseEvent *event) override;
+    void mouseMoveEvent(QMouseEvent* event) override;
     void mouseReleaseEvent(QMouseEvent*) override;
 
 private:
@@ -81,5 +82,5 @@ private:
     QBrush thumb_;
     QBrush track_;
     QBrush brush_;
-    QPropertyAnimation *anim_ = nullptr;
+    QPropertyAnimation* anim_ = nullptr;
 };
