@@ -22,6 +22,7 @@
 
 #include <QPainter>
 #include <QDebug>
+#include <QPainterPath>
 
 BezierConnectorWidget::BezierConnectorWidget(QWidget* parent) : QWidget(parent)
 {
@@ -53,7 +54,8 @@ BezierConnectorWidget::paintEvent(QPaintEvent* event)
         p3 = rect().bottomRight();
         p1 = QPointF(p0.x() + c * rect().width(), p0.y());
         p2 = QPointF(p0.x() + rect().width(), p0.y() + rect().height() - (c * rect().height()));
-    } else if (this->objectName().contains("left", Qt::CaseInsensitive)) {
+    }
+    else if (this->objectName().contains("left", Qt::CaseInsensitive)) {
         p0 = rect().bottomLeft();
         p3 = rect().topRight();
         p1 = QPointF(p0.x(), p3.y() + c * rect().height());

@@ -19,12 +19,13 @@
 
 #include <QPainter>
 #include <QItemDelegate>
+#include <QPainterPath>
 
 class AccountItemDelegate : public QItemDelegate
 {
     Q_OBJECT
 public:
-    explicit AccountItemDelegate(QObject *parent = nullptr);
+    explicit AccountItemDelegate(QObject* parent = nullptr);
 
 protected:
     void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
