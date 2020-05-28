@@ -63,6 +63,10 @@ Rectangle {
         }
     }
 
+    function closeContextMenuAndRelatedWindows() {
+        audioCallOverlay.closePotentialContactPicker()
+    }
+
     anchors.fill: parent
 
     SplitView {

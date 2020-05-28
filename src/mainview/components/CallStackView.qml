@@ -51,8 +51,8 @@ Rectangle {
         /*
          * Close potential window, context menu releated windows.
          */
-        if (VideoCallFullScreenWindowContainerCreation.getObject())
-            VideoCallFullScreenWindowContainerCreation.getObject().close()
+        audioCallPage.closeContextMenuAndRelatedWindows()
+        VideoCallFullScreenWindowContainerCreation.closeVideoCallFullScreenWindowContainer()
         videoCallPage.closeContextMenuAndRelatedWindows()
     }
 
@@ -90,7 +90,7 @@ Rectangle {
         } else {
             callStackMainView.pop(itemToFind, StackView.Immediate)
         }
-        if (currentCallStatus !== "")
+        if (currentCallStatus)
             outgoingCallPage.callStatusPresentation = currentCallStatus
     }
 
@@ -196,25 +196,15 @@ Rectangle {
         }
 
         onNeedToShowInFullScreen: {
-            if (!VideoCallFullScreenWindowContainerCreation.getObject())
-                VideoCallFullScreenWindowContainerCreation.createvideoCallFullScreenWindowContainerObject()
+            VideoCallFullScreenWindowContainerCreation.createvideoCallFullScreenWindowContainerObject()
 
-            if (!VideoCallFullScreenWindowContainerCreation.getObject(
-                        ).visible) {
-                VideoCallFullScreenWindowContainerCreation.getObject(
-                            ).setAsChild(videoCallPage)
-
-
-                /*
-                 * Hack: show first, then showFullScreen to make sure that the showFullScreen
-                 * display on the correct screen.
-                 */
-                VideoCallFullScreenWindowContainerCreation.getObject().show()
-                VideoCallFullScreenWindowContainerCreation.getObject(
-                            ).showFullScreen()
+            if (!VideoCallFullScreenWindowContainerCreation.checkIfVisible()) {
+                VideoCallFullScreenWindowContainerCreation.setAsContainerChild(
+                            videoCallPage)
+                VideoCallFullScreenWindowContainerCreation.showVideoCallFullScreenWindowContainer()
             } else {
                 videoCallPage.parent = callStackMainView
-                VideoCallFullScreenWindowContainerCreation.getObject().close()
+                VideoCallFullScreenWindowContainerCreation.closeVideoCallFullScreenWindowContainer()
             }
         }
     }

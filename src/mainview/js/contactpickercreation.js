@@ -25,6 +25,16 @@ var contactPickerComponent
 var contactPickerObject
 
 function createContactPickerObjects(type, parent) {
+    if (contactPickerObject) {
+
+
+        /*
+         * If already created, reset parameters, since object cannot be destroyed.
+         */
+        contactPickerObject.parent = parent
+        contactPickerObject.type = type
+        return
+    }
     contactPickerComponent = Qt.createComponent(
                 "../components/ContactPicker.qml")
     if (contactPickerComponent.status === Component.Ready)

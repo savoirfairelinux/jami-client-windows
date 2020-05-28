@@ -309,8 +309,7 @@ Window {
                 /*
                  * Destory selectScreenWindow once screenRubberBand is closed.
                  */
-                var screenRubberBand = ScreenRubberBandCreation.getObject()
-                screenRubberBand.onClosing.connect(function () {
+                ScreenRubberBandCreation.connectOnClosingEvent(function () {
                     selectScreenWindow.close()
                 })
             } else {

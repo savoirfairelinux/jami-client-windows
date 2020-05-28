@@ -224,10 +224,24 @@ Rectangle {
 
 
             /*
-             * Create contact picker.
+             * Create contact picker - conference.
              */
             ContactPickerCreation.createContactPickerObjects(
                         ContactPicker.ContactPickerType.JAMICONFERENCE,
+                        callOverlayRect)
+            ContactPickerCreation.calculateCurrentGeo(
+                        callOverlayRect.width / 2, callOverlayRect.height / 2)
+            ContactPickerCreation.openContactPicker()
+        }
+
+        onTransferCallButtonClicked: {
+
+
+            /*
+             * Create contact picker - sip transfer.
+             */
+            ContactPickerCreation.createContactPickerObjects(
+                        ContactPicker.ContactPickerType.SIPTRANSFER,
                         callOverlayRect)
             ContactPickerCreation.calculateCurrentGeo(
                         callOverlayRect.width / 2, callOverlayRect.height / 2)
@@ -347,6 +361,10 @@ Rectangle {
     }
 
     color: "transparent"
+
+    onBestNameChanged: {
+        ContactAdapter.setCalleeDisplayName(bestName)
+    }
 
     onWidthChanged: {
         ContactPickerCreation.calculateCurrentGeo(callOverlayRect.width / 2,

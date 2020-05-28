@@ -56,6 +56,17 @@ function finishCreation() {
                 destoryVideoCallFullScreenWindowContainer)
 }
 
+function checkIfVisible() {
+    if (!videoCallFullScreenWindowContainerObject)
+        return false
+    return videoCallFullScreenWindowContainerObject.visible
+}
+
+function setAsContainerChild(obj) {
+    if (videoCallFullScreenWindowContainerObject)
+        videoCallFullScreenWindowContainerObject.setAsChild(obj)
+}
+
 
 /*
  * Destroy and reset videoCallFullScreenWindowContainerObject when window is closed.
@@ -67,10 +78,20 @@ function destoryVideoCallFullScreenWindowContainer() {
     videoCallFullScreenWindowContainerObject = false
 }
 
+function showVideoCallFullScreenWindowContainer() {
+    if (videoCallFullScreenWindowContainerObject) {
 
-/*
- * Need to be used after createvideoCallFullScreenWindowContainerObject().
- */
-function getObject() {
-    return videoCallFullScreenWindowContainerObject
+
+        /*
+         * Hack: show first, then showFullScreen to make sure that the showFullScreen
+         * display on the correct screen.
+         */
+        videoCallFullScreenWindowContainerObject.show()
+        videoCallFullScreenWindowContainerObject.showFullScreen()
+    }
+}
+
+function closeVideoCallFullScreenWindowContainer() {
+    if (videoCallFullScreenWindowContainerObject)
+        videoCallFullScreenWindowContainerObject.close()
 }

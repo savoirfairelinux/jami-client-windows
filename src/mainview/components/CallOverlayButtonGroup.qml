@@ -40,6 +40,7 @@ Rectangle {
     signal buttonEntered
     signal chatButtonClicked
     signal addToConferenceButtonClicked
+    signal transferCallButtonClicked
 
     function setButtonStatus(isPaused, isAudioOnly, isAudioMuted, isVideoMuted, isRecording, isSIP, isConferenceCall) {
         noVideoButton.visible = !isAudioOnly
@@ -166,6 +167,10 @@ Rectangle {
 
             onButtonEntered: {
                 callOverlayButtonGroupRect.buttonEntered()
+            }
+
+            onClicked: {
+                callOverlayButtonGroupRect.transferCallButtonClicked()
             }
 
             onVisibleChanged: {

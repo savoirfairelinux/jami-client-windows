@@ -130,6 +130,16 @@ Popup {
         color: "white"
     }
 
+    onAboutToShow: {
+
+
+        /*
+         * Reset the model on each show.
+         */
+        contactPickerListView.model = ContactAdapter.getContactSelectableModel(
+                    type)
+    }
+
     background: Rectangle {
         color: "transparent"
     }

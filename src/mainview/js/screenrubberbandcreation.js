@@ -74,10 +74,7 @@ function destoryScreenRubberBandWindow() {
     screenRubberBandWindowObject = false
 }
 
-
-/*
- * Need to be used after createScreenRubberBandWindowObject().
- */
-function getObject() {
-    return screenRubberBandWindowObject
+function connectOnClosingEvent(func) {
+    if (screenRubberBandWindowObject)
+        screenRubberBandWindowObject.onClosing.connect(func)
 }

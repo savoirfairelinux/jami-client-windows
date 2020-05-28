@@ -4,7 +4,9 @@
 
 ContactAdapter::ContactAdapter(QObject *parent)
     : QmlAdapterBase(parent)
-{}
+{
+    selectableProxyModel_.reset(new SelectableProxyModel(smartListModel_.get()));
+}
 
 ContactAdapter::~ContactAdapter() {}
 
@@ -12,12 +14,12 @@ QVariant
 ContactAdapter::getContactSelectableModel(int type)
 {
     listModeltype_ = fromQMLContactPickerType(type);
-    selectableProxyModel_.reset(new SelectableProxyModel(nullptr));
     smartListModel_.reset(new SmartListModel(LRCInstance::getCurrAccId(),
                                              this,
                                              listModeltype_,
                                              LRCInstance::getCurrentConvUid()));
     selectableProxyModel_->setSourceModel(smartListModel_.get());
+
     /*
      * Adjust filter.
      */
@@ -28,12 +30,17 @@ ContactAdapter::getContactSelectableModel(int type)
         break;
     case SmartListModel::Type::TRANSFER:
         selectableProxyModel_->setPredicate([this](const QModelIndex &index, const QRegExp &regexp) {
-            // Regex to remove current callee
-            QRegExp matchExcept = QRegExp(QString("\\b(?!" + CalleeDisplayName_ + "\\b)\\w+"));
+            /*
+             * Regex to remove current callee.
+             */
+            QRegExp matchExcept = QRegExp(QString("\\b(?!" + calleeDisplayName_ + "\\b)\\w+"));
             bool match = false;
-            bool match_non_self = matchExcept.indexIn(index.data(Qt::DisplayRole).toString()) != -1;
+            bool match_non_self = matchExcept.indexIn(
+                                      index.data(SmartListModel::Role::DisplayName).toString())
+                                  != -1;
             if (match_non_self) {
-                match = regexp.indexIn(index.data(Qt::DisplayRole).toString()) != -1;
+                match = regexp.indexIn(index.data(SmartListModel::Role::DisplayName).toString())
+                        != -1;
             }
             return match && !index.parent().isValid();
         });
@@ -136,6 +143,12 @@ ContactAdapter::contactSelected(int index)
             break;
         }
     }
+}
+
+void
+ContactAdapter::setCalleeDisplayName(const QString &name)
+{
+    calleeDisplayName_ = name;
 }
 
 void

@@ -69,6 +69,7 @@ public:
     Q_INVOKABLE QVariant getContactSelectableModel(int type);
     Q_INVOKABLE void setSearchFilter(const QString &filter);
     Q_INVOKABLE void contactSelected(int index);
+    Q_INVOKABLE void setCalleeDisplayName(const QString &name);
 
 private:
     void initQmlObject() override;
@@ -76,7 +77,7 @@ private:
 
     std::unique_ptr<SmartListModel> smartListModel_;
     std::unique_ptr<SelectableProxyModel> selectableProxyModel_;
-    QString CalleeDisplayName_;
+    QString calleeDisplayName_;
 
     SmartListModel::Type listModeltype_;
 };
