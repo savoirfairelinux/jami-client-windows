@@ -1,47 +1,46 @@
-/***************************************************************************
- * Copyright (C) 2015-2019 by Savoir-faire Linux                           *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
- * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>          *
- * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>          *
- * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
- *                                                                         *
- * This program is free software; you can redistribute it and/or modify    *
- * it under the terms of the GNU General Public License as published by    *
- * the Free Software Foundation; either version 3 of the License, or       *
- * (at your option) any later version.                                     *
- *                                                                         *
- * This program is distributed in the hope that it will be useful,         *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of          *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the           *
- * GNU General Public License for more details.                            *
- *                                                                         *
- * You should have received a copy of the GNU General Public License       *
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
- **************************************************************************/
+/*
+ * Copyright (C) 2015-2020 by Savoir-faire Linux
+ * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>
+ * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>
+ * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 
 #include "pixbufmanipulator.h"
 
-#include <QSize>
-#include <QMetaType>
-#include <QImage>
-#include <QIODevice>
-#include <QByteArray>
 #include <QBuffer>
+#include <QByteArray>
+#include <QIODevice>
+#include <QImage>
+#include <QMetaType>
 #include <QPainter>
+#include <QSize>
 
 #include "globalinstances.h"
 
- // new LRC
-#include <api/contactmodel.h>
-#include <api/conversation.h>
 #include <api/account.h>
 #include <api/contact.h>
+#include <api/contactmodel.h>
+#include <api/conversation.h>
 
 #include "utils.h"
-#include "ringthemeutils.h"
 #undef interface
 
-QVariant PixbufManipulator::personPhoto(const QByteArray& data, const QString& type)
+QVariant
+PixbufManipulator::personPhoto(const QByteArray &data, const QString &type)
 {
     QImage avatar;
     const bool ret = avatar.loadFromData(QByteArray::fromBase64(data), type.toLatin1());
@@ -53,7 +52,10 @@ QVariant PixbufManipulator::personPhoto(const QByteArray& data, const QString& t
 }
 
 QVariant
-PixbufManipulator::numberCategoryIcon(const QVariant& p, const QSize& size, bool displayPresence, bool isPresent)
+PixbufManipulator::numberCategoryIcon(const QVariant &p,
+                                      const QSize &size,
+                                      bool displayPresence,
+                                      bool isPresent)
 {
     Q_UNUSED(p)
     Q_UNUSED(size)
@@ -63,7 +65,7 @@ PixbufManipulator::numberCategoryIcon(const QVariant& p, const QSize& size, bool
 }
 
 QByteArray
-PixbufManipulator::toByteArray(const QVariant& pxm)
+PixbufManipulator::toByteArray(const QVariant &pxm)
 {
     auto image = pxm.value<QImage>();
     QByteArray ba = Utils::QImageToByteArray(image);
@@ -71,21 +73,22 @@ PixbufManipulator::toByteArray(const QVariant& pxm)
 }
 
 QVariant
-PixbufManipulator::userActionIcon(const UserActionElement& state) const
+PixbufManipulator::userActionIcon(const UserActionElement &state) const
 {
     Q_UNUSED(state)
     return QVariant();
 }
 
-QVariant PixbufManipulator::decorationRole(const QModelIndex& index)
+QVariant
+PixbufManipulator::decorationRole(const QModelIndex &index)
 {
     Q_UNUSED(index)
     return QVariant();
 }
 
 QVariant
-PixbufManipulator::decorationRole(const lrc::api::conversation::Info & conversationInfo,
-                                  const lrc::api::account::Info & accountInfo)
+PixbufManipulator::decorationRole(const lrc::api::conversation::Info &conversationInfo,
+                                  const lrc::api::account::Info &accountInfo)
 {
     QImage photo;
     auto contacts = conversationInfo.participants;
@@ -93,16 +96,19 @@ PixbufManipulator::decorationRole(const lrc::api::conversation::Info & conversat
         return QVariant::fromValue(photo);
     }
     try {
-        // Get first contact photo
+        /*
+         * Get first contact photo.
+         */
         auto contactUri = contacts.front();
         auto contactInfo = accountInfo.contactModel->getContact(contactUri);
         auto contactPhoto = contactInfo.profileInfo.avatar;
         auto bestName = Utils::bestNameForContact(contactInfo);
         auto bestId = Utils::bestIdForContact(contactInfo);
-        if (accountInfo.profileInfo.type == lrc::api::profile::Type::SIP &&
-            contactInfo.profileInfo.type == lrc::api::profile::Type::TEMPORARY) {
+        if (accountInfo.profileInfo.type == lrc::api::profile::Type::SIP
+            && contactInfo.profileInfo.type == lrc::api::profile::Type::TEMPORARY) {
             photo = Utils::fallbackAvatar(IMAGE_SIZE, QString(), QString());
-        } else if (contactInfo.profileInfo.type == lrc::api::profile::Type::TEMPORARY && contactInfo.profileInfo.uri.isEmpty()) {
+        } else if (contactInfo.profileInfo.type == lrc::api::profile::Type::TEMPORARY
+                   && contactInfo.profileInfo.uri.isEmpty()) {
             photo = Utils::fallbackAvatar(IMAGE_SIZE, QString(), QString());
         } else if (!contactPhoto.isEmpty()) {
             QByteArray byteArray = contactPhoto.toLocal8Bit();
@@ -119,7 +125,7 @@ PixbufManipulator::decorationRole(const lrc::api::conversation::Info & conversat
                                           "ring:" + contactInfo.profileInfo.uri,
                                           avatarName);
         }
+    } catch (...) {
     }
-    catch (...) {}
     return QVariant::fromValue(Utils::scaleAndFrame(photo, IMAGE_SIZE));
 }

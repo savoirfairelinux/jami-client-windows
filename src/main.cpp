@@ -1,33 +1,30 @@
-/***************************************************************************
- * Copyright (C) 2015-2020 by Savoir-faire Linux                           *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
- * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
- * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
- *                                                                         *
- * This program is free software; you can redistribute it and/or modify    *
- * it under the terms of the GNU General Public License as published by    *
- * the Free Software Foundation; either version 3 of the License, or       *
- * (at your option) any later version.                                     *
- *                                                                         *
- * This program is distributed in the hope that it will be useful,         *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of          *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the           *
- * GNU General Public License for more details.                            *
- *                                                                         *
- * You should have received a copy of the GNU General Public License       *
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
- **************************************************************************/
+/*
+ * Copyright (C) 2015-2020 by Savoir-faire Linux
+ * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 
 #include "mainapplication.h"
 #include "runguard.h"
-#include "qmlclipboardadapter.h"
 
 #include <QCryptographicHash>
-#include <QQmlEngine>
-#include <QQmlApplicationEngine>
 
 int
-main(int argc, char* argv[])
+main(int argc, char *argv[])
 {
     setlocale(LC_ALL, "en_US.utf8");
 
@@ -41,8 +38,8 @@ main(int argc, char* argv[])
     // runguard to make sure that only one instance runs at a time
     // Note: needs to be after the creation of the application
     QCryptographicHash appData(QCryptographicHash::Sha256);
-    appData.addData(QApplication::applicationName().toUtf8());
-    appData.addData(QApplication::organizationDomain().toUtf8());
+    appData.addData(QGuiApplication::applicationName().toUtf8());
+    appData.addData(QGuiApplication::organizationDomain().toUtf8());
     RunGuard guard(appData.result());
     if (!guard.tryToRun()) {
         // no need to exitApp since app is not set up
@@ -54,13 +51,6 @@ main(int argc, char* argv[])
         a.exitApp();
         return 0;
     }
-
-    // for deployment and register types
-    qmlRegisterType<QmlClipboardAdapter>("MyQClipboard", 1, 0, "QClipboard");
-
-    QQmlApplicationEngine engine;
-    engine.load(QUrl(QStringLiteral("qrc:/src/KeyBoardShortcutTable.qml")));
-    engine.load(QUrl(QStringLiteral("qrc:/src/UserProfileCard.qml")));
 
     // exec the application
     auto ret = a.exec();
