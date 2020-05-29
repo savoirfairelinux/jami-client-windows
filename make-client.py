@@ -104,7 +104,7 @@ def replace_vs_prop(filename, prop, val):
         for line in file:
             print(re.sub(p, val, line), end='')
 
-def deps(arch, toolset):
+def deps(arch, toolset, qtver):
     print('Deps Qt Client Release|' + arch)
 
     # Fetch QRencode
@@ -121,27 +121,33 @@ def deps(arch, toolset):
         sys.exit(1)
 
     print('Building qrcodelib')
-    build(arch, '', '', 'Release-Lib', '\\qrencode-win32\\qrencode-win32\\vc8\\qrcodelib\\qrcodelib.vcxproj', '', False)
+    build(arch, '', '', 'Release-Lib', '\\qrencode-win32\\qrencode-win32\\vc8\\qrcodelib\\qrcodelib.vcxproj', qtver, False)
 
 def build(arch, toolset, sdk_version, config_str, project_path_under_current_path, qtver, force_option=True):
     configuration_type = 'StaticLibrary'
 
+    qtFolderDir = "msvc2017_64"
+    qtverSplit = qtver.split('.')
+
+    if((int(qtverSplit[0]) >= 6) or((int(qtverSplit[0]) == 5) and (int(qtverSplit[1]) >= 15))):
+        qtFolderDir = "msvc2019_64"
+
     if (config_str == 'Release'):
         print('Generating project using qmake ' + config_str + '|' + arch)
-        if(execute_cmd("C:\\Qt\\" + qtver + "\\msvc2017_64\\bin\\qmake.exe " + "-tp vc jami-qt.pro -o jami-qt.vcxproj")):
+        if(execute_cmd("C:\\Qt\\" + qtver + "\\" + qtFolderDir + "\\bin\\qmake.exe " + "-tp vc jami-qt.pro -o jami-qt.vcxproj")):
             print("Qmake vcxproj file generate error")
             sys.exit(1)
         configuration_type = 'Application'
     elif (config_str == 'Beta'):
         print('Generating project using qmake ' + config_str + '|' + arch)
-        if(execute_cmd("C:\\Qt\\" + qtver + "\\msvc2017_64\\bin\\qmake.exe " + "-tp vc jami-qt.pro -o jami-qt.vcxproj CONFIG+=Beta")):
+        if(execute_cmd("C:\\Qt\\" + qtver + "\\" + qtFolderDir + "\\bin\\qmake.exe " + "-tp vc jami-qt.pro -o jami-qt.vcxproj CONFIG+=Beta")):
             print("Beat: Qmake vcxproj file generate error")
             sys.exit(1)
         config_str = 'Release'
         configuration_type = 'Application'
     elif (config_str == 'ReleaseCompile'):
         print('Generating project using qmake ' + config_str + '|' + arch)
-        if(execute_cmd("C:\\Qt\\" + qtver + "\\msvc2017_64\\bin\\qmake.exe " + "-tp vc jami-qt.pro -o jami-qt.vcxproj CONFIG+=ReleaseCompile")):
+        if(execute_cmd("C:\\Qt\\" + qtver + "\\" + qtFolderDir + "\\bin\\qmake.exe " + "-tp vc jami-qt.pro -o jami-qt.vcxproj CONFIG+=ReleaseCompile")):
             print("ReleaseCompile: Qmake vcxproj file generate error")
             sys.exit(1)
         config_str = 'Release'
@@ -228,7 +234,7 @@ def main():
     parsed_args = parse_args()
 
     if parsed_args.deps:
-        deps(parsed_args.arch, parsed_args.toolset)
+        deps(parsed_args.arch, parsed_args.toolset, parsed_args.qtver)
 
     if parsed_args.build:
         build(parsed_args.arch, parsed_args.toolset, parsed_args.sdk, 'Release', '\\jami-qt.vcxproj', parsed_args.qtver)
