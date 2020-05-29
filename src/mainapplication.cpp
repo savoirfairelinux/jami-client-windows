@@ -1,31 +1,45 @@
-/***************************************************************************
- * Copyright (C) 2015-2020 by Savoir-faire Linux                           *
- * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>*
- * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>          *
- * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>              *
- *                                                                         *
- * This program is free software; you can redistribute it and/or modify    *
- * it under the terms of the GNU General Public License as published by    *
- * the Free Software Foundation; either version 3 of the License, or       *
- * (at your option) any later version.                                     *
- *                                                                         *
- * This program is distributed in the hope that it will be useful,         *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of          *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the           *
- * GNU General Public License for more details.                            *
- *                                                                         *
- * You should have received a copy of the GNU General Public License       *
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
- **************************************************************************/
+/*
+ * Copyright (C) 2015-2020 by Savoir-faire Linux
+ * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>
+ * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>
+ * Author: Mingrui Zhang <mingrui.zhang@savoirfairelinux.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
 #include "mainapplication.h"
 
-#include "mainwindow.h"
-#include "accountmigrationdialog.h"
+#include "accountadapter.h"
+#include "accountlistmodel.h"
+#include "avadapter.h"
+#include "calladapter.h"
+#include "contactadapter.h"
+#include "conversationsadapter.h"
+#include "distantrenderer.h"
 #include "globalinstances.h"
-#include "lrcinstance.h"
+#include "globalsystemtray.h"
+#include "messagesadapter.h"
 #include "pixbufmanipulator.h"
+#include "previewrenderer.h"
+#include "qrimageprovider.h"
+#include "tintedbuttonimageprovider.h"
 #include "utils.h"
+#include "version.h"
+
+#include <QFontDatabase>
+#include <QQmlContext>
+#include <QtWebEngine>
 
 #include <locale.h>
 
@@ -37,22 +51,31 @@
 #include <gnutls/gnutls.h>
 #endif
 
-MainApplication::MainApplication(int &argc, char** argv) :
-    QApplication(argc, argv)
+MainApplication::MainApplication(int &argc, char **argv)
+    : QGuiApplication(argc, argv)
+    , engine_(std::make_unique<QQmlApplicationEngine>())
 {
-    QObject::connect(this, &QApplication::aboutToQuit, [this] { exitApp(); });
+    QObject::connect(this, &QGuiApplication::aboutToQuit, [this] { exitApp(); });
 }
 
 void
 MainApplication::applicationInitialization()
 {
-    // some attributes are needed to be set before the creation of the sapplication
-    QApplication::setApplicationName("Ring");
-    QApplication::setOrganizationDomain("jami.net");
-    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
-    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+    /*
+     * Some attributes are needed to be set before the creation of the application.
+     */
+    QGuiApplication::setApplicationName("Ring");
+    QGuiApplication::setOrganizationDomain("jami.net");
+    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
+    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+    QCoreApplication::setAttribute(Qt::AA_UseOpenGLES);
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    QApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor);
+    QGuiApplication::setHighDpiScaleFactorRoundingPolicy(
+        Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor);
+    /*
+     * Initialize QtWebEngine.
+     */
+    QtWebEngine::initialize();
 #endif
 }
 
@@ -79,29 +102,29 @@ void
 MainApplication::vsConsoleDebug()
 {
 #ifdef _MSC_VER
-    // Print debug to output window if using VS
-    QObject::connect(
-        &LRCInstance::behaviorController(),
-        &lrc::api::BehaviorController::debugMessageReceived,
-        [](const QString& message) {
-            OutputDebugStringA((message + "\n").toStdString().c_str());
-        });
+    /*
+     * Print debug to output window if using VS.
+     */
+    QObject::connect(&LRCInstance::behaviorController(),
+                     &lrc::api::BehaviorController::debugMessageReceived,
+                     [](const QString &message) {
+                         OutputDebugStringA((message + "\n").toStdString().c_str());
+                     });
 #endif
 }
 
 void
-MainApplication::fileDebug(QFile* debugFile)
+MainApplication::fileDebug(QFile *debugFile)
 {
-    QObject::connect(
-        &LRCInstance::behaviorController(),
-        &lrc::api::BehaviorController::debugMessageReceived,
-        [debugFile](const QString& message) {
-            if (debugFile->open(QIODevice::WriteOnly | QIODevice::Append)) {
-                auto msg = (message + "\n").toStdString().c_str();
-                debugFile->write(msg, qstrlen(msg));
-                debugFile->close();
-            }
-        });
+    QObject::connect(&LRCInstance::behaviorController(),
+                     &lrc::api::BehaviorController::debugMessageReceived,
+                     [debugFile](const QString &message) {
+                         if (debugFile->open(QIODevice::WriteOnly | QIODevice::Append)) {
+                             auto msg = (message + "\n").toStdString().c_str();
+                             debugFile->write(msg, qstrlen(msg));
+                             debugFile->close();
+                         }
+                     });
 }
 
 void
@@ -113,13 +136,15 @@ MainApplication::exitApp()
 #endif
 }
 
-char**
-MainApplication::parseInputArgument(int& argc, char* argv[], char* argToParse)
+char **
+MainApplication::parseInputArgument(int &argc, char *argv[], char *argToParse)
 {
-    // forcefully append argToParse
+    /*
+     * Forcefully append argToParse.
+     */
     int oldArgc = argc;
     argc = argc + 1 + 1;
-    char** newArgv = new char* [argc];
+    char **newArgv = new char *[argc];
     for (int i = 0; i < oldArgc; i++) {
         newArgv[i] = argv[i];
     }
@@ -132,7 +157,9 @@ QString
 MainApplication::getDebugFilePath()
 {
     QDir logPath(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation));
-    // since logPath will be .../Ring, we use cdUp to remove it.
+    /*
+     * Since logPath will be .../Ring, we use cdUp to remove it.
+     */
     logPath.cdUp();
     return QString(logPath.absolutePath() + "/jami/jami.log");
 }
@@ -144,17 +171,19 @@ MainApplication::loadTranslations()
     const auto locale_name = QLocale::system().name();
     const auto locale_lang = locale_name.split('_')[0];
 
-    QTranslator* qtTranslator_lang = new QTranslator(this);
-    QTranslator* qtTranslator_name = new QTranslator(this);
+    QTranslator *qtTranslator_lang = new QTranslator(this);
+    QTranslator *qtTranslator_name = new QTranslator(this);
     if (locale_name != locale_lang) {
-        if (qtTranslator_lang->load("qt_" + locale_lang, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+        if (qtTranslator_lang->load("qt_" + locale_lang,
+                                    QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
             installTranslator(qtTranslator_lang);
     }
-    qtTranslator_name->load("qt_" + locale_name, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    qtTranslator_name->load("qt_" + locale_name,
+                            QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     installTranslator(qtTranslator_name);
 
-    QTranslator* lrcTranslator_lang = new QTranslator(this);
-    QTranslator* lrcTranslator_name = new QTranslator(this);
+    QTranslator *lrcTranslator_lang = new QTranslator(this);
+    QTranslator *lrcTranslator_name = new QTranslator(this);
     if (locale_name != locale_lang) {
         if (lrcTranslator_lang->load(appDir + "share/libringclient/translations/lrc_" + locale_lang))
             installTranslator(lrcTranslator_lang);
@@ -162,31 +191,30 @@ MainApplication::loadTranslations()
     if (lrcTranslator_name->load(appDir + "share/libringclient/translations/lrc_" + locale_name))
         installTranslator(lrcTranslator_name);
 
-    QTranslator* mainTranslator_lang = new QTranslator(this);
-    QTranslator* mainTranslator_name = new QTranslator(this);
+    QTranslator *mainTranslator_lang = new QTranslator(this);
+    QTranslator *mainTranslator_name = new QTranslator(this);
     if (locale_name != locale_lang) {
-        if (mainTranslator_lang->load(appDir + "share/ring/translations/ring_client_windows_" + locale_lang))
+        if (mainTranslator_lang->load(appDir + "share/ring/translations/ring_client_windows_"
+                                      + locale_lang))
             installTranslator(mainTranslator_lang);
     }
-    if (mainTranslator_name->load(appDir + "share/ring/translations/ring_client_windows_" + locale_name))
+    if (mainTranslator_name->load(appDir + "share/ring/translations/ring_client_windows_"
+                                  + locale_name))
         installTranslator(mainTranslator_name);
 }
 
 void
 MainApplication::initLrc()
 {
-    // init mainwindow and finish splash when mainwindow shows up
-    splash_ = std::make_unique<SplashScreen>();
+    /*
+     * Init mainwindow and finish splash when mainwindow shows up.
+     */
     std::atomic_bool isMigrating(false);
     LRCInstance::init(
         [this, &isMigrating] {
-            splash_->setupUI(
-                QPixmap(":/images/logo-jami-standard-coul.png"),
-                QString("Jami - ") + QObject::tr("Migration needed"),
-                QObject::tr("Migration in progress... This may take a while."),
-                QColor(232, 232, 232)
-            );
-            splash_->show();
+            /*
+             * TODO: splash screen for account migration.
+             */
             isMigrating = true;
             while (isMigrating) {
                 this->processEvents();
@@ -198,13 +226,12 @@ MainApplication::initLrc()
             }
             isMigrating = false;
         });
-    splash_->hide();
     LRCInstance::subscribeToDebugReceived();
     LRCInstance::getAPI().holdConferences = false;
 }
 
 void
-MainApplication::processInputArgument(bool& startMinimized)
+MainApplication::processInputArgument(bool &startMinimized)
 {
     debugFile_ = std::make_unique<QFile>(getDebugFilePath());
     QString uri = "";
@@ -212,8 +239,7 @@ MainApplication::processInputArgument(bool& startMinimized)
     for (auto string : QCoreApplication::arguments()) {
         if (string.startsWith("jami:")) {
             uri = string;
-        }
-        else {
+        } else {
             if (string == "-m" || string == "--minimized") {
                 startMinimized = true;
             }
@@ -235,37 +261,12 @@ MainApplication::processInputArgument(bool& startMinimized)
     }
 }
 
-void
-MainApplication::setApplicationStyleSheet()
-{
-#ifndef DEBUG_STYLESHEET
-#ifdef Q_OS_LINUX
-    QFile file(":/stylesheet.linux.css");
-#else
-    QFile file(":/stylesheet.css");
-#endif
-    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        setStyleSheet(file.readAll());
-        file.close();
-    }
-#endif
-}
-
 bool
 MainApplication::startAccountMigration()
 {
-    auto accountList = LRCInstance::accountModel().getAccountList();
-
-    for (const QString& i : accountList) {
-        auto accountStatus = LRCInstance::accountModel().getAccountInfo(i).status;
-        if (accountStatus == lrc::api::account::Status::ERROR_NEED_MIGRATION) {
-            std::unique_ptr<AccountMigrationDialog> dialog = std::make_unique<AccountMigrationDialog>(nullptr, i);
-            int status = dialog->exec();
-
-            //migration failed
-            return status == 0 ? false : true;
-        }
-    }
+    /*
+     * TODO: account migration.
+     */
     return true;
 }
 
@@ -278,6 +279,56 @@ MainApplication::setApplicationFont()
     QFontDatabase::addApplicationFont(":/images/FontAwesome.otf");
 }
 
+void
+MainApplication::qmlInitialization()
+{
+    /*
+     * Register accountListModel type.
+     */
+    QML_REGISTERTYPE(AccountListModel, 1, 0);
+
+    /*
+     * Register QQuickItem type.
+     */
+    QML_REGISTERTYPE(PreviewRenderer, 1, 0);
+    QML_REGISTERTYPE(VideoCallPreviewRenderer, 1, 0);
+    QML_REGISTERTYPE(DistantRenderer, 1, 0);
+
+    /*
+     * Adapter - qmlRegisterSingletonType.
+     */
+    QML_REGISTERSINGLETONTYPE_URL(QStringLiteral("qrc:/src/constant/JamiTheme.qml"),
+                                  JamiTheme,
+                                  1,
+                                  0);
+    QML_REGISTERSINGLETONTYPE(CallAdapter, 1, 0);
+    QML_REGISTERSINGLETONTYPE(AccountAdapter, 1, 0);
+    QML_REGISTERSINGLETONTYPE(MessagesAdapter, 1, 0);
+    QML_REGISTERSINGLETONTYPE(ConversationsAdapter, 1, 0);
+    QML_REGISTERSINGLETONTYPE(AvAdapter, 1, 0);
+    QML_REGISTERSINGLETONTYPE(ContactAdapter, 1, 0);
+    QML_REGISTERSINGLETONTYPE(UtilsAdapter, 1, 0);
+
+    /*
+     * Namespaces - qmlRegisterUncreatableMetaObject.
+     */
+    QML_REGISTERNAMESPACE(lrc::api::staticMetaObject, "Lrc", 1, 0);
+    QML_REGISTERNAMESPACE(lrc::api::account::staticMetaObject, "Account", 1, 0);
+    QML_REGISTERNAMESPACE(lrc::api::call::staticMetaObject, "Call", 1, 0);
+    QML_REGISTERNAMESPACE(lrc::api::datatransfer::staticMetaObject, "Datatransfer", 1, 0);
+    QML_REGISTERNAMESPACE(lrc::api::interaction::staticMetaObject, "Interaction", 1, 0);
+    QML_REGISTERNAMESPACE(lrc::api::video::staticMetaObject, "Video", 1, 0);
+    QML_REGISTERNAMESPACE(lrc::api::profile::staticMetaObject, "Profile", 1, 0);
+
+    /*
+     * Add image provider.
+     */
+    engine_->addImageProvider(QLatin1String("qrImage"), new QrImageProvider());
+    engine_->addImageProvider(QLatin1String("tintedPixmap"), new TintedButtonImageProvider());
+
+    engine_->load(QUrl(QStringLiteral("qrc:/src/MainApplicationWindow.qml")));
+}
+
 bool
 MainApplication::applicationSetup()
 {
@@ -286,57 +337,65 @@ MainApplication::applicationSetup()
         setenv("QT_QPA_PLATFORMTHEME", "gtk3", true);
 #endif
 
-    // start debug console
+    /*
+     * Start debug console.
+     */
     for (auto string : QCoreApplication::arguments()) {
         if (string == "-d" || string == "--debug") {
             consoleDebug();
         }
     }
 
-    // remove old version files
+    /*
+     * Remove old version files.
+     */
     Utils::removeOldVersions();
 
-    // load translations
+    /*
+     * Load translations.
+     */
     loadTranslations();
 
-    // set font
+    /*
+     * Set font.
+     */
     setApplicationFont();
-
-    // set style sheet
-    setApplicationStyleSheet();
 
 #if defined _MSC_VER && !COMPILE_ONLY
     gnutls_global_init();
 #endif
 
-    // init pixmap manipulator
+    /*
+     * Init pixmap manipulator.
+     */
     GlobalInstances::setPixmapManipulator(std::make_unique<PixbufManipulator>());
 
-    // init lrc and its possible migration ui
+    /*
+     * Init lrc and its possible migration ui.
+     */
     initLrc();
-    // init mainwindow and finish splash when mainwindow shows up
-    // release its source after
-    splash_->finish(&MainWindow::instance());
 
-    // process input argument
-    bool startMinimized{ false };
+    /*
+     * Process input argument.
+     */
+    bool startMinimized{false};
     processInputArgument(startMinimized);
 
-    // start possible account migration
+    /*
+     * Start possible account migration.
+     */
     if (!startAccountMigration())
         return false;
 
-    // create jami.net settings in Registry if it is not presented
+    /*
+     * Create jami.net settings in Registry if it is not presented.
+     */
     QSettings settings("jami.net", "Jami");
 
-    // set mainwindow show size
-    if (not startMinimized) {
-        MainWindow::instance().showWindow();
-    }
-    else {
-        MainWindow::instance().showMinimized();
-        MainWindow::instance().hide();
-    }
+    /*
+     * Initialize qml components.
+     */
+    qmlInitialization();
 
     return true;
 }
