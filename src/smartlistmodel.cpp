@@ -65,7 +65,7 @@ SmartListModel::rowCount(const QModelIndex &parent) const
         }
         return accInfo.conversationModel->allFilteredConversations().size();
     }
-    return 0; // A valid QModelIndex returns 0 as no entry has sub-elements
+    return 0;
 }
 
 int
@@ -155,7 +155,6 @@ SmartListModel::roleNames() const
     roles[LastInteraction] = "LastInteraction";
     roles[ContactType] = "ContactType";
     roles[UID] = "UID";
-    roles[ContextMenuOpen] = "ContextMenuOpen";
     roles[InCall] = "InCall";
     roles[IsAudioOnly] = "IsAudioOnly";
     roles[CallStackViewShouldShow] = "CallStackViewShouldShow";
@@ -276,8 +275,6 @@ SmartListModel::getConversationItemData(const conversation::Info &item,
     }
     case Role::UID:
         return QVariant(item.uid);
-    case Role::ContextMenuOpen:
-        return QVariant(isContextMenuOpen);
     case Role::InCall: {
         auto &convInfo = LRCInstance::getConversationFromConvUid(item.uid);
         if (!convInfo.uid.isEmpty()) {

@@ -34,7 +34,9 @@ class PixbufManipulator : public Interfaces::PixmapManipulatorI
 public:
     QVariant personPhoto(const QByteArray &data, const QString &type = "PNG") override;
 
-    /* TODO: the following methods return an empty QVariant/QByteArray */
+    /*
+     * TODO: the following methods return an empty QVariant/QByteArray.
+     */
     QVariant numberCategoryIcon(const QVariant &p,
                                 const QSize &size,
                                 bool displayPresence = false,

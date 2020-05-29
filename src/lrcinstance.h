@@ -349,7 +349,9 @@ public:
     {
         auto accountId = LRCInstance::getCurrAccId();
         accountModel().setAlias(accountId, displayName);
-        // force save to .yml
+        /*
+         * Force save to .yml.
+         */
         auto confProps = LRCInstance::accountModel().getAccountConfig(accountId);
         LRCInstance::accountModel().setAccountConfig(accountId, confProps);
     };

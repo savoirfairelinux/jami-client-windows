@@ -33,7 +33,10 @@ ApplicationWindow {
         source: mainApplicationWindow.contentItem
         color: "transparent"
 
-        // color animation
+
+        /*
+         * Color animation for overlay when pop up is shown.
+         */
         ColorAnimation on color {
             to: Qt.rgba(0, 0, 0, 0.33)
             duration: 500

@@ -44,7 +44,7 @@ Window {
 
 
     /*
-     * Decide whether to show screen area or entire screen
+     * Decide whether to show screen area or entire screen.
      */
     property bool selectArea: false
 

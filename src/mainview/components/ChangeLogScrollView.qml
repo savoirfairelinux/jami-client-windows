@@ -19,6 +19,7 @@
 import QtQuick 2.14
 import QtQuick.Controls 2.14
 import net.jami.JamiTheme 1.0
+import net.jami.UtilsAdapter 1.0
 
 ScrollView {
     id: changeLogScrollView
@@ -39,7 +40,7 @@ ScrollView {
         wrapMode: Text.WordWrap
 
         font.pointSize: JamiTheme.textFontSize - 3
-        text: utilsAdapter.getChangeLog()
+        text: UtilsAdapter.getChangeLog()
         textFormat: TextEdit.RichText
 
         MouseArea {

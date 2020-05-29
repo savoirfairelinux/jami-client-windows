@@ -21,6 +21,11 @@
 
 #include <QtQuick>
 
+/*
+ * Use QQuickPaintedItem so that QPainter apis can be used.
+ * Note: Old video pipeline.
+ */
+
 class DistantRenderer : public QQuickPaintedItem
 {
     Q_OBJECT
@@ -33,5 +38,8 @@ public:
 private:
     void paint(QPainter *painter);
 
+    /*
+     * Unique DistantRenderId for each call.
+     */
     QString distantRenderId_;
 };

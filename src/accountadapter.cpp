@@ -53,12 +53,9 @@ AccountAdapter::setSelectedAccount(const QString &accountId, int index)
 
     backToWelcomePage(index);
 
-    auto &accountInfo = LRCInstance::accountModel().getAccountInfo(accountId);
-
     QMetaObject::invokeMethod(qmlObj_, "updateSmartList", Q_ARG(QVariant, accountId));
     connectAccount(accountId);
     emit accountSignalsReconnect(accountId);
-    //emit slotAccountChangedFinished();
 }
 
 void
@@ -105,7 +102,6 @@ AccountAdapter::connectAccount(const QString &accountId)
                                [this, accountId](const QString &contactUri) {
                                    auto &accInfo = LRCInstance::accountModel().getAccountInfo(
                                        accountId);
-                                   auto convModel = LRCInstance::getCurrentConversationModel();
                                    auto conversation = LRCInstance::getCurrentConversation();
                                    if (conversation.uid.isEmpty()) {
                                        return;

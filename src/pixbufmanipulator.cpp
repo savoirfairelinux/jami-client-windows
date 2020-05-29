@@ -31,7 +31,6 @@
 
 #include "globalinstances.h"
 
-// new LRC
 #include <api/account.h>
 #include <api/contact.h>
 #include <api/contactmodel.h>
@@ -97,7 +96,9 @@ PixbufManipulator::decorationRole(const lrc::api::conversation::Info &conversati
         return QVariant::fromValue(photo);
     }
     try {
-        // Get first contact photo
+        /*
+         * Get first contact photo.
+         */
         auto contactUri = contacts.front();
         auto contactInfo = accountInfo.contactModel->getContact(contactUri);
         auto contactPhoto = contactInfo.profileInfo.avatar;

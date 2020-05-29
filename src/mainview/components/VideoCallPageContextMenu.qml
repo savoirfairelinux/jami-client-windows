@@ -69,7 +69,7 @@ Menu {
 
 
         /*
-         * Dynamatic creation of device menu item
+         * Dynamatic creation of device menu item.
          */
         onNewVideoContextMenuForDeviceItem: {
             if (videoDeviceItem.itemName === "No video device") {

@@ -81,10 +81,8 @@ Rectangle {
             /*
              * Width + margin.
              */
-            Layout.preferredWidth: Math.max(
-                                       100,
-                                       messagingHeaderRect.width - backToWelcomeViewButton.width
-                                       - buttonGroup.width - 30 - 6 - 5)
+            Layout.preferredWidth: messagingHeaderRect.width
+                                   - backToWelcomeViewButton.width - buttonGroup.width - 45
             Layout.preferredHeight: messagingHeaderRect.height
             Layout.leftMargin: 10
 

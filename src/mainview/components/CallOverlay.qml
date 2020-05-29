@@ -52,11 +52,15 @@ Rectangle {
         ContactPickerCreation.closeContactPicker()
     }
 
+    function setBackTintedButtonVisible(visible) {
+        backTintedButton.visible = visible
+    }
+
     anchors.fill: parent
 
 
     /*
-     * Timer to decide when overlay fade out
+     * Timer to decide when overlay fade out.
      */
     Timer {
         id: callOverlayTimer

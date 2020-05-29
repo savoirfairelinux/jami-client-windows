@@ -39,7 +39,6 @@
 #include <globalinstances.h>
 #include <qrencode.h>
 
-//Qt
 #include <QApplication>
 #include <QBitmap>
 #include <QErrorMessage>
@@ -156,29 +155,37 @@ void
 Utils::removeOldVersions()
 {
 #ifdef Q_OS_WIN
-    // As per: https://git.jami.net/savoirfairelinux/ring-client-windows/issues/429
-    // NB: As only the 64-bit version of this application is distributed, we will only
-    // remove 1. the configuration reg keys for Ring-x64, 2. the startup links for Ring,
-    // 3. the winsparkle reg keys. The NSIS uninstall reg keys for Jami-x64 are removed
-    // by the MSI installer.
-    // Uninstallation of Ring, either 32 or 64 bit, is left to the user.
-    // The current version of Jami will attempt to kill Ring.exe upon start if a startup
-    // link is found.
+    /*
+     * As per: https://git.jami.net/savoirfairelinux/ring-client-windows/issues/429
+     * NB: As only the 64-bit version of this application is distributed, we will only
+     * remove 1. the configuration reg keys for Ring-x64, 2. the startup links for Ring,
+     * 3. the winsparkle reg keys. The NSIS uninstall reg keys for Jami-x64 are removed
+     * by the MSI installer.
+     * Uninstallation of Ring, either 32 or 64 bit, is left to the user.
+     * The current version of Jami will attempt to kill Ring.exe upon start if a startup
+     * link is found.
+     */
     QString node64 = "HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node";
     QString hkcuSoftwareKey = "HKEY_CURRENT_USER\\Software\\";
     QString uninstKey = "\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\";
     QString company = "Savoir-Faire Linux";
 
-    // 1. configuration reg keys for Ring-x64
+    /*
+     * 1. Configuration reg keys for Ring-x64.
+     */
     QSettings(hkcuSoftwareKey + "jami.net\\Ring", QSettings::NativeFormat).remove("");
     QSettings(hkcuSoftwareKey + "ring.cx", QSettings::NativeFormat).remove("");
-    // 2. unset Ring as a startup application
+    /*
+     * 2. Unset Ring as a startup application.
+     */
     if (Utils::CheckStartupLink(TEXT("Ring"))) {
         qDebug() << "Found startup link for Ring. Removing it and killing Ring.exe.";
         Utils::DeleteStartupLink(TEXT("Ring"));
         QProcess::execute("taskkill /im Ring.exe /f");
     }
-    // 3. remove registry entries for winsparkle(both Jami-x64 and Ring-x64)
+    /*
+     * 3. Remove registry entries for winsparkle(both Jami-x64 and Ring-x64).
+     */
     QSettings(hkcuSoftwareKey + company, QSettings::NativeFormat).remove("");
 #else
     return;
@@ -344,8 +351,10 @@ Utils::getRealSize(QScreen *screen)
 void
 Utils::forceDeleteAsync(const QString &path)
 {
-    // keep deleting file until the process holding it let go
-    // Or the file itself does not exist anymore
+    /*
+     * Keep deleting file until the process holding it let go,
+     * or the file itself does not exist anymore.
+     */
     QtConcurrent::run([path] {
         QFile file(path);
         if (!QFile::exists(path))
@@ -415,7 +424,9 @@ Utils::getProjectCredits()
 void
 Utils::cleanUpdateFiles()
 {
-    // Delete all logs and msi in the %TEMP% directory before launching
+    /*
+     * Delete all logs and msi in the %TEMP% directory before launching.
+     */
     QString dir = QString(Utils::WinGetEnv("TEMP"));
     QDir log_dir(dir, {"jami*.log"});
     for (const QString &filename : log_dir.entryList()) {
@@ -434,16 +445,22 @@ Utils::cleanUpdateFiles()
 void
 Utils::checkForUpdates(bool withUI, QWidget *parent)
 {
-    // TODO: check update logic
+    Q_UNUSED(withUI)
+    Q_UNUSED(parent)
+    /*
+     * TODO: check update logic.
+     */
 }
 
 void
 Utils::applyUpdates(bool updateToBeta, QWidget *parent)
 {
-    // TODO: update logic
+    Q_UNUSED(updateToBeta)
+    Q_UNUSED(parent)
+    /*
+     * TODO: update logic.
+     */
 }
-
-// new lrc helpers
 
 inline QString
 removeEndlines(const QString &str)
@@ -518,7 +535,9 @@ Utils::bestNameForConversation(const lrc::api::conversation::Info &conv,
     return {};
 }
 
-// returns empty string if only infoHash is available, second best identifier otherwise
+/*
+ * Returns empty string if only infoHash is available, second best identifier otherwise.
+ */
 QString
 Utils::secondBestNameForAccount(const lrc::api::account::Info &account)
 {
@@ -526,14 +545,23 @@ Utils::secondBestNameForAccount(const lrc::api::account::Info &account)
     auto registeredName = removeEndlines(account.registeredName);
     auto infoHash = account.profileInfo.uri;
 
-    if (!alias.length() == 0) {              // if alias exists
-        if (!registeredName.length() == 0) { // if registeredName exists
+    if (!alias.length() == 0) {
+        /*
+         * If alias exists.
+         */
+        if (!registeredName.length() == 0) {
+            /*
+             * If registeredName exists.
+             */
             return registeredName;
         } else {
             return infoHash;
         }
     } else {
-        if (!registeredName.length() == 0) { // if registeredName exists
+        if (!registeredName.length() == 0) {
+            /*
+             * If registeredName exists.
+             */
             return infoHash;
         } else {
             return "";
@@ -626,40 +654,55 @@ Utils::getAvatarColor(const QString &canonicalUri)
     return JamiAvatarTheme::avatarColors_[colorIndex];
 }
 
-// Generate a QImage representing a dummy user avatar, when user doesn't provide it.
-// Current rendering is a flat colored circle with a centered letter.
-// The color of the letter is computed from the circle color to be visible whaterver be the circle color.
+/* Generate a QImage representing a dummy user avatar, when user doesn't provide it.
+ * Current rendering is a flat colored circle with a centered letter.
+ * The color of the letter is computed from the circle color to be visible whaterver be the circle color.
+ */
 QImage
 Utils::fallbackAvatar(const QSize size, const QString &canonicalUriStr, const QString &letterStr)
 {
-    // We start with a transparent avatar
+    /*
+     * We start with a transparent avatar.
+     */
     QImage avatar(size, QImage::Format_ARGB32);
     avatar.fill(Qt::transparent);
 
-    // We pick a color based on the passed character
+    /*
+     * We pick a color based on the passed character.
+     */
     QColor avColor = getAvatarColor(canonicalUriStr);
 
-    // We draw a circle with this color
+    /*
+     * We draw a circle with this color.
+     */
     QPainter painter(&avatar);
     painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
     painter.setPen(Qt::transparent);
     painter.setBrush(avColor.lighter(110));
     painter.drawEllipse(avatar.rect());
 
-    // If a letter was passed, then we paint a letter in the circle,
-    // otherwise we draw the default avatar icon
+    /*
+     * If a letter was passed, then we paint a letter in the circle,
+     * otherwise we draw the default avatar icon.
+     */
     QString letterStrCleaned(letterStr);
     letterStrCleaned.remove(QRegExp("[\\n\\t\\r]"));
     if (!letterStr.isEmpty()) {
         auto unicode = letterStr.toUcs4().at(0);
-        if (unicode >= 0x1F000 && unicode <= 0x1FFFF) { // is Emoticon
+        if (unicode >= 0x1F000 && unicode <= 0x1FFFF) {
+            /*
+             * Is Emoticon.
+             */
             auto letter = QString::fromUcs4(&unicode, 1);
             QFont font(QStringLiteral("Segoe UI Emoji"), avatar.height() / 2.66667, QFont::Medium);
             painter.setFont(font);
             QRect emojiRect(avatar.rect());
             emojiRect.moveTop(-6);
             painter.drawText(emojiRect, letter, QTextOption(Qt::AlignCenter));
-        } else if (unicode >= 0x0000 && unicode <= 0x00FF) { // is Basic Latin
+        } else if (unicode >= 0x0000 && unicode <= 0x00FF) {
+            /*
+             * Is Basic Latin.
+             */
             auto letter = letterStr.at(0).toUpper();
             QFont font("Arial", avatar.height() / 2.66667, QFont::Medium);
             painter.setFont(font);
@@ -728,7 +771,7 @@ QImage
 Utils::setupQRCode(QString ringID, int margin)
 {
     auto rcode = QRcode_encodeString(ringID.toStdString().c_str(),
-                                     0,            //Let the version be decided by libqrencode
+                                     0,            // Let the version be decided by libqrencode
                                      QR_ECLEVEL_L, // Lowest level of error correction
                                      QR_MODE_8,    // 8-bit data mode
                                      1);
@@ -858,18 +901,6 @@ Utils::accountPhoto(const lrc::api::account::Info &accountInfo, const QSize &siz
     return scaleAndFrame(photo, size);
 }
 
-void
-Utils::swapQListWidgetItems(QListWidget *list, bool down)
-{
-    QListWidgetItem *current = list->currentItem();
-    int currIndex = list->row(current);
-    QListWidgetItem *other = list->item(list->row(current) + (down ? 1 : -1));
-    int otherIndex = list->row(other);
-    QListWidgetItem *temp = list->takeItem(otherIndex);
-    down ? list->insertItem(currIndex, temp) : list->insertItem(otherIndex, current);
-    down ? list->insertItem(otherIndex, current) : list->insertItem(currIndex, temp);
-}
-
 QString
 Utils::humanFileSize(qint64 fileSize)
 {
@@ -885,7 +916,9 @@ Utils::humanFileSize(qint64 fileSize)
         fileSizeF /= thresh;
         ++unit_position;
     } while (abs(fileSizeF) >= thresh && unit_position < units->size() - 1);
-    //Round up to two decimal
+    /*
+     * Round up to two decimal.
+     */
     fileSizeF = roundf(fileSizeF * 100) / 100;
     return QString::number(fileSizeF) + " " + units[unit_position];
 }
@@ -945,4 +978,54 @@ void
 UtilsAdapter::removeConversation(const QString &accountId, const QString &uid, bool banContact)
 {
     LRCInstance::getAccountInfo(accountId).conversationModel->removeConversation(uid, banContact);
+}
+
+const QString
+UtilsAdapter::getCurrAccId()
+{
+    return LRCInstance::getCurrAccId();
+}
+
+const QStringList
+UtilsAdapter::getCurrAccList()
+{
+    return LRCInstance::accountModel().getAccountList();
+}
+
+void
+UtilsAdapter::setCurrentCall(const QString &accountId, const QString &convUid)
+{
+    auto convInfo = LRCInstance::getConversationFromConvUid(convUid, accountId);
+    auto &accInfo = LRCInstance::getAccountInfo(accountId);
+    accInfo.callModel->setCurrentCall(convInfo.callId);
+}
+
+Q_INVOKABLE void
+UtilsAdapter::startPreviewing(bool force)
+{
+    LRCInstance::renderer()->startPreviewing(force);
+}
+
+Q_INVOKABLE void
+UtilsAdapter::stopPreviewing()
+{
+    if (!LRCInstance::hasVideoCall()) {
+        LRCInstance::renderer()->stopPreviewing();
+    }
+}
+
+const QString
+UtilsAdapter::getCallId(const QString &accountId, const QString &convUid)
+{
+    auto convInfo = LRCInstance::getConversationFromConvUid(convUid, accountId);
+    if (convInfo.uid.isEmpty()) {
+        return "";
+    }
+
+    auto call = LRCInstance::getCallInfoForConversation(convInfo, false);
+    if (!call) {
+        return "";
+    }
+
+    return call->id;
 }

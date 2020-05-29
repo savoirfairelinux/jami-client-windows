@@ -23,6 +23,7 @@ import net.jami.JamiTheme 1.0
 import net.jami.AccountAdapter 1.0
 import net.jami.ConversationsAdapter 1.0
 import net.jami.CallAdapter 1.0
+import net.jami.UtilsAdapter 1.0
 
 import "../../commoncomponents"
 
@@ -60,11 +61,11 @@ Rectangle {
     }
 
     function updatePendingRequestCount() {
-        pendingRequestCount = utilsAdapter.getTotalPendingRequest()
+        pendingRequestCount = UtilsAdapter.getTotalPendingRequest()
     }
 
     function updateTotalUnreadMessagesCount() {
-        totalUnreadMessagesCount = utilsAdapter.getTotalUnreadMessages()
+        totalUnreadMessagesCount = UtilsAdapter.getTotalUnreadMessages()
     }
 
     function clearContactSearchBar() {
@@ -216,7 +217,7 @@ Rectangle {
                 Layout.preferredHeight: 35
 
                 onContactSearchBarTextChanged: {
-                    utilsAdapter.setConversationFilter(text)
+                    UtilsAdapter.setConversationFilter(text)
                 }
             }
 

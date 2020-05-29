@@ -146,45 +146,24 @@ CallAdapter::slotShowIncomingCallView(const QString &accountId, const conversati
     auto call = callModel->getCall(convInfo.callId);
     auto isCallSelected = LRCInstance::getCurrentConvUid() == convInfo.uid;
 
-    auto itemInCurrentFilter = false;
     if (call.isOutgoing) {
         if (isCallSelected) {
             emit showOutgoingCallPage(accountId, convInfo.uid);
             emit showCallStack(accountId, convInfo.uid);
         }
     } else {
-        /*if (!QApplication::focusWidget() && GlobalSystemTray::instance().getTriggeredAccountId().isEmpty()) {
-            auto formattedName = Utils::bestNameForConversation(convInfo, *convModel);
-            Utils::showSystemNotification(this, QString(tr("Call incoming from %1")).arg(formattedName));
-        }*/
         auto selectedAccountId = LRCInstance::getCurrentAccountInfo().id;
         auto accountProperties = LRCInstance::accountModel().getAccountConfig(selectedAccountId);
-        //if (!isCallSelected)
-        //    itemInCurrentFilter = selectSmartlistItem(convInfo.uid);
         if (accountProperties.autoAnswer) {
-            //ui->callStackWidget->setCurrentWidget(ui->videoPage);
+            /*
+             * TODO: Auto answer
+             */
         } else {
             emit showIncomingCallPage(accountId, convInfo.uid);
         }
-        //else if (isCallSelected || !itemInCurrentFilter) {
     }
 
-    //if (!itemInCurrentFilter && !isCallSelected) {
-    //    if (ui->smartList->selectionModel())
-    //        ui->smartList->selectionModel()->clear();
-    //    LRCInstance::setSelectedConvId(convInfo.uid);
-    //    showChatView(accountId, convInfo);
-    //}
-    //else if (ui->messagesWidget->isHidden()) {
-    //    ui->messagesWidget->show();
-    //}
-
     emit callStatusChanged(lrc::api::call::to_string(call.status), accountId, convInfo.uid);
-
-    //if (finalBestId.isEmpty())
-    //    ui->sipCallerBestIdLabel->setVisible(false);
-    //else
-    //    ui->sipCallerBestIdLabel->setVisible(true);
 
     emit updateConversationSmartList();
 }
@@ -346,8 +325,6 @@ CallAdapter::updateCallOverlay(const lrc::api::conversation::Info &convInfo)
     oneSecondTimer_->start(20);
 
     auto &accInfo = LRCInstance::accountModel().getAccountInfo(accountId_);
-
-    auto &convModel = accInfo.conversationModel;
 
     auto call = LRCInstance::getCallInfoForConversation(convInfo);
     if (!call) {

@@ -21,6 +21,7 @@ import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import QtWebEngine 1.10
 import QtWebChannel 1.14
+import net.jami.UtilsAdapter 1.0
 import net.jami.MessagesAdapter 1.0
 
 import "../../commoncomponents"
@@ -105,7 +106,7 @@ Rectangle {
 
 
         /*
-         * ID, under which this object will be known at WebEngineView side.
+         * ID, under which this object will be known at chatview.js side.
          */
         WebChannel.id: "jsbridge"
 
@@ -216,33 +217,33 @@ Rectangle {
 
         onLoadingChanged: {
             if (loadRequest.status == WebEngineView.LoadSucceededStatus) {
-                messageWebView.runJavaScript(utilsAdapter.getStyleSheet(
+                messageWebView.runJavaScript(UtilsAdapter.getStyleSheet(
                                                  "chatcss",
-                                                 utilsAdapter.qStringFromFile(
+                                                 UtilsAdapter.qStringFromFile(
                                                      ":/chatview.css")))
-                messageWebView.runJavaScript(utilsAdapter.getStyleSheet(
+                messageWebView.runJavaScript(UtilsAdapter.getStyleSheet(
                                                  "chatwin",
-                                                 utilsAdapter.qStringFromFile(
+                                                 UtilsAdapter.qStringFromFile(
                                                      ":/chatview-windows.css")))
 
-                messageWebView.runJavaScript(utilsAdapter.qStringFromFile(
+                messageWebView.runJavaScript(UtilsAdapter.qStringFromFile(
                                                  ":/jed.js"))
-                messageWebView.runJavaScript(utilsAdapter.qStringFromFile(
+                messageWebView.runJavaScript(UtilsAdapter.qStringFromFile(
                                                  ":/linkify.js"))
-                messageWebView.runJavaScript(utilsAdapter.qStringFromFile(
+                messageWebView.runJavaScript(UtilsAdapter.qStringFromFile(
                                                  ":/linkify-html.js"))
-                messageWebView.runJavaScript(utilsAdapter.qStringFromFile(
+                messageWebView.runJavaScript(UtilsAdapter.qStringFromFile(
                                                  ":/linkify-string.js"))
-                messageWebView.runJavaScript(utilsAdapter.qStringFromFile(
+                messageWebView.runJavaScript(UtilsAdapter.qStringFromFile(
                                                  ":/qwebchannel.js"))
-                messageWebView.runJavaScript(utilsAdapter.qStringFromFile(
+                messageWebView.runJavaScript(UtilsAdapter.qStringFromFile(
                                                  ":/chatview.js"))
                 messageWebView.runJavaScript("init_i18n();")
                 messageWebView.runJavaScript("displayNavbar(false);")
             }
         }
         Component.onCompleted: {
-            messageWebView.loadHtml(utilsAdapter.qStringFromFile(
+            messageWebView.loadHtml(UtilsAdapter.qStringFromFile(
                                         ":/chatview.html"), ":/chatview.html")
         }
     }
@@ -254,8 +255,8 @@ Rectangle {
     WebEngineProfile {
         id: messageWebViewProfile
 
-        cachePath: utilsAdapter.getCachePath()
-        persistentStoragePath: utilsAdapter.getCachePath()
+        cachePath: UtilsAdapter.getCachePath()
+        persistentStoragePath: UtilsAdapter.getCachePath()
         persistentCookiesPolicy: WebEngineProfile.NoPersistentCookies
         httpCacheType: WebEngineProfile.NoCache
         httpUserAgent: "jami-windows"

@@ -24,6 +24,7 @@ import QtGraphicalEffects 1.14
 import net.jami.JamiTheme 1.0
 import net.jami.CallAdapter 1.0
 import net.jami.DistantRenderer 1.0
+import net.jami.UtilsAdapter 1.0
 import net.jami.VideoCallPreviewRenderer 1.0
 
 import "../../commoncomponents"
@@ -44,9 +45,9 @@ Rectangle {
     signal needToShowInFullScreen
 
     function updateUI(accountId, convUid) {
-        bestName = utilsAdapter.getBestName(accountId, convUid)
+        bestName = UtilsAdapter.getBestName(accountId, convUid)
 
-        var id = utilsAdapter.getBestId(accountId, convUid)
+        var id = UtilsAdapter.getBestId(accountId, convUid)
         bestId = (bestName !== id) ? id : ""
     }
 
@@ -93,7 +94,11 @@ Rectangle {
 
         if (previewRendererCenter.x >= distantRendererCenter.x) {
             if (previewRendererCenter.y >= distantRendererCenter.y) {
-                // Bottom right
+
+
+                /*
+                 * Bottom right.
+                 */
                 previewToX = Qt.binding(function () {
                     return videoCallPageMainRect.width - previewRenderer.width - previewMargin
                 })
@@ -101,7 +106,11 @@ Rectangle {
                     return videoCallPageMainRect.height - previewRenderer.height - previewMargin
                 })
             } else {
-                // Top right
+
+
+                /*
+                 * Top right.
+                 */
                 previewToX = Qt.binding(function () {
                     return videoCallPageMainRect.width - previewRenderer.width - previewMargin
                 })
@@ -109,18 +118,30 @@ Rectangle {
             }
         } else {
             if (previewRendererCenter.y >= distantRendererCenter.y) {
-                // Bottom left
+
+
+                /*
+                 * Bottom left.
+                 */
                 previewToX = previewMargin
                 previewToY = Qt.binding(function () {
                     return videoCallPageMainRect.height - previewRenderer.height - previewMargin
                 })
             } else {
-                // Top left
+
+
+                /*
+                 * Top left.
+                 */
                 previewToX = previewMargin
                 previewToY = previewMargin
             }
         }
         previewRenderer.state = "geoChanging"
+    }
+
+    function setCallOverlayBackButtonVisible(visible) {
+        videoCallOverlay.setBackTintedButtonVisible(visible)
     }
 
     anchors.fill: parent

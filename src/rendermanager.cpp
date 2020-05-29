@@ -122,7 +122,7 @@ FrameWrapper::slotFrameUpdated(const QString &id)
 
 #ifndef Q_OS_LINUX
         unsigned int size = frame_.storage.size();
-        /**
+        /*
          * If the frame is empty or not the expected size,
          * do nothing and keep the last rendered QImage.
          */
@@ -153,7 +153,7 @@ FrameWrapper::slotRenderingStopped(const QString &id)
     QObject::disconnect(renderConnections_.stopped);
     renderer_ = nullptr;
 
-    /**
+    /*
      * The object's QImage pointer is reset before renderingStopped
      * is emitted, allowing the listener to invoke specific behavior
      * like clearing the widget or changing the UI entirely.
@@ -263,7 +263,9 @@ RenderManager::getFrame(const QString &id)
 void
 RenderManager::addDistantRenderer(const QString &id)
 {
-    // check if a FrameWrapper with this id exists
+    /*
+     * Check if a FrameWrapper with this id exists.
+     */
     auto dfwIt = distantFrameWrapperMap_.find(id);
     if (dfwIt != distantFrameWrapperMap_.end()) {
         if (!dfwIt->second->startRendering()) {
@@ -272,7 +274,9 @@ RenderManager::addDistantRenderer(const QString &id)
     } else {
         auto dfw = std::make_unique<FrameWrapper>(avModel_, id);
 
-        // connect this to the FrameWrapper
+        /*
+         * Connect this to the FrameWrapper.
+         */
         distantConnectionMap_[id].started = QObject::connect(dfw.get(),
                                                              &FrameWrapper::renderingStarted,
                                                              [this](const QString &id) {
@@ -289,10 +293,14 @@ RenderManager::addDistantRenderer(const QString &id)
                                                                  emit distantRenderingStopped(id);
                                                              });
 
-        // connect FrameWrapper to avmodel
+        /*
+         * Connect FrameWrapper to avmodel.
+         */
         dfw->connectStartRendering();
 
-        // add to map
+        /*
+         * Add to map.
+         */
         distantFrameWrapperMap_.insert(std::make_pair(id, std::move(dfw)));
     }
 }
@@ -302,7 +310,9 @@ RenderManager::removeDistantRenderer(const QString &id)
 {
     auto dfwIt = distantFrameWrapperMap_.find(id);
     if (dfwIt != distantFrameWrapperMap_.end()) {
-        // disconnect FrameWrapper from this
+        /*
+         * Disconnect FrameWrapper from this.
+         */
         auto dcIt = distantConnectionMap_.find(id);
         if (dcIt != distantConnectionMap_.end()) {
             QObject::disconnect(dcIt->second.started);
@@ -310,7 +320,9 @@ RenderManager::removeDistantRenderer(const QString &id)
             QObject::disconnect(dcIt->second.stopped);
         }
 
-        // erase
+        /*
+         * Erase.
+         */
         distantFrameWrapperMap_.erase(dfwIt);
     }
 }
@@ -320,7 +332,9 @@ RenderManager::slotDeviceEvent()
 {
     auto defaultDevice = avModel_.getDefaultDevice();
     auto currentCaptureDevice = avModel_.getCurrentVideoCaptureDevice();
-    // decide whether a device has plugged, unplugged, or nothing has changed
+    /*
+     * Decide whether a device has plugged, unplugged, or nothing has changed.
+     */
     auto deviceList = avModel_.getDevices();
     auto currentDeviceListSize = deviceList.size();
 
@@ -328,7 +342,9 @@ RenderManager::slotDeviceEvent()
     if (currentDeviceListSize > deviceListSize_) {
         deviceEvent = DeviceEvent::Added;
     } else if (currentDeviceListSize < deviceListSize_) {
-        // check if the currentCaptureDevice is still in the device list
+        /*
+         * Check if the currentCaptureDevice is still in the device list.
+         */
         if (std::find(std::begin(deviceList), std::end(deviceList), currentCaptureDevice)
             == std::end(deviceList)) {
             deviceEvent = DeviceEvent::RemovedCurrent;

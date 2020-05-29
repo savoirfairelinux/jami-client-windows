@@ -21,6 +21,7 @@ import QtQuick.Controls 2.14
 import net.jami.JamiTheme 1.0
 import net.jami.ConversationsAdapter 1.0
 import net.jami.CallAdapter 1.0
+import net.jami.UtilsAdapter 1.0
 
 import "../../commoncomponents"
 
@@ -35,7 +36,7 @@ Menu {
 
 
     /*
-     * All GeneralMenuItems should remain the same width / height
+     * All GeneralMenuItems should remain the same width / height.
      */
     GeneralMenuItem {
         id: startVideoCallItem
@@ -77,7 +78,7 @@ Menu {
 
         onClicked: {
             contextMenu.close()
-            utilsAdapter.clearConversationHistory(responsibleAccountId,
+            UtilsAdapter.clearConversationHistory(responsibleAccountId,
                                                   responsibleConvUid)
         }
     }
@@ -91,7 +92,7 @@ Menu {
 
         onClicked: {
             contextMenu.close()
-            utilsAdapter.removeConversation(responsibleAccountId,
+            UtilsAdapter.removeConversation(responsibleAccountId,
                                             responsibleConvUid)
         }
     }
@@ -114,7 +115,7 @@ Menu {
 
         onClicked: {
             contextMenu.close()
-            utilsAdapter.removeConversation(responsibleAccountId,
+            UtilsAdapter.removeConversation(responsibleAccountId,
                                             responsibleConvUid, true)
         }
     }

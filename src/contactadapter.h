@@ -25,6 +25,15 @@
 #include <QSortFilterProxyModel>
 #include <QString>
 
+/*
+ * The SelectableProxyModel class
+ * provides support for sorting and filtering data passed between another model and a view.
+ *
+ * User can customize a function pointer to pass to FilterPredicate to ensure which row in 
+ * the source model can be accepted.
+ * 
+ * Additionally, user need to setFilterRegExp to be able to get input QRegExp from FilterPredicate.
+ */
 class SelectableProxyModel : public QSortFilterProxyModel
 {
 public:
@@ -73,11 +82,22 @@ public:
 
 private:
     void initQmlObject() override;
+
+    /*
+     * Convert from qml enum (int) to SmartListModel::Type.
+     */
     SmartListModel::Type fromQMLContactPickerType(int type);
 
-    std::unique_ptr<SmartListModel> smartListModel_;
-    std::unique_ptr<SelectableProxyModel> selectableProxyModel_;
+    SmartListModel::Type listModeltype_;
+
+    /*
+     * For sip call transfer, to exclude current sip callee.
+     */
     QString calleeDisplayName_;
 
-    SmartListModel::Type listModeltype_;
+    /*
+     * SmartListModel is the source model of SelectableProxyModel. 
+     */
+    std::unique_ptr<SmartListModel> smartListModel_;
+    std::unique_ptr<SelectableProxyModel> selectableProxyModel_;
 };

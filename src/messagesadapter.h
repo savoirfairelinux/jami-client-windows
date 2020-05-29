@@ -24,7 +24,6 @@
 #include <QObject>
 #include <QString>
 
-// to ease the logic with the power of c++
 class MessagesAdapter : public QmlAdapterBase
 {
     Q_OBJECT
@@ -39,7 +38,9 @@ public:
     Q_INVOKABLE void accountChangedSetUp(const QString &accoountId);
     Q_INVOKABLE void updateConversationForAddedContact();
 
-    // js Q_INVOKABLE
+    /*
+     * JS Q_INVOKABLE.
+     */
     Q_INVOKABLE void acceptInvitation();
     Q_INVOKABLE void refuseInvitation();
     Q_INVOKABLE void blockConversation();
@@ -56,11 +57,13 @@ public:
     Q_INVOKABLE void onComposing(bool isComposing);
 
     /*
-     * Manually update draft when hiding message web view (Back to welcome page)
+     * Manually update draft when hiding message web view (Back to welcome page).
      */
     Q_INVOKABLE void updateDraft();
 
-    // run corrsponding js functions, c++ to qml
+    /*
+     * Run corrsponding js functions, c++ to qml.
+     */
     void setMessagesVisibility(bool visible);
     void requestSendMessageContent();
     void setInvitation(bool show, const QString &contactUri = "", const QString &contactId = "");
@@ -99,7 +102,9 @@ private:
 
     QString LastConvUid_;
 
-    // interaction connections
+    /*
+     * Interaction connections.
+     */
     QMetaObject::Connection newInteractionConnection_;
     QMetaObject::Connection interactionStatusUpdatedConnection_;
     QMetaObject::Connection interactionRemovedConnection_;

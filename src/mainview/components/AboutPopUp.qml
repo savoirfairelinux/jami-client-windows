@@ -20,6 +20,7 @@ import QtQuick 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import net.jami.JamiTheme 1.0
+import net.jami.UtilsAdapter 1.0
 
 import "../../commoncomponents"
 
@@ -40,10 +41,14 @@ Dialog {
 
     ProjectCreditsScrollView {
         id: projectCreditsScrollView
+
+        visible: false
     }
 
     ChangeLogScrollView {
         id: changeLogScrollView
+
+        visible: false
     }
 
     Rectangle {
@@ -83,7 +88,7 @@ Dialog {
                 TextMetrics {
                     id: textMetricsjamiVersionText
                     font: jamiVersionText.font
-                    text: qsTr("version") + ": " + utilsAdapter.getVersionStr()
+                    text: qsTr("version") + ": " + UtilsAdapter.getVersionStr()
                 }
             }
 
@@ -161,7 +166,12 @@ Dialog {
 
                 MouseArea {
                     anchors.fill: parent
-                    acceptedButtons: Qt.NoButton // we don't want to eat clicks on the Text
+
+
+                    /*
+                     * We don't want to eat clicks on the Text.
+                     */
+                    acceptedButtons: Qt.NoButton
                     cursorShape: parent.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
                 }
             }
@@ -214,7 +224,7 @@ Dialog {
 
                 MouseArea {
                     anchors.fill: parent
-                    acceptedButtons: Qt.NoButton // we don't want to eat clicks on the Text
+                    acceptedButtons: Qt.NoButton
                     cursorShape: parent.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
                 }
             }
@@ -269,7 +279,6 @@ Dialog {
 
                         onClicked: {
                             if (changeLogOrCreditsStack.depth == 1) {
-                                console.log("s")
                                 changeLogOrCreditsStack.push(
                                             projectCreditsScrollView)
                             }

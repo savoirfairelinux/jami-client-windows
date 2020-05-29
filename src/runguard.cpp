@@ -52,7 +52,9 @@ RunGuard::~RunGuard()
 void
 RunGuard::tryRestorePrimaryInstance()
 {
-    //TODO: relaunch application
+    /*
+     * TODO: relaunch application
+     */
 }
 
 bool
@@ -75,9 +77,11 @@ RunGuard::tryToRun()
 {
 #ifdef Q_OS_WIN
     if (isAnotherRunning()) {
-        // This is a secondary instance,
-        // connect to the primary instance to trigger a restore
-        // then fail.
+        /*
+         * This is a secondary instance,
+         * connect to the primary instance to trigger a restore
+         * then fail.
+         */
         if (socket_ == nullptr) {
             socket_ = new QLocalSocket();
         }
@@ -99,8 +103,10 @@ RunGuard::tryToRun()
         return false;
     }
 
-    // This is the primary instance,
-    // listen for subsequent instances.
+    /*
+     * This is the primary instance,
+     * listen for subsequent instances.
+     */
     QLocalServer::removeServer(key_);
     server_ = new QLocalServer();
     server_->setSocketOptions(QLocalServer::UserAccessOption);

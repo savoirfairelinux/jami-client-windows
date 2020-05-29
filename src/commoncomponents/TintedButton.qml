@@ -98,7 +98,11 @@ Button {
                 tintedButton.clicked()
             }
             onEntered: {
-                // tinted
+
+
+                /*
+                 * Tinted.
+                 */
                 if (isSelected) {
                     tintedButtonImage.source = "image://tintedPixmap/"
                             + selectedPixmapSource.replace(

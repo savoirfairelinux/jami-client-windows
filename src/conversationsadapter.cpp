@@ -96,6 +96,11 @@ bool
 ConversationsAdapter::selectConversation(const lrc::api::conversation::Info &item,
                                          bool preventSendingSignal)
 {
+    /*
+     * accInfo.conversationModel->selectConversation(item.uid) only emit ui
+     * behavior control signals, but sometimes we do not want that,
+     * preventSendingSignal boolean can help us to determine.
+     */
     if (LRCInstance::getCurrentConvUid() == item.uid) {
         return false;
     } else if (item.participants.size() > 0) {
@@ -104,7 +109,6 @@ ConversationsAdapter::selectConversation(const lrc::api::conversation::Info &ite
         if (!preventSendingSignal)
             accInfo.conversationModel->selectConversation(item.uid);
         accInfo.conversationModel->clearUnreadInteractions(item.uid);
-        //ui->conversationsFilterWidget->update();
         return true;
     }
 }
@@ -130,7 +134,7 @@ void
 ConversationsAdapter::accountChangedSetUp(const QString &accountId)
 {
     /*
-     * Should be called when current account is changed
+     * Should be called when current account is changed.
      */
     auto &accountInfo = LRCInstance::accountModel().getAccountInfo(accountId);
     currentTypeFilter_ = accountInfo.profileInfo.type;
@@ -144,7 +148,7 @@ void
 ConversationsAdapter::updateConversationsFilterWidget()
 {
     /*
-     * Update status of "Conversations" and "Invitations"
+     * Update status of "Conversations" and "Invitations".
      */
     auto invites = LRCInstance::getCurrentAccountInfo().contactModel->pendingRequestCount();
     if (invites == 0 && currentTypeFilter_ == lrc::api::profile::Type::PENDING) {
@@ -158,8 +162,8 @@ void
 ConversationsAdapter::setConversationFilter(const QString &type)
 {
     /*
-     * Set conversation filter according to type
-     * type needs to be recognizable by lrc::api::profile::to_type
+     * Set conversation filter according to type,
+     * type needs to be recognizable by lrc::api::profile::to_type.
      */
     if (type.isEmpty()) {
         if (LRCInstance::getCurrentAccountInfo().profileInfo.type == lrc::api::profile::Type::RING)
@@ -244,8 +248,6 @@ ConversationsAdapter::connectConversationModel()
                                                          Q_ARG(QVariant,
                                                                LRCInstance::getCurrAccId()));
                                updateConversationForNewContact(convUid);
-                               //ui->conversationsFilterWidget->update();
-                               //ui->currentAccountComboBox->canPlaceAudioOnlyCall(convUid);
                            });
 
     conversationRemovedConnection_
@@ -257,9 +259,10 @@ ConversationsAdapter::connectConversationModel()
         = QObject::connect(currentConversationModel,
                            &lrc::api::ConversationModel::conversationCleared,
                            [this](const QString &convUid) {
-                               //ui->messageView->clear();
-                               // if currently selected,
-                               // switch to welcome screen (deselecting current smartlist item )
+                               /*
+                                * If currently selected,
+                                * switch to welcome screen (deselecting current smartlist item ).
+                                */
                                if (convUid != LRCInstance::getCurrentConvUid()) {
                                    return;
                                }
@@ -275,8 +278,6 @@ ConversationsAdapter::connectConversationModel()
                            });
 
     currentConversationModel->setFilter("");
-    // clear search field
-    //ui->ringContactLineEdit->setText("");
     return true;
 }
 

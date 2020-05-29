@@ -52,7 +52,9 @@ Rectangle {
          * Close potential window, context menu releated windows.
          */
         audioCallPage.closeContextMenuAndRelatedWindows()
+
         VideoCallFullScreenWindowContainerCreation.closeVideoCallFullScreenWindowContainer()
+        videoCallPage.setCallOverlayBackButtonVisible(true)
         videoCallPage.closeContextMenuAndRelatedWindows()
     }
 
@@ -127,7 +129,7 @@ Rectangle {
 
 
             /*
-             * Check is done within the js
+             * Check is done within the js.
              */
             IncomingCallPageCreation.createincomingCallPageWindowObjects(
                         accountId, convUid)
@@ -201,9 +203,11 @@ Rectangle {
             if (!VideoCallFullScreenWindowContainerCreation.checkIfVisible()) {
                 VideoCallFullScreenWindowContainerCreation.setAsContainerChild(
                             videoCallPage)
+                videoCallPage.setCallOverlayBackButtonVisible(false)
                 VideoCallFullScreenWindowContainerCreation.showVideoCallFullScreenWindowContainer()
             } else {
                 videoCallPage.parent = callStackMainView
+                videoCallPage.setCallOverlayBackButtonVisible(true)
                 VideoCallFullScreenWindowContainerCreation.closeVideoCallFullScreenWindowContainer()
             }
         }
