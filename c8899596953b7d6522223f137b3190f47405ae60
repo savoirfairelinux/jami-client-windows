@@ -22,6 +22,30 @@
       "revId": "c8899596953b7d6522223f137b3190f47405ae60",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8deb714f_6732765f",
+        "filename": "jami-qt.pro",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 633
+      },
+      "writtenOn": "2020-05-29T17:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83010022_aebd9b73",
+      "range": {
+        "startLine": 5,
+        "startChar": 9,
+        "endLine": 5,
+        "endChar": 146
+      },
+      "revId": "c8899596953b7d6522223f137b3190f47405ae60",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": false
     }
   ]
 }
