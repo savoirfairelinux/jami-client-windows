@@ -123,7 +123,6 @@ HEADERS += ./src/smartlistmodel.h \
         ./src/jamiavatartheme.h \
         ./src/mainapplication.h \
         ./src/qrimageprovider.h \
-        ./src/lrcinterface.h \
         ./src/messagesadapter.h \
         ./src/accountadapter.h \
         ./src/tintedbuttonimageprovider.h \
@@ -146,7 +145,6 @@ SOURCES += ./src/bannedlistmodel.cpp \
         ./src/rendermanager.cpp \
         ./src/connectivitymonitor.cpp \
         ./src/mainapplication.cpp \
-        ./src/lrcinterface.cpp \
         ./src/messagesadapter.cpp \
         ./src/accountadapter.cpp \
         ./src/calladapter.cpp \

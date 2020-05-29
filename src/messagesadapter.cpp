@@ -57,7 +57,6 @@ MessagesAdapter::setupChatView(const QString &uid)
     bool isContact = false;
     auto selectedAccountId = LRCInstance::getCurrAccId();
     auto &accountInfo = LRCInstance::accountModel().getAccountInfo(selectedAccountId);
-    bool isRINGAccount = accountInfo.profileInfo.type == lrc::api::profile::Type::RING;
 
     lrc::api::profile::Type contactType;
     try {
@@ -130,7 +129,6 @@ MessagesAdapter::connectConversationModel()
             auto &currentAccountInfo = LRCInstance::getCurrentAccountInfo();
             auto currentConversationModel = currentAccountInfo.conversationModel.get();
             currentConversationModel->clearUnreadInteractions(convUid);
-            //ui->conversationsFilterWidget->update();
             updateInteraction(*currentConversationModel, interactionId, interaction);
         });
 
@@ -234,7 +232,9 @@ void
 MessagesAdapter::sendImage(const QString &message)
 {
     if (message.startsWith("data:image/png;base64,")) {
-        //img tag contains base64 data, trim "data:image/png;base64," from data
+        /*
+         * Img tag contains base64 data, trim "data:image/png;base64," from data.
+         */
         QByteArray data = QByteArray::fromStdString(message.toStdString().substr(22));
         auto img_name_hash = QString::fromStdString(
             QCryptographicHash::hash(data, QCryptographicHash::Sha1).toHex().toStdString());
@@ -261,7 +261,9 @@ MessagesAdapter::sendImage(const QString &message)
         }
 
     } else {
-        //img tag contains file paths
+        /*
+         * Img tag contains file paths.
+         */
         QFileInfo fi(message);
         QString fileName = fi.fileName();
         try {
@@ -366,7 +368,9 @@ MessagesAdapter::pasteKeyDetected()
     const QMimeData *mimeData = QGuiApplication::clipboard()->mimeData();
 
     if (mimeData->hasImage()) {
-        //save temp data into base64 format
+        /*
+         * Save temp data into base64 format.
+         */
         QPixmap pixmap = qvariant_cast<QPixmap>(mimeData->imageData());
         QByteArray ba;
         QBuffer bu(&ba);
@@ -377,13 +381,19 @@ MessagesAdapter::pasteKeyDetected()
         setMessagesImageContent(str, true);
     } else if (mimeData->hasUrls()) {
         QList<QUrl> urlList = mimeData->urls();
-        // extract the local paths of the files
+        /*
+        * Extract the local paths of the files.
+        */
         for (int i = 0; i < urlList.size(); ++i) {
-            // Trim file:/// from url
+            /*
+             * Trim file:/// from url.
+             */
             QString filePath = urlList.at(i).toString().remove(0, 8);
             QByteArray imageFormat = QImageReader::imageFormat(filePath);
 
-            //check if file is qt supported image file type
+            /*
+             * Check if file is qt supported image file type.
+             */
             if (!imageFormat.isEmpty()) {
                 setMessagesImageContent(filePath);
             } else {
@@ -451,18 +461,15 @@ MessagesAdapter::newInteraction(const QString &accountId,
         }
         if (!interaction.authorUri.isEmpty()
             && (!QGuiApplication::focusWindow() || LRCInstance::getCurrAccId() != accountId)) {
-            auto bestName = Utils::bestNameForConversation(conversation, *convModel);
-            //Utils::showSystemNotification(this, bestName, interaction.body);
+            /*
+             * TODO: Notification from other accounts.
+             */
         }
-        //updateConversationsFilterWidget();
         if (convUid != LRCInstance::getCurrentConvUid()) {
             return;
         }
         convModel->clearUnreadInteractions(convUid);
         printNewInteraction(*convModel, interactionId, interaction);
-        if (interaction.type != interaction::Type::CALL) {
-            //ui->videoView->simulateShowChatview(true);
-        }
     } catch (...) {
     }
 }
@@ -478,7 +485,9 @@ MessagesAdapter::updateDraft()
     requestSendMessageContent();
 }
 
-// Js invoke
+/*
+ * JS invoke.
+ */
 void
 MessagesAdapter::setMessagesVisibility(bool visible)
 {
@@ -579,7 +588,9 @@ MessagesAdapter::setMessagesFileContent(const QString &path)
 {
     qint64 fileSize = QFileInfo(path).size();
     QString fileName = QFileInfo(path).fileName();
-    //if file name is too large, trim it
+    /*
+     * If file name is too large, trim it.
+     */
     if (fileName.length() > 15) {
         fileName = fileName.remove(12, fileName.length() - 12) + "...";
     }
@@ -612,8 +623,6 @@ MessagesAdapter::contactIsComposing(const QString &uid, const QString &contactUr
         QMetaObject::invokeMethod(qmlObj_, "webViewRunJavaScript", Q_ARG(QVariant, s));
     }
 }
-
-// js Q_INVOKABLE
 
 void
 MessagesAdapter::acceptInvitation()

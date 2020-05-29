@@ -45,7 +45,7 @@ public:
     Q_INVOKABLE void shareEntireScreen(int screenNumber);
 
     /*
-     * Take snap shoot of the screen.
+     * Take snap shoot of the screen by returning base64 image string.
      */
     Q_INVOKABLE const QString shootScreen(int screenNumber);
 

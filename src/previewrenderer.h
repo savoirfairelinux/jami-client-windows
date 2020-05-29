@@ -21,6 +21,10 @@
 
 #include <QtQuick>
 
+/*
+ * Use QQuickPaintedItem so that QPainter apis can be used.
+ * Note: Old video pipeline.
+ */
 class PreviewRenderer : public QQuickPaintedItem
 {
     Q_OBJECT

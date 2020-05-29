@@ -20,6 +20,7 @@ import QtQuick 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import net.jami.JamiTheme 1.0
+import net.jami.UtilsAdapter 1.0
 
 import "../../commoncomponents"
 
@@ -154,7 +155,7 @@ Rectangle {
                             source: "qrc:/images/icons/ic_content_copy.svg"
 
                             onClicked: {
-                                utilsAdapter.setText(
+                                UtilsAdapter.setText(
                                             textMetricsjamiRegisteredNameText.text)
                             }
                         }

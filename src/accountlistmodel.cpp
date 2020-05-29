@@ -19,13 +19,10 @@
 
 #include "accountlistmodel.h"
 
-// Qt
 #include <QDateTime>
 
-// LRC
 #include "globalinstances.h"
 
-// Client
 #include "lrcinstance.h"
 #include "pixbufmanipulator.h"
 #include "utils.h"
@@ -38,15 +35,24 @@ int
 AccountListModel::rowCount(const QModelIndex &parent) const
 {
     if (!parent.isValid()) {
-        return LRCInstance::accountModel().getAccountList().size(); // count
+        /*
+         * Count.
+         */
+        return LRCInstance::accountModel().getAccountList().size();
     }
-    return 0; // A valid QModelIndex returns 0 as no entry has sub-elements
+    /*
+     * A valid QModelIndex returns 0 as no entry has sub-elements.
+     */
+    return 0;
 }
 
 int
 AccountListModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
+    /*
+     * Only need one column.
+     */
     return 1;
 }
 

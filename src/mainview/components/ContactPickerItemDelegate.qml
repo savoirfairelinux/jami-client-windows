@@ -21,7 +21,6 @@ import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import net.jami.JamiTheme 1.0
 import net.jami.ContactAdapter 1.0
-import net.jami.LrcGeneralAdapter 1.0
 
 import "../../commoncomponents"
 

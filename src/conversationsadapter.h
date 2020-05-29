@@ -43,24 +43,25 @@ public:
     Q_INVOKABLE void updateConversationsFilterWidget();
     Q_INVOKABLE void setConversationFilter(const QString &type);
 
-    void setConversationFilter(lrc::api::profile::Type filter);
-    void backToWelcomePage();
-    bool selectConversation(const lrc::api::conversation::Info &item,
-                            bool preventSendingSignal = true);
-
 signals:
     void showChatView(const QString &accountId, const QString &convUid);
     void showConversationTabs(bool visible);
 
 private:
     void initQmlObject() override;
+    void setConversationFilter(lrc::api::profile::Type filter);
+    void backToWelcomePage();
+    bool selectConversation(const lrc::api::conversation::Info &item,
+                            bool preventSendingSignal = true);
     void updateConversationForNewContact(const QString &convUid);
 
     SmartListModel *conversationSmartListModel_;
 
     lrc::api::profile::Type currentTypeFilter_{};
 
-    // connections
+    /*
+     * Connections.
+     */
     QMetaObject::Connection modelSortedConnection_;
     QMetaObject::Connection modelUpdatedConnection_;
     QMetaObject::Connection filterChangedConnection_;

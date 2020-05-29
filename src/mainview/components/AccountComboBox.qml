@@ -235,7 +235,7 @@ ComboBox {
 
 
             /*
-             * Manually making settings button hover
+             * Manually making settings button hover.
              */
             if (isMouseOnSettingsButton(mouse)) {
                 settingButtonRect.color = JamiTheme.hoverColor

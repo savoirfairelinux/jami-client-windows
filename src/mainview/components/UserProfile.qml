@@ -69,7 +69,7 @@ Dialog {
 
 
         /*
-         * Visible when user alias is not empty or equals to id
+         * Visible when user alias is not empty or equals to id.
          */
         Text {
             id: contactAlias
@@ -90,7 +90,7 @@ Dialog {
 
 
         /*
-         * Visible when user name is not empty or equals to alias
+         * Visible when user name is not empty or equals to alias.
          */
         Text {
             id: contactDisplayName

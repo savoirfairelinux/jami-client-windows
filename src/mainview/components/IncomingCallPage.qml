@@ -55,11 +55,11 @@ Window {
 
     function updateUI() {
         incomingCallPage.contactImgSource = "data:image/png;base64,"
-                + utilsAdapter.getContactImageString(responsibleAccountId,
+                + UtilsAdapter.getContactImageString(responsibleAccountId,
                                                      responsibleConvUid)
-        incomingCallPage.bestName = utilsAdapter.getBestName(
+        incomingCallPage.bestName = UtilsAdapter.getBestName(
                     responsibleAccountId, responsibleConvUid)
-        var id = utilsAdapter.getBestId(responsibleAccountId,
+        var id = UtilsAdapter.getBestId(responsibleAccountId,
                                         responsibleConvUid)
         incomingCallPage.bestId = (incomingCallPage.bestName !== id) ? id : ""
     }
@@ -89,10 +89,6 @@ Window {
     flags: Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint
     screen: Qt.application.screens[0]
 
-    UtilsAdapter {
-        id: utilsAdapter
-    }
-
     Rectangle {
         id: incomingCallPageColumnLayoutMainRect
 
@@ -103,7 +99,7 @@ Window {
 
 
         /*
-         * Simulate window drag. (top with height 30)
+         * Simulate window drag. (top with height 30).
          */
         MouseArea {
             id: dragMouseArea

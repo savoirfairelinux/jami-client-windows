@@ -21,7 +21,7 @@ import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import net.jami.JamiTheme 1.0
 import net.jami.CallAdapter 1.0
-import net.jami.LrcGeneralAdapter 1.0
+import net.jami.UtilsAdapter 1.0
 
 import "../../commoncomponents"
 
@@ -233,7 +233,7 @@ ItemDelegate {
                                                  mouse.x, mouse.y)
                 smartListContextMenu.x = relativeMousePos.x
                 smartListContextMenu.y = relativeMousePos.y
-                smartListContextMenu.responsibleAccountId = LrcGeneralAdapter.getCurrAccId()
+                smartListContextMenu.responsibleAccountId = UtilsAdapter.getCurrAccId()
                 smartListContextMenu.responsibleConvUid = UID
                 userProfile.responsibleConvUid = UID
                 userProfile.aliasText = DisplayName

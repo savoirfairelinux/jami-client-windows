@@ -28,7 +28,7 @@
 
 using namespace lrc::api;
 
-/**
+/*
  * This class acts as a QImage rendering sink and manages
  * signal/slot connections to it's underlying (AVModel) renderer
  * corresponding to the object's renderer id.
@@ -49,89 +49,107 @@ public:
     FrameWrapper(AVModel &avModel, const QString &id = video::PREVIEW_RENDERER_ID);
     ~FrameWrapper();
 
-    /**
+    /*
      * Reconnect the started rendering connection for this object.
      */
     void connectStartRendering();
 
-    /**
+    /*
      * Get a pointer to the renderer and reconnect the update/stopped
      * rendering connections for this object.
      * @return whether the start succeeded or not
      */
     bool startRendering();
 
-    /**
+    /*
      * Get the most recently rendered frame as a QImage.
      * @return the rendered image of this object's id
      */
     QImage *getFrame();
 
-    /**
-     * Check if the object is updating actively
+    /*
+     * Check if the object is updating actively.
      */
     bool isRendering();
 
 signals:
-    /**
+    /*
      * Emitted once in slotRenderingStarted.
      * @param id of the renderer
      */
     void renderingStarted(const QString &id);
-    /**
+    /*
      * Emitted each time a frame is ready to be displayed.
      * @param id of the renderer
      */
     void frameUpdated(const QString &id);
-    /**
+    /*
      * Emitted once in slotRenderingStopped.
      * @param id of the renderer
      */
     void renderingStopped(const QString &id);
 
 private slots:
-    /**
+    /*
      * Used to listen to AVModel::rendererStarted.
      * @param id of the renderer
      */
     void slotRenderingStarted(const QString &id = video::PREVIEW_RENDERER_ID);
-    /**
+    /*
      * Used to listen to AVModel::frameUpdated.
      * @param id of the renderer
      */
     void slotFrameUpdated(const QString &id = video::PREVIEW_RENDERER_ID);
-    /**
+    /*
      * Used to listen to AVModel::renderingStopped.
      * @param id of the renderer
      */
     void slotRenderingStopped(const QString &id = video::PREVIEW_RENDERER_ID);
 
 private:
-    /* the id of the renderer */
+    /*
+     * The id of the renderer.
+     */
     QString id_;
 
-    /* a pointer to the lrc renderer object */
+    /*
+     * A pointer to the lrc renderer object.
+     */
     video::Renderer *renderer_;
 
-    /* a local copy of the renderer's current frame */
+    /*
+     * A local copy of the renderer's current frame.
+     */
     video::Frame frame_;
 
-    /* a the frame's storage data used to set the image */
+    /*
+     * A the frame's storage data used to set the image.
+     */
     std::vector<uint8_t> buffer_;
 
-    /* the frame's paint ready QImage */
+    /*
+     * The frame's paint ready QImage.
+     */
     std::unique_ptr<QImage> image_;
 
-    /* used to protect the buffer during QImage creation routine */
+    /*
+     * Used to protect the buffer during QImage creation routine.
+     */
     QMutex mutex_;
 
-    /* true if the object is rendering */
+    /*
+     * True if the object is rendering
+     */
     std::atomic_bool isRendering_;
 
-    /* convenience ref to avmodel */
+    /*
+     * Convenience ref to avmodel
+     */
     AVModel &avModel_;
 
-    /* connections to the underlying renderer signals in avmodel */
+    /*
+     * Connections to the underlying renderer signals in avmodel
+     */
     RenderConnections renderConnections_;
 };
 
@@ -150,40 +168,40 @@ public:
     explicit RenderManager(AVModel &avModel);
     ~RenderManager();
 
-    /**
-     * Check if the preview is active
+    /*
+     * Check if the preview is active.
      */
     bool isPreviewing();
-    /**
+    /*
      * Get the most recently rendered preview frame as a QImage.
      * @return the rendered preview image
      */
     QImage *getPreviewFrame();
-    /**
+    /*
      * Start capturing and rendering preview frames.
      * @param force if the capture device should be started
      * @param async
      */
     void startPreviewing(bool force = false, bool async = true);
-    /**
+    /*
      * Stop capturing.
      * @param async
      */
     void stopPreviewing(bool async = true);
 
-    /**
+    /*
      * Get the most recently rendered distant frame for a given id
      * as a QImage.
      * @return the rendered preview image
      */
     QImage *getFrame(const QString &id);
-    /**
+    /*
      * Add and connect a distant renderer for a given id
      * to a FrameWrapper object
      * @param id
      */
     void addDistantRenderer(const QString &id);
-    /**
+    /*
      * Disconnect and remove a FrameWrapper object connected to a
      * distant renderer for a given id
      * @param id
@@ -191,47 +209,71 @@ public:
     void removeDistantRenderer(const QString &id);
 
 signals:
-    /* Emitted when the size of the video capture device list changes. */
+    /*
+     * Emitted when the size of the video capture device list changes.
+     */
     void videoDeviceListChanged();
 
-    /* Emitted when the preview is started. */
+    /*
+     * Emitted when the preview is started.
+     */
     void previewRenderingStarted();
 
-    /* Emitted when the preview has a new frame ready. */
+    /*
+     * Emitted when the preview has a new frame ready.
+     */
     void previewFrameUpdated();
 
-    /* Emitted when the preview is stopped. */
+    /*
+     * Emitted when the preview is stopped.
+     */
     void previewRenderingStopped();
 
-    /* Emitted when a distant renderer is started for a given id. */
+    /*
+     * Emitted when a distant renderer is started for a given id.
+     */
     void distantRenderingStarted(const QString &id);
 
-    /* Emitted when a distant renderer has a new frame ready for a given id. */
+    /*
+     * Emitted when a distant renderer has a new frame ready for a given id.
+     */
     void distantFrameUpdated(const QString &id);
 
-    /* Emitted when a distant renderer is stopped for a given id. */
+    /*
+     * Emitted when a distant renderer is stopped for a given id.
+     */
     void distantRenderingStopped(const QString &id);
 
 private slots:
-    /**
+    /*
      * Used to listen to AVModel::deviceEvent.
      */
     void slotDeviceEvent();
 
 private:
-    /* used to classify capture device events */
+    /*
+     * Used to classify capture device events.
+     */
     enum class DeviceEvent { Added, RemovedCurrent, None };
 
-    /* used to track the capture device count */
+    /*
+     * Used to track the capture device count.
+     */
     int deviceListSize_;
 
-    /* one preview frame */
+    /*
+     * One preview frame.
+     */
     std::unique_ptr<FrameWrapper> previewFrameWrapper_;
 
-    /* distant for each call/conf/conversation */
+    /*
+     * Distant for each call/conf/conversation.
+     */
     std::map<QString, std::unique_ptr<FrameWrapper>> distantFrameWrapperMap_;
     std::map<QString, RenderConnections> distantConnectionMap_;
 
-    /* convenience ref to avmodel */
+    /*
+     * Convenience ref to avmodel.
+     */
     AVModel &avModel_;
 };

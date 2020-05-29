@@ -36,13 +36,10 @@ public:
      */
     Q_INVOKABLE void accountChanged(int index);
 
-    void setSelectedAccount(const QString &accountId, int index);
-    void backToWelcomePage(int index);
-    void deselectConversation();
-
 signals:
+
     /*
-     * Trigger other components to reconnect account related signals .
+     * Trigger other components to reconnect account related signals.
      */
     void accountSignalsReconnect(const QString &accountId);
     void accountStatusChanged();
@@ -50,6 +47,10 @@ signals:
 
 private:
     void initQmlObject() override final;
+    void setSelectedAccount(const QString &accountId, int index);
+    void backToWelcomePage(int index);
+    void deselectConversation();
+
     /*
      * Make account signal connections.
      */

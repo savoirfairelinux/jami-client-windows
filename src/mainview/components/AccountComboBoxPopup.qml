@@ -45,7 +45,7 @@ Popup {
 
 
         /*
-         * In list view, index is an interger
+         * In list view, index is an interger.
          */
         clip: true
         model: accountListModel

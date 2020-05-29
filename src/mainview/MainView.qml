@@ -27,7 +27,6 @@ import net.jami.CallAdapter 1.0
 import net.jami.AccountListModel 1.0
 import net.jami.UtilsAdapter 1.0
 import net.jami.MessagesAdapter 1.0
-import net.jami.LrcGeneralAdapter 1.0
 import net.jami.ConversationsAdapter 1.0
 
 
@@ -140,9 +139,9 @@ Window {
             welcomeViewStack.pop(null, StackView.Immediate)
             sidePanelViewStack.pop(null, StackView.Immediate)
 
-            var index = LrcGeneralAdapter.getCurrAccList().indexOf(accountId)
-            var name = utilsAdapter.getBestName(accountId, convUid)
-            var id = utilsAdapter.getBestId(accountId, convUid)
+            var index = UtilsAdapter.getCurrAccList().indexOf(accountId)
+            var name = UtilsAdapter.getBestName(accountId, convUid)
+            var id = UtilsAdapter.getBestId(accountId, convUid)
 
             communicationPageMessageWebView.headerUserAliasLabelText = name
             communicationPageMessageWebView.headerUserUserNameLabelText = (name !== id) ? id : ""
@@ -166,10 +165,6 @@ Window {
         id: accountListModel
     }
 
-    UtilsAdapter {
-        id: utilsAdapter
-    }
-
     SidePanel {
         id: mainViewWindowSidePanel
 
@@ -179,20 +174,19 @@ Window {
             communicationPageMessageWebView.headerUserUserNameLabelText = currentUserDisplayName
 
             callStackView.needToCloseInCallConversationAndPotentialWindow()
-            callStackView.responsibleAccountId = LrcGeneralAdapter.getCurrAccId(
-                        )
+            callStackView.responsibleAccountId = UtilsAdapter.getCurrAccId()
             callStackView.responsibleConvUid = currentUID
             callStackView.updateCorrspondingUI()
 
             if (callStackViewShouldShow) {
                 if (callStateStr == "Talking" || callStateStr == "Hold") {
-                    LrcGeneralAdapter.setCurrentCall(
-                                LrcGeneralAdapter.getCurrAccId(), currentUID)
+                    UtilsAdapter.setCurrentCall(UtilsAdapter.getCurrAccId(),
+                                                currentUID)
                     if (isAudioOnly)
                         callStackView.showAudioCallPage()
                     else
                         callStackView.showVideoCallPage(
-                                    LrcGeneralAdapter.getCallId(
+                                    UtilsAdapter.getCallId(
                                         callStackView.responsibleAccountId,
                                         callStackView.responsibleConvUid))
                 } else {
@@ -385,7 +379,7 @@ Window {
 
 
         /*
-         * Hide unnecessary stackview when width is changed
+         * Hide unnecessary stackview when width is changed.
          */
         if (mainViewWindow.width < sidePanelViewStackPreferedWidth
                 + welcomePageGroupPreferedWidth - 5

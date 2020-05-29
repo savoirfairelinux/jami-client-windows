@@ -22,6 +22,7 @@ import QtQuick.Layouts 1.14
 import QtQuick.Controls.Universal 2.12
 import net.jami.JamiTheme 1.0
 import net.jami.CallAdapter 1.0
+import net.jami.UtilsAdapter 1.0
 
 import "../../commoncomponents"
 
@@ -38,10 +39,10 @@ Rectangle {
     signal backButtonIsClicked
 
     function updateUI(accountId, convUid) {
-        contactImgSource = "data:image/png;base64," + utilsAdapter.getContactImageString(
+        contactImgSource = "data:image/png;base64," + UtilsAdapter.getContactImageString(
                     accountId, convUid)
-        bestName = utilsAdapter.getBestName(accountId, convUid)
-        var id = utilsAdapter.getBestId(accountId, convUid)
+        bestName = UtilsAdapter.getBestName(accountId, convUid)
+        var id = UtilsAdapter.getBestId(accountId, convUid)
         bestId = (bestName !== id) ? id : ""
     }
 
@@ -51,7 +52,7 @@ Rectangle {
 
 
     /*
-     * Prevent right click propagate to VideoCallPage
+     * Prevent right click propagate to VideoCallPage.
      */
     MouseArea {
         anchors.fill: parent

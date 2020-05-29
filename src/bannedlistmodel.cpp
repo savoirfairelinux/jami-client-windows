@@ -27,9 +27,9 @@ int
 BannedListModel::rowCount(const QModelIndex &index) const
 {
     if (!index.isValid()) {
-        return LRCInstance::accountModel().getAccountList().size(); // count
+        return LRCInstance::accountModel().getAccountList().size();
     }
-    return 0; // A valid QModelIndex returns 0 as no entry has sub-elements
+    return 0;
 }
 
 bool

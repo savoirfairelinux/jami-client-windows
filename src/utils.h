@@ -65,7 +65,9 @@ static constexpr bool isBeta = false;
 
 namespace Utils {
 
-// Qml type register
+/*
+ * Qml type register.
+ */
 #define QML_REGISTERSINGLETONTYPE(T, MAJ, MIN) \
     qmlRegisterSingletonType<T>("net.jami." #T, \
                                 MAJ, \
@@ -86,7 +88,9 @@ namespace Utils {
 #define QML_REGISTERNAMESPACE(T, NAME, MAJ, MIN) \
     qmlRegisterUncreatableMetaObject(T, "lrc.api.namespaces", MAJ, MIN, NAME, "")
 
-// System
+/*
+ * System.
+ */
 bool CreateStartupLink(const std::wstring &wstrAppName);
 void DeleteStartupLink(const std::wstring &wstrAppName);
 bool CreateLink(LPCWSTR lpszPathObj, LPCWSTR lpszPathLink);
@@ -116,12 +120,16 @@ QString getProjectCredits();
 float getCurrentScalingRatio();
 void setCurrentScalingRatio(float ratio);
 
-// Updates
+/*
+ * Updates.
+ */
 void cleanUpdateFiles();
 void checkForUpdates(bool withUI, QWidget *parent = nullptr);
 void applyUpdates(bool updateToBeta, QWidget *parent = nullptr);
 
-// Names
+/*
+ * Names.
+ */
 QString bestIdForConversation(const lrc::api::conversation::Info &conv,
                               const lrc::api::ConversationModel &model);
 QString bestIdForAccount(const lrc::api::account::Info &account);
@@ -130,18 +138,24 @@ QString bestIdForContact(const lrc::api::contact::Info &contact);
 QString bestNameForContact(const lrc::api::contact::Info &contact);
 QString bestNameForConversation(const lrc::api::conversation::Info &conv,
                                 const lrc::api::ConversationModel &model);
-QString secondBestNameForAccount(
-    const lrc::api::account::Info &account); // returns empty string if only infoHash is available
+/*
+ * Returns empty string if only infoHash is available.
+ */
+QString secondBestNameForAccount(const lrc::api::account::Info &account);
 lrc::api::profile::Type profileType(const lrc::api::conversation::Info &conv,
                                     const lrc::api::ConversationModel &model);
 
-// Interactions
+/*
+ * Interactions.
+ */
 std::string formatTimeString(const std::time_t &timestamp);
 bool isInteractionGenerated(const lrc::api::interaction::Type &interaction);
 bool isContactValid(const QString &contactUid, const lrc::api::ConversationModel &model);
 bool getReplyMessageBox(QWidget *widget, const QString &title, const QString &text);
 
-// Image
+/*
+ * Image.
+ */
 QString getContactImageString(const QString &accountId, const QString &uid);
 QImage getCirclePhoto(const QImage original, int sizePhoto);
 QImage conversationPhoto(const QString &convUid,
@@ -162,7 +176,9 @@ QImage cropImage(const QImage &img);
 QPixmap pixmapFromSvg(const QString &svg_resource, const QSize &size);
 QImage setupQRCode(QString ringID, int margin);
 
-// Rounded corner
+/*
+ * Rounded corner.
+ */
 template<typename T>
 void
 fillRoundRectPath(QPainter &painter,
@@ -180,16 +196,19 @@ fillRoundRectPath(QPainter &painter,
     painter.fillPath(painterPath, brush);
 }
 
-// Time
+/*
+ * Time.
+ */
 QString formattedTime(int seconds);
 
-// Misc helpers
-void swapQListWidgetItems(QListWidget *list, bool down = true);
-
-// Byte to human readable size
+/*
+ * Byte to human readable size.
+ */
 QString humanFileSize(qint64 fileSize);
 
-// Device plug or unplug enum
+/*
+ * Device plug or unplug enum.
+ */
 enum class DevicePlugStatus { Plugged, Unplugged, Unchanged };
 
 class OneShotDisconnectConnection : public QObject
@@ -426,6 +445,13 @@ public:
     Q_INVOKABLE int getTotalPendingRequest();
     Q_INVOKABLE const QString getBestName(const QString &accountId, const QString &uid);
     Q_INVOKABLE const QString getBestId(const QString &accountId, const QString &uid);
+
+    Q_INVOKABLE const QString getCurrAccId();
+    Q_INVOKABLE const QStringList getCurrAccList();
+    Q_INVOKABLE void setCurrentCall(const QString &accountId, const QString &convUid);
+    Q_INVOKABLE void startPreviewing(bool force);
+    Q_INVOKABLE void stopPreviewing();
+    Q_INVOKABLE const QString getCallId(const QString &accountId, const QString &convUid);
 
 private:
     QClipboard *clipboard_;

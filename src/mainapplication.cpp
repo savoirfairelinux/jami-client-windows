@@ -29,7 +29,6 @@
 #include "distantrenderer.h"
 #include "globalinstances.h"
 #include "globalsystemtray.h"
-#include "lrcinterface.h"
 #include "messagesadapter.h"
 #include "pixbufmanipulator.h"
 #include "previewrenderer.h"
@@ -62,7 +61,9 @@ MainApplication::MainApplication(int &argc, char **argv)
 void
 MainApplication::applicationInitialization()
 {
-    // some attributes are needed to be set before the creation of the sapplication
+    /*
+     * Some attributes are needed to be set before the creation of the application.
+     */
     QGuiApplication::setApplicationName("Ring");
     QGuiApplication::setOrganizationDomain("jami.net");
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
@@ -71,7 +72,9 @@ MainApplication::applicationInitialization()
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     QGuiApplication::setHighDpiScaleFactorRoundingPolicy(
         Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor);
-    // initialize QtWebEngine
+    /*
+     * Initialize QtWebEngine.
+     */
     QtWebEngine::initialize();
 #endif
 }
@@ -99,7 +102,9 @@ void
 MainApplication::vsConsoleDebug()
 {
 #ifdef _MSC_VER
-    // Print debug to output window if using VS
+    /*
+     * Print debug to output window if using VS.
+     */
     QObject::connect(&LRCInstance::behaviorController(),
                      &lrc::api::BehaviorController::debugMessageReceived,
                      [](const QString &message) {
@@ -134,7 +139,9 @@ MainApplication::exitApp()
 char **
 MainApplication::parseInputArgument(int &argc, char *argv[], char *argToParse)
 {
-    // forcefully append argToParse
+    /*
+     * Forcefully append argToParse.
+     */
     int oldArgc = argc;
     argc = argc + 1 + 1;
     char **newArgv = new char *[argc];
@@ -150,7 +157,9 @@ QString
 MainApplication::getDebugFilePath()
 {
     QDir logPath(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation));
-    // since logPath will be .../Ring, we use cdUp to remove it.
+    /*
+     * Since logPath will be .../Ring, we use cdUp to remove it.
+     */
     logPath.cdUp();
     return QString(logPath.absolutePath() + "/jami/jami.log");
 }
@@ -197,11 +206,15 @@ MainApplication::loadTranslations()
 void
 MainApplication::initLrc()
 {
-    // init mainwindow and finish splash when mainwindow shows up
+    /*
+     * Init mainwindow and finish splash when mainwindow shows up.
+     */
     std::atomic_bool isMigrating(false);
     LRCInstance::init(
         [this, &isMigrating] {
-            // TODO: splash screen for account migration
+            /*
+             * TODO: splash screen for account migration.
+             */
             isMigrating = true;
             while (isMigrating) {
                 this->processEvents();
@@ -251,7 +264,9 @@ MainApplication::processInputArgument(bool &startMinimized)
 bool
 MainApplication::startAccountMigration()
 {
-    // TODO: account migration
+    /*
+     * TODO: account migration.
+     */
     return true;
 }
 
@@ -268,35 +283,34 @@ void
 MainApplication::qmlInitialization()
 {
     /*
-     * Register useful types
+     * Register accountListModel type.
      */
-    QML_REGISTERTYPE(UtilsAdapter, 1, 0);
     QML_REGISTERTYPE(AccountListModel, 1, 0);
 
     /*
-     * Register QQuickItem type
+     * Register QQuickItem type.
      */
     QML_REGISTERTYPE(PreviewRenderer, 1, 0);
     QML_REGISTERTYPE(VideoCallPreviewRenderer, 1, 0);
     QML_REGISTERTYPE(DistantRenderer, 1, 0);
 
     /*
-     * Adapter - qmlRegisterSingletonType
+     * Adapter - qmlRegisterSingletonType.
      */
     QML_REGISTERSINGLETONTYPE_URL(QStringLiteral("qrc:/src/constant/JamiTheme.qml"),
                                   JamiTheme,
                                   1,
                                   0);
     QML_REGISTERSINGLETONTYPE(CallAdapter, 1, 0);
-    QML_REGISTERSINGLETONTYPE(LrcGeneralAdapter, 1, 0);
     QML_REGISTERSINGLETONTYPE(AccountAdapter, 1, 0);
     QML_REGISTERSINGLETONTYPE(MessagesAdapter, 1, 0);
     QML_REGISTERSINGLETONTYPE(ConversationsAdapter, 1, 0);
     QML_REGISTERSINGLETONTYPE(AvAdapter, 1, 0);
     QML_REGISTERSINGLETONTYPE(ContactAdapter, 1, 0);
+    QML_REGISTERSINGLETONTYPE(UtilsAdapter, 1, 0);
 
     /*
-     * Namespaces - qmlRegisterUncreatableMetaObject
+     * Namespaces - qmlRegisterUncreatableMetaObject.
      */
     QML_REGISTERNAMESPACE(lrc::api::staticMetaObject, "Lrc", 1, 0);
     QML_REGISTERNAMESPACE(lrc::api::account::staticMetaObject, "Account", 1, 0);
@@ -306,7 +320,9 @@ MainApplication::qmlInitialization()
     QML_REGISTERNAMESPACE(lrc::api::video::staticMetaObject, "Video", 1, 0);
     QML_REGISTERNAMESPACE(lrc::api::profile::staticMetaObject, "Profile", 1, 0);
 
-    // add image provider
+    /*
+     * Add image provider.
+     */
     engine_->addImageProvider(QLatin1String("qrImage"), new QrImageProvider());
     engine_->addImageProvider(QLatin1String("tintedPixmap"), new TintedButtonImageProvider());
 
@@ -321,44 +337,64 @@ MainApplication::applicationSetup()
         setenv("QT_QPA_PLATFORMTHEME", "gtk3", true);
 #endif
 
-    // start debug console
+    /*
+     * Start debug console.
+     */
     for (auto string : QCoreApplication::arguments()) {
         if (string == "-d" || string == "--debug") {
             consoleDebug();
         }
     }
 
-    // remove old version files
+    /*
+     * Remove old version files.
+     */
     Utils::removeOldVersions();
 
-    // load translations
+    /*
+     * Load translations.
+     */
     loadTranslations();
 
-    // set font
+    /*
+     * Set font.
+     */
     setApplicationFont();
 
 #if defined _MSC_VER && !COMPILE_ONLY
     gnutls_global_init();
 #endif
 
-    // init pixmap manipulator
+    /*
+     * Init pixmap manipulator.
+     */
     GlobalInstances::setPixmapManipulator(std::make_unique<PixbufManipulator>());
 
-    // init lrc and its possible migration ui
+    /*
+     * Init lrc and its possible migration ui.
+     */
     initLrc();
 
-    // process input argument
+    /*
+     * Process input argument.
+     */
     bool startMinimized{false};
     processInputArgument(startMinimized);
 
-    // start possible account migration
+    /*
+     * Start possible account migration.
+     */
     if (!startAccountMigration())
         return false;
 
-    // create jami.net settings in Registry if it is not presented
+    /*
+     * Create jami.net settings in Registry if it is not presented.
+     */
     QSettings settings("jami.net", "Jami");
 
-    // Initialize qml components
+    /*
+     * Initialize qml components.
+     */
     qmlInitialization();
 
     return true;
