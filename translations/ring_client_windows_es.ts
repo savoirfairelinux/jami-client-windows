@@ -256,7 +256,7 @@ Jami es un software de comunicacion seguro y distribuído.</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="892"/>
         <source>Use UPnP</source>
-        <translation>Usar UPnP (Universal Plug and Play)</translation>
+        <translation>Usar UPnP</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="904"/>
@@ -1350,7 +1350,7 @@ en lugar de usar su ID.</translation>
     <message>
         <location filename="../settingswidget.ui" line="1614"/>
         <source>Id</source>
-        <translation>Id</translation>
+        <translation>ID</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1673"/>

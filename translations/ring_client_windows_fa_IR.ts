@@ -118,7 +118,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="391"/>
         <source>TURN Username</source>
-        <translation>نام‌کاربری TURN</translation>
+        <translation>نام کاربری TURN</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="423"/>
@@ -695,7 +695,7 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.ui" line="163"/>
         <source>Enter your account password</source>
-        <translation>گذرواژهٔ حساب‌تان را وارد کنید</translation>
+        <translation>گذرواژه حساب‌تان را وارد کنید</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="244"/>

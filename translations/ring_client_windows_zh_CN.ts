@@ -31,8 +31,8 @@
         <location filename="../aboutdialog.ui" line="563"/>
         <source>The Microsoft Windows client for Jami.
 Jami is a secured and distributed communication software.</source>
-        <translation>Jami的Microsoft Windows客户端。
-Jami是安全的、分布式的通讯软件。</translation>
+        <translation>Jami 的 Microsoft Windows 客户端。
+Jami 是一款加密、分布式的通讯软件。</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="32"/>

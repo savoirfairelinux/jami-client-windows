@@ -454,12 +454,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="332"/>
         <source>Start video call</source>
-        <translation type="unfinished"/>
+        <translation>Démarrer appel video</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="343"/>
         <source>Start audio call</source>
-        <translation type="unfinished"/>
+        <translation>Démarrer appel audio</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="354"/>
