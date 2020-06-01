@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>528</width>
-    <height>1350</height>
+    <width>532</width>
+    <height>1410</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -796,32 +796,19 @@
          <property name="leftMargin">
           <number>0</number>
          </property>
-         <item row="3" column="2">
-          <widget class="QLineEdit" name="lineEditTurnUsername">
+         <item row="2" column="0">
+          <widget class="ToggleSwitch" name="checkBoxTurnEnable" native="true">
            <property name="font">
             <font>
              <pointsize>10</pointsize>
             </font>
            </property>
+           <property name="text" stdset="0">
+            <string>Use TURN</string>
+           </property>
           </widget>
          </item>
-         <item row="0" column="1">
-          <spacer name="horizontalSpacer_5">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::MinimumExpanding</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item row="2" column="2">
+         <item row="3" column="2">
           <widget class="QLineEdit" name="lineEditTurnAddress">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -845,99 +832,16 @@
            </property>
           </widget>
          </item>
-         <item row="5" column="2">
-          <widget class="QLineEdit" name="lineEditSTUNAddress">
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-            </font>
-           </property>
-           <property name="placeholderText">
-            <string>STUN Address</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="0">
-          <widget class="ToggleSwitch" name="checkBoxSTUNEnable" native="true">
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-            </font>
-           </property>
-           <property name="text" stdset="0">
-            <string>Use STUN</string>
-           </property>
-          </widget>
-         </item>
          <item row="4" column="2">
-          <widget class="QLineEdit" name="lineEditTurnPassword">
+          <widget class="QLineEdit" name="lineEditTurnUsername">
            <property name="font">
             <font>
              <pointsize>10</pointsize>
             </font>
-           </property>
-           <property name="echoMode">
-            <enum>QLineEdit::PasswordEchoOnEdit</enum>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="ToggleSwitch" name="checkBoxUPnP" native="true">
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-            </font>
-           </property>
-           <property name="text" stdset="0">
-            <string>Use UPnP</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="ToggleSwitch" name="checkBoxTurnEnable" native="true">
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-            </font>
-           </property>
-           <property name="text" stdset="0">
-            <string>Use TURN</string>
            </property>
           </widget>
          </item>
          <item row="4" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_16">
-           <item>
-            <spacer name="horizontalSpacer">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeType">
-              <enum>QSizePolicy::Fixed</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_7">
-             <property name="font">
-              <font>
-               <pointsize>10</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>TURN Password</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="3" column="0">
           <layout class="QHBoxLayout" name="horizontalLayout_17">
            <item>
             <spacer name="horizontalSpacer_4">
@@ -969,7 +873,7 @@
            </item>
           </layout>
          </item>
-         <item row="2" column="0">
+         <item row="3" column="0">
           <layout class="QHBoxLayout" name="horizontalLayout_18">
            <item>
             <spacer name="horizontalSpacer_6">
@@ -1000,6 +904,114 @@
             </widget>
            </item>
           </layout>
+         </item>
+         <item row="1" column="0">
+          <widget class="ToggleSwitch" name="checkBoxUPnP" native="true">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="text" stdset="0">
+            <string>Use UPnP</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="2">
+          <widget class="QLineEdit" name="lineEditSTUNAddress">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="placeholderText">
+            <string>STUN Address</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="ToggleSwitch" name="checkBoxSTUNEnable" native="true">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="text" stdset="0">
+            <string>Use STUN</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_16">
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_7">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>TURN Password</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="5" column="2">
+          <widget class="QLineEdit" name="lineEditTurnPassword">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="echoMode">
+            <enum>QLineEdit::PasswordEchoOnEdit</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <spacer name="horizontalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::MinimumExpanding</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="0" column="0">
+          <widget class="ToggleSwitch" name="checkAutoConnectOnLocalNetwork" native="true">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="text" stdset="0">
+            <string>Auto Connect On Local Network</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>

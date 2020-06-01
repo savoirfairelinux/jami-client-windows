@@ -28,7 +28,7 @@ namespace Ui {
 class AdvancedSettingsWidget : public QWidget {
 
     Q_OBJECT
-    AdvancedSettingsWidget(const AdvancedSettingsWidget& cpy);
+        AdvancedSettingsWidget(const AdvancedSettingsWidget& cpy);
 
 public:
     AdvancedSettingsWidget(QWidget* parent = nullptr);
@@ -40,7 +40,8 @@ private:
     Ui::AdvancedSettingsWidget* ui;
 
 private slots:
-// call settings
+    // call settings
+    void setAutoConnectOnLocalNetwork(bool state);
     void setCallsUntrusted(bool state);
     void setAutoAnswerCalls(bool state);
     void setEnableRingtone(bool state);
