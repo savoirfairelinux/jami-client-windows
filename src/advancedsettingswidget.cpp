@@ -32,8 +32,9 @@ AdvancedSettingsWidget::AdvancedSettingsWidget(QWidget* parent)
 {
     ui->setupUi(this);
 
-///////////////////////////////////////////////////////////////////////////////
-    // call settings
+    ///////////////////////////////////////////////////////////////////////////////
+        // call settings
+    connect(ui->checkAutoConnectOnLocalNetwork, &QAbstractButton::clicked, this, &AdvancedSettingsWidget::setAutoConnectOnLocalNetwork);
     connect(ui->checkBoxUntrusted, &QAbstractButton::clicked, this, &AdvancedSettingsWidget::setCallsUntrusted);
     connect(ui->checkBoxCustomRingtone, &QAbstractButton::clicked, this, &AdvancedSettingsWidget::setEnableRingtone);
     connect(ui->checkBoxAutoAnswer, &QAbstractButton::clicked, this, &AdvancedSettingsWidget::setAutoAnswerCalls);
@@ -108,6 +109,7 @@ AdvancedSettingsWidget::updateAdvancedSettings()
 {
     auto config = LRCInstance::getCurrAccConfig();
     //Call Settings
+    ui->checkAutoConnectOnLocalNetwork->setChecked(config.peerDiscovery);
     ui->checkBoxUntrusted->setChecked(config.DHT.PublicInCalls);
     ui->checkBoxAutoAnswer->setChecked(config.autoAnswer);
     ui->checkBoxCustomRingtone->setChecked(config.Ringtone.ringtoneEnabled);
@@ -151,6 +153,14 @@ AdvancedSettingsWidget::updateAdvancedSettings()
 
 // call settings
 void
+AdvancedSettingsWidget::setAutoConnectOnLocalNetwork(bool state)
+{
+    auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
+    confProps.peerDiscovery = state;
+    LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
+}
+
+void
 AdvancedSettingsWidget::setCallsUntrusted(bool state)
 {
     auto confProps = LRCInstance::accountModel().getAccountConfig(LRCInstance::getCurrAccId());
@@ -184,7 +194,8 @@ AdvancedSettingsWidget::openFileCustomRingtone()
         confProps.Ringtone.ringtonePath = fileUrl;
         LRCInstance::accountModel().setAccountConfig(LRCInstance::getCurrAccId(), confProps);
         ui->btnRingtone->setText(QFileInfo(fileUrl).fileName());
-    } else if (oldPath.isEmpty()) {
+    }
+    else if (oldPath.isEmpty()) {
         ui->btnRingtone->setText(tr("Add a custom ringtone"));
     }
 }
