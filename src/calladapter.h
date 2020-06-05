@@ -49,6 +49,7 @@ public:
     Q_INVOKABLE void muteThisCallToggle();
     Q_INVOKABLE void recordThisCallToggle();
     Q_INVOKABLE void videoPauseThisCallToggle();
+    Q_INVOKABLE void sipInputPanelPlayDTMF(const QString &key);
 
 signals:
     void showOutgoingCallPage(const QString &accountId, const QString &convUid);
