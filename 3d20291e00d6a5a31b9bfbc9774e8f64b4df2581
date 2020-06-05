@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "f39169aa_767b17cd",
+        "filename": "images/testSIPImage.png",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-06-05T21:35:09Z",
+      "side": 1,
+      "message": "Nice touch but remove this for the release.",
+      "revId": "3d20291e00d6a5a31b9bfbc9774e8f64b4df2581",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8b374d9_f2fb802c",
         "filename": "src/accountlistmodel.h",
         "patchSetId": 4
@@ -18,6 +35,391 @@
         "startChar": 4,
         "endLine": 35,
         "endChar": 51
+      },
+      "revId": "3d20291e00d6a5a31b9bfbc9774e8f64b4df2581",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfcc1c52_70341f38",
+        "filename": "src/avadapter.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-06-05T21:35:09Z",
+      "side": 1,
+      "message": "put a TODO if possible refactor to return a QVariantMap of devicename, checked. then remove the signal\n\ncall it populateVideoContextMenu",
+      "range": {
+        "startLine": 35,
+        "startChar": 21,
+        "endLine": 35,
+        "endChar": 64
+      },
+      "revId": "3d20291e00d6a5a31b9bfbc9774e8f64b4df2581",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39c2eb04_0c4654bb",
+        "filename": "src/avadapter.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-06-05T21:35:09Z",
+      "side": 1,
+      "message": "separate this from the QmlAdapterBase overrides",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 67
+      },
+      "revId": "3d20291e00d6a5a31b9bfbc9774e8f64b4df2581",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d092160_d12c0d3d",
+        "filename": "src/avadapter.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-06-05T21:35:09Z",
+      "side": 1,
+      "message": "onVideoContextMenuDeviceItemClicked",
+      "range": {
+        "startLine": 40,
+        "startChar": 21,
+        "endLine": 40,
+        "endChar": 63
+      },
+      "revId": "3d20291e00d6a5a31b9bfbc9774e8f64b4df2581",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f81e559_b274d464",
+        "filename": "src/avadapter.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-06-05T21:35:09Z",
+      "side": 1,
+      "message": "shot",
+      "range": {
+        "startLine": 48,
+        "startChar": 17,
+        "endLine": 48,
+        "endChar": 22
+      },
+      "revId": "3d20291e00d6a5a31b9bfbc9774e8f64b4df2581",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "426f43a1_12b24933",
+        "filename": "src/avadapter.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-06-05T21:35:09Z",
+      "side": 1,
+      "message": "captureScreen",
+      "range": {
+        "startLine": 50,
+        "startChar": 30,
+        "endLine": 50,
+        "endChar": 41
+      },
+      "revId": "3d20291e00d6a5a31b9bfbc9774e8f64b4df2581",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca029157_ef38087c",
+        "filename": "src/avadapter.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-06-05T21:35:09Z",
+      "side": 1,
+      "message": "shareScreenArea",
+      "range": {
+        "startLine": 60,
+        "startChar": 21,
+        "endLine": 60,
+        "endChar": 32
+      },
+      "revId": "3d20291e00d6a5a31b9bfbc9774e8f64b4df2581",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "959b1b45_05c1e652",
+        "filename": "src/avadapter.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-06-05T21:35:09Z",
+      "side": 1,
+      "message": "newVideoContextMenuDeviceItem",
+      "range": {
+        "startLine": 63,
+        "startChar": 9,
+        "endLine": 63,
+        "endChar": 41
+      },
+      "revId": "3d20291e00d6a5a31b9bfbc9774e8f64b4df2581",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cc692ed_4b314eeb",
+        "filename": "src/avadapter.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-06-05T21:35:09Z",
+      "side": 1,
+      "message": "active",
+      "range": {
+        "startLine": 63,
+        "startChar": 74,
+        "endLine": 63,
+        "endChar": 84
+      },
+      "revId": "3d20291e00d6a5a31b9bfbc9774e8f64b4df2581",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cea4b73_a0af85f6",
+        "filename": "src/calladapter.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-06-05T21:35:09Z",
+      "side": 1,
+      "message": "separate this. should this be private?",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "3d20291e00d6a5a31b9bfbc9774e8f64b4df2581",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90f95571_22bd644c",
+        "filename": "src/calladapter.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-06-05T21:35:09Z",
+      "side": 1,
+      "message": "connectCallStatusChanged",
+      "range": {
+        "startLine": 42,
+        "startChar": 21,
+        "endLine": 42,
+        "endChar": 51
+      },
+      "revId": "3d20291e00d6a5a31b9bfbc9774e8f64b4df2581",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ce68a9f_09e8d0b1",
+        "filename": "src/calladapter.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-06-05T21:35:09Z",
+      "side": 1,
+      "message": "just bestName",
+      "range": {
+        "startLine": 79,
+        "startChar": 39,
+        "endLine": 79,
+        "endChar": 58
+      },
+      "revId": "3d20291e00d6a5a31b9bfbc9774e8f64b4df2581",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ba7cbc1_3114aeca",
+        "filename": "src/calladapter.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-06-05T21:35:09Z",
+      "side": 1,
+      "message": "void updateOverlay(const QVariantMap\u0026)",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 60
+      },
+      "revId": "3d20291e00d6a5a31b9bfbc9774e8f64b4df2581",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c7ee7af_67c6d67e",
+        "filename": "src/commoncomponents/GeneralMenuItem.qml",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-06-05T21:35:09Z",
+      "side": 1,
+      "message": "endline between copyright and imports",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "3d20291e00d6a5a31b9bfbc9774e8f64b4df2581",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63d2d5cf_0135b88d",
+        "filename": "src/commoncomponents/GeneralMenuSeparator.qml",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-06-05T21:35:09Z",
+      "side": 1,
+      "message": "should always be root in a separate component and \u003ccomponentName\u003e when used",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 21
+      },
+      "revId": "3d20291e00d6a5a31b9bfbc9774e8f64b4df2581",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fff113a3_df61adba",
+        "filename": "src/commoncomponents/HoverableButton.qml",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-06-05T21:35:09Z",
+      "side": 1,
+      "message": "contains the following configurable properties",
+      "range": {
+        "startLine": 25,
+        "startChar": 19,
+        "endLine": 25,
+        "endChar": 28
+      },
+      "revId": "3d20291e00d6a5a31b9bfbc9774e8f64b4df2581",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93400342_fa18f4be",
+        "filename": "src/commoncomponents/TintedButton.qml",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-06-05T21:35:09Z",
+      "side": 1,
+      "message": "extra line",
+      "revId": "3d20291e00d6a5a31b9bfbc9774e8f64b4df2581",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba6e01d6_1c7d3080",
+        "filename": "src/contactadapter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 90
+      },
+      "writtenOn": "2020-06-05T21:35:09Z",
+      "side": 1,
+      "message": "what\u0027s this?",
+      "range": {
+        "startLine": 188,
+        "startChar": 9,
+        "endLine": 188,
+        "endChar": 11
       },
       "revId": "3d20291e00d6a5a31b9bfbc9774e8f64b4df2581",
       "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
