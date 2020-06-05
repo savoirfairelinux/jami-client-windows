@@ -64,6 +64,10 @@ Item {
 
     property string draftRed: "#cf5300"
 
+    property string sipInputButtonBackgroundColor: "#336699"
+    property string sipInputButtonHoverColor: "#4477aa"
+    property string sipInputButtonPressColor: "#5588bb"
+
 
     /*
      * Font.
