@@ -58,6 +58,12 @@ Rectangle {
 
     anchors.fill: parent
 
+    SipInputPanel {
+        id: sipInputPanel
+
+        x: callOverlayRect.width / 2 - sipInputPanel.width / 2
+        y: callOverlayButtonGroup.y - sipInputPanel.height
+    }
 
     /*
      * Timer to decide when overlay fade out.
@@ -250,6 +256,10 @@ Rectangle {
             ContactPickerCreation.calculateCurrentGeo(
                         callOverlayRect.width / 2, callOverlayRect.height / 2)
             ContactPickerCreation.openContactPicker()
+        }
+
+        onSipInputPanelButtonClicked: {
+            sipInputPanel.open()
         }
 
         onButtonEntered: {

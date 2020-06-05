@@ -41,6 +41,7 @@ Rectangle {
     signal chatButtonClicked
     signal addToConferenceButtonClicked
     signal transferCallButtonClicked
+    signal sipInputPanelButtonClicked
 
     function setButtonStatus(isPaused, isAudioOnly, isAudioMuted, isVideoMuted, isRecording, isSIP, isConferenceCall) {
         noVideoButton.visible = !isAudioOnly
@@ -294,6 +295,10 @@ Rectangle {
             tintColor: JamiTheme.buttonTintedBlue
             normalPixmapSource: "qrc:/images/icons/icon-keypad-24-2x.png"
             selectedPixmapSource: "qrc:/images/icons/icon-keypad-24-2x.png"
+
+            onClicked: {
+                callOverlayButtonGroupRect.sipInputPanelButtonClicked()
+            }
 
             onButtonEntered: {
                 callOverlayButtonGroupRect.buttonEntered()

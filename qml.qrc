@@ -46,5 +46,6 @@
         <file>src/mainview/components/ContactPicker.qml</file>
         <file>src/mainview/js/contactpickercreation.js</file>
         <file>src/mainview/components/ContactPickerItemDelegate.qml</file>
+        <file>src/mainview/components/SipInputPanel.qml</file>
     </qresource>
 </RCC>
