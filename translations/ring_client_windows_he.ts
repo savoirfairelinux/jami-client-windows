@@ -580,12 +580,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../invitebuttonswidget.ui" line="131"/>
         <source>Refuse</source>
-        <translation type="unfinished"/>
+        <translation>סרב</translation>
     </message>
     <message>
         <location filename="../invitebuttonswidget.ui" line="179"/>
         <source>Block</source>
-        <translation type="unfinished"/>
+        <translation>חסום</translation>
     </message>
 </context>
 <context>

@@ -87,7 +87,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="191"/>
         <source>Connectivity</source>
-        <translation type="unfinished"/>
+        <translation>Conectare</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="281"/>
@@ -97,7 +97,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="293"/>
         <source>Use STUN</source>
-        <translation type="unfinished"/>
+        <translation>Folosește STUN</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="317"/>
@@ -107,7 +107,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="329"/>
         <source>Use TURN</source>
-        <translation type="unfinished"/>
+        <translation>Folosește TURN</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="359"/>
@@ -127,12 +127,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="464"/>
         <source>Media</source>
-        <translation type="unfinished"/>
+        <translation>Media</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="515"/>
         <source>Enable Video</source>
-        <translation type="unfinished"/>
+        <translation>Activează Video</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.ui" line="539"/>
@@ -195,7 +195,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="275"/>
         <source>Address</source>
-        <translation type="unfinished"/>
+        <translation>Adresă</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="351"/>
@@ -210,17 +210,17 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="454"/>
         <source>Bootstrap</source>
-        <translation type="unfinished"/>
+        <translation>Pornire</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="530"/>
         <source>Security</source>
-        <translation type="unfinished"/>
+        <translation>Protecție</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="571"/>
         <source>Private Key Password</source>
-        <translation type="unfinished"/>
+        <translation>Parola cheii private</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="583"/>
@@ -240,12 +240,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="766"/>
         <source>Connectivity</source>
-        <translation type="unfinished"/>
+        <translation>Conectare</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="868"/>
         <source>Use STUN</source>
-        <translation type="unfinished"/>
+        <translation>Folosește STUN</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="856"/>
@@ -260,7 +260,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="904"/>
         <source>Use TURN</source>
-        <translation type="unfinished"/>
+        <translation>Folosește TURN</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="934"/>
@@ -280,12 +280,12 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1039"/>
         <source>Media</source>
-        <translation type="unfinished"/>
+        <translation>Media</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1090"/>
         <source>Enable Video</source>
-        <translation type="unfinished"/>
+        <translation>Activează Video</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="1267"/>
@@ -349,7 +349,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../callwidget.ui" line="653"/>
         <source>Jami is free software for universal communication which respects the freedoms and privacy of its users.</source>
-        <translation>Jami este un program liber pentru comunicații universale care respectă libertățile și intimitatea utilizatorilor săi.</translation>
+        <translation>Jami este un program liber pentru comunicare universală care respectă libertățile și intimitatea utilizatorilor săi.</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="693"/>
@@ -567,7 +567,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../deviceitemwidget.ui" line="143"/>
         <source>this device</source>
-        <translation type="unfinished"/>
+        <translation>acest dispozitiv</translation>
     </message>
 </context>
 <context>
@@ -603,7 +603,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="117"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Parolă</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="184"/>
@@ -705,12 +705,12 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.ui" line="256"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Parolă</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="323"/>
         <source>Register</source>
-        <translation type="unfinished"/>
+        <translation>Înscrie-te</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="357"/>
@@ -740,7 +740,7 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.cpp" line="85"/>
         <source>Network error</source>
-        <translation type="unfinished"/>
+        <translation>Eroare de rețea</translation>
     </message>
 </context>
 <context>
@@ -793,7 +793,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="291"/>
         <source>Link this device to an account</source>
-        <translation>Leagă acest dispozitiv la un cont</translation>
+        <translation>Conectează acest dispozitiv la un cont</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="328"/>
@@ -854,7 +854,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="705"/>
         <source>Password:</source>
-        <translation type="unfinished"/>
+        <translation>Parolă:</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="799"/>
@@ -894,7 +894,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1148"/>
         <source>Register public username</source>
-        <translation type="unfinished"/>
+        <translation>Înregistrează nume de utilizator public</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1367"/>
@@ -920,7 +920,7 @@ instead of using your ID.</source>
         <location filename="../newwizardwidget.ui" line="1301"/>
         <location filename="../newwizardwidget.ui" line="2213"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Parolă</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1211"/>
@@ -961,7 +961,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2057"/>
         <source>Proxy</source>
-        <translation type="unfinished"/>
+        <translation>Proxy</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2123"/>
@@ -976,7 +976,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2135"/>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Nume de Utilizator</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2201"/>
@@ -1215,7 +1215,7 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="267"/>
         <location filename="../settingswidget.ui" line="503"/>
         <source>General</source>
-        <translation type="unfinished"/>
+        <translation>General</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="305"/>
@@ -1286,13 +1286,13 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3027"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Parolă</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1418"/>
         <location filename="../settingswidget.ui" line="2729"/>
         <source>Enable</source>
-        <translation type="unfinished"/>
+        <translation>Activează</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="607"/>
@@ -1329,7 +1329,7 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="1567"/>
         <location filename="../settingswidget.ui" line="2875"/>
         <source>Identity</source>
-        <translation type="unfinished"/>
+        <translation>Identitate</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1614"/>
@@ -1349,7 +1349,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1755"/>
         <source>Register</source>
-        <translation type="unfinished"/>
+        <translation>Înscrie-te</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1827"/>
@@ -1359,7 +1359,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1868"/>
         <source>Export Account</source>
-        <translation type="unfinished"/>
+        <translation>Exportă Cont</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1909"/>
@@ -1380,7 +1380,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2142"/>
         <source>Banned Contacts</source>
-        <translation type="unfinished"/>
+        <translation>Contacte Blocate</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3788"/>
@@ -1411,17 +1411,17 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2925"/>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Nume de Utilizator</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2958"/>
         <source>Hostname</source>
-        <translation type="unfinished"/>
+        <translation>Numele serverului</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2991"/>
         <source>Proxy</source>
-        <translation type="unfinished"/>
+        <translation>Proxy</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3461"/>
@@ -1555,7 +1555,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../videooverlay.ui" line="393"/>
         <source>00:00</source>
-        <translation type="unfinished"/>
+        <translation>00:00</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="57"/>

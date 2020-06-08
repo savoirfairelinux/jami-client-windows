@@ -60,7 +60,7 @@ Jami es un software de comunicación seguro y distribuido.</translation>
     <message>
         <location filename="../accountitemdelegate.cpp" line="91"/>
         <source>Add Account</source>
-        <translation>Agregar una cuenta</translation>
+        <translation>Añadir cuenta</translation>
     </message>
 </context>
 <context>
