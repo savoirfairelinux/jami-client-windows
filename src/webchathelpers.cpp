@@ -30,7 +30,8 @@ buildInteractionJson(lrc::api::ConversationModel& conversationModel,
     auto sender = interaction.authorUri;
     auto timestamp = QString::number(interaction.timestamp);
     auto direction = lrc::api::interaction::isOutgoing(interaction) ? QString("out") : QString("in");
-
+    auto duration = QString::number(interaction.duration);
+    
     QJsonObject interactionObject = QJsonObject();
     interactionObject.insert("text", QJsonValue(interaction.body));
     interactionObject.insert("id", QJsonValue(QString::number(msgId)));
@@ -38,7 +39,7 @@ buildInteractionJson(lrc::api::ConversationModel& conversationModel,
     interactionObject.insert("sender_contact_method", QJsonValue(sender));
     interactionObject.insert("timestamp", QJsonValue(timestamp));
     interactionObject.insert("direction", QJsonValue(direction));
-    interactionObject.insert("duration", QJsonValue(interaction.duration));
+    interactionObject.insert("duration", QJsonValue(duration));
 
     switch (interaction.type)
     {
