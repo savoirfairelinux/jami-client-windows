@@ -22,6 +22,7 @@
 
 #include "splashscreen.h"
 
+#include <memory>
 #include <QApplication>
 #include <QFile>
 
