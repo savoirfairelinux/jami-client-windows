@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2fc32b7e_abac4f14",
+        "filename": "src/webchathelpers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 220
+      },
+      "writtenOn": "2020-06-11T18:23:23Z",
+      "side": 1,
+      "message": "trailing spaces. Please configure your editor",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 4
+      },
+      "revId": "4129ce36973996a3792e5fd575e742b0b0a6ec35",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7460dd2a_01da73e3",
+        "filename": "src/webchathelpers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 220
+      },
+      "writtenOn": "2020-06-11T18:23:23Z",
+      "side": 1,
+      "message": "QJsonValue(static_cast\u003cint\u003e(interaction.duration))) will be ok",
+      "range": {
+        "startLine": 42,
+        "startChar": 41,
+        "endLine": 42,
+        "endChar": 61
+      },
+      "revId": "4129ce36973996a3792e5fd575e742b0b0a6ec35",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
