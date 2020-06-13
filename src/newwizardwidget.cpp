@@ -587,7 +587,7 @@ NewWizardWidget::createAccount()
                             });
                         LRCInstance::accountModel().registerName(
                             LRCInstance::getCurrAccId(),
-                            "",
+                            inputPara_["password"],
                             registeredName_
                         );
                     } else {
