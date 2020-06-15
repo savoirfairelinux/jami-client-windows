@@ -464,7 +464,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="354"/>
         <source>Clear conversation</source>
-        <translation type="unfinished"/>
+        <translation>Șterge conversația</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="361"/>
@@ -894,7 +894,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1148"/>
         <source>Register public username</source>
-        <translation>Înregistrează nume de utilizator public</translation>
+        <translation>Înregistrează numele de utilizator public</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1367"/>
@@ -1354,7 +1354,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1827"/>
         <source>Change Password</source>
-        <translation type="unfinished"/>
+        <translation>Schimbă Parola</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1868"/>
@@ -1456,7 +1456,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3720"/>
         <source>Device</source>
-        <translation type="unfinished"/>
+        <translation>Dispozitiv</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="3766"/>
