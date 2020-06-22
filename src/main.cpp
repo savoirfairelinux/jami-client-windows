@@ -26,6 +26,8 @@
 #include <QQmlEngine>
 #include <QQmlApplicationEngine>
 
+#include <clocale>
+
 int
 main(int argc, char* argv[])
 {

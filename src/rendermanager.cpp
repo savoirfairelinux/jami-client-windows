@@ -21,6 +21,8 @@
 
 #include <QtConcurrent/QtConcurrent>
 
+#include <stdexcept>
+
 using namespace lrc::api;
 
 FrameWrapper::FrameWrapper(AVModel& avModel,
