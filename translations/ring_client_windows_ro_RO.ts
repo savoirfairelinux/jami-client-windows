@@ -931,7 +931,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1223"/>
         <source>Confirm password</source>
-        <translation type="unfinished"/>
+        <translation>Confirmă parola</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1814"/>
@@ -987,7 +987,7 @@ instead of using your ID.</source>
     <message utf8="true">
         <location filename="../newwizardwidget.ui" line="2282"/>
         <source>Generating your Jami account…</source>
-        <translation type="unfinished"/>
+        <translation>Se creează contul tău Jami...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2356"/>
@@ -1002,7 +1002,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2365"/>
         <source>Previous</source>
-        <translation type="unfinished"/>
+        <translation>Înapoi</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2396"/>
@@ -1241,7 +1241,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="678"/>
         <source>Download folder</source>
-        <translation type="unfinished"/>
+        <translation>Dosarul descărcării</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="811"/>
@@ -1359,7 +1359,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1868"/>
         <source>Export Account</source>
-        <translation>Exportă Cont</translation>
+        <translation>Exportă Contul</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1909"/>
@@ -1530,7 +1530,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../videooverlay.ui" line="124"/>
         <source>Chat</source>
-        <translation type="unfinished"/>
+        <translation>Discuție</translation>
     </message>
     <message>
         <location filename="../videooverlay.ui" line="162"/>

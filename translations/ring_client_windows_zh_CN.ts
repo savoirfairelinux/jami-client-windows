@@ -60,7 +60,7 @@ Jami 是一款加密、分布式的通讯软件。</translation>
     <message>
         <location filename="../accountitemdelegate.cpp" line="91"/>
         <source>Add Account</source>
-        <translation>添加帐户</translation>
+        <translation>添加账户</translation>
     </message>
 </context>
 <context>
@@ -523,22 +523,22 @@ Copy and share it with your friends!
     <message>
         <location filename="../deleteaccountdialog.ui" line="35"/>
         <source>Account deletion</source>
-        <translation>删除帐户</translation>
+        <translation>删除账户</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="58"/>
         <source>Do you really want to delete the following account?</source>
-        <translation>确定删除以下帐户吗？</translation>
+        <translation>确定删除以下账户吗？</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="153"/>
         <source>If this account hasn&apos;t been exported, or added to another device, it will be irrevocably lost.</source>
-        <translation>如果此帐户尚未导出或添加到其他设备，它将不可挽回地丢失。</translation>
+        <translation>如果此账户尚未导出或添加到其他设备，它将不可挽回地丢失。</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="235"/>
         <source>Permanently delete account</source>
-        <translation>永久删除帐户 </translation>
+        <translation>永久删除账户 </translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="241"/>
@@ -548,7 +548,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../deleteaccountdialog.ui" line="278"/>
         <source>Cancel account deletion</source>
-        <translation>取消帐户删除 </translation>
+        <translation>取消账户删除 </translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="284"/>
@@ -602,7 +602,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="62"/>
         <source>Enter your account password</source>
-        <translation>输入您的帐户密码 </translation>
+        <translation>输入您的账户密码 </translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="117"/>
@@ -622,7 +622,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="279"/>
         <source>Exporting account</source>
-        <translation>正导出帐户</translation>
+        <translation>正导出账户</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="402"/>
@@ -637,7 +637,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="477"/>
         <source>This pin and the account password should be entered in your device within 10 minutes.</source>
-        <translation>此PIN码和帐户密码应在10分钟内输入您的设备</translation>
+        <translation>您需在 10 分钟内在您的设备上输入此 PIN 码和账户密码。</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="553"/>
@@ -695,7 +695,7 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.ui" line="163"/>
         <source>Enter your account password</source>
-        <translation>输入您的帐户密码  </translation>
+        <translation>输入您的账户密码  </translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="244"/>
@@ -773,12 +773,12 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="239"/>
         <source>Create Jami account button</source>
-        <translation>创建Jami帐户按钮</translation>
+        <translation>创建Jami账户按钮</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="245"/>
         <source>Push button for Jami account creation start trigger</source>
-        <translation>按下Jami帐户创建按钮开始触发</translation>
+        <translation>按下Jami账户创建按钮开始触发</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="251"/>
@@ -798,27 +798,27 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="291"/>
         <source>Link this device to an account</source>
-        <translation>将此设备与一个帐户进行连接</translation>
+        <translation>将此设备与一个账户进行连接</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="328"/>
         <source>Create Jami SIP account button</source>
-        <translation>创建Jami SIP帐户按钮 </translation>
+        <translation>创建 Jami SIP 账户按钮 </translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="334"/>
         <source>Push button for Jami SIP account creation start trigger</source>
-        <translation>按下Jami SIP帐户创建按钮开始触发</translation>
+        <translation>按下 Jami SIP 账户创建按钮开始触发</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="340"/>
         <source>Create a SIP account</source>
-        <translation>创建SIP帐户</translation>
+        <translation>创建 SIP 账户</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="405"/>
         <source>Link this device to an existing account</source>
-        <translation>将此设备与已有帐户进行连接</translation>
+        <translation>将此设备与已有账户进行连接</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="469"/>
@@ -856,7 +856,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="626"/>
         <source>Link from exported account archive file</source>
-        <translation>用导出帐户的存档文件进行设备连结</translation>
+        <translation>用导出账户的存档文件进行设备连结</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="629"/>
@@ -874,7 +874,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../newwizardwidget.ui" line="799"/>
         <location filename="../newwizardwidget.ui" line="1586"/>
         <source>Profile</source>
-        <translation>帐户资料</translation>
+        <translation>账户资料</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="953"/>
@@ -885,7 +885,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="1027"/>
         <source>Account</source>
-        <translation>帐户</translation>
+        <translation>账户</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1136"/>
@@ -953,7 +953,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="1814"/>
         <source>SIP Account</source>
-        <translation>SIP帐户</translation>
+        <translation>SIP 账户</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1973"/>
@@ -1004,7 +1004,7 @@ instead of using your ID.</source>
     <message utf8="true">
         <location filename="../newwizardwidget.ui" line="2282"/>
         <source>Generating your Jami account…</source>
-        <translation>正在生成您的Jami帐户…</translation>
+        <translation>正在生成您的Jami账户…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2356"/>
@@ -1024,12 +1024,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2396"/>
         <source>Cancel account create/link</source>
-        <translation>取消帐户创建/连结</translation>
+        <translation>取消账户创建/连结</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2402"/>
         <source>push button to cancel account creation or linking</source>
-        <translation>按按钮取消帐户创建或连结</translation>
+        <translation>按按钮取消账户创建或连结</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2405"/>
@@ -1064,12 +1064,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="123"/>
         <source>Your account needs to be migrated. Enter your password.</source>
-        <translation>您的Ring帐户可以被更新。\n请输入您的密码。</translation>
+        <translation>您的Ring账户可以被更新。\n请输入您的密码。</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="419"/>
         <source>Migrating your Jami account...</source>
-        <translation>正在迁移您的Jami帐户…</translation>
+        <translation>正在迁移您的Jami账户…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="412"/>
@@ -1079,7 +1079,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="404"/>
         <source>Generating your Jami account...</source>
-        <translation>正在生成您的Jami帐户…</translation>
+        <translation>正在生成您的Jami账户…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="422"/>
@@ -1089,7 +1089,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="533"/>
         <source>Error creating account</source>
-        <translation>创建帐户时发生错误</translation>
+        <translation>创建账户时发生错误</translation>
     </message>
 </context>
 <context>
@@ -1190,7 +1190,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../deviceitemwidget.cpp" line="44"/>
         <source>Unlink Device From Account</source>
-        <translation>取消设备与帐户的链接</translation>
+        <translation>取消设备与账户的链接</translation>
     </message>
     <message>
         <location filename="../deviceitemwidget.cpp" line="80"/>
@@ -1226,7 +1226,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="229"/>
         <source>Account</source>
-        <translation>帐户</translation>
+        <translation>账户</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="267"/>
@@ -1340,7 +1340,7 @@ instead of using your ID.</source>
         <location filename="../settingswidget.ui" line="1453"/>
         <location filename="../settingswidget.ui" line="2761"/>
         <source>Profile</source>
-        <translation>帐户资料</translation>
+        <translation>资料</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1567"/>
@@ -1376,13 +1376,13 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1868"/>
         <source>Export Account</source>
-        <translation>导出帐户</translation>
+        <translation>导出账户</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1909"/>
         <location filename="../settingswidget.ui" line="3089"/>
         <source>Delete Account</source>
-        <translation>删除帐户</translation>
+        <translation>删除账户</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1973"/>
@@ -1423,7 +1423,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="2554"/>
         <source>SIP Account</source>
-        <translation>SIP帐户</translation>
+        <translation>SIP 账户</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2925"/>
@@ -1509,7 +1509,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.cpp" line="551"/>
         <source>Enter this account&apos;s password to confirm the removal of this device</source>
-        <translation>输入此帐户的密码，以确认删除该设备</translation>
+        <translation>输入此账户的密码，以确认删除该设备</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="558"/>
@@ -1519,7 +1519,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.cpp" line="589"/>
         <source>Export Account Here</source>
-        <translation>此处导出帐户</translation>
+        <translation>此处导出账户</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="887"/>
