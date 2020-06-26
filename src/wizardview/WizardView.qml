@@ -52,6 +52,7 @@ Window {
     property int layoutHeight: 768
     property int textFontSize: 9
     property int wizardMode: WizardView.CREATE
+    property int addedAccountIndex: -1
     property bool registrationStateOk: false
     property string fileToImport: ""
     property string registedName: ""
@@ -65,12 +66,19 @@ Window {
     /*
      * signal to redirect the page to main view
      */
-    signal wizardViewWindowNeedToShowMainViewWindow
+    signal needToShowMainViewWindow(int accountIndex)
+    signal wizardViewIsClosed
 
     title: "Jami"
     visible: true
     width: layoutWidth
     height: layoutHeight
+
+    onClosing: {
+        close.accepted = false
+        wizardViewWindow.hide()
+        wizardViewWindow.wizardViewIsClosed()
+    }
 
     Component.onCompleted: {
         changePageQML(
@@ -80,11 +88,13 @@ Window {
     Connections{
         target: AccountAdapter
 
-        function onAccountAdded(showBackUp) {
+        function onAccountAdded(showBackUp, index) {
+            addedAccountIndex = index
             if (showBackUp) {
                 changePageQML(controlPanelStackView.backupKeysPageId)
             } else {
-                wizardViewWindowNeedToShowMainViewWindow()
+                wizardViewWindow.hide()
+                needToShowMainViewWindow(addedAccountIndex)
                 LRCInstance.accountListChanged()
             }
         }
@@ -92,10 +102,6 @@ Window {
         // reportFailure
         function onReportFailure() {
             reportFailureQML()
-        }
-
-        function onShowMainViewWindow(){
-            wizardViewWindowNeedToShowMainViewWindow()
         }
     }
 
@@ -363,7 +369,8 @@ Window {
                                                          title, info)
                 if (success) {
                     console.log("Account Export Succeed")
-                    wizardViewWindowNeedToShowMainViewWindow()
+                    wizardViewWindow.hide()
+                    needToShowMainViewWindow(addedAccountIndex)
                     LRCInstance.accountListChanged()
                 }
             }
@@ -529,15 +536,18 @@ Window {
                                     }
                                 }
 
-                                wizardViewWindowNeedToShowMainViewWindow()
+                                wizardViewWindow.hide()
+                                needToShowMainViewWindow(addedAccountIndex)
                                 LRCInstance.accountListChanged()
                             }
 
+
                             onSkip_Btn_Clicked: {
-                                wizardViewWindowNeedToShowMainViewWindow()
+                                wizardViewWindow.hide()
+                                needToShowMainViewWindow(addedAccountIndex)
                                 LRCInstance.accountListChanged()
                             }
-                        }
+                    }
 
                         ImportFromDevicePage {
                             // import from device page, index 5
@@ -652,7 +662,8 @@ Window {
                         font.kerning: true
 
                         onClicked: {
-                            wizardViewWindowNeedToShowMainViewWindow()
+                            wizardViewWindow.hide()
+                            needToShowMainViewWindow(addedAccountIndex)
                         }
                     }
 
