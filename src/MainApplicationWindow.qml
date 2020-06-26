@@ -103,7 +103,7 @@ ApplicationWindow {
         setX(Screen.width / 2 - width / 2)
         setY(Screen.height / 2 - height / 2)
 
-        if (!UtilsAdapter.getAccountListSize()) {
+        if (!ClientWrapper.utilsAdaptor.getAccountListSize()) {
             wizardView.show()
         } else {
             //.setSource("qrc:/src/mainview/MainView.qml")

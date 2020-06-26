@@ -25,7 +25,7 @@ import net.jami.Models 1.0
 Dialog {
     id: deleteAccountDialog
 
-    property int profileType: SettingsAdaptor.getCurrentAccount_Profile_Info_Type()
+    property int profileType: ClientWrapper.settingsAdaptor.getCurrentAccount_Profile_Info_Type()
 
     property bool isSIP: {
         switch (profileType) {
@@ -34,6 +34,12 @@ Dialog {
         default:
             return false;
         }
+    }
+
+    onOpened: {
+        profileType = ClientWrapper.settingsAdaptor.getCurrentAccount_Profile_Info_Type()
+        labelBestId.text = ClientWrapper.settingsAdaptor.getAccountBestName()
+        labelAccountHash.text = ClientWrapper.settingsAdaptor.getCurrentAccount_Profile_Info_Uri()
     }
 
     onVisibleChanged: {
@@ -85,7 +91,7 @@ Dialog {
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.Wrap
 
-                text: SettingsAdaptor.getAccountBestName()
+                text: ClientWrapper.settingsAdaptor.getAccountBestName()
             }
 
             Label{
@@ -100,7 +106,7 @@ Dialog {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.Wrap
-                text: SettingsAdaptor.getCurrentAccount_Profile_Info_Uri()
+                text: ClientWrapper.settingsAdaptor.getCurrentAccount_Profile_Info_Uri()
             }
 
             Item{
@@ -178,7 +184,7 @@ Dialog {
                     font.kerning: true
 
                     onClicked: {
-                        AccountAdapter.deleteCurrentAccount()
+                        ClientWrapper.accountAdaptor.deleteCurrentAccount()
                         accept()
                     }
                 }

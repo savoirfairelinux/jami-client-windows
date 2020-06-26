@@ -154,7 +154,7 @@ Rectangle {
                             source: "qrc:/images/icons/ic_content_copy.svg"
 
                             onClicked: {
-                                UtilsAdapter.setText(
+                                ClientWrapper.utilsAdaptor.setText(
                                             textMetricsjamiRegisteredNameText.text)
                             }
                         }

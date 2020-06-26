@@ -75,7 +75,7 @@ Menu {
 
         onClicked: {
             contextMenu.close()
-            UtilsAdapter.clearConversationHistory(responsibleAccountId,
+            ClientWrapper.utilsAdaptor.clearConversationHistory(responsibleAccountId,
                                                   responsibleConvUid)
         }
     }
@@ -89,7 +89,7 @@ Menu {
 
         onClicked: {
             contextMenu.close()
-            UtilsAdapter.removeConversation(responsibleAccountId,
+            ClientWrapper.utilsAdaptor.removeConversation(responsibleAccountId,
                                             responsibleConvUid)
         }
     }
@@ -112,7 +112,7 @@ Menu {
 
         onClicked: {
             contextMenu.close()
-            UtilsAdapter.removeConversation(responsibleAccountId,
+            ClientWrapper.utilsAdaptor.removeConversation(responsibleAccountId,
                                             responsibleConvUid, true)
         }
     }
