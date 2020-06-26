@@ -33,7 +33,7 @@ Dialog {
         registerdName = registerNameIn
         lblRegistrationError.text = qsTr("Something went wrong")
         passwordEdit.clear()
-        if(AccountAdapter.hasPassword()){
+        if(ClientWrapper.accountAdaptor.hasPassword()){
             stackedWidget.currentIndex = 0
         } else {
             startRegistration()
@@ -49,7 +49,7 @@ Dialog {
 
     function slotStartNameRegistration(){
         var password = passwordEdit.text
-        accountModel.registerName(UtilsAdapter.getCurrAccId(), password, registerdName)
+        ClientWrapper.accountModel.registerName(ClientWrapper.utilsAdaptor.getCurrAccId(), password, registerdName)
     }
 
     function startSpinner(){
@@ -57,8 +57,6 @@ Dialog {
         spinnerLabel.visible = true
         spinnerMovie.playing = true
     }
-
-    property NewAccountModel accountModel: AccountAdapter.accoundModel()
 
     Timer{
         id: timerForStartRegistration
@@ -72,7 +70,7 @@ Dialog {
     }
 
     Connections{
-        target: NameDirectory
+        target: ClientWrapper.nameDirectory
 
         function onNameRegistrationEnded(status, name){
             if(status === NameDirectory.RegisterNameStatus.SUCCESS){

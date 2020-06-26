@@ -39,7 +39,7 @@ ScrollView {
         wrapMode: Text.WordWrap
 
         font.pointSize: JamiTheme.textFontSize - 3
-        text: UtilsAdapter.getChangeLog()
+        text: ClientWrapper.utilsAdaptor.getChangeLog()
         textFormat: TextEdit.RichText
 
         MouseArea {

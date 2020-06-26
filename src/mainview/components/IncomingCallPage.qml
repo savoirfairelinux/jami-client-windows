@@ -53,11 +53,11 @@ Window {
 
     function updateUI() {
         incomingCallPage.contactImgSource = "data:image/png;base64,"
-                + UtilsAdapter.getContactImageString(responsibleAccountId,
+                + ClientWrapper.utilsAdaptor.getContactImageString(responsibleAccountId,
                                                      responsibleConvUid)
-        incomingCallPage.bestName = UtilsAdapter.getBestName(
+        incomingCallPage.bestName = ClientWrapper.utilsAdaptor.getBestName(
                     responsibleAccountId, responsibleConvUid)
-        var id = UtilsAdapter.getBestId(responsibleAccountId,
+        var id = ClientWrapper.utilsAdaptor.getBestId(responsibleAccountId,
                                         responsibleConvUid)
         incomingCallPage.bestId = (incomingCallPage.bestName !== id) ? id : ""
     }

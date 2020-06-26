@@ -20,14 +20,14 @@ ColumnLayout{
 
     function startBooth(force = false){
         hasAvatar = false
-        AccountAdapter.startPreviewing(force)
+        ClientWrapper.accountAdaptor.startPreviewing(force)
         takePhotoState = true
     }
 
     function stopBooth(){
         try{
-            if(!AccountAdapter.hasVideoCall()) {
-                AccountAdapter.stopPreviewing()
+            if(!ClientWrapper.accountAdaptor.hasVideoCall()) {
+                ClientWrapper.accountAdaptor.stopPreviewing()
             }
         } catch(erro){console.log("Exception: " +  erro.message)}
 
@@ -64,7 +64,7 @@ ColumnLayout{
                 imageCleared()
                 return
             }
-            imgBase64 = UtilsAdapter.getCroppedImageBase64FromFile(fileName.replace("file:///", ""),boothWidht)
+            imgBase64 = ClientWrapper.utilsAdaptor.getCroppedImageBase64FromFile(fileName.replace("file:///", ""),boothWidht)
             imageAcquired()
             stopBooth()
         }
