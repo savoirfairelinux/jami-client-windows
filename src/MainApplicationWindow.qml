@@ -28,7 +28,7 @@ ApplicationWindow {
 //            } else {
 //                mainViewLoader.source = "mainview/MainView.qml"
 //            }
-            mainViewLoader.sourceComponent = mainViewComponent
+            mainViewLoader.sourceComponent = settingsViewComponent
         }
     }
 //    Component.onCompleted: {

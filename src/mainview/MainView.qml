@@ -136,9 +136,9 @@ Window {
             welcomeViewStack.pop(null, StackView.Immediate)
             sidePanelViewStack.pop(null, StackView.Immediate)
 
-            var index = UtilsAdapter.getCurrAccList().indexOf(accountId)
-            var name = UtilsAdapter.getBestName(accountId, convUid)
-            var id = UtilsAdapter.getBestId(accountId, convUid)
+            var index = ClientWrapper.utilsAdaptor.getCurrAccList().indexOf(accountId)
+            var name = ClientWrapper.utilsAdaptor.getBestName(accountId, convUid)
+            var id = ClientWrapper.utilsAdaptor.getBestId(accountId, convUid)
 
             communicationPageMessageWebView.headerUserAliasLabelText = name
             communicationPageMessageWebView.headerUserUserNameLabelText = (name !== id) ? id : ""
@@ -175,19 +175,19 @@ Window {
             communicationPageMessageWebView.headerUserUserNameLabelText = currentUserDisplayName
 
             callStackView.needToCloseInCallConversationAndPotentialWindow()
-            callStackView.responsibleAccountId = UtilsAdapter.getCurrAccId()
+            callStackView.responsibleAccountId = ClientWrapper.utilsAdaptor.getCurrAccId()
             callStackView.responsibleConvUid = currentUID
             callStackView.updateCorrspondingUI()
 
             if (callStackViewShouldShow) {
                 if (callStateStr == "Talking" || callStateStr == "Hold") {
-                    UtilsAdapter.setCurrentCall(UtilsAdapter.getCurrAccId(),
+                    ClientWrapper.utilsAdaptor.setCurrentCall(ClientWrapper.utilsAdaptor.getCurrAccId(),
                                                 currentUID)
                     if (isAudioOnly)
                         callStackView.showAudioCallPage()
                     else
                         callStackView.showVideoCallPage(
-                                    UtilsAdapter.getCallId(
+                                    ClientWrapper.utilsAdaptor.getCallId(
                                         callStackView.responsibleAccountId,
                                         callStackView.responsibleConvUid))
                 } else {

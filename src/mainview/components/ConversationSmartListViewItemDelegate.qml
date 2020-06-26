@@ -231,7 +231,7 @@ ItemDelegate {
                                                  mouse.x, mouse.y)
                 smartListContextMenu.x = relativeMousePos.x
                 smartListContextMenu.y = relativeMousePos.y
-                smartListContextMenu.responsibleAccountId = UtilsAdapter.getCurrAccId()
+                smartListContextMenu.responsibleAccountId = ClientWrapper.utilsAdaptor.getCurrAccId()
                 smartListContextMenu.responsibleConvUid = UID
                 userProfile.responsibleConvUid = UID
                 userProfile.aliasText = DisplayName

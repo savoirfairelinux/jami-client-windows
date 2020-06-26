@@ -78,14 +78,14 @@ Window {
     }
 
     Connections{
-        target: AccountAdapter
+        target: ClientWrapper.accountAdaptor
 
         function onAccountAdded(showBackUp) {
             if (showBackUp) {
                 changePageQML(controlPanelStackView.backupKeysPageId)
             } else {
                 wizardViewWindowNeedToShowMainViewWindow()
-                LRCInstance.accountListChanged()
+                ClientWrapper.lrcInstance.accountListChanged()
             }
         }
 
@@ -101,7 +101,7 @@ Window {
 
     Connections {
         id: registeredNameFoundConnection
-        target: NameDirectory
+        target: ClientWrapper.nameDirectory
         enabled: false
 
         function onRegisteredNameFound(status, address, name) {
@@ -130,16 +130,16 @@ Window {
     function createAccountQML() {
         switch (wizardMode) {
         case WizardView.CONNECTMANAGER:
-            AccountAdapter.createJAMSAccount(inputParaObject)
+            ClientWrapper.accountAdaptor.createJAMSAccount(inputParaObject)
             break
         case WizardView.CREATE:
         case WizardView.IMPORT:
-            AccountAdapter.createJamiAccount(inputParaObject,
+            ClientWrapper.accountAdaptor.createJamiAccount(inputParaObject,
                                              createAccountPage.boothImgBase64,
                                              (wizardMode === WizardView.CREATE))
             break
         default:
-            AccountAdapter.createSIPAccount(inputParaObject,createSIPAccountPage.boothImgBase64)
+            ClientWrapper.accountAdaptor.createSIPAccount(inputParaObject,createSIPAccountPage.boothImgBase64)
         }
 
         changePageQML(controlPanelStackView.spinnerPageId)
@@ -177,7 +177,7 @@ Window {
         btnNext.visible = (navVisible == true)
         btnPevious.visible = (navVisible == true)
         btnBack.visible = (back == true)
-                && (UtilsAdapter.getAccountListSize() != 0)
+                && (ClientWrapper.utilsAdaptor.getAccountListSize() != 0)
     }
 
     function processWizardInformationsQML() {
@@ -252,7 +252,7 @@ Window {
         changePageQML(controlPanelStackView.spinnerPageId)
         //create account
         createAccountQML()
-        UtilsAdapter.createStartupLink()
+        ClientWrapper.utilsAdaptor.createStartupLink()
     }
 
     function changePageQML(pageIndex) {
@@ -348,7 +348,7 @@ Window {
         purpose: PasswordDialog.ExportAccount
 
         onAccepted: {
-            AccountAdapter.accoundModel().exportToFile(UtilsAdapter.getCurrAccId(), path + "/export.gz", "")
+            ClientWrapper.accountAdaptor.accoundModel().exportToFile(ClientWrapper.utilsAdaptor.getCurrAccId(), path + "/export.gz", "")
         }
 
         onDoneSignal: {
@@ -359,12 +359,12 @@ Window {
                 var info = success ? qsTr("Export Successful") : qsTr(
                                          "Export Failed")
 
-                AccountAdapter.passwordSetStatusMessageBox(success,
+                ClientWrapper.accountAdaptor.passwordSetStatusMessageBox(success,
                                                          title, info)
                 if (success) {
                     console.log("Account Export Succeed")
                     wizardViewWindowNeedToShowMainViewWindow()
-                    LRCInstance.accountListChanged()
+                    ClientWrapper.lrcInstance.accountListChanged()
                 }
             }
         }
@@ -431,7 +431,7 @@ Window {
                             registrationStateOk = false
                             if (createAccountPage.checkState_signUpCheckboxAlias
                                     && (createAccountPage.text_usernameEditAlias.length != 0)) {
-                                registedName = UtilsAdapter.stringSimplifier(
+                                registedName = ClientWrapper.utilsAdaptor.stringSimplifier(
                                             createAccountPage.text_usernameEditAlias)
                                 lookupTimer.restart()
                             } else {
@@ -467,7 +467,7 @@ Window {
                                 if (createAccountPage.checkState_signUpCheckboxAlias
                                         && (createAccountPage.text_usernameEditAlias.length != 0)) {
                                     createAccountPage.nameRegistrationUIState = WizardView.SEARCHING
-                                    NameDirectory.lookupName("", registedName)
+                                    ClientWrapper.nameDirectory.lookupName("", registedName)
                                 }
                             }
                         }
@@ -487,11 +487,11 @@ Window {
                         }
 
                         onImportFromFile_Dialog_Accepted: {
-                            fileToImport = UtilsAdapter.toNativeSeparators(fileDir)
+                            fileToImport = ClientWrapper.utilsAdaptor.toNativeSeparators(fileDir)
                             inputParaObject[""]
 
                             if (fileToImport.length != 0) {
-                                importFromBackupPage.fileImportBtnText = UtilsAdapter.toFileInfoName(
+                                importFromBackupPage.fileImportBtnText = ClientWrapper.utilsAdaptor.toFileInfoName(
                                             fileToImport)
                             } else {
                                 importFromBackupPage.fileImportBtnText = qsTr(
@@ -506,21 +506,21 @@ Window {
                         id: backupKeysPage
 
                         onNeverShowAgainBoxClicked: {
-                            AccountAdapter.settingsNeverShowAgain(isChecked)
+                            ClientWrapper.accountAdaptor.settingsNeverShowAgain(isChecked)
                         }
 
                         onExport_Btn_FileDialogAccepted: {
                             if (accepted) {
                                 // is there password? If so, go to password dialog, else, go to following directly
-                                if (AccountAdapter.hasPassword()) {
+                                if (ClientWrapper.accountAdaptor.hasPassword()) {
                                     passwordDialog.path = folderDir.replace(
                                                 "file:///", "") + "/export.gz"
                                     passwordDialog.open()
                                     return
                                 } else {
                                     if (folderDir.length > 0) {
-                                        AccountAdapter.accoundModel().exportToFile(
-                                                    UtilsAdapter.getCurrAccId(),
+                                        ClientWrapper.accountAdaptor.accoundModel().exportToFile(
+                                                    ClientWrapper.utilsAdaptor.getCurrAccId(),
                                                     folderDir.replace("file:///",
                                                                       "") + "/export.gz",
                                                     "")
@@ -529,12 +529,12 @@ Window {
                             }
 
                             wizardViewWindowNeedToShowMainViewWindow()
-                            LRCInstance.accountListChanged()
+                            ClientWrapper.lrcInstance.accountListChanged()
                         }
 
                         onSkip_Btn_Clicked: {
                             wizardViewWindowNeedToShowMainViewWindow()
-                            LRCInstance.accountListChanged()
+                            ClientWrapper.lrcInstance.accountListChanged()
                         }
                     }
 

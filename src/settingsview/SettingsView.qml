@@ -88,7 +88,7 @@ Window {
 
     Connections{
         id: accountListChangedConnection
-        target: LRCInstance
+        target: ClientWrapper.lrcInstance
 
         function onAccountListChanged(){
             slotAccountListChanged()
@@ -109,15 +109,15 @@ Window {
     }
 
     function slotAccountListChanged(){
-        var accountList = avmodel.getAccountList()
+        var accountList = ClientWrapper.avmodel.getAccountList()
         if(accountList.length === 0) {
             setSelected(SettingsView.Account)
         } else {
             currentAccountSettingsScrollWidget.disconnectAccountConnections()
         }
-        var device = avmodel.getDefaultDevice()
+        var device = ClientWrapper.avmodel.getDefaultDevice()
         if(device.length === 0){
-            avmodel.setCurrentVideoCaptureDevice(device)
+            ClientWrapper.avmodel.setCurrentVideoCaptureDevice(device)
         }
     }
 
@@ -126,11 +126,11 @@ Window {
 //    }
 
 //    Component.onCompleted: {
-//        avmodel = AccountAdapter.avModel()
+//        avmodel = ClientWrapper.accountAdaptor.avModel()
 //    }
 
-    property AVModel avmodel: AccountAdapter.avModel()
-    property int profileType: SettingsAdaptor.getCurrentAccount_Profile_Info_Type()
+    //property AVModel avmodel: ClientWrapper.accountAdaptor.avModel()
+    property int profileType: ClientWrapper.settingsAdaptor.getCurrentAccount_Profile_Info_Type()
 
     property int selectedMenu: SettingsView.Account
     /*
