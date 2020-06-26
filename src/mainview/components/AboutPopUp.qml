@@ -87,7 +87,7 @@ Dialog {
                 TextMetrics {
                     id: textMetricsjamiVersionText
                     font: jamiVersionText.font
-                    text: qsTr("version") + ": " + UtilsAdapter.getVersionStr()
+                    text: qsTr("version") + ": " + ClientWrapper.utilsAdaptor.getVersionStr()
                 }
             }
 
