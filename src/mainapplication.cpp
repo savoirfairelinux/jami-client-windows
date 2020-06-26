@@ -26,6 +26,7 @@
 #include "avadapter.h"
 #include "bannedlistmodel.h"
 #include "calladapter.h"
+#include "clientwrapper.h"
 #include "contactadapter.h"
 #include "conversationsadapter.h"
 #include "deviceitemlistmodel.h"
@@ -315,15 +316,20 @@ MainApplication::qmlInitialization()
                                   1,
                                   0);
     QML_REGISTERSINGLETONTYPE(CallAdapter, 1, 0);
-    QML_REGISTERSINGLETONTYPE_WITH_INSTANCE(AccountAdapter, 1, 0);
+
     QML_REGISTERSINGLETONTYPE(MessagesAdapter, 1, 0);
     QML_REGISTERSINGLETONTYPE(ConversationsAdapter, 1, 0);
     QML_REGISTERSINGLETONTYPE(AvAdapter, 1, 0);
     QML_REGISTERSINGLETONTYPE(ContactAdapter, 1, 0);
-    QML_REGISTERSINGLETONTYPE_WITH_INSTANCE(UtilsAdapter, 1, 0);
-    QML_REGISTERSINGLETONTYPE_WITH_INSTANCE(SettingsAdaptor, 1, 0);
-    QML_REGISTERSINGLETONTYPE_WITH_INSTANCE(NameDirectory, 1, 0);
-    QML_REGISTERSINGLETONTYPE_WITH_INSTANCE(LRCInstance, 1, 0);
+    QML_REGISTERSINGLETONTYPE(ClientWrapper, 1, 0);
+
+    //QML_REGISTERSINGLETONTYPE_WITH_INSTANCE(AccountAdapter, 1, 0);
+    //QML_REGISTERSINGLETONTYPE_WITH_INSTANCE(UtilsAdapter, 1, 0);
+    QML_REGISTERUNCREATABLE(AccountAdapter, 1, 0);
+    QML_REGISTERUNCREATABLE(UtilsAdapter, 1, 0);
+    QML_REGISTERUNCREATABLE(SettingsAdaptor, 1, 0);
+    QML_REGISTERUNCREATABLE(NameDirectory, 1, 0);
+    QML_REGISTERUNCREATABLE(LRCInstance, 1, 0);
 
     /*
      * Lrc models - qmlRegisterUncreatableType & Q_DECLARE_METATYPE.
