@@ -59,11 +59,11 @@ Rectangle {
     }
 
     function updatePendingRequestCount() {
-        pendingRequestCount = UtilsAdapter.getTotalPendingRequest()
+        pendingRequestCount = ClientWrapper.utilsAdaptor.getTotalPendingRequest()
     }
 
     function updateTotalUnreadMessagesCount() {
-        totalUnreadMessagesCount = UtilsAdapter.getTotalUnreadMessages()
+        totalUnreadMessagesCount = ClientWrapper.utilsAdaptor.getTotalUnreadMessages()
     }
 
     function clearContactSearchBar() {
@@ -128,7 +128,7 @@ Rectangle {
         currentIndex: 0
 
         Connections {
-            target: AccountAdapter
+            target: ClientWrapper.accountAdaptor
 
             function onAccountSignalsReconnect(accountId) {
                 CallAdapter.connectCallStatusChanged(accountId)
@@ -168,8 +168,8 @@ Rectangle {
         }
 
         Component.onCompleted: {
-            AccountAdapter.setQmlObject(this)
-            AccountAdapter.accountChanged(0)
+            ClientWrapper.accountAdaptor.setQmlObject(this)
+            ClientWrapper.accountAdaptor.accountChanged(0)
         }
     }
 
@@ -243,7 +243,7 @@ Rectangle {
                 Layout.preferredHeight: 35
 
                 onContactSearchBarTextChanged: {
-                    UtilsAdapter.setConversationFilter(text)
+                    ClientWrapper.utilsAdaptor.setConversationFilter(text)
                 }
             }
 
