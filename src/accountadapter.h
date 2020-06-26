@@ -76,7 +76,6 @@ public:
     Q_INVOKABLE void stopPreviewing();
     Q_INVOKABLE bool hasVideoCall();
     Q_INVOKABLE bool isPreviewing();
-    Q_INVOKABLE RenderManager *getRenderManager();
     Q_INVOKABLE void setCurrAccDisplayName(QString text);
     Q_INVOKABLE void setSelectedAccountId(QString accountId = {});
     Q_INVOKABLE void setSelectedConvId(QString accountId = {});
@@ -88,6 +87,7 @@ public:
     Q_INVOKABLE lrc::api::AVModel *avModel();
     Q_INVOKABLE lrc::api::DataTransferModel *dataTransferModel();
 
+    Q_INVOKABLE RenderManager *AccountAdapter::getRenderManager();
 signals:
 
     /*
@@ -121,3 +121,6 @@ private:
     QMetaObject::Connection contactAddedConnection_;
     QMetaObject::Connection addedToConferenceConnection_;
 };
+#if QT_VERSION >= QT_VERSION_CHECK(5, 8, 0)
+Q_DECLARE_METATYPE(AccountAdapter *)
+#endif
