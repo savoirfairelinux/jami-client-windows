@@ -30,13 +30,13 @@ Rectangle {
     signal navigateToMainView
 
     function updateAccountInfoDisplayed() {
-        displaySIPNameLineEdit.text = SettingsAdaptor.getCurrentAccount_Profile_Info_Alias()
-        usernameSIP.text = SettingsAdaptor.getAccountConfig_Username()
-        hostnameSIP.text = SettingsAdaptor.getAccountConfig_Hostname()
-        passSIPlineEdit.text = SettingsAdaptor.getAccountConfig_Password()
-        proxySIP.text = SettingsAdaptor.getAccountConfig_ProxyServer()
+        displaySIPNameLineEdit.text = ClientWrapper.settingsAdaptor.getCurrentAccount_Profile_Info_Alias()
+        usernameSIP.text = ClientWrapper.settingsAdaptor.getAccountConfig_Username()
+        hostnameSIP.text = ClientWrapper.settingsAdaptor.getAccountConfig_Hostname()
+        passSIPlineEdit.text = ClientWrapper.settingsAdaptor.getAccountConfig_Password()
+        proxySIP.text = ClientWrapper.settingsAdaptor.getAccountConfig_ProxyServer()
 
-        accountSIPEnableCheckBox.checked = SettingsAdaptor.get_CurrentAccountInfo_Enabled()
+        accountSIPEnableCheckBox.checked = ClientWrapper.settingsAdaptor.get_CurrentAccountInfo_Enabled()
 
         setAvatar()
 
@@ -45,17 +45,15 @@ Rectangle {
         }
     }
 
-    property NewAccountModel accountModel: AccountAdapter.accoundModel()
-
     function isPhotoBoothOpened() {
         return currentSIPAccountAvatar.takePhotoState
     }
 
     function setAvatar() {
         currentSIPAccountAvatar.setAvatarPixmap(
-                    SettingsAdaptor.getAvatarImage_Base64(
+                    ClientWrapper.settingsAdaptor.getAvatarImage_Base64(
                         currentSIPAccountAvatar.boothWidht),
-                    SettingsAdaptor.getIsDefaultAvatar())
+                    ClientWrapper.settingsAdaptor.getIsDefaultAvatar())
     }
 
     function stopBooth() {
@@ -64,7 +62,7 @@ Rectangle {
 
     // slots
     function setAccEnableSlot(state) {
-        accountModel.setAccountEnabled(UtilsAdapter.getCurrAccId(), state)
+        ClientWrapper.accountModel.setAccountEnabled(ClientWrapper.utilsAdaptor.getCurrAccId(), state)
     }
 
     function delAccountSlot() {
@@ -79,10 +77,10 @@ Rectangle {
         y: (parent.height - height) / 2
 
         onAccepted: {
-            AccountAdapter.setSelectedAccountId()
-            AccountAdapter.setSelectedConvId()
+            ClientWrapper.accountAdaptor.setSelectedAccountId()
+            ClientWrapper.accountAdaptor.setSelectedConvId()
 
-            if(UtilsAdapter.getAccountListSize() > 0){
+            if(ClientWrapper.utilsAdaptor.getAccountListSize() > 0){
                 navigateToMainView()
             }
         }
@@ -257,11 +255,11 @@ Rectangle {
                                 Layout.leftMargin: 20
 
                                 onImageAcquired: {
-                                    SettingsAdaptor.setCurrAccAvatar(imgBase64)
+                                    ClientWrapper.settingsAdaptor.setCurrAccAvatar(imgBase64)
                                 }
 
                                 onImageCleared: {
-                                    SettingsAdaptor.clearCurrentAvatar()
+                                    ClientWrapper.settingsAdaptor.clearCurrentAvatar()
                                     setAvatar()
                                 }
                             }
@@ -280,7 +278,7 @@ Rectangle {
                                 verticalAlignment: Text.AlignVCenter
 
                                 onEditingFinished: {
-                                    AccountAdapter.setCurrAccDisplayName(
+                                    ClientWrapper.accountAdaptor.setCurrAccDisplayName(
                                                 displaySIPNameLineEdit.text)
                                 }
                             }
@@ -367,7 +365,7 @@ Rectangle {
                                     verticalAlignment: Text.AlignVCenter
 
                                     onEditingFinished: {
-                                        SettingsAdaptor.setAccountConfig_Username(
+                                        ClientWrapper.settingsAdaptor.setAccountConfig_Username(
                                                     usernameSIP.text)
                                     }
                                 }
@@ -402,7 +400,7 @@ Rectangle {
                                     verticalAlignment: Text.AlignVCenter
 
                                     onEditingFinished: {
-                                        SettingsAdaptor.setAccountConfig_Hostname(
+                                        ClientWrapper.settingsAdaptor.setAccountConfig_Hostname(
                                                     hostnameSIP.text)
                                     }
                                 }
@@ -437,7 +435,7 @@ Rectangle {
                                     verticalAlignment: Text.AlignVCenter
 
                                     onEditingFinished: {
-                                        SettingsAdaptor.setAccountConfig_ProxyServer(
+                                        ClientWrapper.settingsAdaptor.setAccountConfig_ProxyServer(
                                                     proxySIP.text)
                                     }
                                 }
@@ -473,7 +471,7 @@ Rectangle {
                                     verticalAlignment: Text.AlignVCenter
 
                                     onEditingFinished: {
-                                        SettingsAdaptor.setAccountConfig_Password(
+                                        ClientWrapper.settingsAdaptor.setAccountConfig_Password(
                                                     passSIPlineEdit.text)
                                     }
                                 }

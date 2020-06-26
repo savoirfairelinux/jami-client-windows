@@ -31,46 +31,46 @@ Rectangle {
 
     function populateGeneralSettings(){
         // settings
-        closeOrMinCheckBox.checked = SettingsAdaptor.getSettingsValue_CloseOrMinimized()
-        applicationOnStartUpCheckBox.checked = UtilsAdapter.checkStartupLink()
-        notificationCheckBox.checked = SettingsAdaptor.getSettingsValue_EnableNotifications()
+        closeOrMinCheckBox.checked = ClientWrapper.settingsAdaptor.getSettingsValue_CloseOrMinimized()
+        applicationOnStartUpCheckBox.checked = ClientWrapper.utilsAdaptor.checkStartupLink()
+        notificationCheckBox.checked = ClientWrapper.settingsAdaptor.getSettingsValue_EnableNotifications()
 
-        alwaysRecordingCheckBox.checked = avmodel.getAlwaysRecord()
-        recordPreviewCheckBox.checked = avmodel.getRecordPreview()
-        recordQualityValueLabel.text = UtilsAdapter.getRecordQualityString(avmodel.getRecordQuality() / 100)
-        recordQualitySlider.value = avmodel.getRecordQuality() / 100
+        alwaysRecordingCheckBox.checked = ClientWrapper.avmodel.getAlwaysRecord()
+        recordPreviewCheckBox.checked = ClientWrapper.avmodel.getRecordPreview()
+        recordQualityValueLabel.text = ClientWrapper.utilsAdaptor.getRecordQualityString(ClientWrapper.avmodel.getRecordQuality() / 100)
+        recordQualitySlider.value = ClientWrapper.avmodel.getRecordQuality() / 100
 
-        avmodel.setRecordPath(SettingsAdaptor.getDir_Document())
+        ClientWrapper.avmodel.setRecordPath(ClientWrapper.settingsAdaptor.getDir_Document())
 
-        autoUpdateCheckBox.checked = SettingsAdaptor.getSettingsValue_AutoUpdate()
+        autoUpdateCheckBox.checked = ClientWrapper.settingsAdaptor.getSettingsValue_AutoUpdate()
     }
 
     function slotSetNotifications(state){
-        SettingsAdaptor.setNotifications(state)
+        ClientWrapper.settingsAdaptor.setNotifications(state)
     }
 
     function slotSetClosedOrMin(state){
-        SettingsAdaptor.setClosedOrMin(state)
+        ClientWrapper.settingsAdaptor.setClosedOrMin(state)
     }
 
     function slotSetRunOnStartUp(state){
-        SettingsAdaptor.setRunOnStartUp(state)
+        ClientWrapper.settingsAdaptor.setRunOnStartUp(state)
     }
 
     function slotSetUpdateAutomatic(state){
-        SettingsAdaptor.setUpdateAutomatic(state)
+        ClientWrapper.settingsAdaptor.setUpdateAutomatic(state)
     }
 
     function slotAlwaysRecordingClicked(state){
-        avmodel.setAlwaysRecord(state)
+        ClientWrapper.avmodel.setAlwaysRecord(state)
     }
 
     function slotRecordPreviewClicked(state){
-        avmodel.setRecordPreview(state)
+        ClientWrapper.avmodel.setRecordPreview(state)
     }
 
     function slotRecordQualitySliderValueChanged(value){
-        recordQualityValueLabel.text = UtilsAdapter.getRecordQualityString(value)
+        recordQualityValueLabel.text = ClientWrapper.utilsAdaptor.getRecordQualityString(value)
         updateRecordQualityTimer.restart()
     }
 
@@ -86,7 +86,7 @@ Rectangle {
 
     function slotRecordQualitySliderSliderReleased(){
         var value = recordQualitySlider.value
-        avmodel.setRecordQuality(value * 100)
+        ClientWrapper.avmodel.setRecordQuality(value * 100)
     }
 
     function openDownloadFolderSlot(){
@@ -142,22 +142,22 @@ Rectangle {
     function installBetaSlot(){}
 
     // settings
-    property string downloadPath: SettingsAdaptor.getDir_Download()
+    property string downloadPath: ClientWrapper.settingsAdaptor.getDir_Download()
 
     // recording
-    property AVModel avmodel: AccountAdapter.avModel()
-    property string recordPath: SettingsAdaptor.getDir_Document()
+    //property AVModel avmodel: ClientWrapper.accountAdaptor.avModel()
+    property string recordPath: ClientWrapper.settingsAdaptor.getDir_Document()
 
     onDownloadPathChanged: {
         if(downloadPath === "") return
-        SettingsAdaptor.setDownloadPath(downloadPath)
+        ClientWrapper.settingsAdaptor.setDownloadPath(downloadPath)
     }
 
     onRecordPathChanged: {
         if(recordPath === "") return
 
-        if(avmodel){
-            avmodel.setRecordPath(recordPath)
+        if(ClientWrapper.avmodel){
+            ClientWrapper.avmodel.setRecordPath(recordPath)
         }
     }
 
