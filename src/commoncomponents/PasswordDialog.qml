@@ -94,7 +94,7 @@ Dialog {
     function exportAccountQML() {
         var success = false
         if(path.length > 0){
-            success = AccountAdapter.exportToFile(UtilsAdapter.getCurrAccId(),path,currentPasswordEdit.text)
+            success = ClientWrapper.accountAdaptor.exportToFile(ClientWrapper.utilsAdaptor.getCurrAccId(),path,currentPasswordEdit.text)
         }
 
         spinnerMovie.playing = false
@@ -109,12 +109,12 @@ Dialog {
     }
     function savePasswordQML() {
         var success = false
-        success = AccountAdapter.savePassword(UtilsAdapter.getCurrAccId(),currentPasswordEdit.text, passwordEdit.text)
+        success = ClientWrapper.accountAdaptor.savePassword(ClientWrapper.utilsAdaptor.getCurrAccId(),currentPasswordEdit.text, passwordEdit.text)
 
         spinnerMovie.playing = false
         spinnerLabel.visible = false
         if (success) {
-            AccountAdapter.setArchiveHasPassword(currentPasswordEdit.text.length !== 0)
+            ClientWrapper.accountAdaptor.setArchiveHasPassword(currentPasswordEdit.text.length !== 0)
             haveDone(successCode, passwordDialog.purpose)
         } else {
             currentPasswordEdit.clear()

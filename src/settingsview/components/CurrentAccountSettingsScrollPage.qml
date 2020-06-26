@@ -67,23 +67,23 @@ Rectangle {
     function updateAccountInfoDisplayed() {
         setAvatar()
 
-        accountEnableCheckBox.checked = SettingsAdaptor.get_CurrentAccountInfo_Enabled()
-        displayNameLineEdit.text = SettingsAdaptor.getCurrentAccount_Profile_Info_Alias()
+        accountEnableCheckBox.checked = ClientWrapper.settingsAdaptor.get_CurrentAccountInfo_Enabled()
+        displayNameLineEdit.text = ClientWrapper.settingsAdaptor.getCurrentAccount_Profile_Info_Alias()
 
-        var showLocalAccountConfig = (SettingsAdaptor.getAccountConfig_Manageruri() === "")
+        var showLocalAccountConfig = (ClientWrapper.settingsAdaptor.getAccountConfig_Manageruri() === "")
         passwdPushButton.visible = showLocalAccountConfig
         btnExportAccount.visible = showLocalAccountConfig
         linkDevPushButton.visible = showLocalAccountConfig
 
-        registeredIdNeedsSet = (SettingsAdaptor.get_CurrentAccountInfo_RegisteredName() === "")
+        registeredIdNeedsSet = (ClientWrapper.settingsAdaptor.get_CurrentAccountInfo_RegisteredName() === "")
 
         if(!registeredIdNeedsSet){
-            currentRegisteredID.text = SettingsAdaptor.get_CurrentAccountInfo_RegisteredName()
+            currentRegisteredID.text = ClientWrapper.settingsAdaptor.get_CurrentAccountInfo_RegisteredName()
         } else {
             currentRegisteredID.text = ""
         }
 
-        currentRingID.text = SettingsAdaptor.getCurrentAccount_Profile_Info_Uri()
+        currentRingID.text = ClientWrapper.settingsAdaptor.getCurrentAccount_Profile_Info_Uri()
 
         // update device list view
         updateAndShowDevicesSlot()
@@ -95,8 +95,6 @@ Rectangle {
             advanceSettingsView.updateAccountInfoDisplayedAdvance()
         }
     }
-
-    //property var bannedContacts: contactModel.getBannedContacts()
 
     function connectCurrentAccount() {
         accountConnections_ContactModel.enabled = true
@@ -114,9 +112,9 @@ Rectangle {
 
     function setAvatar() {
         currentAccountAvatar.setAvatarPixmap(
-                    SettingsAdaptor.getAvatarImage_Base64(
+                    ClientWrapper.settingsAdaptor.getAvatarImage_Base64(
                         currentAccountAvatar.boothWidht),
-                    SettingsAdaptor.getIsDefaultAvatar())
+                    ClientWrapper.settingsAdaptor.getIsDefaultAvatar())
     }
 
     function stopBooth() {
@@ -130,13 +128,14 @@ Rectangle {
     }
 
     function unban(index){
-        SettingsAdaptor.unbanContact(index)
+
+        ClientWrapper.settingsAdaptor.unbanContact(index)
         updateAndShowBannedContactsSlot()
     }
 
     Connections {
         id: accountConnections_ContactModel
-        target: contactModel
+        target: ClientWrapper.contactModel
 
         function onModelUpdated(uri, needsSorted) {
             updateAndShowBannedContactsSlot()
@@ -153,7 +152,7 @@ Rectangle {
 
     Connections {
         id: accountConnections_DeviceModel
-        target: deviceModel
+        target: ClientWrapper.deviceModel
 
         function onDeviceAdded(id) {
             updateAndShowDevicesSlot()
@@ -170,13 +169,13 @@ Rectangle {
 
     // slots
     function verifyRegisteredNameSlot() {
-        if (SettingsAdaptor.get_CurrentAccountInfo_RegisteredName() !== "") {
+        if (ClientWrapper.settingsAdaptor.get_CurrentAccountInfo_RegisteredName() !== "") {
             regNameUi = CurrentAccountSettingsScrollPage.BLANK
         } else {
-            registeredName = UtilsAdapter.stringSimplifier(
+            registeredName = ClientWrapper.utilsAdaptor.stringSimplifier(
                         currentRegisteredID.text)
             if (registeredName !== "") {
-                if (UtilsAdapter.validateRegNameForm(registeredName)) {
+                if (ClientWrapper.utilsAdaptor.validateRegNameForm(registeredName)) {
                     regNameUi = CurrentAccountSettingsScrollPage.SEARCHING
                     lookUpLabelTimer.restart()
                 } else {
@@ -198,11 +197,11 @@ Rectangle {
     }
 
     function beforeNameLookup() {
-        NameDirectory.lookupName("", registeredName)
+        ClientWrapper.nameDirectory.lookupName("", registeredName)
     }
 
     Connections {
-        target: NameDirectory
+        target: ClientWrapper.nameDirectory
         enabled: true
 
         function onRegisteredNameFound(status, address, name) {
@@ -226,7 +225,7 @@ Rectangle {
     }
 
     function setAccEnableSlot(state) {
-        accountModel.setAccountEnabled(UtilsAdapter.getCurrAccId(), state)
+        ClientWrapper.accountModel.setAccountEnabled(ClientWrapper.utilsAdaptor.getCurrAccId(), state)
     }
 
     /*
@@ -246,12 +245,12 @@ Rectangle {
         onAccepted: {
             // is there password? If so, go to password dialog, else, go to following directly
             var exportPath = file.toString().replace("file:///", "")
-            if (AccountAdapter.hasPassword()) {
+            if (ClientWrapper.accountAdaptor.hasPassword()) {
                 passwordDialog.openDialog(PasswordDialog.ExportAccount,exportPath)
                 return
             } else {
                 if (exportPath.length > 0) {
-                    var isSuccessful = AccountAdapter.accoundModel().exportToFile(UtilsAdapter.getCurrAccId(), exportPath,"")
+                    var isSuccessful = ClientWrapper.accountAdaptor.accoundModel().exportToFile(ClientWrapper.utilsAdaptor.getCurrAccId(), exportPath,"")
                     var title = isSuccessful ? qsTr("Success") : qsTr("Error")
                     var iconMode = isSuccessful ? StandardIcon.Information : StandardIcon.Critical
                     var info = isSuccessful ? qsTr("Export Successful") : qsTr("Export Failed")
@@ -315,10 +314,10 @@ Rectangle {
         y: (parent.height - height) / 2
 
         onAccepted: {
-            AccountAdapter.setSelectedAccountId()
-            AccountAdapter.setSelectedConvId()
+            ClientWrapper.accountAdaptor.setSelectedAccountId()
+            ClientWrapper.accountAdaptor.setSelectedConvId()
 
-            if(UtilsAdapter.getAccountListSize() > 0){
+            if(ClientWrapper.utilsAdaptor.getAccountListSize() > 0){
                 navigateToMainView()
             }
         }
@@ -328,8 +327,8 @@ Rectangle {
         id : nameRegistrationDialog
 
         onAccepted: {
-            registeredIdNeedsSet = (SettingsAdaptor.get_CurrentAccountInfo_RegisteredName() === "")
-            currentRingID.text = SettingsAdaptor.getCurrentAccount_Profile_Info_Uri()
+            registeredIdNeedsSet = (ClientWrapper.settingsAdaptor.get_CurrentAccountInfo_RegisteredName() === "")
+            currentRingID.text = ClientWrapper.settingsAdaptor.getCurrentAccount_Profile_Info_Uri()
             currentRingID.readOnly = registeredIdNeedsSet
             updateAccountInfoDisplayed()
             accountViewRect.update()
@@ -391,7 +390,7 @@ Rectangle {
 
     function removeDeviceSlot(index){
         var idOfDevice = deviceItemListModel.data(deviceItemListModel.index(index,0), DeviceItemListModel.DeviceID)
-        if(AccountAdapter.hasPassword()){
+        if(ClientWrapper.accountAdaptor.hasPassword()){
             revokeDevicePasswordDialog.openRevokeDeviceDialog(idOfDevice)
         } else {
             revokeDeviceMessageBox.idOfDev = idOfDevice
@@ -400,7 +399,7 @@ Rectangle {
     }
 
     function revokeDeviceWithIDAndPassword(idDevice, password){
-        deviceModel.revokeDevice(idDevice, password)
+        ClientWrapper.deviceModel.revokeDevice(idDevice, password)
         updateAndShowDevicesSlot()
     }
 
@@ -414,16 +413,12 @@ Rectangle {
     }
 
     function updateAndShowDevicesSlot() {
-        if(SettingsAdaptor.getAccountConfig_Manageruri() === ""){
+        if(ClientWrapper.settingsAdaptor.getAccountConfig_Manageruri() === ""){
             linkDevPushButton.visible = true
         }
 
         deviceItemListModel.reset()
     }
-
-    property ContactModel contactModel: SettingsAdaptor.getContactModel()
-    property NewDeviceModel deviceModel: SettingsAdaptor.getDeviceModel()
-    property NewAccountModel accountModel: AccountAdapter.accoundModel()
 
     DeviceItemListModel {
         id: deviceItemListModel
@@ -603,11 +598,11 @@ Rectangle {
                                 Layout.leftMargin: 20
 
                                 onImageAcquired: {
-                                    SettingsAdaptor.setCurrAccAvatar(imgBase64)
+                                    ClientWrapper.settingsAdaptor.setCurrAccAvatar(imgBase64)
                                 }
 
                                 onImageCleared: {
-                                    SettingsAdaptor.clearCurrentAvatar()
+                                    ClientWrapper.settingsAdaptor.clearCurrentAvatar()
                                     setAvatar()
                                 }
                             }
@@ -626,7 +621,7 @@ Rectangle {
                                 verticalAlignment: Text.AlignVCenter
 
                                 onEditingFinished: {
-                                    AccountAdapter.setCurrAccDisplayName(
+                                    ClientWrapper.accountAdaptor.setCurrAccDisplayName(
                                                 displayNameLineEdit.text)
                                 }
                             }
@@ -717,7 +712,7 @@ Rectangle {
                                     readOnly: true
                                     selectByMouse: true
 
-                                    text: SettingsAdaptor.getCurrentAccount_Profile_Info_Uri()
+                                    text: ClientWrapper.settingsAdaptor.getCurrentAccount_Profile_Info_Uri()
 
                                     horizontalAlignment: Text.AlignLeft
                                     verticalAlignment: Text.AlignVCenter
@@ -782,7 +777,7 @@ Rectangle {
 
                                         text: {
                                             if (!registeredIdNeedsSet){
-                                                return SettingsAdaptor.get_CurrentAccountInfo_RegisteredName()
+                                                return ClientWrapper.settingsAdaptor.get_CurrentAccountInfo_RegisteredName()
                                             } else {
                                                 return ""
                                             }
@@ -906,7 +901,7 @@ Rectangle {
                                 HoverableButtonTextItem {
                                     id: passwdPushButton
 
-                                    visible: SettingsAdaptor.getAccountConfig_Manageruri() === ""
+                                    visible: ClientWrapper.settingsAdaptor.getAccountConfig_Manageruri() === ""
 
                                     Layout.maximumWidth: 261
                                     Layout.preferredWidth: 261
@@ -943,7 +938,7 @@ Rectangle {
                                 HoverableButtonTextItem {
                                     id: btnExportAccount
 
-                                    visible: SettingsAdaptor.getAccountConfig_Manageruri() === ""
+                                    visible: ClientWrapper.settingsAdaptor.getAccountConfig_Manageruri() === ""
 
                                     Layout.maximumWidth: 261
                                     Layout.preferredWidth: 261
@@ -1093,7 +1088,7 @@ Rectangle {
                             HoverableRadiusButton {
                                 id: linkDevPushButton
 
-                                visible: SettingsAdaptor.getAccountConfig_Manageruri() === ""
+                                visible: ClientWrapper.settingsAdaptor.getAccountConfig_Manageruri() === ""
 
                                 Layout.leftMargin: 20
 
