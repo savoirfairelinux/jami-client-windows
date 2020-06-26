@@ -216,33 +216,33 @@ Rectangle {
 
         onLoadingChanged: {
             if (loadRequest.status == WebEngineView.LoadSucceededStatus) {
-                messageWebView.runJavaScript(UtilsAdapter.getStyleSheet(
+                messageWebView.runJavaScript(ClientWrapper.utilsAdaptor.getStyleSheet(
                                                  "chatcss",
-                                                 UtilsAdapter.qStringFromFile(
+                                                 ClientWrapper.utilsAdaptor.qStringFromFile(
                                                      ":/chatview.css")))
-                messageWebView.runJavaScript(UtilsAdapter.getStyleSheet(
+                messageWebView.runJavaScript(ClientWrapper.utilsAdaptor.getStyleSheet(
                                                  "chatwin",
-                                                 UtilsAdapter.qStringFromFile(
+                                                 ClientWrapper.utilsAdaptor.qStringFromFile(
                                                      ":/chatview-windows.css")))
 
-                messageWebView.runJavaScript(UtilsAdapter.qStringFromFile(
+                messageWebView.runJavaScript(ClientWrapper.utilsAdaptor.qStringFromFile(
                                                  ":/jed.js"))
-                messageWebView.runJavaScript(UtilsAdapter.qStringFromFile(
+                messageWebView.runJavaScript(ClientWrapper.utilsAdaptor.qStringFromFile(
                                                  ":/linkify.js"))
-                messageWebView.runJavaScript(UtilsAdapter.qStringFromFile(
+                messageWebView.runJavaScript(ClientWrapper.utilsAdaptor.qStringFromFile(
                                                  ":/linkify-html.js"))
-                messageWebView.runJavaScript(UtilsAdapter.qStringFromFile(
+                messageWebView.runJavaScript(ClientWrapper.utilsAdaptor.qStringFromFile(
                                                  ":/linkify-string.js"))
-                messageWebView.runJavaScript(UtilsAdapter.qStringFromFile(
+                messageWebView.runJavaScript(ClientWrapper.utilsAdaptor.qStringFromFile(
                                                  ":/qwebchannel.js"))
-                messageWebView.runJavaScript(UtilsAdapter.qStringFromFile(
+                messageWebView.runJavaScript(ClientWrapper.utilsAdaptor.qStringFromFile(
                                                  ":/chatview.js"))
                 messageWebView.runJavaScript("init_i18n();")
                 messageWebView.runJavaScript("displayNavbar(false);")
             }
         }
         Component.onCompleted: {
-            messageWebView.loadHtml(UtilsAdapter.qStringFromFile(
+            messageWebView.loadHtml(ClientWrapper.utilsAdaptor.qStringFromFile(
                                         ":/chatview.html"), ":/chatview.html")
         }
     }
@@ -254,8 +254,8 @@ Rectangle {
     WebEngineProfile {
         id: messageWebViewProfile
 
-        cachePath: UtilsAdapter.getCachePath()
-        persistentStoragePath: UtilsAdapter.getCachePath()
+        cachePath: ClientWrapper.utilsAdaptor.getCachePath()
+        persistentStoragePath: ClientWrapper.utilsAdaptor.getCachePath()
         persistentCookiesPolicy: WebEngineProfile.NoPersistentCookies
         httpCacheType: WebEngineProfile.NoCache
         httpUserAgent: "jami-windows"
