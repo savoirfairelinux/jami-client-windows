@@ -31,23 +31,23 @@ Rectangle {
     function populateAVSettings(){
         inputComboBox.clear()
         // get the last index of inputDevices
-        var inputDevices = avmodel.getAudioInputDevices()
+        var inputDevices = ClientWrapper.avmodel.getAudioInputDevices()
         var inputIndex = inputDevices.length - 1
         for(var id of inputDevices){
-            inputComboBox.append({"textDisplay": UtilsAdapter.getStringUTF8(id), "firstArg": UtilsAdapter.getStringUTF8(id), "secondArg": 0})
+            inputComboBox.append({"textDisplay": ClientWrapper.utilsAdaptor.getStringUTF8(id), "firstArg": ClientWrapper.utilsAdaptor.getStringUTF8(id), "secondArg": 0})
         }
         inputComboBox.currentIndex = (inputIndex !== -1 ? inputIndex : 0)
 
         outputComboBox.clear()
-        var outputDevices = avmodel.getAudioOutputDevices()
+        var outputDevices = ClientWrapper.avmodel.getAudioOutputDevices()
         var outputIndex = outputDevices.length -1
         for (var od of outputDevices) {
-            outputComboBox.append({"textDisplay": UtilsAdapter.getStringUTF8(od), "firstArg": UtilsAdapter.getStringUTF8(od), "secondArg": 0})
+            outputComboBox.append({"textDisplay": ClientWrapper.utilsAdaptor.getStringUTF8(od), "firstArg": ClientWrapper.utilsAdaptor.getStringUTF8(od), "secondArg": 0})
         }
         outputComboBox.currentIndex = (outputIndex !== -1 ? outputIndex : 0)
 
         populateVideoSettings()
-        var encodeAccel = avmodel.getHardwareAcceleration()
+        var encodeAccel = ClientWrapper.avmodel.getHardwareAcceleration()
         hardwareAccelControl.checked = encodeAccel
     }
 
@@ -55,32 +55,32 @@ Rectangle {
         deviceBox.clear()
         formatBox.clear()
 
-        deviceBox.enabled = (avmodel.getDevices().length > 0)
-        formatBox.enabled = (avmodel.getDevices().length > 0)
-        labelVideoDevice.enabled = (avmodel.getDevices().length > 0)
-        labelVideoFormat.enabled = (avmodel.getDevices().length > 0)
+        deviceBox.enabled = (ClientWrapper.avmodel.getDevices().length > 0)
+        formatBox.enabled = (ClientWrapper.avmodel.getDevices().length > 0)
+        labelVideoDevice.enabled = (ClientWrapper.avmodel.getDevices().length > 0)
+        labelVideoFormat.enabled = (ClientWrapper.avmodel.getDevices().length > 0)
 
-        if(avmodel.getDevices().length === 0){
+        if(ClientWrapper.avmodel.getDevices().length === 0){
             deviceBox.append({"textDisplay": qsTr("No Device"), "firstArg": "", "secondArg": 0})
             deviceBox.currentIndex = 0
 
             formatBox.append({"textDisplay": qsTr("No Device"), "firstArg": "", "secondArg": 0})
             formatBox.currentIndex = 0
         } else {
-            var currentCaptureDevice = avmodel.getCurrentVideoCaptureDevice()
+            var currentCaptureDevice = ClientWrapper.avmodel.getCurrentVideoCaptureDevice()
             // get last index of device vector
-            var deviceLastIndex = avmodel.getDevices().length - 1
-            var devices = avmodel.getDevices()
+            var deviceLastIndex = ClientWrapper.avmodel.getDevices().length - 1
+            var devices = ClientWrapper.avmodel.getDevices()
             try{
                 for(var d of devices){
-                    deviceBox.append({"textDisplay": UtilsAdapter.getStringUTF8(SettingsAdaptor.get_Video_Settings_Name(d)), "firstArg": UtilsAdapter.getStringUTF8(SettingsAdaptor.get_Video_Settings_Name(d)), "secondArg": ""})
+                    deviceBox.append({"textDisplay": ClientWrapper.utilsAdaptor.getStringUTF8(ClientWrapper.settingsAdaptor.get_Video_Settings_Name(d)), "firstArg": ClientWrapper.utilsAdaptor.getStringUTF8(ClientWrapper.settingsAdaptor.get_Video_Settings_Name(d)), "secondArg": ""})
                 }
             } catch(err) {}
 
             deviceBox.currentIndex = deviceLastIndex
             slotDeviceBoxCurrentIndexChanged(deviceBox.currentIndex)
             // set format list
-            setFormatListForDevice(avmodel.getCurrentVideoCaptureDevice())
+            setFormatListForDevice(ClientWrapper.avmodel.getCurrentVideoCaptureDevice())
 
             try{
                 startPreviewing(false)
@@ -89,13 +89,13 @@ Rectangle {
     }
 
     function setFormatListForDevice(device){
-        if(SettingsAdaptor.get_DeviceCapabilitiesSize(device) === 0) return
+        if(ClientWrapper.settingsAdaptor.get_DeviceCapabilitiesSize(device) === 0) return
 
         try{
             formatBox.clear()
 
-            var resolutions = SettingsAdaptor.getResolutions(device)
-            var rates = SettingsAdaptor.getFrameRates(device)
+            var resolutions = ClientWrapper.settingsAdaptor.getResolutions(device)
+            var rates = ClientWrapper.settingsAdaptor.getFrameRates(device)
 
             for(var i=0; i < resolutions.length; i++){
                 var resolution = resolutions[i]
@@ -110,22 +110,22 @@ Rectangle {
     }
 
     function startPreviewing(force = false){
-        AccountAdapter.startPreviewing(force)
+        ClientWrapper.accountAdaptor.startPreviewing(force)
         previewAvailable = true
     }
 
     function stopPreviewing(){
-        AccountAdapter.stopPreviewing()
+        ClientWrapper.accountAdaptor.stopPreviewing()
     }
 
     function startAudioMeter(async = true){
         audioInputMeter.start()
-        AccountAdapter.startAudioMeter(async)
+        ClientWrapper.accountAdaptor.startAudioMeter(async)
     }
 
     function stopAudioMeter(async = true){
         audioInputMeter.stop()
-        AccountAdapter.stopAudioMeter(async)
+        ClientWrapper.accountAdaptor.stopAudioMeter(async)
     }
 
     // slots for av page
@@ -136,36 +136,36 @@ Rectangle {
     }
 
     function slotSetHardwareAccel(state){
-        AccountAdapter.avModel().setHardwareAcceleration(state)
+        ClientWrapper.accountAdaptor.avModel().setHardwareAcceleration(state)
         startPreviewing(true)
     }
 
     function slotAudioOutputIndexChanged(index){
         stopAudioMeter(false)
         var selectedOutputDeviceName = outputComboBox.get(index).firstArg
-        avmodel.setOutputDevice(selectedOutputDeviceName)
+        ClientWrapper.avmodel.setOutputDevice(selectedOutputDeviceName)
         startAudioMeter(false)
     }
 
     function slotAudioInputIndexChanged(index){
         stopAudioMeter(false)
         var selectedInputDeviceName = inputComboBox.get(index).firstArg
-        avmodel.setInputDevice(selectedInputDeviceName)
+        ClientWrapper.avmodel.setInputDevice(selectedInputDeviceName)
         startAudioMeter(false)
     }
 
     function slotDeviceBoxCurrentIndexChanged(index){
         var deviceName = deviceBox.get(index).firstArg
-        var devices = avmodel.getDevices()
+        var devices = ClientWrapper.avmodel.getDevices()
         try{
-            var deviceId = avmodel.getDeviceIdFromName(deviceName)
+            var deviceId = ClientWrapper.avmodel.getDeviceIdFromName(deviceName)
             if(deviceId.length === 0){
                 console.warn("Couldn't find device: " + deviceName)
                 return
             }
 
-            avmodel.setCurrentVideoCaptureDevice(deviceId)
-            avmodel.setDefaultDevice(deviceId)
+            ClientWrapper.avmodel.setCurrentVideoCaptureDevice(deviceId)
+            ClientWrapper.avmodel.setDefaultDevice(deviceId)
             setFormatListForDevice(deviceId)
             startPreviewing(true)
         } catch(err){console.warn(err.message)}
@@ -174,9 +174,9 @@ Rectangle {
     function slotFormatBoxCurrentIndexChanged(index){
         var resolution = formatBox.get(index).firstArg
         var rate = formatBox.get(index).secondArg
-        var device = avmodel.getCurrentVideoCaptureDevice()
+        var device = ClientWrapper.avmodel.getCurrentVideoCaptureDevice()
         try{
-            SettingsAdaptor.set_Video_Settings_Rate_And_Resolution(device,rate,resolution)
+            ClientWrapper.settingsAdaptor.set_Video_Settings_Rate_And_Resolution(device,rate,resolution)
         } catch(error){console.warn(error.message)}
     }
 
@@ -184,13 +184,13 @@ Rectangle {
         populateVideoSettings()
     }
 
-    property AVModel avmodel: AccountAdapter.avModel()
-    property RenderManager renderer: AccountAdapter.getRenderManager()
+    //property AVModel avmodel: ClientWrapper.accountAdaptor.avModel()
+    //property RenderManager renderer: ClientWrapper.accountAdaptor.getRenderManager()
 
     property bool previewAvailable: false
 
     Connections{
-        target: avmodel
+        target: ClientWrapper.avmodel
 
         function onAudioMeter(id, level){
             slotAudioMeter(id,level)
@@ -198,7 +198,7 @@ Rectangle {
     }
 
     Connections{
-        target: renderer
+        target: ClientWrapper.renderManager
 
         function onVideoDeviceListChanged(){
             slotVideoDeviceListChanged()

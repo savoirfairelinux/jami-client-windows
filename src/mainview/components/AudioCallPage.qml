@@ -36,11 +36,11 @@ Rectangle {
     signal audioCallPageBackButtonIsClicked
 
     function updateUI(accountId, convUid) {
-        contactImgSource = "data:image/png;base64," + UtilsAdapter.getContactImageString(
+        contactImgSource = "data:image/png;base64," + ClientWrapper.utilsAdaptor.getContactImageString(
                     accountId, convUid)
-        bestName = UtilsAdapter.getBestName(accountId, convUid)
+        bestName = ClientWrapper.utilsAdaptor.getBestName(accountId, convUid)
 
-        var id = UtilsAdapter.getBestId(accountId, convUid)
+        var id = ClientWrapper.utilsAdaptor.getBestId(accountId, convUid)
         bestId = (bestName !== id) ? id : ""
     }
 
