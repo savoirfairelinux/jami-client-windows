@@ -81,7 +81,7 @@ unix {
     TARGET = jami-qt
     TEMPLATE = app
 
-    QT += quick quickwidgets widgets xml multimedia multimediawidgets network webenginewidgets svg quickcontrols2
+    QT += quick quickwidgets widgets xml multimedia multimediawidgets network webenginewidgets svg quickcontrols2 webengine webenginecore sql dbus
 
     #check Qt version
     QT_VERSION = $$[QT_VERSION]

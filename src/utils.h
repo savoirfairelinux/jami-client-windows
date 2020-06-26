@@ -25,7 +25,7 @@
 
 #include <string>
 
-#include <QClipBoard>
+#include <QClipboard>
 #include <QCryptographicHash>
 #include <QDir>
 #include <QGuiApplication>
@@ -41,6 +41,7 @@
 #include <QString>
 #include <QTextDocument>
 #include <QtGlobal>
+#include <QPainterPath>
 
 #ifdef Q_OS_WIN
 #include <ciso646>
@@ -330,7 +331,7 @@ oneShotConnect(const typename QtPrivate::FunctionPointer<Func1>::Object *sender,
     });
 }
 
-void
+inline void
 oneShotConnect(const QObject *sender, const char *signal, const QObject *receiver, const char *slot)
 {
     QMetaObject::Connection *const connection = new QMetaObject::Connection;

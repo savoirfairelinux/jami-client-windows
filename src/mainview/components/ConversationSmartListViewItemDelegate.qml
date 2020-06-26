@@ -220,8 +220,7 @@ ItemDelegate {
             if (!InCall) {
                 itemSmartListBackground.color = JamiTheme.releaseColor
             }
-            if (mouse.button === Qt.RightButton
-                    && Qt.platform.os == "windows") {
+            if (mouse.button === Qt.RightButton) {
 
 
                 /*
@@ -239,8 +238,7 @@ ItemDelegate {
                 userProfile.idText = URI
                 userProfile.contactPicBase64 = Picture
                 smartListContextMenu.open()
-            } else if (mouse.button === Qt.LeftButton
-                       && Qt.platform.os == "windows") {
+            } else if (mouse.button === Qt.LeftButton) {
                 conversationSmartListView.currentIndex = index
                 conversationSmartListView.needToSelectItems(index)
                 conversationSmartListView.needToGrabFocus()
