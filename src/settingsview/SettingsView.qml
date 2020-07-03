@@ -26,7 +26,7 @@ import net.jami.Models 1.0
 
 import "components"
 
-Window {
+Rectangle {
     id: settingsViewWindow
 
     enum SettingsMenu{
@@ -96,7 +96,7 @@ Window {
     }
 
     // slots
-    function leaveSettingsSlot(){
+    function leaveSettingsSlot(showMainView = true){
         avSettings.stopAudioMeter()
         avSettings.stopPreviewing()
         if(!settingsViewRect.isSIP){
@@ -104,7 +104,10 @@ Window {
         } else {
             currentSIPAccountSettingsScrollWidget.stopBooth()
         }
-        settingsViewWindowNeedToShowMainViewWindow()
+        if (showMainView)
+            settingsViewWindowNeedToShowMainViewWindow()
+        else
+            settingsViewWindowNeedToShowNewWizardWindow()
     }
 
     function slotAccountListChanged(){
@@ -127,17 +130,11 @@ Window {
      * signal to redirect the page to main view
      */
     signal settingsViewWindowNeedToShowMainViewWindow
+    signal settingsViewWindowNeedToShowNewWizardWindow
 
-    property int minWidth: 200
-    property int minHeight: 200
     property int textFontSize: 9
 
-    title: "Jami"
     visible: true
-    width: 768
-    height: 768
-    minimumWidth: minWidth
-    minimumHeight: minHeight
 
     Rectangle {
         id: settingsViewRect
@@ -233,13 +230,22 @@ Window {
                     onNavigateToMainView:{
                         leaveSettingsSlot()
                     }
+
+                    onNavigateToNewWizardView: {
+                        leaveSettingsSlot(false)
+                    }
                 }
 
                 // current SIP account setting scroll page, index 1
                 CurrentSIPAccountSettingScrollPage {
                     id: currentSIPAccountSettingsScrollWidget
+
                     onNavigateToMainView: {
                         leaveSettingsSlot()
+                    }
+
+                    onNavigateToNewWizardView: {
+                        leaveSettingsSlot(false)
                     }
                 }
 
