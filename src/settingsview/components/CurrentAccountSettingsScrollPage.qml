@@ -42,6 +42,7 @@ Rectangle {
     property bool registeredIdNeedsSet: false
 
     signal navigateToMainView
+    signal navigateToNewWizardView
 
     Connections {
         id: btnRegisterNameClickConnection
@@ -299,9 +300,10 @@ Rectangle {
             AccountAdapter.setSelectedAccountId()
             AccountAdapter.setSelectedConvId()
 
-            if(UtilsAdapter.getAccountListSize() > 0){
+            if (UtilsAdapter.getAccountListSize() > 0)
                 navigateToMainView()
-            }
+            else
+                navigateToNewWizardView()
         }
     }
 
