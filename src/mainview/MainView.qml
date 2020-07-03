@@ -29,11 +29,10 @@ import net.jami.Models 1.0
  * Import qml component files.
  */
 import "components"
+import "../settingsview"
 
 Window {
     id: mainViewWindow
-
-    signal mainViewWindowNeedToShowSettingsViewWindow
 
     property int minWidth: sidePanelViewStackPreferedWidth
     property int minHeight: aboutPopUpDialog.contentHeight
@@ -51,6 +50,7 @@ Window {
     property int tabBarLeftMargin: 8
     property int tabButtonShrinkSize: 8
 
+    signal noAccountIsAvailable
     signal needToAddNewAccount
     signal closeApp
 
@@ -165,6 +165,72 @@ Window {
         }
     }
 
+    StackLayout {
+        id: mainViewStackLayout
+
+        anchors.fill: parent
+
+        currentIndex: 0
+
+        SplitView {
+            id: splitView
+
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+
+            width: mainViewWindow.width
+            height: mainViewWindow.height
+
+            handle: Rectangle {
+                implicitWidth: JamiTheme.splitViewHandlePreferedWidth
+                implicitHeight: splitView.height
+                color: SplitHandle.pressed ? JamiTheme.pressColor : (SplitHandle.hovered ? JamiTheme.hoverColor : JamiTheme.tabbarBorderColor)
+            }
+
+            StackView {
+                id: sidePanelViewStack
+
+                property int maximumWidth: sidePanelViewStackPreferedWidth + 100
+
+                initialItem: mainViewWindowSidePanel
+
+                SplitView.minimumWidth: sidePanelViewStackPreferedWidth
+                SplitView.maximumWidth: maximumWidth
+                SplitView.fillHeight: true
+
+                clip: true
+            }
+
+            StackView {
+                id: welcomeViewStack
+
+                initialItem: welcomePage
+
+                SplitView.maximumWidth: splitView.width - sidePanelViewStack.width
+                SplitView.fillHeight: true
+
+                clip: true
+            }
+        }
+
+        SettingsView {
+            id: settingsView
+
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+
+            onSettingsViewWindowNeedToShowMainViewWindow: {
+                if (accountDeleted)
+                    mainViewWindowSidePanel.accountDeletion()
+                mainViewStackLayout.currentIndex = 0
+            }
+
+            onSettingsViewWindowNeedToShowNewWizardWindow: {
+                mainViewWindow.noAccountIsAvailable()
+            }
+        }
+    }
+
     AccountListModel {
         id: accountListModel
     }
@@ -173,7 +239,7 @@ Window {
         id: mainViewWindowSidePanel
 
         onSettingBtnClicked_AccountComboBox:{
-            mainViewWindowNeedToShowSettingsViewWindow()
+            mainViewStackLayout.currentIndex = 1
         }
 
         onConversationSmartListNeedToAccessMessageWebView: {
@@ -284,6 +350,8 @@ Window {
     CallStackView {
         id: callStackView
 
+        visible: false
+
         objectName: "callStackViewObject"
 
         onCallPageBackButtonIsClicked: {
@@ -345,45 +413,6 @@ Window {
              * Set qml MessageWebView object pointer to c++.
              */
             MessagesAdapter.setQmlObject(this)
-        }
-    }
-
-    SplitView {
-        id: splitView
-
-        anchors.fill: parent
-        width: mainViewWindow.width
-        height: mainViewWindow.height
-
-        handle: Rectangle {
-            implicitWidth: JamiTheme.splitViewHandlePreferedWidth
-            implicitHeight: splitView.height
-            color: SplitHandle.pressed ? JamiTheme.pressColor : (SplitHandle.hovered ? JamiTheme.hoverColor : JamiTheme.tabbarBorderColor)
-        }
-
-        StackView {
-            id: sidePanelViewStack
-
-            property int maximumWidth: sidePanelViewStackPreferedWidth + 100
-
-            initialItem: mainViewWindowSidePanel
-
-            SplitView.minimumWidth: sidePanelViewStackPreferedWidth
-            SplitView.maximumWidth: maximumWidth
-            SplitView.fillHeight: true
-
-            clip: true
-        }
-
-        StackView {
-            id: welcomeViewStack
-
-            initialItem: welcomePage
-
-            SplitView.maximumWidth: splitView.width - sidePanelViewStack.width
-            SplitView.fillHeight: true
-
-            clip: true
         }
     }
 

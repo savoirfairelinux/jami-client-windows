@@ -87,7 +87,7 @@ public:
     Q_INVOKABLE lrc::api::AVModel *avModel();
     Q_INVOKABLE lrc::api::DataTransferModel *dataTransferModel();
 
-    Q_INVOKABLE RenderManager *AccountAdapter::getRenderManager();
+    Q_INVOKABLE RenderManager *getRenderManager();
 signals:
 
     /*
