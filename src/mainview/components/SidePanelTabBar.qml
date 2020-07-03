@@ -35,18 +35,6 @@ TabBar {
 
     currentIndex: 0
 
-    onVisibleChanged: {
-        if (!tabBarVisible) {
-            tabBar.height = 0
-            tabBar.anchors.topMargin = 12
-        } else {
-            tabBar.height = Qt.binding(function () {
-                return Math.max(pageOne.height, pageTwo.height)
-            })
-            tabBar.anchors.topMargin = 20
-        }
-    }
-
     TabButton {
         id: pageOne
 
