@@ -26,6 +26,8 @@ import "../../commoncomponents"
 Popup {
     id: comboBoxPopup
 
+    property bool toogleUpdatePopupHeight: false
+
     signal accountNeedToChange(int index)
     signal newAccountButtonClicked
 
@@ -36,9 +38,12 @@ Popup {
     /*
      * Hack - limite the accounts that can be shown.
      */
-    implicitHeight: Math.min(accountComboBox.height * Math.min(
-                                 5, accountListModel.rowCount()),
-                             sidePanelRect.height)
+    implicitHeight: {
+        comboBoxPopup.visible
+        return Math.min(accountComboBox.height * Math.min(
+                            5, accountListModel.rowCount()),
+                        sidePanelRect.height)
+    }
     padding: 0
 
     contentItem: ListView {
