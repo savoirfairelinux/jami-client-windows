@@ -81,24 +81,29 @@ Rectangle {
     function needToChangeToAccount(accountId, index) {
         if (index !== -1) {
             accountComboBox.currentIndex = index
-            AccountAdapter.accountChanged(index)
+            ClientWrapper.accountAdaptor.accountChanged(index)
             accountChangedUIReset()
         }
     }
 
-    function newAccountAdded(index) {
+    function refreshAccountComboBox(index = -1) {
         accountComboBox.resetAccountListModel()
 
 
         /*
          * To make sure that the ui is refreshed for accountComboBox.
-         * Note: index here should always be zero.
+         * Note: when index in -1, it means to maintain the
+         *       current account selection.
          */
-        if (accountComboBox.currentIndex === 0)
-            accountComboBox.currentIndex = 1
+        var currentIndex = accountComboBox.currentIndex
+        if (accountComboBox.currentIndex === index)
+            accountComboBox.currentIndex = index + 1
         accountComboBox.currentIndex = index
-        accountComboBox.updateAccountListModel()
-        AccountAdapter.accountChanged(index)
+        if (index !== -1)
+            ClientWrapper.accountAdaptor.accountChanged(index)
+        else
+            accountComboBox.currentIndex = currentIndex
+        accountComboBox.update()
         accountChangedUIReset()
     }
 
@@ -145,12 +150,12 @@ Rectangle {
             }
         }
 
-        onSettingBtnClicked:{
+        onSettingBtnClicked: {
             settingBtnClicked_AccountComboBox()
         }
 
         onAccountChanged: {
-            AccountAdapter.accountChanged(index)
+            ClientWrapper.accountAdaptor.accountChanged(index)
             accountChangedUIReset()
         }
 
@@ -209,13 +214,6 @@ Rectangle {
             height: 1
 
             visible: tabBarVisible
-
-            onVisibleChanged: {
-                if (!tabBarVisible)
-                    sidePanelColumnRect.border.width = 0
-                else
-                    sidePanelColumnRect.border.width = 1
-            }
 
             color: "white"
         }
@@ -293,6 +291,21 @@ Rectangle {
                     conversationSmartListView.currentIndex = -1
                 }
             }
+        }
+    }
+
+    onTabBarVisibleChanged: {
+        if (!tabBarVisible) {
+            sidePanelTabBar.height = 0
+            sidePanelTabBar.anchors.topMargin = 12
+            sidePanelColumnRect.border.width = 0
+        } else {
+            sidePanelTabBar.height = Qt.binding(function () {
+                return Math.max(sidePanelTabBar.converstationTabHeight,
+                                sidePanelTabBar.invitationTabHeight)
+            })
+            sidePanelTabBar.anchors.topMargin = 20
+            sidePanelColumnRect.border.width = 1
         }
     }
 }

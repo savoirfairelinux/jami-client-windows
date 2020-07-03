@@ -76,9 +76,14 @@ ComboBox {
         /*
          * Base 64 format
          */
-        source: "data:image/png;base64," + accountListModel.data(
-                    accountListModel.index(accountComboBox.currentIndex, 0),
-                    259)
+        source: {
+            if (currentIndex !== -1)
+                return "data:image/png;base64," + accountListModel.data(
+                            accountListModel.index(
+                                accountComboBox.currentIndex, 0), 259)
+            else
+                return source
+        }
         mipmap: true
 
         Rectangle {
@@ -96,9 +101,14 @@ ComboBox {
             /*
              * Visible when account is registered, enum REGISTERED == 5.
              */
-            visible: accountListModel.data(accountListModel.index(
-                                               accountComboBox.currentIndex,
-                                               0), 261) === 5
+            visible: {
+                if (currentIndex !== -1)
+                    return accountListModel.data(
+                                accountListModel.index(
+                                    accountComboBox.currentIndex, 0), 261) === 5
+                else
+                    return visible
+            }
 
             Rectangle {
                 id: presenseCycle
@@ -153,8 +163,14 @@ ComboBox {
         /*
          * Role::Alias
          */
-        text: accountListModel.data(accountListModel.index(
-                                        accountComboBox.currentIndex, 0), 257)
+        text: {
+            if (currentIndex !== -1)
+                return accountListModel.data(accountListModel.index(
+                                                 accountComboBox.currentIndex,
+                                                 0), 257)
+            else
+                return text
+        }
     }
 
     TextMetrics {
@@ -168,8 +184,14 @@ ComboBox {
         /*
          * Role::Username
          */
-        text: accountListModel.data(accountListModel.index(
-                                        accountComboBox.currentIndex, 0), 258)
+        text: {
+            if (currentIndex !== -1)
+                return accountListModel.data(accountListModel.index(
+                                                 accountComboBox.currentIndex,
+                                                 0), 258)
+            else
+                return text
+        }
     }
 
     HoverableButton {
@@ -181,12 +203,12 @@ ComboBox {
 
         buttonImageHeight: height - 8
         buttonImageWidth: width - 8
-        source:"qrc:/images/icons/round-settings-24px.svg"
+        source: "qrc:/images/icons/round-settings-24px.svg"
         radius: height / 2
         width: 25
         height: 25
 
-        onClicked:{
+        onClicked: {
             settingBtnClicked()
         }
     }
@@ -209,11 +231,10 @@ ComboBox {
         propagateComposedEvents: true
 
         onPressed: {
-            if (isMouseOnSettingsButton(mouse)){
+            if (isMouseOnSettingsButton(mouse)) {
                 settingsButton.backgroundColor = JamiTheme.pressColor
                 settingsButton.clicked()
-            }
-            else
+            } else
                 rootItemBackground.color = JamiTheme.pressColor
         }
         onReleased: {
