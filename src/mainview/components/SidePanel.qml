@@ -86,7 +86,7 @@ Rectangle {
         }
     }
 
-    function newAccountAdded(index) {
+    function refreshAccountComboBox(index) {
         accountComboBox.resetAccountListModel()
 
 
@@ -100,6 +100,14 @@ Rectangle {
         accountComboBox.updateAccountListModel()
         AccountAdapter.accountChanged(index)
         accountChangedUIReset()
+    }
+
+    function accountDeletion() {
+        refreshAccountComboBox(0)
+    }
+
+    function newAccountAdded(index) {
+        refreshAccountComboBox(index)
     }
 
     function deselectConversationSmartList() {

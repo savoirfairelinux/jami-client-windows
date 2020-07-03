@@ -28,6 +28,7 @@ import "../../commoncomponents"
 
 Rectangle {
     signal navigateToMainView
+    signal navigateToNewWizardView
 
     function updateAccountInfoDisplayed() {
         displaySIPNameLineEdit.text = SettingsAdaptor.getCurrentAccount_Profile_Info_Alias()
@@ -82,9 +83,10 @@ Rectangle {
             AccountAdapter.setSelectedAccountId()
             AccountAdapter.setSelectedConvId()
 
-            if(UtilsAdapter.getAccountListSize() > 0){
+            if (UtilsAdapter.getAccountListSize() > 0)
                 navigateToMainView()
-            }
+            else
+                navigateToNewWizardView()
         }
     }
 

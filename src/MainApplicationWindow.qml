@@ -8,7 +8,6 @@ import net.jami.Models 1.0
 
 import "mainview"
 import "wizardview"
-import "settingsview"
 
 ApplicationWindow {
     id: mainApplicationWindow
@@ -20,51 +19,24 @@ ApplicationWindow {
     Loader {
         id: mainViewLoader
 
-        //asynchronous: true
+        asynchronous: true
         visible: status == Loader.Ready
         source: ""
 
-//        Connections {
-//            target: mainViewLoader.item
+        Connections {
+            target: mainViewLoader.item
 
-//            function onNeedToAddNewAccount() {
-//                wizardView.show()
-//            }
-
-//            function onCloseApp() {
-//                Qt.quit()
-//            }
-//        }
-    }
-
-    Component{
-        id: mainViewComponent
-
-        MainView{
-            id: mainView
-
-            onNeedToAddNewAccount: {
+            function onNeedToAddNewAccount() {
                 wizardView.show()
             }
 
-            onCloseApp: {
+            function onCloseApp() {
                 Qt.quit()
             }
 
-            onMainViewWindowNeedToShowSettingsViewWindow:{
-                mainViewLoader.sourceComponent = settingsViewComponent
-            }
-        }
-    }
-
-    Component{
-        id: settingsViewComponent
-
-        SettingsView{
-            id: settingsView
-
-            onSettingsViewWindowNeedToShowMainViewWindow:{
-                mainViewLoader.sourceComponent = mainViewComponent
+            function onNoAccountIsAvailable() {
+                mainViewLoader.setSource("")
+                wizardView.show()
             }
         }
     }
@@ -72,28 +44,15 @@ ApplicationWindow {
     WizardView {
         id: wizardView
 
-//        onNeedToShowMainViewWindow: {
-//            if (mainViewLoader.source.toString() !== "qrc:/src/mainview/MainView.qml")
-//                mainViewLoader.setSource("qrc:/src/mainview/MainView.qml")
-//            if(accountIndex !== -1)
-//                mainViewLoader.item.newAccountAdded(accountIndex)
-//        }
-
-//        onWizardViewIsClosed: {
-//            if (mainViewLoader.source.toString() !== "qrc:/src/mainview/MainView.qml") {
-//                Qt.quit()
-//            }
-//        }
-
         onNeedToShowMainViewWindow: {
-            if (mainViewLoader.sourceComponent !== mainViewComponent)
-                mainViewLoader.sourceComponent = mainViewComponent
+            if (mainViewLoader.source.toString() !== "qrc:/src/mainview/MainView.qml")
+                mainViewLoader.setSource("qrc:/src/mainview/MainView.qml")
             if(accountIndex !== -1)
                 mainViewLoader.item.newAccountAdded(accountIndex)
         }
 
         onWizardViewIsClosed: {
-            if (mainViewLoader.sourceComponent !== mainViewComponent) {
+            if (mainViewLoader.source.toString() !== "qrc:/src/mainview/MainView.qml") {
                 Qt.quit()
             }
         }
@@ -106,8 +65,7 @@ ApplicationWindow {
         if (!UtilsAdapter.getAccountListSize()) {
             wizardView.show()
         } else {
-            //.setSource("qrc:/src/mainview/MainView.qml")
-            mainViewLoader.sourceComponent = settingsViewComponent
+            mainViewLoader.setSource("qrc:/src/mainview/MainView.qml")
         }
     }
 
