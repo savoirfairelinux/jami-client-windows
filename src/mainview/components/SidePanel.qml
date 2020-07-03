@@ -81,12 +81,12 @@ Rectangle {
     function needToChangeToAccount(accountId, index) {
         if (index !== -1) {
             accountComboBox.currentIndex = index
-            AccountAdapter.accountChanged(index)
+            ClientWrapper.accountAdaptor.accountChanged(index)
             accountChangedUIReset()
         }
     }
 
-    function newAccountAdded(index) {
+    function refreshAccountComboBox(index) {
         accountComboBox.resetAccountListModel()
 
 
@@ -98,8 +98,16 @@ Rectangle {
             accountComboBox.currentIndex = 1
         accountComboBox.currentIndex = index
         accountComboBox.updateAccountListModel()
-        AccountAdapter.accountChanged(index)
+        ClientWrapper.accountAdaptor.accountChanged(index)
         accountChangedUIReset()
+    }
+
+    function accountDeletion() {
+        refreshAccountComboBox(0)
+    }
+
+    function newAccountAdded(index) {
+        refreshAccountComboBox(index)
     }
 
     function deselectConversationSmartList() {
@@ -150,7 +158,7 @@ Rectangle {
         }
 
         onAccountChanged: {
-            AccountAdapter.accountChanged(index)
+            ClientWrapper.accountAdaptor.accountChanged(index)
             accountChangedUIReset()
         }
 
@@ -209,13 +217,6 @@ Rectangle {
             height: 1
 
             visible: tabBarVisible
-
-            onVisibleChanged: {
-                if (!tabBarVisible)
-                    sidePanelColumnRect.border.width = 0
-                else
-                    sidePanelColumnRect.border.width = 1
-            }
 
             color: "white"
         }
@@ -293,6 +294,21 @@ Rectangle {
                     conversationSmartListView.currentIndex = -1
                 }
             }
+        }
+    }
+
+    onTabBarVisibleChanged: {
+        if (!tabBarVisible) {
+            sidePanelTabBar.height = 0
+            sidePanelTabBar.anchors.topMargin = 12
+            sidePanelColumnRect.border.width = 0
+        } else {
+            sidePanelTabBar.height = Qt.binding(function () {
+                return Math.max(sidePanelTabBar.converstationTabHeight,
+                                sidePanelTabBar.invitationTabHeight)
+            })
+            sidePanelTabBar.anchors.topMargin = 20
+            sidePanelColumnRect.border.width = 1
         }
     }
 }

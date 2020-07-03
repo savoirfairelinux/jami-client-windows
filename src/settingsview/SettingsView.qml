@@ -26,7 +26,7 @@ import net.jami.Models 1.0
 
 import "components"
 
-Window {
+Rectangle {
     id: settingsViewWindow
 
     enum SettingsMenu{
@@ -42,6 +42,8 @@ Window {
     }
 
     function setSelected(sel, recovery = false){
+        profileType = ClientWrapper.settingsAdaptor.getCurrentAccount_Profile_Info_Type()
+
         if(selectedMenu === sel && (!recovery)){return}
         switch(sel){
         case SettingsView.Account:
@@ -96,7 +98,7 @@ Window {
     }
 
     // slots
-    function leaveSettingsSlot(){
+    function leaveSettingsSlot(accountDeleted = false, showMainView = true){
         avSettings.stopAudioMeter()
         avSettings.stopPreviewing()
         if(!settingsViewRect.isSIP){
@@ -104,7 +106,10 @@ Window {
         } else {
             currentSIPAccountSettingsScrollWidget.stopBooth()
         }
-        settingsViewWindowNeedToShowMainViewWindow()
+        if (showMainView)
+            settingsViewWindowNeedToShowMainViewWindow(accountDeleted)
+        else
+            settingsViewWindowNeedToShowNewWizardWindow()
     }
 
     function slotAccountListChanged(){
@@ -126,18 +131,12 @@ Window {
     /*
      * signal to redirect the page to main view
      */
-    signal settingsViewWindowNeedToShowMainViewWindow
+    signal settingsViewWindowNeedToShowMainViewWindow(bool accountDeleted)
+    signal settingsViewWindowNeedToShowNewWizardWindow
 
-    property int minWidth: 200
-    property int minHeight: 200
     property int textFontSize: 9
 
-    title: "Jami"
     visible: true
-    width: 768
-    height: 768
-    minimumWidth: minWidth
-    minimumHeight: minHeight
 
     Rectangle {
         id: settingsViewRect
@@ -231,15 +230,24 @@ Window {
                     id: currentAccountSettingsScrollWidget
 
                     onNavigateToMainView:{
-                        leaveSettingsSlot()
+                        leaveSettingsSlot(true)
+                    }
+
+                    onNavigateToNewWizardView: {
+                        leaveSettingsSlot(true, false)
                     }
                 }
 
                 // current SIP account setting scroll page, index 1
                 CurrentSIPAccountSettingScrollPage {
                     id: currentSIPAccountSettingsScrollWidget
+
                     onNavigateToMainView: {
-                        leaveSettingsSlot()
+                        leaveSettingsSlot(true)
+                    }
+
+                    onNavigateToNewWizardView: {
+                        leaveSettingsSlot(true, false)
                     }
                 }
 
