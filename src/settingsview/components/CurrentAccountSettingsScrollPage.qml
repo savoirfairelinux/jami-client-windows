@@ -42,6 +42,7 @@ Rectangle {
     property bool registeredIdNeedsSet: false
 
     signal navigateToMainView
+    signal navigateToNewWizardView
 
     Connections {
         id: btnRegisterNameClickConnection
@@ -299,6 +300,8 @@ Rectangle {
 
             if(ClientWrapper.utilsAdapter.getAccountListSize() > 0){
                 navigateToMainView()
+            } else {
+                navigateToNewWizardView()
             }
         }
     }
