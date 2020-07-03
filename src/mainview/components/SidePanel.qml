@@ -81,12 +81,12 @@ Rectangle {
     function needToChangeToAccount(accountId, index) {
         if (index !== -1) {
             accountComboBox.currentIndex = index
-            AccountAdapter.accountChanged(index)
+            ClientWrapper.accountAdaptor.accountChanged(index)
             accountChangedUIReset()
         }
     }
 
-    function newAccountAdded(index) {
+    function refreshAccountComboBox(index) {
         accountComboBox.resetAccountListModel()
 
 
@@ -98,8 +98,16 @@ Rectangle {
             accountComboBox.currentIndex = 1
         accountComboBox.currentIndex = index
         accountComboBox.updateAccountListModel()
-        AccountAdapter.accountChanged(index)
+        ClientWrapper.accountAdaptor.accountChanged(index)
         accountChangedUIReset()
+    }
+
+    function accountDeletion() {
+        refreshAccountComboBox(0)
+    }
+
+    function newAccountAdded(index) {
+        refreshAccountComboBox(index)
     }
 
     function deselectConversationSmartList() {
@@ -150,7 +158,7 @@ Rectangle {
         }
 
         onAccountChanged: {
-            AccountAdapter.accountChanged(index)
+            ClientWrapper.accountAdaptor.accountChanged(index)
             accountChangedUIReset()
         }
 
