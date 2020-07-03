@@ -47,6 +47,7 @@ Rectangle {
     property int refreshVariable : 0
 
     signal navigateToMainView
+    signal navigateToNewWizardView
 
     function refreshRelevantUI(){
         refreshVariable++
@@ -327,6 +328,8 @@ Rectangle {
 
             if(ClientWrapper.utilsAdaptor.getAccountListSize() > 0){
                 navigateToMainView()
+            } else {
+                navigateToNewWizardView()
             }
         }
     }
