@@ -148,7 +148,7 @@ Jami on turvallinen ja hajautettu viestintäsovellus.</translation>
     <message>
         <location filename="../advancedsipsettingwidget.cpp" line="142"/>
         <source>Audio Files (*.wav *.ogg *.opus *.mp3 *aiff *wma)</source>
-        <translation>Äänitiedostot (*.wav *.ogg *.opus *.mp3 *aiff * wma)</translation>
+        <translation>Äänitiedostot (*.wav *.ogg *.opus *.mp3 *aiff *wma)</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.cpp" line="151"/>
@@ -226,7 +226,7 @@ Jami on turvallinen ja hajautettu viestintäsovellus.</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="583"/>
         <source>User Certificate</source>
-        <translation>Käyttäjäsertifikaatti</translation>
+        <translation>Käyttäjävarmenne</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="622"/>
@@ -236,7 +236,7 @@ Jami on turvallinen ja hajautettu viestintäsovellus.</translation>
     <message>
         <location filename="../advancedsettingswidget.ui" line="634"/>
         <source>CA Certificate</source>
-        <translation>CA-sertifikaatti</translation>
+        <translation>CA-varmenne</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="766"/>
@@ -522,22 +522,22 @@ Kopioi ja jaa se ystäviesi kanssa!</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="35"/>
         <source>Account deletion</source>
-        <translation>Tilin poisto</translation>
+        <translation>Tunnuksen poisto</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="58"/>
         <source>Do you really want to delete the following account?</source>
-        <translation>Haluatko todella poistaa seuraavan tilin?</translation>
+        <translation>Haluatko todella poistaa seuraavan tunnuksen?</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="153"/>
         <source>If this account hasn&apos;t been exported, or added to another device, it will be irrevocably lost.</source>
-        <translation>Jos tätä tiliä ei ole viety tai lisätty toiseen laitteeseen, se katoaa lopullisesti.</translation>
+        <translation>Jos tätä tunnusta ei ole viety tai lisätty toiseen laitteeseen, se katoaa lopullisesti.</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="235"/>
         <source>Permanently delete account</source>
-        <translation>Poista tili pysyvästi</translation>
+        <translation>Poista tunnus pysyvästi</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="241"/>
@@ -547,7 +547,7 @@ Kopioi ja jaa se ystäviesi kanssa!</translation>
     <message>
         <location filename="../deleteaccountdialog.ui" line="278"/>
         <source>Cancel account deletion</source>
-        <translation>Peruuta tilin poisto</translation>
+        <translation>Peruuta tunnuksen poisto</translation>
     </message>
     <message>
         <location filename="../deleteaccountdialog.ui" line="284"/>
@@ -601,7 +601,7 @@ Kopioi ja jaa se ystäviesi kanssa!</translation>
     <message>
         <location filename="../linkdevicedialog.ui" line="62"/>
         <source>Enter your account password</source>
-        <translation>Anna tilisi salasana</translation>
+        <translation>Anna tunnuksen salasana</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="117"/>
@@ -636,7 +636,7 @@ Kopioi ja jaa se ystäviesi kanssa!</translation>
     <message>
         <location filename="../linkdevicedialog.ui" line="477"/>
         <source>This pin and the account password should be entered in your device within 10 minutes.</source>
-        <translation>Tämä pin-koodi ja tilin salasana on syötettävä laitteeseesi 10 minuutin kuluessa.</translation>
+        <translation>Tämä pin-koodi ja tunnuksen salasana on syötettävä laitteeseesi 10 minuutin kuluessa.</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="553"/>
@@ -694,7 +694,7 @@ Yritä myöhemmin uudelleen.</translation>
     <message>
         <location filename="../nameregistrationdialog.ui" line="163"/>
         <source>Enter your account password</source>
-        <translation>Anna tilisi salasana</translation>
+        <translation>Anna tunnuksen salasana</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.ui" line="244"/>
@@ -772,17 +772,17 @@ Yritä myöhemmin uudelleen.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="239"/>
         <source>Create Jami account button</source>
-        <translation>Luo Jami-tilin kuvake</translation>
+        <translation>Luo Jami-tunnuksen painike</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="245"/>
         <source>Push button for Jami account creation start trigger</source>
-        <translation>Paina painiketta Jami-tilin luomiseksi</translation>
+        <translation>Paina painiketta Jami-tunnuksen luomiseksi</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="251"/>
         <source>Create a Jami account</source>
-        <translation>Tee Jami-tili</translation>
+        <translation>Luo Jami-tunnus</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="282"/>
@@ -797,17 +797,17 @@ Yritä myöhemmin uudelleen.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="291"/>
         <source>Link this device to an account</source>
-        <translation>Yhdistä tämä laite tiliin</translation>
+        <translation>Yhdistä tämä laite tunnukseen</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="328"/>
         <source>Create Jami SIP account button</source>
-        <translation>Luo Jami SIP-tilin painike</translation>
+        <translation>Luo Jami SIP-tunnuksen painike</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="334"/>
         <source>Push button for Jami SIP account creation start trigger</source>
-        <translation>Paina painiketta Jami SIP-tilin luomiseksi</translation>
+        <translation>Paina painiketta Jami SIP-tunnuksen luomiseksi</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="340"/>
@@ -817,7 +817,7 @@ Yritä myöhemmin uudelleen.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="405"/>
         <source>Link this device to an existing account</source>
-        <translation>Yhdistä tämä laite olemassa olevaan tiliin</translation>
+        <translation>Yhdistä tämä laite olemassa olevaan tunnukseen</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="469"/>
@@ -835,9 +835,9 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;Jos haluat linkittää tämän laitteen toiseen tiliin, sinun on &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;ensin hankittava PIN&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt; -koodi. PIN-koodin luominen:&lt;/span&gt;&lt;/p&gt;
-&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Mene &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;tilihallinnan asetuksiin&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; aiemmasta laitteesta.&lt;/span&gt;&lt;/li&gt;
-&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Valitse &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Jamin tili&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; mitä haluat käyttää&lt;/span&gt;&lt;/li&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;Jos haluat linkittää tämän laitteen toiseen tunnukseen, sinun on &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;ensin hankittava PIN&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt; -koodi. PIN-koodin luominen:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Mene &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;käyttäjäasetuksiin&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; aiemmasta laitteesta.&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Valitse &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Jami-tunnus&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; jota haluat käyttää&lt;/span&gt;&lt;/li&gt;
 &lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Mene &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Laitteet&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; välilehteen&lt;/span&gt;&lt;/li&gt;
 &lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Valitse &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Lisää laite&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;Saat tarvittavan PIN-koodin tämän lomakkeen lopussa. PIN-koodi on voimassa vain &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 minuuttia&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -855,7 +855,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="626"/>
         <source>Link from exported account archive file</source>
-        <translation>Linkki viedystä tilin arkistotiedostosta</translation>
+        <translation>Linkki viedystä tunnuksen arkistotiedostosta</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="629"/>
@@ -1003,7 +1003,7 @@ että käyttäisit tunnustasi.</translation>
     <message utf8="true">
         <location filename="../newwizardwidget.ui" line="2282"/>
         <source>Generating your Jami account…</source>
-        <translation>Luodaan Jami-tiliä...</translation>
+        <translation>Luodaan Jami-tunnusta...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2356"/>
@@ -1023,12 +1023,12 @@ että käyttäisit tunnustasi.</translation>
     <message>
         <location filename="../newwizardwidget.ui" line="2396"/>
         <source>Cancel account create/link</source>
-        <translation>Peruuta tilin luominen/linkitys</translation>
+        <translation>Peruuta tunnuksen luominen/linkitys</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2402"/>
         <source>push button to cancel account creation or linking</source>
-        <translation>Painamalla painiketta voit peruuttaa tilin luomisen tai linkittämisen</translation>
+        <translation>painamalla painiketta voit peruuttaa tunnuksen luomisen tai linkittämisen</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2405"/>
@@ -1063,32 +1063,32 @@ että käyttäisit tunnustasi.</translation>
     <message>
         <location filename="../newwizardwidget.cpp" line="123"/>
         <source>Your account needs to be migrated. Enter your password.</source>
-        <translation>Tilisi on siirrettävä. Syötä salasanasi.</translation>
+        <translation>Tunnuksesi on siirrettävä. Syötä salasanasi.</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="419"/>
         <source>Migrating your Jami account...</source>
-        <translation>Jami-tilisi siirretään…</translation>
+        <translation>Jami-tunnuksesi siirretään…</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="412"/>
         <source>Importing account archive...</source>
-        <translation>Tuo tili varmistuksen kautta</translation>
+        <translation>Tuodaan Tunnus-arkistoa...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="404"/>
         <source>Generating your Jami account...</source>
-        <translation>Luodaan sinun Jami-tiliä...</translation>
+        <translation>Luodaan sinun Jami-tunnusta...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="422"/>
         <source>Generating your SIP account...</source>
-        <translation>Luodaan sinun SIP-tiliä...</translation>
+        <translation>Luodaan sinun SIP-tunnusta...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="533"/>
         <source>Error creating account</source>
-        <translation>Virhe tilin luomisessa</translation>
+        <translation>Virhe tunnuksen luomisessa</translation>
     </message>
 </context>
 <context>
@@ -1096,7 +1096,7 @@ että käyttäisit tunnustasi.</translation>
     <message>
         <location filename="../passworddialog.ui" line="32"/>
         <source>Change Account Password</source>
-        <translation>Vaihda tilin salasana</translation>
+        <translation>Vaihda tunnuksen salasana</translation>
     </message>
     <message>
         <location filename="../passworddialog.ui" line="97"/>
@@ -1189,7 +1189,7 @@ että käyttäisit tunnustasi.</translation>
     <message>
         <location filename="../deviceitemwidget.cpp" line="44"/>
         <source>Unlink Device From Account</source>
-        <translation>Irrota laite tililtä</translation>
+        <translation>Irrota laite tunnuksesta</translation>
     </message>
     <message>
         <location filename="../deviceitemwidget.cpp" line="80"/>
@@ -1252,7 +1252,7 @@ että käyttäisit tunnustasi.</translation>
     <message>
         <location filename="../settingswidget.ui" line="653"/>
         <source>Keep minimized on close</source>
-        <translation>Pidä pinennettynä suljettaessa</translation>
+        <translation>Pidä pienennettynä suljettaessa</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="678"/>
@@ -1417,7 +1417,7 @@ että käyttäisit tunnustasi.</translation>
         <location filename="../settingswidget.ui" line="2359"/>
         <location filename="../settingswidget.ui" line="3187"/>
         <source>Advanced Account Settings</source>
-        <translation>Tunnuksen lisäasetukset</translation>
+        <translation>Tilin lisäasetukset</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2554"/>
@@ -1508,7 +1508,7 @@ että käyttäisit tunnustasi.</translation>
     <message>
         <location filename="../settingswidget.cpp" line="551"/>
         <source>Enter this account&apos;s password to confirm the removal of this device</source>
-        <translation>Anna tämän tilin salasana vahvistaaksesi laitteen poistamisen</translation>
+        <translation>Anna tämän tunnuksen salasana vahvistaaksesi laitteen poistamisen</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="558"/>
@@ -1518,7 +1518,7 @@ että käyttäisit tunnustasi.</translation>
     <message>
         <location filename="../settingswidget.cpp" line="589"/>
         <source>Export Account Here</source>
-        <translation>Vie tili tähän</translation>
+        <translation>Vie tunnus tähän</translation>
     </message>
     <message>
         <location filename="../settingswidget.cpp" line="887"/>
@@ -1528,7 +1528,7 @@ että käyttäisit tunnustasi.</translation>
     <message>
         <location filename="../settingswidget.cpp" line="904"/>
         <source>Select A Folder For Your Recordings</source>
-        <translation>Valitse kansio nauhoituksia varten</translation>
+        <translation>Valitse kansio tallennuksia varten</translation>
     </message>
 </context>
 <context>

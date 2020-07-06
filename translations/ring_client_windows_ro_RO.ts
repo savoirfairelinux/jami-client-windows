@@ -377,7 +377,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="956"/>
         <source>Error while generating QR Code</source>
-        <translation type="unfinished"/>
+        <translation>Eroare la generarea codului QR</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1184"/>
@@ -623,7 +623,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="402"/>
         <source>Your PIN is</source>
-        <translation type="unfinished"/>
+        <translation>Codul tău PIN e</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="432"/>
@@ -633,7 +633,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="477"/>
         <source>This pin and the account password should be entered in your device within 10 minutes.</source>
-        <translation type="unfinished"/>
+        <translation>Acest cod PIN și parola contului trebuie introduse în dispozitiv în 10 minute.</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.ui" line="553"/>
@@ -643,7 +643,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.cpp" line="34"/>
         <source>Link Another Device</source>
-        <translation type="unfinished"/>
+        <translation>Asociază alt dispozitiv</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.cpp" line="96"/>
@@ -783,17 +783,17 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="282"/>
         <source>Link device button</source>
-        <translation type="unfinished"/>
+        <translation>Butonul Asociază dispozitivul</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="288"/>
         <source>Push button for device linkage start trigger</source>
-        <translation type="unfinished"/>
+        <translation>Apasă butonul pentru a începe asocierea dispozitivului</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="291"/>
         <source>Link this device to an account</source>
-        <translation>Conectează acest dispozitiv la un cont</translation>
+        <translation>Asociază acest dispozitiv unui cont</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="328"/>
@@ -813,7 +813,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="405"/>
         <source>Link this device to an existing account</source>
-        <translation type="unfinished"/>
+        <translation>Asociază acest dispozitiv unui cont existent</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="469"/>
@@ -827,12 +827,21 @@ p, li { white-space: pre-wrap; }
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Go to the &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Devices&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; tab&lt;/span&gt;&lt;/li&gt;
 &lt;li style=&quot; font-family:'Ubuntu'; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Select &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Add a device&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;You will get the necessary PIN to complete this form. The PIN is only valid for &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 minutes&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;Pentru a asocia acest dispozitiv unui alt cont, mai întîi &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;trebuie să obții un cod&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt; PIN. Pentru a genera codul PIN:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Du-te la &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;reglările contului&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; în dispozitivul care conține contul&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Alege &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;contul Jami&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; pe care vrei să-l folosești&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Du-te la &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;pagina&lt;/span&gt;&lt;span style=&quot; font-size:14px;&quot;&gt; Dispozitive&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14px;&quot;&gt;Alege &lt;/span&gt;&lt;span style=&quot; font-size:14px; font-weight:600;&quot;&gt;Adaugă un dispozitiv&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; color:#555555;&quot;&gt;Vei obține codul PIN necesar. Acest PIN e valabil doar &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:14px; font-weight:600; color:#555555;&quot;&gt;10 minute&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10px; color:#555555;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="531"/>
         <source>Enter your pin:</source>
-        <translation type="unfinished"/>
+        <translation>Introdu codul PIN:</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="599"/>
@@ -842,7 +851,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="626"/>
         <source>Link from exported account archive file</source>
-        <translation type="unfinished"/>
+        <translation>Asociază din fișierul arhivei contului exportat</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="629"/>
@@ -1007,12 +1016,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2396"/>
         <source>Cancel account create/link</source>
-        <translation type="unfinished"/>
+        <translation>Renunță la crearea/asocierea contului</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2402"/>
         <source>push button to cancel account creation or linking</source>
-        <translation type="unfinished"/>
+        <translation>apasă butonul pentru a renunța la crearea sau asocierea contului</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2405"/>
@@ -1062,12 +1071,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="404"/>
         <source>Generating your Jami account...</source>
-        <translation type="unfinished"/>
+        <translation>Se creează contul tău Jami...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="422"/>
         <source>Generating your SIP account...</source>
-        <translation type="unfinished"/>
+        <translation>Se creează contul tău SIP...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="533"/>
@@ -1173,7 +1182,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../deviceitemwidget.cpp" line="44"/>
         <source>Unlink Device From Account</source>
-        <translation type="unfinished"/>
+        <translation>Disociază dispozitivul de cont</translation>
     </message>
     <message>
         <location filename="../deviceitemwidget.cpp" line="80"/>
@@ -1370,12 +1379,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1973"/>
         <source>Linked Devices</source>
-        <translation type="unfinished"/>
+        <translation>Dispozitive asociate</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2078"/>
         <source>Link Another Device</source>
-        <translation type="unfinished"/>
+        <translation>Asociază alt dispozitiv</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2142"/>

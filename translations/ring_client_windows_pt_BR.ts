@@ -1357,7 +1357,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1827"/>
         <source>Change Password</source>
-        <translation type="unfinished"/>
+        <translation>Alterar senha</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1868"/>
