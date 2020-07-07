@@ -31,7 +31,8 @@ Dialog {
 
     enum PasswordEnteringPurpose {
         ChangePassword,
-        ExportAccount
+        ExportAccount,
+        SetPassword
     }
     readonly property int successCode: 200
     signal doneSignal(int code, int currentPurpose)
@@ -45,6 +46,8 @@ Dialog {
             return qsTr("Enter the password of this account")
         case PasswordDialog.ChangePassword:
             return qsTr("Changing password")
+        case PasswordDialog.SetPassword:
+            return qsTr("Set password")
         }
     }
 
@@ -83,7 +86,7 @@ Dialog {
         repeat: false
 
         onTriggered: {
-            if (purpose === PasswordDialog.ChangePassword) {
+            if ((purpose === PasswordDialog.ChangePassword) || (purpose === PasswordDialog.SetPassword)) {
                 savePasswordQML()
             } else if(purpose === PasswordDialog.ExportAccount) {
                 exportAccountQML()
@@ -114,7 +117,7 @@ Dialog {
         spinnerMovie.playing = false
         spinnerLabel.visible = false
         if (success) {
-            ClientWrapper.accountAdaptor.setArchiveHasPassword(currentPasswordEdit.text.length !== 0)
+            ClientWrapper.accountAdaptor.setArchiveHasPassword(passwordEdit.text.length !== 0)
             haveDone(successCode, passwordDialog.purpose)
         } else {
             currentPasswordEdit.clear()
@@ -164,6 +167,7 @@ Dialog {
                         Layout.maximumHeight: 30
                         Layout.fillWidth: true
 
+                        visible: purpose === PasswordDialog.ChangePassword
                         echoMode: TextInput.Password
                         font.pointSize: 10
                         font.kerning: true
@@ -222,7 +226,7 @@ Dialog {
                     fieldLayoutHeight: 30
                     layoutFillwidth: true
 
-                    visible: purpose === PasswordDialog.ChangePassword
+                    visible: purpose === PasswordDialog.ChangePassword || purpose === PasswordDialog.SetPassword
                     echoMode: TextInput.Password
                     font.pointSize: 10
                     font.kerning: true
@@ -250,7 +254,7 @@ Dialog {
                     fieldLayoutHeight: 30
                     layoutFillwidth: true
 
-                    visible: purpose === PasswordDialog.ChangePassword
+                    visible: purpose === PasswordDialog.ChangePassword || purpose === PasswordDialog.SetPassword
                     echoMode: TextInput.Password
                     font.pointSize: 10
                     font.kerning: true
