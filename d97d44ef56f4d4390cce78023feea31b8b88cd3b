@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fe578d7_7582f692",
+        "filename": "src/settingsview/components/CurrentAccountSettingsScrollPage.qml",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 220
+      },
+      "writtenOn": "2020-07-07T18:38:55Z",
+      "side": 1,
+      "message": "The default argument is already \"\", so we don\u0027t need it",
+      "range": {
+        "startLine": 289,
+        "startChar": 56,
+        "endLine": 292,
+        "endChar": 68
+      },
+      "revId": "d97d44ef56f4d4390cce78023feea31b8b88cd3b",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
