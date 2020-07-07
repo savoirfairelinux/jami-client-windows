@@ -285,6 +285,10 @@ Rectangle {
             case PasswordDialog.ChangePassword:
                 info = success ? qsTr("Password Changed Successfully") : qsTr("Password Change Failed")
                 break
+            case PasswordDialog.SetPassword:
+                info = success ? qsTr("Password Set Successfully") : qsTr("Password Set Failed")
+                passwdPushButton.text = success ? qsTr("Change Password") : qsTr("Set Password")
+                break
             }
 
             msgDialog.openWithParameters(title,info, iconMode, StandardButton.Ok)
@@ -296,7 +300,11 @@ Rectangle {
     }
 
     function passwordClicked() {
-         passwordDialog.openDialog(PasswordDialog.ChangePassword,"")
+        if (ClientWrapper.accountAdaptor.hasPassword()){
+            passwordDialog.openDialog(PasswordDialog.ChangePassword)
+        } else {
+            passwordDialog.openDialog(PasswordDialog.SetPassword)
+        }
     }
 
     function delAccountSlot() {
@@ -909,8 +917,8 @@ Rectangle {
                                     Layout.minimumHeight: 30
                                     Layout.preferredHeight: 30
                                     Layout.maximumHeight: 30
+                                    text: ClientWrapper.accountAdaptor.hasPassword() ? qsTr("Change Password") : qsTr("Set Password")
 
-                                    text: qsTr("Change Password")
                                     font.pointSize: 10
                                     font.kerning: true
 
