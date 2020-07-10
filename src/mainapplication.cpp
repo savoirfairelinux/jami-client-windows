@@ -22,6 +22,7 @@
 
 #include "accountadapter.h"
 #include "accountlistmodel.h"
+#include "accountstomigratelistmodel.h"
 #include "audiocodeclistmodel.h"
 #include "avadapter.h"
 #include "bannedlistmodel.h"
@@ -269,15 +270,6 @@ MainApplication::processInputArgument(bool &startMinimized)
     }
 }
 
-bool
-MainApplication::startAccountMigration()
-{
-    /*
-     * TODO: account migration.
-     */
-    return true;
-}
-
 void
 MainApplication::setApplicationFont()
 {
@@ -298,6 +290,7 @@ MainApplication::qmlInitialization()
     QML_REGISTERTYPE(BannedListModel, 1, 0);
     QML_REGISTERTYPE(VideoCodecListModel, 1, 0);
     QML_REGISTERTYPE(AudioCodecListModel, 1, 0);
+    QML_REGISTERTYPE(AccountsToMigrateListModel, 1, 0);
 
     /*
      * Register QQuickItem type.
@@ -426,12 +419,6 @@ MainApplication::applicationSetup()
      */
     bool startMinimized{false};
     processInputArgument(startMinimized);
-
-    /*
-     * Start possible account migration.
-     */
-    if (!startAccountMigration())
-        return false;
 
     /*
      * Create jami.net settings in Registry if it is not presented.
