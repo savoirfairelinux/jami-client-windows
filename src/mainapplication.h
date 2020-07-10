@@ -51,7 +51,6 @@ private:
     void loadTranslations();
     void initLrc();
     void processInputArgument(bool &startMinimized);
-    bool startAccountMigration();
     void setApplicationFont();
     void qmlInitialization();
 
