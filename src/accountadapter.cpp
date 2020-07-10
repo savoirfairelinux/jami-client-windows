@@ -310,6 +310,16 @@ AccountAdapter::exportToFile(const QString &accountId,
     return LRCInstance::accountModel().exportToFile(accountId, path, password);
 }
 
+void
+AccountAdapter::setArchivePasswordAsync(const QString &accountID, const QString &password)
+{
+    QtConcurrent::run([this, accountID, password] {
+        auto config = LRCInstance::accountModel().getAccountConfig(accountID);
+        config.archivePassword = password;
+        LRCInstance::accountModel().setAccountConfig(accountID, config);
+    });
+}
+
 lrc::api::NewAccountModel *
 AccountAdapter::accoundModel()
 {
