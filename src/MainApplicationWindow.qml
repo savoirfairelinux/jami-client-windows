@@ -8,13 +8,33 @@ import net.jami.Models 1.0
 
 import "mainview"
 import "wizardview"
+import "commoncomponents"
 
 ApplicationWindow {
     id: mainApplicationWindow
 
+    AccountMigrationDialog{
+        id: accountMigrationDialog
+    }
+
     function slotNewAccountAdded() {
         if(mainViewLoader.newAddedAccountIndex !== -1)
             mainViewLoader.item.newAccountAdded(mainViewLoader.newAddedAccountIndex)
+    }
+
+    function startAccountMigration(){
+
+    }
+
+    function startClientByMainview(){
+        setX(Screen.width / 2 - width / 2)
+        setY(Screen.height / 2 - height / 2)
+
+        if (!ClientWrapper.utilsAdaptor.getAccountListSize()) {
+            wizardView.show()
+        } else {
+            mainViewLoader.setSource("qrc:/src/mainview/MainView.qml")
+        }
     }
 
     Universal.theme: Universal.Light
@@ -70,14 +90,7 @@ ApplicationWindow {
     }
 
     Component.onCompleted: {
-        setX(Screen.width / 2 - width / 2)
-        setY(Screen.height / 2 - height / 2)
-
-        if (!ClientWrapper.utilsAdaptor.getAccountListSize()) {
-            wizardView.show()
-        } else {
-            mainViewLoader.setSource("qrc:/src/mainview/MainView.qml")
-        }
+        startClientByMainview()
     }
 
     overlay.modal: ColorOverlay {
