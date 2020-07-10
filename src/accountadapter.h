@@ -66,6 +66,7 @@ public:
     Q_INVOKABLE bool exportToFile(const QString &accountId,
                                   const QString &path,
                                   const QString &password = {}) const;
+    Q_INVOKABLE void setArchivePasswordAsync(const QString &accountID, const QString &password);
     /*
      * lrc instances functions wrappers
      */
