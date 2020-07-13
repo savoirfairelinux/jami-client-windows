@@ -249,7 +249,7 @@ ColumnLayout {
         }
 
         onAccepted: {
-            var url = file.toString().replace("file:///", "")
+            var url = ClientWrapper.utilsAdaptor.getAbsPath(file.toString())
             changeRingtonePath(url)
         }
     }
@@ -275,7 +275,7 @@ ColumnLayout {
         }
 
         onAccepted: {
-            var url = file.toString().replace("file:///", "")
+            var url = ClientWrapper.utilsAdaptor.getAbsPath(file.toString())
             changeFileCACert(url)
         }
     }
@@ -301,7 +301,7 @@ ColumnLayout {
         }
 
         onAccepted: {
-            var url = file.toString().replace("file:///", "")
+            var url = ClientWrapper.utilsAdaptor.getAbsPath(file.toString())
             changeFileUserCert(url)
         }
     }
@@ -327,7 +327,7 @@ ColumnLayout {
         }
 
         onAccepted: {
-            var url = file.toString().replace("file:///", "")
+            var url = ClientWrapper.utilsAdaptor.getAbsPath(file.toString())
             changeFilePrivateKey(url)
         }
     }

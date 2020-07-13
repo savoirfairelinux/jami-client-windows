@@ -67,7 +67,9 @@ Rectangle {
             var filePaths = jamiFileDialog.files
             for (var index = 0; index < filePaths.length; ++index) {
                 // trim file:///
-                var trimmedFilePrefixPath = filePaths[index].substr(8)
+                var trimmedFilePrefixPath = (Qt.platform.os == "windows") ?
+                            filePaths[index].substr(8) :
+                            filePaths[index].substr(7)
                 MessagesAdapter.setNewMessagesContent(trimmedFilePrefixPath)
             }
         }

@@ -100,7 +100,7 @@ Rectangle {
         currentFolder: StandardPaths.writableLocation(StandardPaths.DownloadLocation)
 
         onAccepted: {
-            var dir = folder.toString().replace("file:///", "")
+            var dir = ClientWrapper.utilsAdaptor.getAbsPath(folder.toString())
             downloadPath = dir
         }
 
@@ -124,7 +124,7 @@ Rectangle {
         currentFolder: StandardPaths.writableLocation(StandardPaths.HomeLocation)
 
         onAccepted: {
-            var dir = folder.toString().replace("file:///", "")
+            var dir = ClientWrapper.utilsAdaptor.getAbsPath(folder.toString())
             recordPath = dir
         }
 
