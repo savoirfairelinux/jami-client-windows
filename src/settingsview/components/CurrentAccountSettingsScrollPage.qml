@@ -245,7 +245,7 @@ Rectangle {
 
         onAccepted: {
             // is there password? If so, go to password dialog, else, go to following directly
-            var exportPath = file.toString().replace("file:///", "")
+            var exportPath = ClientWrapper.utilsAdaptor.getAbsPath(file.toString())
             if (ClientWrapper.accountAdaptor.hasPassword()) {
                 passwordDialog.openDialog(PasswordDialog.ExportAccount,exportPath)
                 return
