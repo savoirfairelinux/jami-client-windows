@@ -64,7 +64,8 @@ ColumnLayout{
                 imageCleared()
                 return
             }
-            imgBase64 = ClientWrapper.utilsAdaptor.getCroppedImageBase64FromFile(fileName.replace("file:///", ""),boothWidht)
+            imgBase64 = ClientWrapper.utilsAdaptor.getCroppedImageBase64FromFile(
+                        ClientWrapper.utilsAdaptor.getAbsPath(fileName),boothWidht)
             imageAcquired()
             stopBooth()
         }
