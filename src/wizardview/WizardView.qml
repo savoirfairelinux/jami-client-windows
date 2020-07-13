@@ -526,14 +526,14 @@ Window {
                                 if (accepted) {
                                     // is there password? If so, go to password dialog, else, go to following directly
                                     if (ClientWrapper.accountAdaptor.hasPassword()) {
-                                        passwordDialog.path = folderDir.replace("file:///", "")
+                                        passwordDialog.path = ClientWrapper.utilsAdaptor.getAbsPath(folderDir)
                                         passwordDialog.open()
                                         return
                                     } else {
                                         if (folderDir.length > 0) {
                                             ClientWrapper.accountAdaptor.exportToFile(
                                                         ClientWrapper.utilsAdaptor.getCurrAccId(),
-                                                        folderDir.replace("file:///",""))
+                                                        ClientWrapper.utilsAdaptor.getAbsPath(folderDir))
                                         }
                                     }
                                 }
