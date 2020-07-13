@@ -5,17 +5,17 @@
         <location filename="../aboutdialog.ui" line="435"/>
         <location filename="../aboutdialog.ui" line="465"/>
         <source>About</source>
-        <translation type="unfinished"/>
+        <translation>Despre</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="462"/>
         <source>about button</source>
-        <translation type="unfinished"/>
+        <translation>butonul Informații</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="478"/>
         <source>credits button</source>
-        <translation type="unfinished"/>
+        <translation>butonul Merite</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="481"/>
@@ -147,7 +147,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsipsettingwidget.cpp" line="142"/>
         <source>Audio Files (*.wav *.ogg *.opus *.mp3 *aiff *wma)</source>
-        <translation type="unfinished"/>
+        <translation>Fișiere Audio (*.wav *.ogg *.opus *.mp3 *aiff *wma)</translation>
     </message>
     <message>
         <location filename="../advancedsipsettingwidget.cpp" line="151"/>
@@ -225,7 +225,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.ui" line="583"/>
         <source>User Certificate</source>
-        <translation type="unfinished"/>
+        <translation>Certificat de utilizator</translation>
     </message>
     <message>
         <location filename="../advancedsettingswidget.ui" line="622"/>
@@ -300,7 +300,7 @@ Jami is a secured and distributed communication software.</source>
     <message>
         <location filename="../advancedsettingswidget.cpp" line="181"/>
         <source>Audio Files (*.wav *.ogg *.opus *.mp3 *aiff *wma)</source>
-        <translation type="unfinished"/>
+        <translation>Fișiere Audio (*.wav *.ogg *.opus *.mp3 *aiff *wma)</translation>
     </message>
 </context>
 <context>
@@ -362,12 +362,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="806"/>
         <source>Show ring ID QR code</source>
-        <translation type="unfinished"/>
+        <translation>Arată Jami ID și codul QR</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="857"/>
         <source>Share ring ID button</source>
-        <translation type="unfinished"/>
+        <translation>butonul Distribuie Jami ID</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="915"/>
@@ -393,7 +393,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="1734"/>
         <source>Back to homepage button</source>
-        <translation type="unfinished"/>
+        <translation>butonul Înapoi la pagina Acasă</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1943"/>
@@ -424,12 +424,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="1517"/>
         <source>Answer incoming call button</source>
-        <translation>Butonul de răspuns la apel</translation>
+        <translation>butonul Răspunde la apel</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1589"/>
         <source>Ignore incoming call button</source>
-        <translation>Butonul de refuzat apelul</translation>
+        <translation>butonul Ignoră apelul</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1539"/>
@@ -439,7 +439,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.ui" line="1617"/>
         <source>Ignore</source>
-        <translation type="unfinished"/>
+        <translation>Ignoră</translation>
     </message>
     <message>
         <location filename="../callwidget.ui" line="1280"/>
@@ -454,12 +454,12 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="332"/>
         <source>Start video call</source>
-        <translation type="unfinished"/>
+        <translation>Începe un apel video</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="343"/>
         <source>Start audio call</source>
-        <translation type="unfinished"/>
+        <translation>Începe un apel audio</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="354"/>
@@ -469,7 +469,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="361"/>
         <source>Remove contact</source>
-        <translation type="unfinished"/>
+        <translation>Șterge contactul</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="373"/>
@@ -489,7 +489,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../callwidget.cpp" line="943"/>
         <source>Contact me on Jami</source>
-        <translation type="unfinished"/>
+        <translation>Contactează-mă pe Jami</translation>
     </message>
     <message>
         <location filename="../callwidget.cpp" line="943"/>
@@ -638,7 +638,7 @@ Copy and share it with your friends!
     <message>
         <location filename="../linkdevicedialog.ui" line="553"/>
         <source>Close</source>
-        <translation type="unfinished"/>
+        <translation>Închide</translation>
     </message>
     <message>
         <location filename="../linkdevicedialog.cpp" line="34"/>
@@ -672,12 +672,12 @@ Please try again later.</source>
     <message>
         <location filename="../mainwindow.cpp" line="111"/>
         <source>About</source>
-        <translation type="unfinished"/>
+        <translation>Despre</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Jami</source>
-        <translation type="unfinished"/>
+        <translation>Jami</translation>
     </message>
 </context>
 <context>
@@ -730,7 +730,7 @@ Please try again later.</source>
     <message>
         <location filename="../nameregistrationdialog.ui" line="618"/>
         <source>Close</source>
-        <translation type="unfinished"/>
+        <translation>Închide</translation>
     </message>
     <message>
         <location filename="../nameregistrationdialog.cpp" line="82"/>
@@ -768,7 +768,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="239"/>
         <source>Create Jami account button</source>
-        <translation type="unfinished"/>
+        <translation>butonul Creează un cont Jami</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="245"/>
@@ -783,7 +783,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="282"/>
         <source>Link device button</source>
-        <translation>Butonul Asociază dispozitivul</translation>
+        <translation>butonul Asociază dispozitivul</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="288"/>
@@ -798,7 +798,7 @@ Please try again later.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="328"/>
         <source>Create Jami SIP account button</source>
-        <translation type="unfinished"/>
+        <translation>butonul Creează un cont Jami SIP</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="334"/>
@@ -846,7 +846,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../newwizardwidget.ui" line="599"/>
         <source>Or import a file:</source>
-        <translation type="unfinished"/>
+        <translation>Sau importă un fișier:</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="626"/>
@@ -875,7 +875,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../newwizardwidget.ui" line="953"/>
         <location filename="../newwizardwidget.ui" line="1767"/>
         <source>Profile name</source>
-        <translation type="unfinished"/>
+        <translation>Numele profilului</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="1027"/>
@@ -1001,7 +1001,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2356"/>
         <source>Previous page button</source>
-        <translation type="unfinished"/>
+        <translation>butonul Pagina precedentă</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2362"/>
@@ -1031,7 +1031,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.ui" line="2442"/>
         <source>Next page Button</source>
-        <translation type="unfinished"/>
+        <translation>butonul Pagina următoare</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.ui" line="2448"/>
@@ -1046,12 +1046,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="75"/>
         <source>Open File</source>
-        <translation type="unfinished"/>
+        <translation>Deschide fișierul</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="77"/>
         <source>Jami archive files (*.gz); All files (*)</source>
-        <translation type="unfinished"/>
+        <translation>Fișierul arhivei Jami (*.gz); Toate fișierele (*)</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="123"/>
@@ -1066,7 +1066,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../newwizardwidget.cpp" line="412"/>
         <source>Importing account archive...</source>
-        <translation type="unfinished"/>
+        <translation>Se importă arhiva contului...</translation>
     </message>
     <message>
         <location filename="../newwizardwidget.cpp" line="404"/>
@@ -1145,12 +1145,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../photoboothwidget.cpp" line="92"/>
         <source>Choose File</source>
-        <translation type="unfinished"/>
+        <translation>Alege fișierul</translation>
     </message>
     <message>
         <location filename="../photoboothwidget.cpp" line="94"/>
         <source>Image Files (*.jpg *.jpeg *.png)</source>
-        <translation type="unfinished"/>
+        <translation>Fișiere Imagine (*.jpg *.jpeg *.png)</translation>
     </message>
 </context>
 <context>
@@ -1158,12 +1158,12 @@ instead of using your ID.</source>
     <message>
         <location filename="../messagewebview.cpp" line="374"/>
         <source>Choose File</source>
-        <translation type="unfinished"/>
+        <translation>Alege fișierul</translation>
     </message>
     <message>
         <location filename="../messagewebview.cpp" line="374"/>
         <source>Files (*)</source>
-        <translation type="unfinished"/>
+        <translation>Fișiere (*)</translation>
     </message>
 </context>
 <context>
@@ -1285,7 +1285,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="1081"/>
         <source>Check for updates now button</source>
-        <translation type="unfinished"/>
+        <translation>butonul Caută actualizări acum</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="1084"/>
@@ -1404,7 +1404,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../settingswidget.ui" line="3967"/>
         <source>Preview unavailable</source>
-        <translation type="unfinished"/>
+        <translation>Previzualizare indisponibilă</translation>
     </message>
     <message>
         <location filename="../settingswidget.ui" line="2359"/>
@@ -1574,7 +1574,7 @@ instead of using your ID.</source>
     <message>
         <location filename="../videooverlay.ui" line="203"/>
         <source>Mute Video</source>
-        <translation type="unfinished"/>
+        <translation>Video fără sonor</translation>
     </message>
 </context>
 <context>
