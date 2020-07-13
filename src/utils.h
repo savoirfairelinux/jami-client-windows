@@ -534,6 +534,16 @@ public:
     }
 
     Q_INVOKABLE QString
+    getAbsPath(QString inputPath)
+    {
+#ifdef Q_OS_WIN
+        return inputPath.replace("file:///", "");
+#else
+        return inputPath.replace("file:///","/");
+#endif
+    }
+
+    Q_INVOKABLE QString
     getCroppedImageBase64FromFile(QString fileName, int size)
     {
         auto image = Utils::cropImage(QImage(fileName));
