@@ -30,6 +30,9 @@ int
 main(int argc, char *argv[])
 {
     setlocale(LC_ALL, "en_US.utf8");
+#ifdef Q_OS_LINUX
+    setenv("QT_QPA_PLATFORMTHEME", "gtk3", true);
+#endif
 
     MainApplication::applicationInitialization();
 
