@@ -311,7 +311,7 @@ ColumnLayout {
 
                 Layout.leftMargin: 20
 
-                labelText: qsTr("Allow Calls From Unstructed Peers")
+                labelText: qsTr("Allow incoming calls from unknown contacts")
                 fontPointSize: 10
 
                 onSwitchToggled: {

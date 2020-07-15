@@ -287,7 +287,7 @@ ColumnLayout {
 
                 Layout.alignment: Qt.AlignLeft
 
-                text: qsTr("Choose a passoword for enhanced security")
+                text: qsTr("Choose a password for enhanced security")
                 font.pointSize: 8
                 font.kerning: true
 
