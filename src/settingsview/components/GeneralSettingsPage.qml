@@ -551,6 +551,7 @@ Rectangle {
                 ColumnLayout {
                     spacing: 6
                     Layout.fillWidth: true
+                    visible: Qt.platform.os == "windows"? true : false
 
                     Label {
                         Layout.fillWidth: true
