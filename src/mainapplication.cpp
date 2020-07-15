@@ -60,10 +60,10 @@
 #endif
 
 MainApplication::MainApplication(int &argc, char **argv)
-    : QGuiApplication(argc, argv)
+    : QApplication(argc, argv)
     , engine_(new QQmlApplicationEngine())
 {
-    QObject::connect(this, &QGuiApplication::aboutToQuit, [this] { exitApp(); });
+    QObject::connect(this, &QApplication::aboutToQuit, [this] { exitApp(); });
 }
 
 void
@@ -72,13 +72,13 @@ MainApplication::applicationInitialization()
     /*
      * Some attributes are needed to be set before the creation of the application.
      */
-    QGuiApplication::setApplicationName("Ring");
-    QGuiApplication::setOrganizationDomain("jami.net");
-    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
-    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+    QApplication::setApplicationName("Ring");
+    QApplication::setOrganizationDomain("jami.net");
+    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
+    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
     QCoreApplication::setAttribute(Qt::AA_UseOpenGLES);
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    QGuiApplication::setHighDpiScaleFactorRoundingPolicy(
+    QApplication::setHighDpiScaleFactorRoundingPolicy(
         Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor);
     /*
      * Initialize QtWebEngine.
