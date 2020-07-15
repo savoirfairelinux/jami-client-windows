@@ -28,7 +28,7 @@
 #include <QClipboard>
 #include <QCryptographicHash>
 #include <QDir>
-#include <QGuiApplication>
+#include <QApplication>
 #include <QImage>
 #include <QItemDelegate>
 #include <QLabel>
@@ -404,7 +404,7 @@ public:
     explicit UtilsAdapter(QObject *parent = nullptr)
         : QObject(parent)
     {
-        clipboard_ = QGuiApplication::clipboard();
+        clipboard_ = QApplication::clipboard();
     }
     ~UtilsAdapter() {}
 

@@ -43,8 +43,8 @@ main(int argc, char *argv[])
      * Note: needs to be after the creation of the application
     */
     QCryptographicHash appData(QCryptographicHash::Sha256);
-    appData.addData(QGuiApplication::applicationName().toUtf8());
-    appData.addData(QGuiApplication::organizationDomain().toUtf8());
+    appData.addData(QApplication::applicationName().toUtf8());
+    appData.addData(QApplication::organizationDomain().toUtf8());
     RunGuard guard(appData.result());
     if (!guard.tryToRun()) {
         /*
