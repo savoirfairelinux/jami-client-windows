@@ -355,19 +355,26 @@ Rectangle {
         anchors.fill: parent
 
         propagateComposedEvents: true
-        acceptedButtons: Qt.RightButton
+        acceptedButtons: Qt.LeftButton | Qt.RightButton
+
+
+
+        onDoubleClicked: {
+            videoCallPageRect.needToShowInFullScreen()
+        }
 
         onClicked: {
 
-
-            /*
-             * Make menu pos at mouse.
-             */
-            var relativeMousePos = mapToItem(videoCallPageRect,
-                                             mouse.x, mouse.y)
-            videoCallPageContextMenu.x = relativeMousePos.x
-            videoCallPageContextMenu.y = relativeMousePos.y
-            videoCallPageContextMenu.activate()
+            if (mouse.button === Qt.RightButton) {
+                /*
+                * Make menu pos at mouse.
+                */
+                var relativeMousePos = mapToItem(videoCallPageRect,
+                                                mouse.x, mouse.y)
+                videoCallPageContextMenu.x = relativeMousePos.x
+                videoCallPageContextMenu.y = relativeMousePos.y
+                videoCallPageContextMenu.activate()
+            }
         }
     }
 
