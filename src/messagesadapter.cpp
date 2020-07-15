@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2020 by Savoir-faire Linux
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>
- * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>
+ * Author: Anthony Lï¿½onard <anthony.leonard@savoirfairelinux.com>
  * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>
  * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>
@@ -365,7 +365,7 @@ MessagesAdapter::refuseFile(const QString &arg)
 void
 MessagesAdapter::pasteKeyDetected()
 {
-    const QMimeData *mimeData = QGuiApplication::clipboard()->mimeData();
+    const QMimeData *mimeData = QApplication::clipboard()->mimeData();
 
     if (mimeData->hasImage()) {
         /*
@@ -460,7 +460,7 @@ MessagesAdapter::newInteraction(const QString &accountId,
             return;
         }
         if (!interaction.authorUri.isEmpty()
-            && (!QGuiApplication::focusWindow() || LRCInstance::getCurrAccId() != accountId)) {
+            && (!QApplication::focusWindow() || LRCInstance::getCurrAccId() != accountId)) {
             /*
              * TODO: Notification from other accounts.
              */

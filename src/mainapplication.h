@@ -21,13 +21,13 @@
 #pragma once
 
 #include <QFile>
-#include <QGuiApplication>
+#include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlEngine>
 
 #include <memory>
 
-class MainApplication : public QGuiApplication
+class MainApplication : public QApplication
 {
     Q_OBJECT
 
