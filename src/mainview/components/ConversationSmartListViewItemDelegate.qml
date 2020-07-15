@@ -216,6 +216,13 @@ ItemDelegate {
                 itemSmartListBackground.color = JamiTheme.pressColor
             }
         }
+        onDoubleClicked: {
+            if (!InCall) {
+                ConversationsAdapter.selectConversation(ClientWrapper.utilsAdaptor.getCurrAccId(),
+                                                        UID, false)
+                CallAdapter.placeCall()
+            }
+        }
         onReleased: {
             if (!InCall) {
                 itemSmartListBackground.color = JamiTheme.releaseColor
