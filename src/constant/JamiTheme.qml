@@ -78,7 +78,7 @@ Item {
     /*
      * Place holder text.
      */
-    property string contactSearchBarPlaceHolderConversationText: qsTr("Find a new or existing contact")
+    property string contactSearchBarPlaceHolderConversationText: qsTr("Find or start a conversation")
     property string contactSearchBarPlaceHolderInivitionText: qsTr("Search your received invitations")
 
     // Jami theme colors
