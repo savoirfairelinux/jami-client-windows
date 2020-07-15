@@ -87,7 +87,7 @@ Rectangle {
             anchors.left: contactSearchBar.left
             anchors.leftMargin: 5
 
-            text: qsTr("Find a new or existing contact")
+            text: qsTr("Find or start a conversation")
             font.pointSize: JamiTheme.textFontSize - 1
             color: JamiTheme.contactSearchBarPlaceHolderTextFontColor
             visible: !contactSearchBar.text && !contactSearchBar.activeFocus
