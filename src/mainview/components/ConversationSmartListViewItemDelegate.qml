@@ -157,8 +157,8 @@ ItemDelegate {
                 TextMetrics {
                     id: textMetricsConversationSmartListUserLastInteractionDate
                     font: conversationSmartListUserLastInteractionDate.font
-                    elide: Text.ElideMiddle
                     elideWidth: conversationSmartListUserLastInteractionRect.width
+                    elide: Text.ElideRight
                     text: LastInteractionDate
                 }
 
@@ -177,8 +177,8 @@ ItemDelegate {
                 TextMetrics {
                     id: textMetricsConversationSmartListUserLastInteractionMessage
                     font: conversationSmartListUserLastInteractionMessage.font
-                    elide: Text.ElideMiddle
                     elideWidth: conversationSmartListUserLastInteractionRect.width
+                    elide: Text.ElideRight
                     text: InCall ? CallStateStr : (Draft ? Draft : LastInteraction)
                 }
 
