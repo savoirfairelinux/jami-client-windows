@@ -280,6 +280,9 @@ public:
         instance().selectedAccountId_ = accountId;
         QSettings settings("jami.net", "Jami");
         settings.setValue(SettingsKey::selectedAccount, accountId);
+
+        // Last selected account should be set as preferred.
+        accountModel().setTopAccount(accountId);
     };
 
     static const QString &
