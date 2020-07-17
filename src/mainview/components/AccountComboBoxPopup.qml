@@ -37,7 +37,7 @@ Popup {
      * Hack - limite the accounts that can be shown.
      */
     implicitHeight: Math.min(accountComboBox.height * Math.min(
-                                 5, accountListModel.rowCount()),
+                                 5, accountListModel.rowCount() + 1),
                              sidePanelRect.height)
     padding: 0
 
