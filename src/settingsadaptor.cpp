@@ -42,12 +42,19 @@ SettingsAdaptor::getDir_Document()
 QString
 SettingsAdaptor::getDir_Download()
 {
-    QString downloadPath = QDir::toNativeSeparators(
-        LRCInstance::dataTransferModel().downloadDirectory);
-    int pos = downloadPath.lastIndexOf(QChar('\\'));
-    if (pos == downloadPath.length() - 1) {
-        downloadPath.truncate(pos);
+    QString downloadPath = QDir::toNativeSeparators(LRCInstance::dataTransferModel().downloadDirectory);
+    if (downloadPath.isEmpty()) {
+        downloadPath = lrc::api::DataTransferModel::createDefaultDirectory();
+        setDownloadPath(downloadPath);
+        LRCInstance::dataTransferModel().downloadDirectory = downloadPath;
     }
+#ifdef Q_OS_WIN
+    int pos = downloadPath.lastIndexOf(QChar('\\'));
+#else
+    int pos = downloadPath.lastIndexOf(QChar('/'));
+#endif
+    if (pos == downloadPath.length() - 1)
+        downloadPath.truncate(pos);
     return downloadPath;
 }
 
