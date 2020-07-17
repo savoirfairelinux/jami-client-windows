@@ -31,6 +31,11 @@ Rectangle {
 
     anchors.fill: parent
 
+    Shortcut {
+        sequence: "Ctrl+D"
+        context: Qt.ApplicationShortcut
+        onActivated: CallAdapter.hangUpThisCall()
+    }
 
     /*
      * When selected conversation is changed,
