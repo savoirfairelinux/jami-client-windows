@@ -479,6 +479,11 @@ Window {
         height: qrDialog.contentHeight
     }
 
+    RecordBox{
+        id: recordBox
+        visible: false
+    }
+
     UserProfile {
         id: userProfile
 

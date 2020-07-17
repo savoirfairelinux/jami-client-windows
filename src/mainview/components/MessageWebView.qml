@@ -175,10 +175,12 @@ Rectangle {
             MessagesAdapter.pasteKeyDetected()
         }
 
-        function openAudioRecorder(spikePosX, spikePosY) {//messageWebViewRect.openAudioRecorder(spikePosX, spikePosY)
+        function openAudioRecorder(spikePosX, spikePosY) {
+            recordBox.openRecorder(spikePosX, spikePosY, false)
         }
 
-        function openVideoRecorder(spikePosX, spikePosY) {//messageWebViewRect.openVideoRecorder(spikePosX, spikePosY)
+        function openVideoRecorder(spikePosX, spikePosY) {
+            recordBox.openRecorder(spikePosX, spikePosY, true)
         }
 
         function saveSendMessageContent(arg) {
