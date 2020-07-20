@@ -5,6 +5,7 @@
         <file>src/settingsview/components/LeftPanelView.qml</file>
         <file>src/settingsview/components/AvSettingPage.qml</file>
         <file>src/settingsview/components/GeneralSettingsPage.qml</file>
+        <file>src/settingsview/components/PluginSettingsPage.qml</file>
         <file>src/settingsview/components/CurrentAccountSettingsScrollPage.qml</file>
         <file>src/settingsview/components/CurrentSIPAccountSettingScrollPage.qml</file>
         <file>src/settingsview/components/ToggleSwitch.qml</file>

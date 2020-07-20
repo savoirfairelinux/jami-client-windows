@@ -31,6 +31,7 @@
 
 #include "api/account.h"
 #include "api/avmodel.h"
+#include "api/pluginmodel.h"
 #include "api/behaviorcontroller.h"
 #include "api/contact.h"
 #include "api/contactmodel.h"
@@ -109,6 +110,11 @@ public:
     avModel()
     {
         return instance().lrc_->getAVModel();
+    };
+    static PluginModel &
+    pluginModel()
+    {
+        return instance().lrc_->getPluginModel();
     };
     static bool
     isConnected()

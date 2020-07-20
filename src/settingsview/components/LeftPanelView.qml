@@ -35,6 +35,7 @@ ScrollView{
     property alias btnAccountSettings: accountSettingsButton
     property alias btnGeneralSettings: generalSettingsButton
     property alias btnMediaSettings: mediaSettingsButton
+    property alias btnPluginSettings: pluginSettingsButton
 
     signal btnExitClicked
 
@@ -137,6 +138,7 @@ ScrollView{
             onCheckedToggledForLeftPanel: {
                 generalSettingsButton.setCheckedState(!checked, false)
                 mediaSettingsButton.setCheckedState(!checked, false)
+                pluginSettingsButton.setCheckedState(!checked, false)
             }
         }
 
@@ -149,6 +151,7 @@ ScrollView{
             onCheckedToggledForLeftPanel: {
                 accountSettingsButton.setCheckedState(!checked, false)
                 mediaSettingsButton.setCheckedState(!checked, false)
+                pluginSettingsButton.setCheckedState(!checked, false)
             }
         }
 
@@ -161,8 +164,23 @@ ScrollView{
             onCheckedToggledForLeftPanel: {
                 generalSettingsButton.setCheckedState(!checked, false)
                 accountSettingsButton.setCheckedState(!checked, false)
+                pluginSettingsButton.setCheckedState(!checked, false)
             }
         }
+
+        IconButton {
+            id: pluginSettingsButton
+
+            buttonText: qsTr("Plugins")
+            imageSource: "qrc:/images/icons/extension_24dp.svg"
+
+            onCheckedToggledForLeftPanel: {
+                generalSettingsButton.setCheckedState(!checked, false)
+                accountSettingsButton.setCheckedState(!checked, false)
+                mediaSettingsButton.setCheckedState(!checked, false)
+            }
+        }
+
         Item {
             Layout.fillWidth: true
             Layout.fillHeight: true

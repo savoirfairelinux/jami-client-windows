@@ -22,6 +22,7 @@
 #include "accountlistmodel.h"
 #include "audiocodeclistmodel.h"
 #include "avadapter.h"
+#include "pluginadapter.h"
 #include "bannedlistmodel.h"
 #include "calladapter.h"
 #include "contactadapter.h"
@@ -57,6 +58,7 @@ class ClientWrapper : public QObject
     Q_PROPERTY(lrc::api::DataTransferModel *dataTransferModel READ getDataTransferModel NOTIFY dataTransferModelChanged)
     Q_PROPERTY(lrc::api::ContactModel *contactModel READ getContactModel NOTIFY contactModelChanged)
     Q_PROPERTY(lrc::api::NewDeviceModel *deviceModel READ getDeviceModel NOTIFY deviceModelChanged)
+    Q_PROPERTY(lrc::api::PluginModel *pluginModel READ getPluginModel)
 public:
     explicit ClientWrapper(QObject *parent = nullptr);
 
@@ -73,6 +75,7 @@ public:
 
     lrc::api::ContactModel *getContactModel();
     lrc::api::NewDeviceModel *getDeviceModel();
+    lrc::api::PluginModel *getPluginModel();
 
 signals:
     void utilsAdaptorChanged();
