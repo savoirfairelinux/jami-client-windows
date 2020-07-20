@@ -163,7 +163,7 @@ Rectangle {
                 console.warn("Couldn't find device: " + deviceName)
                 return
             }
-
+            stopPreviewing()
             ClientWrapper.avmodel.setCurrentVideoCaptureDevice(deviceId)
             ClientWrapper.avmodel.setDefaultDevice(deviceId)
             setFormatListForDevice(deviceId)
@@ -176,7 +176,9 @@ Rectangle {
         var rate = formatBox.get(index).secondArg
         var device = ClientWrapper.avmodel.getCurrentVideoCaptureDevice()
         try{
+            stopPreviewing()
             ClientWrapper.settingsAdaptor.set_Video_Settings_Rate_And_Resolution(device,rate,resolution)
+            startPreviewing(true)
         } catch(error){console.warn(error.message)}
     }
 
