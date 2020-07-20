@@ -78,6 +78,12 @@ ClientWrapper::getAvModel()
     return &(LRCInstance::avModel());
 }
 
+lrc::api::PluginModel *
+ClientWrapper::getPluginModel()
+{
+    return &(LRCInstance::pluginModel());
+}
+
 lrc::api::DataTransferModel *
 ClientWrapper::getDataTransferModel()
 {
