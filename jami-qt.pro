@@ -96,11 +96,9 @@ unix {
         CONFIG += c++17
     }
 
-    isEmpty(LRC) { LRC=../../install/lrc/ }
-
-    INCLUDEPATH += $${LRC}/include/libringclient
-    INCLUDEPATH += $${LRC}/include
-    INCLUDEPATH += ../src
+    LIBS += -L$$PWD/../lrc/build-qml/ -lringclient
+    INCLUDEPATH += $$PWD/../lrc/build-qml
+    INCLUDEPATH += $$PWD/../lrc/src
 
     LIBS += -L$${LRC}/lib -lringclient
     LIBS += -lqrencode
