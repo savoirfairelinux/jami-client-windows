@@ -154,7 +154,7 @@ Rectangle {
                 console.warn("Couldn't find device: " + deviceName)
                 return
             }
-
+            stopPreviewing()
             ClientWrapper.avmodel.setCurrentVideoCaptureDevice(deviceId)
             ClientWrapper.avmodel.setDefaultDevice(deviceId)
             setFormatListForCurrentDevice()
@@ -181,7 +181,9 @@ Rectangle {
         }
 
         try{
+            stopPreviewing()
             ClientWrapper.settingsAdaptor.set_Video_Settings_Rate_And_Resolution(ClientWrapper.avmodel.getCurrentVideoCaptureDevice(),rate,resolution)
+            startPreviewing(true)
         } catch(error){console.warn(error.message)}
     }
 

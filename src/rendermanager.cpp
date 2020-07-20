@@ -77,13 +77,22 @@ FrameWrapper::startRendering()
 QImage *
 FrameWrapper::getFrame()
 {
-    return image_.get();
+    if (isRendering_)
+        return image_.get();
+    else
+        return nullptr;
 }
 
 bool
 FrameWrapper::isRendering()
 {
     return isRendering_;
+}
+
+void
+FrameWrapper::setIsRendering(const bool b)
+{
+    isRendering_ = b;
 }
 
 void
@@ -137,11 +146,10 @@ FrameWrapper::slotFrameUpdated(const QString &id)
 #else
         if (frame_.ptr) {
             image_.reset(new QImage(frame_.ptr, width, height, QImage::Format_ARGB32));
+            emit frameUpdated(id);
 #endif
         }
     }
-
-    emit frameUpdated(id);
 }
 
 void
@@ -224,6 +232,7 @@ RenderManager::stopPreviewing(bool async)
     if (!previewFrameWrapper_->isRendering()) {
         return;
     }
+    previewFrameWrapper_->setIsRendering(false);
 
     if (async) {
         QtConcurrent::run([this] { avModel_.stopPreview(); });
