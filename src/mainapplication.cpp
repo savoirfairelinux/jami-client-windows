@@ -34,6 +34,8 @@
 #include "contactadapter.h"
 #include "conversationsadapter.h"
 #include "deviceitemlistmodel.h"
+#include "pluginitemlistmodel.h"
+#include "preferenceitemlistmodel.h"
 #include "distantrenderer.h"
 #include "globalinstances.h"
 #include "globalsystemtray.h"
@@ -293,6 +295,8 @@ MainApplication::qmlInitialization()
      */
     QML_REGISTERTYPE(AccountListModel, 1, 0);
     QML_REGISTERTYPE(DeviceItemListModel, 1, 0);
+    QML_REGISTERTYPE(PluginItemListModel, 1, 0);
+    QML_REGISTERTYPE(PreferenceItemListModel, 1, 0);
     QML_REGISTERTYPE(BannedListModel, 1, 0);
     QML_REGISTERTYPE(VideoCodecListModel, 1, 0);
     QML_REGISTERTYPE(AudioCodecListModel, 1, 0);
@@ -347,6 +351,7 @@ MainApplication::qmlInitialization()
     QML_REGISTERUNCREATABLE_IN_NAMESPACE(ContactModel, lrc::api, 1, 0);
     QML_REGISTERUNCREATABLE_IN_NAMESPACE(ConversationModel, lrc::api, 1, 0);
     QML_REGISTERUNCREATABLE_IN_NAMESPACE(NewCallModel, lrc::api, 1, 0);
+    QML_REGISTERUNCREATABLE_IN_NAMESPACE(PluginModel, lrc::api, 1, 0);
     QML_REGISTERUNCREATABLE_IN_NAMESPACE(NewDeviceModel, lrc::api, 1, 0);
     QML_REGISTERUNCREATABLE_IN_NAMESPACE(NewCodecModel, lrc::api, 1, 0);
     QML_REGISTERUNCREATABLE_IN_NAMESPACE(PeerDiscoveryModel, lrc::api, 1, 0);
