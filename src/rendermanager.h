@@ -72,6 +72,8 @@ public:
      */
     bool isRendering();
 
+    void setIsRendering(const bool b);
+
 signals:
     /*
      * Emitted once in slotRenderingStarted.
