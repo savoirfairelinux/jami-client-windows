@@ -32,7 +32,8 @@ Rectangle {
     enum SettingsMenu{
         Account,
         General,
-        Media
+        Media,
+        Plugin
     }
 
     onVisibleChanged: {
@@ -83,6 +84,15 @@ Rectangle {
             avSettings.stopPreviewing()
             avSettings.populateAVSettings()
             avSettings.startAudioMeter()
+            break
+        case SettingsView.Plugin:
+            try{
+                avSettings.stopAudioMeter()
+                avSettings.stopPreviewing()
+            } catch(erro){}
+
+            selectedMenu = sel
+            pluginSettings.populatePluginSettings()
             break
         }
     }
@@ -196,6 +206,12 @@ Rectangle {
                             setSelected(SettingsView.Media)
                         }
                     }
+                    Connections {
+                        target: leftPanelView.btnPluginSettings
+                        function onCheckedToggledForRightPanel(checked) {
+                            setSelected(SettingsView.Plugin)
+                        }
+                    }
                 }
             }
 
@@ -206,6 +222,7 @@ Rectangle {
                 property int pageIdCurrentSIPAccountSettingScrollPage: 1
                 property int pageIdGeneralSettingsPage: 2
                 property int pageIdAvSettingPage: 3
+                property int pageIdPluginSettingsPage: 4
 
                 currentIndex: {
                     switch(selectedMenu){
@@ -219,6 +236,8 @@ Rectangle {
                             return pageIdGeneralSettingsPage
                         case SettingsView.Media:
                             return pageIdAvSettingPage
+                        case SettingsView.Plugin:
+                            return pageIdPluginSettingsPage
                     }
                 }
 
@@ -259,6 +278,11 @@ Rectangle {
                 // av setting page, index 3
                 AvSettingPage {
                     id: avSettings
+                }
+
+                // plugin setting page, index 4
+                PluginSettingsPage {
+                    id: pluginSettings
                 }
             }
         }
