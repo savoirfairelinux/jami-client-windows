@@ -5,6 +5,8 @@
         <file>src/settingsview/components/LeftPanelView.qml</file>
         <file>src/settingsview/components/AvSettingPage.qml</file>
         <file>src/settingsview/components/GeneralSettingsPage.qml</file>
+        <file>src/settingsview/components/PluginSettingsPage.qml</file>
+        <file>src/settingsview/components/PluginListSettingsView.qml</file>
         <file>src/settingsview/components/CurrentAccountSettingsScrollPage.qml</file>
         <file>src/settingsview/components/CurrentSIPAccountSettingScrollPage.qml</file>
         <file>src/settingsview/components/ToggleSwitch.qml</file>
@@ -13,6 +15,7 @@
         <file>src/settingsview/components/LevelMeter.qml</file>
         <file>src/settingsview/components/SettingParaCombobox.qml</file>
         <file>src/settingsview/components/DeviceItemDelegate.qml</file>
+        <file>src/settingsview/components/PluginItemDelegate.qml</file>
         <file>src/settingsview/components/BannedItemDelegate.qml</file>
         <file>src/settingsview/components/VideoCodecDelegate.qml</file>
         <file>src/settingsview/components/AudioCodecDelegate.qml</file>
