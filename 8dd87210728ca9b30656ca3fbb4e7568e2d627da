@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78bd2441_9db72e3c",
+        "filename": "src/rendermanager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 220
+      },
+      "writtenOn": "2020-07-20T20:18:34Z",
+      "side": 1,
+      "message": "do not set is rendering?\n\nSeems to cut the preview when changing resolutions (better than a crash but still not ok)",
+      "range": {
+        "startLine": 245,
+        "startChar": 15,
+        "endLine": 245,
+        "endChar": 30
+      },
+      "revId": "8dd87210728ca9b30656ca3fbb4e7568e2d627da",
+      "serverId": "1e26b4c1-6b8c-47ff-9df7-501b633d3b5a",
+      "unresolved": true
+    }
+  ]
+}
