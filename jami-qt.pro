@@ -135,6 +135,8 @@ HEADERS += ./src/smartlistmodel.h \
         ./src/contactadapter.h \
         ./src/settingsadaptor.h \
         ./src/deviceitemlistmodel.h \
+        ./src/pluginitemlistmodel.h \
+        ./src/preferenceitemlistmodel.h \
         ./src/audiocodeclistmodel.h \
         ./src/videocodeclistmodel.h \
         ./src/accountstomigratelistmodel.h \
@@ -167,6 +169,8 @@ SOURCES += ./src/bannedlistmodel.cpp \
         ./src/contactadapter.cpp \
         ./src/settingsadaptor.cpp \
         ./src/deviceitemlistmodel.cpp \
+        ./src/pluginitemlistmodel.cpp \
+        ./src/preferenceitemlistmodel.cpp \
         ./src/audiocodeclistmodel.cpp \
         ./src/videocodeclistmodel.cpp \
         ./src/accountstomigratelistmodel.cpp \
