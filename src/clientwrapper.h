@@ -27,6 +27,8 @@
 #include "contactadapter.h"
 #include "conversationsadapter.h"
 #include "deviceitemlistmodel.h"
+#include "pluginitemlistmodel.h"
+#include "preferenceitemlistmodel.h"
 #include "distantrenderer.h"
 #include "globalinstances.h"
 #include "globalsystemtray.h"
@@ -57,6 +59,7 @@ class ClientWrapper : public QObject
     Q_PROPERTY(lrc::api::DataTransferModel *dataTransferModel READ getDataTransferModel NOTIFY dataTransferModelChanged)
     Q_PROPERTY(lrc::api::ContactModel *contactModel READ getContactModel NOTIFY contactModelChanged)
     Q_PROPERTY(lrc::api::NewDeviceModel *deviceModel READ getDeviceModel NOTIFY deviceModelChanged)
+    Q_PROPERTY(lrc::api::PluginModel *pluginModel READ getPluginModel)
 public:
     explicit ClientWrapper(QObject *parent = nullptr);
 
@@ -73,6 +76,7 @@ public:
 
     lrc::api::ContactModel *getContactModel();
     lrc::api::NewDeviceModel *getDeviceModel();
+    lrc::api::PluginModel *getPluginModel();
 
 signals:
     void utilsAdaptorChanged();
