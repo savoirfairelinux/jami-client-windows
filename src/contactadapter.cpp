@@ -48,8 +48,9 @@ ContactAdapter::getContactSelectableModel(int type)
      */
     switch (listModeltype_) {
     case SmartListModel::Type::CONFERENCE:
-        selectableProxyModel_->setPredicate(
-            [this](const QModelIndex &, const QRegExp &) { return true; });
+        selectableProxyModel_->setPredicate([this](const QModelIndex &index, const QRegExp &) {
+            return index.data(SmartListModel::Presence).toBool();
+        });
         break;
     case SmartListModel::Type::TRANSFER:
         selectableProxyModel_->setPredicate([this](const QModelIndex &index, const QRegExp &regexp) {
