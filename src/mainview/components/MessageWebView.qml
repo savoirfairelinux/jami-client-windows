@@ -25,6 +25,7 @@ import net.jami.Models 1.0
 
 import "../../commoncomponents"
 
+
 Rectangle {
     id: messageWebViewRect
 
@@ -39,6 +40,7 @@ Rectangle {
     signal sendMessageContentSaved(string arg)
     signal messagesCleared
     signal messagesLoaded
+
 
     function webViewRunJavaScript(arg) {
         messageWebView.runJavaScript(arg)
@@ -66,16 +68,22 @@ Rectangle {
         onAccepted: {
             var filePaths = jamiFileDialog.files
             for (var index = 0; index < filePaths.length; ++index) {
-                // trim file:///
-                var trimmedFilePrefixPath = (Qt.platform.os == "windows") ?
-                            filePaths[index].substr(8) :
-                            filePaths[index].substr(7)
-                MessagesAdapter.setNewMessagesContent(trimmedFilePrefixPath)
+                var path = ClientWrapper.utilsAdaptor.getAbsPath(filePaths[index])
+                MessagesAdapter.setNewMessagesContent(path)
             }
         }
     }
 
     MessageWebViewHeader {
+
+        DropArea{
+            anchors.fill: parent
+            onDropped: {
+                var path = ClientWrapper.utilsAdaptor.getAbsPath(drop.text.toString())
+                MessagesAdapter.setNewMessagesContent(path)
+            }
+        }
+
         id: messageWebViewHeader
 
         anchors.top: messageWebViewRect.top
@@ -193,6 +201,7 @@ Rectangle {
     }
 
     WebEngineView {
+
         id: messageWebView
 
         anchors.top: messageWebViewHeader.bottom
@@ -216,6 +225,14 @@ Rectangle {
 
         webChannel: messageWebViewChannel
         profile: messageWebViewProfile
+
+        DropArea{
+            anchors.fill: parent
+            onDropped: {
+                var path = ClientWrapper.utilsAdaptor.getAbsPath(drop.text.toString())
+                MessagesAdapter.setNewMessagesContent(path)
+            }
+        }
 
         onLoadingChanged: {
             if (loadRequest.status == WebEngineView.LoadSucceededStatus) {
