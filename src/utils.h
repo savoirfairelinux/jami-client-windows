@@ -534,12 +534,12 @@ public:
     }
 
     Q_INVOKABLE QString
-    getAbsPath(QString inputPath)
+    getAbsPath(QString path)
     {
 #ifdef Q_OS_WIN
-        return inputPath.replace("file:///", "");
+        return path.replace("file:///", "").replace("\n", "").replace("\r", "");
 #else
-        return inputPath.replace("file:///","/");
+        return path.replace("file:///", "/").replace("\n", "").replace("\r", "");
 #endif
     }
 
