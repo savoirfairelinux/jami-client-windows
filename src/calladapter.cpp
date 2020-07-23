@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2020 by Savoir-faire Linux
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>
- * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>
+ * Author: Anthony LÃ©onard <anthony.leonard@savoirfairelinux.com>
  * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>
  * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>
@@ -143,7 +143,10 @@ CallAdapter::slotShowIncomingCallView(const QString &accountId, const conversati
         /*
          * Show incoming call page only.
          */
-        emit showIncomingCallPage(accountId, convInfo.uid);
+        auto accountProperties = LRCInstance::accountModel().getAccountConfig(accountId);
+        if (!accountProperties.autoAnswer && !accountProperties.isRendezVous) {
+            emit showIncomingCallPage(accountId, convInfo.uid);
+        }
         return;
     }
 
@@ -158,11 +161,7 @@ CallAdapter::slotShowIncomingCallView(const QString &accountId, const conversati
     } else {
         auto selectedAccountId = LRCInstance::getCurrentAccountInfo().id;
         auto accountProperties = LRCInstance::accountModel().getAccountConfig(selectedAccountId);
-        if (accountProperties.autoAnswer) {
-            /*
-             * TODO: Auto answer
-             */
-        } else {
+        if (!accountProperties.autoAnswer && !accountProperties.isRendezVous) {
             emit showIncomingCallPage(accountId, convInfo.uid);
         }
     }
