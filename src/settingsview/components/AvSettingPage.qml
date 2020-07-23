@@ -18,7 +18,7 @@
 
 import QtQuick 2.15
 import QtQuick.Window 2.14
-import QtQuick.Controls 2.14
+import QtQuick.Controls 2.15
 import QtQuick.Controls.Universal 2.12
 import QtQuick.Layouts 1.3
 import QtGraphicalEffects 1.14
@@ -28,23 +28,20 @@ import net.jami.Models 1.0
 Rectangle {
     id: avSettingPage
 
-    function populateAVSettings(){
-        inputComboBox.clear()
-        // get the last index of inputDevices
-        var inputDevices = ClientWrapper.avmodel.getAudioInputDevices()
-        var inputIndex = inputDevices.length - 1
-        for(var id of inputDevices){
-            inputComboBox.append({"textDisplay": ClientWrapper.utilsAdaptor.getStringUTF8(id), "firstArg": ClientWrapper.utilsAdaptor.getStringUTF8(id), "secondArg": 0})
-        }
-        inputComboBox.currentIndex = (inputIndex !== -1 ? inputIndex : 0)
+    AudioInputDeviceModel{
+        id: audioInputDeviceModel
+    }
 
-        outputComboBox.clear()
-        var outputDevices = ClientWrapper.avmodel.getAudioOutputDevices()
-        var outputIndex = outputDevices.length -1
-        for (var od of outputDevices) {
-            outputComboBox.append({"textDisplay": ClientWrapper.utilsAdaptor.getStringUTF8(od), "firstArg": ClientWrapper.utilsAdaptor.getStringUTF8(od), "secondArg": 0})
-        }
-        outputComboBox.currentIndex = (outputIndex !== -1 ? outputIndex : 0)
+    AudioOutputDeviceModel{
+        id: audioOutputDeviceModel
+    }
+
+    function populateAVSettings(){
+        audioInputDeviceModel.reset()
+        audioOutputDeviceModel.reset()
+
+        inputComboBox.currentIndex = audioInputDeviceModel.getCurrentSettingIndex()
+        outputComboBox.currentIndex = audioOutputDeviceModel.getCurrentSettingIndex()
 
         populateVideoSettings()
         var encodeAccel = ClientWrapper.avmodel.getHardwareAcceleration()
@@ -142,14 +139,17 @@ Rectangle {
 
     function slotAudioOutputIndexChanged(index){
         stopAudioMeter(false)
-        var selectedOutputDeviceName = outputComboBox.get(index).firstArg
+        var selectedOutputDeviceName = audioOutputDeviceModel.data(audioOutputDeviceModel.index(
+                                                        index, 0), AudioOutputDeviceModel.Device_ID)
         ClientWrapper.avmodel.setOutputDevice(selectedOutputDeviceName)
         startAudioMeter(false)
     }
 
     function slotAudioInputIndexChanged(index){
         stopAudioMeter(false)
-        var selectedInputDeviceName = inputComboBox.get(index).firstArg
+        var selectedInputDeviceName = audioInputDeviceModel.data(audioInputDeviceModel.index(
+                                                        index, 0), AudioInputDeviceModel.Device_ID)
+
         ClientWrapper.avmodel.setInputDevice(selectedInputDeviceName)
         startAudioMeter(false)
     }
@@ -314,7 +314,7 @@ Rectangle {
                                 Layout.fillHeight: true
                             }
 
-                            SettingParaCombobox {
+                            MediaPageComboBox {
                                 id: inputComboBox
 
                                 Layout.maximumWidth: 360
@@ -327,6 +327,10 @@ Rectangle {
 
                                 font.pointSize: 10
                                 font.kerning: true
+
+                                model: audioInputDeviceModel
+
+                                textRole: "ID_UTF8"
 
                                 onActivated: {
                                     slotAudioInputIndexChanged(index)
@@ -387,7 +391,7 @@ Rectangle {
                                 Layout.fillHeight: true
                             }
 
-                            SettingParaCombobox {
+                            MediaPageComboBox {
                                 id: outputComboBox
 
                                 Layout.maximumWidth: 360
@@ -400,6 +404,10 @@ Rectangle {
 
                                 font.pointSize: 10
                                 font.kerning: true
+
+                                model: audioOutputDeviceModel
+
+                                textRole: "ID_UTF8"
 
                                 onActivated: {
                                     slotAudioOutputIndexChanged(index)
