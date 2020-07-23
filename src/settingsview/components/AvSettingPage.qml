@@ -18,7 +18,7 @@
 
 import QtQuick 2.15
 import QtQuick.Window 2.14
-import QtQuick.Controls 2.14
+import QtQuick.Controls 2.15
 import QtQuick.Controls.Universal 2.12
 import QtQuick.Layouts 1.3
 import QtGraphicalEffects 1.14
@@ -28,23 +28,34 @@ import net.jami.Models 1.0
 Rectangle {
     id: avSettingPage
 
-    function populateAVSettings(){
-        inputComboBox.clear()
-        // get the last index of inputDevices
-        var inputDevices = ClientWrapper.avmodel.getAudioInputDevices()
-        var inputIndex = inputDevices.length - 1
-        for(var id of inputDevices){
-            inputComboBox.append({"textDisplay": ClientWrapper.utilsAdaptor.getStringUTF8(id), "firstArg": ClientWrapper.utilsAdaptor.getStringUTF8(id), "secondArg": 0})
-        }
-        inputComboBox.currentIndex = (inputIndex !== -1 ? inputIndex : 0)
+    AudioInputDeviceModel{
+        id: audioInputDeviceModel
+    }
 
-        outputComboBox.clear()
-        var outputDevices = ClientWrapper.avmodel.getAudioOutputDevices()
-        var outputIndex = outputDevices.length -1
-        for (var od of outputDevices) {
-            outputComboBox.append({"textDisplay": ClientWrapper.utilsAdaptor.getStringUTF8(od), "firstArg": ClientWrapper.utilsAdaptor.getStringUTF8(od), "secondArg": 0})
-        }
-        outputComboBox.currentIndex = (outputIndex !== -1 ? outputIndex : 0)
+    AudioOutputDeviceModel{
+        id: audioOutputDeviceModel
+    }
+
+    VideoInputDeviceModel{
+        id: videoInputDeviceModel
+    }
+
+    VideoFormatResolutionModel{
+        id: videoFormatResolutionModel
+    }
+
+    VideoFormatFpsModel{
+        id: videoFormatFpsModel
+    }
+
+    function populateAVSettings(){
+        audioInputDeviceModel.reset()
+        audioOutputDeviceModel.reset()
+
+        inputComboBox.currentIndex = audioInputDeviceModel.getCurrentSettingIndex()
+        slotAudioInputIndexChanged(inputComboBox.currentIndex)
+        outputComboBox.currentIndex = audioOutputDeviceModel.getCurrentSettingIndex()
+        slotAudioOutputIndexChanged(outputComboBox.currentIndex)
 
         populateVideoSettings()
         var encodeAccel = ClientWrapper.avmodel.getHardwareAcceleration()
@@ -52,60 +63,35 @@ Rectangle {
     }
 
     function populateVideoSettings() {
-        deviceBox.clear()
-        formatBox.clear()
+        videoInputDeviceModel.reset()
 
-        deviceBox.enabled = (ClientWrapper.avmodel.getDevices().length > 0)
-        formatBox.enabled = (ClientWrapper.avmodel.getDevices().length > 0)
-        labelVideoDevice.enabled = (ClientWrapper.avmodel.getDevices().length > 0)
-        labelVideoFormat.enabled = (ClientWrapper.avmodel.getDevices().length > 0)
+        deviceBox.enabled = (videoInputDeviceModel.deviceCount() > 0)
+        resolutionBox.enabled = (videoInputDeviceModel.deviceCount() > 0)
+        fpsBox.enabled = (videoInputDeviceModel.deviceCount() > 0)
+        labelVideoDevice.enabled = (videoInputDeviceModel.deviceCount() > 0)
+        labelVideoResolution.enabled = (videoInputDeviceModel.deviceCount() > 0)
+        labelVideoFps.enabled = (videoInputDeviceModel.deviceCount() > 0)
 
-        if(ClientWrapper.avmodel.getDevices().length === 0){
-            deviceBox.append({"textDisplay": qsTr("No Device"), "firstArg": "", "secondArg": 0})
-            deviceBox.currentIndex = 0
-
-            formatBox.append({"textDisplay": qsTr("No Device"), "firstArg": "", "secondArg": 0})
-            formatBox.currentIndex = 0
-        } else {
-            var currentCaptureDevice = ClientWrapper.avmodel.getCurrentVideoCaptureDevice()
-            // get last index of device vector
-            var deviceLastIndex = ClientWrapper.avmodel.getDevices().length - 1
-            var devices = ClientWrapper.avmodel.getDevices()
-            try{
-                for(var d of devices){
-                    deviceBox.append({"textDisplay": ClientWrapper.utilsAdaptor.getStringUTF8(ClientWrapper.settingsAdaptor.get_Video_Settings_Name(d)), "firstArg": ClientWrapper.utilsAdaptor.getStringUTF8(ClientWrapper.settingsAdaptor.get_Video_Settings_Name(d)), "secondArg": ""})
-                }
-            } catch(err) {}
-
-            deviceBox.currentIndex = deviceLastIndex
-            slotDeviceBoxCurrentIndexChanged(deviceBox.currentIndex)
-            // set format list
-            setFormatListForDevice(ClientWrapper.avmodel.getCurrentVideoCaptureDevice())
-
-            try{
-                startPreviewing(false)
-            } catch (err2){}
-        }
-    }
-
-    function setFormatListForDevice(device){
-        if(ClientWrapper.settingsAdaptor.get_DeviceCapabilitiesSize(device) === 0) return
+        deviceBox.currentIndex = videoInputDeviceModel.getCurrentSettingIndex()
+        slotDeviceBoxCurrentIndexChanged(deviceBox.currentIndex)
 
         try{
-            formatBox.clear()
+            startPreviewing(false)
+        } catch (err2){ console.log("Start preview fail when populate video settings, exception: "+ err2.message)}
 
-            var resolutions = ClientWrapper.settingsAdaptor.getResolutions(device)
-            var rates = ClientWrapper.settingsAdaptor.getFrameRates(device)
+    }
 
-            for(var i=0; i < resolutions.length; i++){
-                var resolution = resolutions[i]
-                var rate = rates[i]
+    function setFormatListForCurrentDevice(){
+        var device = ClientWrapper.avmodel.getCurrentVideoCaptureDevice()
+        if(ClientWrapper.settingsAdaptor.get_DeviceCapabilitiesSize(device) === 0){
+            return
+        }
 
-                formatBox.append({"textDisplay": resolution +" [" + JSON.stringify(rate) +" fps]", "firstArg": resolution, "secondArg": rate})
-            }
-
-            formatBox.currentIndex = resolutions.length - 1
-            slotFormatBoxCurrentIndexChanged(formatBox.currentIndex)
+        videoFormatResolutionModel.reset()
+        videoFormatFpsModel.reset()
+        try{
+            resolutionBox.currentIndex = videoFormatResolutionModel.getCurrentSettingIndex()
+            slotFormatCurrentIndexChanged(resolutionBox.currentIndex,true)
         } catch(err){console.warn("Exception: " + err.message)}
     }
 
@@ -142,23 +128,31 @@ Rectangle {
 
     function slotAudioOutputIndexChanged(index){
         stopAudioMeter(false)
-        var selectedOutputDeviceName = outputComboBox.get(index).firstArg
+        var selectedOutputDeviceName = audioOutputDeviceModel.data(audioOutputDeviceModel.index(
+                                                        index, 0), AudioOutputDeviceModel.Device_ID)
         ClientWrapper.avmodel.setOutputDevice(selectedOutputDeviceName)
         startAudioMeter(false)
     }
 
     function slotAudioInputIndexChanged(index){
         stopAudioMeter(false)
-        var selectedInputDeviceName = inputComboBox.get(index).firstArg
+        var selectedInputDeviceName = audioInputDeviceModel.data(audioInputDeviceModel.index(
+                                                        index, 0), AudioInputDeviceModel.Device_ID)
+
         ClientWrapper.avmodel.setInputDevice(selectedInputDeviceName)
         startAudioMeter(false)
     }
 
     function slotDeviceBoxCurrentIndexChanged(index){
-        var deviceName = deviceBox.get(index).firstArg
-        var devices = ClientWrapper.avmodel.getDevices()
+        if(videoInputDeviceModel.deviceCount() <= 0){
+            return
+        }
+
         try{
-            var deviceId = ClientWrapper.avmodel.getDeviceIdFromName(deviceName)
+            var deviceId = videoInputDeviceModel.data(videoInputDeviceModel.index(
+                                                          index, 0), VideoInputDeviceModel.DeviceId)
+            var deviceName = videoInputDeviceModel.data(videoInputDeviceModel.index(
+                                                            index, 0), VideoInputDeviceModel.DeviceName)
             if(deviceId.length === 0){
                 console.warn("Couldn't find device: " + deviceName)
                 return
@@ -166,15 +160,32 @@ Rectangle {
 
             ClientWrapper.avmodel.setCurrentVideoCaptureDevice(deviceId)
             ClientWrapper.avmodel.setDefaultDevice(deviceId)
-            setFormatListForDevice(deviceId)
+            setFormatListForCurrentDevice()
             startPreviewing(true)
         } catch(err){console.warn(err.message)}
     }
 
-    function slotFormatBoxCurrentIndexChanged(index){
-        var resolution = formatBox.get(index).firstArg
-        var rate = formatBox.get(index).secondArg
+    function slotFormatCurrentIndexChanged(index, isResolutionIndex){
         var device = ClientWrapper.avmodel.getCurrentVideoCaptureDevice()
+        var resolution
+        var rate
+        if(isResolutionIndex){
+            resolution = videoFormatResolutionModel.data(videoFormatResolutionModel.index(
+                                                                 index, 0), VideoFormatResolutionModel.Resolution)
+            videoFormatFpsModel.currentResolution = resolution
+            videoFormatFpsModel.reset()
+            fpsBox.currentIndex = videoFormatFpsModel.getCurrentSettingIndex()
+            rate = videoFormatFpsModel.data(videoFormatFpsModel.index(
+                                                       fpsBox.currentIndex, 0), VideoFormatFpsModel.FPS)
+        } else {
+            resolution = videoFormatResolutionModel.data(videoFormatResolutionModel.index(
+                                                                 resolutionBox.currentIndex, 0), VideoFormatResolutionModel.Resolution)
+            videoFormatFpsModel.currentResolution = resolution
+            videoFormatFpsModel.reset()
+            rate = videoFormatFpsModel.data(videoFormatFpsModel.index(
+                                                       index, 0), VideoFormatFpsModel.FPS)
+        }
+
         try{
             ClientWrapper.settingsAdaptor.set_Video_Settings_Rate_And_Resolution(device,rate,resolution)
         } catch(error){console.warn(error.message)}
@@ -328,6 +339,10 @@ Rectangle {
                                 font.pointSize: 10
                                 font.kerning: true
 
+                                model: audioInputDeviceModel
+
+                                textRole: "ID_UTF8"
+
                                 onActivated: {
                                     slotAudioInputIndexChanged(index)
                                 }
@@ -400,6 +415,10 @@ Rectangle {
 
                                 font.pointSize: 10
                                 font.kerning: true
+
+                                model: audioOutputDeviceModel
+
+                                textRole: "ID_UTF8"
 
                                 onActivated: {
                                     slotAudioOutputIndexChanged(index)
@@ -489,6 +508,10 @@ Rectangle {
                                 font.pointSize: 10
                                 font.kerning: true
 
+                                model: videoInputDeviceModel
+
+                                textRole: "DeviceName_UTF8"
+
                                 onActivated: {
                                     slotDeviceBoxCurrentIndexChanged(index)
                                 }
@@ -502,7 +525,7 @@ Rectangle {
                             Layout.maximumHeight: 30
 
                             Label {
-                                id: labelVideoFormat
+                                id: labelVideoResolution
 
                                 Layout.maximumWidth: 47
                                 Layout.preferredWidth: 47
@@ -512,7 +535,7 @@ Rectangle {
                                 Layout.preferredHeight: 30
                                 Layout.maximumHeight: 30
 
-                                text: qsTr("Format")
+                                text: qsTr("Resolution")
                                 font.pointSize: 11
                                 font.kerning: true
 
@@ -526,7 +549,7 @@ Rectangle {
                             }
 
                             SettingParaCombobox {
-                                id: formatBox
+                                id: resolutionBox
 
                                 Layout.maximumWidth: 360
                                 Layout.preferredWidth: 360
@@ -539,8 +562,64 @@ Rectangle {
                                 font.pointSize: 10
                                 font.kerning: true
 
+                                model: videoFormatResolutionModel
+                                textRole: "Resolution_UTF8"
+
                                 onActivated: {
-                                    slotFormatBoxCurrentIndexChanged(index)
+                                    slotFormatCurrentIndexChanged(index,true)
+                                }
+                            }
+                        }
+
+                        RowLayout {
+                            spacing: 7
+                            Layout.fillWidth: true
+                            Layout.leftMargin: 20
+                            Layout.maximumHeight: 30
+
+                            Label {
+                                id: labelVideoFps
+
+                                Layout.maximumWidth: 47
+                                Layout.preferredWidth: 47
+                                Layout.minimumWidth: 47
+
+                                Layout.minimumHeight: 30
+                                Layout.preferredHeight: 30
+                                Layout.maximumHeight: 30
+
+                                text: qsTr("Fps")
+                                font.pointSize: 11
+                                font.kerning: true
+
+                                horizontalAlignment: Text.AlignLeft
+                                verticalAlignment: Text.AlignVCenter
+                            }
+
+                            Item {
+                                Layout.fillHeight: true
+                                Layout.fillWidth: true
+                            }
+
+                            SettingParaCombobox {
+                                id: fpsBox
+
+                                Layout.maximumWidth: 360
+                                Layout.preferredWidth: 360
+                                Layout.minimumWidth: 360
+
+                                Layout.minimumHeight: 30
+                                Layout.preferredHeight: 30
+                                Layout.maximumHeight: 30
+
+                                font.pointSize: 10
+                                font.kerning: true
+
+                                model: videoFormatFpsModel
+                                textRole: "FPS_ToDisplay_UTF8"
+
+                                onActivated: {
+                                    slotFormatCurrentIndexChanged(index,false)
                                 }
                             }
                         }

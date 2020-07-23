@@ -24,6 +24,8 @@
 #include "accountlistmodel.h"
 #include "accountstomigratelistmodel.h"
 #include "audiocodeclistmodel.h"
+#include "audioinputdevicemodel.h"
+#include "audiooutputdevicemodel.h"
 #include "avadapter.h"
 #include "bannedlistmodel.h"
 #include "calladapter.h"
@@ -44,6 +46,9 @@
 #include "utils.h"
 #include "version.h"
 #include "videocodeclistmodel.h"
+#include "videoformatfpsmodel.h"
+#include "videoformatresolutionmodel.h"
+#include "videoinputdevicemodel.h"
 
 #include <QFontDatabase>
 #include <QQmlContext>
@@ -291,7 +296,11 @@ MainApplication::qmlInitialization()
     QML_REGISTERTYPE(VideoCodecListModel, 1, 0);
     QML_REGISTERTYPE(AudioCodecListModel, 1, 0);
     QML_REGISTERTYPE(AccountsToMigrateListModel, 1, 0);
-
+    QML_REGISTERTYPE(AudioInputDeviceModel, 1, 0);
+    QML_REGISTERTYPE(AudioOutputDeviceModel, 1, 0);
+    QML_REGISTERTYPE(VideoInputDeviceModel, 1, 0);
+    QML_REGISTERTYPE(VideoFormatResolutionModel, 1, 0);
+    QML_REGISTERTYPE(VideoFormatFpsModel, 1, 0);
     /*
      * Register QQuickItem type.
      */
