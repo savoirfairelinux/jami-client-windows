@@ -215,8 +215,7 @@ Rectangle {
         anchors.bottomMargin: 10
         anchors.horizontalCenter: callOverlayRect.horizontalCenter
 
-        width: callOverlayRect.width / 3 * 2
-        height: 60
+        height: 56
         opacity: 0
 
         onChatButtonClicked: {
