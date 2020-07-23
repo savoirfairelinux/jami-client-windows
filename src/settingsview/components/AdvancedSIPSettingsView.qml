@@ -1081,6 +1081,8 @@ ColumnLayout {
                 Layout.row: 11
                 Layout.column: 2
 
+                textRole: "textDisplay"
+
                 model: ListModel{
                     ListElement{textDisplay: "Default"; firstArg: "Default"; secondArg: 0}
                     ListElement{textDisplay: "TLSv1"; firstArg: "TLSv1"; secondArg: 1}
@@ -1089,7 +1091,7 @@ ColumnLayout {
                 }
 
                 onActivated: {
-                    var indexOfOption = tlsProtocolComboBox.get(index).secondArg
+                    var indexOfOption = tlsProtocolComboBox.model.get(index).secondArg
                     ClientWrapper.settingsAdaptor.tlsProtocolComboBoxIndexChanged(parseInt(indexOfOption))
                 }
             }

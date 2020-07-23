@@ -17,8 +17,8 @@
  */
 
 import QtQuick 2.15
-import QtQuick.Window 2.14
-import QtQuick.Controls 2.14
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
 import QtQuick.Controls.Universal 2.12
 import QtQuick.Layouts 1.3
 import QtGraphicalEffects 1.14
@@ -27,47 +27,13 @@ import QtQuick.Controls.Styles 1.4
 ComboBox {
     id: control
 
-    function clear(){
-        model.clear()
-    }
-
-    function append(dict){
-        model.append(dict)
-    }
-
-    function get(index){
-        return model.get(index)
-    }
-    function insert(index, dict){
-        model.insert(index, dict)
-    }
-    function move(from, to, n){
-        model.move(from, to, n)
-    }
-    function remove(index, count = 1){
-        model.remove(index, count)
-    }
-    function set(index, dict){
-        model.set(index, dict)
-    }
-    function setProperty(index, stringProperty, value){
-        model.setProperty(index, stringProperty, value)
-    }
-    function sync(){
-        model.sync()
-    }
-
-    textRole: "textDisplay"
-    model: ListModel {
-        id: modelOfControl
-
-        //ListElement { textDisplay: "1920*1080 [60 fps]"; firstArg: "1920*1080"; secondArg: 60 }
-    }
-
     delegate: ItemDelegate {
         width: control.width
         contentItem: Text {
-            text: textDisplay
+            text: {
+                var currentItem = control.delegateModel.items.get(index)
+                return  currentItem.model[control.textRole].toString()
+            }
             color: "black"
             font: control.font
             elide: Text.ElideRight
