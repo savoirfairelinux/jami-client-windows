@@ -73,23 +73,22 @@ AccountAdapter::connectFailure()
 }
 
 void
-AccountAdapter::createJamiAccount(const QVariantMap &settings,
+AccountAdapter::createJamiAccount(QString registeredName,
+                                  const QVariantMap &settings,
                                   QString photoBoothImgBase64,
                                   bool isCreating)
 {
     Utils::oneShotConnect(
         &LRCInstance::accountModel(),
         &lrc::api::NewAccountModel::accountAdded,
-        [this, settings, isCreating, photoBoothImgBase64](const QString &accountId) {
+        [this, registeredName, settings, isCreating, photoBoothImgBase64](const QString &accountId) {
             QSettings qSettings("jami.net", "Jami");
             if (not qSettings.contains(SettingsKey::neverShowMeAgain)) {
                 qSettings.setValue(SettingsKey::neverShowMeAgain, false);
             }
             auto showBackup = isCreating && !settings.value(SettingsKey::neverShowMeAgain).toBool();
 
-            qDebug() << "The showbackup in C++ is: " + showBackup;
-
-            if (!settings["registeredName"].toString().isEmpty()) {
+            if (!registeredName.isEmpty()) {
                 Utils::oneShotConnect(&LRCInstance::accountModel(),
                                       &lrc::api::NewAccountModel::nameRegistrationEnded,
                                       [this, showBackup](const QString &accountId) {
@@ -98,9 +97,9 @@ AccountAdapter::createJamiAccount(const QVariantMap &settings,
                                                                 .getAccountList()
                                                                 .indexOf(accountId));
                                       });
-                LRCInstance::accountModel().registerName(LRCInstance::getCurrAccId(),
-                                                         "",
-                                                         settings["registeredName"].toString());
+                LRCInstance::accountModel().registerName(accountId,
+                                                         settings["password"].toString(),
+                                                         registeredName);
             } else {
                 emit accountAdded(showBackup,
                                   LRCInstance::accountModel().getAccountList().indexOf(accountId));
