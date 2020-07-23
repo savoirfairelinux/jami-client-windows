@@ -18,7 +18,7 @@
 
 import QtQuick 2.15
 import QtQuick.Window 2.14
-import QtQuick.Controls 2.14
+import QtQuick.Controls 2.15
 import QtQuick.Controls.Universal 2.12
 import QtQuick.Layouts 1.3
 import QtGraphicalEffects 1.14
@@ -27,6 +27,14 @@ import net.jami.Models 1.0
 
 Rectangle {
     id: avSettingPage
+
+    AudioInputDeviceModel{
+        id: audioInputDeviceModel
+    }
+
+    AudioOutputDeviceModel{
+        id: audioOutputDeviceModel
+    }
 
     function populateAVSettings(){
         inputComboBox.clear()
