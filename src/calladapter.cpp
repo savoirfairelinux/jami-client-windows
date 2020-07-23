@@ -28,7 +28,6 @@
 
 CallAdapter::CallAdapter(QObject *parent)
     : QmlAdapterBase(parent)
-    , oneSecondTimer_(new QTimer(this))
 {}
 
 CallAdapter::~CallAdapter() {}
@@ -323,11 +322,6 @@ CallAdapter::connectCallStatusChanged(const QString &accountId)
 void
 CallAdapter::updateCallOverlay(const lrc::api::conversation::Info &convInfo)
 {
-    setTime(accountId_, convUid_);
-    QObject::disconnect(oneSecondTimer_);
-    QObject::connect(oneSecondTimer_, &QTimer::timeout, [this] { setTime(accountId_, convUid_); });
-    oneSecondTimer_->start(20);
-
     auto &accInfo = LRCInstance::accountModel().getAccountInfo(accountId_);
 
     auto call = LRCInstance::getCallInfoForConversation(convInfo);
@@ -432,6 +426,8 @@ CallAdapter::videoPauseThisCallToggle()
     emit previewVisibilityNeedToChange(shouldShowPreview(false));
 }
 
+
+
 void
 CallAdapter::slotConferenceLayoutChanged()
 {
@@ -452,20 +448,5 @@ CallAdapter::slotConferenceLayoutChanged()
             break;
         }
         callModel->setConferenceLayout(convInfo.confId, layout);
-    }
-}
-
-void
-CallAdapter::setTime(const QString &accountId, const QString &convUid)
-{
-    auto callId = LRCInstance::getCallIdForConversationUid(convUid, accountId);
-    if (callId.isEmpty() || !LRCInstance::getCurrentCallModel()->hasCall(callId)) {
-        return;
-    }
-    auto callInfo = LRCInstance::getCurrentCallModel()->getCall(callId);
-    if (callInfo.status == lrc::api::call::Status::IN_PROGRESS
-        || callInfo.status == lrc::api::call::Status::PAUSED) {
-        auto timeString = LRCInstance::getCurrentCallModel()->getFormattedCallDuration(callId);
-        emit updateTimeText(timeString);
     }
 }
