@@ -138,7 +138,10 @@ HEADERS += ./src/smartlistmodel.h \
         ./src/audiocodeclistmodel.h \
         ./src/videocodeclistmodel.h \
         ./src/accountstomigratelistmodel.h \
-        ./src/clientwrapper.h
+        ./src/clientwrapper.h \
+        ./src/audioinputdevicemodel.h \
+        ./src/videoinputdevicemodel.h \
+        ./src/audiooutputdevicemodel.h
 SOURCES += ./src/bannedlistmodel.cpp \
         ./src/accountlistmodel.cpp \
         ./src/runguard.cpp \
@@ -165,6 +168,9 @@ SOURCES += ./src/bannedlistmodel.cpp \
         ./src/audiocodeclistmodel.cpp \
         ./src/videocodeclistmodel.cpp \
         ./src/accountstomigratelistmodel.cpp \
-        ./src/clientwrapper.cpp
+        ./src/clientwrapper.cpp \
+        ./src/audioinputdevicemodel.cpp \
+        ./src/videoinputdevicemodel.cpp \
+        ./src/audiooutputdevicemodel.cpp
 RESOURCES += ./ressources.qrc \
              ./qml.qrc
