@@ -99,7 +99,7 @@ Rectangle {
                     return videoCallPageMainRect.width - previewRenderer.width - previewMargin
                 })
                 previewToY = Qt.binding(function () {
-                    return videoCallPageMainRect.height - previewRenderer.height - previewMargin
+                    return videoCallPageMainRect.height - previewRenderer.height - previewMargin - 56 /* Avoid overlay */
                 })
             } else {
 
@@ -121,7 +121,7 @@ Rectangle {
                  */
                 previewToX = previewMargin
                 previewToY = Qt.binding(function () {
-                    return videoCallPageMainRect.height - previewRenderer.height - previewMargin
+                    return videoCallPageMainRect.height - previewRenderer.height - previewMargin - 56 /* Avoid overlay */
                 })
             } else {
 
@@ -169,10 +169,6 @@ Rectangle {
 
                 Connections {
                     target: CallAdapter
-
-                    function onUpdateTimeText(time) {
-                        videoCallOverlay.timeText = time
-                    }
 
                     function onUpdateOverlay(isPaused, isAudioOnly, isAudioMuted, isVideoMuted, isRecording, isSIP, isConferenceCall, bestName) {
                         videoCallOverlay.showOnHoldImage(isPaused)
@@ -258,7 +254,7 @@ Rectangle {
                     return previewRenderer.width * previewRenderer.getPreviewImageScalingFactor()
                 }
                 x: videoCallPageMainRect.width - previewRenderer.width - previewMargin
-                y: videoCallPageMainRect.height - previewRenderer.height - previewMargin
+                y: videoCallPageMainRect.height - previewRenderer.height - previewMargin - 56 /* Avoid overlay */
                 z: -1
 
                 states: [
