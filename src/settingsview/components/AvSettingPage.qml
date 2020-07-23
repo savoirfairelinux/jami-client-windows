@@ -18,7 +18,7 @@
 
 import QtQuick 2.15
 import QtQuick.Window 2.14
-import QtQuick.Controls 2.14
+import QtQuick.Controls 2.15
 import QtQuick.Controls.Universal 2.12
 import QtQuick.Layouts 1.3
 import QtGraphicalEffects 1.14
@@ -512,7 +512,7 @@ Rectangle {
                                 Layout.preferredHeight: 30
                                 Layout.maximumHeight: 30
 
-                                text: qsTr("Format")
+                                text: qsTr("Resolution")
                                 font.pointSize: 11
                                 font.kerning: true
 
@@ -527,6 +527,56 @@ Rectangle {
 
                             SettingParaCombobox {
                                 id: formatBox
+
+                                Layout.maximumWidth: 360
+                                Layout.preferredWidth: 360
+                                Layout.minimumWidth: 360
+
+                                Layout.minimumHeight: 30
+                                Layout.preferredHeight: 30
+                                Layout.maximumHeight: 30
+
+                                font.pointSize: 10
+                                font.kerning: true
+
+                                onActivated: {
+                                    slotFormatBoxCurrentIndexChanged(index)
+                                }
+                            }
+                        }
+
+                        RowLayout {
+                            spacing: 7
+                            Layout.fillWidth: true
+                            Layout.leftMargin: 20
+                            Layout.maximumHeight: 30
+
+                            Label {
+                                id: labelVideoFps
+
+                                Layout.maximumWidth: 47
+                                Layout.preferredWidth: 47
+                                Layout.minimumWidth: 47
+
+                                Layout.minimumHeight: 30
+                                Layout.preferredHeight: 30
+                                Layout.maximumHeight: 30
+
+                                text: qsTr("Fps")
+                                font.pointSize: 11
+                                font.kerning: true
+
+                                horizontalAlignment: Text.AlignLeft
+                                verticalAlignment: Text.AlignVCenter
+                            }
+
+                            Item {
+                                Layout.fillHeight: true
+                                Layout.fillWidth: true
+                            }
+
+                            SettingParaCombobox {
+                                id: fpsBox
 
                                 Layout.maximumWidth: 360
                                 Layout.preferredWidth: 360
