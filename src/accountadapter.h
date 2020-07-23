@@ -44,7 +44,8 @@ public:
     /*
      * Create normal Jami account, SIP account and JAMS accounts.
      */
-    Q_INVOKABLE void createJamiAccount(const QVariantMap &settings,
+    Q_INVOKABLE void createJamiAccount(QString registeredName,
+                                       const QVariantMap &settings,
                                        QString photoBoothImgBase64,
                                        bool isCreating);
     Q_INVOKABLE void createSIPAccount(const QVariantMap &settings, QString photoBoothImgBase64);
