@@ -59,10 +59,6 @@ Window {
 
     property var inputParaObject: ({})
 
-    onRegistedNameChanged: {
-        inputParaObject["registeredName"] = registedName
-    }
-
     /*
      * signal to redirect the page to main view
      */
@@ -142,9 +138,10 @@ Window {
             break
         case WizardView.CREATE:
         case WizardView.IMPORT:
-            ClientWrapper.accountAdaptor.createJamiAccount(inputParaObject,
-                                             createAccountPage.boothImgBase64,
-                                             (wizardMode === WizardView.CREATE))
+            ClientWrapper.accountAdaptor.createJamiAccount(registedName,
+                                                           inputParaObject,
+                                                           createAccountPage.boothImgBase64,
+                                                           (wizardMode === WizardView.CREATE))
             break
         default:
             ClientWrapper.accountAdaptor.createSIPAccount(inputParaObject,createSIPAccountPage.boothImgBase64)
@@ -190,7 +187,6 @@ Window {
 
     function processWizardInformationsQML() {
         inputParaObject = {}
-        inputParaObject["registeredName"] = registedName
         switch (wizardMode) {
         case WizardView.CREATE:
             spinnerPage.progressLabelEditText = qsTr(
@@ -202,6 +198,7 @@ Window {
             createAccountPage.clearAllTextFields()
             break
         case WizardView.IMPORT:
+            registedName = ""
             spinnerPage.progressLabelEditText = qsTr(
                         "Importing account archive...")
             // should only work in import from backup page or import from device page
