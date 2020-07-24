@@ -24,8 +24,16 @@
 QJsonObject
 buildInteractionJson(lrc::api::ConversationModel &conversationModel,
                      const uint64_t msgId,
-                     const lrc::api::interaction::Info &interaction)
+                     const lrc::api::interaction::Info &inter)
 {
+
+    QRegExp reg(".(jpeg|jpg|gif|png)$");
+    auto interaction = inter;
+    if (interaction.type == lrc::api::interaction::Type::DATA_TRANSFER &&
+            interaction.body.toLower().contains(reg)) {
+        interaction.body = "file://" + interaction.body;
+    }
+
     auto sender = interaction.authorUri;
     auto timestamp = QString::number(interaction.timestamp);
     auto direction = lrc::api::interaction::isOutgoing(interaction) ? QString("out")
