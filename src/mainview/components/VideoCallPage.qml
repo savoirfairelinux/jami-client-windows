@@ -35,6 +35,9 @@ Rectangle {
     property int previewToX: 0
     property int previewToY: 0
 
+    property var participantHovers: []
+    property var participantComponent: Qt.createComponent("ParticipantHover.qml")
+
     property var corrspondingMessageWebView: null
 
     signal videoCallPageBackButtonIsClicked
@@ -138,6 +141,31 @@ Rectangle {
 
     function setCallOverlayBackButtonVisible(visible) {
         videoCallOverlay.setBackTintedButtonVisible(visible)
+    }
+
+    function handleParticipantsInfos(infos) {
+        console.log("Debug: Redraw layout")
+        for (var p in participantHovers) {
+            if (participantHovers[p])
+                participantHovers[p].destroy()
+        }
+        participantHovers = []
+        if (infos.length == 0) {
+            previewRenderer.visible = true
+        } else {
+            previewRenderer.visible = false
+            for (var infoVariant in infos) {
+                var hover = participantComponent.createObject(distantRenderer, {
+                    x: infos[infoVariant].x,
+                    y: infos[infoVariant].y,
+                    width: infos[infoVariant].w,
+                    height: infos[infoVariant].h,
+                    visible: true
+                })
+                if (hover)
+                    participantHovers.push(hover)
+            }
+        }
     }
 
     anchors.fill: parent
