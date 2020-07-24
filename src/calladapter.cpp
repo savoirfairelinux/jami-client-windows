@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2020 by Savoir-faire Linux
  * Author: Edric Ladent Milaret <edric.ladent-milaret@savoirfairelinux.com>
- * Author: Anthony Léonard <anthony.leonard@savoirfairelinux.com>
+ * Author: Anthony Lï¿½onard <anthony.leonard@savoirfairelinux.com>
  * Author: Olivier Soldano <olivier.soldano@savoirfairelinux.com>
  * Author: Andreas Traczyk <andreas.traczyk@savoirfairelinux.com>
  * Author: Isa Nanic <isa.nanic@savoirfairelinux.com>
@@ -36,7 +36,7 @@ CallAdapter::~CallAdapter() {}
 void
 CallAdapter::initQmlObject()
 {
-    connectCallStatusChanged(LRCInstance::getCurrAccId());
+    connectCallModel(LRCInstance::getCurrAccId());
 
     connect(&LRCInstance::behaviorController(),
             &BehaviorController::showIncomingCallView,
@@ -223,11 +223,37 @@ CallAdapter::shouldShowPreview(bool force)
 }
 
 void
-CallAdapter::connectCallStatusChanged(const QString &accountId)
+CallAdapter::connectCallModel(const QString &accountId)
 {
     auto &accInfo = LRCInstance::accountModel().getAccountInfo(accountId);
 
     QObject::disconnect(callStatusChangedConnection_);
+    QObject::disconnect(onParticipantsChangedConnection_);
+
+    onParticipantsChangedConnection_ = QObject::connect(
+        accInfo.callModel.get(),
+        &lrc::api::NewCallModel::onParticipantsChanged,
+        [this, accountId](const QString &confId) {
+            auto &accInfo = LRCInstance::accountModel().getAccountInfo(accountId);
+            auto &callModel = accInfo.callModel;
+            auto call = callModel->getCall(confId);
+            auto convInfo = LRCInstance::getConversationFromCallId(confId);
+            if (!convInfo.uid.isEmpty()) {
+                // Convert to QML
+                QVariantMap map;
+                for (const auto& participant: call.participantsInfos) {
+                    QJsonObject data;
+                    data["x"] = participant["x"].toInt();
+                    data["y"] = participant["y"].toInt();
+                    data["w"] = participant["w"].toInt();
+                    data["h"] = participant["h"].toInt();
+                    map.insert(participant["uri"], QVariant(data));
+                }
+                emit updateParticipantsInfos(map,
+                                       accountId,
+                                       convInfo.uid);
+            }
+    });
 
     callStatusChangedConnection_ = QObject::connect(
         accInfo.callModel.get(),

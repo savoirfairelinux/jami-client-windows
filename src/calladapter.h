@@ -43,7 +43,7 @@ public:
     Q_INVOKABLE void refuseACall(const QString &accountId, const QString &convUid);
     Q_INVOKABLE void acceptACall(const QString &accountId, const QString &convUid);
 
-    Q_INVOKABLE void connectCallStatusChanged(const QString &accountId);
+    Q_INVOKABLE void connectCallModel(const QString &accountId);
 
     /*
      * For Call Overlay
@@ -64,6 +64,7 @@ signals:
     void closePotentialIncomingCallPageWindow(const QString &accountId, const QString &convUid);
     void callStatusChanged(const QString &status, const QString &accountId, const QString &convUid);
     void updateConversationSmartList();
+    void updateParticipantsInfos(const QVariantMap& infos, const QString &accountId, const QString &convUid);
 
     void incomingCallNeedToSetupMainView(const QString &accountId, const QString &convUid);
     void previewVisibilityNeedToChange(bool visible);
@@ -100,6 +101,7 @@ private:
     QString convUid_;
 
     QMetaObject::Connection callStatusChangedConnection_;
+    QMetaObject::Connection onParticipantsChangedConnection_;
     QMetaObject::Connection closeIncomingCallPageConnection_;
 
     /*
