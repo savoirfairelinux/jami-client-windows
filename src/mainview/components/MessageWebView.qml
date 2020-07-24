@@ -264,6 +264,7 @@ Rectangle {
         Component.onCompleted: {
             messageWebView.loadHtml(ClientWrapper.utilsAdaptor.qStringFromFile(
                                         ":/chatview.html"), ":/chatview.html")
+            messageWebView.url = "qrc:/chatview.html"
         }
     }
 
