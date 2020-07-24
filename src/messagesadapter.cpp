@@ -264,11 +264,19 @@ MessagesAdapter::sendImage(const QString &message)
         /*
          * Img tag contains file paths.
          */
-        QFileInfo fi(message);
+
+        QString msg(message);
+#ifdef Q_OS_WIN
+        msg = msg.replace("file:///", "");
+#else
+        msg = msg.replace("file:///", "/");
+#endif
+        QFileInfo fi(msg);
         QString fileName = fi.fileName();
+
         try {
             auto convUid = LRCInstance::getCurrentConvUid();
-            LRCInstance::getCurrentConversationModel()->sendFile(convUid, message, fileName);
+            LRCInstance::getCurrentConversationModel()->sendFile(convUid, msg, fileName);
         } catch (...) {
             qDebug().noquote() << "Exception during sendFile - image from path"
                                << "\n";
@@ -456,6 +464,7 @@ MessagesAdapter::newInteraction(const QString &accountId,
         auto &accountInfo = LRCInstance::getAccountInfo(accountId);
         auto &convModel = accountInfo.conversationModel;
         auto &conversation = LRCInstance::getConversationFromConvUid(convUid, accountId);
+
         if (conversation.uid.isEmpty()) {
             return;
         }
@@ -575,10 +584,10 @@ void
 MessagesAdapter::setMessagesImageContent(const QString &path, bool isBased64)
 {
     if (isBased64) {
-        QString param = QString("addImage_base64('%1')").arg(path);
+        QString param = QString("addImage_base64('file://%1')").arg(path);
         QMetaObject::invokeMethod(qmlObj_, "webViewRunJavaScript", Q_ARG(QVariant, param));
     } else {
-        QString param = QString("addImage_path('%1')").arg(path);
+        QString param = QString("addImage_path('file://%1')").arg(path);
         QMetaObject::invokeMethod(qmlObj_, "webViewRunJavaScript", Q_ARG(QVariant, param));
     }
 }
