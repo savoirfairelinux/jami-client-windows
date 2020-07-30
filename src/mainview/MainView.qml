@@ -184,18 +184,20 @@ Window {
             handle: Rectangle {
                 implicitWidth: JamiTheme.splitViewHandlePreferedWidth
                 implicitHeight: splitView.height
-                color: SplitHandle.pressed ? JamiTheme.pressColor : (SplitHandle.hovered ? JamiTheme.hoverColor : JamiTheme.tabbarBorderColor)
+                color:"transparent"
+                Rectangle {
+                    implicitWidth: 1
+                    implicitHeight: splitView.height
+                    color: SplitHandle.pressed ? JamiTheme.pressColor : (SplitHandle.hovered ? JamiTheme.hoverColor : JamiTheme.tabbarBorderColor)
+                }
             }
 
             StackView {
                 id: sidePanelViewStack
 
-                property int maximumWidth: sidePanelViewStackPreferedWidth + 100
-
                 initialItem: mainViewWindowSidePanel
 
                 SplitView.minimumWidth: sidePanelViewStackPreferedWidth
-                SplitView.maximumWidth: maximumWidth
                 SplitView.fillHeight: true
 
                 clip: true
@@ -206,7 +208,7 @@ Window {
 
                 initialItem: welcomePage
 
-                SplitView.maximumWidth: splitView.width - sidePanelViewStack.width
+                SplitView.minimumWidth: sidePanelViewStackPreferedWidth
                 SplitView.fillHeight: true
 
                 clip: true

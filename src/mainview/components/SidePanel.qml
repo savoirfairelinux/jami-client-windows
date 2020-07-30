@@ -25,6 +25,7 @@ import "../../commoncomponents"
 
 Rectangle {
     id: sidePanelRect
+    color: JamiTheme.backgroundColor
 
     property bool tabBarVisible: true
     property int pendingRequestCount: 0
@@ -120,12 +121,85 @@ Rectangle {
     /*
      * Intended -> since strange behavior will happen without this for stackview.
      */
-    anchors.fill: parent
+    anchors.top: parent.top
+
+    SidePanelTabBar {
+        id: sidePanelTabBar
+        anchors.top: sidePanelRect.top
+        width: sidePanelRect.width
+        height: tabBarVisible ? 72 : 0
+    }
+
+    /*
+     * Search bar container to embed search label
+     */
+    ContactSearchBar {
+        id: contactSearchBar
+        width: sidePanelRect.width - 20
+        height: 35
+        anchors.top: tabBarVisible ? sidePanelTabBar.bottom : sidePanelRect.top
+        anchors.topMargin: 10
+        anchors.horizontalCenter: sidePanelRect.horizontalCenter
+
+        onContactSearchBarTextChanged: {
+            ClientWrapper.utilsAdaptor.setConversationFilter(text)
+        }
+    }
+
+
+    ConversationSmartListView {
+        id: conversationSmartListView
+
+        anchors.top: contactSearchBar.bottom
+        anchors.topMargin: 10
+        width: parent.width
+        height: tabBarVisible ? sidePanelRect.height - sidePanelTabBar.height - contactSearchBar.height - accountComboBox.height - 10 :
+                                sidePanelRect.height - contactSearchBar.height - accountComboBox.height - 10
+
+        Connections {
+            target: ConversationsAdapter
+
+            function onShowChatView(accountId, convUid) {
+                conversationSmartListView.needToShowChatView(accountId,
+                                                             convUid)
+            }
+
+            function onShowConversationTabs(visible) {
+                tabBarVisible = visible
+                updatePendingRequestCount()
+                updateTotalUnreadMessagesCount()
+            }
+        }
+
+        onNeedToSelectItems: {
+            ConversationsAdapter.selectConversation(index)
+        }
+
+        onNeedToBackToWelcomePage: {
+            sidePanelRect.conversationSmartListViewNeedToShowWelcomePage()
+        }
+
+        onNeedToAccessMessageWebView: {
+            sidePanelRect.conversationSmartListNeedToAccessMessageWebView(
+                        currentUserDisplayName, currentUserAlias,
+                        currentUID, callStackViewShouldShow,
+                        isAudioOnly, callStateStr)
+        }
+
+        onNeedToGrabFocus: {
+            contactSearchBar.clearFocus()
+        }
+
+        Component.onCompleted: {
+            ConversationsAdapter.setQmlObject(this)
+            conversationSmartListView.currentIndex = -1
+        }
+    }
 
     AccountComboBox {
         id: accountComboBox
 
-        anchors.top: sidePanelRect.top
+        anchors.bottom: sidePanelRect.bottom
 
         width: sidePanelRect.width
         height: 60
@@ -175,137 +249,6 @@ Rectangle {
         Component.onCompleted: {
             ClientWrapper.accountAdaptor.setQmlObject(this)
             ClientWrapper.accountAdaptor.accountChanged(0)
-        }
-    }
-
-    SidePanelTabBar {
-        id: sidePanelTabBar
-
-        anchors.top: accountComboBox.bottom
-        anchors.topMargin: 20
-        anchors.left: sidePanelRect.left
-        anchors.leftMargin: tabBarLeftMargin
-
-        width: sidePanelRect.width
-        height: Math.max(sidePanelTabBar.converstationTabHeight,
-                         sidePanelTabBar.invitationTabHeight)
-    }
-
-    Rectangle {
-        id: sidePanelColumnRect
-
-        anchors.top: sidePanelTabBar.bottom
-        anchors.topMargin: -12
-
-        width: sidePanelRect.width
-        height: sidePanelRect.height - accountComboBox.height - sidePanelTabBar.height
-
-        border.color: JamiTheme.tabbarBorderColor
-        radius: 10
-
-        Rectangle {
-            id: hideTopBoarderRect
-
-            anchors.top: sidePanelColumnRect.top
-            anchors.left: sidePanelColumnRect.left
-            anchors.leftMargin: tabBarLeftMargin + 5
-
-            width: sidePanelTabBar.converstationTabWidth + sidePanelTabBar.invitationTabWidth - 9
-            height: 1
-
-            visible: tabBarVisible
-
-            color: "white"
-        }
-
-        ColumnLayout {
-            id: columnLayoutView
-
-            anchors.centerIn: sidePanelColumnRect
-
-            width: sidePanelColumnRect.width
-            height: sidePanelColumnRect.height - 20
-
-
-            /*
-             * Search bar container to embed search label
-             */
-            ContactSearchBar {
-                id: contactSearchBar
-
-                Layout.alignment: Qt.AlignCenter
-                Layout.topMargin: 10
-                Layout.rightMargin: 5
-                Layout.leftMargin: 5
-                Layout.preferredWidth: parent.width - 10
-                Layout.preferredHeight: 35
-
-                onContactSearchBarTextChanged: {
-                    ClientWrapper.utilsAdaptor.setConversationFilter(text)
-                }
-            }
-
-            ConversationSmartListView {
-                id: conversationSmartListView
-
-                Layout.alignment: Qt.AlignCenter
-                Layout.preferredWidth: parent.width
-                Layout.preferredHeight: parent.height - contactSearchBar.height - 30
-
-                Connections {
-                    target: ConversationsAdapter
-
-                    function onShowChatView(accountId, convUid) {
-                        conversationSmartListView.needToShowChatView(accountId,
-                                                                     convUid)
-                    }
-
-                    function onShowConversationTabs(visible) {
-                        tabBarVisible = visible
-                        updatePendingRequestCount()
-                        updateTotalUnreadMessagesCount()
-                    }
-                }
-
-                onNeedToSelectItems: {
-                    ConversationsAdapter.selectConversation(index)
-                }
-
-                onNeedToBackToWelcomePage: {
-                    sidePanelRect.conversationSmartListViewNeedToShowWelcomePage()
-                }
-
-                onNeedToAccessMessageWebView: {
-                    sidePanelRect.conversationSmartListNeedToAccessMessageWebView(
-                                currentUserDisplayName, currentUserAlias,
-                                currentUID, callStackViewShouldShow,
-                                isAudioOnly, callStateStr)
-                }
-
-                onNeedToGrabFocus: {
-                    contactSearchBar.clearFocus()
-                }
-
-                Component.onCompleted: {
-                    ConversationsAdapter.setQmlObject(this)
-                    conversationSmartListView.currentIndex = -1
-                }
-            }
-        }
-    }
-
-    onTabBarVisibleChanged: {
-        if (!tabBarVisible) {
-            sidePanelTabBar.height = 0
-            sidePanelTabBar.anchors.topMargin = 12
-            sidePanelColumnRect.border.width = 0
-        } else {
-            sidePanelTabBar.height = Qt.binding(function () {
-                return Math.max(sidePanelTabBar.converstationTabHeight,
-                                sidePanelTabBar.invitationTabHeight)
-            })
-            sidePanelTabBar.anchors.topMargin = 20
-            sidePanelColumnRect.border.width = 1
         }
     }
 }

@@ -98,7 +98,7 @@ Rectangle {
                     Layout.preferredHeight: textMetricsuserAliasLabel.boundingRect.height
                     Layout.topMargin: userNameOrIdRect.height / 2 - userAliasLabel.height - 4
 
-                    font.pointSize: JamiTheme.textFontSize - 1
+                    font.pointSize: JamiTheme.textFontSize
 
                     horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignVCenter
@@ -122,7 +122,7 @@ Rectangle {
                     Layout.preferredWidth: userNameOrIdRect.width
                     Layout.preferredHeight: textMetricsuserUserNameLabel.boundingRect.height
 
-                    font.pointSize: JamiTheme.textFontSize - 2
+                    font.pointSize: JamiTheme.textFontSize
                     color: JamiTheme.faddedFontColor
 
                     horizontalAlignment: Text.AlignLeft
