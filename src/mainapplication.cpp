@@ -25,6 +25,7 @@
 #include "accountstomigratelistmodel.h"
 #include "audiocodeclistmodel.h"
 #include "audioinputdevicemodel.h"
+#include "audiomanagerlistmodel.h"
 #include "audiooutputdevicemodel.h"
 #include "avadapter.h"
 #include "bannedlistmodel.h"
@@ -298,6 +299,7 @@ MainApplication::qmlInitialization()
     QML_REGISTERTYPE(AccountsToMigrateListModel, 1, 0);
     QML_REGISTERTYPE(AudioInputDeviceModel, 1, 0);
     QML_REGISTERTYPE(AudioOutputDeviceModel, 1, 0);
+    QML_REGISTERTYPE(AudioManagerListModel, 1, 0);
     QML_REGISTERTYPE(VideoInputDeviceModel, 1, 0);
     QML_REGISTERTYPE(VideoFormatResolutionModel, 1, 0);
     QML_REGISTERTYPE(VideoFormatFpsModel, 1, 0);

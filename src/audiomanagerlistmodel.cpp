@@ -16,22 +16,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "audiooutputdevicemodel.h"
+#include "audiomanagerlistmodel.h"
 
-AudioOutputDeviceModel::AudioOutputDeviceModel(QObject *parent)
+AudioManagerListModel::AudioManagerListModel(QObject *parent)
     : QAbstractListModel(parent)
 {}
 
-AudioOutputDeviceModel::~AudioOutputDeviceModel() {}
+AudioManagerListModel::~AudioManagerListModel() {}
 
 int
-AudioOutputDeviceModel::rowCount(const QModelIndex &parent) const
+AudioManagerListModel::rowCount(const QModelIndex &parent) const
 {
     if (!parent.isValid()) {
         /*
          * Count.
          */
-        return LRCInstance::avModel().getAudioOutputDevices().size();
+        return LRCInstance::avModel().getSupportedAudioManagers().size();
     }
     /*
      * A valid QModelIndex returns 0 as no entry has sub-elements.
@@ -40,7 +40,7 @@ AudioOutputDeviceModel::rowCount(const QModelIndex &parent) const
 }
 
 int
-AudioOutputDeviceModel::columnCount(const QModelIndex &parent) const
+AudioManagerListModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
     /*
@@ -50,33 +50,33 @@ AudioOutputDeviceModel::columnCount(const QModelIndex &parent) const
 }
 
 QVariant
-AudioOutputDeviceModel::data(const QModelIndex &index, int role) const
+AudioManagerListModel::data(const QModelIndex &index, int role) const
 {
-    auto deviceList = LRCInstance::avModel().getAudioOutputDevices();
-    if (!index.isValid() || deviceList.size() <= index.row()) {
+    auto managerList = LRCInstance::avModel().getSupportedAudioManagers();
+    if (!index.isValid() || managerList.size() <= index.row()) {
         return QVariant();
     }
 
     switch (role) {
-    case Role::Device_ID:
-        return QVariant(deviceList.at(index.row()));
+    case Role::AudioManagerID:
+        return QVariant(managerList.at(index.row()));
     case Role::ID_UTF8:
-        return QVariant(deviceList.at(index.row()).toUtf8());
+        return QVariant(managerList.at(index.row()).toUtf8());
     }
     return QVariant();
 }
 
 QHash<int, QByteArray>
-AudioOutputDeviceModel::roleNames() const
+AudioManagerListModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
-    roles[Device_ID] = "Device_ID";
+    roles[AudioManagerID] = "AudioManagerID";
     roles[ID_UTF8] = "ID_UTF8";
     return roles;
 }
 
 QModelIndex
-AudioOutputDeviceModel::index(int row, int column, const QModelIndex &parent) const
+AudioManagerListModel::index(int row, int column, const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
     if (column != 0) {
@@ -90,14 +90,14 @@ AudioOutputDeviceModel::index(int row, int column, const QModelIndex &parent) co
 }
 
 QModelIndex
-AudioOutputDeviceModel::parent(const QModelIndex &child) const
+AudioManagerListModel::parent(const QModelIndex &child) const
 {
     Q_UNUSED(child);
     return QModelIndex();
 }
 
 Qt::ItemFlags
-AudioOutputDeviceModel::flags(const QModelIndex &index) const
+AudioManagerListModel::flags(const QModelIndex &index) const
 {
     auto flags = QAbstractItemModel::flags(index) | Qt::ItemNeverHasChildren | Qt::ItemIsSelectable;
     if (!index.isValid()) {
@@ -107,31 +107,17 @@ AudioOutputDeviceModel::flags(const QModelIndex &index) const
 }
 
 void
-AudioOutputDeviceModel::reset()
+AudioManagerListModel::reset()
 {
     beginResetModel();
     endResetModel();
 }
 
 int
-AudioOutputDeviceModel::getCurrentSettingIndex()
+AudioManagerListModel::getCurrentSettingIndex()
 {
-    QString currentId = LRCInstance::avModel().getOutputDevice();
-    auto resultList = match(index(0, 0), Device_ID, QVariant(currentId));
-
-    int resultRowIndex = 0;
-    if (resultList.size() > 0) {
-        resultRowIndex = resultList[0].row();
-    }
-
-    return resultRowIndex;
-}
-
-int
-AudioOutputDeviceModel::getCurrentRingtoneDeviceIndex()
-{
-    QString currentId = LRCInstance::avModel().getRingtoneDevice();
-    auto resultList = match(index(0, 0), Device_ID, QVariant(currentId));
+    QString currentId = LRCInstance::avModel().getAudioManager();
+    auto resultList = match(index(0, 0), AudioManagerID, QVariant(currentId));
 
     int resultRowIndex = 0;
     if (resultList.size() > 0) {

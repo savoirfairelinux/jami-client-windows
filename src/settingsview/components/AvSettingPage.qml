@@ -36,6 +36,10 @@ Rectangle {
         id: audioOutputDeviceModel
     }
 
+    AudioManagerListModel{
+        id: audioManagerListModel
+    }
+
     VideoInputDeviceModel{
         id: videoInputDeviceModel
     }
@@ -54,6 +58,12 @@ Rectangle {
 
         inputComboBox.currentIndex = audioInputDeviceModel.getCurrentSettingIndex()
         outputComboBox.currentIndex = audioOutputDeviceModel.getCurrentSettingIndex()
+        ringtoneDeviceComboBox.currentIndex = audioOutputDeviceModel.getCurrentRingtoneDeviceIndex()
+
+        audioManagerRowLayout.visible = (audioManagerListModel.rowCount() > 0)
+        if(audioManagerListModel.rowCount() > 0){
+        audioManagerComboBox.currentIndex = audioManagerListModel.getCurrentSettingIndex()
+        }
 
         populateVideoSettings()
         var encodeAccel = ClientWrapper.avmodel.getHardwareAcceleration()
@@ -121,6 +131,22 @@ Rectangle {
     function slotSetHardwareAccel(state){
         ClientWrapper.accountAdaptor.avModel().setHardwareAcceleration(state)
         startPreviewing(true)
+    }
+
+    function slotAudioManagerIndexChanged(index){
+        stopAudioMeter(false)
+        var selectedAudioManager = audioManagerListModel.data(audioManagerListModel.index(
+                                                        index, 0), AudioManagerListModel.AudioManagerID)
+        ClientWrapper.avmodel.setAudioManager(selectedAudioManager)
+        startAudioMeter(false)
+    }
+
+    function slotRingtoneDeviceIndexChanged(index){
+        stopAudioMeter(false)
+        var selectedRingtoneDeviceName = audioOutputDeviceModel.data(audioOutputDeviceModel.index(
+                                                        index, 0), AudioOutputDeviceModel.Device_ID)
+        ClientWrapper.avmodel.setRingtoneDevice(selectedRingtoneDeviceName)
+        startAudioMeter(false)
     }
 
     function slotAudioOutputIndexChanged(index){
@@ -416,6 +442,112 @@ Rectangle {
 
                                 onActivated: {
                                     slotAudioOutputIndexChanged(index)
+                                }
+                            }
+                        }
+
+                        RowLayout {
+                            spacing: 7
+                            Layout.leftMargin: 20
+                            Layout.fillWidth: true
+                            Layout.maximumHeight: 30
+
+                            Label {
+                                Layout.maximumWidth: 77
+                                Layout.preferredWidth: 77
+                                Layout.minimumWidth: 77
+
+                                Layout.minimumHeight: 30
+                                Layout.preferredHeight: 30
+                                Layout.maximumHeight: 30
+
+                                text: qsTr("Ringtone Device")
+                                font.pointSize: 11
+                                font.kerning: true
+
+                                horizontalAlignment: Text.AlignLeft
+                                verticalAlignment: Text.AlignVCenter
+                            }
+
+                            Item {
+                                Layout.fillWidth: true
+                                Layout.fillHeight: true
+                            }
+
+                            SettingParaCombobox {
+                                id: ringtoneDeviceComboBox
+
+                                Layout.maximumWidth: 360
+                                Layout.preferredWidth: 360
+                                Layout.minimumWidth: 360
+
+                                Layout.minimumHeight: 30
+                                Layout.preferredHeight: 30
+                                Layout.maximumHeight: 30
+
+                                font.pointSize: 10
+                                font.kerning: true
+
+                                model: audioOutputDeviceModel
+
+                                textRole: "ID_UTF8"
+
+                                onActivated: {
+                                    slotRingtoneDeviceIndexChanged(index)
+                                }
+                            }
+                        }
+
+                        RowLayout {
+                            id: audioManagerRowLayout
+
+                            spacing: 7
+                            Layout.leftMargin: 20
+                            Layout.fillWidth: true
+                            Layout.maximumHeight: 30
+
+                            Label {
+                                Layout.maximumWidth: 77
+                                Layout.preferredWidth: 77
+                                Layout.minimumWidth: 77
+
+                                Layout.minimumHeight: 30
+                                Layout.preferredHeight: 30
+                                Layout.maximumHeight: 30
+
+                                text: qsTr("Audio Manager")
+                                font.pointSize: 11
+                                font.kerning: true
+
+                                horizontalAlignment: Text.AlignLeft
+                                verticalAlignment: Text.AlignVCenter
+                            }
+
+                            Item {
+                                Layout.fillWidth: true
+                                Layout.fillHeight: true
+                            }
+
+                            SettingParaCombobox {
+                                id: audioManagerComboBox
+
+                                Layout.maximumWidth: 360
+                                Layout.preferredWidth: 360
+                                Layout.minimumWidth: 360
+
+                                Layout.minimumHeight: 30
+                                Layout.preferredHeight: 30
+                                Layout.maximumHeight: 30
+
+                                font.pointSize: 10
+                                font.kerning: true
+
+                                model: audioManagerListModel
+
+                                textRole: "ID_UTF8"
+
+                                onActivated: {
+                                    slotAudioManagerIndexChanged(index)
                                 }
                             }
                         }
