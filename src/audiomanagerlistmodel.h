@@ -27,16 +27,15 @@
 
 #include "lrcinstance.h"
 
-class AudioOutputDeviceModel : public QAbstractListModel
+class AudioManagerListModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
-public:
-    enum Role { Device_ID = Qt::UserRole + 1, ID_UTF8 };
+    enum Role { AudioManagerID = Qt::UserRole + 1, ID_UTF8 };
     Q_ENUM(Role)
 
-    explicit AudioOutputDeviceModel(QObject *parent = 0);
-    ~AudioOutputDeviceModel();
+    explicit AudioManagerListModel(QObject *parent = 0);
+    ~AudioManagerListModel();
 
     /*
      * QAbstractListModel override.
@@ -60,8 +59,4 @@ public:
      * This function is to get the current device id in the demon.
      */
     Q_INVOKABLE int getCurrentSettingIndex();
-    /*
-     * This function is to get the current ringtone device id in the demon.
-     */
-    Q_INVOKABLE int getCurrentRingtoneDeviceIndex();
 };
