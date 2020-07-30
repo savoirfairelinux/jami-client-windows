@@ -21,8 +21,8 @@ import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Dialogs 1.3
-import QtGraphicalEffects 1.0
 import net.jami.Models 1.0
+import QtGraphicalEffects 1.15
 import "../../commoncomponents"
 
 
@@ -34,7 +34,7 @@ Rectangle {
         REC_SUCCESS
     }
 
-    id:recBox
+    id: recBox
     color: "#FFFFFF"
     width: 320
     height: 240
@@ -47,22 +47,44 @@ Rectangle {
     property int state: RecordBox.States.INIT
     property bool isVideo: false
     property bool previewAvailable: false
+    property int preferredWidth: 320
+    property int preferredHeight: 240
 
+    property int offset: 4
     property int h_offset: -65
-    property int v_offset: -65
+    property int v_offset: 55
 
     function openRecorder(set_x, set_y, vid) {
+
         focus = true
         visible = true
-        x = set_x+(width/2)+h_offset
-        y = set_y-(height/2)+v_offset
+        isVideo = vid
+
+        scaleAndPositioning()
+
+        x = set_x+h_offset+width/2
+        y = set_y+v_offset-height
 
         updateState(RecordBox.States.INIT)
 
-        isVideo = vid
         if (isVideo){
             ClientWrapper.accountAdaptor.startPreviewing(false)
             previewAvailable = true
+        }
+    }
+
+    function scaleAndPositioning(){
+        height = preferredHeight
+        if (isVideo) {
+            var device = ClientWrapper.avmodel.getDefaultDevice()
+            var settings = ClientWrapper.settingsAdaptor.get_Video_Settings_Size(device)
+            var res = settings.split("x")
+            var aspectRatio = res[1]/res[0]
+            if (aspectRatio) {
+                height = preferredWidth*aspectRatio
+            } else {
+                console.error("Could not scale recording video preview")
+            }
         }
     }
 
@@ -73,7 +95,7 @@ Rectangle {
     }
 
     onVisibleChanged: {
-        if(!visible) {
+        if (!visible) {
             closeRecorder()
         }
     }
@@ -316,3 +338,4 @@ Rectangle {
         }
     }
 }
+
