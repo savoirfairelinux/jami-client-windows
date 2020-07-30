@@ -184,7 +184,12 @@ Window {
             handle: Rectangle {
                 implicitWidth: JamiTheme.splitViewHandlePreferedWidth
                 implicitHeight: splitView.height
-                color: SplitHandle.pressed ? JamiTheme.pressColor : (SplitHandle.hovered ? JamiTheme.hoverColor : JamiTheme.tabbarBorderColor)
+                color:"transparent"
+                Rectangle {
+                    implicitWidth: 1
+                    implicitHeight: splitView.height
+                    color: SplitHandle.pressed ? JamiTheme.pressColor : (SplitHandle.hovered ? JamiTheme.hoverColor : JamiTheme.tabbarBorderColor)
+                }
             }
 
             StackView {
