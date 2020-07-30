@@ -29,7 +29,7 @@ import "../../commoncomponents"
 Rectangle {
     id: messageWebViewRect
 
-    property int messageWebViewHeaderPreferredHeight: 60
+    property int messageWebViewHeaderPreferredHeight: 72
     property string headerUserAliasLabelText: ""
     property string headerUserUserNameLabelText: ""
 
