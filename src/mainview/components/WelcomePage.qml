@@ -73,7 +73,7 @@ Rectangle {
                 text: qsTr("Jami is a free software for universal communication which repects the freedoms and privacy of its user.")
             }
 
-            Label {
+            /*Label {
                 id: jamiShareWithFriendText
 
                 Layout.alignment: Qt.AlignCenter
@@ -91,9 +91,9 @@ Rectangle {
                                                260) === 1
                 text: qsTr("This is your ID.\nCopy and share it with your friends")
                 color: JamiTheme.faddedFontColor
-            }
+            }*/
 
-            Rectangle {
+            /*Rectangle {
                 id: jamiRegisteredNameRect
 
                 Layout.alignment: Qt.AlignCenter
@@ -174,36 +174,36 @@ Rectangle {
                             }
                         }
                     }
-                }
+                }*/
             }
 
-            Image {
+            /*Image {
                 id: sipImage
 
                 Layout.alignment: Qt.AlignCenter
                 Layout.preferredWidth: 200
                 Layout.preferredHeight: 200
-
+            */
 
                 /*
                  * Check if account type is ring.
                  */
-                visible: accountListModel.data(accountListModel.index(
+            /*    visible: accountListModel.data(accountListModel.index(
                                                    currentAccountIndex, 0),
                                                260) === 1 ? false : true
                 fillMode: Image.PreserveAspectFit
-
+            */
 
                 /*
                  * Requested size.
                  */
-                sourceSize.width: 200
+/*                sourceSize.width: 200
                 sourceSize.height: 200
                 mipmap: true
             }
-        }
+        }*/
 
-        HoverableButton {
+        /*HoverableButton {
             id: aboutButton
 
             anchors.horizontalCenter: welcomeRectComponentsGroup.horizontalCenter
@@ -220,7 +220,7 @@ Rectangle {
             onClicked: {
                 aboutPopUpDialog.open()
             }
-        }
+        }*/
     }
 
     CustomBorder {

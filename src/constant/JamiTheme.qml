@@ -39,6 +39,7 @@ Item {
     property string transparentColor: "transparent"
     property string presenceGreen: "#4cd964"
     property string notificationRed: "#ff3b30"
+    property string backgroundColor: lightGrey_
 
     property string screenSelectionBorderGreen: "green"
 
@@ -73,13 +74,14 @@ Item {
 
     property int splitViewHandlePreferedWidth: 4
     property int textFontSize: 9
+    property int titleFontSize: 16
 
 
     /*
      * Place holder text.
      */
     property string contactSearchBarPlaceHolderConversationText: qsTr("Find or start a conversation")
-    property string contactSearchBarPlaceHolderInivitionText: qsTr("Search your received invitations")
+    property string contactSearchBarPlaceHolderInivitionText: qsTr("Search your invitations")
 
     // Jami theme colors
     function rgb256(r, g, b) {
