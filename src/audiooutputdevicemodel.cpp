@@ -126,3 +126,17 @@ AudioOutputDeviceModel::getCurrentSettingIndex()
 
     return resultRowIndex;
 }
+
+int
+AudioOutputDeviceModel::getCurrentRingtoneDeviceIndex()
+{
+    QString currentId = LRCInstance::avModel().getRingtoneDevice();
+    auto resultList = match(index(0, 0), Device_ID, QVariant(currentId));
+
+    int resultRowIndex = 0;
+    if (resultList.size() > 0) {
+        resultRowIndex = resultList[0].row();
+    }
+
+    return resultRowIndex;
+}

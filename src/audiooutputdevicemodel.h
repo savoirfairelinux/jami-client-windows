@@ -60,4 +60,8 @@ public:
      * This function is to get the current device id in the demon.
      */
     Q_INVOKABLE int getCurrentSettingIndex();
+    /*
+     * This function is to get the current ringtone device id in the demon.
+     */
+    Q_INVOKABLE int getCurrentRingtoneDeviceIndex();
 };
