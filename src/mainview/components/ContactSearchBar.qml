@@ -44,9 +44,8 @@ Rectangle {
         fakeFocus.forceActiveFocus()
     }
 
-    border.color: JamiTheme.pressColor
-    radius: 10
-    color: contactSearchBar.activeFocus ? "white" : JamiTheme.contactSearchBarPlaceHolderGreyBackground
+    radius: height/2
+    color: "white"
 
     FocusScope {
         id: fakeFocus
@@ -85,10 +84,10 @@ Rectangle {
 
             anchors.verticalCenter: contactSearchBar.verticalCenter
             anchors.left: contactSearchBar.left
-            anchors.leftMargin: 5
+            anchors.leftMargin: 10
 
             text: qsTr("Find or start a conversation")
-            font.pointSize: JamiTheme.textFontSize - 1
+            font.pointSize: JamiTheme.textFontSize
             color: JamiTheme.contactSearchBarPlaceHolderTextFontColor
             visible: !contactSearchBar.text && !contactSearchBar.activeFocus
         }
