@@ -316,6 +316,7 @@ MainApplication::qmlInitialization()
                                   JamiTheme,
                                   1,
                                   0);
+    qRegisterMetaType<CallAdapter::ConferenceLayout>("CallAdapter.ConferenceLayout");
     QML_REGISTERSINGLETONTYPE(CallAdapter, 1, 0);
 
     QML_REGISTERSINGLETONTYPE(MessagesAdapter, 1, 0);

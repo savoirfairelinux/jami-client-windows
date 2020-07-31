@@ -179,12 +179,70 @@ Menu {
         iconSource: isFullScreen ? "qrc:/images/icons/ic_exit_full_screen_black.png" : "qrc:/images/icons/ic_full_screen_black.png"
         leftBorderWidth: commonBorderWidth
         rightBorderWidth: commonBorderWidth
-        bottomBorderWidth: commonBorderWidth
 
         onClicked: {
             contextMenu.close()
             contextMenu.fullScreenNeeded()
             isFullScreen = !isFullScreen
+        }
+    }
+
+    GeneralMenuSeparator {
+        preferredWidth: videoDeviceItem.preferredWidth
+        preferredHeight: commonBorderWidth
+
+        Component.onCompleted: {
+            generalMenuSeparatorCount++
+        }
+    }
+
+    GeneralMenuItem {
+        id: changeConferenceLayoutItem
+
+        property bool isFullScreen: false
+
+        itemName: "Change Conference Layout"
+        leftBorderWidth: commonBorderWidth
+        rightBorderWidth: commonBorderWidth
+        bottomBorderWidth: commonBorderWidth
+
+        Menu {
+            id: changeConferenceLayoutMenu
+
+            Repeater {
+                model: 3
+                GeneralMenuItem {
+                    id: changeConferenceLayoutSubItem
+
+                    itemName: {
+                        switch (index) {
+                            case 0: return "Grid"
+                            case 1: return "One With Small"
+                            case 2: return "One"
+                        }
+                    }
+                    topBorderWidth: index === 0 ? commonBorderWidth : 0
+                    leftBorderWidth: commonBorderWidth
+                    rightBorderWidth: commonBorderWidth
+                    bottomBorderWidth: index === 2 ? commonBorderWidth : 0
+
+                    onClicked: {
+                        switch (index) {
+                            case 0:
+                                CallAdapter.PreferredConferenceLayout = CallAdapter.ConferenceLayout.GRID; break;
+                            case 1:
+                                CallAdapter.PreferredConferenceLayout = CallAdapter.ConferenceLayout.ONE_WITH_SMALL; break;
+                            case 2:
+                                CallAdapter.PreferredConferenceLayout = CallAdapter.ConferenceLayout.ONE; break;
+                        }
+                    }
+                }
+            }
+        }
+
+        onClicked: {
+            changeConferenceLayoutMenu.x = changeConferenceLayoutItem.width + x
+            changeConferenceLayoutMenu.open()
         }
     }
 

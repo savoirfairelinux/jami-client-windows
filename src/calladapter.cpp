@@ -46,6 +46,10 @@ CallAdapter::initQmlObject()
             &BehaviorController::showCallView,
             this,
             &CallAdapter::slotShowCallView);
+    connect(this,
+            &CallAdapter::conferenceLayoutChanged,
+            this,
+            &CallAdapter::slotConferenceLayoutChanged);
 }
 
 void
@@ -426,6 +430,29 @@ CallAdapter::videoPauseThisCallToggle()
         callModel->toggleMedia(callId, lrc::api::NewCallModel::Media::VIDEO);
     }
     emit previewVisibilityNeedToChange(shouldShowPreview(false));
+}
+
+void
+CallAdapter::slotConferenceLayoutChanged()
+{
+    auto convInfo = LRCInstance::getConversationFromConvUid(convUid_, accountId_);
+
+    if (!convInfo.confId.isEmpty()) {
+        auto callModel = LRCInstance::getCurrentCallModel();
+        lrc::api::call::Layout layout;
+        switch (conferenceLayout_) {
+        case ConferenceLayout::GRID:
+            layout = lrc::api::call::Layout::GRID;
+            break;
+        case ConferenceLayout::ONE_WITH_SMALL:
+            layout = lrc::api::call::Layout::ONE_WITH_SMALL;
+            break;
+        case ConferenceLayout::ONE:
+            layout = lrc::api::call::Layout::ONE;
+            break;
+        }
+        callModel->setConferenceLayout(convInfo.confId, layout);
+    }
 }
 
 void

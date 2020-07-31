@@ -27,10 +27,16 @@
 class CallAdapter : public QmlAdapterBase
 {
     Q_OBJECT
+    Q_CLASSINFO("RegisterEnumClassesUnscoped", "false")
+    Q_PROPERTY(ConferenceLayout PreferredConferenceLayout MEMBER conferenceLayout_ NOTIFY
+                   conferenceLayoutChanged)
 
 public:
     explicit CallAdapter(QObject *parent = nullptr);
     ~CallAdapter();
+
+    enum class ConferenceLayout { GRID, ONE_WITH_SMALL, ONE };
+    Q_ENUM(ConferenceLayout)
 
     /*
      * This is needed to be public since it has to be recognized by qml.
@@ -67,6 +73,7 @@ signals:
 
     void incomingCallNeedToSetupMainView(const QString &accountId, const QString &convUid);
     void previewVisibilityNeedToChange(bool visible);
+    void conferenceLayoutChanged();
 
     /*
      * For Call Overlay
@@ -86,6 +93,7 @@ public slots:
     void slotShowIncomingCallView(const QString &accountId,
                                   const lrc::api::conversation::Info &convInfo);
     void slotShowCallView(const QString &accountId, const lrc::api::conversation::Info &convInfo);
+    void slotConferenceLayoutChanged();
 
 private:
     void updateCall(const QString &convUid = {},
@@ -109,4 +117,6 @@ private:
     void updateCallOverlay(const lrc::api::conversation::Info &convInfo);
 
     QTimer *oneSecondTimer_;
+
+    ConferenceLayout conferenceLayout_{ConferenceLayout::GRID};
 };
